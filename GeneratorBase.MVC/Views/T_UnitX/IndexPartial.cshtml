@@ -1,0 +1,1057 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_UnitX>
+@using PagedList.Mvc;
+@{
+	
+    var ActionNameUrl = "Index";
+    if (HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().ToUpper() == "FSEARCH")
+    {
+        ActionNameUrl = "FSearch";
+    }
+	var BackUrl =  Request.Url;
+	if (ViewData["HostingEntity"] != null && (Request.QueryString["TabToken"] != null || Request.IsAjaxRequest()))
+	{
+		BackUrl =  Request.UrlReferrer;
+	}
+	var EntityReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_UnitX");
+}
+
+<div id="T_UnitX">
+
+<style>
+    .table-responsive > .fixed-column {
+        position: absolute;
+        display: block;
+        width: auto;
+        border: 0px solid transparent;
+        border-top: 1px solid #c3ddec;
+    }
+    .fixed-column th {
+        background: #fff;
+    }
+    .fixed-column td {
+        background: #fff;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+	 $(".pagination a").click(function (e) {
+            //PaginationClick(e,'T_UnitX')
+			PaginationClick(e, 'T_UnitX','@User.JavaScriptEncodedName')
+        })
+	    if("@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().ToUpper()" == "FSEARCH")
+        {
+            $("#fsearchT_UnitX").addClass('in');
+			if('@ViewData["HostingEntity"]'.length>0)
+	        {
+                $("#" + "@ViewData["HostingEntity"]" + "_T_UnitX").hide();
+	        }
+			FSearchColumnsShowHide('@ViewData["HideColumns"]', 'T_UnitX');
+        }
+	    $("#SearchStringT_UnitX").keypress(function (e) {
+			if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+				 $("#T_UnitXSearch").bind("click", (function () {
+                        }));
+                $('#T_UnitXSearch').trigger("click");
+                return false;
+			}
+        })
+        $("#btnShowHideT_UnitX").mouseup(function () {
+            if (document.getElementById('ColumnShowHideT_UnitX').className == 'collapse') {
+				 $('#lblT_UnitX').css('display', 'none');
+            }
+        })
+		if ($("#ErrmsgLockRecord").length > 0 && $("#ErrmsgLockRecord").text().length > 0) {
+                    $(".pull-left.actionbar").hide();
+		}
+    });
+</script>
+@functions {
+    object getSortHtmlAttributes(string sortby, bool IsPaging, int? page, bool? IsExport)
+    {
+        if (IsPaging)
+        {
+            return new
+            {
+                page,
+                sortBy = ViewBag.CurrentSort,
+                isAsc = ViewBag.IsAsc,
+                currentFilter = ViewBag.CurrentFilter,
+                HostingEntity = @Convert.ToString(ViewData["HostingEntity"]),
+                AssociatedType = @Convert.ToString(ViewData["AssociatedType"]),
+                HostingEntityID = ViewData["HostingEntityID"],
+				IsExport = IsExport,
+				FSFilter = ViewBag.FSFilter == null ? "Fsearch" : ViewBag.FSFilter,
+				IsFilter = @Convert.ToBoolean(ViewData["IsFilter"]),
+                
+ t_facilityunitx = Request.QueryString["t_facilityunitx"],
+ t_unitxunitassociation = Request.QueryString["t_unitxunitassociation"],
+ t_warddepartment = Request.QueryString["t_warddepartment"],
+ t_unitxdepartmentarea = Request.QueryString["t_unitxdepartmentarea"],
+ t_wardorgcode = Request.QueryString["t_wardorgcode"],
+ t_unitxfloor = Request.QueryString["t_unitxfloor"],
+ t_employeeadministrator = Request.QueryString["t_employeeadministrator"],
+ t_employeeunitxhead = Request.QueryString["t_employeeunitxhead"],
+ t_wardcostcenter = Request.QueryString["t_wardcostcenter"],
+  T_MaleBedsFrom = Request.QueryString["T_MaleBedsFrom"],
+  T_MaleBedsFromhdn = Request.QueryString["T_MaleBedsFromhdn"],
+  T_MaleBedsTo = Request.QueryString["T_MaleBedsTo"],
+  T_MaleBedsTohdn = Request.QueryString["T_MaleBedsTohdn"],
+  T_FemaleBedsFrom = Request.QueryString["T_FemaleBedsFrom"],
+  T_FemaleBedsFromhdn = Request.QueryString["T_FemaleBedsFromhdn"],
+  T_FemaleBedsTo = Request.QueryString["T_FemaleBedsTo"],
+  T_FemaleBedsTohdn = Request.QueryString["T_FemaleBedsTohdn"],
+  T_TotalBedsFrom = Request.QueryString["T_TotalBedsFrom"],
+  T_TotalBedsFromhdn = Request.QueryString["T_TotalBedsFromhdn"],
+  T_TotalBedsTo = Request.QueryString["T_TotalBedsTo"],
+  T_TotalBedsTohdn = Request.QueryString["T_TotalBedsTohdn"],
+				search=Request.QueryString["search"],
+				SortOrder = Request.QueryString["SortOrder"],
+				viewtype = ViewBag.TemplatesName,
+				HideColumns = ViewData["HideColumns"],
+				 GroupByColumn = ViewBag.GroupByColumn,
+				 FilterCondition = ViewBag.FilterCondition,
+				 inbuiltSearchCriteria = ViewBag.inbuiltSearchCriteria
+            };
+        }
+        else
+        {
+            return new
+            {
+                sortBy = sortby,
+                currentFilter = Request.QueryString["currentFilter"],
+                searchString = Request.QueryString["searchString"],
+                isAsc = (ViewBag.IsAsc == "ASC" ? "DESC" : ""),
+                page = ViewBag.Pages,
+                HostingEntity = @Convert.ToString(ViewData["HostingEntity"]),
+                HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),
+                AssociatedType = @Convert.ToString(ViewData["AssociatedType"]),
+				IsExport = IsExport,
+				FSFilter = ViewBag.FSFilter == null ? "Fsearch" : ViewBag.FSFilter,
+				IsFilter = @Convert.ToBoolean(ViewData["IsFilter"]),
+ t_facilityunitx = Request.QueryString["t_facilityunitx"],
+ t_unitxunitassociation = Request.QueryString["t_unitxunitassociation"],
+ t_warddepartment = Request.QueryString["t_warddepartment"],
+ t_unitxdepartmentarea = Request.QueryString["t_unitxdepartmentarea"],
+ t_wardorgcode = Request.QueryString["t_wardorgcode"],
+ t_unitxfloor = Request.QueryString["t_unitxfloor"],
+ t_employeeadministrator = Request.QueryString["t_employeeadministrator"],
+ t_employeeunitxhead = Request.QueryString["t_employeeunitxhead"],
+ t_wardcostcenter = Request.QueryString["t_wardcostcenter"],
+  T_MaleBedsFrom = Request.QueryString["T_MaleBedsFrom"],
+  T_MaleBedsFromhdn = Request.QueryString["T_MaleBedsFromhdn"],
+  T_MaleBedsTo = Request.QueryString["T_MaleBedsTo"],
+  T_MaleBedsTohdn = Request.QueryString["T_MaleBedsTohdn"],
+  T_FemaleBedsFrom = Request.QueryString["T_FemaleBedsFrom"],
+  T_FemaleBedsFromhdn = Request.QueryString["T_FemaleBedsFromhdn"],
+  T_FemaleBedsTo = Request.QueryString["T_FemaleBedsTo"],
+  T_FemaleBedsTohdn = Request.QueryString["T_FemaleBedsTohdn"],
+  T_TotalBedsFrom = Request.QueryString["T_TotalBedsFrom"],
+  T_TotalBedsFromhdn = Request.QueryString["T_TotalBedsFromhdn"],
+  T_TotalBedsTo = Request.QueryString["T_TotalBedsTo"],
+  T_TotalBedsTohdn = Request.QueryString["T_TotalBedsTohdn"],
+		search=Request.QueryString["search"],
+		SortOrder = Request.QueryString["SortOrder"],
+		viewtype = ViewBag.TemplatesName,
+		HideColumns = ViewData["HideColumns"],
+		 GroupByColumn = ViewBag.GroupByColumn,
+		 FilterCondition = ViewBag.FilterCondition,
+		 inbuiltSearchCriteria = ViewBag.inbuiltSearchCriteria
+            };
+        }
+    }
+}
+<div class="row">
+   <div class="col-md-12 col-sm-12 col-sx-12">
+      <div style="display:block; padding:0px 0px 5px 0px;">
+	    
+	   
+	    @if (ViewData["IsdrivedTab"]==null)
+                { 
+            <div class="pull-left actionbar">
+                 <div class="btn-group" id='@ViewData["HostingEntity"]_T_UnitX'>
+				 
+				  @if (User.CanAdd("T_UnitX"))
+				  {
+						<a class="btn btn-sm" type="button" data-original-title="Full Add" data-placement="top" onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_UnitX", new { UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) }, null) + "');") alt="Full Add" title="Full Add">
+						<i class="fa fa-plus-circle" style="margin-right:3px"></i> Add
+					</a>
+					<a class="btn btn-sm" data-placement="top" id="addT_UnitX" data-original-title="Quick Add" data-toggle="modal" data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','UnitX','dvPopup','" + Url.Action("CreateQuick", "T_UnitX", new { UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS=DateTime.Now,viewtype = Convert.ToString(ViewBag.TemplatesName) }) + "')")" alt="Quick Add" title="Quick Add">
+						<i class="fa fa-plus-circle" style="margin-right:3px"></i> Quick Add
+                    </a>
+			}
+			
+                </div>
+				
+		<div class="btn-group">
+
+   	@if (ViewData["HostingEntity"] == null || Convert.ToBoolean(ViewData["IsFilter"]) == true)
+	{
+	if (User.CanView("T_Facility") || User.CanView("T_Unit") || User.CanView("T_Department") || User.CanView("T_DepartmentArea") || User.CanView("T_OrgCodes") || User.CanView("T_Floor") || User.CanView("T_Employee") || User.CanView("T_Employee") || User.CanView("T_CostCenter"))
+	{ 
+			<div class="btn-group">
+		<a class="btn btn-sm dropdown-toggle" data-original-title="Filter-Groupby" data-toggle="dropdown" href="#" alt="Filter" title="Filter">
+		<i class="fa fa-filter" style="margin-right:3px"></i> Filter
+		</a>
+		<ul class="dropdown-menu" role="menu">
+			@if (User.CanView("T_Facility"))
+			{
+				<li>
+					<a id="fltT_Facility" data-placement="top" onclick=@Html.Raw("SetCookieFlt('fltT_Facility');EntityFilter('T_UnitX','" + Url.Action("GetAllValueForFilter", "T_Facility") + "','" + Html.Raw(Url.Action("Index", "T_UnitX", new {FirstCall=true,FilterHostingEntityID = ViewData["HostingEntityID"], IsFilter = true, HostingEntity = "T_Facility", AssociatedType = "T_FacilityUnitX", ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)})) + "','" + User.JavaScriptEncodedName + "');")>
+						<span>Facility</span>
+					</a>
+				</li>
+			}
+			@if (User.CanView("T_Unit"))
+			{
+				<li>
+					<a id="fltT_Unit" data-placement="top" onclick=@Html.Raw("SetCookieFlt('fltT_Unit');EntityFilter('T_UnitX','" + Url.Action("GetAllValueForFilter", "T_Unit") + "','" + Html.Raw(Url.Action("Index", "T_UnitX", new {FirstCall=true,FilterHostingEntityID = ViewData["HostingEntityID"], IsFilter = true, HostingEntity = "T_Unit", AssociatedType = "T_UnitXUnitAssociation", ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)})) + "','" + User.JavaScriptEncodedName + "');")>
+						<span>Unit Name</span>
+					</a>
+				</li>
+			}
+			@if (User.CanView("T_Department"))
+			{
+				<li>
+					<a id="fltT_Department" data-placement="top" onclick=@Html.Raw("SetCookieFlt('fltT_Department');EntityFilter('T_UnitX','" + Url.Action("GetAllValueForFilter", "T_Department") + "','" + Html.Raw(Url.Action("Index", "T_UnitX", new {FirstCall=true,FilterHostingEntityID = ViewData["HostingEntityID"], IsFilter = true, HostingEntity = "T_Department", AssociatedType = "T_WardDepartment", ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)})) + "','" + User.JavaScriptEncodedName + "');")>
+						<span>Department</span>
+					</a>
+				</li>
+			}
+			@if (User.CanView("T_DepartmentArea"))
+			{
+				<li>
+					<a id="fltT_DepartmentArea" data-placement="top" onclick=@Html.Raw("SetCookieFlt('fltT_DepartmentArea');EntityFilter('T_UnitX','" + Url.Action("GetAllValueForFilter", "T_DepartmentArea") + "','" + Html.Raw(Url.Action("Index", "T_UnitX", new {FirstCall=true,FilterHostingEntityID = ViewData["HostingEntityID"], IsFilter = true, HostingEntity = "T_DepartmentArea", AssociatedType = "T_UnitXDepartmentArea", ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)})) + "','" + User.JavaScriptEncodedName + "');")>
+						<span>Department Area</span>
+					</a>
+				</li>
+			}
+			@if (User.CanView("T_OrgCodes"))
+			{
+				<li>
+					<a id="fltT_OrgCodes" data-placement="top" onclick=@Html.Raw("SetCookieFlt('fltT_OrgCodes');EntityFilter('T_UnitX','" + Url.Action("GetAllValueForFilter", "T_OrgCodes") + "','" + Html.Raw(Url.Action("Index", "T_UnitX", new {FirstCall=true,FilterHostingEntityID = ViewData["HostingEntityID"], IsFilter = true, HostingEntity = "T_OrgCodes", AssociatedType = "T_WardOrgCode", ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)})) + "','" + User.JavaScriptEncodedName + "');")>
+						<span>Org Code</span>
+					</a>
+				</li>
+			}
+			@if (User.CanView("T_Floor"))
+			{
+				<li>
+					<a id="fltT_Floor" data-placement="top" onclick=@Html.Raw("SetCookieFlt('fltT_Floor');EntityFilter('T_UnitX','" + Url.Action("GetAllValueForFilter", "T_Floor") + "','" + Html.Raw(Url.Action("Index", "T_UnitX", new {FirstCall=true,FilterHostingEntityID = ViewData["HostingEntityID"], IsFilter = true, HostingEntity = "T_Floor", AssociatedType = "T_UnitXFloor", ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)})) + "','" + User.JavaScriptEncodedName + "');")>
+						<span>Floor</span>
+					</a>
+				</li>
+			}
+			@if (User.CanView("T_Employee"))
+			{
+				<li>
+					<a id="fltT_Employee" data-placement="top" onclick=@Html.Raw("SetCookieFlt('fltT_Employee');EntityFilter('T_UnitX','" + Url.Action("GetAllValueForFilter", "T_Employee") + "','" + Html.Raw(Url.Action("Index", "T_UnitX", new {FirstCall=true,FilterHostingEntityID = ViewData["HostingEntityID"], IsFilter = true, HostingEntity = "T_Employee", AssociatedType = "T_EmployeeAdministrator", ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)})) + "','" + User.JavaScriptEncodedName + "');")>
+						<span>Administrator</span>
+					</a>
+				</li>
+			}
+			@if (User.CanView("T_Employee"))
+			{
+				<li>
+					<a id="fltT_Employee" data-placement="top" onclick=@Html.Raw("SetCookieFlt('fltT_Employee');EntityFilter('T_UnitX','" + Url.Action("GetAllValueForFilter", "T_Employee") + "','" + Html.Raw(Url.Action("Index", "T_UnitX", new {FirstCall=true,FilterHostingEntityID = ViewData["HostingEntityID"], IsFilter = true, HostingEntity = "T_Employee", AssociatedType = "T_EmployeeUnitXHead", ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)})) + "','" + User.JavaScriptEncodedName + "');")>
+						<span>Head</span>
+					</a>
+				</li>
+			}
+			@if (User.CanView("T_CostCenter"))
+			{
+				<li>
+					<a id="fltT_CostCenter" data-placement="top" onclick=@Html.Raw("SetCookieFlt('fltT_CostCenter');EntityFilter('T_UnitX','" + Url.Action("GetAllValueForFilter", "T_CostCenter") + "','" + Html.Raw(Url.Action("Index", "T_UnitX", new {FirstCall=true,FilterHostingEntityID = ViewData["HostingEntityID"], IsFilter = true, HostingEntity = "T_CostCenter", AssociatedType = "T_WardCostCenter", ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)})) + "','" + User.JavaScriptEncodedName + "');")>
+						<span>Cost Center</span>
+					</a>
+				</li>
+			}
+     <li>
+@Html.ActionLink("Clear", "Index", new { viewtype = Convert.ToString(ViewBag.TemplatesName) }, new { onclick = "ClearFilterCookies();", @class = "label label-primary pull-left filterLabel", @Style = "margin-left:20px;color: white" })</li>
+		</ul>
+		</div>
+		}
+			} 
+	
+                </div>
+@if ((User.CanEdit("T_UnitX") && User.CanUseVerb("BulkUpdate", "T_UnitX", User)) || (User.CanDelete("T_UnitX") && User.CanUseVerb("BulkDelete", "T_UnitX", User)))
+{
+ <div class="btn-group">
+    <a class="btn btn-sm dropdown-toggle" data-original-title="Bulk Actions" data-toggle="dropdown" href="#">
+           <span class="fa fa-wrench"></span> Bulk
+        </a>
+        <ul class="dropdown-menu" role="menu">
+	
+	@if ( User.CanEdit("T_UnitX")&&  User.CanUseVerb("BulkUpdate","T_UnitX",User))
+	{
+	<li>
+		<a data-placement="top" style="cursor:pointer;" data-toggle="modal" data-target="#dvPopup"
+			onclick="@Html.Raw("OpenPopUpBulKUpdate('addPopup','Bulk Update UnitX','dvPopup','" + Url.Action("BulkUpdate", "T_UnitX", new { UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS = DateTime.Now }) + "','T_UnitX')")">Update</a>
+	</li>
+	
+	}
+	
+ 
+	 @if ( User.CanDelete("T_UnitX") && User.CanUseVerb("BulkDelete","T_UnitX",User))
+     {
+	 <li>
+		<a style="cursor:pointer;" onclick="PerformBulkOperation(this,'T_UnitX','Bulk Delete','@Url.Action("DeleteBulk", "T_UnitX")');">Delete</a>
+	 </li>
+	
+	 }
+                        </ul>
+                    </div>
+					}
+					 <div class="btn-group">
+                        <a class="btn btn-sm dropdown-toggle tip-top" data-original-title="View As" style="padding:3px 5px;" data-toggle="dropdown">
+                            <span class="fa fa fa-table"></span> View As
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" style="min-width:110px">
+                            <li>
+                                <a data-placement="top" style="cursor:pointer;"
+                                   onclick="@Html.Raw("LoadTabTemplate('T_UnitX','" + Url.Action("Index", "T_UnitX", new { UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntity = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS = DateTime.Now, viewtype = "IndexPartialGallery" }) + "')")">
+                                    <span class="fa fa-th"></span> Gallery
+                                </a>
+                            </li>
+                            <li>
+                                <a style="display:block; margin:0px;"
+                                   onclick="@Html.Raw("LoadTabTemplate('T_UnitX','" + Url.Action("Index", "T_UnitX", new { UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntity = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS = DateTime.Now, viewtype = "IndexPartialList" }) + "')")">
+                                    <span class="fa fa-list"></span> List
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+<div class="btn-group">
+                            <a class="btn btn-sm dropdown-toggle tip-top" data-toggle="dropdown" alt="Tools" title="Tools">
+                                Tools
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" style="min-width:110px">
+							 <li>
+               @if (ViewData["HostingEntity"] == null)
+			   {
+                        <a data-placement="top" data-original-title="Show Graph" data-toggle="modal" data-target="#ShowGraphT_UnitX" onclick=@Html.Raw("OpenDashBoard('dvShowGraphT_UnitX');") alt="Show Graph" title="Show Graph">
+                            <span class="fa fa-area-chart" style="margin-right:3px"></span> Show Graph
+                        </a>
+				}
+
+		@if (ViewData["HostingEntity"] != null && User.CanEdit(ViewData["HostingEntity"].ToString()))
+			{
+				<a id="showAssociateBtn"  data-placement="top" data-original-title="Associate UnitX with @GeneratorBase.MVC.Models.ModelConversion.GetDisplayNameOfEntity(ViewData["HostingEntity"].ToString())" data-toggle="modal" data-target="#dvPopupBulkOperation" onclick="@Html.Raw("OpenPopUpEntity1M(this,'PopupBulkOperation','UnitX','dvPopupBulkOperation','" + Url.Action("Index", "T_UnitX", new { BulkOperation = "multiple", BulkAssociate = true, UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntity = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS = DateTime.Now,viewtype = Convert.ToString(ViewBag.TemplatesName) }) + "')")">
+					<i class="fa fa-plus-circle" ></i> Add Association
+				</a>
+			<script>
+				if($("#HostingEntityDisplayValue").attr('id')==undefined)
+				$("#showAssociateBtn").hide();
+			</script>
+			}
+                               
+              
+                                    
+                                </li>
+                                <li>
+								
+			@if ( User.CanAdd("T_UnitX") && User.CanUseVerb("ImportExcel", "T_UnitX", User))
+			{
+				if (ViewData["HostingEntity"]==null)
+				{ 
+				 <a  onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Upload", "T_UnitX") + "');") alt="Import Excel" title="Import Excel">
+                        <i class="fa fa-upload" style="margin-right:3px"></i>    Import Excel
+                                         
+                 </a>
+				}
+			}
+
+                                  
+                                </li>
+
+                                <li>
+	     		@if (User.CanView("T_UnitX") && User.CanUseVerb("ExportExcel", "T_UnitX", User))
+                {
+					<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action(ActionNameUrl,"T_UnitX",getSortHtmlAttributes(null, false, null, true), null) + "');") alt="Export Excel" title="Export Excel">
+						<i class="fa fa-download" style="margin-right:3px"></i>  Export Excel
+                    
+					</a>
+				}
+                                   
+                                </li>
+				<li>
+			@if (ViewData["HostingEntity"]==null)
+				{ 
+                <a class="collapse-data-btn" id="btnShowHideT_UnitX" data-original-title="Show/Hide Column" data-placement="top" onclick=@Html.Raw("showhideColumns(event,'T_UnitX');") alt="Show/Hide Column" title="Show/Hide Column">
+                    <span class="fa fa-table"></span>  Show/Hide Column
+                </a>
+				}
+            </li>
+                                  
+                            </ul>
+                        </div>
+
+</div>					
+
+				<div class="pull-right" style="width:300px; padding-top:4px; ">
+                        <div class="input-group">
+                            @Html.TextBox("SearchStringT_UnitX", ViewBag.CurrentFilter as string, null, new { @class = "form-control fixsearchbox", @value = ViewBag.Homeval, @placeholder = "Search" })
+                            <div class="input-group-btn">
+                              <a id="T_UnitXSearch" onclick="SearchClick(event, 'T_UnitX', '@Html.Raw(Url.Action("Index", "T_UnitX", new { IsFilter = ViewData["IsFilter"], IsDeepSearch = false, searchString = "_SearchString", HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]),HideColumns = ViewData["HideColumns"], SearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName) }))','@User.JavaScriptEncodedName');" data-original-title="Grid Search" class="btn tip-top" style="padding:3px 5px; border:1px solid #ccc"  alt="Grid Search" title="Search"><span class="fa fa-search"></span></a>
+								<a id="T_UnitXDeepSearch" onclick="SearchClick(event, 'T_UnitX', '@Html.Raw(Url.Action("Index", "T_UnitX", new { IsFilter = ViewData["IsFilter"], IsDeepSearch = true, searchString = "_SearchString", HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]),HideColumns = ViewData["HideColumns"], SearchTimeStamp = DateTime.Now.Ticks.ToString() ,viewtype = Convert.ToString(ViewBag.TemplatesName)}))','@User.JavaScriptEncodedName');" data-original-title="Detail Search" class="btn tip-top" style="padding:3px 5px; border:1px solid #ccc; display:none;" alt="Zoom-In"><span class="fam-zoom-in"></span></a>
+ @if (ViewData["HostingEntity"]==null)
+	{ 
+			 <a href="@(Url.Action("SetFSearch", "T_UnitX")+Request.Url.Query)" data-original-title="Faceted Search" class="btn tip-top" style="padding:3px 5px; border:1px solid #ccc" alt="Faceted Search" title="Faceted Search"><span class="fa fa-binoculars"></span></a>
+	}
+								<a id="T_UnitXCancel" type="button" class="btn collapse-data-btn tip-top" onclick="CancelSearch('T_UnitX','@Html.Raw(Url.Action("Index", "T_UnitX", new {IsFilter=ViewData["IsFilter"], HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]), HideColumns = ViewData["HideColumns"], ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName) }))','@User.JavaScriptEncodedName')" data-original-title="Clear Search" data-placement="top" style="padding:3px 5px; border:1px solid #ccc" alt="Clear Search" title="Clear Search">
+                                    <span class="fa fa-minus-circle"></span>
+                                </a>
+                                <a id="T_UnitXSearchCancel" type="button" class="btn collapse-data-btn tip-top" onclick="CancelSearch('T_UnitX','@Html.Raw(Url.Action("Index", "T_UnitX", new {IsFilter=ViewData["IsFilter"], itemsPerPage=Convert.ToInt32(ViewBag.PageSize),HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]),HideColumns = ViewData["HideColumns"], ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)}))','@User.JavaScriptEncodedName')" data-original-title="Refresh Grid" data-placement="top" style="padding:3px 5px; border:1px solid #ccc" alt="Refresh Grid" title="Refresh Grid">
+                                    <span class="fa fa-refresh"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+            
+}
+			 <div style="clear:both"></div>
+            
+ @if (ViewData["HostingEntity"]==null)
+	{ 
+	if (ViewBag.SearchResult != "" )
+                            {
+			<div id="fsearchT_UnitX" class="collapse MessageFSearch">
+                        @Html.Raw(Html.Encode(ViewBag.SearchResult).Replace(Environment.NewLine, "<br/>"))
+						 <a href="@Url.Action("Index", "T_UnitX",new{viewtype = Convert.ToString(ViewBag.TemplatesName)})" style="margin-left:5px;float:right"><span class="glyphicon glyphicon-remove-sign"></span> Clear</a>
+						  <a href="@(Url.Action("SetFSearch", "T_UnitX")+Request.Url.Query)" style="float:right" ><span class="glyphicon glyphicon-edit"></span> Modify</a>
+            </div>
+	}
+}
+	@Html.Partial("~/Views/T_UnitX/ShowHideColumns.cshtml") 
+    <div id="Des_Table" class="table-responsive" style="overflow-x:auto; margin-top:3px">
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <thead>
+                <tr>
+
+	 <th class="col0" style="width:20px;" scope="col">
+		<input type="checkbox" class="tip-top" data-placement="top" data-original-title="Select All" onclick="SelectAllRows(this);" />
+        @Html.Hidden("SelectedItems")
+	</th>
+
+					<th  scope="col" class="col1" style="width:42px;" alt="Actions" title="Actions">Actions</th>
+@if(User.CanView("T_UnitX","T_FacilityUnitXID"))
+{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_FacilityUnitXID");
+			<th scope="col"  class="col2" @(Convert.ToString(ViewData["HostingEntity"]) == "T_Facility" && Convert.ToString(ViewData["AssociatedType"]) == "T_FacilityUnitX"?"hidden":"")>
+				@Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "T_UnitX",getSortHtmlAttributes("T_FacilityUnitXID", false, null, false),new {  @onclick = "SortLinkClick(event,'T_UnitX');" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_FacilityUnitXID")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_FacilityUnitXID")
+				{<i class="fa fa-sort-asc"></i>}
+			 </th>
+}
+@if(User.CanView("T_UnitX","T_WardDepartmentID"))
+{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_WardDepartmentID");
+			<th scope="col"  class="col3" @(Convert.ToString(ViewData["HostingEntity"]) == "T_Department" && Convert.ToString(ViewData["AssociatedType"]) == "T_WardDepartment"?"hidden":"")>
+				@Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "T_UnitX",getSortHtmlAttributes("T_WardDepartmentID", false, null, false),new {  @onclick = "SortLinkClick(event,'T_UnitX');" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_WardDepartmentID")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_WardDepartmentID")
+				{<i class="fa fa-sort-asc"></i>}
+			 </th>
+}
+@if(User.CanView("T_UnitX","T_UnitXDepartmentAreaID"))
+{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_UnitXDepartmentAreaID");
+			<th scope="col"  class="col4" @(Convert.ToString(ViewData["HostingEntity"]) == "T_DepartmentArea" && Convert.ToString(ViewData["AssociatedType"]) == "T_UnitXDepartmentArea"?"hidden":"")>
+				@Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "T_UnitX",getSortHtmlAttributes("T_UnitXDepartmentAreaID", false, null, false),new {  @onclick = "SortLinkClick(event,'T_UnitX');" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_UnitXDepartmentAreaID")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_UnitXDepartmentAreaID")
+				{<i class="fa fa-sort-asc"></i>}
+			 </th>
+}
+@if(User.CanView("T_UnitX","T_WardOrgCodeID"))
+{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_WardOrgCodeID");
+			<th scope="col"  class="col5" @(Convert.ToString(ViewData["HostingEntity"]) == "T_OrgCodes" && Convert.ToString(ViewData["AssociatedType"]) == "T_WardOrgCode"?"hidden":"")>
+				@Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "T_UnitX",getSortHtmlAttributes("T_WardOrgCodeID", false, null, false),new {  @onclick = "SortLinkClick(event,'T_UnitX');" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_WardOrgCodeID")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_WardOrgCodeID")
+				{<i class="fa fa-sort-asc"></i>}
+			 </th>
+}
+@if(User.CanView("T_UnitX","T_Unit") )
+{	
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_Unit");
+			<th scope="col" class="col6">
+			@Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "T_UnitX",getSortHtmlAttributes("T_Unit", false, null, false),new {  @onclick = "SortLinkClick(event,'T_UnitX');" }) 
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_Unit")
+                {<i class="fa fa-sort-desc"></i>}
+                @if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_Unit")
+                {<i class="fa fa-sort-asc"></i>}
+			</th>
+}
+@if(User.CanView("T_UnitX","T_UnitXFloorID"))
+{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_UnitXFloorID");
+			<th scope="col"  class="col7" @(Convert.ToString(ViewData["HostingEntity"]) == "T_Floor" && Convert.ToString(ViewData["AssociatedType"]) == "T_UnitXFloor"?"hidden":"")>
+				@Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "T_UnitX",getSortHtmlAttributes("T_UnitXFloorID", false, null, false),new {  @onclick = "SortLinkClick(event,'T_UnitX');" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_UnitXFloorID")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_UnitXFloorID")
+				{<i class="fa fa-sort-asc"></i>}
+			 </th>
+}
+@if(User.CanView("T_UnitX","T_UnitPhoneNumber") )
+{	
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_UnitPhoneNumber");
+			<th scope="col" class="col8">
+			@Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "T_UnitX",getSortHtmlAttributes("T_UnitPhoneNumber", false, null, false),new {  @onclick = "SortLinkClick(event,'T_UnitX');" }) 
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_UnitPhoneNumber")
+                {<i class="fa fa-sort-desc"></i>}
+                @if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_UnitPhoneNumber")
+                {<i class="fa fa-sort-asc"></i>}
+			</th>
+}
+@if(User.CanView("T_UnitX","T_EmployeeAdministratorID"))
+{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_EmployeeAdministratorID");
+			<th scope="col"  class="col9" @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee" && Convert.ToString(ViewData["AssociatedType"]) == "T_EmployeeAdministrator"?"hidden":"")>
+				@Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "T_UnitX",getSortHtmlAttributes("T_EmployeeAdministratorID", false, null, false),new {  @onclick = "SortLinkClick(event,'T_UnitX');" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_EmployeeAdministratorID")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_EmployeeAdministratorID")
+				{<i class="fa fa-sort-asc"></i>}
+			 </th>
+}
+@if(User.CanView("T_UnitX","T_EmployeeUnitXHeadID"))
+{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_EmployeeUnitXHeadID");
+			<th scope="col"  class="col10" @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee" && Convert.ToString(ViewData["AssociatedType"]) == "T_EmployeeUnitXHead"?"hidden":"")>
+				@Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "T_UnitX",getSortHtmlAttributes("T_EmployeeUnitXHeadID", false, null, false),new {  @onclick = "SortLinkClick(event,'T_UnitX');" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_EmployeeUnitXHeadID")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_EmployeeUnitXHeadID")
+				{<i class="fa fa-sort-asc"></i>}
+			 </th>
+}
+@if(User.CanView("T_UnitX","T_TotalBeds") )
+{	
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_TotalBeds");
+			<th scope="col" class="col11">
+			@Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "T_UnitX",getSortHtmlAttributes("T_TotalBeds", false, null, false),new {  @onclick = "SortLinkClick(event,'T_UnitX');" }) 
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_TotalBeds")
+                {<i class="fa fa-sort-desc"></i>}
+                @if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_TotalBeds")
+                {<i class="fa fa-sort-asc"></i>}
+			</th>
+}
+@if(User.CanView("T_UnitX","T_WardCostCenterID"))
+{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_WardCostCenterID");
+			<th scope="col"  class="col12" @(Convert.ToString(ViewData["HostingEntity"]) == "T_CostCenter" && Convert.ToString(ViewData["AssociatedType"]) == "T_WardCostCenter"?"hidden":"")>
+				@Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "T_UnitX",getSortHtmlAttributes("T_WardCostCenterID", false, null, false),new {  @onclick = "SortLinkClick(event,'T_UnitX');" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_WardCostCenterID")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_WardCostCenterID")
+				{<i class="fa fa-sort-asc"></i>}
+			 </th>
+}
+@if(User.CanView("T_UnitX","T_Program") )
+{	
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_Program");
+			<th scope="col" class="col13">
+			@Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "T_UnitX",getSortHtmlAttributes("T_ProgramID", false, null, false),new {  @onclick = "SortLinkClick(event,'T_UnitX');" }) 
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_Program")
+                {<i class="fa fa-sort-desc"></i>}
+                @if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_Program")
+                {<i class="fa fa-sort-asc"></i>}
+			</th>
+}
+@if(User.CanView("T_UnitX","T_Fund") )
+{	
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_Fund");
+			<th scope="col" class="col14">
+			@Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "T_UnitX",getSortHtmlAttributes("T_FundID", false, null, false),new {  @onclick = "SortLinkClick(event,'T_UnitX');" }) 
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_Fund")
+                {<i class="fa fa-sort-desc"></i>}
+                @if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_Fund")
+                {<i class="fa fa-sort-asc"></i>}
+			</th>
+}
+   </tr>
+</thead>
+    
+@{ bool isFirst = true; var oldKey = string.Empty; }
+                                @foreach (var item in Model)
+                                {
+                                    if (ViewBag.IsGroupBy != null && Convert.ToBoolean(ViewBag.IsGroupBy))
+                                    {
+                                        var groupKey = item.m_DisplayValue;
+                                        if (oldKey != groupKey)
+                                        {
+                                            isFirst = true;
+                                            oldKey = item.m_DisplayValue;
+                                        }
+                                        if (isFirst || (string.IsNullOrEmpty(oldKey)))
+                                        {
+                                            isFirst = false;
+											//var groupCnt = Model.Where(grp => grp.m_DisplayValue == groupKey).Count();
+                                            string groupString = string.Empty;
+                                            //if (groupCnt > 1)
+                                            //{
+                                              //  groupString = "(" + groupCnt + " Records)";
+                                            //}
+                                            //else
+                                            //{
+                                             //   groupString = "(" + groupCnt + " Record)";
+                                            //}
+                                            <tr>
+                                                <td colspan="15" style="background: #EDF5FA; font-weight:bold"> @groupKey @groupString</td>
+                                            </tr>
+                                        }
+                                    }
+      <tr scope="row" ondblclick="DoubleClickRow(@item.Id,'@Url.Action(User.CanEdit("T_UnitX") ? "Edit" : "Details", "T_UnitX", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)');">
+	
+	 <td>
+			 <input type="checkbox" id="@item.Id" onclick="SelectForBulkOperation(this,'@item.Id');" />
+	</td>
+	
+		   <td>
+	   <div style="width:42px; margin-top:-2px;">
+		<div class="btn-group" style="position:absolute;">
+
+		@if (User.CanEdit("T_UnitX"))
+        {
+				
+            <a href="@Url.Action("Edit","T_UnitX", new { id = item.Id,  UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) },null)" class="btn btn-xs dropdown-toggle btn-primary2" alt="Edit" title="Edit"> 
+			<i class="fa fa-pencil"></i>  </a>
+               
+		}
+		@if (!User.CanEdit("T_UnitX"))
+        {
+            <a href="@Url.Action("Details", "T_UnitX", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), viewtype = Convert.ToString(ViewBag.TemplatesName) }, null)" class="btn btn-xs dropdown-toggle btn-primary2" >
+                <i class="glyphicon glyphicon-eye-open"></i>
+            </a>
+        }
+
+                                                <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-default" style="padding-left:6px; padding-right:6px" alt="More Options" title="More Options">
+                                                <i class="fa fa-caret-down"></i>
+                                            </a>
+			<ul class="dropdown-menu pull-left">
+			@if (!User.CanEdit("T_UnitX"))
+                    {
+						<li>
+                    <a href="@Url.Action("Details", "T_UnitX", new { id = item.Id, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"])  }, null)" alt="View" title="View"><i class="glyphicon glyphicon-eye-open"></i>  View</a>
+                </li>
+}
+				@if (User.CanEdit("T_UnitX"))
+                {
+				<li>
+                        <a href="@Url.Action("Edit","T_UnitX", new { id = item.Id,  UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    
+                </li>             
+				}
+			@if (User.CanDelete("T_UnitX"))
+                 {
+				 <li class="divider" style="clear:both"></li>
+				<li>
+                    <a href="@Url.Action("Delete", "T_UnitX", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) }, null)"><i class="glyphicon glyphicon-remove-sign" style="color: #E7574B;"></i> Delete</a>
+                </li>
+				}
+	<li class="divider" style="clear:both"></li>
+	<li class="dropdown-submenu" id="AddAssociationdropmenuT_UnitX_@item.Id">
+	 @{ var dropmenu = false; }
+	<a tabindex="-1" href="#"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu pull-left">
+				@if ( User.CanAdd("T_JobAssignment"))
+				{
+					dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_JobAssignment", 
+						new { UrlReferrer = BackUrl,
+								AssociatedType ="T_JobAssignmentUnitX", 
+							HostingEntityName = "T_UnitX",
+							HostingEntityID = @Convert.ToString(item.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Job Assignment Ward
+						</a>
+					</li>
+				}
+			</ul>
+</li>
+@if(!dropmenu)
+{
+    <script>
+        $("#AddAssociationdropmenuT_UnitX_@item.Id").hide();
+    </script>
+}
+ <li class="divider" style="clear:both"></li>
+ <li class="dropdown-submenu">
+	<a tabindex="-1" href="#"><i class="fam-zoom small"></i> Search Matching</a>
+    <ul class="dropdown-menu pull-left">
+<li>
+		<a href="@Url.Action("FindFSearch", "FileDocument", new {sourceEntity="T_UnitX",id=item.Id}, null)">Document</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Licenses", new {sourceEntity="T_UnitX",id=item.Id}, null)">Licenses</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Department", new {sourceEntity="T_UnitX",id=item.Id}, null)">Department</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Position", new {sourceEntity="T_UnitX",id=item.Id}, null)">Position</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_ServiceRecord", new {sourceEntity="T_UnitX",id=item.Id}, null)">Service Record</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Employee", new {sourceEntity="T_UnitX",id=item.Id}, null)">Employee</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_DepartmentArea", new {sourceEntity="T_UnitX",id=item.Id}, null)">Department Area</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Comment", new {sourceEntity="T_UnitX",id=item.Id}, null)">Comment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_ClaimType", new {sourceEntity="T_UnitX",id=item.Id}, null)">Claim Type</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Restrictions", new {sourceEntity="T_UnitX",id=item.Id}, null)">Restrictions</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_DrugAlcoholTest", new {sourceEntity="T_UnitX",id=item.Id}, null)">Drug & Alcohol Test</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_JobAssignment", new {sourceEntity="T_UnitX",id=item.Id}, null)">Job Assignment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_LeaveProfile", new {sourceEntity="T_UnitX",id=item.Id}, null)">Leave</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_EmployeeInjury", new {sourceEntity="T_UnitX",id=item.Id}, null)">Employee Injury</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_BackgroundCheck", new {sourceEntity="T_UnitX",id=item.Id}, null)">Background Check</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Unit", new {sourceEntity="T_UnitX",id=item.Id}, null)">Unit</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Education", new {sourceEntity="T_UnitX",id=item.Id}, null)">Education</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Accommodation", new {sourceEntity="T_UnitX",id=item.Id}, null)">Accommodation</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_PayDetails", new {sourceEntity="T_UnitX",id=item.Id}, null)">Pay Details </a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_SalaryRange", new {sourceEntity="T_UnitX",id=item.Id}, null)">Salary Range</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_FacilityConfiguration", new {sourceEntity="T_UnitX",id=item.Id}, null)">Facility Configuration</a>
+</li>
+</ul>
+</li>
+			</ul>
+		</div>
+		</div>
+	</td>
+	@if(User.CanView("T_UnitX","T_FacilityUnitXID"))
+{
+		
+		
+					<td  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Facility" && Convert.ToString(ViewData["AssociatedType"]) == "T_FacilityUnitX"?"hidden":"")>
+@if (item.t_facilityunitx != null  && !string.IsNullOrEmpty(item.t_facilityunitx.DisplayValue))
+{
+		 @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.t_facilityunitx.DisplayValue).ToString()), User.CanEdit("T_Facility") ? "Edit" : "Details", "T_Facility", new { Id = Html.DisplayFor(modelItem => item.t_facilityunitx.Id).ToString() },null)
+}
+        </td>
+}
+@if(User.CanView("T_UnitX","T_WardDepartmentID"))
+{
+		
+		
+					<td  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Department" && Convert.ToString(ViewData["AssociatedType"]) == "T_WardDepartment"?"hidden":"")>
+@if (item.t_warddepartment != null  && !string.IsNullOrEmpty(item.t_warddepartment.DisplayValue))
+{
+		 @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.t_warddepartment.DisplayValue).ToString()), User.CanEdit("T_Department") ? "Edit" : "Details", "T_Department", new { Id = Html.DisplayFor(modelItem => item.t_warddepartment.Id).ToString() },null)
+}
+        </td>
+}
+@if(User.CanView("T_UnitX","T_UnitXDepartmentAreaID"))
+{
+		
+		
+					<td  @(Convert.ToString(ViewData["HostingEntity"]) == "T_DepartmentArea" && Convert.ToString(ViewData["AssociatedType"]) == "T_UnitXDepartmentArea"?"hidden":"")>
+@if (item.t_unitxdepartmentarea != null  && !string.IsNullOrEmpty(item.t_unitxdepartmentarea.DisplayValue))
+{
+		 @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.t_unitxdepartmentarea.DisplayValue).ToString()), User.CanEdit("T_DepartmentArea") ? "Edit" : "Details", "T_DepartmentArea", new { Id = Html.DisplayFor(modelItem => item.t_unitxdepartmentarea.Id).ToString() },null)
+}
+        </td>
+}
+@if(User.CanView("T_UnitX","T_WardOrgCodeID"))
+{
+		
+		
+					<td  @(Convert.ToString(ViewData["HostingEntity"]) == "T_OrgCodes" && Convert.ToString(ViewData["AssociatedType"]) == "T_WardOrgCode"?"hidden":"")>
+@if (item.t_wardorgcode != null  && !string.IsNullOrEmpty(item.t_wardorgcode.DisplayValue))
+{
+		 @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.t_wardorgcode.DisplayValue).ToString()), User.CanEdit("T_OrgCodes") ? "Edit" : "Details", "T_OrgCodes", new { Id = Html.DisplayFor(modelItem => item.t_wardorgcode.Id).ToString() },null)
+}
+        </td>
+}
+@if(User.CanView("T_UnitX","T_Unit"))
+{
+		<td >
+            @Html.DisplayFor(modelItem => item.T_Unit)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_UnitXFloorID"))
+{
+		
+		
+					<td  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Floor" && Convert.ToString(ViewData["AssociatedType"]) == "T_UnitXFloor"?"hidden":"") >
+            @Html.DisplayFor(modelItem => item.t_unitxfloor.DisplayValue)
+			        </td>
+}
+@if(User.CanView("T_UnitX","T_UnitPhoneNumber"))
+{
+		<td >
+            @Html.DisplayFor(modelItem => item.T_UnitPhoneNumber)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_EmployeeAdministratorID"))
+{
+		
+		
+					<td  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee" && Convert.ToString(ViewData["AssociatedType"]) == "T_EmployeeAdministrator"?"hidden":"")>
+@if (item.t_employeeadministrator != null  && !string.IsNullOrEmpty(item.t_employeeadministrator.DisplayValue))
+{
+		 @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.t_employeeadministrator.DisplayValue).ToString()), User.CanEdit("T_Employee") ? "Edit" : "Details", "T_Employee", new { Id = Html.DisplayFor(modelItem => item.t_employeeadministrator.Id).ToString() },null)
+}
+        </td>
+}
+@if(User.CanView("T_UnitX","T_EmployeeUnitXHeadID"))
+{
+		
+		
+					<td  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee" && Convert.ToString(ViewData["AssociatedType"]) == "T_EmployeeUnitXHead"?"hidden":"")>
+@if (item.t_employeeunitxhead != null  && !string.IsNullOrEmpty(item.t_employeeunitxhead.DisplayValue))
+{
+		 @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.t_employeeunitxhead.DisplayValue).ToString()), User.CanEdit("T_Employee") ? "Edit" : "Details", "T_Employee", new { Id = Html.DisplayFor(modelItem => item.t_employeeunitxhead.Id).ToString() },null)
+}
+        </td>
+}
+@if(User.CanView("T_UnitX","T_TotalBeds"))
+{
+		<td >
+            @Html.DisplayFor(modelItem => item.T_TotalBeds)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_WardCostCenterID"))
+{
+		
+		
+					<td  @(Convert.ToString(ViewData["HostingEntity"]) == "T_CostCenter" && Convert.ToString(ViewData["AssociatedType"]) == "T_WardCostCenter"?"hidden":"")>
+@if (item.t_wardcostcenter != null  && !string.IsNullOrEmpty(item.t_wardcostcenter.DisplayValue))
+{
+		 @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.t_wardcostcenter.DisplayValue).ToString()), User.CanEdit("T_CostCenter") ? "Edit" : "Details", "T_CostCenter", new { Id = Html.DisplayFor(modelItem => item.t_wardcostcenter.Id).ToString() },null)
+}
+        </td>
+}
+@if(User.CanView("T_UnitX","T_Program"))
+{
+		<td >
+            @Html.DisplayFor(modelItem => item.T_Program)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_Fund"))
+{
+		<td >
+            @Html.DisplayFor(modelItem => item.T_Fund)
+        </td>
+}
+
+                                </tr>
+                            }
+                    </table>
+                </div>
+				 <ul id="Mob_List" class="list-group">
+                    @foreach (var item in Model)
+                    {
+                        <li class="list-group-item">
+@if(User.CanView("T_UnitX","T_FacilityUnitXID"))
+{
+		<p @(Convert.ToString(ViewData["HostingEntity"]) == "T_Facility" && Convert.ToString(ViewData["AssociatedType"]) == "T_FacilityUnitX"?"hidden":"")>
+		<span class="text-primary"> Facility Unit X </span> : <span>
+		@if (item.t_facilityunitx != null  && !string.IsNullOrEmpty(item.t_facilityunitx.DisplayValue))
+{
+		 @Html.ActionLink(Html.DisplayFor(modelItem => item.t_facilityunitx.DisplayValue).ToString(), User.CanEdit("T_Facility") ? "Edit" : "Details", "T_Facility", new { Id = Html.DisplayFor(modelItem => item.t_facilityunitx.Id).ToString() },null)
+}
+		          </span> </p>
+		 }
+@if(User.CanView("T_UnitX","T_WardDepartmentID"))
+{
+		<p @(Convert.ToString(ViewData["HostingEntity"]) == "T_Department" && Convert.ToString(ViewData["AssociatedType"]) == "T_WardDepartment"?"hidden":"")>
+		<span class="text-primary"> Ward Department </span> : <span>
+		@if (item.t_warddepartment != null  && !string.IsNullOrEmpty(item.t_warddepartment.DisplayValue))
+{
+		 @Html.ActionLink(Html.DisplayFor(modelItem => item.t_warddepartment.DisplayValue).ToString(), User.CanEdit("T_Department") ? "Edit" : "Details", "T_Department", new { Id = Html.DisplayFor(modelItem => item.t_warddepartment.Id).ToString() },null)
+}
+		          </span> </p>
+		 }
+@if(User.CanView("T_UnitX","T_UnitXDepartmentAreaID"))
+{
+		<p @(Convert.ToString(ViewData["HostingEntity"]) == "T_DepartmentArea" && Convert.ToString(ViewData["AssociatedType"]) == "T_UnitXDepartmentArea"?"hidden":"")>
+		<span class="text-primary"> Unit X Department Area </span> : <span>
+		@if (item.t_unitxdepartmentarea != null  && !string.IsNullOrEmpty(item.t_unitxdepartmentarea.DisplayValue))
+{
+		 @Html.ActionLink(Html.DisplayFor(modelItem => item.t_unitxdepartmentarea.DisplayValue).ToString(), User.CanEdit("T_DepartmentArea") ? "Edit" : "Details", "T_DepartmentArea", new { Id = Html.DisplayFor(modelItem => item.t_unitxdepartmentarea.Id).ToString() },null)
+}
+		          </span> </p>
+		 }
+@if(User.CanView("T_UnitX","T_WardOrgCodeID"))
+{
+		<p @(Convert.ToString(ViewData["HostingEntity"]) == "T_OrgCodes" && Convert.ToString(ViewData["AssociatedType"]) == "T_WardOrgCode"?"hidden":"")>
+		<span class="text-primary"> Ward Org Code </span> : <span>
+		@if (item.t_wardorgcode != null  && !string.IsNullOrEmpty(item.t_wardorgcode.DisplayValue))
+{
+		 @Html.ActionLink(Html.DisplayFor(modelItem => item.t_wardorgcode.DisplayValue).ToString(), User.CanEdit("T_OrgCodes") ? "Edit" : "Details", "T_OrgCodes", new { Id = Html.DisplayFor(modelItem => item.t_wardorgcode.Id).ToString() },null)
+}
+		          </span> </p>
+		 }
+@if(User.CanView("T_UnitX","T_Unit"))
+{
+		<p><span class="text-primary"> Unit </span> : <span>
+            @Html.DisplayFor(modelItem => item.T_Unit)
+         </span> </p>	
+		 }
+@if(User.CanView("T_UnitX","T_UnitXFloorID"))
+{
+		<p @(Convert.ToString(ViewData["HostingEntity"]) == "T_Floor" && Convert.ToString(ViewData["AssociatedType"]) == "T_UnitXFloor"?"hidden":"")>
+		<span class="text-primary"> UnitX Floor </span> : <span>
+		            @Html.DisplayFor(modelItem => item.t_unitxfloor.DisplayValue)
+         </span> </p>
+		 }
+@if(User.CanView("T_UnitX","T_UnitPhoneNumber"))
+{
+		<p><span class="text-primary"> Unit Phone Number </span> : <span>
+            @Html.DisplayFor(modelItem => item.T_UnitPhoneNumber)
+         </span> </p>	
+		 }
+@if(User.CanView("T_UnitX","T_EmployeeAdministratorID"))
+{
+		<p @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee" && Convert.ToString(ViewData["AssociatedType"]) == "T_EmployeeAdministrator"?"hidden":"")>
+		<span class="text-primary"> EmployeeAdministrator </span> : <span>
+		@if (item.t_employeeadministrator != null  && !string.IsNullOrEmpty(item.t_employeeadministrator.DisplayValue))
+{
+		 @Html.ActionLink(Html.DisplayFor(modelItem => item.t_employeeadministrator.DisplayValue).ToString(), User.CanEdit("T_Employee") ? "Edit" : "Details", "T_Employee", new { Id = Html.DisplayFor(modelItem => item.t_employeeadministrator.Id).ToString() },null)
+}
+		          </span> </p>
+		 }
+@if(User.CanView("T_UnitX","T_EmployeeUnitXHeadID"))
+{
+		<p @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee" && Convert.ToString(ViewData["AssociatedType"]) == "T_EmployeeUnitXHead"?"hidden":"")>
+		<span class="text-primary"> Employee UnitX Head </span> : <span>
+		@if (item.t_employeeunitxhead != null  && !string.IsNullOrEmpty(item.t_employeeunitxhead.DisplayValue))
+{
+		 @Html.ActionLink(Html.DisplayFor(modelItem => item.t_employeeunitxhead.DisplayValue).ToString(), User.CanEdit("T_Employee") ? "Edit" : "Details", "T_Employee", new { Id = Html.DisplayFor(modelItem => item.t_employeeunitxhead.Id).ToString() },null)
+}
+		          </span> </p>
+		 }
+@if(User.CanView("T_UnitX","T_TotalBeds"))
+{
+		<p><span class="text-primary"> Total Beds </span> : <span>
+            @Html.DisplayFor(modelItem => item.T_TotalBeds)
+         </span> </p>	
+		 }
+@if(User.CanView("T_UnitX","T_WardCostCenterID"))
+{
+		<p @(Convert.ToString(ViewData["HostingEntity"]) == "T_CostCenter" && Convert.ToString(ViewData["AssociatedType"]) == "T_WardCostCenter"?"hidden":"")>
+		<span class="text-primary"> Ward Cost Center </span> : <span>
+		@if (item.t_wardcostcenter != null  && !string.IsNullOrEmpty(item.t_wardcostcenter.DisplayValue))
+{
+		 @Html.ActionLink(Html.DisplayFor(modelItem => item.t_wardcostcenter.DisplayValue).ToString(), User.CanEdit("T_CostCenter") ? "Edit" : "Details", "T_CostCenter", new { Id = Html.DisplayFor(modelItem => item.t_wardcostcenter.Id).ToString() },null)
+}
+		          </span> </p>
+		 }
+@if(User.CanView("T_UnitX","T_Program"))
+{
+		<p><span class="text-primary"> Program </span> : <span>
+            @Html.DisplayFor(modelItem => item.T_Program)
+         </span> </p>	
+		 }
+@if(User.CanView("T_UnitX","T_Fund"))
+{
+		<p><span class="text-primary"> Fund  </span> : <span>
+            @Html.DisplayFor(modelItem => item.T_Fund)
+         </span> </p>	
+		 }
+<span class="label label-primary text-linkwhite"> 
+@Html.ActionLink("View", "Details","T_UnitX", new { id = item.Id },null)
+</span>
+<span class="label label-warning text-linkwhite"> 
+@if (User.CanEdit("T_UnitX"))
+				 {
+					@Html.ActionLink("Edit", "Edit","T_UnitX", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)  
+				 }
+				 </span>
+				<span class="label label-danger text-linkwhite"> 
+				@if (User.CanDelete("T_UnitX"))
+				 {
+					@Html.ActionLink("Delete", "Delete", "T_UnitX", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)    
+				 }
+				 </span>
+				   </li>
+                    }
+                </ul>
+  			   @if (Model.Count > 0)
+                {
+                    <div id="pagination" class="MyPagination1">
+                        @Html.PagedListPager(Model, page => Url.Action(ActionNameUrl, "T_UnitX", getSortHtmlAttributes(null, true, page, false)))
+                        <div class="fixPageSize">
+                            Page Size :
+                            @Html.DropDownList("PageSize", new SelectList(new Dictionary<string, int> { { "10", 10 }, { "20", 20 }, { "50", 50 }, { "100", 100 } }, "Key", "Value")
+							, new { @id = "pagesizelistT_UnitX",
+							 @onchange = @Html.Raw("pagesizelistChange(event,'T_UnitX','"
+							 + @User.JavaScriptEncodedName + "')"),
+							 @Url = Html.Raw(@Url.Action(ActionNameUrl, "T_UnitX",
+							 getSortHtmlAttributes(ViewBag.CurrentSort, ViewBag.Pages == 1 ? false : true,
+							 null, false), null)) })
+							<span style="text-align:right;"> Total Count: @(Model.TotalItemCount)</span>
+							<script>
+                                    $(document).ready(function () {
+                                        $.validator.setDefaults({
+                                            ignore: "#pagesizelistT_UnitX"
+                                        })
+                                    }); 
+                                </script>
+                        </div>
+                    </div>
+                }
+				@Html.DropDownList("EntityT_UnitXDisplayValue", null,null, new { @Style = "display:none;" })
+            
+        </div>
+    </div> 
+ </div>
+    <div class="modal fade" id="ShowGraphT_UnitX" tabindex="-1" role="dialog" aria-labelledby="ShowGraphT_UnitXLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:80%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="ShowGraphT_UnitXLabel">Dashboard UnitX</h4>
+                </div>
+				 <div  class="modal-body" >
+						<div id="dvShowGraphT_UnitX" data-url="@Url.Action("ShowGraph", "T_UnitX", new { type = "all" })">
+						</div>
+						<div style="clear:both"></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+

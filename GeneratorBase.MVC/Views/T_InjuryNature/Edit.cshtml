@@ -1,0 +1,344 @@
+﻿@model GeneratorBase.MVC.Models.T_InjuryNature
+@using PagedList;
+@{
+    ViewBag.Title = "Edit Injury Nature";
+	var EditPermission = User.CanEditItem("T_InjuryNature", Model, User);
+	var DeletePermission = User.CanDeleteItem("T_InjuryNature", Model, User);
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_InjuryNature");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Injury Nature";
+}
+@functions {
+    object getHtmlAttributes(string Property)
+    {
+        if (User.CanEdit("T_InjuryNature", Property))
+        {
+            return new { @class = "form-control" };
+        } return new { @class = "form-control", @readonly = "readonly" };
+    }
+}
+<script>
+    $(document).ready(function () {
+        try {
+            var hostingEntityName = "";
+             if ('@Convert.ToString(ViewData["AssociatedType"])'.length > 0) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+				$('#' + hostingEntityName + 'ID').attr("lock","true");
+				// $('#' + hostingEntityName + 'ID').trigger("change");
+				  $("input[type='radio'][name='" + hostingEntityName + "ID']").each(function () {
+                    if (!this.checked)
+                        this.closest("li").style.display = "none";
+                });
+            }
+			if ($.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') != null) {
+				$('a[href="#' + $.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') + '"]').click();
+			}
+			 
+        }
+        catch (ex) { }
+    });
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_InjuryNatureIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_InjuryNatureIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_InjuryNatureIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_InjuryNatureIsGroupsHiddenRule);
+    }
+}
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_InjuryNatureIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_InjuryNatureIsSetValueUIRule);
+    }
+}
+	<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title" >
+            <i class="glyphicon glyphicon-edit text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span>Edit</span>
+
+			   <div class="btn-group pull-right" style="margin-top:3px;">
+			  
+
+
+            <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle" alt="Action" title="Action">
+                Action
+                <span class="caret" style="margin-bottom:2px">    </span>
+            </a>
+			<ul class="dropdown-menu pull-left">
+			
+				<li>
+                    @if (EditPermission)
+                    {
+                        <a href="@Url.Action("Edit","T_InjuryNature", new { id = Model.Id,  UrlReferrer = Request.UrlReferrer, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    }
+                </li>             
+				<li>
+                    @if (EditPermission && User.CanDelete("T_InjuryNature"))
+                    {
+                        <a href="@Url.Action("Delete", "T_InjuryNature", new {UrlReferrer = Request.UrlReferrer, id = Model.Id, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Delete</a>
+                    }
+                </li>
+	<li class="divider" style="clear:both"></li>
+	<li class="dropdown-submenu pull-left" id="AddAssociationdropmenuT_InjuryNature">
+	 @{ var dropmenu = false; }
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu pull-left">
+				@if (User.CanAdd("T_EmployeeInjury"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_EmployeeInjury", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_EmployeeInjuryNature", 
+							HostingEntityName = "T_InjuryNature",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Nature Of Injury or Illness
+						</a>
+					</li>
+				}
+			</ul>
+</li>
+@if(!dropmenu)
+{
+    <script>
+        $("#AddAssociationdropmenuT_InjuryNature").hide();
+    </script>
+}
+			</ul>
+		</div>
+
+        </h1>
+
+     <h2 class="text-primary" style="padding:0px 5px 15px 0px">
+	  <span id="HostingEntityDisplayValue" class="EntityDisplayName" title="@Html.DisplayFor(model => model.DisplayValue)">@Html.DisplayFor(model => model.DisplayValue)</span>
+			@if (EditPermission)
+			{	
+				<div class="pull-right" style="margin-top:-3px">
+					<button class="btn btn-default btn-xs pull-right" id="nextEdit" onclick="@Html.Raw("nextFunEdit('T_InjuryNature',event,'hdnNextPrevId')")" alt="Next" title="Next">Next >></button>
+					@Html.DropDownList("EntityT_InjuryNatureDisplayValueEdit", null, null, new { @onchange = "FillDisplayValueEditPage('T_InjuryNature','frmT_InjuryNature','" + Model.Id + "',event)", @class = "pull-right", @Style = "height: 22px;width: 170px; font-size:12px; color:#333;" })
+					<button class="btn btn-default btn-xs pull-right" id="prevEdit" onclick="@Html.Raw("prevFunEdit('T_InjuryNature',event,'hdnNextPrevId')")" alt="Prev" title="Prev"><< Prev</button>
+				</div>
+			}
+	 </h2>
+		
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<input type="hidden" id="ErrMsg" />
+<div id="errorContainerEdit" style="display: none">
+            <div id="errorsMsgEdit"></div>
+            <div id="errorsEdit"></div>
+        </div>
+
+<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+</div>
+<div id="divDisplayBRmsgMandatory" style="display:none;">
+</div>
+<div id="divDisplayLockRecord" style="display:none;">
+</div>
+<div id="divDisplayBRReadOnly" style="display:none;">
+</div>
+<div id="divDisplayCodeFragment" style="display:none;">
+</div>
+ <div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+	 <li class="active"><a href="#Details" onclick="ClearTabCookie('@User.JavaScriptEncodedName@Model.Id');" data-toggle="tab" alt="Details" title="Details">Details</a></li>
+		 <li @(!User.CanView("T_EmployeeInjury") ?"style=display:none;":"")>
+			<a onclick="LoadTab('T_EmployeeInjuryNature','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_EmployeeInjury", new {RenderPartial=true, HostingEntity ="T_InjuryNature", HostingEntityID = @Model.Id, AssociatedType = "T_EmployeeInjuryNature",TabToken = DateTime.Now.Ticks,}))')" href="#T_EmployeeInjuryNature" data-toggle="tab" alt="Nature Of Injury or Illness" title="Nature Of Injury or Illness">Nature Of Injury or Illness
+		 <span class="badge bg-blue"><div id="dvcnt_T_EmployeeInjuryNature">@ViewBag.T_EmployeeInjuryNatureCount</div></span>
+		 </a></li>
+		 <li @(!User.CanView("JournalEntry")?"style=display:none;":"")><a onclick="LoadTab('JournalEntryToT_InjuryNatureRelation','@User.JavaScriptEncodedName@Model.Id','@Url.Action("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_InjuryNature", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry", TabToken = DateTime.Now.Ticks })')" href="#JournalEntryToT_InjuryNatureRelation" data-toggle="tab" alt="Injury Nature Journal" title="Injury Nature Journal">
+		 Injury Nature Journal
+		 </a></li>
+
+    </ul>
+		<div class="tab-content">
+        <div class="tab-pane fade in active" id="Details">
+@using (Html.BeginForm("Edit","T_InjuryNature",new {UrlReferrer =Convert.ToString(ViewData["T_InjuryNatureParentUrl"])}, FormMethod.Post, new { enctype = "multipart/form-data",@id="frmT_InjuryNature" }))
+{
+     Html.ValidationSummary(true);
+                Html.EnableClientValidation();
+    @Html.HiddenFor(model => model.Id)
+	@Html.HiddenFor(model => model.ConcurrencyKey)
+                <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px;">
+                    <div class="panel panel-default AppForm">
+						<div class="panel-body">
+						
+											<div class="row">
+				@if(User.CanView("T_InjuryNature","T_Name"))
+{
+				<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Name">
+							<div class='form-group' title="Name">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Name)  <span class="text-danger-reg">*</span> </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+											
+									@Html.TextBoxFor(model => model.T_Name,  getHtmlAttributes("T_Name"))
+									@Html.ValidationMessageFor(model => model.T_Name)
+								</div>
+                             </div>
+						</div>
+										
+} else { @Html.HiddenFor(model => model.T_Name, new { @class = "form-control" })}
+       </div>
+            </div>
+        </div>
+		</div>
+		 @Html.AntiForgeryToken();
+		 <a class="btn btn-default btn-sm pull-left formbuttonfix" Onclick="goBack('@Url.Action("Index","T_InjuryNature")');" alt="Cancel" title="Cancel">Cancel</a>
+		 @*@Html.ActionLink("Cancel", "Cancel", new { UrlReferrer = ViewData["T_InjuryNatureParentUrl"] }, new { @onclick = "", @class = "btn btn-default btn-sm pull-left formbuttonfix", @alt="Cancel", @title="Cancel" })*@
+		 if (EditPermission)
+         {
+ 				<input type="submit" name="command" value="Save" class="btn btn-primary btn-sm pull-left formbuttonfix"  alt="Save" title="Save"/>
+				<input type="submit" id="sevranBtnEdit" style="display:none;" name="command" value="SaveNextPrev" alt="SaveNextPrev" title="SaveNextPrev"/>
+				<input type="submit" name="command" value="Save & Stay" class="btn btn-primary btn-sm pull-left formbuttonfix" alt="Save & Stay" title="Save & Stay"/>
+		}	
+				<input type="hidden" name="hdncommand" value="" />
+				<input type="hidden" name="hdnNextPrevId" value="" />
+}
+ @{ var dropmenubottom = false; }
+<div class="dropdown pull-left formbuttonfix"  id="AddAssociationdropmenubottomT_InjuryNature">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" alt="Add Association" title="Add Association">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
+			@if (User.CanAdd("T_EmployeeInjury"))
+            {  dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_EmployeeInjury",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_EmployeeInjuryNature", 
+						HostingEntityName = "T_InjuryNature",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Nature Of Injury or Illness
+                </a>
+				</li>
+            }
+
+			
+</ul>
+</div>
+@if(!dropmenubottom || !EditPermission)
+{
+    <script>
+        $("#AddAssociationdropmenubottomT_InjuryNature").hide();
+    </script>
+}
+<div class="clearfix" style="clear:both; margin-bottom:8px"></div>
+</div>
+ <div class="tab-pane fade in" id="T_EmployeeInjuryNature">
+	@if (User.CanView("T_EmployeeInjury"))
+	{
+	  // Html.RenderAction("Index", "T_EmployeeInjury", new {RenderPartial=true, HostingEntity = "T_InjuryNature", HostingEntityID = @Model.Id, AssociatedType = "T_EmployeeInjuryNature" }); 
+	}
+  </div>
+ <div class="tab-pane fade in" id="JournalEntryToT_InjuryNatureRelation">
+			 @if (User.CanView("JournalEntry"))
+			 {
+			  // Html.RenderAction("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_InjuryNature", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry" });
+			 }
+  </div>
+
+</div> <!-- /tab-content --><br />
+
+<br/>
+</div>
+	<script>
+	</script>
+	
+
+@{
+var businessrule = User.businessrules.Where(p => p.EntityName == "T_InjuryNature").ToList();
+
+if ((businessrule != null && businessrule.Count > 0) )
+{
+var ruleids = businessrule.Select(q => q.Id).ToList();
+var typelist  = string.Join(",", (new GeneratorBase.MVC.Models.RuleActionContext()).RuleActions.Where(p => ruleids.Contains(p.RuleActionID.Value) && p.associatedactiontype.TypeNo.HasValue).Select(p => p.associatedactiontype.TypeNo.Value).Distinct().ToList());
+
+    <script>
+		$(document).ready(function () {
+				document.getElementById("ErrMsg").innerHTML = "";
+				var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+
+ form = $("#frmT_InjuryNature").serialize();
+				dataurl = "@Url.Action("businessruletype", "T_InjuryNature", new { ruleType = "OnEdit"})";
+                ApplyBusinessRuleOnPageLoad("@typelist",dataurl, "T_InjuryNature", false, "ErrMsg", form);
+				//business rules on inline associations
+
+    });
+</script>
+<script>
+    $("form").submit(function (event) {
+	if (!$("#frmT_InjuryNature").valid()) return;
+			document.getElementById("ErrMsg").innerHTML = "";
+            var flag = true;
+            var dataurl = "";
+            var form = "";
+            var inlinecount = "0";
+ form = $("#frmT_InjuryNature").serialize();
+    
+				 dataurl = "@Url.Action("businessruletype", "T_InjuryNature", new { ruleType = "OnEdit"})";
+                 flag = ApplyBusinessRuleOnSubmit(dataurl, "T_InjuryNature", false, "ErrMsg", form);
+
+  				 //business rules on inline associations
+               
+			 if (flag)
+				{
+				                    $('input:hidden[name="hdncommand"]').val($(this.id).context.activeElement.value);
+					if ($(document.activeElement).attr('id') == "nextEdit" || $(document.activeElement).attr('id') == "prevEdit")
+			         $('input:hidden[name="hdncommand"]').val("SaveNextPrev");
+					 $("#frmT_InjuryNature").find(':input').removeAttr('disabled');
+					}
+            return flag;
+		});
+</script>
+}
+ else
+    {
+       <script>
+    $("input[type='submit']").click(function (event) {
+	if (!$("#frmT_InjuryNature").valid()) return;
+        var $this = $(this);
+                var actionName = $this.attr("actionName")
+                if (actionName == undefined)
+                    actionName = $this.val();
+                $('input:hidden[name="hdncommand"]').val(actionName);
+    });
+	</script>
+    }
+ 
+}
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+		focusOnControl('frmT_InjuryNature');
+        }
+        catch (ex) { }
+    });
+	 $(document).ready(function () {
+		var RecIdEdit = $("#frmT_InjuryNature").find("input:hidden[name='Id']").val();
+        $("#EntityT_InjuryNatureDisplayValueEdit").val(RecIdEdit);
+
+		var textedit = $("option:selected", $("#EntityT_InjuryNatureDisplayValueEdit")).text();
+		$("#EntityT_InjuryNatureDisplayValueEdit").attr('data-toggle', 'tooltip')
+		$("#EntityT_InjuryNatureDisplayValueEdit").attr('title', textedit);
+
+        var lastOptionValEdit = $('#EntityT_InjuryNatureDisplayValueEdit option:last-child').val();
+        var fristOptionValEdit = $('#EntityT_InjuryNatureDisplayValueEdit option:first-child').val();
+        if (lastOptionValEdit == RecIdEdit) {
+            $('#nextEdit').attr({ "disabled": "true", "style": "background-color:#eeeeee !important; color:#969696 !important; border-color:#ccc !important" });
+        }
+        if (fristOptionValEdit == RecIdEdit)
+            $('#prevEdit').attr({ "disabled": "true", "style": "background-color:#eeeeee !important; color:#969696 !important; border-color:#ccc !important" });
+    });
+</script>
+
+

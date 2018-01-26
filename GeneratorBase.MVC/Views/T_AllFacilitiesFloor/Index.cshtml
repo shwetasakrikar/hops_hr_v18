@@ -1,0 +1,23 @@
+﻿@model IEnumerable<GeneratorBase.MVC.Models.T_AllFacilitiesFloor>
+@{
+    ViewBag.Title = "All Facilities Floor List";
+	Layout ="~/Views/Shared/_Layout.cshtml";
+	string templatename = ("~/Views/T_AllFacilitiesFloor/" + ViewBag.TemplatesName + ".cshtml").Replace("?IsAddPop=true", "");
+	 var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_AllFacilitiesFloor");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "All Facilities Floor";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title" >
+            <i class="glyphicon glyphicon-thumbs-up text-primary" style="margin-bottom:-20px;"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i>  <span>List</span>
+</h1>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        ClickFilterBtn();
+    });
+</script>
+<div id="dvT_AllFacilitiesFloorFilter"></div>
+@Html.Partial(templatename, Model)
+

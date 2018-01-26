@@ -1,0 +1,658 @@
+﻿@model GeneratorBase.MVC.Models.T_PayDetails
+@using PagedList;
+@{
+    ViewBag.Title = "Edit Pay Details ";
+	var EditPermission = User.CanEditItem("T_PayDetails", Model, User);
+	var DeletePermission = User.CanDeleteItem("T_PayDetails", Model, User);
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_PayDetails");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Pay Details ";
+}
+@functions {
+    object getHtmlAttributes(string Property)
+    {
+        if (User.CanEdit("T_PayDetails", Property))
+        {
+            return new { @class = "form-control" };
+        } return new { @class = "form-control", @readonly = "readonly" };
+    }
+}
+<script>
+    $(document).ready(function () {
+        try {
+            var hostingEntityName = "";
+             if ('@Convert.ToString(ViewData["AssociatedType"])'.length > 0) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+				$('#' + hostingEntityName + 'ID').attr("lock","true");
+				// $('#' + hostingEntityName + 'ID').trigger("change");
+				  $("input[type='radio'][name='" + hostingEntityName + "ID']").each(function () {
+                    if (!this.checked)
+                        this.closest("li").style.display = "none";
+                });
+            }
+			if ($.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') != null) {
+				$('a[href="#' + $.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') + '"]').click();
+			}
+			 
+        }
+        catch (ex) { }
+    });
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_PayDetailsIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_PayDetailsIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_PayDetailsIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_PayDetailsIsGroupsHiddenRule);
+    }
+}
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_PayDetailsIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_PayDetailsIsSetValueUIRule);
+    }
+}
+	<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title" >
+            <i class="glyphicon glyphicon-edit text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span>Edit</span>
+
+			   <div class="btn-group pull-right" style="margin-top:3px;">
+			  
+
+
+            <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle" alt="Action" title="Action">
+                Action
+                <span class="caret" style="margin-bottom:2px">    </span>
+            </a>
+			<ul class="dropdown-menu pull-left">
+			
+				<li>
+                    @if (EditPermission)
+                    {
+                        <a href="@Url.Action("Edit","T_PayDetails", new { id = Model.Id,  UrlReferrer = Request.UrlReferrer, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    }
+                </li>             
+				<li>
+                    @if (EditPermission)
+                    {
+                        <a href="@Url.Action("EditWizard","T_PayDetails", new { id = Model.Id,  UrlReferrer = Request.Url, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-share"></i>  Wizard</a>
+                    }
+                </li>
+				<li>
+                    @if (EditPermission && User.CanDelete("T_PayDetails"))
+                    {
+                        <a href="@Url.Action("Delete", "T_PayDetails", new {UrlReferrer = Request.UrlReferrer, id = Model.Id, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Delete</a>
+                    }
+                </li>
+	<li class="divider" style="clear:both"></li>
+	<li class="dropdown-submenu pull-left" id="AddAssociationdropmenuT_PayDetails">
+	 @{ var dropmenu = false; }
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu pull-left">
+				@if (User.CanAdd("T_Comment"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Comment", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_SalaryComments", 
+							HostingEntityName = "T_PayDetails",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Comment
+						</a>
+					</li>
+				}
+			</ul>
+</li>
+@if(!dropmenu)
+{
+    <script>
+        $("#AddAssociationdropmenuT_PayDetails").hide();
+    </script>
+}
+ <li class="divider" style="clear:both"></li>
+ <li class="dropdown-submenu pull-left">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;">Find Matching</a>
+    <ul class="dropdown-menu pull-left">
+<li>
+		<a href="@Url.Action("FindFSearch", "FileDocument", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Document</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Licenses", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Licenses</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_ServiceRecord", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Service Record</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Comment", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Comment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_DrugAlcoholTest", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Drug & Alcohol Test</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_UnitX", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">UnitX</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_JobAssignment", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Job Assignment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_LeaveProfile", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Leave</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_EmployeeInjury", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Employee Injury</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_BackgroundCheck", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Background Check</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Education", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Education</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Accommodation", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Accommodation</a>
+</li>
+</ul>
+</li>
+			</ul>
+		</div>
+
+        </h1>
+
+     <h2 class="text-primary" style="padding:0px 5px 15px 0px">
+	  <span id="HostingEntityDisplayValue" class="EntityDisplayName" title="@Html.DisplayFor(model => model.DisplayValue)">@Html.DisplayFor(model => model.DisplayValue)</span>
+			@if (EditPermission)
+			{	
+				<div class="pull-right" style="margin-top:-3px">
+					<button class="btn btn-default btn-xs pull-right" id="nextEdit" onclick="@Html.Raw("nextFunEdit('T_PayDetails',event,'hdnNextPrevId')")" alt="Next" title="Next">Next >></button>
+					@Html.DropDownList("EntityT_PayDetailsDisplayValueEdit", null, null, new { @onchange = "FillDisplayValueEditPage('T_PayDetails','frmT_PayDetails','" + Model.Id + "',event)", @class = "pull-right", @Style = "height: 22px;width: 170px; font-size:12px; color:#333;" })
+					<button class="btn btn-default btn-xs pull-right" id="prevEdit" onclick="@Html.Raw("prevFunEdit('T_PayDetails',event,'hdnNextPrevId')")" alt="Prev" title="Prev"><< Prev</button>
+				</div>
+			}
+	 </h2>
+		
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<input type="hidden" id="ErrMsg" />
+<div id="errorContainerEdit" style="display: none">
+            <div id="errorsMsgEdit"></div>
+            <div id="errorsEdit"></div>
+        </div>
+
+<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+</div>
+<div id="divDisplayBRmsgMandatory" style="display:none;">
+</div>
+<div id="divDisplayLockRecord" style="display:none;">
+</div>
+<div id="divDisplayBRReadOnly" style="display:none;">
+</div>
+<div id="divDisplayCodeFragment" style="display:none;">
+</div>
+ <div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+	 <li class="active"><a href="#Details" onclick="ClearTabCookie('@User.JavaScriptEncodedName@Model.Id');" data-toggle="tab" alt="Details" title="Details">Details</a></li>
+		 <li @(!User.CanView("T_Comment") ?"style=display:none;":"")>
+			<a onclick="LoadTab('T_SalaryComments','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_Comment", new {RenderPartial=true, HostingEntity ="T_PayDetails", HostingEntityID = @Model.Id, AssociatedType = "T_SalaryComments",TabToken = DateTime.Now.Ticks,}))')" href="#T_SalaryComments" data-toggle="tab" alt="Comment" title="Comment">Comment
+		 <span class="badge bg-blue"><div id="dvcnt_T_SalaryComments">@ViewBag.T_SalaryCommentsCount</div></span>
+		 </a></li>
+		 <li @(!User.CanView("JournalEntry")?"style=display:none;":"")><a onclick="LoadTab('JournalEntryToT_PayDetailsRelation','@User.JavaScriptEncodedName@Model.Id','@Url.Action("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_PayDetails", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry", TabToken = DateTime.Now.Ticks })')" href="#JournalEntryToT_PayDetailsRelation" data-toggle="tab" alt="Pay Details  Journal" title="Pay Details  Journal">
+		 Pay Details  Journal
+		 </a></li>
+
+    </ul>
+		<div class="tab-content">
+        <div class="tab-pane fade in active" id="Details">
+@using (Html.BeginForm("Edit","T_PayDetails",new {UrlReferrer =Convert.ToString(ViewData["T_PayDetailsParentUrl"])}, FormMethod.Post, new { enctype = "multipart/form-data",@id="frmT_PayDetails" }))
+{
+     Html.ValidationSummary(true);
+                Html.EnableClientValidation();
+    @Html.HiddenFor(model => model.Id)
+	@Html.HiddenFor(model => model.ConcurrencyKey)
+                <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px;">
+                    <div class="panel panel-default AppForm">
+						<div class="panel-body">
+						
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48932">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+											
+									<h3 class="panel-title" alt="Employee Information" title="Employee Information">Employee Information</h3>
+								</div>
+                                <div class="panel-body">
+				@if(User.CanView("T_PayDetails","T_EmployeePayDetailsID"))
+				{
+									 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeePayDetailsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmployeePayDetailsID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_PayDetails", "T_EmployeePayDetailsID"))
+		{
+			@Html.DropDownList("T_EmployeePayDetailsID", null, "-- Select --", new {  @required ="required",     @onchange = Html.Raw("ClearChildDD('T_PayDetailsJobAssignmentID',this,'false');") ,  @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeePayDetailsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EmployeePayDetailsID, new { @class = "form-control" })
+			@Html.DropDownList("T_EmployeePayDetailsID", null, "-- Select --", new {  @required ="required",    @onchange = Html.Raw("ClearChildDD('T_PayDetailsJobAssignmentID',this,'false');") ,  @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeePayDetailsID" }) })
+		}
+									@Html.ValidationMessageFor(model => model.T_EmployeePayDetailsID)
+									@if (User.CanAdd("T_Employee"))
+                                    {
+									<div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" id="addT_Employee"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+									</div>
+									}
+								
+
+															</div>
+							</div>
+                        </div>
+                    </div>
+
+
+                   
+					} else { @Html.HiddenFor(model => model.T_EmployeePayDetailsID, new { @class = "form-control" })}
+				@if(User.CanView("T_PayDetails","T_PayDetailsJobAssignmentID"))
+				{
+									 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PayDetailsJobAssignmentID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_PayDetailsJobAssignmentID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_PayDetails", "T_PayDetailsJobAssignmentID"))
+		{
+			@Html.DropDownList("T_PayDetailsJobAssignmentID", null, "-- Select --", new {   @ParentDD = "T_EmployeePayDetailsID" , @AssoNameWithParent = "T_EmployeeJobAssignmentID?T_JobAssignmentManagerEmployeeID?T_EmployeeSupervisorID" ,   @class = "chosen-select form-control", @HostingName = "T_JobAssignment", @dataurl = Url.Action("GetAllValue", "T_JobAssignment",new { caller = "T_PayDetailsJobAssignmentID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_PayDetailsJobAssignmentID, new { @class = "form-control" })
+			@Html.DropDownList("T_PayDetailsJobAssignmentID", null, "-- Select --", new {  @ParentDD = "T_EmployeePayDetailsID" , @AssoNameWithParent = "T_EmployeeJobAssignmentID?T_JobAssignmentManagerEmployeeID?T_EmployeeSupervisorID" ,   @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_JobAssignment", @dataurl = Url.Action("GetAllValue", "T_JobAssignment",new { caller = "T_PayDetailsJobAssignmentID" }) })
+		}
+									@Html.ValidationMessageFor(model => model.T_PayDetailsJobAssignmentID)
+									@if (User.CanAdd("T_JobAssignment"))
+                                    {
+									<div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" id="addT_JobAssignment"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Job Assignment','dvPopup','" + Url.Action("CreateQuick", "T_JobAssignment", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+									</div>
+									}
+								
+
+								                                            
+											 @if (User.CanView("T_JobAssignment"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_JobAssignment" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_JobAssignment" target="_blank" href="@Url.Action(User.CanEdit("T_JobAssignment") ? "Edit" : "Details", "T_JobAssignment", new { Id = Html.DisplayFor(model => model.t_paydetailsjobassignment.Id).ToString(), UrlReferrer=Request.UrlReferrer}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_paydetailsjobassignment == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_JobAssignment").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_JobAssignment").attr("title", '@Model.t_paydetailsjobassignment.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        							</div>
+							</div>
+                        </div>
+                    </div>
+
+
+                   
+					} else { @Html.HiddenFor(model => model.T_PayDetailsJobAssignmentID, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+       </div>
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48933">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+											
+									<h3 class="panel-title" alt="Pay Details" title="Pay Details">Pay Details</h3>
+								</div>
+                                <div class="panel-body">
+				@if(User.CanView("T_PayDetails","T_OtherPayDetailsTypeID"))
+				{
+									 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_OtherPayDetailsTypeID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_OtherPayDetailsTypeID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_PayDetails", "T_OtherPayDetailsTypeID"))
+		{
+			@Html.DropDownList("T_OtherPayDetailsTypeID", null, "-- Select --", new {  @required ="required",      @class = "chosen-select form-control", @HostingName = "T_PayType", @dataurl = Url.Action("GetAllValue", "T_PayType",new { caller = "T_OtherPayDetailsTypeID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_OtherPayDetailsTypeID, new { @class = "form-control" })
+			@Html.DropDownList("T_OtherPayDetailsTypeID", null, "-- Select --", new {  @required ="required",     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_PayType", @dataurl = Url.Action("GetAllValue", "T_PayType",new { caller = "T_OtherPayDetailsTypeID" }) })
+		}
+									@Html.ValidationMessageFor(model => model.T_OtherPayDetailsTypeID)
+									@if (User.CanAdd("T_PayType"))
+                                    {
+									<div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" id="addT_PayType"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Pay Type','dvPopup','" + Url.Action("CreateQuick", "T_PayType", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+									</div>
+									}
+								
+
+								                                            
+											 @if (User.CanView("T_PayType"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_PayType" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_PayType" target="_blank" href="@Url.Action(User.CanEdit("T_PayType") ? "Edit" : "Details", "T_PayType", new { Id = Html.DisplayFor(model => model.t_otherpaydetailstype.Id).ToString(), UrlReferrer=Request.UrlReferrer}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_otherpaydetailstype == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_PayType").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_PayType").attr("title", '@Model.t_otherpaydetailstype.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        							</div>
+							</div>
+                        </div>
+                    </div>
+
+
+                   
+					} else { @Html.HiddenFor(model => model.T_OtherPayDetailsTypeID, new { @class = "form-control" })}
+@if(User.CanView("T_PayDetails","T_Amount"))
+{
+				<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Amount">
+							<div class='form-group' title="Amount">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Amount)  <span class="text-danger-reg">*</span> </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+											<span class="input-group-addon btn-default calendar"><i class="fa fa-dollar"></i></span>
+									@Html.TextBoxFor(model => model.T_Amount,  getHtmlAttributes("T_Amount"))
+									@Html.ValidationMessageFor(model => model.T_Amount)
+								</div>
+                             </div>
+						</div>
+										
+} else { @Html.HiddenFor(model => model.T_Amount, new { @class = "form-control" })}
+@if(User.CanView("T_PayDetails","T_StartDate"))
+{
+
+						 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_StartDate">
+							  <div class="form-group" title="Start Date">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_StartDate) <span class="text-danger-reg">*</span></label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_StartDate">
+ @Html.TextBoxFor(model => model.T_StartDate, "{0:MM/dd/yyyy}", User.CanEdit("T_PayDetails", "T_StartDate") ? (object)new { @class = "form-control" } : (object)new { @class = "form-control", @readonly="readonly"})
+
+									<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_StartDate)
+
+								</div>
+                                </div>
+								@if(User.CanEdit("T_PayDetails", "T_StartDate"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_StartDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_StartDate').datetimepicker({ pickTime:false });
+  
+                                    });
+                                </script>
+								}
+                            </div>
+						
+
+                           
+} else { @Html.HiddenFor(model => model.T_StartDate, new { @class = "form-control" })}
+@if(User.CanView("T_PayDetails","T_EndDate"))
+{
+
+						 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EndDate">
+							  <div class="form-group" title="End Date">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EndDate) </label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_EndDate">
+ @Html.TextBoxFor(model => model.T_EndDate, "{0:MM/dd/yyyy}", User.CanEdit("T_PayDetails", "T_EndDate") ? (object)new { @class = "form-control" } : (object)new { @class = "form-control", @readonly="readonly"})
+
+									<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_EndDate)
+
+								</div>
+                                </div>
+								@if(User.CanEdit("T_PayDetails", "T_EndDate"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_EndDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_EndDate').datetimepicker({ pickTime:false });
+  
+                                    });
+                                </script>
+								}
+                            </div>
+						
+
+                           
+} else { @Html.HiddenFor(model => model.T_EndDate, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+       </div>
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48934">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+											
+									<h3 class="panel-title" alt="Notes" title="Notes">Notes</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_PayDetails","T_Notes"))
+{
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Notes">
+							<div class='form-group' title="Notes">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Notes) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								@Html.TextAreaFor(model => model.T_Notes, getHtmlAttributes("T_Notes"))
+									@Html.ValidationMessageFor(model => model.T_Notes)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_Notes, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+       </div>
+            </div>
+        </div>
+		</div>
+		 @Html.AntiForgeryToken();
+		 <a class="btn btn-default btn-sm pull-left formbuttonfix" Onclick="goBack('@Url.Action("Index","T_PayDetails")');" alt="Cancel" title="Cancel">Cancel</a>
+		 @*@Html.ActionLink("Cancel", "Cancel", new { UrlReferrer = ViewData["T_PayDetailsParentUrl"] }, new { @onclick = "", @class = "btn btn-default btn-sm pull-left formbuttonfix", @alt="Cancel", @title="Cancel" })*@
+		 if (EditPermission)
+         {
+ 				<input type="submit" name="command" value="Save" class="btn btn-primary btn-sm pull-left formbuttonfix"  alt="Save" title="Save"/>
+				<input type="submit" id="sevranBtnEdit" style="display:none;" name="command" value="SaveNextPrev" alt="SaveNextPrev" title="SaveNextPrev"/>
+				<input type="submit" name="command" value="Save & Stay" class="btn btn-primary btn-sm pull-left formbuttonfix" alt="Save & Stay" title="Save & Stay"/>
+		}	
+				<input type="hidden" name="hdncommand" value="" />
+				<input type="hidden" name="hdnNextPrevId" value="" />
+}
+ @{ var dropmenubottom = false; }
+<div class="dropdown pull-left formbuttonfix"  id="AddAssociationdropmenubottomT_PayDetails">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" alt="Add Association" title="Add Association">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
+			@if (User.CanAdd("T_Comment"))
+            {  dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Comment",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_SalaryComments", 
+						HostingEntityName = "T_PayDetails",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Comment
+                </a>
+				</li>
+            }
+
+			
+</ul>
+</div>
+@if(!dropmenubottom || !EditPermission)
+{
+    <script>
+        $("#AddAssociationdropmenubottomT_PayDetails").hide();
+    </script>
+}
+<div class="clearfix" style="clear:both; margin-bottom:8px"></div>
+</div>
+ <div class="tab-pane fade in" id="T_SalaryComments">
+	@if (User.CanView("T_Comment"))
+	{
+	  // Html.RenderAction("Index", "T_Comment", new {RenderPartial=true, HostingEntity = "T_PayDetails", HostingEntityID = @Model.Id, AssociatedType = "T_SalaryComments" }); 
+	}
+  </div>
+ <div class="tab-pane fade in" id="JournalEntryToT_PayDetailsRelation">
+			 @if (User.CanView("JournalEntry"))
+			 {
+			  // Html.RenderAction("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_PayDetails", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry" });
+			 }
+  </div>
+
+</div> <!-- /tab-content --><br />
+
+<br/>
+</div>
+	<script>
+	</script>
+	
+
+@{
+var businessrule = User.businessrules.Where(p => p.EntityName == "T_PayDetails").ToList();
+
+if ((businessrule != null && businessrule.Count > 0) )
+{
+var ruleids = businessrule.Select(q => q.Id).ToList();
+var typelist  = string.Join(",", (new GeneratorBase.MVC.Models.RuleActionContext()).RuleActions.Where(p => ruleids.Contains(p.RuleActionID.Value) && p.associatedactiontype.TypeNo.HasValue).Select(p => p.associatedactiontype.TypeNo.Value).Distinct().ToList());
+
+    <script>
+		$(document).ready(function () {
+				document.getElementById("ErrMsg").innerHTML = "";
+				var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+
+ form = $("#frmT_PayDetails").serialize();
+				dataurl = "@Url.Action("businessruletype", "T_PayDetails", new { ruleType = "OnEdit"})";
+                ApplyBusinessRuleOnPageLoad("@typelist",dataurl, "T_PayDetails", false, "ErrMsg", form);
+				//business rules on inline associations
+
+    });
+</script>
+<script>
+    $("form").submit(function (event) {
+	if (!$("#frmT_PayDetails").valid()) return;
+			document.getElementById("ErrMsg").innerHTML = "";
+            var flag = true;
+            var dataurl = "";
+            var form = "";
+            var inlinecount = "0";
+ form = $("#frmT_PayDetails").serialize();
+    
+				 dataurl = "@Url.Action("businessruletype", "T_PayDetails", new { ruleType = "OnEdit"})";
+                 flag = ApplyBusinessRuleOnSubmit(dataurl, "T_PayDetails", false, "ErrMsg", form);
+
+  				 //business rules on inline associations
+               
+			 if (flag)
+				{
+				                    $('input:hidden[name="hdncommand"]').val($(this.id).context.activeElement.value);
+					if ($(document.activeElement).attr('id') == "nextEdit" || $(document.activeElement).attr('id') == "prevEdit")
+			         $('input:hidden[name="hdncommand"]').val("SaveNextPrev");
+					 $("#frmT_PayDetails").find(':input').removeAttr('disabled');
+					}
+            return flag;
+		});
+</script>
+}
+ else
+    {
+       <script>
+    $("input[type='submit']").click(function (event) {
+	if (!$("#frmT_PayDetails").valid()) return;
+        var $this = $(this);
+                var actionName = $this.attr("actionName")
+                if (actionName == undefined)
+                    actionName = $this.val();
+                $('input:hidden[name="hdncommand"]').val(actionName);
+    });
+	</script>
+    }
+ 
+}
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+		focusOnControl('frmT_PayDetails');
+        }
+        catch (ex) { }
+    });
+	 $(document).ready(function () {
+		var RecIdEdit = $("#frmT_PayDetails").find("input:hidden[name='Id']").val();
+        $("#EntityT_PayDetailsDisplayValueEdit").val(RecIdEdit);
+
+		var textedit = $("option:selected", $("#EntityT_PayDetailsDisplayValueEdit")).text();
+		$("#EntityT_PayDetailsDisplayValueEdit").attr('data-toggle', 'tooltip')
+		$("#EntityT_PayDetailsDisplayValueEdit").attr('title', textedit);
+
+        var lastOptionValEdit = $('#EntityT_PayDetailsDisplayValueEdit option:last-child').val();
+        var fristOptionValEdit = $('#EntityT_PayDetailsDisplayValueEdit option:first-child').val();
+        if (lastOptionValEdit == RecIdEdit) {
+            $('#nextEdit').attr({ "disabled": "true", "style": "background-color:#eeeeee !important; color:#969696 !important; border-color:#ccc !important" });
+        }
+        if (fristOptionValEdit == RecIdEdit)
+            $('#prevEdit').attr({ "disabled": "true", "style": "background-color:#eeeeee !important; color:#969696 !important; border-color:#ccc !important" });
+    });
+</script>
+
+

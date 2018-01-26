@@ -1,0 +1,47 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_Restrictions>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Restrictions.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_Restrictions","T_RestrictionsFacilityAssociationID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Facility"?"hidden":"")>Facility</th>
+}
+@if(User.CanView("T_Restrictions","T_Name"))
+{
+		<th>Name</th>
+}
+@if(User.CanView("T_Restrictions","T_Description"))
+{
+		<th>Description</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_Restrictions","T_RestrictionsFacilityAssociationID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Facility"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_restrictionsfacilityassociation.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Restrictions","T_Name"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Name)
+        </td>
+}
+@if(User.CanView("T_Restrictions","T_Description"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Description)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

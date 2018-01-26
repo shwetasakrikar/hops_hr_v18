@@ -1,0 +1,196 @@
+﻿@model GeneratorBase.MVC.Models.T_Restrictions
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_RestrictionsIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_RestrictionsIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_RestrictionsIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_RestrictionsIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_RestrictionsIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_RestrictionsIsSetValueUIRule);
+    }
+}
+@using (Html.BeginForm("Create", "T_Restrictions",new {UrlReferrer = Convert.ToString(ViewData["T_RestrictionsParentUrl"]), IsDDAdd = ViewBag.IsDDAdd }, FormMethod.Post, new { enctype = "multipart/form-data",id="frmT_Restrictions" }))
+{
+   @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+	<input type="hidden" id="ErrMsg" />
+	@*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+    <div id="errorContainer" style="display: none">
+        <div id="errorsMsg"></div>
+        <div id="errors"></div>
+    </div>
+	 
+	 <div id="divDisplayThresholdLimit" style="display:none;">
+	</div>
+	 <div id="divDisplayBRmsgMandatory" style="display:none;">
+	</div>
+	<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+	</div>
+	<div id="divDisplayCodeFragment" style="display:none;">
+	</div>
+
+	<div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="AppForm">
+                <div class="">
+               					<div class="row">
+				       
+@if(User.CanView("T_Restrictions","T_RestrictionsFacilityAssociationID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_RestrictionsFacilityAssociationID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_RestrictionsFacilityAssociationID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_RestrictionsFacilityAssociationID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_Facility", @dataurl = Url.Action("GetAllValue", "T_Facility",new { caller = "T_RestrictionsFacilityAssociationID" }) })
+			@Html.ValidationMessageFor(model => model.T_RestrictionsFacilityAssociationID)
+			@if ( User.CanAdd("T_Facility"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_Facility"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Facility','dvPopup','" + Url.Action("CreateQuick", "T_Facility", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  			 @if(User.CanView("T_Restrictions","T_Name"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Name">
+                                <div class='form-group' title="Name">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Name) <span class="text-danger-reg">*</span></label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_Name, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_Name)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+						@if(User.CanView("T_Restrictions","T_Description"))
+								{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Description">
+                                <div class='form-group' title="Description">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Description) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    @Html.TextAreaFor(model => model.T_Description, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_Description)
+									</div>
+                                </div>
+						</div>
+						}
+       </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+		<a class="btn btn-default btn-sm" onclick="goBack('@Url.Action("Index","T_Restrictions")');" alt="Cancel" title="Cancel">Cancel</a>
+          @*@Html.ActionLink("Cancel", "Cancel", new { UrlReferrer = ViewData["T_RestrictionsParentUrl"] }, new { @onclick = "", @class = "btn btn-default btn-sm" })*@
+	<input type="submit" name="command" value="Create" class="btn btn-primary btn-sm" alt="Create" title="Create"/>
+    if (ViewBag.IsDDAdd == null && User.CanEdit("T_Restrictions"))
+    {
+	<input type="submit" name="command" value="Create & Continue" class="btn btn-primary btn-sm" alt="Create & Continue" title="Create & Continue"/>
+	}
+	 <input type="hidden" name="hdncommand" value="" />
+	<br/><br/>
+}
+	<script>
+	    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+	
+@{
+		var businessrule = User.businessrules.Where(p => p.EntityName == "T_Restrictions").ToList();
+		
+if ((businessrule != null && businessrule.Count > 0) )
+    {
+        <script>
+            $("form").submit(function (event) {
+			if (!$("#frmT_Restrictions").valid()) return;
+			var flag = true;
+							document.getElementById("ErrMsg").innerHTML = "";
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+                //var form = $(this).serialize();
+ form = $("#frmT_Restrictions").serialize();
+  
+                dataurl = "@Url.Action("businessruletype", "T_Restrictions", new { ruleType = "OnCreate"})";
+                flag = ApplyBusinessRuleOnSubmit(dataurl, "T_Restrictions", false, "ErrMsg", form);
+				//business rules on inline associations
+				if (flag) {
+				                    $('input:hidden[name="hdncommand"]').val($(document.activeElement).val());
+
+					 $("#frmT_Restrictions").find(':input').removeAttr('disabled');
+                }
+				return flag;
+			 });	
+        </script>
+    }
+    else
+    {
+	<script>
+            $("input[type='submit']").click(function (event) {
+			if (!$("#frmT_Restrictions").valid()) return;
+                var $this = $(this);
+                $('input:hidden[name="hdncommand"]').val($this.val());
+            });
+	</script>
+           
+    }
+}
+
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+		 focusOnControl('frmT_Restrictions');
+        }
+        catch (ex) { }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        try {
+            var hostingEntityName = "";
+            if ('@Convert.ToString(ViewData["AssociatedType"])'.length > 0) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+                 $('#' + hostingEntityName + 'ID').attr("lock","true");
+				  $('#' + hostingEntityName + 'ID').trigger("change");
+            }
+			
+        }
+        catch (ex) { }
+		});
+</script>
+

@@ -1,0 +1,218 @@
+﻿<error errorId="3bc3accf-b37f-450b-a7e6-3a067a8587ae" application="/LM/W3SVC/1/ROOT/HOPS_HR_v18" host="TURANTOMVC" type="System.NullReferenceException" message="Object reference not set to an instance of an object." source="GeneratorBase.MVC" detail="System.NullReferenceException: Object reference not set to an instance of an object.&#xD;&#xA;   at GeneratorBase.MVC.Controllers.BusinessRuleController.&lt;&gt;c__DisplayClass151.&lt;GetDateTypeForAssociationProperties&gt;b__14f(Entity p) in d:\GenApps\HOPS_HR_v18\GeneratorBase.MVC\Controllers\GenAppBusinessRules\BusinessRuleController.cs:line 2403&#xD;&#xA;   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)&#xD;&#xA;   at GeneratorBase.MVC.Controllers.BusinessRuleController.GetDateTypeForAssociationProperties(String entityName, String assocName, String propertyName) in d:\GenApps\HOPS_HR_v18\GeneratorBase.MVC\Controllers\GenAppBusinessRules\BusinessRuleController.cs:line 2403&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)" user="Admin" time="2017-12-06T18:51:39.9778676Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:*/*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.9&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken_L1dTSFBTUnY3OQ2=rh17NuM-WTea_ojtFFDn0TuKruQ43tokWUVPCSowFYQmWGzk-Wl3DFVsaYnlaszFJWNEkZdDmwMUuskzh2X4TnwvjcuOM5LkeNbdDpB_ZyI1; WSHPSRv76=VrPTJMEWBdWdSRCH0nh1XHiSGV_AJD3ViLBRPvPLcaBisNDODIami4X56iDZjqaV7jpB0_jBpGR90v0MJ6EhJ61bLUko6EGjEcPQMEAV3fXVsVOOPHdOME_bv7om2lvLN1oBBjNgckIT_Qw2LASa-6RNdjfufd2_9RyNO8GLsR62AVDuEbrjE3P6xo6gnO6DtyVHEjGDp1CV656dFl7TVsr6_f_HKtygdt5UV4VPt4Xq-WVLhRbDkgjL4Uo5Nvt3UjZdwXONFAFYaQO5N4Z0hn0zyKZwXa8Eki-HcIBIwsKSzWCLpT9BmNX9XJLOpmPDalf8viOdeULlLmRvWE6cTQUeQj39Vhbu7r0pbUy95oGrXHTGS-fUJe8DwXN-AbwJweJCOe7WfrU1B1XewI6Qc7qpqVMRUvXC0kPJRIAwFHWzYDZKVqucIHVilmqQCPzS47DeQCNQEeN6c6NtMA7yccggA-JJeUctoGXuZl7_qP1nS07PiUAGE8xhn5of5RWb; _timezone=Eastern Standard Time; __RequestVerificationToken_L1dTSFBTUnY3Nw2=JU2lGiJDPmQzc92F33Hue4TTt0TcZgs9falvQ3VQ2WLAbOjOsf3MEMCUATSBu0JIuOuEG9J2zhwUeWZwmgNmBhnzvdCcqPyOHsfljwwU_Ro1; ASP.NET_SessionId=qtk0hh5h20bxsj4y2oyrweio; pageSizeAdminT_Client=20; pageSizeAdminT_RoomAlternativeName=50; WSHPSRv79=tTg137-bkOJXivGJFOoJyoxeWo8a05Gc8KDy2dkfAegN_2RqCaoOw09oSCmgcvyNUZpwQyBREEEBXGmK4U7iBRoFEOJ0poQ-mRWh0KoBTBjcO4zpuHSwdVnaoQX3ccc89etG7yp6ahoicLoa7rZGmI9NlaW3cQvLBUubfAnbO3hs7X9o5mD4wEYp021q1r2i-ODreuY5tMSEPiKj5nkyTPDeJAlrrTRfD5qMHoEhOV1PgogWICN_gRRB7W4KbctjIXAJF8ARkyP-TaNUEbT7FmSwTYhGkGNsG_kHz3KD6rsZPxXHprVs4RJ1_nt-03BWLTj14NlJq219Cr3g9KWB6jepFwpzHx1Miu1eO9-iS79MATrNUc25R6SIikB1NYT2PfNhlRw30E3vlj3fKCfBeErby1xxM97QjyDEgYupMAPj06eArXEgd0xnI1myg75xsng5xbPCihv21mONz73eymzC714UBMGdQd-KNZw9_FGl8T8V_fSydG-N2BO_e_OSPRThUgWTZhLPDqoAN5elXZQTjMuJ-UZbyIMVaAnAiPRbkw-RUHK5ey4l1oZMFe6ALgYeGNXl4KYeMBNtYNY4SASPMC_53DenoNjV7KbLXW8; WSHPSRv79CurrentRole=WSH-Admin_PSR,; paginationundefinedT_GroupManagement=3; __RequestVerificationToken_L0hPUFNfSFJfdjE40=YTTIg95mCMXpqf--4vJNcr2mNSGO3NbsVOKHrBnqwcJZdudAgoBg5ZmKC6_X0KEoNeYVSuPOSYzGbkxyXRrao8LZaICxapplluC_N4vWMSY1; pageSizeAdminAccount=50; HOPS_HR_v18=7NoSDjrkrd0dd9K9L5SdEEmSXaUPc3avcXB_0Op0JsA0fjLcnhLkdZEK4CcrG4pLk_Bb_kw-fEp2MLS629dvRsnMnYB5RuRJzMd06XsKl-1IYWhQ4z0YTccZjKLAHuiwmJle4Zmyr9d4SUABzYjT2mx2kXmfHlHUWaaLaAOn0TaLmdkmTm7qNB7zfWiPsxOr_-4owms1VWfT0jYHVSf7Ohiqa6GGIlZGNgXuJq4v5d059AamA7QGGUhjOYqvg8WSKZqi6pnVet90dyqiq-CHBT2Zh7BXL-yrzLw0AqrJ62NNv2oSiopXMXmk3p5-497T_8Y6_xyNmQdY-PUodvHSv2v12Ri6cKVi00BQw6ODmQuSUaSBgACUsbPU2vE78jHNPx6jxdai0S5VgWgqU60b7Qmp_jgi9niN8rv2WQ4CLLujgVK0NEeiFdKPie5lK2rOUUkRmJ8BPrOk1Ppcf-brjDsHMVWszVFeMAtnueGGpRXHxus7_m6iTXcQuG9PxvFu; pageSizeAdminBusinessRule=20&#xD;&#xA;HTTP_HOST:apps.turanto.com&#xD;&#xA;HTTP_REFERER:https://apps.turanto.com/HOPS_HR_v18/BusinessRule/CreateBusinessRule?UrlReferrer=https%3A%2F%2Fapps.turanto.com%2FHOPS_HR_v18%2FBusinessRule%3FcurrentFilter%3Dposition%26IsExport%3DFalse%26FSFilter%3DFsearch%26IsFilter%3DFalse%26itemsPerPage%3D20%26_%3D1512586125215&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36&#xD;&#xA;HTTP_X_REQUESTED_WITH:XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: */*&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.9&#xD;&#xA;Cookie: __RequestVerificationToken_L1dTSFBTUnY3OQ2=rh17NuM-WTea_ojtFFDn0TuKruQ43tokWUVPCSowFYQmWGzk-Wl3DFVsaYnlaszFJWNEkZdDmwMUuskzh2X4TnwvjcuOM5LkeNbdDpB_ZyI1; WSHPSRv76=VrPTJMEWBdWdSRCH0nh1XHiSGV_AJD3ViLBRPvPLcaBisNDODIami4X56iDZjqaV7jpB0_jBpGR90v0MJ6EhJ61bLUko6EGjEcPQMEAV3fXVsVOOPHdOME_bv7om2lvLN1oBBjNgckIT_Qw2LASa-6RNdjfufd2_9RyNO8GLsR62AVDuEbrjE3P6xo6gnO6DtyVHEjGDp1CV656dFl7TVsr6_f_HKtygdt5UV4VPt4Xq-WVLhRbDkgjL4Uo5Nvt3UjZdwXONFAFYaQO5N4Z0hn0zyKZwXa8Eki-HcIBIwsKSzWCLpT9BmNX9XJLOpmPDalf8viOdeULlLmRvWE6cTQUeQj39Vhbu7r0pbUy95oGrXHTGS-fUJe8DwXN-AbwJweJCOe7WfrU1B1XewI6Qc7qpqVMRUvXC0kPJRIAwFHWzYDZKVqucIHVilmqQCPzS47DeQCNQEeN6c6NtMA7yccggA-JJeUctoGXuZl7_qP1nS07PiUAGE8xhn5of5RWb; _timezone=Eastern Standard Time; __RequestVerificationToken_L1dTSFBTUnY3Nw2=JU2lGiJDPmQzc92F33Hue4TTt0TcZgs9falvQ3VQ2WLAbOjOsf3MEMCUATSBu0JIuOuEG9J2zhwUeWZwmgNmBhnzvdCcqPyOHsfljwwU_Ro1; ASP.NET_SessionId=qtk0hh5h20bxsj4y2oyrweio; pageSizeAdminT_Client=20; pageSizeAdminT_RoomAlternativeName=50; WSHPSRv79=tTg137-bkOJXivGJFOoJyoxeWo8a05Gc8KDy2dkfAegN_2RqCaoOw09oSCmgcvyNUZpwQyBREEEBXGmK4U7iBRoFEOJ0poQ-mRWh0KoBTBjcO4zpuHSwdVnaoQX3ccc89etG7yp6ahoicLoa7rZGmI9NlaW3cQvLBUubfAnbO3hs7X9o5mD4wEYp021q1r2i-ODreuY5tMSEPiKj5nkyTPDeJAlrrTRfD5qMHoEhOV1PgogWICN_gRRB7W4KbctjIXAJF8ARkyP-TaNUEbT7FmSwTYhGkGNsG_kHz3KD6rsZPxXHprVs4RJ1_nt-03BWLTj14NlJq219Cr3g9KWB6jepFwpzHx1Miu1eO9-iS79MATrNUc25R6SIikB1NYT2PfNhlRw30E3vlj3fKCfBeErby1xxM97QjyDEgYupMAPj06eArXEgd0xnI1myg75xsng5xbPCihv21mONz73eymzC714UBMGdQd-KNZw9_FGl8T8V_fSydG-N2BO_e_OSPRThUgWTZhLPDqoAN5elXZQTjMuJ-UZbyIMVaAnAiPRbkw-RUHK5ey4l1oZMFe6ALgYeGNXl4KYeMBNtYNY4SASPMC_53DenoNjV7KbLXW8; WSHPSRv79CurrentRole=WSH-Admin_PSR,; paginationundefinedT_GroupManagement=3; __RequestVerificationToken_L0hPUFNfSFJfdjE40=YTTIg95mCMXpqf--4vJNcr2mNSGO3NbsVOKHrBnqwcJZdudAgoBg5ZmKC6_X0KEoNeYVSuPOSYzGbkxyXRrao8LZaICxapplluC_N4vWMSY1; pageSizeAdminAccount=50; HOPS_HR_v18=7NoSDjrkrd0dd9K9L5SdEEmSXaUPc3avcXB_0Op0JsA0fjLcnhLkdZEK4CcrG4pLk_Bb_kw-fEp2MLS629dvRsnMnYB5RuRJzMd06XsKl-1IYWhQ4z0YTccZjKLAHuiwmJle4Zmyr9d4SUABzYjT2mx2kXmfHlHUWaaLaAOn0TaLmdkmTm7qNB7zfWiPsxOr_-4owms1VWfT0jYHVSf7Ohiqa6GGIlZGNgXuJq4v5d059AamA7QGGUhjOYqvg8WSKZqi6pnVet90dyqiq-CHBT2Zh7BXL-yrzLw0AqrJ62NNv2oSiopXMXmk3p5-497T_8Y6_xyNmQdY-PUodvHSv2v12Ri6cKVi00BQw6ODmQuSUaSBgACUsbPU2vE78jHNPx6jxdai0S5VgWgqU60b7Qmp_jgi9niN8rv2WQ4CLLujgVK0NEeiFdKPie5lK2rOUUkRmJ8BPrOk1Ppcf-brjDsHMVWszVFeMAtnueGGpRXHxus7_m6iTXcQuG9PxvFu; pageSizeAdminBusinessRule=20&#xD;&#xA;Host: apps.turanto.com&#xD;&#xA;Referer: https://apps.turanto.com/HOPS_HR_v18/BusinessRule/CreateBusinessRule?UrlReferrer=https%3A%2F%2Fapps.turanto.com%2FHOPS_HR_v18%2FBusinessRule%3FcurrentFilter%3Dposition%26IsExport%3DFalse%26FSFilter%3DFsearch%26IsFilter%3DFalse%26itemsPerPage%3D20%26_%3D1512586125215&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36&#xD;&#xA;X-Requested-With: XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/HOPS_HR_v18" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\HOPS_HR_v18\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="Admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="Admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/HOPS_HR_v18/BusinessRule/GetDateTypeForAssociationProperties" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\HOPS_HR_v18\GeneratorBase.MVC\BusinessRule\GetDateTypeForAssociationProperties" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="entityName=T_Position&amp;assocName=T_PositionFill&amp;propertyName=null&amp;_=1512586202322" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="71.176.236.44" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="71.176.236.44" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="51832" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/HOPS_HR_v18/BusinessRule/GetDateTypeForAssociationProperties" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/HOPS_HR_v18/BusinessRule/GetDateTypeForAssociationProperties" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="*/*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.9" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken_L1dTSFBTUnY3OQ2=rh17NuM-WTea_ojtFFDn0TuKruQ43tokWUVPCSowFYQmWGzk-Wl3DFVsaYnlaszFJWNEkZdDmwMUuskzh2X4TnwvjcuOM5LkeNbdDpB_ZyI1; WSHPSRv76=VrPTJMEWBdWdSRCH0nh1XHiSGV_AJD3ViLBRPvPLcaBisNDODIami4X56iDZjqaV7jpB0_jBpGR90v0MJ6EhJ61bLUko6EGjEcPQMEAV3fXVsVOOPHdOME_bv7om2lvLN1oBBjNgckIT_Qw2LASa-6RNdjfufd2_9RyNO8GLsR62AVDuEbrjE3P6xo6gnO6DtyVHEjGDp1CV656dFl7TVsr6_f_HKtygdt5UV4VPt4Xq-WVLhRbDkgjL4Uo5Nvt3UjZdwXONFAFYaQO5N4Z0hn0zyKZwXa8Eki-HcIBIwsKSzWCLpT9BmNX9XJLOpmPDalf8viOdeULlLmRvWE6cTQUeQj39Vhbu7r0pbUy95oGrXHTGS-fUJe8DwXN-AbwJweJCOe7WfrU1B1XewI6Qc7qpqVMRUvXC0kPJRIAwFHWzYDZKVqucIHVilmqQCPzS47DeQCNQEeN6c6NtMA7yccggA-JJeUctoGXuZl7_qP1nS07PiUAGE8xhn5of5RWb; _timezone=Eastern Standard Time; __RequestVerificationToken_L1dTSFBTUnY3Nw2=JU2lGiJDPmQzc92F33Hue4TTt0TcZgs9falvQ3VQ2WLAbOjOsf3MEMCUATSBu0JIuOuEG9J2zhwUeWZwmgNmBhnzvdCcqPyOHsfljwwU_Ro1; ASP.NET_SessionId=qtk0hh5h20bxsj4y2oyrweio; pageSizeAdminT_Client=20; pageSizeAdminT_RoomAlternativeName=50; WSHPSRv79=tTg137-bkOJXivGJFOoJyoxeWo8a05Gc8KDy2dkfAegN_2RqCaoOw09oSCmgcvyNUZpwQyBREEEBXGmK4U7iBRoFEOJ0poQ-mRWh0KoBTBjcO4zpuHSwdVnaoQX3ccc89etG7yp6ahoicLoa7rZGmI9NlaW3cQvLBUubfAnbO3hs7X9o5mD4wEYp021q1r2i-ODreuY5tMSEPiKj5nkyTPDeJAlrrTRfD5qMHoEhOV1PgogWICN_gRRB7W4KbctjIXAJF8ARkyP-TaNUEbT7FmSwTYhGkGNsG_kHz3KD6rsZPxXHprVs4RJ1_nt-03BWLTj14NlJq219Cr3g9KWB6jepFwpzHx1Miu1eO9-iS79MATrNUc25R6SIikB1NYT2PfNhlRw30E3vlj3fKCfBeErby1xxM97QjyDEgYupMAPj06eArXEgd0xnI1myg75xsng5xbPCihv21mONz73eymzC714UBMGdQd-KNZw9_FGl8T8V_fSydG-N2BO_e_OSPRThUgWTZhLPDqoAN5elXZQTjMuJ-UZbyIMVaAnAiPRbkw-RUHK5ey4l1oZMFe6ALgYeGNXl4KYeMBNtYNY4SASPMC_53DenoNjV7KbLXW8; WSHPSRv79CurrentRole=WSH-Admin_PSR,; paginationundefinedT_GroupManagement=3; __RequestVerificationToken_L0hPUFNfSFJfdjE40=YTTIg95mCMXpqf--4vJNcr2mNSGO3NbsVOKHrBnqwcJZdudAgoBg5ZmKC6_X0KEoNeYVSuPOSYzGbkxyXRrao8LZaICxapplluC_N4vWMSY1; pageSizeAdminAccount=50; HOPS_HR_v18=7NoSDjrkrd0dd9K9L5SdEEmSXaUPc3avcXB_0Op0JsA0fjLcnhLkdZEK4CcrG4pLk_Bb_kw-fEp2MLS629dvRsnMnYB5RuRJzMd06XsKl-1IYWhQ4z0YTccZjKLAHuiwmJle4Zmyr9d4SUABzYjT2mx2kXmfHlHUWaaLaAOn0TaLmdkmTm7qNB7zfWiPsxOr_-4owms1VWfT0jYHVSf7Ohiqa6GGIlZGNgXuJq4v5d059AamA7QGGUhjOYqvg8WSKZqi6pnVet90dyqiq-CHBT2Zh7BXL-yrzLw0AqrJ62NNv2oSiopXMXmk3p5-497T_8Y6_xyNmQdY-PUodvHSv2v12Ri6cKVi00BQw6ODmQuSUaSBgACUsbPU2vE78jHNPx6jxdai0S5VgWgqU60b7Qmp_jgi9niN8rv2WQ4CLLujgVK0NEeiFdKPie5lK2rOUUkRmJ8BPrOk1Ppcf-brjDsHMVWszVFeMAtnueGGpRXHxus7_m6iTXcQuG9PxvFu; pageSizeAdminBusinessRule=20" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://apps.turanto.com/HOPS_HR_v18/BusinessRule/CreateBusinessRule?UrlReferrer=https%3A%2F%2Fapps.turanto.com%2FHOPS_HR_v18%2FBusinessRule%3FcurrentFilter%3Dposition%26IsExport%3DFalse%26FSFilter%3DFsearch%26IsFilter%3DFalse%26itemsPerPage%3D20%26_%3D1512586125215" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36" />
+    </item>
+    <item name="HTTP_X_REQUESTED_WITH">
+      <value string="XMLHttpRequest" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="entityName">
+      <value string="T_Position" />
+    </item>
+    <item name="assocName">
+      <value string="T_PositionFill" />
+    </item>
+    <item name="propertyName">
+      <value string="null" />
+    </item>
+    <item name="_">
+      <value string="1512586202322" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name="__RequestVerificationToken_L1dTSFBTUnY3OQ2">
+      <value string="rh17NuM-WTea_ojtFFDn0TuKruQ43tokWUVPCSowFYQmWGzk-Wl3DFVsaYnlaszFJWNEkZdDmwMUuskzh2X4TnwvjcuOM5LkeNbdDpB_ZyI1" />
+    </item>
+    <item name="WSHPSRv76">
+      <value string="VrPTJMEWBdWdSRCH0nh1XHiSGV_AJD3ViLBRPvPLcaBisNDODIami4X56iDZjqaV7jpB0_jBpGR90v0MJ6EhJ61bLUko6EGjEcPQMEAV3fXVsVOOPHdOME_bv7om2lvLN1oBBjNgckIT_Qw2LASa-6RNdjfufd2_9RyNO8GLsR62AVDuEbrjE3P6xo6gnO6DtyVHEjGDp1CV656dFl7TVsr6_f_HKtygdt5UV4VPt4Xq-WVLhRbDkgjL4Uo5Nvt3UjZdwXONFAFYaQO5N4Z0hn0zyKZwXa8Eki-HcIBIwsKSzWCLpT9BmNX9XJLOpmPDalf8viOdeULlLmRvWE6cTQUeQj39Vhbu7r0pbUy95oGrXHTGS-fUJe8DwXN-AbwJweJCOe7WfrU1B1XewI6Qc7qpqVMRUvXC0kPJRIAwFHWzYDZKVqucIHVilmqQCPzS47DeQCNQEeN6c6NtMA7yccggA-JJeUctoGXuZl7_qP1nS07PiUAGE8xhn5of5RWb" />
+    </item>
+    <item name="_timezone">
+      <value string="Eastern Standard Time" />
+    </item>
+    <item name="__RequestVerificationToken_L1dTSFBTUnY3Nw2">
+      <value string="JU2lGiJDPmQzc92F33Hue4TTt0TcZgs9falvQ3VQ2WLAbOjOsf3MEMCUATSBu0JIuOuEG9J2zhwUeWZwmgNmBhnzvdCcqPyOHsfljwwU_Ro1" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="qtk0hh5h20bxsj4y2oyrweio" />
+    </item>
+    <item name="pageSizeAdminT_Client">
+      <value string="20" />
+    </item>
+    <item name="pageSizeAdminT_RoomAlternativeName">
+      <value string="50" />
+    </item>
+    <item name="WSHPSRv79">
+      <value string="tTg137-bkOJXivGJFOoJyoxeWo8a05Gc8KDy2dkfAegN_2RqCaoOw09oSCmgcvyNUZpwQyBREEEBXGmK4U7iBRoFEOJ0poQ-mRWh0KoBTBjcO4zpuHSwdVnaoQX3ccc89etG7yp6ahoicLoa7rZGmI9NlaW3cQvLBUubfAnbO3hs7X9o5mD4wEYp021q1r2i-ODreuY5tMSEPiKj5nkyTPDeJAlrrTRfD5qMHoEhOV1PgogWICN_gRRB7W4KbctjIXAJF8ARkyP-TaNUEbT7FmSwTYhGkGNsG_kHz3KD6rsZPxXHprVs4RJ1_nt-03BWLTj14NlJq219Cr3g9KWB6jepFwpzHx1Miu1eO9-iS79MATrNUc25R6SIikB1NYT2PfNhlRw30E3vlj3fKCfBeErby1xxM97QjyDEgYupMAPj06eArXEgd0xnI1myg75xsng5xbPCihv21mONz73eymzC714UBMGdQd-KNZw9_FGl8T8V_fSydG-N2BO_e_OSPRThUgWTZhLPDqoAN5elXZQTjMuJ-UZbyIMVaAnAiPRbkw-RUHK5ey4l1oZMFe6ALgYeGNXl4KYeMBNtYNY4SASPMC_53DenoNjV7KbLXW8" />
+    </item>
+    <item name="WSHPSRv79CurrentRole">
+      <value string="WSH-Admin_PSR," />
+    </item>
+    <item name="paginationundefinedT_GroupManagement">
+      <value string="3" />
+    </item>
+    <item name="__RequestVerificationToken_L0hPUFNfSFJfdjE40">
+      <value string="YTTIg95mCMXpqf--4vJNcr2mNSGO3NbsVOKHrBnqwcJZdudAgoBg5ZmKC6_X0KEoNeYVSuPOSYzGbkxyXRrao8LZaICxapplluC_N4vWMSY1" />
+    </item>
+    <item name="pageSizeAdminAccount">
+      <value string="50" />
+    </item>
+    <item name="HOPS_HR_v18">
+      <value string="7NoSDjrkrd0dd9K9L5SdEEmSXaUPc3avcXB_0Op0JsA0fjLcnhLkdZEK4CcrG4pLk_Bb_kw-fEp2MLS629dvRsnMnYB5RuRJzMd06XsKl-1IYWhQ4z0YTccZjKLAHuiwmJle4Zmyr9d4SUABzYjT2mx2kXmfHlHUWaaLaAOn0TaLmdkmTm7qNB7zfWiPsxOr_-4owms1VWfT0jYHVSf7Ohiqa6GGIlZGNgXuJq4v5d059AamA7QGGUhjOYqvg8WSKZqi6pnVet90dyqiq-CHBT2Zh7BXL-yrzLw0AqrJ62NNv2oSiopXMXmk3p5-497T_8Y6_xyNmQdY-PUodvHSv2v12Ri6cKVi00BQw6ODmQuSUaSBgACUsbPU2vE78jHNPx6jxdai0S5VgWgqU60b7Qmp_jgi9niN8rv2WQ4CLLujgVK0NEeiFdKPie5lK2rOUUkRmJ8BPrOk1Ppcf-brjDsHMVWszVFeMAtnueGGpRXHxus7_m6iTXcQuG9PxvFu" />
+    </item>
+    <item name="pageSizeAdminBusinessRule">
+      <value string="20" />
+    </item>
+  </cookies>
+</error>

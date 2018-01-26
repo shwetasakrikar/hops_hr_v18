@@ -1,0 +1,332 @@
+﻿@model GeneratorBase.MVC.Models.T_FacilityUser
+<script>
+    var delay = (function () {
+        var timer = 0;
+        return function (callback, ms) {
+            clearTimeout(timer);
+            timer = setTimeout(callback, ms);
+        };
+    })();
+ $(document).ready(function () {
+	 $('#btnUser').click(function () {
+        var dataurl = '@Url.Action("GetAllValues1")';
+        SearchListNew1($('#btnUser'), dataurl, $('#txtSearchUser').val(), 'T_Facility', '@ViewData["HostingEntityID"]', 'T_FacilityUser_T_Facility', 'UserIDAvailable', 't_userstatus');
+        return false;
+    });
+	 $('#btnT_Facility').click(function () {
+        var dataurl = '@Url.Action("GetAllValues1")';
+        SearchListNew1($('#btnT_Facility'), dataurl, $('#txtSearchT_Facility').val(), 'User', '@ViewData["HostingEntityID"]', 'T_FacilityUser_User', 'T_FacilityIDAvailable', 't_facilityuser,t_facilityaddress');
+        return false;
+    });
+});
+</script>
+@using (Html.BeginForm("Create", "T_FacilityUser",new {UrlReferrer = Convert.ToString(ViewData["T_FacilityUserParentUrl"]), IsDDAdd = ViewBag.IsDDAdd }, FormMethod.Post, new { enctype = "multipart/form-data", id = "frmT_FacilityUser"  }))
+{
+   @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+	<input type="hidden" id="ErrMsg" />
+    <div id="errorContainer" style="display: none">
+        <div id="errorsMsg"></div>
+        <div id="errors"></div>
+    </div>
+    <div id="divDisplayThresholdLimit" style="display:none;">
+    </div>
+    <div id="divDisplayBRmsgMandatory" style="display:none;">
+    </div>
+    <div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+    </div>
+    <div id="divDisplayCodeFragment" style="display:none;">
+    </div>
+    <div class="row" style='display:none;' >
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="panel panel-default AppForm">
+                <div class="panel-body">
+               <div class="row" >         
+				@if (Convert.ToString(ViewData["AssociatedType"]).Trim() == "T_FacilityUser_T_User")
+                {
+				 <div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_UserID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+                                @Html.DropDownList("T_UserID", null, "--Select Facility Users--", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.T_UserID)
+								@if (User.CanAdd("User"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Facility Users','dvPopup','" + Url.Action("CreateQuick", "User", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				}
+				@if (Convert.ToString(ViewData["AssociatedType"]).Trim() == "T_FacilityUser_T_Facility")
+                {
+				 <div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_FacilityID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+		@Html.DropDownList("T_FacilityID", null, "-- Select --", new {    @class = "chosen-select form-control", @HostingName = "T_Facility", @dataurl = Url.Action("GetAllValue", "T_Facility",null) })
+                                @Html.ValidationMessageFor(model => model.T_FacilityID)
+								@if (User.CanAdd("T_Facility"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Facility Users','dvPopup','" + Url.Action("CreateQuick", "T_Facility", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				}
+       </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+  if (Convert.ToString(ViewData["AssociatedType"]).Trim() != "T_FacilityUser_T_User")
+  { 
+	<div class="M2MList">
+		<div class="col-md-5" style="overflow:auto !important;max-height:400px;min-height:400px;">
+           
+            @Html.TextBox("txtSearchT_User", null, new { @class = "form-control", placeholder = "Search User", @size = 10, @dataurl = Url.Action("GetAllValues") })
+ 
+				@if (ViewBag.t_userstatus!=null)
+                {
+						<div class='form-group col-sm-12' title="UserStatus" style="padding:10px 0px 0px 0px; margin:0px;">
+							<div class='form-group col-sm-4' style="padding:0px">
+								<label class="text-primary small"> UserStatus</label>
+							</div>
+							<div class="input-group col-sm-6" id="dvt_userstatus">
+		
+	 @Html.DropDownList("t_userstatus", null, new {   @multiple = "multiple", @HostingName = "Status", @dataurl = Url.Action("GetAllMultiSelectValue", "Status",null) })
+							</div>
+						</div>
+				}
+		</div>
+		<label style="display:none;">@Html.LabelFor(model => model.T_UserID) </label>
+		<div class="col-md-7">
+			<div class="col-md-12">
+				<h4><span class="unselected-title">Available User </span> <span style="float:right; font-size:14px;"> Show @Html.DropDownList("PageSize", new SelectList(new Dictionary<string, string> { {"50","50"},{ "100", "100" }, { "200", "200" }, { "500", "500" }, { "All", "All" } }, "Key", "Value")
+                    ,new {@dataurl=Url.Action("GetAllValues"), onchange="ListBoxPagination(this,$('#txtSearchT_User').val(),'T_Facility', '"+ViewData["HostingEntityID"]+"', 'T_FacilityUser_T_User', 'T_UserIDAvailable');"})
+			</span></h4>
+				
+				@Html.ListBox("T_UserIDAvailable", null, new { @class = "optionvalue", @size = 10 })
+				
+				 </div>
+			<div class="col-md-12  btn-group" style="margin-top:10px;">
+				<a id="MoveRightT_User" onclick="Associate(event,'T_User');" class="btn btn-primary col-md-6"><span id="MoveRightT_User" class="glyphicon glyphicon-chevron-down"></span></a>
+				<a id="MoveLeftT_User" onclick="Associate(event,'T_User');" class="btn btn-primary col-md-6" ><span id="MoveLeftT_User" class="glyphicon glyphicon-chevron-up"></span></a>
+			</div>
+			<div class="col-md-12">
+				<h4><span class="selected-title">Selected User</span> 
+				 <span class="badge bg-blue"><label id="CntT_UserIDSelected"></label></span>
+				</h4>
+				@Html.ListBox("T_UserIDSelected", null, new { @class = "optionvalue", @size = 10 })
+			</div>
+		</div>
+	</div>
+    }
+  if (Convert.ToString(ViewData["AssociatedType"]).Trim() != "T_FacilityUser_T_Facility")
+  { 
+	<div class="M2MList">
+		<div class="col-md-5" style="overflow:auto !important;max-height:400px;min-height:400px;">
+           
+            @Html.TextBox("txtSearchT_Facility", null, new { @class = "form-control", placeholder = "Search Facility", @size = 10, @dataurl = Url.Action("GetAllValues") })
+ 
+				@if (ViewBag.t_facilityaddress!=null)
+                {
+						<div class='form-group col-sm-12' title="Address" style="padding:10px 0px 0px 0px; margin:0px;">
+							<div class='form-group col-sm-4' style="padding:0px">
+								<label class="text-primary small"> Address</label>
+							</div>
+							<div class="input-group col-sm-6" id="dvt_facilityaddress">
+		
+	 @Html.DropDownList("t_facilityaddress", null, new {   @multiple = "multiple", @HostingName = "T_Address", @dataurl = Url.Action("GetAllMultiSelectValue", "T_Address",null) })
+							</div>
+						</div>
+				}
+					@if (ViewBag.t_facilityuser!=null)
+                    {
+						<div class='form-group col-sm-12' title="Facility Users" style="padding:10px 0px 0px 0px; margin:0px;">
+						<div class='form-group col-sm-4' style="padding:0px">
+							<label class="text-primary small"> Facility Users</label>
+						</div>
+                                <div class="input-group col-sm-6" id="dvt_facility">
+		
+	 @Html.DropDownList("t_facilityuser", null, new {   @multiple = "multiple", @HostingName = "User", @dataurl = Url.Action("GetAllMultiSelectValue", "User",null) })
+                                </div>
+                        </div>
+					}
+		</div>
+		<label style="display:none;">@Html.LabelFor(model => model.T_FacilityID) </label>
+		<div class="col-md-7">
+			<div class="col-md-12">
+				<h4><span class="unselected-title">Available Facility </span> <span style="float:right; font-size:14px;"> Show @Html.DropDownList("PageSize", new SelectList(new Dictionary<string, string> { {"50","50"},{ "100", "100" }, { "200", "200" }, { "500", "500" }, { "All", "All" } }, "Key", "Value")
+                    ,new {@dataurl=Url.Action("GetAllValues"), onchange="ListBoxPagination(this,$('#txtSearchT_Facility').val(),'User', '"+ViewData["HostingEntityID"]+"', 'T_FacilityUser_T_Facility', 'T_FacilityIDAvailable');"})
+			</span></h4>
+				
+				@Html.ListBox("T_FacilityIDAvailable", null, new { @class = "optionvalue", @size = 10 })
+				
+				 </div>
+			<div class="col-md-12  btn-group" style="margin-top:10px;">
+				<a id="MoveRightT_Facility" onclick="Associate(event,'T_Facility');" class="btn btn-primary col-md-6"><span id="MoveRightT_Facility" class="glyphicon glyphicon-chevron-down"></span></a>
+				<a id="MoveLeftT_Facility" onclick="Associate(event,'T_Facility');" class="btn btn-primary col-md-6" ><span id="MoveLeftT_Facility" class="glyphicon glyphicon-chevron-up"></span></a>
+			</div>
+			<div class="col-md-12">
+				<h4><span class="selected-title">Selected Facility</span> 
+				 <span class="badge bg-blue"><label id="CntT_FacilityIDSelected"></label></span>
+				</h4>
+				@Html.ListBox("T_FacilityIDSelected", null, new { @class = "optionvalue", @size = 10 })
+			</div>
+		</div>
+	</div>
+    }
+<div class="clearfix clear"></div><br />
+    <div class="col-md-5">
+		@if (Convert.ToString(ViewData["AssociatedType"]).Trim() != "T_FacilityUser_T_User")
+        {
+             <button id="btnT_User" class="btn btn-primary btn-sm">Search</button>
+        }
+		@if (Convert.ToString(ViewData["AssociatedType"]).Trim() != "T_FacilityUser_T_Facility")
+        {
+             <button id="btnT_Facility" class="btn btn-primary btn-sm">Search</button>
+        }
+ 
+
+
+    </div>
+    <div class="col-md-7">
+       @Html.ActionLink("Cancel", "Cancel", new { UrlReferrer = ViewData["T_FacilityUserParentUrl"] }, new { @onclick = "", @class = "btn btn-default btn-sm" })
+            <input type="submit" name="command" value="Create" class="btn btn-primary btn-sm" />
+	 <input type="hidden" name="hdncommand" value="" />
+    </div>
+    <br />
+}
+	<script>
+    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+@if(Convert.ToString(ViewData["AssociatedType"]).Trim() != "T_FacilityUser_T_User")
+{
+<script>
+function FillSelectedListBox()
+{
+	$("#T_UserIDSelected option").prop("selected","selected");
+}
+</script>
+}
+@if(Convert.ToString(ViewData["AssociatedType"]).Trim() != "T_FacilityUser_T_Facility")
+{
+<script>
+function FillSelectedListBox()
+{
+	$("#T_FacilityIDSelected option").prop("selected","selected");
+}
+</script>
+}
+<script>
+    $(document).ready(function () {	 
+		$("#CntT_UserIDSelected").html($("#T_UserIDSelected :selected").length);
+		
+	$("#T_UserIDSelected option").each(function () {
+            var value = '@ViewBag.SelectedListRemoved'.split(',');
+            for (i = 0; i < value.length; i++) {
+                if (value != "" && value != "undefined") {
+                    var optionvalue = $(this).val();
+                    if(optionvalue == value[i])
+                        $(this, "#T_UserIDSelected").attr("style", "display:none;");
+                }
+            }
+        });
+	$("#CntT_FacilityIDSelected").html($("#T_FacilityIDSelected :selected").length);
+		
+	$("#T_FacilityIDSelected option").each(function () {
+            var value = '@ViewBag.SelectedListRemoved'.split(',');
+            for (i = 0; i < value.length; i++) {
+                if (value != "" && value != "undefined") {
+                    var optionvalue = $(this).val();
+                    if(optionvalue == value[i])
+                        $(this, "#T_FacilityIDSelected").attr("style", "display:none;");
+                }
+            }
+        });
+
+
+        $('#t_facilityuser').multiselect({
+            buttonWidth: '100%',
+            nonSelectedText: 'ALL',
+        });
+        $('#t_facilityaddress').multiselect({
+            buttonWidth: '100%',
+            nonSelectedText: 'ALL',
+        });
+        $('#t_userstatus').multiselect({
+            buttonWidth: '100%',
+            nonSelectedText: 'ALL',
+        });
+	});
+</script>
+@{
+    var businessrule = User.businessrules.Where(p => p.EntityName == "T_FacilityUser").ToList();
+    if ((businessrule != null && businessrule.Count > 0))
+    {
+        <script>
+            $("form").submit(function (event) {
+			if (!$("#frmT_FacilityUser").valid()) return;
+                document.getElementById("ErrMsg").innerHTML = "";
+                var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+                form = $("#frmT_FacilityUser").serialize();
+                dataurl = "@Url.Action("businessruletype", "T_FacilityUser", new { ruleType = "OnCreate" })";
+                flag = ApplyBusinessRuleOnSubmit(dataurl, "T_FacilityUser", false, "ErrMsg", form);
+                if (flag) {
+                    FillSelectedListBox();
+                    $('input:hidden[name="hdncommand"]').val($("input[type='submit']").val());
+                    $("form").find(':input').removeAttr('disabled');
+                }
+                return flag;
+            });
+            
+        </script>
+    }
+    else
+    {
+        <script>
+            $("input[type='submit']").click(function (event) {
+			if (!$("#frmT_FacilityUser").valid()) return;
+                FillSelectedListBox();
+                var $this = $(this);
+                $('input:hidden[name="hdncommand"]').val($this.val());
+            });
+        </script>
+
+    }
+}
+
+

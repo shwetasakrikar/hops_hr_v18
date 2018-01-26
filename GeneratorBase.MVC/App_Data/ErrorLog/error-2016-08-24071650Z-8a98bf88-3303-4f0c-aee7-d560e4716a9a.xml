@@ -1,0 +1,482 @@
+﻿<error errorId="8a98bf88-3303-4f0c-aee7-d560e4716a9a" application="/LM/W3SVC/1/ROOT/wsh_hr_v33" host="TURANTOMVC" type="System.Web.Mvc.HttpAntiForgeryException" message="The provided anti-forgery token was meant for a different claims-based user than the current user." source="System.Web.WebPages" detail="System.Web.Mvc.HttpAntiForgeryException (0x80004005): The provided anti-forgery token was meant for a different claims-based user than the current user.&#xD;&#xA;   at System.Web.Helpers.AntiXsrf.TokenValidator.ValidateTokens(HttpContextBase httpContext, IIdentity identity, AntiForgeryToken sessionToken, AntiForgeryToken fieldToken)&#xD;&#xA;   at System.Web.Helpers.AntiXsrf.AntiForgeryWorker.Validate(HttpContextBase httpContext)&#xD;&#xA;   at System.Web.Helpers.AntiForgery.Validate()&#xD;&#xA;   at System.Web.Mvc.ValidateAntiForgeryTokenAttribute.OnAuthorization(AuthorizationContext filterContext)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__19(AsyncCallback asyncCallback, Object asyncState)" time="2016-08-24T07:16:50.2835350Z" statusCode="500">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:12432&#xD;&#xA;HTTP_CONTENT_TYPE:multipart/form-data; boundary=----WebKitFormBoundaryDG7gmza4RuxzqI5l&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:BX=d254lgpbi3in1&amp;b=3&amp;s=29; __RequestVerificationToken_L3dzaF9ocl92MzM1=Ps8Ol-7tJpc_WY5_9ZUZDA2KMG_QbSQBC6Fb0p2ceVspe50nPVcrp2PaaReca2BlgXaob3a4qT6ZVqeNu23fsYs8RQXZANvOaLNW6oVEL6w1; wsh_hr_v32=dqhHYY9Sa2dmNkB7vJM1drRfcbtd9IFgPXdLENMVx2ZJxI-54su2vqulDpuCjlL7Qln2WRyC0pAfZtK3JjDe0FJ_pukHJ5qgNZbUaLN8ImnWUUYaLPrFVJszK-0kt75oVLt7DiYiSvMjoDxylN-Cv59Juwwc7ICz4uu2Utn54h3c8Pvo6oCfPuyON22_guYdBTvL21QEF71s8HMm6-8tIaWWsVMOgG2HY9h-gjBp1xTDqndNjuRYJXsAT2ikGD8mrBc-Q-hjJyJvm2mOgTfaWM_07CiOwzXrD-UrCcDstIIVNojgYJeGsBSmT2cnpWsPmw8jZiofpSPBXIUJsRKYM0sMX4jkCQRkRp9uNAhiYnnDpTOd4IDKHVzyMzjOg1zbYhgNNj5dUOcqcSOd5vGRDHxrqPD2thEYJr2j9usn8tfGD6Z32hOr7mznKikPvkVdFVFKY1E02KxQIELTBrZQVPyuIBzcqSODLfkqEqzwD5Pz23aoiv0AlqSq1Gfo9qnk; __RequestVerificationToken_L0lzbGFoVmFsaWRhdGVJbmxpbmU1=B6L4AH4aTOBl6Osx_hFy8cA4NMWC9akm3u4lSWMjSNxzRhpt38Ti_1DXlwJ6Q1zIqqSZ59CXEFxQv4Qg-ECTyXEm9FovoJmv8Rz5Q-scZjc1; .AspNet.ApplicationCookie=LNXxIFTXt5l3gYphqtvOLTwFEXjwaIm_Z1rVVaQ_wQbxfJ08AN7ep1cMnvYTiytH5yul0sIGhXsF_vhHi2tHxG2LUzCXhdTQhxShSReiu4oUyM7jaW5y-qXFAMx-X0IlZtT5k0rSG14hAwhpo-5fEyUX1Vd_kWo_fuuMPDy6syAH_WYsaXq4dZAQGg6_QnDTl02pYJ4HANQvqIurOZG05yZT4r_0h3bGZDQ63hfqj8vp62f2atmGhcoW4ccF84XV_8deg4-5Cfejgax2gZUl7J3kSpOiV1GiAgVjvajhCGqZh8us7dUYr7jpechMXU9OhX6rTptf45ntlQYRK9qicaH1G4tFF9mPJF2cCuk3aowmOO0rwHpFkQpUq3nar_TXpu5R38lpnlzb8RhfgkvGJ0KMq65jdQQr8ImJm5hHpOgtcp72XVnJjEC1YA40OrsDrDUqkvcA81fMyTq54L88kSksv-_f_nc7cRZ6ePXDyUyR9OadGCxvvplostHRraQm&#xD;&#xA;HTTP_HOST:apps.turanto.com&#xD;&#xA;HTTP_REFERER:https://apps.turanto.com/wsh_hr_v33/T_Employee/Edit/123?UrlReferrer=https%3A%2F%2Fapps.turanto.com%2Fwsh_hr_v33%2FT_Employee&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:https://apps.turanto.com&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Content-Length: 12432&#xD;&#xA;Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryDG7gmza4RuxzqI5l&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: BX=d254lgpbi3in1&amp;b=3&amp;s=29; __RequestVerificationToken_L3dzaF9ocl92MzM1=Ps8Ol-7tJpc_WY5_9ZUZDA2KMG_QbSQBC6Fb0p2ceVspe50nPVcrp2PaaReca2BlgXaob3a4qT6ZVqeNu23fsYs8RQXZANvOaLNW6oVEL6w1; wsh_hr_v32=dqhHYY9Sa2dmNkB7vJM1drRfcbtd9IFgPXdLENMVx2ZJxI-54su2vqulDpuCjlL7Qln2WRyC0pAfZtK3JjDe0FJ_pukHJ5qgNZbUaLN8ImnWUUYaLPrFVJszK-0kt75oVLt7DiYiSvMjoDxylN-Cv59Juwwc7ICz4uu2Utn54h3c8Pvo6oCfPuyON22_guYdBTvL21QEF71s8HMm6-8tIaWWsVMOgG2HY9h-gjBp1xTDqndNjuRYJXsAT2ikGD8mrBc-Q-hjJyJvm2mOgTfaWM_07CiOwzXrD-UrCcDstIIVNojgYJeGsBSmT2cnpWsPmw8jZiofpSPBXIUJsRKYM0sMX4jkCQRkRp9uNAhiYnnDpTOd4IDKHVzyMzjOg1zbYhgNNj5dUOcqcSOd5vGRDHxrqPD2thEYJr2j9usn8tfGD6Z32hOr7mznKikPvkVdFVFKY1E02KxQIELTBrZQVPyuIBzcqSODLfkqEqzwD5Pz23aoiv0AlqSq1Gfo9qnk; __RequestVerificationToken_L0lzbGFoVmFsaWRhdGVJbmxpbmU1=B6L4AH4aTOBl6Osx_hFy8cA4NMWC9akm3u4lSWMjSNxzRhpt38Ti_1DXlwJ6Q1zIqqSZ59CXEFxQv4Qg-ECTyXEm9FovoJmv8Rz5Q-scZjc1; .AspNet.ApplicationCookie=LNXxIFTXt5l3gYphqtvOLTwFEXjwaIm_Z1rVVaQ_wQbxfJ08AN7ep1cMnvYTiytH5yul0sIGhXsF_vhHi2tHxG2LUzCXhdTQhxShSReiu4oUyM7jaW5y-qXFAMx-X0IlZtT5k0rSG14hAwhpo-5fEyUX1Vd_kWo_fuuMPDy6syAH_WYsaXq4dZAQGg6_QnDTl02pYJ4HANQvqIurOZG05yZT4r_0h3bGZDQ63hfqj8vp62f2atmGhcoW4ccF84XV_8deg4-5Cfejgax2gZUl7J3kSpOiV1GiAgVjvajhCGqZh8us7dUYr7jpechMXU9OhX6rTptf45ntlQYRK9qicaH1G4tFF9mPJF2cCuk3aowmOO0rwHpFkQpUq3nar_TXpu5R38lpnlzb8RhfgkvGJ0KMq65jdQQr8ImJm5hHpOgtcp72XVnJjEC1YA40OrsDrDUqkvcA81fMyTq54L88kSksv-_f_nc7cRZ6ePXDyUyR9OadGCxvvplostHRraQm&#xD;&#xA;Host: apps.turanto.com&#xD;&#xA;Referer: https://apps.turanto.com/wsh_hr_v33/T_Employee/Edit/123?UrlReferrer=https%3A%2F%2Fapps.turanto.com%2Fwsh_hr_v33%2FT_Employee&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&#xD;&#xA;Origin: https://apps.turanto.com&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/wsh_hr_v33" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v33\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="12432" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="multipart/form-data; boundary=----WebKitFormBoundaryDG7gmza4RuxzqI5l" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/wsh_hr_v33/T_Employee/Edit/123" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v33\GeneratorBase.MVC\T_Employee\Edit\123" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="UrlReferrer=https%3A%2F%2Fapps.turanto.com%2Fwsh_hr_v33%2FT_Employee" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="56908" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/wsh_hr_v33/T_Employee/Edit/123" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/wsh_hr_v33/T_Employee/Edit/123" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="12432" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="multipart/form-data; boundary=----WebKitFormBoundaryDG7gmza4RuxzqI5l" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="BX=d254lgpbi3in1&amp;b=3&amp;s=29; __RequestVerificationToken_L3dzaF9ocl92MzM1=Ps8Ol-7tJpc_WY5_9ZUZDA2KMG_QbSQBC6Fb0p2ceVspe50nPVcrp2PaaReca2BlgXaob3a4qT6ZVqeNu23fsYs8RQXZANvOaLNW6oVEL6w1; wsh_hr_v32=dqhHYY9Sa2dmNkB7vJM1drRfcbtd9IFgPXdLENMVx2ZJxI-54su2vqulDpuCjlL7Qln2WRyC0pAfZtK3JjDe0FJ_pukHJ5qgNZbUaLN8ImnWUUYaLPrFVJszK-0kt75oVLt7DiYiSvMjoDxylN-Cv59Juwwc7ICz4uu2Utn54h3c8Pvo6oCfPuyON22_guYdBTvL21QEF71s8HMm6-8tIaWWsVMOgG2HY9h-gjBp1xTDqndNjuRYJXsAT2ikGD8mrBc-Q-hjJyJvm2mOgTfaWM_07CiOwzXrD-UrCcDstIIVNojgYJeGsBSmT2cnpWsPmw8jZiofpSPBXIUJsRKYM0sMX4jkCQRkRp9uNAhiYnnDpTOd4IDKHVzyMzjOg1zbYhgNNj5dUOcqcSOd5vGRDHxrqPD2thEYJr2j9usn8tfGD6Z32hOr7mznKikPvkVdFVFKY1E02KxQIELTBrZQVPyuIBzcqSODLfkqEqzwD5Pz23aoiv0AlqSq1Gfo9qnk; __RequestVerificationToken_L0lzbGFoVmFsaWRhdGVJbmxpbmU1=B6L4AH4aTOBl6Osx_hFy8cA4NMWC9akm3u4lSWMjSNxzRhpt38Ti_1DXlwJ6Q1zIqqSZ59CXEFxQv4Qg-ECTyXEm9FovoJmv8Rz5Q-scZjc1; .AspNet.ApplicationCookie=LNXxIFTXt5l3gYphqtvOLTwFEXjwaIm_Z1rVVaQ_wQbxfJ08AN7ep1cMnvYTiytH5yul0sIGhXsF_vhHi2tHxG2LUzCXhdTQhxShSReiu4oUyM7jaW5y-qXFAMx-X0IlZtT5k0rSG14hAwhpo-5fEyUX1Vd_kWo_fuuMPDy6syAH_WYsaXq4dZAQGg6_QnDTl02pYJ4HANQvqIurOZG05yZT4r_0h3bGZDQ63hfqj8vp62f2atmGhcoW4ccF84XV_8deg4-5Cfejgax2gZUl7J3kSpOiV1GiAgVjvajhCGqZh8us7dUYr7jpechMXU9OhX6rTptf45ntlQYRK9qicaH1G4tFF9mPJF2cCuk3aowmOO0rwHpFkQpUq3nar_TXpu5R38lpnlzb8RhfgkvGJ0KMq65jdQQr8ImJm5hHpOgtcp72XVnJjEC1YA40OrsDrDUqkvcA81fMyTq54L88kSksv-_f_nc7cRZ6ePXDyUyR9OadGCxvvplostHRraQm" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://apps.turanto.com/wsh_hr_v33/T_Employee/Edit/123?UrlReferrer=https%3A%2F%2Fapps.turanto.com%2Fwsh_hr_v33%2FT_Employee" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="https://apps.turanto.com" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="UrlReferrer">
+      <value string="https://apps.turanto.com/wsh_hr_v33/T_Employee" />
+    </item>
+  </queryString>
+  <form>
+    <item name="Id">
+      <value string="123" />
+    </item>
+    <item name="ConcurrencyKey">
+      <value string="AAAAAAAPiJU=" />
+    </item>
+    <item name="T_PID">
+      <value string="6540" />
+    </item>
+    <item name="T_SSN">
+      <value string="" />
+    </item>
+    <item name="T_FirstName">
+      <value string="Tim" />
+    </item>
+    <item name="T_MiddleName">
+      <value string="" />
+    </item>
+    <item name="T_LastName">
+      <value string="Tam" />
+    </item>
+    <item name="T_Suffix">
+      <value string="" />
+    </item>
+    <item name="T_WorkEmail">
+      <value string="" />
+    </item>
+    <item name="T_WorkPhoneNo">
+      <value string="" />
+    </item>
+    <item name="T_EmployeeStatusID">
+      <value string="9" />
+    </item>
+    <item name="T_SAMAccount">
+      <value string="" />
+    </item>
+    <item name="T_CurrentEmployeeEmploymentProfileID">
+      <value string="147" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.ConcurrencyKey">
+      <value string="AAAAAAAPiJQ=" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.Id">
+      <value string="147" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_EmployeeEmploymentProfileID">
+      <value string="123" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_EmploymentRecordEmployeeTypeID">
+      <value string="11" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_EmploymentRecordHiredAtFacilityID">
+      <value string="3" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_HireDate">
+      <value string="08/23/2016" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_TerminationDate">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_IsCurrent">
+      <value string="True" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_SixMonthDue">
+      <value string="02/23/2017" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_SixMonthReviewCompleted">
+      <value string="false" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_TwelveMonthDue">
+      <value string="08/23/2017" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_TwelveMonthReviewCompleted">
+      <value string="false" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_ProbationaryExtensionDate">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_ProbationaryExtensionReviewCompleted">
+      <value string="false" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_ProbationNotes">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_TwoWeekNoticeGiven">
+      <value string="false" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_NoticeGivenDate">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_EmployeeTerminationReasonID">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_EmployeeRecordTerminationFacilityID">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_EligibleForRehire">
+      <value string="false" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_ThirtyDaysSinceTermination">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_ThirteenWeeksSinceTermination">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_TerminationNotes">
+      <value string="" />
+    </item>
+    <item name="T_CurrentEmployeeJobAssignmentID">
+      <value string="248" />
+    </item>
+    <item name="t_currentemployeejobassignment.ConcurrencyKey">
+      <value string="AAAAAAAPiJY=" />
+    </item>
+    <item name="t_currentemployeejobassignment.Id">
+      <value string="248" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_EmployeeJobAssignmentID">
+      <value string="123" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_EmployeePercent">
+      <value string="50" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_StartDate">
+      <value string="08/23/2016" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_EndDate">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_Primary">
+      <value string="True" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_Active">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_EmployeeSalary">
+      <value string="0.00" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_PositionJobAssignmentID">
+      <value string="455" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_JobPositionType">
+      <value string="P3 Salary-full time" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_PositionLevel">
+      <value string="E EMPLOYEE" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_PosRoleCode">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_PosClassCode">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_PosSocCode">
+      <value string="29-1111 Registered Nurses" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_JobAssignmentReasonID">
+      <value string="6" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_JobAssignmentUnitXID">
+      <value string="101" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_UnitXPhone">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_CostCenter">
+      <value string="254 ADMIN SERVICES" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_Department">
+      <value string="23 MEDICAL ACUTE CARE SVCS" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_DepartmentArea">
+      <value string="2" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_EmployeeSupervisorID">
+      <value string="123" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_JobAssignmentManagerEmployeeID">
+      <value string="123" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_SupervisorEmailAddress">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_SupervisorPhoneNumber">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_Notes">
+      <value string="" />
+    </item>
+    <item name="T_CurrentYearsInPosition">
+      <value string="" />
+    </item>
+    <item name="T_PriorServiceCalculateyearsautomatically">
+      <value string="" />
+    </item>
+    <item name="T_EmployeeGenderID">
+      <value string="" />
+    </item>
+    <item name="T_EmployeeRaceID">
+      <value string="" />
+    </item>
+    <item name="T_EmployeeVeteranStatusID">
+      <value string="" />
+    </item>
+    <item name="T_DateOfBirth">
+      <value string="" />
+    </item>
+    <item name="T_EmployeeAddressID">
+      <value string="128" />
+    </item>
+    <item name="t_employeeaddress.ConcurrencyKey">
+      <value string="AAAAAAAPiJE=" />
+    </item>
+    <item name="t_employeeaddress.Id">
+      <value string="128" />
+    </item>
+    <item name="t_employeeaddress.T_AddressLine1">
+      <value string="" />
+    </item>
+    <item name="t_employeeaddress.T_AddressLine2">
+      <value string="" />
+    </item>
+    <item name="t_employeeaddress.T_ZipCode">
+      <value string="" />
+    </item>
+    <item name="t_employeeaddress.T_AddressCountryID">
+      <value string="" />
+    </item>
+    <item name="t_employeeaddress.T_AddressStateID">
+      <value string="" />
+    </item>
+    <item name="t_employeeaddress.T_AddressCityID">
+      <value string="" />
+    </item>
+    <item name="T_PersonalEmail">
+      <value string="" />
+    </item>
+    <item name="T_MobilePhone">
+      <value string="" />
+    </item>
+    <item name="T_HomePhone">
+      <value string="" />
+    </item>
+    <item name="T_EmployeeUserLoginID">
+      <value string="" />
+    </item>
+    <item name="T_EmergencyContactName">
+      <value string="" />
+    </item>
+    <item name="T_EmergencyContactRelationship">
+      <value string="" />
+    </item>
+    <item name="T_EmergencyMobilePhone">
+      <value string="" />
+    </item>
+    <item name="T_EmergencyWorkPhone">
+      <value string="" />
+    </item>
+    <item name="T_EmergencyWorkEmail">
+      <value string="" />
+    </item>
+    <item name="T_EmergencyPersonalEmail">
+      <value string="" />
+    </item>
+    <item name="T_BadgeNumber">
+      <value string="404949" />
+    </item>
+    <item name="T_EffectiveDateTime">
+      <value string="8/23/2016 15:17" />
+    </item>
+    <item name="SelectedT_Facility_T_EmployeeAtFacility">
+      <value string="3" />
+    </item>
+    <item name="SelectedT_Langauge_T_ConversationalEmployeeForeignLanguage">
+      <value string="5" />
+    </item>
+    <item name="SelectedT_Langauge_T_LanguageCertifiedIn">
+      <value string="5" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="qCx7_UFKCb0dNCfe5pd0D-_X0KKjTJtOMmnY7Hn5dZhTR69MhTeVgKphB-mkgvJGBkO8X9R7xNSQRw2CZhqLqGUgupvIyCpBh1NH22nfe2m_6MssbevV5WRGYyd4TzEZ_mTboKMoXXi8Q6ih2MJvgQ2" />
+    </item>
+    <item name="hdncommand">
+      <value string="Save" />
+    </item>
+  </form>
+  <cookies>
+    <item name="BX">
+      <value string="d254lgpbi3in1&amp;b=3&amp;s=29" />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MzM1">
+      <value string="Ps8Ol-7tJpc_WY5_9ZUZDA2KMG_QbSQBC6Fb0p2ceVspe50nPVcrp2PaaReca2BlgXaob3a4qT6ZVqeNu23fsYs8RQXZANvOaLNW6oVEL6w1" />
+    </item>
+    <item name="wsh_hr_v32">
+      <value string="dqhHYY9Sa2dmNkB7vJM1drRfcbtd9IFgPXdLENMVx2ZJxI-54su2vqulDpuCjlL7Qln2WRyC0pAfZtK3JjDe0FJ_pukHJ5qgNZbUaLN8ImnWUUYaLPrFVJszK-0kt75oVLt7DiYiSvMjoDxylN-Cv59Juwwc7ICz4uu2Utn54h3c8Pvo6oCfPuyON22_guYdBTvL21QEF71s8HMm6-8tIaWWsVMOgG2HY9h-gjBp1xTDqndNjuRYJXsAT2ikGD8mrBc-Q-hjJyJvm2mOgTfaWM_07CiOwzXrD-UrCcDstIIVNojgYJeGsBSmT2cnpWsPmw8jZiofpSPBXIUJsRKYM0sMX4jkCQRkRp9uNAhiYnnDpTOd4IDKHVzyMzjOg1zbYhgNNj5dUOcqcSOd5vGRDHxrqPD2thEYJr2j9usn8tfGD6Z32hOr7mznKikPvkVdFVFKY1E02KxQIELTBrZQVPyuIBzcqSODLfkqEqzwD5Pz23aoiv0AlqSq1Gfo9qnk" />
+    </item>
+    <item name="__RequestVerificationToken_L0lzbGFoVmFsaWRhdGVJbmxpbmU1">
+      <value string="B6L4AH4aTOBl6Osx_hFy8cA4NMWC9akm3u4lSWMjSNxzRhpt38Ti_1DXlwJ6Q1zIqqSZ59CXEFxQv4Qg-ECTyXEm9FovoJmv8Rz5Q-scZjc1" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="LNXxIFTXt5l3gYphqtvOLTwFEXjwaIm_Z1rVVaQ_wQbxfJ08AN7ep1cMnvYTiytH5yul0sIGhXsF_vhHi2tHxG2LUzCXhdTQhxShSReiu4oUyM7jaW5y-qXFAMx-X0IlZtT5k0rSG14hAwhpo-5fEyUX1Vd_kWo_fuuMPDy6syAH_WYsaXq4dZAQGg6_QnDTl02pYJ4HANQvqIurOZG05yZT4r_0h3bGZDQ63hfqj8vp62f2atmGhcoW4ccF84XV_8deg4-5Cfejgax2gZUl7J3kSpOiV1GiAgVjvajhCGqZh8us7dUYr7jpechMXU9OhX6rTptf45ntlQYRK9qicaH1G4tFF9mPJF2cCuk3aowmOO0rwHpFkQpUq3nar_TXpu5R38lpnlzb8RhfgkvGJ0KMq65jdQQr8ImJm5hHpOgtcp72XVnJjEC1YA40OrsDrDUqkvcA81fMyTq54L88kSksv-_f_nc7cRZ6ePXDyUyR9OadGCxvvplostHRraQm" />
+    </item>
+  </cookies>
+</error>

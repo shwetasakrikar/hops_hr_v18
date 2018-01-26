@@ -1,0 +1,479 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_CardLvPlan>
+@using PagedList.Mvc;
+@{
+	
+    var ActionNameUrl = "Index";
+    if (HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().ToUpper() == "FSEARCH")
+    {
+        ActionNameUrl = "FSearch";
+    }
+	var BackUrl =  Request.Url;
+	if (ViewData["HostingEntity"] != null && (Request.QueryString["TabToken"] != null || Request.IsAjaxRequest()))
+	{
+		BackUrl =  Request.UrlReferrer;
+	}
+	var EntityReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_CardLvPlan");
+}
+
+<div id="T_CardLvPlan">
+
+<style>
+    .table-responsive > .fixed-column {
+        position: absolute;
+        display: block;
+        width: auto;
+        border: 0px solid transparent;
+        border-top: 1px solid #c3ddec;
+    }
+    .fixed-column th {
+        background: #fff;
+    }
+    .fixed-column td {
+        background: #fff;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+	 $(".pagination a").click(function (e) {
+            //PaginationClick(e,'T_CardLvPlan')
+			PaginationClick(e, 'T_CardLvPlan','@User.JavaScriptEncodedName')
+        })
+	    $("#SearchStringT_CardLvPlan").keypress(function (e) {
+			if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+				 $("#T_CardLvPlanSearch").bind("click", (function () {
+                        }));
+                $('#T_CardLvPlanSearch').trigger("click");
+                return false;
+			}
+        })
+        $("#btnShowHideT_CardLvPlan").mouseup(function () {
+            if (document.getElementById('ColumnShowHideT_CardLvPlan').className == 'collapse') {
+				 $('#lblT_CardLvPlan').css('display', 'none');
+            }
+        })
+		if ($("#ErrmsgLockRecord").length > 0 && $("#ErrmsgLockRecord").text().length > 0) {
+                    $(".pull-left.actionbar").hide();
+		}
+    });
+</script>
+@functions {
+    object getSortHtmlAttributes(string sortby, bool IsPaging, int? page, bool? IsExport)
+    {
+        if (IsPaging)
+        {
+            return new
+            {
+                page,
+                sortBy = ViewBag.CurrentSort,
+                isAsc = ViewBag.IsAsc,
+                currentFilter = ViewBag.CurrentFilter,
+                HostingEntity = @Convert.ToString(ViewData["HostingEntity"]),
+                AssociatedType = @Convert.ToString(ViewData["AssociatedType"]),
+                HostingEntityID = ViewData["HostingEntityID"],
+				IsExport = IsExport,
+				FSFilter = ViewBag.FSFilter == null ? "Fsearch" : ViewBag.FSFilter,
+				IsFilter = @Convert.ToBoolean(ViewData["IsFilter"]),
+                
+				search=Request.QueryString["search"],
+				SortOrder = Request.QueryString["SortOrder"],
+				viewtype = ViewBag.TemplatesName,
+				HideColumns = ViewData["HideColumns"],
+				 GroupByColumn = ViewBag.GroupByColumn,
+				 FilterCondition = ViewBag.FilterCondition,
+				 inbuiltSearchCriteria = ViewBag.inbuiltSearchCriteria
+            };
+        }
+        else
+        {
+            return new
+            {
+                sortBy = sortby,
+                currentFilter = Request.QueryString["currentFilter"],
+                searchString = Request.QueryString["searchString"],
+                isAsc = (ViewBag.IsAsc == "ASC" ? "DESC" : ""),
+                page = ViewBag.Pages,
+                HostingEntity = @Convert.ToString(ViewData["HostingEntity"]),
+                HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),
+                AssociatedType = @Convert.ToString(ViewData["AssociatedType"]),
+				IsExport = IsExport,
+				FSFilter = ViewBag.FSFilter == null ? "Fsearch" : ViewBag.FSFilter,
+				IsFilter = @Convert.ToBoolean(ViewData["IsFilter"]),
+		search=Request.QueryString["search"],
+		SortOrder = Request.QueryString["SortOrder"],
+		viewtype = ViewBag.TemplatesName,
+		HideColumns = ViewData["HideColumns"],
+		 GroupByColumn = ViewBag.GroupByColumn,
+		 FilterCondition = ViewBag.FilterCondition,
+		 inbuiltSearchCriteria = ViewBag.inbuiltSearchCriteria
+            };
+        }
+    }
+}
+<div class="row">
+   <div class="col-md-12 col-sm-12 col-sx-12">
+      <div style="display:block; padding:0px 0px 5px 0px;">
+	    
+	   
+	    @if (ViewData["IsdrivedTab"]==null)
+                { 
+            <div class="pull-left actionbar">
+                 <div class="btn-group" id='@ViewData["HostingEntity"]_T_CardLvPlan'>
+				 
+				  @if (User.CanAdd("T_CardLvPlan"))
+				  {
+						<a class="btn btn-sm" type="button" data-original-title="Full Add" data-placement="top" onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_CardLvPlan", new { UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) }, null) + "');") alt="Full Add" title="Full Add">
+						<i class="fa fa-plus-circle" style="margin-right:3px"></i> Add
+					</a>
+					<a class="btn btn-sm" data-placement="top" id="addT_CardLvPlan" data-original-title="Quick Add" data-toggle="modal" data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','CardLvPlan','dvPopup','" + Url.Action("CreateQuick", "T_CardLvPlan", new { UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS=DateTime.Now,viewtype = Convert.ToString(ViewBag.TemplatesName) }) + "')")" alt="Quick Add" title="Quick Add">
+						<i class="fa fa-plus-circle" style="margin-right:3px"></i> Quick Add
+                    </a>
+			}
+			
+                </div>
+				
+		<div class="btn-group">
+
+                   </div>
+@if ((User.CanEdit("T_CardLvPlan") && User.CanUseVerb("BulkUpdate", "T_CardLvPlan", User)) || (User.CanDelete("T_CardLvPlan") && User.CanUseVerb("BulkDelete", "T_CardLvPlan", User)))
+{
+ <div class="btn-group">
+    <a class="btn btn-sm dropdown-toggle" data-original-title="Bulk Actions" data-toggle="dropdown" href="#">
+           <span class="fa fa-wrench"></span> Bulk
+        </a>
+        <ul class="dropdown-menu" role="menu">
+	
+	@if ( User.CanEdit("T_CardLvPlan")&&  User.CanUseVerb("BulkUpdate","T_CardLvPlan",User))
+	{
+	<li>
+		<a data-placement="top" style="cursor:pointer;" data-toggle="modal" data-target="#dvPopup"
+			onclick="@Html.Raw("OpenPopUpBulKUpdate('addPopup','Bulk Update CardLvPlan','dvPopup','" + Url.Action("BulkUpdate", "T_CardLvPlan", new { UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS = DateTime.Now }) + "','T_CardLvPlan')")">Update</a>
+	</li>
+	
+	}
+	
+ 
+	 @if ( User.CanDelete("T_CardLvPlan") && User.CanUseVerb("BulkDelete","T_CardLvPlan",User))
+     {
+	 <li>
+		<a style="cursor:pointer;" onclick="PerformBulkOperation(this,'T_CardLvPlan','Bulk Delete','@Url.Action("DeleteBulk", "T_CardLvPlan")');">Delete</a>
+	 </li>
+	
+	 }
+                        </ul>
+                    </div>
+					}
+					 <div class="btn-group">
+                        <a class="btn btn-sm dropdown-toggle tip-top" data-original-title="View As" style="padding:3px 5px;" data-toggle="dropdown">
+                            <span class="fa fa fa-table"></span> View As
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" style="min-width:110px">
+                            <li>
+                                <a data-placement="top" style="cursor:pointer;"
+                                   onclick="@Html.Raw("LoadTabTemplate('T_CardLvPlan','" + Url.Action("Index", "T_CardLvPlan", new { UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntity = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS = DateTime.Now, viewtype = "IndexPartialGallery" }) + "')")">
+                                    <span class="fa fa-th"></span> Gallery
+                                </a>
+                            </li>
+                            <li>
+                                <a style="display:block; margin:0px;"
+                                   onclick="@Html.Raw("LoadTabTemplate('T_CardLvPlan','" + Url.Action("Index", "T_CardLvPlan", new { UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntity = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS = DateTime.Now, viewtype = "IndexPartialList" }) + "')")">
+                                    <span class="fa fa-list"></span> List
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+<div class="btn-group">
+                            <a class="btn btn-sm dropdown-toggle tip-top" data-toggle="dropdown" alt="Tools" title="Tools">
+                                Tools
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" style="min-width:110px">
+							 <li>
+
+		@if (ViewData["HostingEntity"] != null && User.CanEdit(ViewData["HostingEntity"].ToString()))
+			{
+				<a id="showAssociateBtn"  data-placement="top" data-original-title="Associate CardLvPlan with @GeneratorBase.MVC.Models.ModelConversion.GetDisplayNameOfEntity(ViewData["HostingEntity"].ToString())" data-toggle="modal" data-target="#dvPopupBulkOperation" onclick="@Html.Raw("OpenPopUpEntity1M(this,'PopupBulkOperation','CardLvPlan','dvPopupBulkOperation','" + Url.Action("Index", "T_CardLvPlan", new { BulkOperation = "multiple", BulkAssociate = true, UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntity = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS = DateTime.Now,viewtype = Convert.ToString(ViewBag.TemplatesName) }) + "')")">
+					<i class="fa fa-plus-circle" ></i> Add Association
+				</a>
+			<script>
+				if($("#HostingEntityDisplayValue").attr('id')==undefined)
+				$("#showAssociateBtn").hide();
+			</script>
+			}
+                               
+              
+                                    
+                                </li>
+                                <li>
+								
+			@if ( User.CanAdd("T_CardLvPlan") && User.CanUseVerb("ImportExcel", "T_CardLvPlan", User))
+			{
+				if (ViewData["HostingEntity"]==null)
+				{ 
+				 <a  onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Upload", "T_CardLvPlan") + "');") alt="Import Excel" title="Import Excel">
+                        <i class="fa fa-upload" style="margin-right:3px"></i>    Import Excel
+                                         
+                 </a>
+				}
+			}
+
+                                  
+                                </li>
+
+                                <li>
+	     		@if (User.CanView("T_CardLvPlan") && User.CanUseVerb("ExportExcel", "T_CardLvPlan", User))
+                {
+					<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action(ActionNameUrl,"T_CardLvPlan",getSortHtmlAttributes(null, false, null, true), null) + "');") alt="Export Excel" title="Export Excel">
+						<i class="fa fa-download" style="margin-right:3px"></i>  Export Excel
+                    
+					</a>
+				}
+                                   
+                                </li>
+				<li>
+			@if (ViewData["HostingEntity"]==null)
+				{ 
+                <a class="collapse-data-btn" id="btnShowHideT_CardLvPlan" data-original-title="Show/Hide Column" data-placement="top" onclick=@Html.Raw("showhideColumns(event,'T_CardLvPlan');") alt="Show/Hide Column" title="Show/Hide Column">
+                    <span class="fa fa-table"></span>  Show/Hide Column
+                </a>
+				}
+            </li>
+                                  
+                            </ul>
+                        </div>
+
+</div>					
+
+				<div class="pull-right" style="width:300px; padding-top:4px; ">
+                        <div class="input-group">
+                            @Html.TextBox("SearchStringT_CardLvPlan", ViewBag.CurrentFilter as string, null, new { @class = "form-control fixsearchbox", @value = ViewBag.Homeval, @placeholder = "Search" })
+                            <div class="input-group-btn">
+                              <a id="T_CardLvPlanSearch" onclick="SearchClick(event, 'T_CardLvPlan', '@Html.Raw(Url.Action("Index", "T_CardLvPlan", new { IsFilter = ViewData["IsFilter"], IsDeepSearch = false, searchString = "_SearchString", HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]),HideColumns = ViewData["HideColumns"], SearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName) }))','@User.JavaScriptEncodedName');" data-original-title="Grid Search" class="btn tip-top" style="padding:3px 5px; border:1px solid #ccc"  alt="Grid Search" title="Search"><span class="fa fa-search"></span></a>
+								<a id="T_CardLvPlanCancel" type="button" class="btn collapse-data-btn tip-top" onclick="CancelSearch('T_CardLvPlan','@Html.Raw(Url.Action("Index", "T_CardLvPlan", new {IsFilter=ViewData["IsFilter"], HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]), HideColumns = ViewData["HideColumns"], ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName) }))','@User.JavaScriptEncodedName')" data-original-title="Clear Search" data-placement="top" style="padding:3px 5px; border:1px solid #ccc" alt="Clear Search" title="Clear Search">
+                                    <span class="fa fa-minus-circle"></span>
+                                </a>
+                                <a id="T_CardLvPlanSearchCancel" type="button" class="btn collapse-data-btn tip-top" onclick="CancelSearch('T_CardLvPlan','@Html.Raw(Url.Action("Index", "T_CardLvPlan", new {IsFilter=ViewData["IsFilter"], itemsPerPage=Convert.ToInt32(ViewBag.PageSize),HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]),HideColumns = ViewData["HideColumns"], ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)}))','@User.JavaScriptEncodedName')" data-original-title="Refresh Grid" data-placement="top" style="padding:3px 5px; border:1px solid #ccc" alt="Refresh Grid" title="Refresh Grid">
+                                    <span class="fa fa-refresh"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+            
+}
+			 <div style="clear:both"></div>
+            
+	@Html.Partial("~/Views/T_CardLvPlan/ShowHideColumns.cshtml") 
+    <div id="Des_Table" class="table-responsive" style="overflow-x:auto; margin-top:3px">
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <thead>
+                <tr>
+
+	 <th class="col0" style="width:20px;" scope="col">
+		<input type="checkbox" class="tip-top" data-placement="top" data-original-title="Select All" onclick="SelectAllRows(this);" />
+        @Html.Hidden("SelectedItems")
+	</th>
+
+					<th  scope="col" class="col1" style="width:42px;" alt="Actions" title="Actions">Actions</th>
+@if(User.CanView("T_CardLvPlan","T_Name") )
+{	
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_Name");
+			<th scope="col" class="col2">
+			@Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "T_CardLvPlan",getSortHtmlAttributes("T_Name", false, null, false),new {  @onclick = "SortLinkClick(event,'T_CardLvPlan');" }) 
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_Name")
+                {<i class="fa fa-sort-desc"></i>}
+                @if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_Name")
+                {<i class="fa fa-sort-asc"></i>}
+			</th>
+}
+@if(User.CanView("T_CardLvPlan","T_Description") )
+{	
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_Description");
+			<th scope="col" class="col3">
+			@Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "T_CardLvPlan",getSortHtmlAttributes("T_Description", false, null, false),new {  @onclick = "SortLinkClick(event,'T_CardLvPlan');" }) 
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_Description")
+                {<i class="fa fa-sort-desc"></i>}
+                @if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_Description")
+                {<i class="fa fa-sort-asc"></i>}
+			</th>
+}
+   </tr>
+</thead>
+    
+@{ bool isFirst = true; var oldKey = string.Empty; }
+                                @foreach (var item in Model)
+                                {
+                                    if (ViewBag.IsGroupBy != null && Convert.ToBoolean(ViewBag.IsGroupBy))
+                                    {
+                                        var groupKey = item.m_DisplayValue;
+                                        if (oldKey != groupKey)
+                                        {
+                                            isFirst = true;
+                                            oldKey = item.m_DisplayValue;
+                                        }
+                                        if (isFirst || (string.IsNullOrEmpty(oldKey)))
+                                        {
+                                            isFirst = false;
+											//var groupCnt = Model.Where(grp => grp.m_DisplayValue == groupKey).Count();
+                                            string groupString = string.Empty;
+                                            //if (groupCnt > 1)
+                                            //{
+                                              //  groupString = "(" + groupCnt + " Records)";
+                                            //}
+                                            //else
+                                            //{
+                                             //   groupString = "(" + groupCnt + " Record)";
+                                            //}
+                                            <tr>
+                                                <td colspan="4" style="background: #EDF5FA; font-weight:bold"> @groupKey @groupString</td>
+                                            </tr>
+                                        }
+                                    }
+      <tr scope="row" ondblclick="DoubleClickRow(@item.Id,'@Url.Action(User.CanEdit("T_CardLvPlan") ? "Edit" : "Details", "T_CardLvPlan", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)');">
+	
+	 <td>
+			 <input type="checkbox" id="@item.Id" onclick="SelectForBulkOperation(this,'@item.Id');" />
+	</td>
+	
+		   <td>
+	   <div style="width:42px; margin-top:-2px;">
+		<div class="btn-group" style="position:absolute;">
+
+		@if (User.CanEdit("T_CardLvPlan"))
+        {
+				
+            <a href="@Url.Action("Edit","T_CardLvPlan", new { id = item.Id,  UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) },null)" class="btn btn-xs dropdown-toggle btn-primary2" alt="Edit" title="Edit"> 
+			<i class="fa fa-pencil"></i>  </a>
+               
+		}
+		@if (!User.CanEdit("T_CardLvPlan"))
+        {
+            <a href="@Url.Action("Details", "T_CardLvPlan", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), viewtype = Convert.ToString(ViewBag.TemplatesName) }, null)" class="btn btn-xs dropdown-toggle btn-primary2" >
+                <i class="glyphicon glyphicon-eye-open"></i>
+            </a>
+        }
+
+                                                <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-default" style="padding-left:6px; padding-right:6px" alt="More Options" title="More Options">
+                                                <i class="fa fa-caret-down"></i>
+                                            </a>
+			<ul class="dropdown-menu pull-left">
+			@if (!User.CanEdit("T_CardLvPlan"))
+                    {
+						<li>
+                    <a href="@Url.Action("Details", "T_CardLvPlan", new { id = item.Id, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"])  }, null)" alt="View" title="View"><i class="glyphicon glyphicon-eye-open"></i>  View</a>
+                </li>
+}
+				@if (User.CanEdit("T_CardLvPlan"))
+                {
+				<li>
+                        <a href="@Url.Action("Edit","T_CardLvPlan", new { id = item.Id,  UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    
+                </li>             
+				}
+			@if (User.CanDelete("T_CardLvPlan"))
+                 {
+				 <li class="divider" style="clear:both"></li>
+				<li>
+                    <a href="@Url.Action("Delete", "T_CardLvPlan", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) }, null)"><i class="glyphicon glyphicon-remove-sign" style="color: #E7574B;"></i> Delete</a>
+                </li>
+				}
+	<li class="divider" style="clear:both"></li>
+	<li class="dropdown-submenu" id="AddAssociationdropmenuT_CardLvPlan_@item.Id">
+	 @{ var dropmenu = false; }
+	<a tabindex="-1" href="#"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu pull-left">
+</ul>
+</li>
+@if(!dropmenu)
+{
+    <script>
+        $("#AddAssociationdropmenuT_CardLvPlan_@item.Id").hide();
+    </script>
+}
+			</ul>
+		</div>
+		</div>
+	</td>
+	@if(User.CanView("T_CardLvPlan","T_Name"))
+{
+		<td >
+            @Html.DisplayFor(modelItem => item.T_Name)
+        </td>
+}
+@if(User.CanView("T_CardLvPlan","T_Description"))
+{
+		<td >
+            @Html.DisplayFor(modelItem => item.T_Description)
+        </td>
+}
+
+                                </tr>
+                            }
+                    </table>
+                </div>
+				 <ul id="Mob_List" class="list-group">
+                    @foreach (var item in Model)
+                    {
+                        <li class="list-group-item">
+@if(User.CanView("T_CardLvPlan","T_Name"))
+{
+		<p><span class="text-primary"> Name </span> : <span>
+            @Html.DisplayFor(modelItem => item.T_Name)
+         </span> </p>	
+		 }
+@if(User.CanView("T_CardLvPlan","T_Description"))
+{
+		<p><span class="text-primary"> Description </span> : <span>
+            @Html.DisplayFor(modelItem => item.T_Description)
+         </span> </p>	
+		 }
+<span class="label label-primary text-linkwhite"> 
+@Html.ActionLink("View", "Details","T_CardLvPlan", new { id = item.Id },null)
+</span>
+<span class="label label-warning text-linkwhite"> 
+@if (User.CanEdit("T_CardLvPlan"))
+				 {
+					@Html.ActionLink("Edit", "Edit","T_CardLvPlan", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)  
+				 }
+				 </span>
+				<span class="label label-danger text-linkwhite"> 
+				@if (User.CanDelete("T_CardLvPlan"))
+				 {
+					@Html.ActionLink("Delete", "Delete", "T_CardLvPlan", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)    
+				 }
+				 </span>
+				   </li>
+                    }
+                </ul>
+  			   @if (Model.Count > 0)
+                {
+                    <div id="pagination" class="MyPagination1">
+                        @Html.PagedListPager(Model, page => Url.Action(ActionNameUrl, "T_CardLvPlan", getSortHtmlAttributes(null, true, page, false)))
+                        <div class="fixPageSize">
+                            Page Size :
+                            @Html.DropDownList("PageSize", new SelectList(new Dictionary<string, int> { { "10", 10 }, { "20", 20 }, { "50", 50 }, { "100", 100 } }, "Key", "Value")
+							, new { @id = "pagesizelistT_CardLvPlan",
+							 @onchange = @Html.Raw("pagesizelistChange(event,'T_CardLvPlan','"
+							 + @User.JavaScriptEncodedName + "')"),
+							 @Url = Html.Raw(@Url.Action(ActionNameUrl, "T_CardLvPlan",
+							 getSortHtmlAttributes(ViewBag.CurrentSort, ViewBag.Pages == 1 ? false : true,
+							 null, false), null)) })
+							<span style="text-align:right;"> Total Count: @(Model.TotalItemCount)</span>
+							<script>
+                                    $(document).ready(function () {
+                                        $.validator.setDefaults({
+                                            ignore: "#pagesizelistT_CardLvPlan"
+                                        })
+                                    }); 
+                                </script>
+                        </div>
+                    </div>
+                }
+				@Html.DropDownList("EntityT_CardLvPlanDisplayValue", null,null, new { @Style = "display:none;" })
+            
+        </div>
+    </div> 
+ </div>
+</div>
+
+

@@ -1,0 +1,341 @@
+﻿@model GeneratorBase.MVC.Models.T_DrugAlcoholTest
+@using PagedList;
+@{
+    ViewBag.Title = "View Drug & Alcohol Test";
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_DrugAlcoholTest");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Drug & Alcohol Test";
+}
+<script>
+    $(document).ready(function () {
+			 if ($.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') != null) {
+				$('a[href="#' + $.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') + '"]').click();
+			 }
+    });
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_DrugAlcoholTestIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_DrugAlcoholTestIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_DrugAlcoholTestIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_DrugAlcoholTestIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_DrugAlcoholTestIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_DrugAlcoholTestIsSetValueUIRule);
+    }
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-hand-down text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span>View</span>
+        </h1>
+        <h2 class="text-primary"><span id="HostingEntityDisplayValue">@Html.DisplayFor(model => model.DisplayValue)</span>
+			<div class="btn-group pull-right fixactionbut">
+            <button data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-default pull-right">
+                Action
+                <span class="caret">    </span>
+            </button>
+			<ul class="dropdown-menu pull-left">               
+				<li>
+                    @if ( User.CanEdit("T_DrugAlcoholTest"))
+                    {
+                        <a href="@Url.Action("Edit","T_DrugAlcoholTest", new { id = Model.Id,  UrlReferrer = Request.Url, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    }
+                </li>             
+				<li>
+                    @if ( User.CanDelete("T_DrugAlcoholTest"))
+                    {
+                        <a href="@Url.Action("Delete", "T_DrugAlcoholTest", new { id = Model.Id, UrlReferrer = Request.Url, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Delete</a>
+                    }
+                </li>
+	<li class="divider" style="clear:both"></li>
+	<li class="dropdown-submenu pull-left">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu pull-left">
+				@if ( User.CanAdd("T_Comment"))
+				{
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Comment", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_DrugAlcoholTestComments", 
+							HostingEntityName = "T_DrugAlcoholTest",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Comment
+						</a>
+					</li>
+				}
+			</ul>
+</li>
+ <li class="divider" style="clear:both"></li>
+ <li class="dropdown-submenu pull-left">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;">Find Matching</a>
+    <ul class="dropdown-menu pull-left">
+<li>
+		<a href="@Url.Action("FindFSearch", "FileDocument", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Document</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Licenses", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Licenses</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_ServiceRecord", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Service Record</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Comment", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Comment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_UnitX", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">UnitX</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_JobAssignment", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Job Assignment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_LeaveProfile", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Leave</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_EmployeeInjury", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Employee Injury</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_BackgroundCheck", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Background Check</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Education", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Education</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Accommodation", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Accommodation</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_PayDetails", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Pay Details </a>
+</li>
+</ul>
+</li>
+			</ul>
+</div>
+		
+		<a href="#" class="btn btn-default btn-xs closeall pull-right"><i class="glyphicon glyphicon-chevron-up"></i> Collapse All</a> <a href="#" class="btn btn-default btn-xs openall pull-right" style="margin-right:5px;"><i class="glyphicon glyphicon-chevron-down"></i> Expand All</a>
+		</h2>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+	 <li class="active"><a href="#Details" onclick="ClearTabCookie('@User.JavaScriptEncodedName@Model.Id');" data-toggle="tab">Details</a></li>
+		 <li @(!User.CanView("T_Comment")?"style=display:none;":"")><a onclick="LoadTab('T_DrugAlcoholTestComments','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_Comment", new {RenderPartial=true, HostingEntity ="T_DrugAlcoholTest", HostingEntityID = @Model.Id, AssociatedType = "T_DrugAlcoholTestComments",TabToken = DateTime.Now.Ticks,}))')" href="#T_DrugAlcoholTestComments" data-toggle="tab">
+		 Comment
+		 <span class="badge bg-blue"><div id="dvcnt_T_DrugAlcoholTestComments">@ViewBag.T_DrugAlcoholTestCommentsCount</div></span>
+		 		 </a></li>
+		 <li @(!User.CanView("JournalEntry")?"style=display:none;":"")><a onclick="LoadTab('JournalEntryToT_DrugAlcoholTestRelation','@User.JavaScriptEncodedName@Model.Id','@Url.Action("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_DrugAlcoholTest", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry", TabToken = DateTime.Now.Ticks })')" href="#JournalEntryToT_DrugAlcoholTestRelation" data-toggle="tab">Drug & Alcohol Test Journal</a></li>
+    </ul>
+	    <div class="tab-content">
+		   <div class="tab-pane fade in active" id="Details">
+				 <div class="panel panel-default AppForm">
+					<div class="panel-body">
+                                  
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-xs-12">
+			<div class="panel panel-default" id="dvGroup48904">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+											
+									<h3 class="panel-title">Employee Information</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_DrugAlcoholTest","T_EmployeeDrugAlcoholTestID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeDrugAlcoholTest">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EmployeeDrugAlcoholTestID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_employeedrugalcoholtest!=null && !string.IsNullOrEmpty(Model.t_employeedrugalcoholtest.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_employeedrugalcoholtest.DisplayValue).ToString(), "Details", "T_Employee", new { Id = Html.DisplayFor(model => model.t_employeedrugalcoholtest.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+			<div class="panel panel-default" id="dvGroup48905">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#drug & alcohol test informationbody"><span class="glyphicon glyphicon-chevron-down"></span> Drug & Alcohol Test Information</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="drug & alcohol test informationbody">					
+@if(User.CanView("T_DrugAlcoholTest","T_TypeOfTestID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TypeOfTest">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_TypeOfTestID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_typeoftest!=null && !string.IsNullOrEmpty(Model.t_typeoftest.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_typeoftest.DisplayValue).ToString(), "Details", "T_TestType", new { Id = Html.DisplayFor(model => model.t_typeoftest.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_TestReasonID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TestReason">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_TestReasonID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_testreason!=null && !string.IsNullOrEmpty(Model.t_testreason.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_testreason.DisplayValue).ToString(), "Details", "T_ReasonForDrugTest", new { Id = Html.DisplayFor(model => model.t_testreason.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_DateOrdered"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DateOrdered">
+	<div class='form-group' title="Date  Of  Test">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_DateOrdered) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_DateOrdered)</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_ReviewersInitials"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ReviewersInitials">
+	<div class='form-group' title="Administered  By">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_ReviewersInitials) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@Model.T_ReviewersInitials</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_DrugTestResultsID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DrugTestResults">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_DrugTestResultsID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_drugtestresults!=null && !string.IsNullOrEmpty(Model.t_drugtestresults.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_drugtestresults.DisplayValue).ToString(), "Details", "T_DrugTestResult", new { Id = Html.DisplayFor(model => model.t_drugtestresults.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_ResultsReceivedDate"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ResultsReceivedDate">
+	<div class='form-group' title="Results  Received  Date">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_ResultsReceivedDate) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_ResultsReceivedDate)</p>
+					
+					</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+			<div class="panel panel-default" id="dvGroup48906">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#notesbody"><span class="glyphicon glyphicon-chevron-down"></span> Notes</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="notesbody">					
+@if(User.CanView("T_DrugAlcoholTest","T_Notes"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Notes">
+	<div class='form-group' title="Notes">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Notes)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		<p class="viewlabel">@Model.T_Notes</p>
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+				</div>
+			</div>
+		</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					@Html.ActionLink("Back", "Cancel", new { UrlReferrer = Request.UrlReferrer }, new { @class = "btn btn-default btn-sm pull-left formbuttonfix" })
+					 @if ( User.CanEdit("T_DrugAlcoholTest"))
+                     {
+                          @Html.ActionLink("Edit", "Edit", new { id = Model.Id, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, new { @class = "btn btn-primary btn-sm pull-left formbuttonfix" })
+                     }
+				</div>
+			</div>    
+
+<div class="dropdown pull-left formbuttonfix" style="margin-top:-30px; margin-left:102px;">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
+           
+			@if ( User.CanAdd("T_Comment"))
+            {
+				 <li>
+				 <a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Comment",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_DrugAlcoholTestComments", 
+						HostingEntityName = "T_DrugAlcoholTest",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');") style="margin-top:5px;">
+                   Add  Comment</a>
+			</li>
+            }
+			
+
+        </ul>
+
+			</div>
+	</div>    
+<div class="tab-pane fade in" id="T_DrugAlcoholTestComments">
+     @if ( User.CanView("T_Comment"))
+	{
+	  // Html.RenderAction("Index", "T_Comment", new {RenderPartial=true, HostingEntity = "T_DrugAlcoholTest", HostingEntityID = @Model.Id, AssociatedType = "T_DrugAlcoholTestComments" }); 
+	}
+  </div>
+<div class="tab-pane fade in" id="JournalEntryToT_DrugAlcoholTestRelation">
+            @if ( User.CanView("JournalEntry"))
+		   {
+			//	Html.RenderAction("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_DrugAlcoholTest", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry" });
+		   }
+  </div>
+	</div> <!-- /tab-content --><br />
+
+<br/>
+</div>
+ 

@@ -1,0 +1,434 @@
+﻿@model GeneratorBase.MVC.Models.T_UnitX
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_UnitXIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_UnitXIsHiddenRule);
+    }
+}
+@using (Html.BeginForm("CreateWizard", "T_UnitX",new {UrlReferrer = Convert.ToString(ViewData["T_UnitXParentUrl"])}, FormMethod.Post, new { enctype = "multipart/form-data" ,id="frmT_UnitX" }))
+{
+    @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+	 <input type="hidden" id="ErrMsg" />
+                            @*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+                            <div id="divDisplayThresholdLimit" style="display:none;">
+                            </div>
+							<div id="divDisplayBRmsgMandatory" style="display:none;">
+                            </div>
+                            <div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+                            </div>
+							<div id="divDisplayCodeFragment" style="display:none;">
+							</div>
+    <div class="row">
+	<br/>
+	<div id = "wizard">
+	<ol>
+		<li>Basic Details</li>
+		<li>Beds</li>
+		<li>Accounting Codes</li>
+	
+	</ol>
+			<div>
+               <div class="row">         
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default AppForm">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+<!-- T_FacilityUnitX ---- Facility Unit X-->
+<!-- T_UnitXUnitAssociation ---- UnitXUnitAssociation-->
+<!-- T_WardDepartment ---- Ward Department-->
+<!-- T_UnitXDepartmentArea ---- Unit X Department Area-->
+<!-- T_WardOrgCode ---- Ward Org Code-->
+<!-- T_Unit ---- Unit-->
+<!-- T_UnitXFloor ---- UnitX Floor-->
+<!-- T_UnitPhoneNumber ---- Unit Phone Number-->
+<!-- T_MailDistributor ---- Mail Distributor-->
+<!-- T_EmployeeAdministrator ---- EmployeeAdministrator-->
+<!-- T_EmployeeUnitXHead ---- Employee UnitX Head-->
+                                            <h3 class="panel-title">Basic Details</h3>
+                                        </div>
+                                        <div class="panel-body">
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FacilityUnitX">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_FacilityUnitXID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_FacilityUnitXID", null, "-- Select --", new {    @required ="required",     @class = "chosen-select form-control", @HostingName = "T_Facility", @dataurl = Url.Action("GetAllValue", "T_Facility",new { caller = "T_FacilityUnitXID" }) })
+                                @Html.ValidationMessageFor(model => model.T_FacilityUnitXID)
+								@if ( User.CanAdd("T_Facility"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Facility','dvPopup','" + Url.Action("CreateQuick", "T_Facility", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_UnitXUnitAssociation">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_UnitXUnitAssociationID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_UnitXUnitAssociationID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_Unit", @dataurl = Url.Action("GetAllValue", "T_Unit",new { caller = "T_UnitXUnitAssociationID" }) })
+                                @Html.ValidationMessageFor(model => model.T_UnitXUnitAssociationID)
+								@if ( User.CanAdd("T_Unit"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Unit Name','dvPopup','" + Url.Action("CreateQuick", "T_Unit", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WardDepartment">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_WardDepartmentID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_WardDepartmentID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_Department", @dataurl = Url.Action("GetAllValue", "T_Department",new { caller = "T_WardDepartmentID" }) })
+                                @Html.ValidationMessageFor(model => model.T_WardDepartmentID)
+								@if ( User.CanAdd("T_Department"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Department','dvPopup','" + Url.Action("CreateQuick", "T_Department", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_UnitXDepartmentArea">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_UnitXDepartmentAreaID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_UnitXDepartmentAreaID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_DepartmentArea", @dataurl = Url.Action("GetAllValue", "T_DepartmentArea",new { caller = "T_UnitXDepartmentAreaID" }) })
+                                @Html.ValidationMessageFor(model => model.T_UnitXDepartmentAreaID)
+								@if ( User.CanAdd("T_DepartmentArea"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Department Area','dvPopup','" + Url.Action("CreateQuick", "T_DepartmentArea", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WardOrgCode">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_WardOrgCodeID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_WardOrgCodeID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_OrgCodes", @dataurl = Url.Action("GetAllValue", "T_OrgCodes",new { caller = "T_WardOrgCodeID" }) })
+                                @Html.ValidationMessageFor(model => model.T_WardOrgCodeID)
+								@if ( User.CanAdd("T_OrgCodes"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Org Code','dvPopup','" + Url.Action("CreateQuick", "T_OrgCodes", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Unit">
+                                <div class='form-group' title="Unit">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Unit) <span class="text-danger-reg">*</span></label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_Unit, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_Unit)
+									</div>
+                                </div>
+					</div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_UnitXFloor">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_UnitXFloorID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_UnitXFloorID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_Floor", @dataurl = Url.Action("GetAllValue", "T_Floor",new { caller = "T_UnitXFloorID" }) })
+                                @Html.ValidationMessageFor(model => model.T_UnitXFloorID)
+								@if ( User.CanAdd("T_Floor"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Floor','dvPopup','" + Url.Action("CreateQuick", "T_Floor", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_UnitPhoneNumber">
+                                <div class='form-group' title="Unit Phone Number">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_UnitPhoneNumber) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_UnitPhoneNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_UnitPhoneNumber)
+									</div>
+                                </div>
+					</div>
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_MailDistributor">
+                                <div class='form-group' title="Mail  Distributor">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_MailDistributor) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_MailDistributor, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_MailDistributor)
+									</div>
+                                </div>
+					</div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeAdministrator">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_EmployeeAdministratorID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_EmployeeAdministratorID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeAdministratorID" }) })
+                                @Html.ValidationMessageFor(model => model.T_EmployeeAdministratorID)
+								@if ( User.CanAdd("T_Employee"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Administrator','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeUnitXHead">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_EmployeeUnitXHeadID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_EmployeeUnitXHeadID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeUnitXHeadID" }) })
+                                @Html.ValidationMessageFor(model => model.T_EmployeeUnitXHeadID)
+								@if ( User.CanAdd("T_Employee"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Head','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+							</div>
+                         </div>
+                      </div>
+				  </div>
+       </div>
+			<div>
+               <div class="row">         
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default AppForm">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+<!-- T_MaleBeds ---- Male Beds-->
+<!-- T_FemaleBeds ---- Female Beds-->
+<!-- T_TotalBeds ---- Total Beds-->
+                                            <h3 class="panel-title">Beds</h3>
+                                        </div>
+                                        <div class="panel-body">
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_MaleBeds">
+                                <div class='form-group' title="Male  Beds">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_MaleBeds) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_MaleBeds, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_MaleBeds)
+									</div>
+                                </div>
+					</div>
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FemaleBeds">
+                                <div class='form-group' title="Female  Beds">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_FemaleBeds) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_FemaleBeds, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_FemaleBeds)
+									</div>
+                                </div>
+					</div>
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TotalBeds">
+                                <div class='form-group' title="Total  Beds">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_TotalBeds) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_TotalBeds, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_TotalBeds)
+									
+									<div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" onclick="GetCalculationValue(event,'@Url.Action("GetCalculationValues")');">
+											<span class="fam-arrow-refresh"></span>
+                                        </a>
+                                    </div>
+									</div>
+                                </div>
+					</div>
+							</div>
+                         </div>
+                      </div>
+				  </div>
+       </div>
+			<div>
+               <div class="row">         
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default AppForm">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+<!-- T_WardCostCenter ---- Ward Cost Center-->
+<!-- T_Program ---- Program-->
+<!-- T_Fund ---- Fund -->
+                                            <h3 class="panel-title">Accounting Codes</h3>
+                                        </div>
+                                        <div class="panel-body">
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WardCostCenter">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_WardCostCenterID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_WardCostCenterID", null, "-- Select --", new { @derivedurl = Url.Action("GetDerivedDetails", "T_UnitX"),     @onchange = Html.Raw("FillDerivedDetails(this,event);") ,  @class = "chosen-select form-control", @HostingName = "T_CostCenter", @dataurl = Url.Action("GetAllValue", "T_CostCenter",new { caller = "T_WardCostCenterID" }) })
+                                @Html.ValidationMessageFor(model => model.T_WardCostCenterID)
+								@if ( User.CanAdd("T_CostCenter"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Cost Center','dvPopup','" + Url.Action("CreateQuick", "T_CostCenter", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Program">
+                                <div class='form-group' title="Program">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Program) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_Program, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_Program)
+									</div>
+                                </div>
+					</div>
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Fund">
+                                <div class='form-group' title="Fund">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Fund) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_Fund, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_Fund)
+									</div>
+                                </div>
+					</div>
+							</div>
+                         </div>
+                      </div>
+				  </div>
+       </div>
+	</div>
+
+							 @if (ViewBag.IsDDAdd == null && User.CanEdit("T_UnitX"))
+                                {
+                                    <input type="submit" name="command" id="WizardSubmit" style="display:none;" />
+                                }
+                                @Html.ActionLink("C", "Cancel", new { UrlReferrer = ViewData["T_UnitXParentUrl"] }, new { @id = "cancel", @style = "display:none;" })
+                                <input type="hidden" name="hdncommand" value="" />
+          
+				</div>
+			<br/>
+}
+<script>
+    $(document).ready(function () {
+        try {
+             focusOnControl('frmT_UnitX');
+        }
+        catch (ex) { }
+    });
+</script>
+<script>
+	    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+	<script>
+            $("input[type='submit']").click(function (event) {
+	if (!$("#frmT_UnitX").valid()) return;
+
+                var $this = $(this);
+				GetCalculationValue(event,'@Url.Action("GetCalculationValues")');
+                $('input:hidden[name="hdncommand"]').val($this.val());
+            });
+			$(document).ready(function () {
+				DisableTabOnReadonlyProperty("frmT_Donation");
+			});
+	</script>
+@{
+    var businessrule = User.businessrules.Where(p => p.EntityName == "T_UnitX").ToList();
+if ((businessrule != null && businessrule.Count > 0) )
+    {
+        <script>
+            $("form").submit(function (event) {
+			if (!$("#frmT_UnitX").valid()) return;
+				document.getElementById("ErrMsg").innerHTML = "";
+                var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+                
+                
+                //var form = $(this).serialize();
+ form = $("#frmT_UnitX").serialize();
+                dataurl = "@Url.Action("businessruletype", "T_UnitX", new { ruleType = "OnCreate"})";
+                flag = ApplyBusinessRuleOnSubmit(dataurl, "T_UnitX", false, "ErrMsg", form);
+				//business rules on inline associations
+				return flag;
+			 });	
+            $(document).ready(function () {
+                $("input[type='submit']").on('blur', function () {
+                    $("input[type='submit']").removeAttr('disabled');
+                });
+            });
+        </script>
+    }
+    else
+    {
+           
+    }
+}
+  <script type='text/javascript'>$(document).ready(function () {   $('#T_UnitPhoneNumber').mask('999-999-9999');  });</script>   
+
+

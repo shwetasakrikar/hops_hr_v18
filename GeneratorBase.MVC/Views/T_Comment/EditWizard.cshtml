@@ -1,0 +1,828 @@
+﻿@model GeneratorBase.MVC.Models.T_Comment
+@using PagedList;
+@{
+    ViewBag.Title = "Edit Comment";
+	var EditPermission = User.CanEditItem("T_Comment", Model, User);
+	var DeletePermission = User.CanDeleteItem("T_Comment", Model, User);
+}
+@functions {
+    object getHtmlAttributes(string Property)
+    {
+        if (User.CanEdit("T_Comment", Property))
+        {
+            return new { @class = "form-control" };
+        } return new { @class = "form-control", @readonly = "readonly" };
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_CommentIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_CommentIsHiddenRule);
+    }
+}
+@using (Html.BeginForm("EditWizard", "T_Comment", new { UrlReferrer = Convert.ToString(ViewData["T_CommentParentUrl"]) }, FormMethod.Post, new { enctype = "multipart/form-data",@id="frmT_Comment" })) 
+{
+	@Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+    @Html.HiddenFor(model => model.Id)
+	@Html.HiddenFor(model => model.ConcurrencyKey)
+	@*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+    <input type="hidden" id="ErrMsg" />
+    <div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+    </div>
+    <div id="divDisplayBRmsgMandatory" style="display:none;">
+    </div>
+    <div id="divDisplayLockRecord" style="display:none;">
+    </div>
+    <div id="divDisplayBRReadOnly" style="display:none;">
+    </div>
+	<div id="divDisplayCodeFragment" style="display:none;">
+	</div>
+			<div class="row">
+        <br />
+        <div id=wizard>
+			<ol>
+		<li>Basic Details</li>
+		<li>Comments</li>
+		<li>Associated With</li>
+		</ol>
+			<div style="background-color:transparent; padding:0px;">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default AppForm">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Basic Details</h3>
+                            </div>
+                            <div class="panel-body">
+@if(User.CanView("T_Comment","T_WhoandWhen"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WhoandWhen">
+						<div class="form-group" title="Insert Who and  When">
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_WhoandWhenInsertDate) <span class="text-danger-reg">*</span></label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								<div class="col-sm-6 col-md-6 col-xs-12" id="datetimepickerT_WhoandWhen" style="padding-left:0px; padding-right:5px">
+										@Html.TextBoxFor(model => model.T_WhoandWhenInsertDate, "{0:MM/dd/yyyy hh:mm tt}", new { @class = "form-control", @readonly = "readonly" ,@format = "MM/DD/YYYY hh:mm"})
+									 <script>
+										$(function () {
+										$("#T_WhoandWhenInsertDate").datetimepicker({ });
+										});
+									 </script>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-xs-12" style="padding-left:0px; padding-right:0px">
+                                    @Html.TextBox("CurrentInsertBy", User.Name, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+								</div>
+							</div>
+                        </div>
+
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WhoandWhen">
+						<div class="form-group" title="Update Who and  When">
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_WhoandWhen) <span class="text-danger-reg">*</span></label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								<div class="col-sm-6 col-md-6 col-xs-12" id="datetimepickerT_WhoandWhen" style="padding-left:0px; padding-right:5px">
+										@Html.TextBoxFor(model => model.T_WhoandWhen, "{0:MM/dd/yyyy hh:mm tt}", new { @class = "form-control", @readonly = "readonly" ,@format = "MM/DD/YYYY hh:mm"})
+									 <script>
+										$(function () {
+										$("#T_WhoandWhen").datetimepicker({ });
+										});
+									 </script>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-xs-12" style="padding-left:0px; padding-right:0px">
+                                    @Html.TextBox("CurrentUser", User.Name, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+								</div>
+							</div>
+                        </div>
+}
+@if(User.CanView("T_Comment","T_EmployeeCommentsID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmployeeCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_EmployeeCommentsID"))
+		{
+			@Html.DropDownList("T_EmployeeCommentsID", null, "-- Select --", new {     @onchange = Html.Raw("ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EmployeeCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_EmployeeCommentsID", null, "-- Select --", new {     @onchange = Html.Raw("ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_EmployeeCommentsID)
+								 @if ( User.CanAdd("T_Employee"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee ','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_EmployeeCommentsID, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+					</div>
+				</div>
+			<div style="background-color:transparent; padding:0px;">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default AppForm">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Comments</h3>
+                            </div>
+                            <div class="panel-body">
+@if(User.CanView("T_Comment","T_Summary"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Summary">
+							<div class='form-group' title="Notes">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Summary) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								@Html.TextAreaFor(model => model.T_Summary, getHtmlAttributes("T_Summary"))
+									@Html.ValidationMessageFor(model => model.T_Summary)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_Summary, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+					</div>
+				</div>
+			<div style="background-color:transparent; padding:0px;">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default AppForm">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Associated With</h3>
+                            </div>
+                            <div class="panel-body">
+@if(User.CanView("T_Comment","T_AccommodationCommentsID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_AccommodationCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_AccommodationCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_AccommodationCommentsID"))
+		{
+			@Html.DropDownList("T_AccommodationCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeAccomodationID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @HostingName = "T_Accommodation", @dataurl = Url.Action("GetAllValue", "T_Accommodation",new { caller = "T_AccommodationCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_AccommodationCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_AccommodationCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeAccomodationID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Accommodation", @dataurl = Url.Action("GetAllValue", "T_Accommodation",new { caller = "T_AccommodationCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_AccommodationCommentsID)
+								 @if ( User.CanAdd("T_Accommodation"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Accommodation','dvPopup','" + Url.Action("CreateQuick", "T_Accommodation", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_Accommodation"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_Accommodation" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_Accommodation" target="_blank" href="@Url.Action("Details", "T_Accommodation", new { Id = Html.DisplayFor(model => model.t_accommodationcomments.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_accommodationcomments == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Accommodation").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Accommodation").attr("title", '@Model.t_accommodationcomments.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_AccommodationCommentsID, new { @class = "form-control" })}
+@if(User.CanView("T_Comment","T_DrugAlcoholTestCommentsID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DrugAlcoholTestCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_DrugAlcoholTestCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_DrugAlcoholTestCommentsID"))
+		{
+			@Html.DropDownList("T_DrugAlcoholTestCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeDrugAlcoholTestID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @HostingName = "T_DrugAlcoholTest", @dataurl = Url.Action("GetAllValue", "T_DrugAlcoholTest",new { caller = "T_DrugAlcoholTestCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_DrugAlcoholTestCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_DrugAlcoholTestCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeDrugAlcoholTestID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_DrugAlcoholTest", @dataurl = Url.Action("GetAllValue", "T_DrugAlcoholTest",new { caller = "T_DrugAlcoholTestCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_DrugAlcoholTestCommentsID)
+								 @if ( User.CanAdd("T_DrugAlcoholTest"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Drug & Alcohol Test','dvPopup','" + Url.Action("CreateQuick", "T_DrugAlcoholTest", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_DrugAlcoholTest"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_DrugAlcoholTest" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_DrugAlcoholTest" target="_blank" href="@Url.Action("Details", "T_DrugAlcoholTest", new { Id = Html.DisplayFor(model => model.t_drugalcoholtestcomments.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_drugalcoholtestcomments == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_DrugAlcoholTest").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_DrugAlcoholTest").attr("title", '@Model.t_drugalcoholtestcomments.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_DrugAlcoholTestCommentsID, new { @class = "form-control" })}
+@if(User.CanView("T_Comment","T_EducationCommentsID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EducationCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EducationCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_EducationCommentsID"))
+		{
+			@Html.DropDownList("T_EducationCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeEducationID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @HostingName = "T_Education", @dataurl = Url.Action("GetAllValue", "T_Education",new { caller = "T_EducationCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EducationCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_EducationCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeEducationID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Education", @dataurl = Url.Action("GetAllValue", "T_Education",new { caller = "T_EducationCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_EducationCommentsID)
+								 @if ( User.CanAdd("T_Education"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Education','dvPopup','" + Url.Action("CreateQuick", "T_Education", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_Education"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_Education" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_Education" target="_blank" href="@Url.Action("Details", "T_Education", new { Id = Html.DisplayFor(model => model.t_educationcomments.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_educationcomments == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Education").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Education").attr("title", '@Model.t_educationcomments.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_EducationCommentsID, new { @class = "form-control" })}
+@if(User.CanView("T_Comment","T_InjuryCommentsID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_InjuryCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_InjuryCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_InjuryCommentsID"))
+		{
+			@Html.DropDownList("T_InjuryCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeEmployeeInjuryID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @HostingName = "T_EmployeeInjury", @dataurl = Url.Action("GetAllValue", "T_EmployeeInjury",new { caller = "T_InjuryCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_InjuryCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_InjuryCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeEmployeeInjuryID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_EmployeeInjury", @dataurl = Url.Action("GetAllValue", "T_EmployeeInjury",new { caller = "T_InjuryCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_InjuryCommentsID)
+								 @if ( User.CanAdd("T_EmployeeInjury"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee Injury','dvPopup','" + Url.Action("CreateQuick", "T_EmployeeInjury", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_EmployeeInjury"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_EmployeeInjury" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_EmployeeInjury" target="_blank" href="@Url.Action("Details", "T_EmployeeInjury", new { Id = Html.DisplayFor(model => model.t_injurycomments.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_injurycomments == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_EmployeeInjury").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_EmployeeInjury").attr("title", '@Model.t_injurycomments.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_InjuryCommentsID, new { @class = "form-control" })}
+@if(User.CanView("T_Comment","T_JobAssignmentCommentsID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_JobAssignmentCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_JobAssignmentCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_JobAssignmentCommentsID"))
+		{
+			@Html.DropDownList("T_JobAssignmentCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeJobAssignmentID?T_JobAssignmentManagerEmployeeID?T_EmployeeSupervisorID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @HostingName = "T_JobAssignment", @dataurl = Url.Action("GetAllValue", "T_JobAssignment",new { caller = "T_JobAssignmentCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_JobAssignmentCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_JobAssignmentCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeJobAssignmentID?T_JobAssignmentManagerEmployeeID?T_EmployeeSupervisorID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_JobAssignment", @dataurl = Url.Action("GetAllValue", "T_JobAssignment",new { caller = "T_JobAssignmentCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_JobAssignmentCommentsID)
+								 @if ( User.CanAdd("T_JobAssignment"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Job Assignment','dvPopup','" + Url.Action("CreateQuick", "T_JobAssignment", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_JobAssignment"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_JobAssignment" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_JobAssignment" target="_blank" href="@Url.Action("Details", "T_JobAssignment", new { Id = Html.DisplayFor(model => model.t_jobassignmentcomments.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_jobassignmentcomments == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_JobAssignment").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_JobAssignment").attr("title", '@Model.t_jobassignmentcomments.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_JobAssignmentCommentsID, new { @class = "form-control" })}
+@if(User.CanView("T_Comment","T_LeaveCommentsID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_LeaveCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_LeaveCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_LeaveCommentsID"))
+		{
+			@Html.DropDownList("T_LeaveCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeLeaveProfileID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @HostingName = "T_LeaveProfile", @dataurl = Url.Action("GetAllValue", "T_LeaveProfile",new { caller = "T_LeaveCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_LeaveCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_LeaveCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeLeaveProfileID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_LeaveProfile", @dataurl = Url.Action("GetAllValue", "T_LeaveProfile",new { caller = "T_LeaveCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_LeaveCommentsID)
+								 @if ( User.CanAdd("T_LeaveProfile"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Leave','dvPopup','" + Url.Action("CreateQuick", "T_LeaveProfile", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_LeaveProfile"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_LeaveProfile" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_LeaveProfile" target="_blank" href="@Url.Action("Details", "T_LeaveProfile", new { Id = Html.DisplayFor(model => model.t_leavecomments.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_leavecomments == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_LeaveProfile").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_LeaveProfile").attr("title", '@Model.t_leavecomments.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_LeaveCommentsID, new { @class = "form-control" })}
+@if(User.CanView("T_Comment","T_LicensesCommentsID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_LicensesCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_LicensesCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_LicensesCommentsID"))
+		{
+			@Html.DropDownList("T_LicensesCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_LicenseRecordsID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @HostingName = "T_Licenses", @dataurl = Url.Action("GetAllValue", "T_Licenses",new { caller = "T_LicensesCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_LicensesCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_LicensesCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_LicenseRecordsID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Licenses", @dataurl = Url.Action("GetAllValue", "T_Licenses",new { caller = "T_LicensesCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_LicensesCommentsID)
+								 @if ( User.CanAdd("T_Licenses"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Licenses','dvPopup','" + Url.Action("CreateQuick", "T_Licenses", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_Licenses"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_Licenses" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_Licenses" target="_blank" href="@Url.Action("Details", "T_Licenses", new { Id = Html.DisplayFor(model => model.t_licensescomments.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_licensescomments == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Licenses").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Licenses").attr("title", '@Model.t_licensescomments.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_LicensesCommentsID, new { @class = "form-control" })}
+@if(User.CanView("T_Comment","T_SalaryCommentsID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_SalaryCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_SalaryCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_SalaryCommentsID"))
+		{
+			@Html.DropDownList("T_SalaryCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeePayDetailsID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @HostingName = "T_PayDetails", @dataurl = Url.Action("GetAllValue", "T_PayDetails",new { caller = "T_SalaryCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_SalaryCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_SalaryCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeePayDetailsID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_PayDetails", @dataurl = Url.Action("GetAllValue", "T_PayDetails",new { caller = "T_SalaryCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_SalaryCommentsID)
+								 @if ( User.CanAdd("T_PayDetails"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Pay Details ','dvPopup','" + Url.Action("CreateQuick", "T_PayDetails", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_PayDetails"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_PayDetails" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_PayDetails" target="_blank" href="@Url.Action("Details", "T_PayDetails", new { Id = Html.DisplayFor(model => model.t_salarycomments.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_salarycomments == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_PayDetails").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_PayDetails").attr("title", '@Model.t_salarycomments.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_SalaryCommentsID, new { @class = "form-control" })}
+@if(User.CanView("T_Comment","T_PreemploymentCommentsID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PreemploymentCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_PreemploymentCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_PreemploymentCommentsID"))
+		{
+			@Html.DropDownList("T_PreemploymentCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeCriminalBackgroundCheckID?T_ReviewerID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @HostingName = "T_BackgroundCheck", @dataurl = Url.Action("GetAllValue", "T_BackgroundCheck",new { caller = "T_PreemploymentCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_PreemploymentCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_PreemploymentCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeCriminalBackgroundCheckID?T_ReviewerID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_BackgroundCheck", @dataurl = Url.Action("GetAllValue", "T_BackgroundCheck",new { caller = "T_PreemploymentCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_PreemploymentCommentsID)
+								 @if ( User.CanAdd("T_BackgroundCheck"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Pre Employment Checks','dvPopup','" + Url.Action("CreateQuick", "T_BackgroundCheck", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_BackgroundCheck"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_BackgroundCheck" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_BackgroundCheck" target="_blank" href="@Url.Action("Details", "T_BackgroundCheck", new { Id = Html.DisplayFor(model => model.t_preemploymentcomments.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_preemploymentcomments == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_BackgroundCheck").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_BackgroundCheck").attr("title", '@Model.t_preemploymentcomments.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_PreemploymentCommentsID, new { @class = "form-control" })}
+@if(User.CanView("T_Comment","T_ServiceRecordCommentsID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ServiceRecordCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_ServiceRecordCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_ServiceRecordCommentsID"))
+		{
+			@Html.DropDownList("T_ServiceRecordCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeEmploymentProfileID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');") ,  @class = "chosen-select form-control", @HostingName = "T_ServiceRecord", @dataurl = Url.Action("GetAllValue", "T_ServiceRecord",new { caller = "T_ServiceRecordCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_ServiceRecordCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_ServiceRecordCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeEmploymentProfileID" ,  @onchange = Html.Raw("ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_EmployeeCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');") ,  @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_ServiceRecord", @dataurl = Url.Action("GetAllValue", "T_ServiceRecord",new { caller = "T_ServiceRecordCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_ServiceRecordCommentsID)
+								 @if ( User.CanAdd("T_ServiceRecord"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Service Record','dvPopup','" + Url.Action("CreateQuick", "T_ServiceRecord", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_ServiceRecord"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_ServiceRecord" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_ServiceRecord" target="_blank" href="@Url.Action("Details", "T_ServiceRecord", new { Id = Html.DisplayFor(model => model.t_servicerecordcomments.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_servicerecordcomments == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_ServiceRecord").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_ServiceRecord").attr("title", '@Model.t_servicerecordcomments.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_ServiceRecordCommentsID, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+					</div>
+				</div>
+</div>
+   @Html.ActionLink("C", "Cancel", new { UrlReferrer = ViewData["T_CommentParentUrl"] }, new { @id = "cancel", @style = "display:none;" })
+        @if (EditPermission)
+        {
+            <input type="submit"  name="command" id="WizardSubmit" style="display:none;" />
+        }
+        <input type="hidden" name="hdncommand" value="" />
+    </div>
+ <br />
+}
+<script>
+    $(document).ready(function () {
+        try {
+            focusOnControl('frmT_Comment');
+        }
+        catch (ex) { }
+    });
+</script>
+ <script>
+
+   
+    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+<script>
+	$("input[type='submit']").click(function (event) {
+	if (!$("#frmT_Comment").valid()) return;
+	var $this = $(this);
+		$('input:hidden[name="hdncommand"]').val($this.val());
+	});
+	$(document).ready(function () {
+		DisableTabOnReadonlyProperty("frmT_Donation");
+	});
+</script>
+@{
+var businessrule = User.businessrules.Where(p => p.EntityName == "T_Comment").ToList();
+
+if ((businessrule != null && businessrule.Count > 0) )
+{
+var ruleids = businessrule.Select(q => q.Id).ToList();
+var typelist  = string.Join(",", (new GeneratorBase.MVC.Models.RuleActionContext()).RuleActions.Where(p => ruleids.Contains(p.RuleActionID.Value) && p.associatedactiontype.TypeNo.HasValue).Select(p => p.associatedactiontype.TypeNo.Value).Distinct().ToList());
+
+    <script>
+		$(document).ready(function () {
+				document.getElementById("ErrMsg").innerHTML = "";
+				var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+
+				 form = $("#frmT_Comment").serialize();
+				dataurl = "@Url.Action("businessruletype", "T_Comment", new { ruleType = "OnEdit"})";
+                ApplyBusinessRuleOnPageLoad("@typelist", dataurl, "T_Comment", false, "ErrMsg", form);
+				//business rules on inline associations
+
+    });
+</script>
+<script>
+    $("form").submit(function (event) {
+	if (!$("#frmT_Comment").valid()) return;
+			document.getElementById("ErrMsg").innerHTML = "";
+            var flag = true;
+            var dataurl = "";
+            var form = "";
+            var inlinecount = "0";
+			 form = $("#frmT_Comment").serialize();
+   
+				 dataurl = "@Url.Action("businessruletype", "T_Comment", new { ruleType = "OnEdit"})";
+                 flag = ApplyBusinessRuleOnSubmit(dataurl, "T_Comment", false, "ErrMsg", form);
+
+  				 //business rules on inline associations
+               
+			 if (flag)
+                    $("form").find(':input').removeAttr('disabled');
+            return flag;
+		});
+		 $(document).ready(function () {
+                $("input[type='submit']").on('blur', function () {
+                    $("input[type='submit']").removeAttr('disabled');
+                });
+               
+            });
+</script>
+}
+ 
+}
+
+

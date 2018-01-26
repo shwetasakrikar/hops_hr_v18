@@ -1,0 +1,356 @@
+﻿@model GeneratorBase.MVC.Models.T_OrgCodes
+@using PagedList;
+@{
+    ViewBag.Title = "Edit Org Codes";
+	var EditPermission = User.CanEditItem("T_OrgCodes", Model, User);
+	var DeletePermission = User.CanDeleteItem("T_OrgCodes", Model, User);
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_OrgCodes");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Org Codes";
+}
+@functions {
+    object getHtmlAttributes(string Property)
+    {
+        if (User.CanEdit("T_OrgCodes", Property))
+        {
+            return new { @class = "form-control" };
+        } return new { @class = "form-control", @readonly = "readonly" };
+    }
+}
+<script>
+    $(document).ready(function () {
+        try {
+            var hostingEntityName = "";
+             if ('@Convert.ToString(ViewData["AssociatedType"])'.length > 0) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+				$('#' + hostingEntityName + 'ID').attr("lock","true");
+				// $('#' + hostingEntityName + 'ID').trigger("change");
+				  $("input[type='radio'][name='" + hostingEntityName + "ID']").each(function () {
+                    if (!this.checked)
+                        this.closest("li").style.display = "none";
+                });
+            }
+			if ($.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') != null) {
+				$('a[href="#' + $.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') + '"]').click();
+			}
+			 
+        }
+        catch (ex) { }
+    });
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_OrgCodesIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_OrgCodesIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_OrgCodesIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_OrgCodesIsGroupsHiddenRule);
+    }
+}
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_OrgCodesIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_OrgCodesIsSetValueUIRule);
+    }
+}
+	<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title" >
+            <i class="glyphicon glyphicon-edit text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span>Edit</span>
+
+			   <div class="btn-group pull-right" style="margin-top:3px;">
+			  
+
+
+            <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle" alt="Action" title="Action">
+                Action
+                <span class="caret" style="margin-bottom:2px">    </span>
+            </a>
+			<ul class="dropdown-menu pull-left">
+			
+				<li>
+                    @if (EditPermission)
+                    {
+                        <a href="@Url.Action("Edit","T_OrgCodes", new { id = Model.Id,  UrlReferrer = Request.UrlReferrer, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    }
+                </li>             
+				<li>
+                    @if (EditPermission && User.CanDelete("T_OrgCodes"))
+                    {
+                        <a href="@Url.Action("Delete", "T_OrgCodes", new {UrlReferrer = Request.UrlReferrer, id = Model.Id, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Delete</a>
+                    }
+                </li>
+	<li class="divider" style="clear:both"></li>
+	<li class="dropdown-submenu pull-left" id="AddAssociationdropmenuT_OrgCodes">
+	 @{ var dropmenu = false; }
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu pull-left">
+				@if (User.CanAdd("T_UnitX"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_UnitX", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_WardOrgCode", 
+							HostingEntityName = "T_OrgCodes",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Ward
+						</a>
+					</li>
+				}
+			</ul>
+</li>
+@if(!dropmenu)
+{
+    <script>
+        $("#AddAssociationdropmenuT_OrgCodes").hide();
+    </script>
+}
+			</ul>
+		</div>
+
+        </h1>
+
+     <h2 class="text-primary" style="padding:0px 5px 15px 0px">
+	  <span id="HostingEntityDisplayValue" class="EntityDisplayName" title="@Html.DisplayFor(model => model.DisplayValue)">@Html.DisplayFor(model => model.DisplayValue)</span>
+			@if (EditPermission)
+			{	
+				<div class="pull-right" style="margin-top:-3px">
+					<button class="btn btn-default btn-xs pull-right" id="nextEdit" onclick="@Html.Raw("nextFunEdit('T_OrgCodes',event,'hdnNextPrevId')")" alt="Next" title="Next">Next >></button>
+					@Html.DropDownList("EntityT_OrgCodesDisplayValueEdit", null, null, new { @onchange = "FillDisplayValueEditPage('T_OrgCodes','frmT_OrgCodes','" + Model.Id + "',event)", @class = "pull-right", @Style = "height: 22px;width: 170px; font-size:12px; color:#333;" })
+					<button class="btn btn-default btn-xs pull-right" id="prevEdit" onclick="@Html.Raw("prevFunEdit('T_OrgCodes',event,'hdnNextPrevId')")" alt="Prev" title="Prev"><< Prev</button>
+				</div>
+			}
+	 </h2>
+		
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<input type="hidden" id="ErrMsg" />
+<div id="errorContainerEdit" style="display: none">
+            <div id="errorsMsgEdit"></div>
+            <div id="errorsEdit"></div>
+        </div>
+
+<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+</div>
+<div id="divDisplayBRmsgMandatory" style="display:none;">
+</div>
+<div id="divDisplayLockRecord" style="display:none;">
+</div>
+<div id="divDisplayBRReadOnly" style="display:none;">
+</div>
+<div id="divDisplayCodeFragment" style="display:none;">
+</div>
+ <div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+	 <li class="active"><a href="#Details" onclick="ClearTabCookie('@User.JavaScriptEncodedName@Model.Id');" data-toggle="tab" alt="Details" title="Details">Details</a></li>
+		 <li @(!User.CanView("T_UnitX") ?"style=display:none;":"")>
+			<a onclick="LoadTab('T_WardOrgCode','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_UnitX", new {RenderPartial=true, HostingEntity ="T_OrgCodes", HostingEntityID = @Model.Id, AssociatedType = "T_WardOrgCode",TabToken = DateTime.Now.Ticks,}))')" href="#T_WardOrgCode" data-toggle="tab" alt="Ward" title="Ward">Ward
+		 <span class="badge bg-blue"><div id="dvcnt_T_WardOrgCode">@ViewBag.T_WardOrgCodeCount</div></span>
+		 </a></li>
+		 <li @(!User.CanView("JournalEntry")?"style=display:none;":"")><a onclick="LoadTab('JournalEntryToT_OrgCodesRelation','@User.JavaScriptEncodedName@Model.Id','@Url.Action("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_OrgCodes", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry", TabToken = DateTime.Now.Ticks })')" href="#JournalEntryToT_OrgCodesRelation" data-toggle="tab" alt="Org Codes Journal" title="Org Codes Journal">
+		 Org Codes Journal
+		 </a></li>
+
+    </ul>
+		<div class="tab-content">
+        <div class="tab-pane fade in active" id="Details">
+@using (Html.BeginForm("Edit","T_OrgCodes",new {UrlReferrer =Convert.ToString(ViewData["T_OrgCodesParentUrl"])}, FormMethod.Post, new { enctype = "multipart/form-data",@id="frmT_OrgCodes" }))
+{
+     Html.ValidationSummary(true);
+                Html.EnableClientValidation();
+    @Html.HiddenFor(model => model.Id)
+	@Html.HiddenFor(model => model.ConcurrencyKey)
+                <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px;">
+                    <div class="panel panel-default AppForm">
+						<div class="panel-body">
+						
+											<div class="row">
+				@if(User.CanView("T_OrgCodes","T_OrgCode"))
+{
+				<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_OrgCode">
+							<div class='form-group' title="Org  Code">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_OrgCode)  <span class="text-danger-reg">*</span> </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+											
+									@Html.TextBoxFor(model => model.T_OrgCode,  getHtmlAttributes("T_OrgCode"))
+									@Html.ValidationMessageFor(model => model.T_OrgCode)
+								</div>
+                             </div>
+						</div>
+										
+} else { @Html.HiddenFor(model => model.T_OrgCode, new { @class = "form-control" })}
+@if(User.CanView("T_OrgCodes","T_CodeDescription"))
+{
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_CodeDescription">
+							<div class='form-group' title="Code  Description">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_CodeDescription) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								@Html.TextAreaFor(model => model.T_CodeDescription, getHtmlAttributes("T_CodeDescription"))
+									@Html.ValidationMessageFor(model => model.T_CodeDescription)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_CodeDescription, new { @class = "form-control" })}
+       </div>
+            </div>
+        </div>
+		</div>
+		 @Html.AntiForgeryToken();
+		 <a class="btn btn-default btn-sm pull-left formbuttonfix" Onclick="goBack('@Url.Action("Index","T_OrgCodes")');" alt="Cancel" title="Cancel">Cancel</a>
+		 @*@Html.ActionLink("Cancel", "Cancel", new { UrlReferrer = ViewData["T_OrgCodesParentUrl"] }, new { @onclick = "", @class = "btn btn-default btn-sm pull-left formbuttonfix", @alt="Cancel", @title="Cancel" })*@
+		 if (EditPermission)
+         {
+ 				<input type="submit" name="command" value="Save" class="btn btn-primary btn-sm pull-left formbuttonfix"  alt="Save" title="Save"/>
+				<input type="submit" id="sevranBtnEdit" style="display:none;" name="command" value="SaveNextPrev" alt="SaveNextPrev" title="SaveNextPrev"/>
+				<input type="submit" name="command" value="Save & Stay" class="btn btn-primary btn-sm pull-left formbuttonfix" alt="Save & Stay" title="Save & Stay"/>
+		}	
+				<input type="hidden" name="hdncommand" value="" />
+				<input type="hidden" name="hdnNextPrevId" value="" />
+}
+ @{ var dropmenubottom = false; }
+<div class="dropdown pull-left formbuttonfix"  id="AddAssociationdropmenubottomT_OrgCodes">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" alt="Add Association" title="Add Association">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
+			@if (User.CanAdd("T_UnitX"))
+            {  dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_UnitX",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_WardOrgCode", 
+						HostingEntityName = "T_OrgCodes",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Ward
+                </a>
+				</li>
+            }
+
+			
+</ul>
+</div>
+@if(!dropmenubottom || !EditPermission)
+{
+    <script>
+        $("#AddAssociationdropmenubottomT_OrgCodes").hide();
+    </script>
+}
+<div class="clearfix" style="clear:both; margin-bottom:8px"></div>
+</div>
+ <div class="tab-pane fade in" id="T_WardOrgCode">
+	@if (User.CanView("T_UnitX"))
+	{
+	  // Html.RenderAction("Index", "T_UnitX", new {RenderPartial=true, HostingEntity = "T_OrgCodes", HostingEntityID = @Model.Id, AssociatedType = "T_WardOrgCode" }); 
+	}
+  </div>
+ <div class="tab-pane fade in" id="JournalEntryToT_OrgCodesRelation">
+			 @if (User.CanView("JournalEntry"))
+			 {
+			  // Html.RenderAction("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_OrgCodes", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry" });
+			 }
+  </div>
+
+</div> <!-- /tab-content --><br />
+
+<br/>
+</div>
+	<script>
+	</script>
+	
+
+@{
+var businessrule = User.businessrules.Where(p => p.EntityName == "T_OrgCodes").ToList();
+
+if ((businessrule != null && businessrule.Count > 0) )
+{
+var ruleids = businessrule.Select(q => q.Id).ToList();
+var typelist  = string.Join(",", (new GeneratorBase.MVC.Models.RuleActionContext()).RuleActions.Where(p => ruleids.Contains(p.RuleActionID.Value) && p.associatedactiontype.TypeNo.HasValue).Select(p => p.associatedactiontype.TypeNo.Value).Distinct().ToList());
+
+    <script>
+		$(document).ready(function () {
+				document.getElementById("ErrMsg").innerHTML = "";
+				var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+
+ form = $("#frmT_OrgCodes").serialize();
+				dataurl = "@Url.Action("businessruletype", "T_OrgCodes", new { ruleType = "OnEdit"})";
+                ApplyBusinessRuleOnPageLoad("@typelist",dataurl, "T_OrgCodes", false, "ErrMsg", form);
+				//business rules on inline associations
+
+    });
+</script>
+<script>
+    $("form").submit(function (event) {
+	if (!$("#frmT_OrgCodes").valid()) return;
+			document.getElementById("ErrMsg").innerHTML = "";
+            var flag = true;
+            var dataurl = "";
+            var form = "";
+            var inlinecount = "0";
+ form = $("#frmT_OrgCodes").serialize();
+    
+				 dataurl = "@Url.Action("businessruletype", "T_OrgCodes", new { ruleType = "OnEdit"})";
+                 flag = ApplyBusinessRuleOnSubmit(dataurl, "T_OrgCodes", false, "ErrMsg", form);
+
+  				 //business rules on inline associations
+               
+			 if (flag)
+				{
+				                    $('input:hidden[name="hdncommand"]').val($(this.id).context.activeElement.value);
+					if ($(document.activeElement).attr('id') == "nextEdit" || $(document.activeElement).attr('id') == "prevEdit")
+			         $('input:hidden[name="hdncommand"]').val("SaveNextPrev");
+					 $("#frmT_OrgCodes").find(':input').removeAttr('disabled');
+					}
+            return flag;
+		});
+</script>
+}
+ else
+    {
+       <script>
+    $("input[type='submit']").click(function (event) {
+	if (!$("#frmT_OrgCodes").valid()) return;
+        var $this = $(this);
+                var actionName = $this.attr("actionName")
+                if (actionName == undefined)
+                    actionName = $this.val();
+                $('input:hidden[name="hdncommand"]').val(actionName);
+    });
+	</script>
+    }
+ 
+}
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+		focusOnControl('frmT_OrgCodes');
+        }
+        catch (ex) { }
+    });
+	 $(document).ready(function () {
+		var RecIdEdit = $("#frmT_OrgCodes").find("input:hidden[name='Id']").val();
+        $("#EntityT_OrgCodesDisplayValueEdit").val(RecIdEdit);
+
+		var textedit = $("option:selected", $("#EntityT_OrgCodesDisplayValueEdit")).text();
+		$("#EntityT_OrgCodesDisplayValueEdit").attr('data-toggle', 'tooltip')
+		$("#EntityT_OrgCodesDisplayValueEdit").attr('title', textedit);
+
+        var lastOptionValEdit = $('#EntityT_OrgCodesDisplayValueEdit option:last-child').val();
+        var fristOptionValEdit = $('#EntityT_OrgCodesDisplayValueEdit option:first-child').val();
+        if (lastOptionValEdit == RecIdEdit) {
+            $('#nextEdit').attr({ "disabled": "true", "style": "background-color:#eeeeee !important; color:#969696 !important; border-color:#ccc !important" });
+        }
+        if (fristOptionValEdit == RecIdEdit)
+            $('#prevEdit').attr({ "disabled": "true", "style": "background-color:#eeeeee !important; color:#969696 !important; border-color:#ccc !important" });
+    });
+</script>
+
+

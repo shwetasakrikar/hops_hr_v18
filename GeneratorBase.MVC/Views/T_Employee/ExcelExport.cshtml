@@ -1,0 +1,357 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_Employee>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Employee.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_Employee","T_EmployeeAtFacilityID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Facility"?"hidden":"")>Facility</th>
+}
+@if(User.CanView("T_Employee","T_PID"))
+{
+		<th>PID</th>
+}
+@if(User.CanView("T_Employee","T_SSN"))
+{
+		<th>SSN</th>
+}
+@if(User.CanView("T_Employee","T_DateOfBirth"))
+{
+		<th>Date Of Birth</th>
+}
+@if(User.CanView("T_Employee","T_EmployeeStatusID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_EmployeeStatusCode"?"hidden":"")>Employee Status</th>
+}
+@if(User.CanView("T_Employee","T_SAMAccount"))
+{
+		<th>SAM Account</th>
+}
+@if(User.CanView("T_Employee","T_LastName"))
+{
+		<th>Last Name</th>
+}
+@if(User.CanView("T_Employee","T_FirstName"))
+{
+		<th>First Name</th>
+}
+@if(User.CanView("T_Employee","T_MiddleName"))
+{
+		<th>Middle Name</th>
+}
+@if(User.CanView("T_Employee","T_Suffix"))
+{
+		<th>Suffix</th>
+}
+@if(User.CanView("T_Employee","T_WorkEmail"))
+{
+		<th>Work Email</th>
+}
+@if(User.CanView("T_Employee","T_CurrentEmployeeEmploymentProfileID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_ServiceRecord"?"hidden":"")>Service Record</th>
+}
+@if(User.CanView("T_Employee","T_CurrentEmployeeJobAssignmentID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_JobAssignment"?"hidden":"")>Primary Job Assignment</th>
+}
+@if(User.CanView("T_Employee","T_StateHireDate"))
+{
+		<th>State Hire Date </th>
+}
+@if(User.CanView("T_Employee","T_AdjustedHireDate"))
+{
+		<th>Adjusted Hire Date</th>
+}
+@if(User.CanView("T_Employee","T_PriorServiceinmonths"))
+{
+		<th>Prior Service (in months)</th>
+}
+@if(User.CanView("T_Employee","T_CurrentServiceinmonths"))
+{
+		<th>Current Service (in months)</th>
+}
+@if(User.CanView("T_Employee","T_EmployeeGenderID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Gender"?"hidden":"")>Gender</th>
+}
+@if(User.CanView("T_Employee","T_EmployeeRaceID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Race"?"hidden":"")>Race</th>
+}
+@if(User.CanView("T_Employee","T_EmployeeNationalityAssociationID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Nationality"?"hidden":"")>Nationality</th>
+}
+@if(User.CanView("T_Employee","T_EmployeeVeteranStatusID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_VeteranStatus"?"hidden":"")>Veteran Status</th>
+}
+@if(User.CanView("T_Employee","T_EmployeeCardEmplGrpAssociationID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_CardEmplGrp"?"hidden":"")>CardEmplGrp</th>
+}
+@if(User.CanView("T_Employee","T_EmployeeCardLvPlanAssociationID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_CardLvPlan"?"hidden":"")>CardAltLvPlan</th>
+}
+@if(User.CanView("T_Employee","T_EmployeeAddressID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Address"?"hidden":"")>Employee Address</th>
+}
+@if(User.CanView("T_Employee","T_PersonalEmail"))
+{
+		<th>Personal Email</th>
+}
+@if(User.CanView("T_Employee","T_MobilePhone"))
+{
+		<th>Mobile Phone</th>
+}
+@if(User.CanView("T_Employee","T_HomePhone"))
+{
+		<th>Home Phone</th>
+}
+@if(User.CanView("T_Employee","T_EmployeeUserLoginID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "User"?"hidden":"")>Employee User Login</th>
+}
+@if(User.CanView("T_Employee","T_EmergencyContactName"))
+{
+		<th>Emergency Contact Name</th>
+}
+@if(User.CanView("T_Employee","T_EmergencyContactRelationship"))
+{
+		<th>Emergency Contact Relationship</th>
+}
+@if(User.CanView("T_Employee","T_EmergencyMobilePhone"))
+{
+		<th>Emergency Mobile Phone</th>
+}
+@if(User.CanView("T_Employee","T_EmergencyWorkPhone"))
+{
+		<th>Emergency Work Phone</th>
+}
+@if(User.CanView("T_Employee","T_BadgeNumber"))
+{
+		<th>Badge Number</th>
+}
+@if(User.CanView("T_Employee","T_EffectiveDateTime"))
+{
+		<th>Effective Date & Time</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_Employee","T_EmployeeAtFacilityID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Facility"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeeatfacility.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Employee","T_PID"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_PID)
+        </td>
+}
+@if(User.CanView("T_Employee","T_SSN"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_SSN)
+        </td>
+}
+@if(User.CanView("T_Employee","T_DateOfBirth"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_DateOfBirth)
+        </td>
+}
+@if(User.CanView("T_Employee","T_EmployeeStatusID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_EmployeeStatusCode"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeestatus.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Employee","T_SAMAccount"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_SAMAccount)
+        </td>
+}
+@if(User.CanView("T_Employee","T_LastName"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_LastName)
+        </td>
+}
+@if(User.CanView("T_Employee","T_FirstName"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_FirstName)
+        </td>
+}
+@if(User.CanView("T_Employee","T_MiddleName"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_MiddleName)
+        </td>
+}
+@if(User.CanView("T_Employee","T_Suffix"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Suffix)
+        </td>
+}
+@if(User.CanView("T_Employee","T_WorkEmail"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_WorkEmail)
+        </td>
+}
+@if(User.CanView("T_Employee","T_CurrentEmployeeEmploymentProfileID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_ServiceRecord"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_currentemployeeemploymentprofile.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Employee","T_CurrentEmployeeJobAssignmentID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_JobAssignment"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_currentemployeejobassignment.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Employee","T_StateHireDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_StateHireDate)
+        </td>
+}
+@if(User.CanView("T_Employee","T_AdjustedHireDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_AdjustedHireDate)
+        </td>
+}
+@if(User.CanView("T_Employee","T_PriorServiceinmonths"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_PriorServiceinmonths)
+        </td>
+}
+@if(User.CanView("T_Employee","T_CurrentServiceinmonths"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_CurrentServiceinmonths)
+        </td>
+}
+@if(User.CanView("T_Employee","T_EmployeeGenderID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Gender"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeegender.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Employee","T_EmployeeRaceID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Race"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeerace.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Employee","T_EmployeeNationalityAssociationID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Nationality"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeenationalityassociation.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Employee","T_EmployeeVeteranStatusID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_VeteranStatus"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeeveteranstatus.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Employee","T_EmployeeCardEmplGrpAssociationID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_CardEmplGrp"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeecardemplgrpassociation.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Employee","T_EmployeeCardLvPlanAssociationID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_CardLvPlan"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeecardlvplanassociation.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Employee","T_EmployeeAddressID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Address"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeeaddress.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Employee","T_PersonalEmail"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_PersonalEmail)
+        </td>
+}
+@if(User.CanView("T_Employee","T_MobilePhone"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_MobilePhone)
+        </td>
+}
+@if(User.CanView("T_Employee","T_HomePhone"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_HomePhone)
+        </td>
+}
+@if(User.CanView("T_Employee","T_EmployeeUserLoginID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "User"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeeuserlogin.UserName)
+        </td>
+}
+@if(User.CanView("T_Employee","T_EmergencyContactName"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_EmergencyContactName)
+        </td>
+}
+@if(User.CanView("T_Employee","T_EmergencyContactRelationship"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_EmergencyContactRelationship)
+        </td>
+}
+@if(User.CanView("T_Employee","T_EmergencyMobilePhone"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_EmergencyMobilePhone)
+        </td>
+}
+@if(User.CanView("T_Employee","T_EmergencyWorkPhone"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_EmergencyWorkPhone)
+        </td>
+}
+@if(User.CanView("T_Employee","T_BadgeNumber"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_BadgeNumber)
+        </td>
+}
+@if(User.CanView("T_Employee","T_EffectiveDateTime"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_EffectiveDateTime)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

@@ -1,0 +1,83 @@
+﻿@model GeneratorBase.MVC.Models.T_JobAssignment
+@{
+    Layout = null;
+}
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<link href="@Url.Content("~/Content/chosen.css")" rel="stylesheet" type="text/css" />
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-save text-primary"></i> Job Assignment  <i class="glyphicon glyphicon-chevron-right small"></i> <span> Copy from JobAssignment </span>
+        </h1>
+        <h2 class="text-primary"></h2>
+    </div>
+</div>
+@using (Html.BeginForm("CopyFromT_JobAssignment", "T_JobAssignment",new {UrlReferrer = Convert.ToString(ViewData["T_JobAssignmentParentUrl"]), IsDDAdd = ViewBag.IsDDAdd }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+   @Html.AntiForgeryToken();
+   <label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="panel panel-default AppForm">
+                <div class="panel-body">
+				 <div class="row">
+                        <div class='col-sm-12 col-md-12 col-xs-12'>
+                            <div class='form-group'>
+                                <label> Select Job Assignment <span class="text-danger-reg">*</span></label>
+                                <div class="input-group" style="width:100%;">
+                                    @Html.DropDownList("T_JobAssignmentID", null, "-- Select --", new { @required = "required", @class = "chosen-select form-control", @HostingName = "T_JobAssignment", @dataurl = Url.Action("GetAllValue", "T_JobAssignment", null) })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+		 <button id="CancelQuickAdd" type="button" class="btn btn-default btn-sm" data-dismiss="modal" aria-hidden="true">Cancel</button>
+            <input type="submit" name="command" value="Create" class="btn btn-primary btn-sm" />
+	 <input type="hidden" name="hdncommand" value="" />
+	<br/><br/>
+	@Html.Hidden("HostingEntityName", ViewData["HostingEntityName"])
+    @Html.Hidden("HostingEntityID", ViewData["HostingEntityID"])
+    @Html.Hidden("AssociatedType", ViewData["AssociatedType"])
+}
+@Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/Common3/chosen.jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': { allow_single_deselect: true },
+        '.chosen-select-no-single': { disable_search_threshold: 10 },
+        '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+        '.chosen-select-width': { width: "95%" }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>
+<script>
+    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+<script>
+    $("input[type='submit']").click(function (event) {
+        var $this = $(this);
+        $('input:hidden[name="hdncommand"]').val($this.val());
+    });
+</script>

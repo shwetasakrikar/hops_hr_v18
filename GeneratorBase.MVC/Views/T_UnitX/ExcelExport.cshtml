@@ -1,0 +1,187 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_UnitX>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=UnitX.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_UnitX","T_FacilityUnitXID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Facility"?"hidden":"")>Facility</th>
+}
+@if(User.CanView("T_UnitX","T_UnitXUnitAssociationID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Unit"?"hidden":"")>Unit Name</th>
+}
+@if(User.CanView("T_UnitX","T_WardDepartmentID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Department"?"hidden":"")>Department</th>
+}
+@if(User.CanView("T_UnitX","T_UnitXDepartmentAreaID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_DepartmentArea"?"hidden":"")>Department Area</th>
+}
+@if(User.CanView("T_UnitX","T_WardOrgCodeID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_OrgCodes"?"hidden":"")>Org Code</th>
+}
+@if(User.CanView("T_UnitX","T_Unit"))
+{
+		<th>Unit</th>
+}
+@if(User.CanView("T_UnitX","T_UnitXFloorID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Floor"?"hidden":"")>Floor</th>
+}
+@if(User.CanView("T_UnitX","T_UnitPhoneNumber"))
+{
+		<th>Unit Phone Number</th>
+}
+@if(User.CanView("T_UnitX","T_MailDistributor"))
+{
+		<th>Mail Distributor</th>
+}
+@if(User.CanView("T_UnitX","T_EmployeeAdministratorID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>Administrator</th>
+}
+@if(User.CanView("T_UnitX","T_EmployeeUnitXHeadID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>Head</th>
+}
+@if(User.CanView("T_UnitX","T_MaleBeds"))
+{
+		<th>Male Beds</th>
+}
+@if(User.CanView("T_UnitX","T_FemaleBeds"))
+{
+		<th>Female Beds</th>
+}
+@if(User.CanView("T_UnitX","T_TotalBeds"))
+{
+		<th>Total Beds</th>
+}
+@if(User.CanView("T_UnitX","T_WardCostCenterID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_CostCenter"?"hidden":"")>Cost Center</th>
+}
+@if(User.CanView("T_UnitX","T_Program"))
+{
+		<th>Program</th>
+}
+@if(User.CanView("T_UnitX","T_Fund"))
+{
+		<th>Fund </th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_UnitX","T_FacilityUnitXID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Facility"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_facilityunitx.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_UnitXUnitAssociationID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Unit"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_unitxunitassociation.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_WardDepartmentID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Department"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_warddepartment.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_UnitXDepartmentAreaID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_DepartmentArea"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_unitxdepartmentarea.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_WardOrgCodeID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_OrgCodes"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_wardorgcode.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_Unit"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Unit)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_UnitXFloorID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Floor"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_unitxfloor.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_UnitPhoneNumber"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_UnitPhoneNumber)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_MailDistributor"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_MailDistributor)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_EmployeeAdministratorID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeeadministrator.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_EmployeeUnitXHeadID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeeunitxhead.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_MaleBeds"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_MaleBeds)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_FemaleBeds"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_FemaleBeds)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_TotalBeds"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_TotalBeds)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_WardCostCenterID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_CostCenter"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_wardcostcenter.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_Program"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Program)
+        </td>
+}
+@if(User.CanView("T_UnitX","T_Fund"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Fund)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

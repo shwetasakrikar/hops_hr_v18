@@ -1,0 +1,513 @@
+﻿@model GeneratorBase.MVC.Models.T_Comment
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_CommentIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_CommentIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_CommentIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_CommentIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_CommentIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_CommentIsSetValueUIRule);
+    }
+}
+@using (Html.BeginForm("Create", "T_Comment",new {UrlReferrer = Convert.ToString(ViewData["T_CommentParentUrl"]), IsDDAdd = ViewBag.IsDDAdd }, FormMethod.Post, new { enctype = "multipart/form-data",id="frmT_Comment" }))
+{
+   @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+	<input type="hidden" id="ErrMsg" />
+	@*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+    <div id="errorContainer" style="display: none">
+        <div id="errorsMsg"></div>
+        <div id="errors"></div>
+    </div>
+	 
+	 <div id="divDisplayThresholdLimit" style="display:none;">
+	</div>
+	 <div id="divDisplayBRmsgMandatory" style="display:none;">
+	</div>
+	<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+	</div>
+	<div id="divDisplayCodeFragment" style="display:none;">
+	</div>
+
+	<div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="AppForm">
+                <div class="">
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48901">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+											
+									<h3 class="panel-title" alt="Basic Details" title="Basic Details">Basic Details</h3>
+								</div>
+                                <div class="panel-body">
+									
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WhoandWhen">
+						<div class="form-group" title="Insert Who and  When">
+						  @if(User.CanView("T_Comment","T_WhoandWhenInsertDate") || User.CanView("T_Comment","T_WhoandWhenInsertBy"))
+								{
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_WhoandWhenInsertDate) <span class="text-danger-reg">*</span></label>
+							}
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								 @if(User.CanView("T_Comment","T_WhoandWhenInsertDate") )
+								{
+								<div class="col-sm-8 col-md-8 col-xs-12" id="datetimepickerT_WhoandWhenInsertDate" style="padding-left:0px; padding-right:5px">
+                                    @Html.TextBox("CurrentDateTimeT_WhoandWhenInsertDate", DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"), new { @class = "form-control", @readonly = "readonly" ,@format = "MM/DD/YYYY hh:mm"  })
+									<script>
+                                        $(function () {
+										//$("#CurrentDateTimeT_WhoandWhenInsertDate").datetimepicker({ IsRequired: true });
+										  $("#CurrentDateTimeT_WhoandWhenInsertDate").val(new Date().toLocaleString());
+                                        });
+                                    </script>
+                                </div>
+								}
+								 @if(User.CanView("T_Comment","T_WhoandWhenInsertBy"))
+								{
+                                <div class="col-sm-4 col-md-4 col-xs-12" style="padding-left:0px; padding-right:0px">
+                                    @Html.TextBox("CurrentInsertBy", User.Name, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+								}
+								</div>
+							</div>
+                       </div>
+					   
+					
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WhoandWhen">
+						<div class="form-group" title="Update Who and  When">
+						 @if(User.CanView("T_Comment","T_WhoandWhen") || User.CanView("T_Comment","T_WhoandWhenUser"))
+								{
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_WhoandWhen) <span class="text-danger-reg">*</span></label>
+							}
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								 @if(User.CanView("T_Comment","T_WhoandWhen"))
+								{
+								<div class="col-sm-8 col-md-8 col-xs-12" id="datetimepickerT_WhoandWhen" style="padding-left:0px; padding-right:5px">
+                                    @Html.TextBox("CurrentDateTimeT_WhoandWhen", DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"), new { @class = "form-control", @readonly = "readonly" ,@format = "MM/DD/YYYY hh:mm"  })
+									<script>
+                                        $(function () {
+										//$("#CurrentDateTimeT_WhoandWhen").datetimepicker({ IsRequired: true });
+										  $("#CurrentDateTimeT_WhoandWhen").val(new Date().toLocaleString());
+                                        });
+                                    </script>
+                                </div>
+								}
+								 @if(User.CanView("T_Comment","T_WhoandWhenUser"))
+								{
+                                <div class="col-sm-4 col-md-4 col-xs-12" style="padding-left:0px; padding-right:0px">
+                                    @Html.TextBox("CurrentUser", User.Name, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+								}
+								</div>
+							</div>
+                        </div>
+						
+        @if(User.CanView("T_Comment","T_EmployeeCommentsID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_EmployeeCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_EmployeeCommentsID", null, "-- Select --", new {      @onchange = Html.Raw("ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeCommentsID" }) })
+			@Html.ValidationMessageFor(model => model.T_EmployeeCommentsID)
+			@if ( User.CanAdd("T_Employee"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_Employee"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee ','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  							</div>
+                         </div>
+                      </div>
+       </div>
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48902">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+											
+									<h3 class="panel-title" alt="Comments" title="Comments">Comments</h3>
+								</div>
+                                <div class="panel-body">
+						@if(User.CanView("T_Comment","T_Summary"))
+								{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Summary">
+                                <div class='form-group' title="Notes">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Summary) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    @Html.TextAreaFor(model => model.T_Summary, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_Summary)
+									</div>
+                                </div>
+						</div>
+						}
+							</div>
+                         </div>
+                      </div>
+       </div>
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48903">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+											
+									<h3 class="panel-title" alt="Associated With" title="Associated With">Associated With</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_Comment","T_AccommodationCommentsID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_AccommodationCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_AccommodationCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_AccommodationCommentsID", null, "-- Select --", new {    @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeAccomodationID" ,   @class = "chosen-select form-control", @HostingName = "T_Accommodation", @dataurl = Url.Action("GetAllValue", "T_Accommodation",new { caller = "T_AccommodationCommentsID" }) })
+			@Html.ValidationMessageFor(model => model.T_AccommodationCommentsID)
+			@if ( User.CanAdd("T_Accommodation"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_Accommodation"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Accommodation','dvPopup','" + Url.Action("CreateQuick", "T_Accommodation", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  @if(User.CanView("T_Comment","T_DrugAlcoholTestCommentsID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DrugAlcoholTestCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_DrugAlcoholTestCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_DrugAlcoholTestCommentsID", null, "-- Select --", new {    @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeDrugAlcoholTestID" ,   @class = "chosen-select form-control", @HostingName = "T_DrugAlcoholTest", @dataurl = Url.Action("GetAllValue", "T_DrugAlcoholTest",new { caller = "T_DrugAlcoholTestCommentsID" }) })
+			@Html.ValidationMessageFor(model => model.T_DrugAlcoholTestCommentsID)
+			@if ( User.CanAdd("T_DrugAlcoholTest"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_DrugAlcoholTest"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Drug & Alcohol Test','dvPopup','" + Url.Action("CreateQuick", "T_DrugAlcoholTest", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  @if(User.CanView("T_Comment","T_EducationCommentsID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EducationCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_EducationCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_EducationCommentsID", null, "-- Select --", new {    @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeEducationID" ,   @class = "chosen-select form-control", @HostingName = "T_Education", @dataurl = Url.Action("GetAllValue", "T_Education",new { caller = "T_EducationCommentsID" }) })
+			@Html.ValidationMessageFor(model => model.T_EducationCommentsID)
+			@if ( User.CanAdd("T_Education"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_Education"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Education','dvPopup','" + Url.Action("CreateQuick", "T_Education", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  @if(User.CanView("T_Comment","T_InjuryCommentsID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_InjuryCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_InjuryCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_InjuryCommentsID", null, "-- Select --", new {    @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeEmployeeInjuryID" ,   @class = "chosen-select form-control", @HostingName = "T_EmployeeInjury", @dataurl = Url.Action("GetAllValue", "T_EmployeeInjury",new { caller = "T_InjuryCommentsID" }) })
+			@Html.ValidationMessageFor(model => model.T_InjuryCommentsID)
+			@if ( User.CanAdd("T_EmployeeInjury"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_EmployeeInjury"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee Injury','dvPopup','" + Url.Action("CreateQuick", "T_EmployeeInjury", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  @if(User.CanView("T_Comment","T_JobAssignmentCommentsID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_JobAssignmentCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_JobAssignmentCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_JobAssignmentCommentsID", null, "-- Select --", new {    @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeJobAssignmentID?T_JobAssignmentManagerEmployeeID?T_EmployeeSupervisorID" ,   @class = "chosen-select form-control", @HostingName = "T_JobAssignment", @dataurl = Url.Action("GetAllValue", "T_JobAssignment",new { caller = "T_JobAssignmentCommentsID" }) })
+			@Html.ValidationMessageFor(model => model.T_JobAssignmentCommentsID)
+			@if ( User.CanAdd("T_JobAssignment"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_JobAssignment"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Job Assignment','dvPopup','" + Url.Action("CreateQuick", "T_JobAssignment", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  @if(User.CanView("T_Comment","T_LeaveCommentsID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_LeaveCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_LeaveCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_LeaveCommentsID", null, "-- Select --", new {    @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeLeaveProfileID" ,   @class = "chosen-select form-control", @HostingName = "T_LeaveProfile", @dataurl = Url.Action("GetAllValue", "T_LeaveProfile",new { caller = "T_LeaveCommentsID" }) })
+			@Html.ValidationMessageFor(model => model.T_LeaveCommentsID)
+			@if ( User.CanAdd("T_LeaveProfile"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_LeaveProfile"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Leave','dvPopup','" + Url.Action("CreateQuick", "T_LeaveProfile", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  @if(User.CanView("T_Comment","T_LicensesCommentsID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_LicensesCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_LicensesCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_LicensesCommentsID", null, "-- Select --", new {    @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_LicenseRecordsID" ,   @class = "chosen-select form-control", @HostingName = "T_Licenses", @dataurl = Url.Action("GetAllValue", "T_Licenses",new { caller = "T_LicensesCommentsID" }) })
+			@Html.ValidationMessageFor(model => model.T_LicensesCommentsID)
+			@if ( User.CanAdd("T_Licenses"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_Licenses"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Licenses','dvPopup','" + Url.Action("CreateQuick", "T_Licenses", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  @if(User.CanView("T_Comment","T_SalaryCommentsID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_SalaryCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_SalaryCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_SalaryCommentsID", null, "-- Select --", new {    @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeePayDetailsID" ,   @class = "chosen-select form-control", @HostingName = "T_PayDetails", @dataurl = Url.Action("GetAllValue", "T_PayDetails",new { caller = "T_SalaryCommentsID" }) })
+			@Html.ValidationMessageFor(model => model.T_SalaryCommentsID)
+			@if ( User.CanAdd("T_PayDetails"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_PayDetails"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Pay Details ','dvPopup','" + Url.Action("CreateQuick", "T_PayDetails", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  @if(User.CanView("T_Comment","T_PreemploymentCommentsID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PreemploymentCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_PreemploymentCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_PreemploymentCommentsID", null, "-- Select --", new {    @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeCriminalBackgroundCheckID?T_ReviewerID" ,   @class = "chosen-select form-control", @HostingName = "T_BackgroundCheck", @dataurl = Url.Action("GetAllValue", "T_BackgroundCheck",new { caller = "T_PreemploymentCommentsID" }) })
+			@Html.ValidationMessageFor(model => model.T_PreemploymentCommentsID)
+			@if ( User.CanAdd("T_BackgroundCheck"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_BackgroundCheck"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Pre Employment Checks','dvPopup','" + Url.Action("CreateQuick", "T_BackgroundCheck", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  @if(User.CanView("T_Comment","T_ServiceRecordCommentsID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ServiceRecordCommentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_ServiceRecordCommentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_ServiceRecordCommentsID", null, "-- Select --", new {    @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeEmploymentProfileID" ,   @class = "chosen-select form-control", @HostingName = "T_ServiceRecord", @dataurl = Url.Action("GetAllValue", "T_ServiceRecord",new { caller = "T_ServiceRecordCommentsID" }) })
+			@Html.ValidationMessageFor(model => model.T_ServiceRecordCommentsID)
+			@if ( User.CanAdd("T_ServiceRecord"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_ServiceRecord"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Service Record','dvPopup','" + Url.Action("CreateQuick", "T_ServiceRecord", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  							</div>
+                         </div>
+                      </div>
+       </div>
+               					<div class="row">
+				       
+       </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+		<a class="btn btn-default btn-sm" onclick="goBack('@Url.Action("Index","T_Comment")');" alt="Cancel" title="Cancel">Cancel</a>
+          @*@Html.ActionLink("Cancel", "Cancel", new { UrlReferrer = ViewData["T_CommentParentUrl"] }, new { @onclick = "", @class = "btn btn-default btn-sm" })*@
+	<input type="submit" name="command" value="Create" class="btn btn-primary btn-sm" alt="Create" title="Create"/>
+    if (ViewBag.IsDDAdd == null && User.CanEdit("T_Comment"))
+    {
+	<input type="submit" name="command" value="Create & Continue" class="btn btn-primary btn-sm" alt="Create & Continue" title="Create & Continue"/>
+	}
+	 <input type="hidden" name="hdncommand" value="" />
+	<br/><br/>
+}
+	<script>
+	    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+	
+@{
+		var businessrule = User.businessrules.Where(p => p.EntityName == "T_Comment").ToList();
+		
+if ((businessrule != null && businessrule.Count > 0) )
+    {
+        <script>
+            $("form").submit(function (event) {
+			if (!$("#frmT_Comment").valid()) return;
+			var flag = true;
+							document.getElementById("ErrMsg").innerHTML = "";
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+                //var form = $(this).serialize();
+ form = $("#frmT_Comment").serialize();
+  
+                dataurl = "@Url.Action("businessruletype", "T_Comment", new { ruleType = "OnCreate"})";
+                flag = ApplyBusinessRuleOnSubmit(dataurl, "T_Comment", false, "ErrMsg", form);
+				//business rules on inline associations
+				if (flag) {
+				                    $('input:hidden[name="hdncommand"]').val($(document.activeElement).val());
+
+					 $("#frmT_Comment").find(':input').removeAttr('disabled');
+                }
+				return flag;
+			 });	
+        </script>
+    }
+    else
+    {
+	<script>
+            $("input[type='submit']").click(function (event) {
+			if (!$("#frmT_Comment").valid()) return;
+                var $this = $(this);
+                $('input:hidden[name="hdncommand"]').val($this.val());
+            });
+	</script>
+           
+    }
+}
+
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+		 focusOnControl('frmT_Comment');
+        }
+        catch (ex) { }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        try {
+            var hostingEntityName = "";
+            if ('@Convert.ToString(ViewData["AssociatedType"])'.length > 0) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+                 $('#' + hostingEntityName + 'ID').attr("lock","true");
+				  $('#' + hostingEntityName + 'ID').trigger("change");
+            }
+			
+        }
+        catch (ex) { }
+		});
+</script>
+

@@ -1,0 +1,224 @@
+﻿<error errorId="300019e3-da62-470e-928b-9d857449f28f" application="/LM/W3SVC/1/ROOT/HOPS_HR_v18" host="TURANTOMVC" type="System.NotSupportedException" message="The specified type member 'T_Program' is not supported in LINQ to Entities. Only initializers, entity members, and entity navigation properties are supported." source="EntityFramework" detail="System.NotSupportedException: The specified type member 'T_Program' is not supported in LINQ to Entities. Only initializers, entity members, and entity navigation properties are supported.&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MemberAccessTranslator.TypedTranslate(ExpressionConverter parent, MemberExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.IsNullOrEmptyTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.NotTranslator.TypedTranslate(ExpressionConverter parent, UnaryExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.BinaryTranslator.TypedTranslate(ExpressionConverter parent, BinaryExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.BinaryTranslator.TypedTranslate(ExpressionConverter parent, BinaryExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.BinaryTranslator.TypedTranslate(ExpressionConverter parent, BinaryExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.BinaryTranslator.TypedTranslate(ExpressionConverter parent, BinaryExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.BinaryTranslator.TypedTranslate(ExpressionConverter parent, BinaryExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input, DbExpressionBinding&amp; binding)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression&amp; source, DbExpressionBinding&amp; sourceBinding, DbExpression&amp; lambda)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression&amp; source, DbExpressionBinding&amp; sourceBinding, DbExpression&amp; lambda)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.UnaryTranslator.TypedTranslate(ExpressionConverter parent, UnaryExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.ObjectQueryIncludeTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.ObjectQueryIncludeTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.ObjectQueryIncludeTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.ObjectQueryIncludeTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.ObjectQueryIncludeTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.ObjectQueryIncludeTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.AggregateTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.Convert()&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.&lt;&gt;c__DisplayClass7.&lt;GetResults&gt;b__6()&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.&lt;&gt;c__DisplayClass7.&lt;GetResults&gt;b__5()&#xD;&#xA;   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.&lt;System.Collections.Generic.IEnumerable&lt;T&gt;.GetEnumerator&gt;b__0()&#xD;&#xA;   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()&#xD;&#xA;   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.&lt;GetElementFunction&gt;b__3[TResult](IEnumerable`1 sequence)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)&#xD;&#xA;   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)&#xD;&#xA;   at System.Linq.Queryable.Count[TSource](IQueryable`1 source)&#xD;&#xA;   at PagedList.PagedList`1..ctor(IQueryable`1 superset, Int32 pageNumber, Int32 pageSize)&#xD;&#xA;   at PagedList.PagedListExtensions.ToPagedList[T](IQueryable`1 superset, Int32 pageNumber, Int32 pageSize)&#xD;&#xA;   at GeneratorBase.MVC.Controllers.T_JobAssignmentController.Index(String currentFilter, String searchString, String sortBy, String isAsc, Nullable`1 page, Nullable`1 itemsPerPage, String HostingEntity, Nullable`1 HostingEntityID, String AssociatedType, Nullable`1 IsExport, Nullable`1 IsDeepSearch, Nullable`1 IsFilter, Nullable`1 RenderPartial, String BulkOperation, String parent, String Wfsearch, String caller, Nullable`1 BulkAssociate, String viewtype, String isMobileHome, Nullable`1 IsHomeList) in d:\GenApps\HOPS_HR_v18\GeneratorBase.MVC\Controllers\T_JobAssignment\T_JobAssignmentCRUDController.cs:line 236&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)" user="CelestePonsioen2" time="2017-12-06T18:57:35.5443815Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:*/*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.9&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken_L1dTSFBTUnY3OQ2=rh17NuM-WTea_ojtFFDn0TuKruQ43tokWUVPCSowFYQmWGzk-Wl3DFVsaYnlaszFJWNEkZdDmwMUuskzh2X4TnwvjcuOM5LkeNbdDpB_ZyI1; WSHPSRv76=VrPTJMEWBdWdSRCH0nh1XHiSGV_AJD3ViLBRPvPLcaBisNDODIami4X56iDZjqaV7jpB0_jBpGR90v0MJ6EhJ61bLUko6EGjEcPQMEAV3fXVsVOOPHdOME_bv7om2lvLN1oBBjNgckIT_Qw2LASa-6RNdjfufd2_9RyNO8GLsR62AVDuEbrjE3P6xo6gnO6DtyVHEjGDp1CV656dFl7TVsr6_f_HKtygdt5UV4VPt4Xq-WVLhRbDkgjL4Uo5Nvt3UjZdwXONFAFYaQO5N4Z0hn0zyKZwXa8Eki-HcIBIwsKSzWCLpT9BmNX9XJLOpmPDalf8viOdeULlLmRvWE6cTQUeQj39Vhbu7r0pbUy95oGrXHTGS-fUJe8DwXN-AbwJweJCOe7WfrU1B1XewI6Qc7qpqVMRUvXC0kPJRIAwFHWzYDZKVqucIHVilmqQCPzS47DeQCNQEeN6c6NtMA7yccggA-JJeUctoGXuZl7_qP1nS07PiUAGE8xhn5of5RWb; _timezone=Eastern Standard Time; __RequestVerificationToken_L1dTSFBTUnY3Nw2=JU2lGiJDPmQzc92F33Hue4TTt0TcZgs9falvQ3VQ2WLAbOjOsf3MEMCUATSBu0JIuOuEG9J2zhwUeWZwmgNmBhnzvdCcqPyOHsfljwwU_Ro1; ASP.NET_SessionId=qtk0hh5h20bxsj4y2oyrweio; pageSizeAdminT_Client=20; pageSizeAdminT_RoomAlternativeName=50; WSHPSRv79=tTg137-bkOJXivGJFOoJyoxeWo8a05Gc8KDy2dkfAegN_2RqCaoOw09oSCmgcvyNUZpwQyBREEEBXGmK4U7iBRoFEOJ0poQ-mRWh0KoBTBjcO4zpuHSwdVnaoQX3ccc89etG7yp6ahoicLoa7rZGmI9NlaW3cQvLBUubfAnbO3hs7X9o5mD4wEYp021q1r2i-ODreuY5tMSEPiKj5nkyTPDeJAlrrTRfD5qMHoEhOV1PgogWICN_gRRB7W4KbctjIXAJF8ARkyP-TaNUEbT7FmSwTYhGkGNsG_kHz3KD6rsZPxXHprVs4RJ1_nt-03BWLTj14NlJq219Cr3g9KWB6jepFwpzHx1Miu1eO9-iS79MATrNUc25R6SIikB1NYT2PfNhlRw30E3vlj3fKCfBeErby1xxM97QjyDEgYupMAPj06eArXEgd0xnI1myg75xsng5xbPCihv21mONz73eymzC714UBMGdQd-KNZw9_FGl8T8V_fSydG-N2BO_e_OSPRThUgWTZhLPDqoAN5elXZQTjMuJ-UZbyIMVaAnAiPRbkw-RUHK5ey4l1oZMFe6ALgYeGNXl4KYeMBNtYNY4SASPMC_53DenoNjV7KbLXW8; WSHPSRv79CurrentRole=WSH-Admin_PSR,; paginationundefinedT_GroupManagement=3; __RequestVerificationToken_L0hPUFNfSFJfdjE40=YTTIg95mCMXpqf--4vJNcr2mNSGO3NbsVOKHrBnqwcJZdudAgoBg5ZmKC6_X0KEoNeYVSuPOSYzGbkxyXRrao8LZaICxapplluC_N4vWMSY1; pageSizeAdminAccount=50; pageSizeAdminBusinessRule=20; HOPS_HR_v18=JoOZEcLG0ZP4oJR3y4kZ4RbQvTARCm6TCU4JBKg7PPCKylK2elen7LmEL0rBzj2GgO-pPF6WF1idILQ6MsQvVEkyPYNfx_jeghpRcLTLQjeiLgFOCRGnGq4BNv1PGu9taJhLWbMf7tkVQnBrwXDWU8_JnfwzxCzyKtEC_mRG_eTP47SX7k9hHq1mPhEf8fUYo-pbPleZXB4dNTp8DHrDEWX4EhbO2YtqrUaPVoV6uO8zpQQEryznsDoogq02yqwKfrBZADs1NPoQMsiUehJLvMnvg1vT2K_8vk35tN87Yk-al4fAHf4CtHvHFhCrB3ws8iQppTNOUZFMhxVp9-U5dE9q9yae8xA3fLKQDdL9yyX1TwygV5d8hc8zeWhlEB0u2OmCp2zSwHcpYc_WbwEO3sNpxABeH-Z3T_vZz1bZvwh37ixflNRToOY8SUoMJQH_wY3k0iiQyQ34l_DeBbzOONIsqOxGZNkttfCJyV-cnpI8kuIUOvEz5Z7ycGbBIM3YIu1zkr43oWVstHP51t3pAuEvniUqFSh4bw9xKfAR2gI; HOPS_HR_v18CurrentRole=HR Manager,&#xD;&#xA;HTTP_HOST:apps.turanto.com&#xD;&#xA;HTTP_REFERER:https://apps.turanto.com/HOPS_HR_v18/T_JobAssignment&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36&#xD;&#xA;HTTP_X_REQUESTED_WITH:XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: */*&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.9&#xD;&#xA;Cookie: __RequestVerificationToken_L1dTSFBTUnY3OQ2=rh17NuM-WTea_ojtFFDn0TuKruQ43tokWUVPCSowFYQmWGzk-Wl3DFVsaYnlaszFJWNEkZdDmwMUuskzh2X4TnwvjcuOM5LkeNbdDpB_ZyI1; WSHPSRv76=VrPTJMEWBdWdSRCH0nh1XHiSGV_AJD3ViLBRPvPLcaBisNDODIami4X56iDZjqaV7jpB0_jBpGR90v0MJ6EhJ61bLUko6EGjEcPQMEAV3fXVsVOOPHdOME_bv7om2lvLN1oBBjNgckIT_Qw2LASa-6RNdjfufd2_9RyNO8GLsR62AVDuEbrjE3P6xo6gnO6DtyVHEjGDp1CV656dFl7TVsr6_f_HKtygdt5UV4VPt4Xq-WVLhRbDkgjL4Uo5Nvt3UjZdwXONFAFYaQO5N4Z0hn0zyKZwXa8Eki-HcIBIwsKSzWCLpT9BmNX9XJLOpmPDalf8viOdeULlLmRvWE6cTQUeQj39Vhbu7r0pbUy95oGrXHTGS-fUJe8DwXN-AbwJweJCOe7WfrU1B1XewI6Qc7qpqVMRUvXC0kPJRIAwFHWzYDZKVqucIHVilmqQCPzS47DeQCNQEeN6c6NtMA7yccggA-JJeUctoGXuZl7_qP1nS07PiUAGE8xhn5of5RWb; _timezone=Eastern Standard Time; __RequestVerificationToken_L1dTSFBTUnY3Nw2=JU2lGiJDPmQzc92F33Hue4TTt0TcZgs9falvQ3VQ2WLAbOjOsf3MEMCUATSBu0JIuOuEG9J2zhwUeWZwmgNmBhnzvdCcqPyOHsfljwwU_Ro1; ASP.NET_SessionId=qtk0hh5h20bxsj4y2oyrweio; pageSizeAdminT_Client=20; pageSizeAdminT_RoomAlternativeName=50; WSHPSRv79=tTg137-bkOJXivGJFOoJyoxeWo8a05Gc8KDy2dkfAegN_2RqCaoOw09oSCmgcvyNUZpwQyBREEEBXGmK4U7iBRoFEOJ0poQ-mRWh0KoBTBjcO4zpuHSwdVnaoQX3ccc89etG7yp6ahoicLoa7rZGmI9NlaW3cQvLBUubfAnbO3hs7X9o5mD4wEYp021q1r2i-ODreuY5tMSEPiKj5nkyTPDeJAlrrTRfD5qMHoEhOV1PgogWICN_gRRB7W4KbctjIXAJF8ARkyP-TaNUEbT7FmSwTYhGkGNsG_kHz3KD6rsZPxXHprVs4RJ1_nt-03BWLTj14NlJq219Cr3g9KWB6jepFwpzHx1Miu1eO9-iS79MATrNUc25R6SIikB1NYT2PfNhlRw30E3vlj3fKCfBeErby1xxM97QjyDEgYupMAPj06eArXEgd0xnI1myg75xsng5xbPCihv21mONz73eymzC714UBMGdQd-KNZw9_FGl8T8V_fSydG-N2BO_e_OSPRThUgWTZhLPDqoAN5elXZQTjMuJ-UZbyIMVaAnAiPRbkw-RUHK5ey4l1oZMFe6ALgYeGNXl4KYeMBNtYNY4SASPMC_53DenoNjV7KbLXW8; WSHPSRv79CurrentRole=WSH-Admin_PSR,; paginationundefinedT_GroupManagement=3; __RequestVerificationToken_L0hPUFNfSFJfdjE40=YTTIg95mCMXpqf--4vJNcr2mNSGO3NbsVOKHrBnqwcJZdudAgoBg5ZmKC6_X0KEoNeYVSuPOSYzGbkxyXRrao8LZaICxapplluC_N4vWMSY1; pageSizeAdminAccount=50; pageSizeAdminBusinessRule=20; HOPS_HR_v18=JoOZEcLG0ZP4oJR3y4kZ4RbQvTARCm6TCU4JBKg7PPCKylK2elen7LmEL0rBzj2GgO-pPF6WF1idILQ6MsQvVEkyPYNfx_jeghpRcLTLQjeiLgFOCRGnGq4BNv1PGu9taJhLWbMf7tkVQnBrwXDWU8_JnfwzxCzyKtEC_mRG_eTP47SX7k9hHq1mPhEf8fUYo-pbPleZXB4dNTp8DHrDEWX4EhbO2YtqrUaPVoV6uO8zpQQEryznsDoogq02yqwKfrBZADs1NPoQMsiUehJLvMnvg1vT2K_8vk35tN87Yk-al4fAHf4CtHvHFhCrB3ws8iQppTNOUZFMhxVp9-U5dE9q9yae8xA3fLKQDdL9yyX1TwygV5d8hc8zeWhlEB0u2OmCp2zSwHcpYc_WbwEO3sNpxABeH-Z3T_vZz1bZvwh37ixflNRToOY8SUoMJQH_wY3k0iiQyQ34l_DeBbzOONIsqOxGZNkttfCJyV-cnpI8kuIUOvEz5Z7ycGbBIM3YIu1zkr43oWVstHP51t3pAuEvniUqFSh4bw9xKfAR2gI; HOPS_HR_v18CurrentRole=HR Manager,&#xD;&#xA;Host: apps.turanto.com&#xD;&#xA;Referer: https://apps.turanto.com/HOPS_HR_v18/T_JobAssignment&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36&#xD;&#xA;X-Requested-With: XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/HOPS_HR_v18" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\HOPS_HR_v18\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="CelestePonsioen2" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="CelestePonsioen2" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/HOPS_HR_v18/T_JobAssignment" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\HOPS_HR_v18\GeneratorBase.MVC\T_JobAssignment" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="IsDeepSearch=False&amp;searchString=456&amp;SearchTimeStamp=636481834358106212&amp;viewtype=IndexPartial&amp;_=1512586635908" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="71.176.236.44" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="71.176.236.44" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="51832" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/HOPS_HR_v18/T_JobAssignment" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/HOPS_HR_v18/T_JobAssignment" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="*/*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.9" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken_L1dTSFBTUnY3OQ2=rh17NuM-WTea_ojtFFDn0TuKruQ43tokWUVPCSowFYQmWGzk-Wl3DFVsaYnlaszFJWNEkZdDmwMUuskzh2X4TnwvjcuOM5LkeNbdDpB_ZyI1; WSHPSRv76=VrPTJMEWBdWdSRCH0nh1XHiSGV_AJD3ViLBRPvPLcaBisNDODIami4X56iDZjqaV7jpB0_jBpGR90v0MJ6EhJ61bLUko6EGjEcPQMEAV3fXVsVOOPHdOME_bv7om2lvLN1oBBjNgckIT_Qw2LASa-6RNdjfufd2_9RyNO8GLsR62AVDuEbrjE3P6xo6gnO6DtyVHEjGDp1CV656dFl7TVsr6_f_HKtygdt5UV4VPt4Xq-WVLhRbDkgjL4Uo5Nvt3UjZdwXONFAFYaQO5N4Z0hn0zyKZwXa8Eki-HcIBIwsKSzWCLpT9BmNX9XJLOpmPDalf8viOdeULlLmRvWE6cTQUeQj39Vhbu7r0pbUy95oGrXHTGS-fUJe8DwXN-AbwJweJCOe7WfrU1B1XewI6Qc7qpqVMRUvXC0kPJRIAwFHWzYDZKVqucIHVilmqQCPzS47DeQCNQEeN6c6NtMA7yccggA-JJeUctoGXuZl7_qP1nS07PiUAGE8xhn5of5RWb; _timezone=Eastern Standard Time; __RequestVerificationToken_L1dTSFBTUnY3Nw2=JU2lGiJDPmQzc92F33Hue4TTt0TcZgs9falvQ3VQ2WLAbOjOsf3MEMCUATSBu0JIuOuEG9J2zhwUeWZwmgNmBhnzvdCcqPyOHsfljwwU_Ro1; ASP.NET_SessionId=qtk0hh5h20bxsj4y2oyrweio; pageSizeAdminT_Client=20; pageSizeAdminT_RoomAlternativeName=50; WSHPSRv79=tTg137-bkOJXivGJFOoJyoxeWo8a05Gc8KDy2dkfAegN_2RqCaoOw09oSCmgcvyNUZpwQyBREEEBXGmK4U7iBRoFEOJ0poQ-mRWh0KoBTBjcO4zpuHSwdVnaoQX3ccc89etG7yp6ahoicLoa7rZGmI9NlaW3cQvLBUubfAnbO3hs7X9o5mD4wEYp021q1r2i-ODreuY5tMSEPiKj5nkyTPDeJAlrrTRfD5qMHoEhOV1PgogWICN_gRRB7W4KbctjIXAJF8ARkyP-TaNUEbT7FmSwTYhGkGNsG_kHz3KD6rsZPxXHprVs4RJ1_nt-03BWLTj14NlJq219Cr3g9KWB6jepFwpzHx1Miu1eO9-iS79MATrNUc25R6SIikB1NYT2PfNhlRw30E3vlj3fKCfBeErby1xxM97QjyDEgYupMAPj06eArXEgd0xnI1myg75xsng5xbPCihv21mONz73eymzC714UBMGdQd-KNZw9_FGl8T8V_fSydG-N2BO_e_OSPRThUgWTZhLPDqoAN5elXZQTjMuJ-UZbyIMVaAnAiPRbkw-RUHK5ey4l1oZMFe6ALgYeGNXl4KYeMBNtYNY4SASPMC_53DenoNjV7KbLXW8; WSHPSRv79CurrentRole=WSH-Admin_PSR,; paginationundefinedT_GroupManagement=3; __RequestVerificationToken_L0hPUFNfSFJfdjE40=YTTIg95mCMXpqf--4vJNcr2mNSGO3NbsVOKHrBnqwcJZdudAgoBg5ZmKC6_X0KEoNeYVSuPOSYzGbkxyXRrao8LZaICxapplluC_N4vWMSY1; pageSizeAdminAccount=50; pageSizeAdminBusinessRule=20; HOPS_HR_v18=JoOZEcLG0ZP4oJR3y4kZ4RbQvTARCm6TCU4JBKg7PPCKylK2elen7LmEL0rBzj2GgO-pPF6WF1idILQ6MsQvVEkyPYNfx_jeghpRcLTLQjeiLgFOCRGnGq4BNv1PGu9taJhLWbMf7tkVQnBrwXDWU8_JnfwzxCzyKtEC_mRG_eTP47SX7k9hHq1mPhEf8fUYo-pbPleZXB4dNTp8DHrDEWX4EhbO2YtqrUaPVoV6uO8zpQQEryznsDoogq02yqwKfrBZADs1NPoQMsiUehJLvMnvg1vT2K_8vk35tN87Yk-al4fAHf4CtHvHFhCrB3ws8iQppTNOUZFMhxVp9-U5dE9q9yae8xA3fLKQDdL9yyX1TwygV5d8hc8zeWhlEB0u2OmCp2zSwHcpYc_WbwEO3sNpxABeH-Z3T_vZz1bZvwh37ixflNRToOY8SUoMJQH_wY3k0iiQyQ34l_DeBbzOONIsqOxGZNkttfCJyV-cnpI8kuIUOvEz5Z7ycGbBIM3YIu1zkr43oWVstHP51t3pAuEvniUqFSh4bw9xKfAR2gI; HOPS_HR_v18CurrentRole=HR Manager," />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://apps.turanto.com/HOPS_HR_v18/T_JobAssignment" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36" />
+    </item>
+    <item name="HTTP_X_REQUESTED_WITH">
+      <value string="XMLHttpRequest" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="IsDeepSearch">
+      <value string="False" />
+    </item>
+    <item name="searchString">
+      <value string="456" />
+    </item>
+    <item name="SearchTimeStamp">
+      <value string="636481834358106212" />
+    </item>
+    <item name="viewtype">
+      <value string="IndexPartial" />
+    </item>
+    <item name="_">
+      <value string="1512586635908" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name="__RequestVerificationToken_L1dTSFBTUnY3OQ2">
+      <value string="rh17NuM-WTea_ojtFFDn0TuKruQ43tokWUVPCSowFYQmWGzk-Wl3DFVsaYnlaszFJWNEkZdDmwMUuskzh2X4TnwvjcuOM5LkeNbdDpB_ZyI1" />
+    </item>
+    <item name="WSHPSRv76">
+      <value string="VrPTJMEWBdWdSRCH0nh1XHiSGV_AJD3ViLBRPvPLcaBisNDODIami4X56iDZjqaV7jpB0_jBpGR90v0MJ6EhJ61bLUko6EGjEcPQMEAV3fXVsVOOPHdOME_bv7om2lvLN1oBBjNgckIT_Qw2LASa-6RNdjfufd2_9RyNO8GLsR62AVDuEbrjE3P6xo6gnO6DtyVHEjGDp1CV656dFl7TVsr6_f_HKtygdt5UV4VPt4Xq-WVLhRbDkgjL4Uo5Nvt3UjZdwXONFAFYaQO5N4Z0hn0zyKZwXa8Eki-HcIBIwsKSzWCLpT9BmNX9XJLOpmPDalf8viOdeULlLmRvWE6cTQUeQj39Vhbu7r0pbUy95oGrXHTGS-fUJe8DwXN-AbwJweJCOe7WfrU1B1XewI6Qc7qpqVMRUvXC0kPJRIAwFHWzYDZKVqucIHVilmqQCPzS47DeQCNQEeN6c6NtMA7yccggA-JJeUctoGXuZl7_qP1nS07PiUAGE8xhn5of5RWb" />
+    </item>
+    <item name="_timezone">
+      <value string="Eastern Standard Time" />
+    </item>
+    <item name="__RequestVerificationToken_L1dTSFBTUnY3Nw2">
+      <value string="JU2lGiJDPmQzc92F33Hue4TTt0TcZgs9falvQ3VQ2WLAbOjOsf3MEMCUATSBu0JIuOuEG9J2zhwUeWZwmgNmBhnzvdCcqPyOHsfljwwU_Ro1" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="qtk0hh5h20bxsj4y2oyrweio" />
+    </item>
+    <item name="pageSizeAdminT_Client">
+      <value string="20" />
+    </item>
+    <item name="pageSizeAdminT_RoomAlternativeName">
+      <value string="50" />
+    </item>
+    <item name="WSHPSRv79">
+      <value string="tTg137-bkOJXivGJFOoJyoxeWo8a05Gc8KDy2dkfAegN_2RqCaoOw09oSCmgcvyNUZpwQyBREEEBXGmK4U7iBRoFEOJ0poQ-mRWh0KoBTBjcO4zpuHSwdVnaoQX3ccc89etG7yp6ahoicLoa7rZGmI9NlaW3cQvLBUubfAnbO3hs7X9o5mD4wEYp021q1r2i-ODreuY5tMSEPiKj5nkyTPDeJAlrrTRfD5qMHoEhOV1PgogWICN_gRRB7W4KbctjIXAJF8ARkyP-TaNUEbT7FmSwTYhGkGNsG_kHz3KD6rsZPxXHprVs4RJ1_nt-03BWLTj14NlJq219Cr3g9KWB6jepFwpzHx1Miu1eO9-iS79MATrNUc25R6SIikB1NYT2PfNhlRw30E3vlj3fKCfBeErby1xxM97QjyDEgYupMAPj06eArXEgd0xnI1myg75xsng5xbPCihv21mONz73eymzC714UBMGdQd-KNZw9_FGl8T8V_fSydG-N2BO_e_OSPRThUgWTZhLPDqoAN5elXZQTjMuJ-UZbyIMVaAnAiPRbkw-RUHK5ey4l1oZMFe6ALgYeGNXl4KYeMBNtYNY4SASPMC_53DenoNjV7KbLXW8" />
+    </item>
+    <item name="WSHPSRv79CurrentRole">
+      <value string="WSH-Admin_PSR," />
+    </item>
+    <item name="paginationundefinedT_GroupManagement">
+      <value string="3" />
+    </item>
+    <item name="__RequestVerificationToken_L0hPUFNfSFJfdjE40">
+      <value string="YTTIg95mCMXpqf--4vJNcr2mNSGO3NbsVOKHrBnqwcJZdudAgoBg5ZmKC6_X0KEoNeYVSuPOSYzGbkxyXRrao8LZaICxapplluC_N4vWMSY1" />
+    </item>
+    <item name="pageSizeAdminAccount">
+      <value string="50" />
+    </item>
+    <item name="pageSizeAdminBusinessRule">
+      <value string="20" />
+    </item>
+    <item name="HOPS_HR_v18">
+      <value string="JoOZEcLG0ZP4oJR3y4kZ4RbQvTARCm6TCU4JBKg7PPCKylK2elen7LmEL0rBzj2GgO-pPF6WF1idILQ6MsQvVEkyPYNfx_jeghpRcLTLQjeiLgFOCRGnGq4BNv1PGu9taJhLWbMf7tkVQnBrwXDWU8_JnfwzxCzyKtEC_mRG_eTP47SX7k9hHq1mPhEf8fUYo-pbPleZXB4dNTp8DHrDEWX4EhbO2YtqrUaPVoV6uO8zpQQEryznsDoogq02yqwKfrBZADs1NPoQMsiUehJLvMnvg1vT2K_8vk35tN87Yk-al4fAHf4CtHvHFhCrB3ws8iQppTNOUZFMhxVp9-U5dE9q9yae8xA3fLKQDdL9yyX1TwygV5d8hc8zeWhlEB0u2OmCp2zSwHcpYc_WbwEO3sNpxABeH-Z3T_vZz1bZvwh37ixflNRToOY8SUoMJQH_wY3k0iiQyQ34l_DeBbzOONIsqOxGZNkttfCJyV-cnpI8kuIUOvEz5Z7ycGbBIM3YIu1zkr43oWVstHP51t3pAuEvniUqFSh4bw9xKfAR2gI" />
+    </item>
+    <item name="HOPS_HR_v18CurrentRole">
+      <value string="HR Manager," />
+    </item>
+  </cookies>
+</error>

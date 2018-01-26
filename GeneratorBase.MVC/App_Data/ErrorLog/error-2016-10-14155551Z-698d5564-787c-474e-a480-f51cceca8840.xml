@@ -1,0 +1,174 @@
+﻿<error errorId="698d5564-787c-474e-a480-f51cceca8840" application="/LM/W3SVC/1/ROOT/HOPS_HR_v2" host="TURANTOMVC" type="System.Web.HttpException" message="Server cannot set status after HTTP headers have been sent." source="System.Web" detail="System.Web.HttpException (0x80004005): Server cannot set status after HTTP headers have been sent.&#xD;&#xA;   at System.Web.HttpResponse.set_StatusCode(Int32 value)&#xD;&#xA;   at System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)&#xD;&#xA;   at System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="rupali.pendse@etelic.com" time="2016-10-14T15:55:51.1655336Z" statusCode="500">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, sdch, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken_L0hPUFNfSFJfdjI1=Wtw3hsDfZM8HTH9loxZVgEZnZAcWGZn0hPLWEIkhjFkOP2SKuX7fd01xoVFSRTxIWEiGStoCnbF15olt4KEIfs_3yP_3m0jtqtEnizSUH9E1; HOPS_HR_v2=CN6WCEF0qTGKaoyq5-I-wkxStyPw5Gfhd8cXVOzQWnix880PPYLKv6zBEkGrWheqYl-hevI6tosTck1SAsixhXQVzncApF-vdNno8zGL4vz-cjKgNzHzxKGvDsPauHMX4fp3tOmGcm0eXGjQX41C2hmeJV5ecUmV5ewJFG8dBWz2AO-t_DsZ0rMp6OWn-rGJNtG1m85T_5mO9f1amlTTVXPlEXnHmXbpnWE2aME8eIrAogMwzvOGZC20VOYPxyCq-xJGJvomESlqZ_FItO1XLbs3lay40ccBKsS-eHXy4HGzams7rD8huCTuSNFnE0uWLUeZH-P8qSJRV72kld1DTCnQqesbHo7NaowghQ3x8JsLopLxcIHD0CUHjyeTjO3o_JqIOCgz4aQWO8W-pElvbglbzhtgPGFfBsgA1NiVj75NrOb-dPL273m8mSOP5z5eK5IOcrwn6R4dawVoeOz8h8H7QdTODRctH8LtjEMErTchfJAW7qGwuxTjLyqniYPFWLWb31PDguSbf_wlNsIX-SIsK3i7HlZi9BNI59FtDlc2FqBTPRuOQbkXmvPrISnkNXdddoO_cqOtF73xlYdqdiYcOwjp3yvLfVChWIbMCL0; HOPS_HR_v2CurrentRole=CCCA-Hr Manager,&#xD;&#xA;HTTP_HOST:mvc.turanto.com&#xD;&#xA;HTTP_REFERER:https://mvc.turanto.com/HOPS_HR_v2/T_Licenses&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, sdch, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: __RequestVerificationToken_L0hPUFNfSFJfdjI1=Wtw3hsDfZM8HTH9loxZVgEZnZAcWGZn0hPLWEIkhjFkOP2SKuX7fd01xoVFSRTxIWEiGStoCnbF15olt4KEIfs_3yP_3m0jtqtEnizSUH9E1; HOPS_HR_v2=CN6WCEF0qTGKaoyq5-I-wkxStyPw5Gfhd8cXVOzQWnix880PPYLKv6zBEkGrWheqYl-hevI6tosTck1SAsixhXQVzncApF-vdNno8zGL4vz-cjKgNzHzxKGvDsPauHMX4fp3tOmGcm0eXGjQX41C2hmeJV5ecUmV5ewJFG8dBWz2AO-t_DsZ0rMp6OWn-rGJNtG1m85T_5mO9f1amlTTVXPlEXnHmXbpnWE2aME8eIrAogMwzvOGZC20VOYPxyCq-xJGJvomESlqZ_FItO1XLbs3lay40ccBKsS-eHXy4HGzams7rD8huCTuSNFnE0uWLUeZH-P8qSJRV72kld1DTCnQqesbHo7NaowghQ3x8JsLopLxcIHD0CUHjyeTjO3o_JqIOCgz4aQWO8W-pElvbglbzhtgPGFfBsgA1NiVj75NrOb-dPL273m8mSOP5z5eK5IOcrwn6R4dawVoeOz8h8H7QdTODRctH8LtjEMErTchfJAW7qGwuxTjLyqniYPFWLWb31PDguSbf_wlNsIX-SIsK3i7HlZi9BNI59FtDlc2FqBTPRuOQbkXmvPrISnkNXdddoO_cqOtF73xlYdqdiYcOwjp3yvLfVChWIbMCL0; HOPS_HR_v2CurrentRole=CCCA-Hr Manager,&#xD;&#xA;Host: mvc.turanto.com&#xD;&#xA;Referer: https://mvc.turanto.com/HOPS_HR_v2/T_Licenses&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/HOPS_HR_v2" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\HOPS_HR_v2\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="rupali.pendse@etelic.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="rupali.pendse@etelic.com" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="rupali.pendse@etelic.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/HOPS_HR_v2/T_Employee/Details/134" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\HOPS_HR_v2\GeneratorBase.MVC\T_Employee\Details\134" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="96.253.89.230" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="96.253.89.230" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="50420" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/HOPS_HR_v2/T_Employee/Details/134" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/HOPS_HR_v2/T_Employee/Details/134" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, sdch, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken_L0hPUFNfSFJfdjI1=Wtw3hsDfZM8HTH9loxZVgEZnZAcWGZn0hPLWEIkhjFkOP2SKuX7fd01xoVFSRTxIWEiGStoCnbF15olt4KEIfs_3yP_3m0jtqtEnizSUH9E1; HOPS_HR_v2=CN6WCEF0qTGKaoyq5-I-wkxStyPw5Gfhd8cXVOzQWnix880PPYLKv6zBEkGrWheqYl-hevI6tosTck1SAsixhXQVzncApF-vdNno8zGL4vz-cjKgNzHzxKGvDsPauHMX4fp3tOmGcm0eXGjQX41C2hmeJV5ecUmV5ewJFG8dBWz2AO-t_DsZ0rMp6OWn-rGJNtG1m85T_5mO9f1amlTTVXPlEXnHmXbpnWE2aME8eIrAogMwzvOGZC20VOYPxyCq-xJGJvomESlqZ_FItO1XLbs3lay40ccBKsS-eHXy4HGzams7rD8huCTuSNFnE0uWLUeZH-P8qSJRV72kld1DTCnQqesbHo7NaowghQ3x8JsLopLxcIHD0CUHjyeTjO3o_JqIOCgz4aQWO8W-pElvbglbzhtgPGFfBsgA1NiVj75NrOb-dPL273m8mSOP5z5eK5IOcrwn6R4dawVoeOz8h8H7QdTODRctH8LtjEMErTchfJAW7qGwuxTjLyqniYPFWLWb31PDguSbf_wlNsIX-SIsK3i7HlZi9BNI59FtDlc2FqBTPRuOQbkXmvPrISnkNXdddoO_cqOtF73xlYdqdiYcOwjp3yvLfVChWIbMCL0; HOPS_HR_v2CurrentRole=CCCA-Hr Manager," />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://mvc.turanto.com/HOPS_HR_v2/T_Licenses" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken_L0hPUFNfSFJfdjI1">
+      <value string="Wtw3hsDfZM8HTH9loxZVgEZnZAcWGZn0hPLWEIkhjFkOP2SKuX7fd01xoVFSRTxIWEiGStoCnbF15olt4KEIfs_3yP_3m0jtqtEnizSUH9E1" />
+    </item>
+    <item name="HOPS_HR_v2">
+      <value string="CN6WCEF0qTGKaoyq5-I-wkxStyPw5Gfhd8cXVOzQWnix880PPYLKv6zBEkGrWheqYl-hevI6tosTck1SAsixhXQVzncApF-vdNno8zGL4vz-cjKgNzHzxKGvDsPauHMX4fp3tOmGcm0eXGjQX41C2hmeJV5ecUmV5ewJFG8dBWz2AO-t_DsZ0rMp6OWn-rGJNtG1m85T_5mO9f1amlTTVXPlEXnHmXbpnWE2aME8eIrAogMwzvOGZC20VOYPxyCq-xJGJvomESlqZ_FItO1XLbs3lay40ccBKsS-eHXy4HGzams7rD8huCTuSNFnE0uWLUeZH-P8qSJRV72kld1DTCnQqesbHo7NaowghQ3x8JsLopLxcIHD0CUHjyeTjO3o_JqIOCgz4aQWO8W-pElvbglbzhtgPGFfBsgA1NiVj75NrOb-dPL273m8mSOP5z5eK5IOcrwn6R4dawVoeOz8h8H7QdTODRctH8LtjEMErTchfJAW7qGwuxTjLyqniYPFWLWb31PDguSbf_wlNsIX-SIsK3i7HlZi9BNI59FtDlc2FqBTPRuOQbkXmvPrISnkNXdddoO_cqOtF73xlYdqdiYcOwjp3yvLfVChWIbMCL0" />
+    </item>
+    <item name="HOPS_HR_v2CurrentRole">
+      <value string="CCCA-Hr Manager," />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="jojtjfo3utf3k34zhevfjk2y" />
+    </item>
+  </cookies>
+</error>

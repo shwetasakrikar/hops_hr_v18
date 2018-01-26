@@ -1,0 +1,241 @@
+﻿@model GeneratorBase.MVC.Models.T_Position
+@{
+    ViewBag.Title = "Delete Position";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-hand-down text-primary"></i>Delete Position  <i class="glyphicon glyphicon-chevron-right small"></i> 
+            <span style="color:red;">  Are you sure you want to delete this?</span>
+        </h1>
+        <h2 class="text-primary">@Html.DisplayFor(model => model.DisplayValue)</h2>
+    </div>
+</div>
+<div class="row">
+<label id="ErrMsg" class="text-primary small" style="color:red; vertical-align:middle; font-weight:100;"></label>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ConcurrencyKey)
+    @Html.HiddenFor(model => model.Id)
+                                  
+    <dl class="dl-horizontal">
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_PositionStatusforPostingID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_positionstatusforposting.DisplayValue)
+			 @Html.HiddenFor(model => model.T_PositionStatusforPostingID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_ShiftStart)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_ShiftStart)
+			@Html.HiddenFor(model => model.T_ShiftStart)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_ShiftEnd)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_ShiftEnd)
+			@Html.HiddenFor(model => model.T_ShiftEnd)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_FacilityAssignedToID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_facilityassignedto.DisplayValue)
+			 @Html.HiddenFor(model => model.T_FacilityAssignedToID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_EffectiveDate)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_EffectiveDate)
+			@Html.HiddenFor(model => model.T_EffectiveDate)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_PositionShiftMealTimeID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_positionshiftmealtime.DisplayValue)
+			 @Html.HiddenFor(model => model.T_PositionShiftMealTimeID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_Funded)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_Funded)
+			@Html.HiddenFor(model => model.T_Funded)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_PositionNumber)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_PositionNumber)
+			@Html.HiddenFor(model => model.T_PositionNumber)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_PositionRoleCodeID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_positionrolecode.DisplayValue)
+			 @Html.HiddenFor(model => model.T_PositionRoleCodeID)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_PositionShiftTimeID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_positionshifttime.DisplayValue)
+			 @Html.HiddenFor(model => model.T_PositionShiftTimeID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_EstablishedDate)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_EstablishedDate)
+			@Html.HiddenFor(model => model.T_EstablishedDate)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_TypeOfPositionID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_typeofposition.DisplayValue)
+			 @Html.HiddenFor(model => model.T_TypeOfPositionID)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_AssociatedPositionStatusID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_associatedpositionstatus.DisplayValue)
+			 @Html.HiddenFor(model => model.T_AssociatedPositionStatusID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_SalaryBand)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_SalaryBand)
+			@Html.HiddenFor(model => model.T_SalaryBand)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_PositionShiftDurationID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_positionshiftduration.DisplayValue)
+			 @Html.HiddenFor(model => model.T_PositionShiftDurationID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_AbolishDate)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_AbolishDate)
+			@Html.HiddenFor(model => model.T_AbolishDate)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_PositionIdentifierID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_positionidentifier.DisplayValue)
+			 @Html.HiddenFor(model => model.T_PositionIdentifierID)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_PositionSOCCodeID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_positionsoccode.DisplayValue)
+			 @Html.HiddenFor(model => model.T_PositionSOCCodeID)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_PositionOvertimeEligibilityID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_positionovertimeeligibility.DisplayValue)
+			 @Html.HiddenFor(model => model.T_PositionOvertimeEligibilityID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_PositionFill)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_PositionFill)
+			@Html.HiddenFor(model => model.T_PositionFill)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_PositionClassCodeID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_positionclasscode.DisplayValue)
+			 @Html.HiddenFor(model => model.T_PositionClassCodeID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_DualIncumbent)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_DualIncumbent)
+			@Html.HiddenFor(model => model.T_DualIncumbent)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_QuasiFill)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_QuasiFill)
+			@Html.HiddenFor(model => model.T_QuasiFill)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_WorkersCompCodePositionID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_workerscompcodeposition.DisplayValue)
+			 @Html.HiddenFor(model => model.T_WorkersCompCodePositionID)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_PositionWorkingTitleAssociationID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_positionworkingtitleassociation.DisplayValue)
+			 @Html.HiddenFor(model => model.T_PositionWorkingTitleAssociationID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_CardApprvr)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_CardApprvr)
+			@Html.HiddenFor(model => model.T_CardApprvr)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_DualIncumbentStartDate)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_DualIncumbentStartDate)
+			@Html.HiddenFor(model => model.T_DualIncumbentStartDate)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_PositionCostCenterAssociationID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_positioncostcenterassociation.DisplayValue)
+			 @Html.HiddenFor(model => model.T_PositionCostCenterAssociationID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_DualIncumbentEndDate)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_DualIncumbentEndDate)
+			@Html.HiddenFor(model => model.T_DualIncumbentEndDate)
+        </dd>
+    </dl>
+	<br/>
+        <div class="row deletefix">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+		<label class="small alert-danger" style="padding:3px; margin-top:5px; display:block;">All Position Job Assignment will be deleted associated with @Html.DisplayFor(model => model.DisplayValue)!</label>
+         <a class="btn btn-default btn-sm" Onclick="goBack('@Url.Action("Index","T_Position")');">Back</a>
+        @*@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default btn-sm" })*@
+ 
+	@if ( User.CanDelete("T_Position"))
+     {
+			<input type="submit" value="Delete" class="btn btn-primary btn-sm" /> 
+	}
+        </div>
+            </div>
+    }
+</div>

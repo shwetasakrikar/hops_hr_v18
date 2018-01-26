@@ -1,0 +1,157 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_Comment>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Comment.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_Comment","T_WhoandWhen"))
+{
+		<th>Who and When</th>
+}
+@if(User.CanView("T_Comment","T_EmployeeCommentsID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>Employee </th>
+}
+@if(User.CanView("T_Comment","T_Summary"))
+{
+		<th>Notes</th>
+}
+@if(User.CanView("T_Comment","T_AccommodationCommentsID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Accommodation"?"hidden":"")>Accommodation</th>
+}
+@if(User.CanView("T_Comment","T_DrugAlcoholTestCommentsID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_DrugAlcoholTest"?"hidden":"")>Drug & Alcohol Test</th>
+}
+@if(User.CanView("T_Comment","T_EducationCommentsID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Education"?"hidden":"")>Education</th>
+}
+@if(User.CanView("T_Comment","T_InjuryCommentsID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_EmployeeInjury"?"hidden":"")>Employee Injury</th>
+}
+@if(User.CanView("T_Comment","T_JobAssignmentCommentsID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_JobAssignment"?"hidden":"")>Job Assignment</th>
+}
+@if(User.CanView("T_Comment","T_LeaveCommentsID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_LeaveProfile"?"hidden":"")>Leave</th>
+}
+@if(User.CanView("T_Comment","T_LicensesCommentsID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Licenses"?"hidden":"")>Licenses</th>
+}
+@if(User.CanView("T_Comment","T_SalaryCommentsID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_PayDetails"?"hidden":"")>Pay Details </th>
+}
+@if(User.CanView("T_Comment","T_PreemploymentCommentsID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_BackgroundCheck"?"hidden":"")>Pre Employment Checks</th>
+}
+@if(User.CanView("T_Comment","T_ServiceRecordCommentsID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_ServiceRecord"?"hidden":"")>Service Record</th>
+}
+@if(User.CanView("T_Comment","T_WhoandWhenUser"))
+{
+		<th>Who and WhenUser</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_Comment","T_WhoandWhen"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_WhoandWhen)
+        </td>
+}
+@if(User.CanView("T_Comment","T_EmployeeCommentsID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeecomments.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Comment","T_Summary"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Summary)
+        </td>
+}
+@if(User.CanView("T_Comment","T_AccommodationCommentsID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Accommodation"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_accommodationcomments.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Comment","T_DrugAlcoholTestCommentsID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_DrugAlcoholTest"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_drugalcoholtestcomments.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Comment","T_EducationCommentsID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Education"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_educationcomments.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Comment","T_InjuryCommentsID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_EmployeeInjury"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_injurycomments.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Comment","T_JobAssignmentCommentsID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_JobAssignment"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_jobassignmentcomments.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Comment","T_LeaveCommentsID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_LeaveProfile"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_leavecomments.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Comment","T_LicensesCommentsID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Licenses"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_licensescomments.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Comment","T_SalaryCommentsID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_PayDetails"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_salarycomments.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Comment","T_PreemploymentCommentsID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_BackgroundCheck"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_preemploymentcomments.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Comment","T_ServiceRecordCommentsID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_ServiceRecord"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_servicerecordcomments.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Comment","T_WhoandWhenUser"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_WhoandWhenUser)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

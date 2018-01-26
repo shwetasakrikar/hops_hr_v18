@@ -1,0 +1,204 @@
+﻿@model GeneratorBase.MVC.Models.T_Restrictions
+@using PagedList;
+@{
+    ViewBag.Title = "View Restrictions";
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_Restrictions");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Restrictions";
+}
+<script>
+    $(document).ready(function () {
+			 if ($.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') != null) {
+				$('a[href="#' + $.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') + '"]').click();
+			 }
+    });
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_RestrictionsIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_RestrictionsIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_RestrictionsIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_RestrictionsIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_RestrictionsIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_RestrictionsIsSetValueUIRule);
+    }
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-hand-down text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span>View</span>
+        </h1>
+        <h2 class="text-primary"><span id="HostingEntityDisplayValue">@Html.DisplayFor(model => model.DisplayValue)</span>
+			<div class="btn-group pull-right fixactionbut">
+            <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle pull-right">
+                Action
+                <span class="caret">    </span>
+            </button>
+			<ul class="dropdown-menu pull-left">               
+				<li>
+                    @if ( User.CanEdit("T_Restrictions"))
+                    {
+                        <a href="@Url.Action("Edit","T_Restrictions", new {UrlReferrer = Request.UrlReferrer,id = Model.Id,AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    }
+                </li>             
+				<li>
+                    @if ( User.CanDelete("T_Restrictions"))
+                    {
+                        <a href="@Url.Action("Delete", "T_Restrictions", new { UrlReferrer = Request.UrlReferrer,id = Model.Id, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Delete</a>
+                    }
+                </li>
+ <li class="divider" style="clear:both"></li>
+ <li class="dropdown-submenu pull-left">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;">Find Matching</a>
+    <ul class="dropdown-menu pull-left">
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Department", new {sourceEntity="T_Restrictions",id=Model.Id}, null)">Department</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Position", new {sourceEntity="T_Restrictions",id=Model.Id}, null)">Position</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Employee", new {sourceEntity="T_Restrictions",id=Model.Id}, null)">Employee</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_DepartmentArea", new {sourceEntity="T_Restrictions",id=Model.Id}, null)">Department Area</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_ClaimType", new {sourceEntity="T_Restrictions",id=Model.Id}, null)">Claim Type</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_UnitX", new {sourceEntity="T_Restrictions",id=Model.Id}, null)">UnitX</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Unit", new {sourceEntity="T_Restrictions",id=Model.Id}, null)">Unit</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_SalaryRange", new {sourceEntity="T_Restrictions",id=Model.Id}, null)">Salary Range</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_FacilityConfiguration", new {sourceEntity="T_Restrictions",id=Model.Id}, null)">Facility Configuration</a>
+</li>
+</ul>
+</li>
+			</ul>
+
+
+		</h2>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+	 <li class="active"><a href="#Details" onclick="ClearTabCookie('@User.JavaScriptEncodedName@Model.Id');" data-toggle="tab">Details</a></li>
+		 <li @(!User.CanView("T_TypeOfRestrictions") ?"style=display:none;":"")><a onclick="LoadTab('T_TypeOfRestrictions_T_Restrictions','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_TypeOfRestrictions", new {RenderPartial=true, HostingEntity ="T_Restrictions", HostingEntityID = @Model.Id, AssociatedType = "T_TypeOfRestrictions_T_Restrictions",TabToken = DateTime.Now.Ticks,}))')" href="#T_TypeOfRestrictions_T_Restrictions" data-toggle="tab">
+		 Employees Injuries
+		 </a></li>
+		 <li @(!User.CanView("JournalEntry")?"style=display:none;":"")><a onclick="LoadTab('JournalEntryToT_RestrictionsRelation','@User.JavaScriptEncodedName@Model.Id','@Url.Action("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_Restrictions", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry", TabToken = DateTime.Now.Ticks })')" href="#JournalEntryToT_RestrictionsRelation" data-toggle="tab">Restrictions Journal</a></li>
+    </ul>
+	  @Html.HiddenFor(model => model.Id)
+	    <div class="tab-content">
+		   <div class="tab-pane fade in active" id="Details">
+				 <div class="panel panel-default AppForm">
+					<div class="panel-body">
+                                  
+			
+			<div class="row">
+@if(User.CanView("T_Restrictions","T_RestrictionsFacilityAssociationID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_RestrictionsFacilityAssociation">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_RestrictionsFacilityAssociationID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		@if (@Model.T_RestrictionsFacilityAssociationID == 0 || @Model.T_RestrictionsFacilityAssociationID == null || @Model.t_restrictionsfacilityassociation == null)
+		{
+	         <p id="lblT_RestrictionsFacilityAssociationID" class="viewlabel"></p>
+        }
+        else
+        {
+		     <p id="lblT_RestrictionsFacilityAssociationID" class="viewlabel" title="@Model.t_restrictionsfacilityassociation.DisplayValue">@Model.t_restrictionsfacilityassociation.DisplayValue</p>
+        }
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Restrictions","T_Name"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Name">
+	<div class='form-group' title="@Model.T_Name">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Name) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_Name" class="viewlabel">@Model.T_Name</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Restrictions","T_Description"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Description">
+	<div class='form-group' title="@Model.T_Description">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Description)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		<p class="viewlabelmultiline">@Model.T_Description</p>
+		</div>
+	</div>
+</div>
+}
+		</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+				<a class="btn btn-default btn-sm pull-left formbuttonfix" Onclick="goBack('@Url.Action("Index","T_Restrictions")');">Back</a>
+				@*@Html.ActionLink("Back", "Cancel", new { UrlReferrer = Request.UrlReferrer }, new { @class = "btn btn-default btn-sm pull-left formbuttonfix" })*@
+					
+					 @if ( User.CanEdit("T_Restrictions"))
+                     {
+                          @Html.ActionLink("Edit", "Edit", new { UrlReferrer = Request.UrlReferrer, id = Model.Id, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, new { @class = "btn btn-primary btn-sm pull-left formbuttonfix" })
+                     }
+				   
+ @{ var dropmenubottom = false; }
+<div class="dropdown pull-left formbuttonfix" style="display:none;" id="AddAssociationdropmenubottomT_Restrictions">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+</ul>
+</div>
+@if(!dropmenubottom)
+{
+    <script>
+        $("#AddAssociationdropmenubottomT_Restrictions").hide();
+    </script>
+}
+			</div> 
+			</div><div class="clearfix" style="clear:both"></div>
+	</div>    
+<div class="tab-pane fade in" id="JournalEntryToT_RestrictionsRelation">
+            @if ( User.CanView("JournalEntry"))
+		   {
+			//	Html.RenderAction("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_Restrictions", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry" });
+		   }
+  </div>
+<div class="tab-pane fade in" id="T_TypeOfRestrictions_T_Restrictions">
+     @if ( User.CanView("T_TypeOfRestrictions"))
+	{
+	  // Html.RenderAction("Index", "T_TypeOfRestrictions", new {RenderPartial=true, HostingEntity = "T_Restrictions", HostingEntityID = @Model.Id, AssociatedType = "T_TypeOfRestrictions_T_Restrictions" }); 
+	}
+  </div>
+	</div> <!-- /tab-content --><br />
+
+<br/>
+</div>
+ 

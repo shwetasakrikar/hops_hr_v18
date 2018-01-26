@@ -1,0 +1,333 @@
+﻿@model GeneratorBase.MVC.Models.T_Facility
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_FacilityIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_FacilityIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_FacilityIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_FacilityIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_FacilityIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_FacilityIsSetValueUIRule);
+    }
+}
+@using (Html.BeginForm("Create", "T_Facility",new {UrlReferrer = Convert.ToString(ViewData["T_FacilityParentUrl"]), IsDDAdd = ViewBag.IsDDAdd }, FormMethod.Post, new { enctype = "multipart/form-data",id="frmT_Facility" }))
+{
+   @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+	<input type="hidden" id="ErrMsg" />
+	@*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+    <div id="errorContainer" style="display: none">
+        <div id="errorsMsg"></div>
+        <div id="errors"></div>
+    </div>
+	 
+	 <div id="divDisplayThresholdLimit" style="display:none;">
+	</div>
+	 <div id="divDisplayBRmsgMandatory" style="display:none;">
+	</div>
+	<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+	</div>
+	<div id="divDisplayCodeFragment" style="display:none;">
+	</div>
+
+	<div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="AppForm">
+                <div class="">
+               					<div class="row">
+				       
+			 @if(User.CanView("T_Facility","T_FacilityCode"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FacilityCode">
+                                <div class='form-group' title="Facility  Code">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_FacilityCode) <span class="text-danger-reg">*</span></label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_FacilityCode, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_FacilityCode)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+						@if(User.CanView("T_Facility","T_WorkingHours"))
+								{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WorkingHours">
+                                <div class='form-group' title="Working Hours">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_WorkingHours) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    @Html.TextAreaFor(model => model.T_WorkingHours, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_WorkingHours)
+									</div>
+                                </div>
+						</div>
+						}
+						@if(User.CanView("T_Facility","T_FacilityName"))
+								{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FacilityName">
+                                <div class='form-group' title="Facility  Name">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_FacilityName) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    @Html.TextAreaFor(model => model.T_FacilityName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_FacilityName)
+									</div>
+                                </div>
+						</div>
+						}
+@if(User.CanView("T_Address"))
+{
+                            <div class="col-md-12 col-sm-12 col-xs-12" id="dvT_FacilityAddressID">
+                                <div class="panel panel-default">
+                                     <div class="panel-sub-heading clearfix">
+                                        <h3 class="panel-title" alt="T_FacilityAddress" title="T_FacilityAddress">@Html.LabelFor(model => model.T_FacilityAddressID)</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="row">
+						@if(User.CanView("T_Address","T_AddressLine1"))
+							{
+							<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FacilityAddressID_T_AddressLine1">
+                            <div class='form-group' title="AddressLine1">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_facilityaddress.T_AddressLine1) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    @Html.TextBoxFor(model => model.t_facilityaddress.T_AddressLine1, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.t_facilityaddress.T_AddressLine1)
+                                </div>
+                            </div>
+							</div>
+							}
+                                               
+						@if(User.CanView("T_Address","T_AddressLine2"))
+							{
+							<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FacilityAddressID_T_AddressLine2">
+                            <div class='form-group' title="AddressLine2">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_facilityaddress.T_AddressLine2) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    @Html.TextBoxFor(model => model.t_facilityaddress.T_AddressLine2, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.t_facilityaddress.T_AddressLine2)
+                                </div>
+                            </div>
+							</div>
+							}
+                                               
+						@if(User.CanView("T_Address","T_ZipCode"))
+							{
+							<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FacilityAddressID_T_ZipCode">
+                            <div class='form-group' title="ZipCode">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_facilityaddress.T_ZipCode) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    @Html.TextBoxFor(model => model.t_facilityaddress.T_ZipCode, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.t_facilityaddress.T_ZipCode)
+                                </div>
+                            </div>
+							</div>
+							}
+                                               
+		@if(User.CanView("T_Address", "T_AddressCountryID"))
+					{
+		<div class='col-sm-6 col-md-6 col-xs-12'  id="dvT_FacilityAddressID_T_AddressCountryID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >
+							@Html.LabelFor(model => model.t_facilityaddress.T_AddressCountryID) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								<div class="input-group" style="width:100%;">
+											
+		@Html.DropDownListFor(model => model.t_facilityaddress.T_AddressCountryID, (SelectList)ViewBag.T_AddressCountryID, "--Select--", new {      @class = "chosen-select form-control", @HostingName = "T_Country", @dataurl = Url.Action("GetAllValue", "T_Country",new { caller = "T_AddressCountryID" }) })
+	
+                                    @Html.ValidationMessageFor(model => model.t_facilityaddress.T_AddressCountryID)
+															 @if ( User.CanAdd("T_Country"))
+                                    {
+                                    <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" id="addT_Country" data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Address Country','dvPopup','" + Url.Action("CreateQuick", "T_Country", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                    </div>
+									}
+																	
+                                </div>
+								</div>
+                            </div>
+                    </div>
+			}
+       				                                               
+		@if(User.CanView("T_Address", "T_AddressStateID"))
+					{
+		<div class='col-sm-6 col-md-6 col-xs-12'  id="dvT_FacilityAddressID_T_AddressStateID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >
+							@Html.LabelFor(model => model.t_facilityaddress.T_AddressStateID) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								<div class="input-group" style="width:100%;">
+											
+		@Html.DropDownListFor(model => model.t_facilityaddress.T_AddressStateID, (SelectList)ViewBag.T_AddressStateID, "--Select--", new {      @class = "chosen-select form-control", @HostingName = "T_State", @dataurl = Url.Action("GetAllValue", "T_State",new { caller = "T_AddressStateID" }) })
+	
+                                    @Html.ValidationMessageFor(model => model.t_facilityaddress.T_AddressStateID)
+															 @if ( User.CanAdd("T_State"))
+                                    {
+                                    <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" id="addT_State" data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Address State','dvPopup','" + Url.Action("CreateQuick", "T_State", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                    </div>
+									}
+																	
+                                </div>
+								</div>
+                            </div>
+                    </div>
+			}
+       				                                               
+		@if(User.CanView("T_Address", "T_AddressCityID"))
+					{
+		<div class='col-sm-6 col-md-6 col-xs-12'  id="dvT_FacilityAddressID_T_AddressCityID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >
+							@Html.LabelFor(model => model.t_facilityaddress.T_AddressCityID) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								<div class="input-group" style="width:100%;">
+											
+		@Html.DropDownListFor(model => model.t_facilityaddress.T_AddressCityID, (SelectList)ViewBag.T_AddressCityID, "--Select--", new {      @class = "chosen-select form-control", @HostingName = "T_City", @dataurl = Url.Action("GetAllValue", "T_City",new { caller = "T_AddressCityID" }) })
+	
+                                    @Html.ValidationMessageFor(model => model.t_facilityaddress.T_AddressCityID)
+															 @if ( User.CanAdd("T_City"))
+                                    {
+                                    <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" id="addT_City" data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Address City','dvPopup','" + Url.Action("CreateQuick", "T_City", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                    </div>
+									}
+																	
+                                </div>
+								</div>
+                            </div>
+                    </div>
+			}
+       				                                               
+					
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.T_FacilityAddressID)
+                                    </div>
+                                </div>
+                            </div>
+  }                     
+       </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+		<a class="btn btn-default btn-sm" onclick="goBack('@Url.Action("Index","T_Facility")');" alt="Cancel" title="Cancel">Cancel</a>
+          @*@Html.ActionLink("Cancel", "Cancel", new { UrlReferrer = ViewData["T_FacilityParentUrl"] }, new { @onclick = "", @class = "btn btn-default btn-sm" })*@
+	<input type="submit" name="command" value="Create" class="btn btn-primary btn-sm" alt="Create" title="Create"/>
+    if (ViewBag.IsDDAdd == null && User.CanEdit("T_Facility"))
+    {
+	<input type="submit" name="command" value="Create & Continue" class="btn btn-primary btn-sm" alt="Create & Continue" title="Create & Continue"/>
+	}
+	 <input type="hidden" name="hdncommand" value="" />
+	<br/><br/>
+}
+	<script>
+	    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+	
+@{
+		var businessrule = User.businessrules.Where(p => p.EntityName == "T_Facility").ToList();
+		
+		var businessurlinline = User.businessrules.Where(p => p.EntityName == "T_Address").ToList();
+if ((businessrule != null && businessrule.Count > 0)  || (businessurlinline != null && businessurlinline.Count > 0) )
+    {
+        <script>
+            $("form").submit(function (event) {
+			if (!$("#frmT_Facility").valid()) return;
+			var flag = true;
+							document.getElementById("ErrMsg").innerHTML = "";
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+                //var form = $(this).serialize();
+	 form = $("#frmT_Facility").find(":not(#dvT_FacilityAddressID *)").serialize();
+  
+                dataurl = "@Url.Action("businessruletype", "T_Facility", new { ruleType = "OnCreate"})";
+                flag = ApplyBusinessRuleOnSubmit(dataurl, "T_Facility", false, "ErrMsg", form);
+				//business rules on inline associations
+                inlinecount = "@businessurlinline.Where(p => p.EntityName == "T_Address").Count()";
+                if (inlinecount != "0") {
+                    form = $('#dvT_FacilityAddressID :input').serialize();
+                    form = form.replaceAll("t_facilityaddress.", "");
+                    dataurl = "@Url.Action("businessruletype", "T_Address", new { ruleType = "OnCreate" })";
+                    flag = flag && ApplyBusinessRuleOnSubmit(dataurl, "T_Address", true, "ErrMsg", form, "T_FacilityAddress", "Address");
+                }
+				if (flag) {
+				                    $('input:hidden[name="hdncommand"]').val($(document.activeElement).val());
+
+					 $("#frmT_Facility").find(':input').removeAttr('disabled');
+                }
+				return flag;
+			 });	
+        </script>
+    }
+    else
+    {
+	<script>
+            $("input[type='submit']").click(function (event) {
+			if (!$("#frmT_Facility").valid()) return;
+                var $this = $(this);
+                $('input:hidden[name="hdncommand"]').val($this.val());
+            });
+	</script>
+           
+    }
+}
+
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+		 focusOnControl('frmT_Facility');
+        }
+        catch (ex) { }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        try {
+            var hostingEntityName = "";
+            if ('@Convert.ToString(ViewData["AssociatedType"])'.length > 0) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+                 $('#' + hostingEntityName + 'ID').attr("lock","true");
+				  $('#' + hostingEntityName + 'ID').trigger("change");
+            }
+			
+        }
+        catch (ex) { }
+		});
+</script>
+

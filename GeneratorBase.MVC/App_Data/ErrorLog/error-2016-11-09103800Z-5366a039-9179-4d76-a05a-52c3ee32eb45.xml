@@ -1,0 +1,276 @@
+﻿<error errorId="5366a039-9179-4d76-a05a-52c3ee32eb45" application="/LM/W3SVC/1/ROOT/HOPS_HR_v5" host="TURANTOMVC" type="System.Web.Mvc.HttpAntiForgeryException" message="The provided anti-forgery token was meant for a different claims-based user than the current user." source="System.Web.WebPages" detail="System.Web.Mvc.HttpAntiForgeryException (0x80004005): The provided anti-forgery token was meant for a different claims-based user than the current user.&#xD;&#xA;   at System.Web.Helpers.AntiXsrf.TokenValidator.ValidateTokens(HttpContextBase httpContext, IIdentity identity, AntiForgeryToken sessionToken, AntiForgeryToken fieldToken)&#xD;&#xA;   at System.Web.Helpers.AntiXsrf.AntiForgeryWorker.Validate(HttpContextBase httpContext)&#xD;&#xA;   at System.Web.Helpers.AntiForgery.Validate()&#xD;&#xA;   at System.Web.Mvc.ValidateAntiForgeryTokenAttribute.OnAuthorization(AuthorizationContext filterContext)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__19(AsyncCallback asyncCallback, Object asyncState)" time="2016-11-09T10:38:00.7122005Z" statusCode="500">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:no-cache&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_PRAGMA:no-cache&#xD;&#xA;HTTP_CONTENT_LENGTH:3232&#xD;&#xA;HTTP_CONTENT_TYPE:multipart/form-data; boundary=----WebKitFormBoundaryN7SEIzkLshcoVwg0&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:BX=d254lgpbi3in1&amp;b=3&amp;s=29; __RequestVerificationToken_L0hPUFNfSFJfdjU1=lVL9r72A9ZehGbriQ-3rD_IPoi7ZEz9zh3SWcIqxIO3ZVrrXjv65vtb81fgYW8EsoSUk9sr3-hJndT11JwXNIM8B763YWa_j4Dm0N3F8JTg1; ASP.NET_SessionId=4bhonflnfs3r0wxdsqmxee2u; HOPS_HR_V3=pqXb2c0RHlaj3RDBkUJih5HnFRD4p6Jido9xGxYgrRneNl8oU1JrlWx37L_Qr5JCTB1vxS4FmnftR6h9GaPovG3bUJ40_bL-Hqfee2zmo6xE3T6O4PpUXstRg8qSz1bhDtd55fyPjxSDhhHzrBG8F5Ggdk__GcFUcGmXmJumFP-d7ML9StxKKkxukmo38CgNg0y0Ekt3fWsbLRF21KG_DiP3wtu4qqE8GNr9ke70SXHkqScLuzJax5RVkEnAGDj-DVYWSb8hr2qr-Tw4jlawNz85q0fkWaiO5r-FqVqExPOclYL-8TZ4BUlnEmjzHuc73cG_n-f0Se4HrziWqiga4_ZcRQBCLv844yRfkH-DWYEcb76tDAOFYIFaCdRY7ZcqSjkhMVsUbiuoI9FFwb8Kk-9bE7V6kvI3nvyV421b8JbYZmsxBe7EyBMgW7mo-MqSdWNRrOdNjTfj8MNyn7Ywa2H6PnKrPwmFMgxAISl6XMKQCFS06PtoLw1kTS_0aTDA&#xD;&#xA;HTTP_HOST:apps.turanto.com&#xD;&#xA;HTTP_REFERER:https://apps.turanto.com/HOPS_HR_v5/T_JobAssignment/Edit/334?UrlReferrer=https%3A%2F%2Fapps.turanto.com%2FHOPS_HR_v5%2FT_JobAssignment&amp;viewtype=IndexPartial&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:https://apps.turanto.com&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: no-cache&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Pragma: no-cache&#xD;&#xA;Content-Length: 3232&#xD;&#xA;Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryN7SEIzkLshcoVwg0&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: BX=d254lgpbi3in1&amp;b=3&amp;s=29; __RequestVerificationToken_L0hPUFNfSFJfdjU1=lVL9r72A9ZehGbriQ-3rD_IPoi7ZEz9zh3SWcIqxIO3ZVrrXjv65vtb81fgYW8EsoSUk9sr3-hJndT11JwXNIM8B763YWa_j4Dm0N3F8JTg1; ASP.NET_SessionId=4bhonflnfs3r0wxdsqmxee2u; HOPS_HR_V3=pqXb2c0RHlaj3RDBkUJih5HnFRD4p6Jido9xGxYgrRneNl8oU1JrlWx37L_Qr5JCTB1vxS4FmnftR6h9GaPovG3bUJ40_bL-Hqfee2zmo6xE3T6O4PpUXstRg8qSz1bhDtd55fyPjxSDhhHzrBG8F5Ggdk__GcFUcGmXmJumFP-d7ML9StxKKkxukmo38CgNg0y0Ekt3fWsbLRF21KG_DiP3wtu4qqE8GNr9ke70SXHkqScLuzJax5RVkEnAGDj-DVYWSb8hr2qr-Tw4jlawNz85q0fkWaiO5r-FqVqExPOclYL-8TZ4BUlnEmjzHuc73cG_n-f0Se4HrziWqiga4_ZcRQBCLv844yRfkH-DWYEcb76tDAOFYIFaCdRY7ZcqSjkhMVsUbiuoI9FFwb8Kk-9bE7V6kvI3nvyV421b8JbYZmsxBe7EyBMgW7mo-MqSdWNRrOdNjTfj8MNyn7Ywa2H6PnKrPwmFMgxAISl6XMKQCFS06PtoLw1kTS_0aTDA&#xD;&#xA;Host: apps.turanto.com&#xD;&#xA;Referer: https://apps.turanto.com/HOPS_HR_v5/T_JobAssignment/Edit/334?UrlReferrer=https%3A%2F%2Fapps.turanto.com%2FHOPS_HR_v5%2FT_JobAssignment&amp;viewtype=IndexPartial&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36&#xD;&#xA;Origin: https://apps.turanto.com&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/HOPS_HR_v5" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\HOPS_HR_v5\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="3232" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="multipart/form-data; boundary=----WebKitFormBoundaryN7SEIzkLshcoVwg0" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/HOPS_HR_v5/T_JobAssignment/Edit/334" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\HOPS_HR_v5\GeneratorBase.MVC\T_JobAssignment\Edit\334" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="UrlReferrer=https%3A%2F%2Fapps.turanto.com%2FHOPS_HR_v5%2FT_JobAssignment" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="56646" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/HOPS_HR_v5/T_JobAssignment/Edit/334" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/HOPS_HR_v5/T_JobAssignment/Edit/334" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="no-cache" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_PRAGMA">
+      <value string="no-cache" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="3232" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="multipart/form-data; boundary=----WebKitFormBoundaryN7SEIzkLshcoVwg0" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="BX=d254lgpbi3in1&amp;b=3&amp;s=29; __RequestVerificationToken_L0hPUFNfSFJfdjU1=lVL9r72A9ZehGbriQ-3rD_IPoi7ZEz9zh3SWcIqxIO3ZVrrXjv65vtb81fgYW8EsoSUk9sr3-hJndT11JwXNIM8B763YWa_j4Dm0N3F8JTg1; ASP.NET_SessionId=4bhonflnfs3r0wxdsqmxee2u; HOPS_HR_V3=pqXb2c0RHlaj3RDBkUJih5HnFRD4p6Jido9xGxYgrRneNl8oU1JrlWx37L_Qr5JCTB1vxS4FmnftR6h9GaPovG3bUJ40_bL-Hqfee2zmo6xE3T6O4PpUXstRg8qSz1bhDtd55fyPjxSDhhHzrBG8F5Ggdk__GcFUcGmXmJumFP-d7ML9StxKKkxukmo38CgNg0y0Ekt3fWsbLRF21KG_DiP3wtu4qqE8GNr9ke70SXHkqScLuzJax5RVkEnAGDj-DVYWSb8hr2qr-Tw4jlawNz85q0fkWaiO5r-FqVqExPOclYL-8TZ4BUlnEmjzHuc73cG_n-f0Se4HrziWqiga4_ZcRQBCLv844yRfkH-DWYEcb76tDAOFYIFaCdRY7ZcqSjkhMVsUbiuoI9FFwb8Kk-9bE7V6kvI3nvyV421b8JbYZmsxBe7EyBMgW7mo-MqSdWNRrOdNjTfj8MNyn7Ywa2H6PnKrPwmFMgxAISl6XMKQCFS06PtoLw1kTS_0aTDA" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://apps.turanto.com/HOPS_HR_v5/T_JobAssignment/Edit/334?UrlReferrer=https%3A%2F%2Fapps.turanto.com%2FHOPS_HR_v5%2FT_JobAssignment&amp;viewtype=IndexPartial" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="https://apps.turanto.com" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="UrlReferrer">
+      <value string="https://apps.turanto.com/HOPS_HR_v5/T_JobAssignment" />
+    </item>
+  </queryString>
+  <form>
+    <item name="Id">
+      <value string="334" />
+    </item>
+    <item name="ConcurrencyKey">
+      <value string="AAAAAAAXroE=" />
+    </item>
+    <item name="T_EmployeeJobAssignmentID">
+      <value string="151" />
+    </item>
+    <item name="T_EmployeePercent">
+      <value string="" />
+    </item>
+    <item name="T_StartDate">
+      <value string="11/08/2016" />
+    </item>
+    <item name="T_EndDate">
+      <value string="11/07/2016" />
+    </item>
+    <item name="T_Primary">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="T_Active">
+      <value string="false" />
+    </item>
+    <item name="T_PositionJobAssignmentID">
+      <value string="357" />
+      <value string="357" />
+    </item>
+    <item name="T_PositionLevel">
+      <value string="E EMPLOYEE " />
+    </item>
+    <item name="T_RoleCode">
+      <value string="" />
+    </item>
+    <item name="T_ClassCode">
+      <value string="" />
+    </item>
+    <item name="T_WorkersCompCode">
+      <value string="" />
+    </item>
+    <item name="T_SOCCode">
+      <value string="29-2053 Psychiatric Technicians" />
+    </item>
+    <item name="T_JobAssignmentReasonID">
+      <value string="5" />
+    </item>
+    <item name="T_JobAssignmentUnitXID">
+      <value string="246" />
+    </item>
+    <item name="T_CostCenter">
+      <value string="209 EDUC &amp; TRNG PAT/RESIDENT" />
+    </item>
+    <item name="T_DepartmentArea">
+      <value string="10" />
+    </item>
+    <item name="T_JobAssignmentManagerEmployeeID">
+      <value string="155" />
+    </item>
+    <item name="T_EmployeeSupervisorID">
+      <value string="160" />
+    </item>
+    <item name="T_SupervisorEmail">
+      <value string="test@test.com" />
+    </item>
+    <item name="T_Department">
+      <value string="Elm" />
+    </item>
+    <item name="T_Notes">
+      <value string="" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="QbBJS2SRZgV7h1sTuy4xruV9zXq20oEOqGGCar6r_xUF1EoKceNhh8uT2avLfFfj0dsoS0mJdAz9nvCyKO8gKsRTYMY4K0RrMzN1WIk6a6xtrIDMRg1mOU8uajY6YRjUsMkzcfSgme-Tn8X12ox6Sg2" />
+    </item>
+    <item name="hdncommand">
+      <value string="Save" />
+    </item>
+    <item name="FailureMessage-72">
+      <value string="undefined" />
+    </item>
+  </form>
+  <cookies>
+    <item name="BX">
+      <value string="d254lgpbi3in1&amp;b=3&amp;s=29" />
+    </item>
+    <item name="__RequestVerificationToken_L0hPUFNfSFJfdjU1">
+      <value string="lVL9r72A9ZehGbriQ-3rD_IPoi7ZEz9zh3SWcIqxIO3ZVrrXjv65vtb81fgYW8EsoSUk9sr3-hJndT11JwXNIM8B763YWa_j4Dm0N3F8JTg1" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="4bhonflnfs3r0wxdsqmxee2u" />
+    </item>
+    <item name="HOPS_HR_V3">
+      <value string="pqXb2c0RHlaj3RDBkUJih5HnFRD4p6Jido9xGxYgrRneNl8oU1JrlWx37L_Qr5JCTB1vxS4FmnftR6h9GaPovG3bUJ40_bL-Hqfee2zmo6xE3T6O4PpUXstRg8qSz1bhDtd55fyPjxSDhhHzrBG8F5Ggdk__GcFUcGmXmJumFP-d7ML9StxKKkxukmo38CgNg0y0Ekt3fWsbLRF21KG_DiP3wtu4qqE8GNr9ke70SXHkqScLuzJax5RVkEnAGDj-DVYWSb8hr2qr-Tw4jlawNz85q0fkWaiO5r-FqVqExPOclYL-8TZ4BUlnEmjzHuc73cG_n-f0Se4HrziWqiga4_ZcRQBCLv844yRfkH-DWYEcb76tDAOFYIFaCdRY7ZcqSjkhMVsUbiuoI9FFwb8Kk-9bE7V6kvI3nvyV421b8JbYZmsxBe7EyBMgW7mo-MqSdWNRrOdNjTfj8MNyn7Ywa2H6PnKrPwmFMgxAISl6XMKQCFS06PtoLw1kTS_0aTDA" />
+    </item>
+  </cookies>
+</error>

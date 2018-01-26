@@ -1,0 +1,520 @@
+﻿@model GeneratorBase.MVC.Models.T_DrugAlcoholTest
+@using PagedList;
+@{
+    ViewBag.Title = "Edit Drug & Alcohol Test";
+	var EditPermission = User.CanEditItem("T_DrugAlcoholTest", Model, User);
+	var DeletePermission = User.CanDeleteItem("T_DrugAlcoholTest", Model, User);
+}
+@functions {
+    object getHtmlAttributes(string Property)
+    {
+        if (User.CanEdit("T_DrugAlcoholTest", Property))
+        {
+            return new { @class = "form-control" };
+        } return new { @class = "form-control", @readonly = "readonly" };
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_DrugAlcoholTestIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_DrugAlcoholTestIsHiddenRule);
+    }
+}
+@using (Html.BeginForm("EditWizard", "T_DrugAlcoholTest", new { UrlReferrer = Convert.ToString(ViewData["T_DrugAlcoholTestParentUrl"]) }, FormMethod.Post, new { enctype = "multipart/form-data",@id="frmT_DrugAlcoholTest" })) 
+{
+	@Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+    @Html.HiddenFor(model => model.Id)
+	@Html.HiddenFor(model => model.ConcurrencyKey)
+	@*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+    <input type="hidden" id="ErrMsg" />
+    <div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+    </div>
+    <div id="divDisplayBRmsgMandatory" style="display:none;">
+    </div>
+    <div id="divDisplayLockRecord" style="display:none;">
+    </div>
+    <div id="divDisplayBRReadOnly" style="display:none;">
+    </div>
+	<div id="divDisplayCodeFragment" style="display:none;">
+	</div>
+			<div class="row">
+        <br />
+        <div id=wizard>
+			<ol>
+		<li>Employee Information</li>
+		<li>Drug & Alcohol Test Information</li>
+		<li>Notes</li>
+            @if ( User.CanEdit("T_Comment"))
+                {
+				<li>Comment</li>
+				}
+       		</ol>
+			<div style="background-color:transparent; padding:0px;">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default AppForm">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Employee Information</h3>
+                            </div>
+                            <div class="panel-body">
+@if(User.CanView("T_DrugAlcoholTest","T_EmployeeDrugAlcoholTestID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeDrugAlcoholTestID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmployeeDrugAlcoholTestID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_DrugAlcoholTest", "T_EmployeeDrugAlcoholTestID"))
+		{
+			@Html.DropDownList("T_EmployeeDrugAlcoholTestID", null, "-- Select --", new {  @required ="required",      @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeDrugAlcoholTestID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EmployeeDrugAlcoholTestID, new { @class = "form-control" })
+			@Html.DropDownList("T_EmployeeDrugAlcoholTestID", null, "-- Select --", new {   @required ="required",     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeDrugAlcoholTestID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_EmployeeDrugAlcoholTestID)
+								 @if ( User.CanAdd("T_Employee"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_Employee"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_Employee" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_Employee" target="_blank" href="@Url.Action("Details", "T_Employee", new { Id = Html.DisplayFor(model => model.t_employeedrugalcoholtest.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_employeedrugalcoholtest == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Employee").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Employee").attr("title", '@Model.t_employeedrugalcoholtest.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_EmployeeDrugAlcoholTestID, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+					</div>
+				</div>
+			<div style="background-color:transparent; padding:0px;">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default AppForm">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Drug & Alcohol Test Information</h3>
+                            </div>
+                            <div class="panel-body">
+@if(User.CanView("T_DrugAlcoholTest","T_TypeOfTestID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TypeOfTestID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_TypeOfTestID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_DrugAlcoholTest", "T_TypeOfTestID"))
+		{
+			@Html.DropDownList("T_TypeOfTestID", null, "-- Select --", new {  @required ="required",      @class = "chosen-select form-control", @HostingName = "T_TestType", @dataurl = Url.Action("GetAllValue", "T_TestType",new { caller = "T_TypeOfTestID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_TypeOfTestID, new { @class = "form-control" })
+			@Html.DropDownList("T_TypeOfTestID", null, "-- Select --", new {   @required ="required",     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_TestType", @dataurl = Url.Action("GetAllValue", "T_TestType",new { caller = "T_TypeOfTestID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_TypeOfTestID)
+								 @if ( User.CanAdd("T_TestType"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Type Of Test','dvPopup','" + Url.Action("CreateQuick", "T_TestType", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_TestType"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_TestType" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_TestType" target="_blank" href="@Url.Action("Details", "T_TestType", new { Id = Html.DisplayFor(model => model.t_typeoftest.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_typeoftest == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_TestType").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_TestType").attr("title", '@Model.t_typeoftest.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_TypeOfTestID, new { @class = "form-control" })}
+@if(User.CanView("T_DrugAlcoholTest","T_TestReasonID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TestReasonID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_TestReasonID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_DrugAlcoholTest", "T_TestReasonID"))
+		{
+			@Html.DropDownList("T_TestReasonID", null, "-- Select --", new {      @class = "chosen-select form-control", @HostingName = "T_ReasonForDrugTest", @dataurl = Url.Action("GetAllValue", "T_ReasonForDrugTest",new { caller = "T_TestReasonID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_TestReasonID, new { @class = "form-control" })
+			@Html.DropDownList("T_TestReasonID", null, "-- Select --", new {      @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_ReasonForDrugTest", @dataurl = Url.Action("GetAllValue", "T_ReasonForDrugTest",new { caller = "T_TestReasonID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_TestReasonID)
+								 @if ( User.CanAdd("T_ReasonForDrugTest"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Test Reason','dvPopup','" + Url.Action("CreateQuick", "T_ReasonForDrugTest", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_ReasonForDrugTest"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_ReasonForDrugTest" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_ReasonForDrugTest" target="_blank" href="@Url.Action("Details", "T_ReasonForDrugTest", new { Id = Html.DisplayFor(model => model.t_testreason.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_testreason == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_ReasonForDrugTest").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_ReasonForDrugTest").attr("title", '@Model.t_testreason.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_TestReasonID, new { @class = "form-control" })}
+@if(User.CanView("T_DrugAlcoholTest","T_DateOrdered"))
+{
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DateOrdered">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_DateOrdered) <span class="text-danger-reg">*</span></label>
+                                <div class="form-group" title="Date  Of  Test">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_DateOrdered">
+									    @Html.TextBoxFor(model => model.T_DateOrdered, "{0:MM/dd/yyyy}", User.CanEdit("T_DrugAlcoholTest", "T_DateOrdered") ? (object)new {@class = "form-control" } : (object)new { @class = "form-control", @readonly="readonly"})
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_DateOrdered)
+								</div>
+                                </div>
+	
+                               @if(User.CanEdit("T_DrugAlcoholTest", "T_DateOrdered"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_DateOrdered').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_DateOrdered').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+								}
+								
+                            </div>
+} else { @Html.HiddenFor(model => model.T_DateOrdered, new { @class = "form-control" })}
+@if(User.CanView("T_DrugAlcoholTest","T_ReviewersInitials"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ReviewersInitials">
+							<div class='form-group' title="Administered  By">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_ReviewersInitials)  </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_ReviewersInitials,  getHtmlAttributes("T_ReviewersInitials"))
+									@Html.ValidationMessageFor(model => model.T_ReviewersInitials)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_ReviewersInitials, new { @class = "form-control" })}
+@if(User.CanView("T_DrugAlcoholTest","T_DrugTestResultsID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DrugTestResultsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_DrugTestResultsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_DrugAlcoholTest", "T_DrugTestResultsID"))
+		{
+			@Html.DropDownList("T_DrugTestResultsID", null, "-- Select --", new {      @class = "chosen-select form-control", @HostingName = "T_DrugTestResult", @dataurl = Url.Action("GetAllValue", "T_DrugTestResult",new { caller = "T_DrugTestResultsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_DrugTestResultsID, new { @class = "form-control" })
+			@Html.DropDownList("T_DrugTestResultsID", null, "-- Select --", new {      @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_DrugTestResult", @dataurl = Url.Action("GetAllValue", "T_DrugTestResult",new { caller = "T_DrugTestResultsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_DrugTestResultsID)
+								 @if ( User.CanAdd("T_DrugTestResult"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Test Results','dvPopup','" + Url.Action("CreateQuick", "T_DrugTestResult", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_DrugTestResult"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_DrugTestResult" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_DrugTestResult" target="_blank" href="@Url.Action("Details", "T_DrugTestResult", new { Id = Html.DisplayFor(model => model.t_drugtestresults.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_drugtestresults == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_DrugTestResult").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_DrugTestResult").attr("title", '@Model.t_drugtestresults.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_DrugTestResultsID, new { @class = "form-control" })}
+@if(User.CanView("T_DrugAlcoholTest","T_ResultsReceivedDate"))
+{
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ResultsReceivedDate">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_ResultsReceivedDate) </label>
+                                <div class="form-group" title="Results  Received  Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_ResultsReceivedDate">
+									    @Html.TextBoxFor(model => model.T_ResultsReceivedDate, "{0:MM/dd/yyyy}", User.CanEdit("T_DrugAlcoholTest", "T_ResultsReceivedDate") ? (object)new {@class = "form-control" } : (object)new { @class = "form-control", @readonly="readonly"})
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_ResultsReceivedDate)
+								</div>
+                                </div>
+	
+                               @if(User.CanEdit("T_DrugAlcoholTest", "T_ResultsReceivedDate"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_ResultsReceivedDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_ResultsReceivedDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+								}
+								
+                            </div>
+} else { @Html.HiddenFor(model => model.T_ResultsReceivedDate, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+					</div>
+				</div>
+			<div style="background-color:transparent; padding:0px;">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default AppForm">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Notes</h3>
+                            </div>
+                            <div class="panel-body">
+@if(User.CanView("T_DrugAlcoholTest","T_Notes"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Notes">
+							<div class='form-group' title="Notes">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Notes) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								@Html.TextAreaFor(model => model.T_Notes, getHtmlAttributes("T_Notes"))
+									@Html.ValidationMessageFor(model => model.T_Notes)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_Notes, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+					</div>
+				</div>
+@if ( User.CanEdit("T_Comment"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Comment</h3>
+                            </div>
+                            <div class="panel-body" id="T_DrugAlcoholTestComments">
+                                @if ( User.CanView("T_Comment"))
+                                {
+                                    Html.RenderAction("Index", "T_Comment", new {RenderPartial=true, HostingEntity = "T_DrugAlcoholTest", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_DrugAlcoholTestComments" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+</div>
+   @Html.ActionLink("C", "Cancel", new { UrlReferrer = ViewData["T_DrugAlcoholTestParentUrl"] }, new { @id = "cancel", @style = "display:none;" })
+        @if (EditPermission)
+        {
+            <input type="submit"  name="command" id="WizardSubmit" style="display:none;" />
+        }
+        <input type="hidden" name="hdncommand" value="" />
+    </div>
+ <br />
+}
+<script>
+    $(document).ready(function () {
+        try {
+            focusOnControl('frmT_DrugAlcoholTest');
+        }
+        catch (ex) { }
+    });
+</script>
+ <script>
+
+   
+    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+<script>
+	$("input[type='submit']").click(function (event) {
+	if (!$("#frmT_DrugAlcoholTest").valid()) return;
+	var $this = $(this);
+		$('input:hidden[name="hdncommand"]').val($this.val());
+	});
+	$(document).ready(function () {
+		DisableTabOnReadonlyProperty("frmT_Donation");
+	});
+</script>
+@{
+var businessrule = User.businessrules.Where(p => p.EntityName == "T_DrugAlcoholTest").ToList();
+
+if ((businessrule != null && businessrule.Count > 0) )
+{
+var ruleids = businessrule.Select(q => q.Id).ToList();
+var typelist  = string.Join(",", (new GeneratorBase.MVC.Models.RuleActionContext()).RuleActions.Where(p => ruleids.Contains(p.RuleActionID.Value) && p.associatedactiontype.TypeNo.HasValue).Select(p => p.associatedactiontype.TypeNo.Value).Distinct().ToList());
+
+    <script>
+		$(document).ready(function () {
+				document.getElementById("ErrMsg").innerHTML = "";
+				var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+
+				 form = $("#frmT_DrugAlcoholTest").serialize();
+				dataurl = "@Url.Action("businessruletype", "T_DrugAlcoholTest", new { ruleType = "OnEdit"})";
+                ApplyBusinessRuleOnPageLoad("@typelist", dataurl, "T_DrugAlcoholTest", false, "ErrMsg", form);
+				//business rules on inline associations
+
+    });
+</script>
+<script>
+    $("form").submit(function (event) {
+	if (!$("#frmT_DrugAlcoholTest").valid()) return;
+			document.getElementById("ErrMsg").innerHTML = "";
+            var flag = true;
+            var dataurl = "";
+            var form = "";
+            var inlinecount = "0";
+			 form = $("#frmT_DrugAlcoholTest").serialize();
+   
+				 dataurl = "@Url.Action("businessruletype", "T_DrugAlcoholTest", new { ruleType = "OnEdit"})";
+                 flag = ApplyBusinessRuleOnSubmit(dataurl, "T_DrugAlcoholTest", false, "ErrMsg", form);
+
+  				 //business rules on inline associations
+               
+			 if (flag)
+                    $("form").find(':input').removeAttr('disabled');
+            return flag;
+		});
+		 $(document).ready(function () {
+                $("input[type='submit']").on('blur', function () {
+                    $("input[type='submit']").removeAttr('disabled');
+                });
+               
+            });
+</script>
+}
+ 
+}
+
+

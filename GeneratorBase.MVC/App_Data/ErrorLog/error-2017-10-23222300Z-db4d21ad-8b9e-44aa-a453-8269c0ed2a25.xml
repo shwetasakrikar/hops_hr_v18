@@ -1,0 +1,186 @@
+﻿<error errorId="db4d21ad-8b9e-44aa-a453-8269c0ed2a25" application="/LM/W3SVC/1/ROOT/NVMHIHRv1" host="TURANTOMVC" type="System.Security.Cryptography.CryptographicException" message="Length of the data to decrypt is invalid." source="mscorlib" detail="System.Security.Cryptography.CryptographicException: Length of the data to decrypt is invalid.&#xD;&#xA;   at System.Security.Cryptography.CryptoAPITransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)&#xD;&#xA;   at GeneratorBase.MVC.Models.EncryptDecrypt.DecryptString(String Message) in d:\GenApps\NVMHIHRv1\GeneratorBase.MVC\Models\EncryptDecrypt.cs:line 73&#xD;&#xA;   at GeneratorBase.MVC.Models.CommonFunction.ReportPass() in d:\GenApps\NVMHIHRv1\GeneratorBase.MVC\Utils\CommonFunction.cs:line 313&#xD;&#xA;   at GeneratorBase.MVC.Controllers.ReportsController.GetAllReport(String searchString, Boolean IsReportName) in d:\GenApps\NVMHIHRv1\GeneratorBase.MVC\Controllers\OtherDefaultControllers\ReportsController.cs:line 87&#xD;&#xA;   at GeneratorBase.MVC.Controllers.ReportsController.Index(Nullable`1 page, String searchString, Nullable`1 itemsPerPage) in d:\GenApps\NVMHIHRv1\GeneratorBase.MVC\Controllers\OtherDefaultControllers\ReportsController.cs:line 40&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)" user="CelestePonsioen" time="2017-10-23T22:23:00.0000653Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:pageSizeCelestePonsioenT_CostCenter=100; paginationCelestePonsioenT_Position=3; pageSizeCelestePonsioenT_Employee=20; __RequestVerificationToken_L05WTUhJSFJ2MQ2=TwQFdgbYhQI9u0XROg_D5rwA1pdih5KrbtmErdVcSeRXqcmeqctO7mjssxMWmTd-rfdns3eil7b4HYIgaOHslSR9n98XfzHdXg47gcldlUk1; ASP.NET_SessionId=5brb1bezaxpsulq5nuzegwjj; _timezone=Eastern Standard Time; NVMHIHRv1CurrentRole=HR Manager,; NVMHIHRv1=nl2AK67LBcf9XtoSw0Vi-okffpF6L_ZqKfekncTWtVS31A9aRzed5h5t0PhLROv4MpqKOhhBL-q2yqiaoBB-ABQ9YxjqKBjK_M7vPCdgO1DXrrTb58-uSx3EQttR-ZsvKnO6HjWewnWPMGIkc9voUYrsz6LLqUJwfeBdHftOJMBOQ-NO-4p_pfv0rbT1n-tPALiJTgMmnsVFkL_gF8o2dsvXBvPQg4i2M64DPSHKLyItdPUfFGVQNsqtxVbFxjGNbwhuPb9u5RvD3Cll6td96EEcR9_Zc3yCAOPISxcuLK1fY7emiTOOIToMe5ueEeIbqPsc2dLbSNzzIfOmy_lPdTLeX7TIrqh-zMIGyXfdkNYApZENe_tRLERxwDxXo8371q73tHg86IUsWIMc-M3flxm_GDD3CtOO3XCmhoIND2MqP6UDgHYysSDlxMwDiwX_yZbE2RYOuAUoCrcTs4i6Df6_GLtDh-LOl2zWbbKgNlIqiC_yNo1Np_u5dPM6f4gKd7ycVK5gKcQBvDh6ypeC2fE-ItJ1YQ5UdafN2g9ZI7A&#xD;&#xA;HTTP_HOST:apps.turanto.com&#xD;&#xA;HTTP_REFERER:https://apps.turanto.com/NVMHIHRv1/T_DrugAlcoholTest&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: pageSizeCelestePonsioenT_CostCenter=100; paginationCelestePonsioenT_Position=3; pageSizeCelestePonsioenT_Employee=20; __RequestVerificationToken_L05WTUhJSFJ2MQ2=TwQFdgbYhQI9u0XROg_D5rwA1pdih5KrbtmErdVcSeRXqcmeqctO7mjssxMWmTd-rfdns3eil7b4HYIgaOHslSR9n98XfzHdXg47gcldlUk1; ASP.NET_SessionId=5brb1bezaxpsulq5nuzegwjj; _timezone=Eastern Standard Time; NVMHIHRv1CurrentRole=HR Manager,; NVMHIHRv1=nl2AK67LBcf9XtoSw0Vi-okffpF6L_ZqKfekncTWtVS31A9aRzed5h5t0PhLROv4MpqKOhhBL-q2yqiaoBB-ABQ9YxjqKBjK_M7vPCdgO1DXrrTb58-uSx3EQttR-ZsvKnO6HjWewnWPMGIkc9voUYrsz6LLqUJwfeBdHftOJMBOQ-NO-4p_pfv0rbT1n-tPALiJTgMmnsVFkL_gF8o2dsvXBvPQg4i2M64DPSHKLyItdPUfFGVQNsqtxVbFxjGNbwhuPb9u5RvD3Cll6td96EEcR9_Zc3yCAOPISxcuLK1fY7emiTOOIToMe5ueEeIbqPsc2dLbSNzzIfOmy_lPdTLeX7TIrqh-zMIGyXfdkNYApZENe_tRLERxwDxXo8371q73tHg86IUsWIMc-M3flxm_GDD3CtOO3XCmhoIND2MqP6UDgHYysSDlxMwDiwX_yZbE2RYOuAUoCrcTs4i6Df6_GLtDh-LOl2zWbbKgNlIqiC_yNo1Np_u5dPM6f4gKd7ycVK5gKcQBvDh6ypeC2fE-ItJ1YQ5UdafN2g9ZI7A&#xD;&#xA;Host: apps.turanto.com&#xD;&#xA;Referer: https://apps.turanto.com/NVMHIHRv1/T_DrugAlcoholTest&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/NVMHIHRv1" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\NVMHIHRv1\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="CelestePonsioen" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="CelestePonsioen" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/NVMHIHRv1/Reports" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\NVMHIHRv1\GeneratorBase.MVC\Reports" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="75.150.60.9" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="75.150.60.9" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="53016" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/NVMHIHRv1/Reports" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/NVMHIHRv1/Reports" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="pageSizeCelestePonsioenT_CostCenter=100; paginationCelestePonsioenT_Position=3; pageSizeCelestePonsioenT_Employee=20; __RequestVerificationToken_L05WTUhJSFJ2MQ2=TwQFdgbYhQI9u0XROg_D5rwA1pdih5KrbtmErdVcSeRXqcmeqctO7mjssxMWmTd-rfdns3eil7b4HYIgaOHslSR9n98XfzHdXg47gcldlUk1; ASP.NET_SessionId=5brb1bezaxpsulq5nuzegwjj; _timezone=Eastern Standard Time; NVMHIHRv1CurrentRole=HR Manager,; NVMHIHRv1=nl2AK67LBcf9XtoSw0Vi-okffpF6L_ZqKfekncTWtVS31A9aRzed5h5t0PhLROv4MpqKOhhBL-q2yqiaoBB-ABQ9YxjqKBjK_M7vPCdgO1DXrrTb58-uSx3EQttR-ZsvKnO6HjWewnWPMGIkc9voUYrsz6LLqUJwfeBdHftOJMBOQ-NO-4p_pfv0rbT1n-tPALiJTgMmnsVFkL_gF8o2dsvXBvPQg4i2M64DPSHKLyItdPUfFGVQNsqtxVbFxjGNbwhuPb9u5RvD3Cll6td96EEcR9_Zc3yCAOPISxcuLK1fY7emiTOOIToMe5ueEeIbqPsc2dLbSNzzIfOmy_lPdTLeX7TIrqh-zMIGyXfdkNYApZENe_tRLERxwDxXo8371q73tHg86IUsWIMc-M3flxm_GDD3CtOO3XCmhoIND2MqP6UDgHYysSDlxMwDiwX_yZbE2RYOuAUoCrcTs4i6Df6_GLtDh-LOl2zWbbKgNlIqiC_yNo1Np_u5dPM6f4gKd7ycVK5gKcQBvDh6ypeC2fE-ItJ1YQ5UdafN2g9ZI7A" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://apps.turanto.com/NVMHIHRv1/T_DrugAlcoholTest" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="pageSizeCelestePonsioenT_CostCenter">
+      <value string="100" />
+    </item>
+    <item name="paginationCelestePonsioenT_Position">
+      <value string="3" />
+    </item>
+    <item name="pageSizeCelestePonsioenT_Employee">
+      <value string="20" />
+    </item>
+    <item name="__RequestVerificationToken_L05WTUhJSFJ2MQ2">
+      <value string="TwQFdgbYhQI9u0XROg_D5rwA1pdih5KrbtmErdVcSeRXqcmeqctO7mjssxMWmTd-rfdns3eil7b4HYIgaOHslSR9n98XfzHdXg47gcldlUk1" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="5brb1bezaxpsulq5nuzegwjj" />
+    </item>
+    <item name="_timezone">
+      <value string="Eastern Standard Time" />
+    </item>
+    <item name="NVMHIHRv1CurrentRole">
+      <value string="HR Manager," />
+    </item>
+    <item name="NVMHIHRv1">
+      <value string="nl2AK67LBcf9XtoSw0Vi-okffpF6L_ZqKfekncTWtVS31A9aRzed5h5t0PhLROv4MpqKOhhBL-q2yqiaoBB-ABQ9YxjqKBjK_M7vPCdgO1DXrrTb58-uSx3EQttR-ZsvKnO6HjWewnWPMGIkc9voUYrsz6LLqUJwfeBdHftOJMBOQ-NO-4p_pfv0rbT1n-tPALiJTgMmnsVFkL_gF8o2dsvXBvPQg4i2M64DPSHKLyItdPUfFGVQNsqtxVbFxjGNbwhuPb9u5RvD3Cll6td96EEcR9_Zc3yCAOPISxcuLK1fY7emiTOOIToMe5ueEeIbqPsc2dLbSNzzIfOmy_lPdTLeX7TIrqh-zMIGyXfdkNYApZENe_tRLERxwDxXo8371q73tHg86IUsWIMc-M3flxm_GDD3CtOO3XCmhoIND2MqP6UDgHYysSDlxMwDiwX_yZbE2RYOuAUoCrcTs4i6Df6_GLtDh-LOl2zWbbKgNlIqiC_yNo1Np_u5dPM6f4gKd7ycVK5gKcQBvDh6ypeC2fE-ItJ1YQ5UdafN2g9ZI7A" />
+    </item>
+  </cookies>
+</error>

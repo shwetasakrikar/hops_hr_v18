@@ -1,0 +1,552 @@
+﻿@model GeneratorBase.MVC.Models.T_ServiceRecord
+@using PagedList;
+@{
+    ViewBag.Title = "View Service Record";
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_ServiceRecord");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Service Record";
+}
+<script>
+    $(document).ready(function () {
+			 if ($.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') != null) {
+				$('a[href="#' + $.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') + '"]').click();
+			 }
+    });
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_ServiceRecordIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_ServiceRecordIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_ServiceRecordIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_ServiceRecordIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_ServiceRecordIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_ServiceRecordIsSetValueUIRule);
+    }
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-hand-down text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span>View</span>
+        </h1>
+        <h2 class="text-primary"><span id="HostingEntityDisplayValue">@Html.DisplayFor(model => model.DisplayValue)</span>
+			<div class="btn-group pull-right fixactionbut">
+            <button data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-default pull-right">
+                Action
+                <span class="caret">    </span>
+            </button>
+			<ul class="dropdown-menu pull-left">               
+				<li>
+                    @if ( User.CanEdit("T_ServiceRecord"))
+                    {
+                        <a href="@Url.Action("Edit","T_ServiceRecord", new { id = Model.Id,  UrlReferrer = Request.Url, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    }
+                </li>             
+				<li>
+                    @if ( User.CanDelete("T_ServiceRecord"))
+                    {
+                        <a href="@Url.Action("Delete", "T_ServiceRecord", new { id = Model.Id, UrlReferrer = Request.Url, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Delete</a>
+                    }
+                </li>
+	<li class="divider" style="clear:both"></li>
+	<li class="dropdown-submenu pull-left">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu pull-left">
+				@if ( User.CanAdd("T_Comment"))
+				{
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Comment", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_ServiceRecordComments", 
+							HostingEntityName = "T_ServiceRecord",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Comment
+						</a>
+					</li>
+				}
+			</ul>
+</li>
+ <li class="divider" style="clear:both"></li>
+ <li class="dropdown-submenu pull-left">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;">Find Matching</a>
+    <ul class="dropdown-menu pull-left">
+<li>
+		<a href="@Url.Action("FindFSearch", "FileDocument", new {sourceEntity="T_ServiceRecord",id=Model.Id}, null)">Document</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Licenses", new {sourceEntity="T_ServiceRecord",id=Model.Id}, null)">Licenses</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Comment", new {sourceEntity="T_ServiceRecord",id=Model.Id}, null)">Comment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_DrugAlcoholTest", new {sourceEntity="T_ServiceRecord",id=Model.Id}, null)">Drug & Alcohol Test</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_UnitX", new {sourceEntity="T_ServiceRecord",id=Model.Id}, null)">UnitX</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_JobAssignment", new {sourceEntity="T_ServiceRecord",id=Model.Id}, null)">Job Assignment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_LeaveProfile", new {sourceEntity="T_ServiceRecord",id=Model.Id}, null)">Leave</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_EmployeeInjury", new {sourceEntity="T_ServiceRecord",id=Model.Id}, null)">Employee Injury</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_BackgroundCheck", new {sourceEntity="T_ServiceRecord",id=Model.Id}, null)">Background Check</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Education", new {sourceEntity="T_ServiceRecord",id=Model.Id}, null)">Education</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Accommodation", new {sourceEntity="T_ServiceRecord",id=Model.Id}, null)">Accommodation</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_PayDetails", new {sourceEntity="T_ServiceRecord",id=Model.Id}, null)">Pay Details </a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_AllFacilitiesUnit", new {sourceEntity="T_ServiceRecord",id=Model.Id}, null)">All Facilities Unit</a>
+</li>
+</ul>
+</li>
+			</ul>
+</div>
+		</h2>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+	 <li class="active"><a href="#Details" onclick="ClearTabCookie('@User.JavaScriptEncodedName@Model.Id');" data-toggle="tab">Details</a></li>
+		 <li @(!User.CanView("T_Comment")?"style=display:none;":"")><a onclick="LoadTab('T_ServiceRecordComments','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_Comment", new {RenderPartial=true, HostingEntity ="T_ServiceRecord", HostingEntityID = @Model.Id, AssociatedType = "T_ServiceRecordComments",TabToken = DateTime.Now.Ticks,}))')" href="#T_ServiceRecordComments" data-toggle="tab">
+		 Comment
+		 <span class="badge bg-blue"><div id="dvcnt_T_ServiceRecordComments">@ViewBag.T_ServiceRecordCommentsCount</div></span>
+		 		 </a></li>
+		 <li @(!User.CanView("JournalEntry")?"style=display:none;":"")><a onclick="LoadTab('JournalEntryToT_ServiceRecordRelation','@User.JavaScriptEncodedName@Model.Id','@Url.Action("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_ServiceRecord", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry", TabToken = DateTime.Now.Ticks })')" href="#JournalEntryToT_ServiceRecordRelation" data-toggle="tab">Service Record Journal</a></li>
+    </ul>
+	    <div class="tab-content">
+		   <div class="tab-pane fade in active" id="Details">
+				 <div class="panel panel-default AppForm">
+					<div class="panel-body">
+                                  
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-xs-12">
+			<div class="panel panel-default" id="dvGroup48893">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+											
+									<h3 class="panel-title">Basic Profile</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_ServiceRecord","T_EmployeeEmploymentProfileID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeEmploymentProfile">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EmployeeEmploymentProfileID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_employeeemploymentprofile!=null && !string.IsNullOrEmpty(Model.t_employeeemploymentprofile.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_employeeemploymentprofile.DisplayValue).ToString(), "Details", "T_Employee", new { Id = Html.DisplayFor(model => model.t_employeeemploymentprofile.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_EmploymentRecordEmployeeTypeID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmploymentRecordEmployeeType">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EmploymentRecordEmployeeTypeID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_employmentrecordemployeetype!=null && !string.IsNullOrEmpty(Model.t_employmentrecordemployeetype.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_employmentrecordemployeetype.DisplayValue).ToString(), "Details", "T_EmployeeType", new { Id = Html.DisplayFor(model => model.t_employmentrecordemployeetype.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_IsCurrent"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_IsCurrent">
+	<div class='form-group' title="Current Active Service Record">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_IsCurrent) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				@Html.DisplayFor(model => model.T_IsCurrent)
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_EmploymentRecordHiredAtFacilityID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmploymentRecordHiredAtFacility">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EmploymentRecordHiredAtFacilityID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_employmentrecordhiredatfacility!=null && !string.IsNullOrEmpty(Model.t_employmentrecordhiredatfacility.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_employmentrecordhiredatfacility.DisplayValue).ToString(), "Details", "T_AllFacilities", new { Id = Html.DisplayFor(model => model.t_employmentrecordhiredatfacility.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_HireDate"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_HireDate">
+	<div class='form-group' title="Hire  Date">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_HireDate) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_HireDate)</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_TerminationDate"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TerminationDate">
+	<div class='form-group' title="Separation Date">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_TerminationDate) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_TerminationDate)</p>
+					
+					</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+			<div class="panel panel-default" id="dvGroup48891">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+											
+									<h3 class="panel-title">Probation Details</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_ServiceRecord","T_ThreeMonthDue"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ThreeMonthDue">
+	<div class='form-group' title="Three Month Due">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_ThreeMonthDue) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel" id="timeT_ThreeMonthDue">@String.Format("{0:hh:mm tt}", Model.T_ThreeMonthDue)</p>
+		@Html.Raw("<script> $(function () {$('timeT_ThreeMonthDue').datetimepickerIndex({divid:'timeT_ThreeMonthDue',format: 'hh:mm',val:'" + @Html.DisplayFor(model => model.T_ThreeMonthDue) + "'})});</script>")        
+				
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_ThreeMonthReviewCompleted"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ThreeMonthReviewCompleted">
+	<div class='form-group' title="Three Month Review Completed">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_ThreeMonthReviewCompleted) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				@Html.DisplayFor(model => model.T_ThreeMonthReviewCompleted)
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_SixMonthDue"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_SixMonthDue">
+	<div class='form-group' title="Six Month Due">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_SixMonthDue) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel" id="timeT_SixMonthDue">@String.Format("{0:hh:mm tt}", Model.T_SixMonthDue)</p>
+		@Html.Raw("<script> $(function () {$('timeT_SixMonthDue').datetimepickerIndex({divid:'timeT_SixMonthDue',format: 'hh:mm',val:'" + @Html.DisplayFor(model => model.T_SixMonthDue) + "'})});</script>")        
+				
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_SixMonthReviewCompleted"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_SixMonthReviewCompleted">
+	<div class='form-group' title="Six  Month  Review  Completed">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_SixMonthReviewCompleted) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				@Html.DisplayFor(model => model.T_SixMonthReviewCompleted)
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_TwelveMonthDue"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TwelveMonthDue">
+	<div class='form-group' title="Twelve Month Due">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_TwelveMonthDue) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel" id="timeT_TwelveMonthDue">@String.Format("{0:hh:mm tt}", Model.T_TwelveMonthDue)</p>
+		@Html.Raw("<script> $(function () {$('timeT_TwelveMonthDue').datetimepickerIndex({divid:'timeT_TwelveMonthDue',format: 'hh:mm',val:'" + @Html.DisplayFor(model => model.T_TwelveMonthDue) + "'})});</script>")        
+				
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_TwelveMonthReviewCompleted"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TwelveMonthReviewCompleted">
+	<div class='form-group' title="Twelve  Month  Review  Completed">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_TwelveMonthReviewCompleted) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				@Html.DisplayFor(model => model.T_TwelveMonthReviewCompleted)
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_ProbationaryExtensionDate"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ProbationaryExtensionDate">
+	<div class='form-group' title="Probationary  Extension  Date">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_ProbationaryExtensionDate) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_ProbationaryExtensionDate)</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_ExtensionReviewCompleted"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ExtensionReviewCompleted">
+	<div class='form-group' title="Extension Review Completed">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_ExtensionReviewCompleted) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				@Html.DisplayFor(model => model.T_ExtensionReviewCompleted)
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+			<div class="panel panel-default" id="dvGroup48892">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+											
+									<h3 class="panel-title">Separation Details</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_ServiceRecord","T_EmployeeTerminationReasonID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeTerminationReason">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EmployeeTerminationReasonID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_employeeterminationreason!=null && !string.IsNullOrEmpty(Model.t_employeeterminationreason.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_employeeterminationreason.DisplayValue).ToString(), "Details", "T_TerminationReason", new { Id = Html.DisplayFor(model => model.t_employeeterminationreason.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_EmployeeRecordTerminationFacilityID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeRecordTerminationFacility">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EmployeeRecordTerminationFacilityID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_employeerecordterminationfacility!=null && !string.IsNullOrEmpty(Model.t_employeerecordterminationfacility.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_employeerecordterminationfacility.DisplayValue).ToString(), "Details", "T_AllFacilities", new { Id = Html.DisplayFor(model => model.t_employeerecordterminationfacility.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_TwoWeekNoticeGiven"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TwoWeekNoticeGiven">
+	<div class='form-group' title="Two  Week  Notice  Given">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_TwoWeekNoticeGiven) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				@Html.DisplayFor(model => model.T_TwoWeekNoticeGiven)
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_NoticeGivenDate"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_NoticeGivenDate">
+	<div class='form-group' title="">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_NoticeGivenDate) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_NoticeGivenDate)</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_ThirtyDaysSinceTermination"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ThirtyDaysSinceTermination">
+	<div class='form-group' title="Thirty Days Since Separation">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_ThirtyDaysSinceTermination) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_ThirtyDaysSinceTermination)</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_ThirteenWeeksSinceTermination"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ThirteenWeeksSinceTermination">
+	<div class='form-group' title="Thirteen Weeks Since Separation">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_ThirteenWeeksSinceTermination) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_ThirteenWeeksSinceTermination)</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_EligibleForRehire"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EligibleForRehire">
+	<div class='form-group' title="Not  Eligible  For  Rehire">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EligibleForRehire) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				@Html.DisplayFor(model => model.T_EligibleForRehire)
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+			<div class="panel panel-default" id="dvGroup48894">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+											
+									<h3 class="panel-title">Notes</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_ServiceRecord","T_ProbationNotes"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ProbationNotes">
+	<div class='form-group' title="Probation  Notes">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_ProbationNotes)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		<p class="viewlabel">@Model.T_ProbationNotes</p>
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_ServiceRecord","T_TerminationNotes"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TerminationNotes">
+	<div class='form-group' title="Separation Notes">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_TerminationNotes)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		<p class="viewlabel">@Model.T_TerminationNotes</p>
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+				</div>
+			</div>
+		</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					@Html.ActionLink("Back", "Cancel", new { UrlReferrer = Request.UrlReferrer }, new { @class = "btn btn-default btn-sm pull-left formbuttonfix" })
+					 @if ( User.CanEdit("T_ServiceRecord"))
+                     {
+                          @Html.ActionLink("Edit", "Edit", new { id = Model.Id, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, new { @class = "btn btn-primary btn-sm pull-left formbuttonfix" })
+                     }
+				</div>
+			</div>    
+
+<div class="dropdown pull-left formbuttonfix" style="margin-top:-30px; margin-left:102px;">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
+           
+			@if ( User.CanAdd("T_Comment"))
+            {
+				 <li>
+				 <a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Comment",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_ServiceRecordComments", 
+						HostingEntityName = "T_ServiceRecord",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');") style="margin-top:5px;">
+                   Add  Comment</a>
+			</li>
+            }
+			
+
+        </ul>
+
+			</div>
+	</div>    
+<div class="tab-pane fade in" id="T_ServiceRecordComments">
+     @if ( User.CanView("T_Comment"))
+	{
+	  // Html.RenderAction("Index", "T_Comment", new {RenderPartial=true, HostingEntity = "T_ServiceRecord", HostingEntityID = @Model.Id, AssociatedType = "T_ServiceRecordComments" }); 
+	}
+  </div>
+<div class="tab-pane fade in" id="JournalEntryToT_ServiceRecordRelation">
+            @if ( User.CanView("JournalEntry"))
+		   {
+			//	Html.RenderAction("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_ServiceRecord", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry" });
+		   }
+  </div>
+	</div> <!-- /tab-content --><br />
+
+<br/>
+</div>
+ 

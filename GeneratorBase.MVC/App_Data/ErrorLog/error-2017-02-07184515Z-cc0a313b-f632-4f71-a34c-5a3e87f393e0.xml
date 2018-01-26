@@ -1,0 +1,191 @@
+﻿<error errorId="cc0a313b-f632-4f71-a34c-5a3e87f393e0" application="/LM/W3SVC/1/ROOT/HOPS_HR_V9" host="TURANTOMVC" type="System.Web.Mvc.HttpAntiForgeryException" message="The required anti-forgery form field &quot;__RequestVerificationToken&quot; is not present." source="System.Web.WebPages" detail="System.Web.Mvc.HttpAntiForgeryException (0x80004005): The required anti-forgery form field &quot;__RequestVerificationToken&quot; is not present.&#xD;&#xA;   at System.Web.Helpers.AntiXsrf.TokenValidator.ValidateTokens(HttpContextBase httpContext, IIdentity identity, AntiForgeryToken sessionToken, AntiForgeryToken fieldToken)&#xD;&#xA;   at System.Web.Helpers.AntiXsrf.AntiForgeryWorker.Validate(HttpContextBase httpContext)&#xD;&#xA;   at System.Web.Helpers.AntiForgery.Validate()&#xD;&#xA;   at System.Web.Mvc.ValidateAntiForgeryTokenAttribute.OnAuthorization(AuthorizationContext filterContext)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__19(AsyncCallback asyncCallback, Object asyncState)" user="rupali.pendse@etelic.com" time="2017-02-07T18:45:15.8435032Z" statusCode="500">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:331&#xD;&#xA;HTTP_CONTENT_TYPE:multipart/form-data; boundary=----WebKitFormBoundary9jzVftDs93zFbkSy&#xD;&#xA;HTTP_ACCEPT:application/json, text/javascript, */*; q=0.01&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken_L0hPUFNfSFJfVjk1=0vA2gLxqs5bTe1FuewaG3ylZQBileC0UbZhdCeJLKqKbaXvnjQgeykFn72k4UC2fTjxPJ8oxPdAWooHMOzVP6D4iqkyq36RZn6wyzIK5_8U1; HOPS_HR_V9=_NH0LSOR3sIh3xbVb29lC_RwWW8t13DaWEEdXt6TlU23VSkLfv1BHrt-fphQKTH3s3MxR5ajBAPgtFZlcg8XV3jHVBArqjtmgxzouIoRCTSF1TQJFNV0xf0gh7gxFVjO_uvbti7Ul_v70Mhy2IgUKSzPv7pYOmrwZVmtKWhDlu8d8A4dY7m2Lm4kkD7Usi2BhcP0A4djhiCxo_k3w-LN0OX0ct6tDUcFyrWiuVlxkdae2TpVlTk94NtPcNerC2qf8Flrx-SpjpMn-7mVkS_EyfNUWiV0_JkkJrSCAZT4gVF-TuAW6xf0oUhxfv3i8LwA2vpDIW7_cVKxCy9pcZEExfJK5eOVdMQUoHa98jKI5h8RMvA0nm3IzTSkEndRY35bpb3iLOyZsaXrnBu9OqB7LTdPx56MsayQsFKyUIf6KSII5DNAoKvlb9C2L6P0K5Z_z5OSiNdhHQatcJnniXbLBPenneVC10afueMKC7_4sd4y1_l9ilhzrXlGoRfw9m29xUZ0z5GVCTxL96WEcZFZAvfzk3kj6lhPqC3_DUbCwLGH8oUyvbfNGkGDryIk_KrVnxI3Hicz4-XI8gmvvlQPRg; HOPS_HR_V9CurrentRole=IT User,&#xD;&#xA;HTTP_HOST:apps.turanto.com&#xD;&#xA;HTTP_REFERER:https://apps.turanto.com/HOPS_HR_V9/T_Employee/Edit/185?UrlReferrer=https%3A%2F%2Fapps.turanto.com%2FHOPS_HR_V9%2FT_Employee&amp;viewtype=IndexPartial&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:https://apps.turanto.com&#xD;&#xA;HTTP_X_REQUESTED_WITH:XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Content-Length: 331&#xD;&#xA;Content-Type: multipart/form-data; boundary=----WebKitFormBoundary9jzVftDs93zFbkSy&#xD;&#xA;Accept: application/json, text/javascript, */*; q=0.01&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: __RequestVerificationToken_L0hPUFNfSFJfVjk1=0vA2gLxqs5bTe1FuewaG3ylZQBileC0UbZhdCeJLKqKbaXvnjQgeykFn72k4UC2fTjxPJ8oxPdAWooHMOzVP6D4iqkyq36RZn6wyzIK5_8U1; HOPS_HR_V9=_NH0LSOR3sIh3xbVb29lC_RwWW8t13DaWEEdXt6TlU23VSkLfv1BHrt-fphQKTH3s3MxR5ajBAPgtFZlcg8XV3jHVBArqjtmgxzouIoRCTSF1TQJFNV0xf0gh7gxFVjO_uvbti7Ul_v70Mhy2IgUKSzPv7pYOmrwZVmtKWhDlu8d8A4dY7m2Lm4kkD7Usi2BhcP0A4djhiCxo_k3w-LN0OX0ct6tDUcFyrWiuVlxkdae2TpVlTk94NtPcNerC2qf8Flrx-SpjpMn-7mVkS_EyfNUWiV0_JkkJrSCAZT4gVF-TuAW6xf0oUhxfv3i8LwA2vpDIW7_cVKxCy9pcZEExfJK5eOVdMQUoHa98jKI5h8RMvA0nm3IzTSkEndRY35bpb3iLOyZsaXrnBu9OqB7LTdPx56MsayQsFKyUIf6KSII5DNAoKvlb9C2L6P0K5Z_z5OSiNdhHQatcJnniXbLBPenneVC10afueMKC7_4sd4y1_l9ilhzrXlGoRfw9m29xUZ0z5GVCTxL96WEcZFZAvfzk3kj6lhPqC3_DUbCwLGH8oUyvbfNGkGDryIk_KrVnxI3Hicz4-XI8gmvvlQPRg; HOPS_HR_V9CurrentRole=IT User,&#xD;&#xA;Host: apps.turanto.com&#xD;&#xA;Referer: https://apps.turanto.com/HOPS_HR_V9/T_Employee/Edit/185?UrlReferrer=https%3A%2F%2Fapps.turanto.com%2FHOPS_HR_V9%2FT_Employee&amp;viewtype=IndexPartial&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36&#xD;&#xA;Origin: https://apps.turanto.com&#xD;&#xA;X-Requested-With: XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/HOPS_HR_V9" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\HOPS_HR_V9\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="rupali.pendse@etelic.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="rupali.pendse@etelic.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="331" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="multipart/form-data; boundary=----WebKitFormBoundary9jzVftDs93zFbkSy" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/HOPS_HR_V9/T_Employee/GetCalculationValues" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\HOPS_HR_V9\GeneratorBase.MVC\T_Employee\GetCalculationValues" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="96.253.89.230" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="96.253.89.230" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="59838" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/HOPS_HR_V9/T_Employee/GetCalculationValues" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/HOPS_HR_V9/T_Employee/GetCalculationValues" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="331" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="multipart/form-data; boundary=----WebKitFormBoundary9jzVftDs93zFbkSy" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="application/json, text/javascript, */*; q=0.01" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken_L0hPUFNfSFJfVjk1=0vA2gLxqs5bTe1FuewaG3ylZQBileC0UbZhdCeJLKqKbaXvnjQgeykFn72k4UC2fTjxPJ8oxPdAWooHMOzVP6D4iqkyq36RZn6wyzIK5_8U1; HOPS_HR_V9=_NH0LSOR3sIh3xbVb29lC_RwWW8t13DaWEEdXt6TlU23VSkLfv1BHrt-fphQKTH3s3MxR5ajBAPgtFZlcg8XV3jHVBArqjtmgxzouIoRCTSF1TQJFNV0xf0gh7gxFVjO_uvbti7Ul_v70Mhy2IgUKSzPv7pYOmrwZVmtKWhDlu8d8A4dY7m2Lm4kkD7Usi2BhcP0A4djhiCxo_k3w-LN0OX0ct6tDUcFyrWiuVlxkdae2TpVlTk94NtPcNerC2qf8Flrx-SpjpMn-7mVkS_EyfNUWiV0_JkkJrSCAZT4gVF-TuAW6xf0oUhxfv3i8LwA2vpDIW7_cVKxCy9pcZEExfJK5eOVdMQUoHa98jKI5h8RMvA0nm3IzTSkEndRY35bpb3iLOyZsaXrnBu9OqB7LTdPx56MsayQsFKyUIf6KSII5DNAoKvlb9C2L6P0K5Z_z5OSiNdhHQatcJnniXbLBPenneVC10afueMKC7_4sd4y1_l9ilhzrXlGoRfw9m29xUZ0z5GVCTxL96WEcZFZAvfzk3kj6lhPqC3_DUbCwLGH8oUyvbfNGkGDryIk_KrVnxI3Hicz4-XI8gmvvlQPRg; HOPS_HR_V9CurrentRole=IT User," />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://apps.turanto.com/HOPS_HR_V9/T_Employee/Edit/185?UrlReferrer=https%3A%2F%2Fapps.turanto.com%2FHOPS_HR_V9%2FT_Employee&amp;viewtype=IndexPartial" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="https://apps.turanto.com" />
+    </item>
+    <item name="HTTP_X_REQUESTED_WITH">
+      <value string="XMLHttpRequest" />
+    </item>
+  </serverVariables>
+  <form>
+    <item name="t_currentemployeejobassignment_T_PositionJobAssignmentID">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeejobassignment_FailureMessage-72">
+      <value string="undefined" />
+    </item>
+  </form>
+  <cookies>
+    <item name="__RequestVerificationToken_L0hPUFNfSFJfVjk1">
+      <value string="0vA2gLxqs5bTe1FuewaG3ylZQBileC0UbZhdCeJLKqKbaXvnjQgeykFn72k4UC2fTjxPJ8oxPdAWooHMOzVP6D4iqkyq36RZn6wyzIK5_8U1" />
+    </item>
+    <item name="HOPS_HR_V9">
+      <value string="_NH0LSOR3sIh3xbVb29lC_RwWW8t13DaWEEdXt6TlU23VSkLfv1BHrt-fphQKTH3s3MxR5ajBAPgtFZlcg8XV3jHVBArqjtmgxzouIoRCTSF1TQJFNV0xf0gh7gxFVjO_uvbti7Ul_v70Mhy2IgUKSzPv7pYOmrwZVmtKWhDlu8d8A4dY7m2Lm4kkD7Usi2BhcP0A4djhiCxo_k3w-LN0OX0ct6tDUcFyrWiuVlxkdae2TpVlTk94NtPcNerC2qf8Flrx-SpjpMn-7mVkS_EyfNUWiV0_JkkJrSCAZT4gVF-TuAW6xf0oUhxfv3i8LwA2vpDIW7_cVKxCy9pcZEExfJK5eOVdMQUoHa98jKI5h8RMvA0nm3IzTSkEndRY35bpb3iLOyZsaXrnBu9OqB7LTdPx56MsayQsFKyUIf6KSII5DNAoKvlb9C2L6P0K5Z_z5OSiNdhHQatcJnniXbLBPenneVC10afueMKC7_4sd4y1_l9ilhzrXlGoRfw9m29xUZ0z5GVCTxL96WEcZFZAvfzk3kj6lhPqC3_DUbCwLGH8oUyvbfNGkGDryIk_KrVnxI3Hicz4-XI8gmvvlQPRg" />
+    </item>
+    <item name="HOPS_HR_V9CurrentRole">
+      <value string="IT User," />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="foj2askbkoclkbdvih0ungtp" />
+    </item>
+  </cookies>
+</error>

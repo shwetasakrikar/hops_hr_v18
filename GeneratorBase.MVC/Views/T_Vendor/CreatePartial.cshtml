@@ -1,0 +1,274 @@
+﻿@model GeneratorBase.MVC.Models.T_Vendor
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_VendorIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_VendorIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_VendorIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_VendorIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_VendorIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_VendorIsSetValueUIRule);
+    }
+}
+@using (Html.BeginForm("Create", "T_Vendor",new {UrlReferrer = Convert.ToString(ViewData["T_VendorParentUrl"]), IsDDAdd = ViewBag.IsDDAdd }, FormMethod.Post, new { enctype = "multipart/form-data",id="frmT_Vendor" }))
+{
+   @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+	<input type="hidden" id="ErrMsg" />
+	@*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+    <div id="errorContainer" style="display: none">
+        <div id="errorsMsg"></div>
+        <div id="errors"></div>
+    </div>
+	 
+	 <div id="divDisplayThresholdLimit" style="display:none;">
+	</div>
+	 <div id="divDisplayBRmsgMandatory" style="display:none;">
+	</div>
+	<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+	</div>
+	<div id="divDisplayCodeFragment" style="display:none;">
+	</div>
+
+	<div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="AppForm">
+                <div class="">
+               					<div class="row">
+				       
+			 @if(User.CanView("T_Vendor","T_Title"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Title">
+                                <div class='form-group' title="Title">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Title) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_Title, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_Title)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+			 @if(User.CanView("T_Vendor","T_FirstName"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FirstName">
+                                <div class='form-group' title="First Name">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_FirstName) <span class="text-danger-reg">*</span></label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_FirstName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_FirstName)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+			 @if(User.CanView("T_Vendor","T_MiddleName"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_MiddleName">
+                                <div class='form-group' title="Middle Name">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_MiddleName) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_MiddleName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_MiddleName)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+			 @if(User.CanView("T_Vendor","T_LastName"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_LastName">
+                                <div class='form-group' title="Last Name">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_LastName) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_LastName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_LastName)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+			 @if(User.CanView("T_Vendor","T_Email"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Email">
+                                <div class='form-group' title="Email">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Email) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_Email, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_Email)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+			 @if(User.CanView("T_Vendor","T_PhoneNo"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PhoneNo">
+                                <div class='form-group' title="Phone No">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_PhoneNo) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_PhoneNo, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_PhoneNo)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+			 @if(User.CanView("T_Vendor","T_IdentificationNo"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_IdentificationNo">
+                                <div class='form-group' title="Identification No">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_IdentificationNo) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_IdentificationNo, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_IdentificationNo)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+				 @if(User.CanAdd("Document"))
+                 { 
+				   if(User.CanView("T_Vendor","T_Picture") && User.CanView("Document"))
+								{
+								<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Picture">
+									<div class='form-group' title="Picture">
+											<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Picture) </label>
+												<div class="input-group col-sm-7 col-md-7 col-xs-12">
+												<div style="position:relative;">
+													<a class='btn btn-primary btnupload' href='javascript:;'>
+														Upload File
+													<input id="T_Picture"  type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;width:105px;' name="T_Picture" onchange='$("#upload-file-infoT_Picture").html($(this).val());'>
+												</a>
+												&nbsp;
+												<span class='label uploadlblFix' id="upload-file-infoT_Picture"></span>
+											</div> 
+											</div>
+									</div>
+								</div>
+	   }
+
+				  
+				 }
+       </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+		<a class="btn btn-default btn-sm" onclick="goBack('@Url.Action("Index","T_Vendor")');" alt="Cancel" title="Cancel">Cancel</a>
+          @*@Html.ActionLink("Cancel", "Cancel", new { UrlReferrer = ViewData["T_VendorParentUrl"] }, new { @onclick = "", @class = "btn btn-default btn-sm" })*@
+	<input type="submit" name="command" value="Create" class="btn btn-primary btn-sm" alt="Create" title="Create"/>
+    if (ViewBag.IsDDAdd == null && User.CanEdit("T_Vendor"))
+    {
+	<input type="submit" name="command" value="Create & Continue" class="btn btn-primary btn-sm" alt="Create & Continue" title="Create & Continue"/>
+	}
+	 <input type="hidden" name="hdncommand" value="" />
+	<br/><br/>
+}
+	<script>
+	    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+	
+@{
+		var businessrule = User.businessrules.Where(p => p.EntityName == "T_Vendor").ToList();
+		
+if ((businessrule != null && businessrule.Count > 0) )
+    {
+        <script>
+            $("form").submit(function (event) {
+			if (!$("#frmT_Vendor").valid()) return;
+			var flag = true;
+							document.getElementById("ErrMsg").innerHTML = "";
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+                //var form = $(this).serialize();
+ form = $("#frmT_Vendor").serialize();
+  
+                dataurl = "@Url.Action("businessruletype", "T_Vendor", new { ruleType = "OnCreate"})";
+                flag = ApplyBusinessRuleOnSubmit(dataurl, "T_Vendor", false, "ErrMsg", form);
+				//business rules on inline associations
+				if (flag) {
+				                    $('input:hidden[name="hdncommand"]').val($(document.activeElement).val());
+
+					 $("#frmT_Vendor").find(':input').removeAttr('disabled');
+                }
+				return flag;
+			 });	
+        </script>
+    }
+    else
+    {
+	<script>
+            $("input[type='submit']").click(function (event) {
+			if (!$("#frmT_Vendor").valid()) return;
+                var $this = $(this);
+                $('input:hidden[name="hdncommand"]').val($this.val());
+            });
+	</script>
+           
+    }
+}
+
+ <script type='text/javascript'>$(document).ready(function () {   $('#T_PhoneNo').mask('999-999-9999');  });</script>
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+		 focusOnControl('frmT_Vendor');
+        }
+        catch (ex) { }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        try {
+            var hostingEntityName = "";
+            if ('@Convert.ToString(ViewData["AssociatedType"])'.length > 0) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+                 $('#' + hostingEntityName + 'ID').attr("lock","true");
+				  $('#' + hostingEntityName + 'ID').trigger("change");
+            }
+			
+        }
+        catch (ex) { }
+		});
+</script>
+

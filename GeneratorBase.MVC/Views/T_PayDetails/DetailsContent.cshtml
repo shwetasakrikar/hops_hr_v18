@@ -1,0 +1,331 @@
+﻿@model GeneratorBase.MVC.Models.T_PayDetails
+@using PagedList;
+@{
+    ViewBag.Title = "View Pay Details ";
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_PayDetails");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Pay Details ";
+}
+<script>
+    $(document).ready(function () {
+			 if ($.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') != null) {
+				$('a[href="#' + $.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') + '"]').click();
+			 }
+    });
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_PayDetailsIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_PayDetailsIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_PayDetailsIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_PayDetailsIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_PayDetailsIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_PayDetailsIsSetValueUIRule);
+    }
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-hand-down text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span>View</span>
+        </h1>
+        <h2 class="text-primary"><span id="HostingEntityDisplayValue">@Html.DisplayFor(model => model.DisplayValue)</span>
+			<div class="btn-group pull-right fixactionbut">
+            <button data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-default pull-right">
+                Action
+                <span class="caret">    </span>
+            </button>
+			<ul class="dropdown-menu pull-left">               
+				<li>
+                    @if ( User.CanEdit("T_PayDetails"))
+                    {
+                        <a href="@Url.Action("Edit","T_PayDetails", new { id = Model.Id,  UrlReferrer = Request.Url, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    }
+                </li>             
+				<li>
+                    @if ( User.CanEdit("T_PayDetails"))
+                    {
+                        <a href="@Url.Action("EditWizard","T_PayDetails", new { id = Model.Id,  UrlReferrer = Request.Url, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-share"></i>  Wizard</a>
+                    }
+                </li>
+				<li>
+                    @if ( User.CanDelete("T_PayDetails"))
+                    {
+                        <a href="@Url.Action("Delete", "T_PayDetails", new { id = Model.Id, UrlReferrer = Request.Url, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Delete</a>
+                    }
+                </li>
+	<li class="divider" style="clear:both"></li>
+	<li class="dropdown-submenu pull-left">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu pull-left">
+				@if ( User.CanAdd("T_Comment"))
+				{
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Comment", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_SalaryComments", 
+							HostingEntityName = "T_PayDetails",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Comment
+						</a>
+					</li>
+				}
+			</ul>
+</li>
+ <li class="divider" style="clear:both"></li>
+ <li class="dropdown-submenu pull-left">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;">Find Matching</a>
+    <ul class="dropdown-menu pull-left">
+<li>
+		<a href="@Url.Action("FindFSearch", "FileDocument", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Document</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Licenses", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Licenses</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_ServiceRecord", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Service Record</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Comment", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Comment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_DrugAlcoholTest", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Drug & Alcohol Test</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_UnitX", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">UnitX</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_JobAssignment", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Job Assignment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_LeaveProfile", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Leave</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_EmployeeInjury", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Employee Injury</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_BackgroundCheck", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Background Check</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Education", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Education</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Accommodation", new {sourceEntity="T_PayDetails",id=Model.Id}, null)">Accommodation</a>
+</li>
+</ul>
+</li>
+			</ul>
+</div>
+		</h2>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+	 <li class="active"><a href="#Details" onclick="ClearTabCookie('@User.JavaScriptEncodedName@Model.Id');" data-toggle="tab">Details</a></li>
+		 <li @(!User.CanView("T_Comment")?"style=display:none;":"")><a onclick="LoadTab('T_SalaryComments','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_Comment", new {RenderPartial=true, HostingEntity ="T_PayDetails", HostingEntityID = @Model.Id, AssociatedType = "T_SalaryComments",TabToken = DateTime.Now.Ticks,}))')" href="#T_SalaryComments" data-toggle="tab">
+		 Comment
+		 <span class="badge bg-blue"><div id="dvcnt_T_SalaryComments">@ViewBag.T_SalaryCommentsCount</div></span>
+		 		 </a></li>
+		 <li @(!User.CanView("JournalEntry")?"style=display:none;":"")><a onclick="LoadTab('JournalEntryToT_PayDetailsRelation','@User.JavaScriptEncodedName@Model.Id','@Url.Action("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_PayDetails", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry", TabToken = DateTime.Now.Ticks })')" href="#JournalEntryToT_PayDetailsRelation" data-toggle="tab">Pay Details  Journal</a></li>
+    </ul>
+	    <div class="tab-content">
+		   <div class="tab-pane fade in active" id="Details">
+				 <div class="panel panel-default AppForm">
+					<div class="panel-body">
+                                  
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-xs-12">
+			<div class="panel panel-default" id="dvGroup48932">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+											
+									<h3 class="panel-title">Employee Information</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_PayDetails","T_EmployeePayDetailsID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeePayDetails">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EmployeePayDetailsID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		@if (@Model.T_EmployeePayDetailsID == 0 || @Model.T_EmployeePayDetailsID == null || @Model.t_employeepaydetails == null)
+		{
+	         <p class="viewlabel"></p>
+        }
+        else
+        {
+		     <p class="viewlabel">@Model.t_employeepaydetails.DisplayValue</p>
+        }
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_PayDetails","T_PayDetailsJobAssignmentID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PayDetailsJobAssignment">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_PayDetailsJobAssignmentID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_paydetailsjobassignment!=null && !string.IsNullOrEmpty(Model.t_paydetailsjobassignment.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_paydetailsjobassignment.DisplayValue).ToString(), "Details", "T_JobAssignment", new { Id = Html.DisplayFor(model => model.t_paydetailsjobassignment.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+			<div class="panel panel-default" id="dvGroup48933">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+											
+									<h3 class="panel-title">Pay Details</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_PayDetails","T_OtherPayDetailsTypeID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_OtherPayDetailsType">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_OtherPayDetailsTypeID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_otherpaydetailstype!=null && !string.IsNullOrEmpty(Model.t_otherpaydetailstype.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_otherpaydetailstype.DisplayValue).ToString(), "Details", "T_PayType", new { Id = Html.DisplayFor(model => model.t_otherpaydetailstype.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_PayDetails","T_Amount"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Amount">
+	<div class='form-group' title="Amount">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Amount) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		<span class="input-group-addon btn-default calendar"><i class="fa fa-dollar"></i></span>
+			<span class="viewcurrencylabel">@Model.T_Amount</span>
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_PayDetails","T_StartDate"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_StartDate">
+	<div class='form-group' title="Start Date">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_StartDate) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_StartDate)</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_PayDetails","T_EndDate"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EndDate">
+	<div class='form-group' title="End Date">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EndDate) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_EndDate)</p>
+					
+					</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+			<div class="panel panel-default" id="dvGroup48934">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+											
+									<h3 class="panel-title">Notes</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_PayDetails","T_Notes"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Notes">
+	<div class='form-group' title="Notes">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Notes)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		<p class="viewlabel">@Model.T_Notes</p>
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+				</div>
+			</div>
+		</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					@Html.ActionLink("Back", "Cancel", new { UrlReferrer = Request.UrlReferrer }, new { @class = "btn btn-default btn-sm pull-left formbuttonfix" })
+					 @if ( User.CanEdit("T_PayDetails"))
+                     {
+                          @Html.ActionLink("Edit", "Edit", new { id = Model.Id, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, new { @class = "btn btn-primary btn-sm pull-left formbuttonfix" })
+                     }
+				</div>
+			</div>    
+
+<div class="dropdown pull-left formbuttonfix" style="margin-top:-30px; margin-left:102px;">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
+           
+			@if ( User.CanAdd("T_Comment"))
+            {
+				 <li>
+				 <a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Comment",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_SalaryComments", 
+						HostingEntityName = "T_PayDetails",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');") style="margin-top:5px;">
+                   Add  Comment</a>
+			</li>
+            }
+			
+
+        </ul>
+
+			</div>
+	</div>    
+<div class="tab-pane fade in" id="T_SalaryComments">
+     @if ( User.CanView("T_Comment"))
+	{
+	  // Html.RenderAction("Index", "T_Comment", new {RenderPartial=true, HostingEntity = "T_PayDetails", HostingEntityID = @Model.Id, AssociatedType = "T_SalaryComments" }); 
+	}
+  </div>
+<div class="tab-pane fade in" id="JournalEntryToT_PayDetailsRelation">
+            @if ( User.CanView("JournalEntry"))
+		   {
+			//	Html.RenderAction("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_PayDetails", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry" });
+		   }
+  </div>
+	</div> <!-- /tab-content --><br />
+
+<br/>
+</div>
+ 

@@ -1,0 +1,57 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_RoleCode>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Role Code.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_RoleCode","T_Code"))
+{
+		<th>Code</th>
+}
+@if(User.CanView("T_RoleCode","T_Title"))
+{
+		<th>Title</th>
+}
+@if(User.CanView("T_RoleCode","T_Role_TitleA"))
+{
+		<th>Role_TitleA</th>
+}
+@if(User.CanView("T_RoleCode","T_RoleCodeSalaryBandID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_SalaryBand"?"hidden":"")>Salary Band</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_RoleCode","T_Code"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Code)
+        </td>
+}
+@if(User.CanView("T_RoleCode","T_Title"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Title)
+        </td>
+}
+@if(User.CanView("T_RoleCode","T_Role_TitleA"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Role_TitleA)
+        </td>
+}
+@if(User.CanView("T_RoleCode","T_RoleCodeSalaryBandID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_SalaryBand"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_rolecodesalaryband.DisplayValue)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

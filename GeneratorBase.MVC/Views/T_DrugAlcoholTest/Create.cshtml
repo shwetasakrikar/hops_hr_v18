@@ -1,0 +1,40 @@
+﻿@model GeneratorBase.MVC.Models.T_DrugAlcoholTest
+@{
+    ViewBag.Title = "Create Drug & Alcohol Test";
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_DrugAlcoholTest");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Drug & Alcohol Test";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title" style="margin-bottom:10px">
+		@{
+                var hostingValue = "";
+                if (ViewBag.DisplayVal != null)
+                {
+                    hostingValue = " - " + ViewBag.DisplayVal;
+                }
+            }
+            <i class="glyphicon glyphicon-save text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span> Add Drug & Alcohol Test @hostingValue</span>
+<div class="btn-group pull-right" style="margin-top:3px; margin-right:3px">
+
+    @if (ViewData["HostingEntity"]==null)
+	{ 
+			 <a href="@(Url.Action("SetFSearch", "T_DrugAlcoholTest")+Request.Url.Query)" data-original-title="Faceted Search"  class="btn btn-xs" alt="Search" title="Search"><i class="glyphicon glyphicon-search"></i> Search</a>
+	}
+			<a class="btn btn-xs pull-right" type="button" data-original-title="List View" data-placement="top" onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Index", "T_DrugAlcoholTest") + "');") alt="Search" title="List">
+				<i class="glyphicon glyphicon-list"></i> List
+			</a>
+			</div>
+	   
+<div class="btn-group pull-right" style="margin-top:3px; margin-right:3px">
+	 <a href="#" class="btn btn-xs closeall"><i class="glyphicon glyphicon-chevron-up"></i> Collapse All</a> 
+	 <a href="#" class="btn btn-xs openall" style="margin-right:5px;"><i class="glyphicon glyphicon-chevron-down"></i> Expand All</a>
+</div>
+	
+
+        </h1>
+        <h2 class="text-primary">@Html.DisplayFor(model => model.DisplayValue)</h2>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+@Html.Partial("~/Views/T_DrugAlcoholTest/CreatePartial.cshtml", Model)

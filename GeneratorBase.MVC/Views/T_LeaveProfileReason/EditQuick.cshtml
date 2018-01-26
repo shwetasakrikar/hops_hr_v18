@@ -1,0 +1,279 @@
+﻿@model GeneratorBase.MVC.Models.T_LeaveProfileReason
+@using PagedList;
+@{
+    ViewBag.Title = "Edit Leave Profile Reason";
+	var EditPermission = User.CanEditItem("T_LeaveProfileReason", Model, User);
+	var DeletePermission = User.CanDeleteItem("T_LeaveProfileReason", Model, User);
+	Layout = null;
+	
+}
+@functions {
+    object getHtmlAttributes(string Property)
+    {
+        if (User.CanEdit("T_LeaveProfileReason", Property))
+        {
+            return new { @class = "form-control" };
+        } return new { @class = "form-control", @readonly = "readonly" };
+    }
+}
+<script>
+    $(document).ready(function () {
+        try {
+		 if ($('#EntityT_LeaveProfileReasonDisplayValue').has('option').length > 0) {
+			var RecId = $("#Id").val()
+            $("#T_LeaveProfileReasonDD").append($("#EntityT_LeaveProfileReasonDisplayValue").html());
+            $("#T_LeaveProfileReasonDD").val(RecId);
+
+			var text = $("option:selected", $("#T_LeaveProfileReasonDD")).text();
+            $("#T_LeaveProfileReasonDD").attr('data-toggle', 'tooltip')
+            $("#T_LeaveProfileReasonDD").attr('title', text);
+
+            var lastOptionVal = $('#T_LeaveProfileReasonDD option:last-child').val();
+            var fristOptionVal = $('#T_LeaveProfileReasonDD option:first-child').val();
+            if (lastOptionVal == RecId)
+			{
+                $('#next').hide();
+				$('#SaveAndContinue').hide();
+				}
+
+            if (fristOptionVal == RecId)
+                $('#prev').hide();
+			} else {  $('#dvsavenext').hide(); $('#SaveAndContinue').hide(); }
+            var hostingEntityName = "";
+            if ('@Convert.ToString(ViewData["AssociatedType"])' != null) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+				if( '@Convert.ToBoolean(ViewData["IsFilter"])'!="False")
+				$('#' + hostingEntityName + 'ID').attr("lock","true");
+				$('#' + hostingEntityName + 'ID').trigger("change");
+				 $("input[type='radio'][name='" + hostingEntityName + "ID']").each(function () {
+                    if (!this.checked)
+                        this.closest("li").style.display = "none";
+                });		
+						
+            }
+        }
+        catch (ex) { }
+    });
+</script>
+<script type="text/javascript">
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': { allow_single_deselect: true },
+        '.chosen-select-no-single': { disable_search_threshold: 10 },
+        '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+        '.chosen-select-width': { width: "95%" }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_LeaveProfileReasonIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_LeaveProfileReasonIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_LeaveProfileReasonIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_LeaveProfileReasonIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_LeaveProfileReasonIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_LeaveProfileReasonIsSetValueUIRule);
+    }
+}
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-lg-12">
+        @*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+		<input type="hidden" id="ErrMsg" />
+		<div id="errorContainerEdit" style="display: none">
+            <div id="errorsMsgEdit"></div>
+            <div id="errorsEdit"></div>
+        </div>
+     <div class="col-sm-6 col-md-6 col-xs-12" style="margin-top: -12px;">
+            <h2 class="text-primary">
+                <span id="HostingEntityDisplayValue">@Html.DisplayFor(model => model.DisplayValue)</span>
+            </h2>
+        </div>
+        @if (EditPermission)
+            {
+            <div class="col-sm-6 col-md-6 col-xs-12" id="dvsavenext">
+                <button class="btn btn-default btn-xs pull-right" id="next" onclick="@Html.Raw("nextFun('T_LeaveProfileReason')")">Next >></button>
+                @Html.DropDownList("T_LeaveProfileReasonDD", null, null, new { @onchange = "FillDisplayValueQEdit('T_LeaveProfileReason')", @required = "required", @class = "pull-right", @Style = "height: 22px;width: 170px;" })
+                <button class="btn btn-default btn-xs pull-right" id="prev" onclick="@Html.Raw("prevFun('T_LeaveProfileReason')")"><< Prev</button>
+            </div>
+        }
+    </div>
+    <!-- /.col-lg-12 -->
+	<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+</div>
+<div id="divDisplayBRmsgMandatory" style="display:none;">
+</div>
+<div id="divDisplayLockRecord" style="display:none;">
+</div>
+<div id="divDisplayBRReadOnly" style="display:none;">
+</div>
+<br/>
+</div>
+	
+@using (Html.BeginForm("EditQuick","T_LeaveProfileReason",new {UrlReferrer =Convert.ToString(ViewData["T_LeaveProfileReasonParentUrl"])}, FormMethod.Post, new { enctype = "multipart/form-data", @id = "frmQEditT_LeaveProfileReason" }))
+{
+     Html.ValidationSummary(true);
+                Html.EnableClientValidation();
+    @Html.HiddenFor(model => model.Id)
+	@Html.HiddenFor(model => model.ConcurrencyKey)
+	 <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px;">
+                    <div class="panel panel-default AppForm">
+						<div class="panel-body">
+						    @Html.Hidden("AssociatedEntity", Convert.ToString(ViewData["AssociatedType"]))
+											<div class="row">
+								@if(User.CanView("T_LeaveProfileReason","T_LeaveReasonID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_LeaveReasonID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_LeaveReasonID) </label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_LeaveProfileReason", "T_LeaveReasonID"))
+		{
+			@Html.DropDownList("T_LeaveReasonID", null, "-- Select --", new {      @class = "chosen-select form-control", @HostingName = "T_LeaveReason", @dataurl = Url.Action("GetAllValue", "T_LeaveReason",new { caller = "T_LeaveReasonID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_LeaveReasonID, new { @class = "form-control" })
+			@Html.DropDownList("T_LeaveReasonID", null, "-- Select --", new {     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_LeaveReason", @dataurl = Url.Action("GetAllValue", "T_LeaveReason",new { caller = "T_LeaveReasonID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_LeaveReasonID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_LeaveReasonID, new { @class = "form-control" })}
+				@if(User.CanView("T_LeaveProfileReason","T_LeaveProfileID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_LeaveProfileID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_LeaveProfileID) </label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_LeaveProfileReason", "T_LeaveProfileID"))
+		{
+			@Html.DropDownList("T_LeaveProfileID", null, "-- Select --", new {      @class = "chosen-select form-control", @HostingName = "T_LeaveProfile", @dataurl = Url.Action("GetAllValue", "T_LeaveProfile",new { caller = "T_LeaveProfileID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_LeaveProfileID, new { @class = "form-control" })
+			@Html.DropDownList("T_LeaveProfileID", null, "-- Select --", new {     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_LeaveProfile", @dataurl = Url.Action("GetAllValue", "T_LeaveProfile",new { caller = "T_LeaveProfileID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_LeaveProfileID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_LeaveProfileID, new { @class = "form-control" })}
+       </div>
+
+
+	            </div>
+        </div>
+	</div>
+</div>
+		 @Html.AntiForgeryToken();
+		 var businessrule1 = User.businessrules.Where(p => p.EntityName == "T_LeaveProfileReason").ToList();
+		 var lstinlineentityname = "";
+		 var lstinlineassocdispname ="";
+		 var lstinlineassocname = "";
+		 <button id="CancelQuickAdd" type="button" class="btn btn-default btn-sm" data-dismiss="modal" aria-hidden="true">Cancel</button>
+		 if (EditPermission)
+         {
+			    <input type="submit" id="command" name="command" value="Save & Close" class="btn btn-primary btn-sm" onclick="QuickEditFromGrid(event,true,'T_LeaveProfileReason','@ViewData["AssociatedType"]',false,'@businessrule1',@businessrule1.Count,'OnEdit','ErrMsg',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname');" />
+				<input type="submit" id="sevranBtn" style="display:none;" name="command" value="Save" class="btn btn-primary btn-sm" onclick="QuickEditFromGrid(event,true,'T_LeaveProfileReason','@ViewData["AssociatedType"]',false,'@businessrule1',@businessrule1.Count,'OnEdit','ErrMsg',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname','True');" />
+                <button type="button" id="SaveAndContinue" name="SaveAndContinue" class="btn btn-primary btn-sm" onclick="@Html.Raw("SaveAndContinueEdit('T_LeaveProfileReason',event)")">Save & Next</button>
+				<input type="hidden" name="hdncommand" value="" />
+  		 }	
+}
+<script src="@Url.Content("~/bundles/jqueryval")" type="text/javascript"></script>
+<script src="@Url.Content("~/bundles/common3")" type="text/javascript"></script>
+
+<script>
+    $("input[type='submit']").click(function (event) {
+	if (!$("#frmQEditT_LeaveProfileReason").valid()) return;
+	
+        var $this = $(this);
+        $('input:hidden[name="hdncommand"]').val($this.val());
+    });
+</script>
+@{
+var businessrule = User.businessrules.Where(p => p.EntityName == "T_LeaveProfileReason").ToList();
+
+
+	
+
+
+if ((businessrule != null && businessrule.Count > 0) )
+{
+var ruleids = businessrule.Select(q => q.Id).ToList();
+var typelist  = string.Join(",", (new GeneratorBase.MVC.Models.RuleActionContext()).RuleActions.Where(p => ruleids.Contains(p.RuleActionID.Value) && p.associatedactiontype.TypeNo.HasValue).Select(p => p.associatedactiontype.TypeNo.Value).Distinct().ToList());
+
+    <script>
+    $(document).ready(function () {
+	document.getElementById("ErrMsg").innerHTML = "";
+		 var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+
+				 form = $("#frmQEditT_LeaveProfileReason").serialize();
+					 dataurl = "@Url.Action("businessruletype", "T_LeaveProfileReason", new { ruleType = "OnEdit"})";
+            ApplyBusinessRuleOnPageLoad("@typelist",dataurl, "T_LeaveProfileReason", false, "ErrMsg", form);
+			//business rules on inline associations
+    });
+</script>
+<script>
+    $("form").submit(function (event) {
+	if (!$("#frmQEditT_LeaveProfileReason").valid()) return;
+	document.getElementById("ErrMsg").innerHTML = "";
+            var flag = true;
+		var form = $("#frmQEditT_LeaveProfileReason").serialize();
+					});
+</script>
+}
+ 
+}
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+            document.getElementsByTagName("body")[0].focus();
+            $("#addPopup").removeAttr("tabindex");
+            var cltcoll = $("#dvPopup").find('input[type=text]:not([class=hidden]):not([readonly]),textarea:not([readonly])')
+            var cltid = "";
+            $(cltcoll).each(function () {
+			  if ($(this).attr("id") == undefined)
+                    return
+                var dvhidden = $("#dv" + $(this).attr("id"));
+				var dvDate = $("#datetimepicker" + $(this).attr("id")).attr("id");
+                if (!(dvhidden.css('display') == 'none') && dvDate == undefined) {
+                    cltid = $(this);
+                    return false;
+                }
+            });
+            if (cltid != "" && cltid != undefined)
+                setTimeout(function () { $(cltid).focus(); }, 500)
+        }
+        catch (ex) { }
+    });
+</script>
+

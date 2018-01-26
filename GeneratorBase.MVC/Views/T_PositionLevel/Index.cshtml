@@ -1,0 +1,23 @@
+﻿@model IEnumerable<GeneratorBase.MVC.Models.T_PositionLevel>
+@{
+    ViewBag.Title = "Position Level List";
+	Layout ="~/Views/Shared/_Layout.cshtml";
+	string templatename = ("~/Views/T_PositionLevel/" + ViewBag.TemplatesName + ".cshtml").Replace("?IsAddPop=true", "");
+	 var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_PositionLevel");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Position Level";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title" >
+            <i class="glyphicon glyphicon-thumbs-up text-primary" style="margin-bottom:-20px;"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i>  <span>List</span>
+</h1>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        ClickFilterBtn();
+    });
+</script>
+<div id="dvT_PositionLevelFilter"></div>
+@Html.Partial(templatename, Model)
+

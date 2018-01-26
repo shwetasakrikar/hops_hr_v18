@@ -1,0 +1,37 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_LanguageCertifiedIn>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Language Certified In.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_LanguageCertifiedIn","T_EmployeeID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>Employee Certified in the Language</th>
+}
+@if(User.CanView("T_LanguageCertifiedIn","T_LangaugeID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Langauge"?"hidden":"")>Languages Certified In</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_LanguageCertifiedIn","T_EmployeeID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employee.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_LanguageCertifiedIn","T_LangaugeID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Langauge"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_langauge.DisplayValue)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

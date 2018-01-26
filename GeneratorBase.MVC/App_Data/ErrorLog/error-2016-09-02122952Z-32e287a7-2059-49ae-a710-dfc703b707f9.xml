@@ -1,0 +1,182 @@
+﻿<error errorId="32e287a7-2059-49ae-a710-dfc703b707f9" application="/LM/W3SVC/1/ROOT/wsh_hr_v35" host="TURANTOMVC" type="System.Web.HttpException" message="The controller for path '/wsh_hr_v35/Customer/GetPropertyDP' was not found or does not implement IController." source="System.Web.Mvc" detail="System.Web.HttpException (0x80004005): The controller for path '/wsh_hr_v35/Customer/GetPropertyDP' was not found or does not implement IController.&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="Admin" time="2016-09-02T12:29:52.7993223Z" statusCode="404">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:*/*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, sdch, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:wsh_hr_v32=DxE4IwkA8_Db41V5XjSMe2nhy6UcAdq0xrFwS0xGIc6VK5Fu0sHtsZDs1Xhb600ht92hszmg9SbWRBzQn9yFJyHftYVD9i9opKePVRxDLulyw9SkP9wVQjGtID3nUU5MWKLjlJJ30667lOT8xetDBsKHbWsnpPiEq_49rSINMyjXjcdoZ1Cz9G-5Ri-rD3JGUp4XZTOLWYY8HcDVjQeL9fdet5pyrkYLim6i7nMS6c1eYM7a3qTVSqbnxqV8YB08gtEcv64vyOZhpLym0sXSnF1N0zZPBZqqOLb2y0nJzKTurGz0jZLNYMOpajBotPPmf0b0jFmUI8Hgtu0LC6tnv2w_nLFtx0Gcf85zmUsOefoQjGVXUAu1GdK0Gl__Vo1j6qRfxEsP93X5_ssO8EA9vFr1zKkQq4o6vBYxGQdCOD7Q-5lh65KwnhxXepz-1NrlQcSbi1z8uEHAhc89HqEUMavfndW1MNqomXvh1FDSwFfea-un7AALE3uY-tfeo9FW; __RequestVerificationToken_L3dzaF9ocl92MzU1=KCmRPK-Zidw9d1gcmet7pW2CLa1lhFyvlfTKiVN8NjzIzoUYacHxmDbzHdjNW0t72mrPDQGHw64iUG7ECh6CLqDJhO0xlAY45tDt3u6Ndt01&#xD;&#xA;HTTP_HOST:apps.turanto.com&#xD;&#xA;HTTP_REFERER:https://apps.turanto.com/wsh_hr_v35/T_Position/SetFSearch?search=&amp;SortOrder=&amp;GroupByColumn=&amp;HideColumns=null&amp;viewtype=IndexPartial&amp;FilterCondition=%5BT_PositionIdentifierID.DisplayValue%5D%2CContains%2CE%20EMPLOYEE%2COR%3F%5BT_PositionIdentifierID.DisplayValue%5D%2CContains%2CM%20MANAGER%2CAND%3F&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&#xD;&#xA;HTTP_X_REQUESTED_WITH:XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: */*&#xD;&#xA;Accept-Encoding: gzip, deflate, sdch, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: wsh_hr_v32=DxE4IwkA8_Db41V5XjSMe2nhy6UcAdq0xrFwS0xGIc6VK5Fu0sHtsZDs1Xhb600ht92hszmg9SbWRBzQn9yFJyHftYVD9i9opKePVRxDLulyw9SkP9wVQjGtID3nUU5MWKLjlJJ30667lOT8xetDBsKHbWsnpPiEq_49rSINMyjXjcdoZ1Cz9G-5Ri-rD3JGUp4XZTOLWYY8HcDVjQeL9fdet5pyrkYLim6i7nMS6c1eYM7a3qTVSqbnxqV8YB08gtEcv64vyOZhpLym0sXSnF1N0zZPBZqqOLb2y0nJzKTurGz0jZLNYMOpajBotPPmf0b0jFmUI8Hgtu0LC6tnv2w_nLFtx0Gcf85zmUsOefoQjGVXUAu1GdK0Gl__Vo1j6qRfxEsP93X5_ssO8EA9vFr1zKkQq4o6vBYxGQdCOD7Q-5lh65KwnhxXepz-1NrlQcSbi1z8uEHAhc89HqEUMavfndW1MNqomXvh1FDSwFfea-un7AALE3uY-tfeo9FW; __RequestVerificationToken_L3dzaF9ocl92MzU1=KCmRPK-Zidw9d1gcmet7pW2CLa1lhFyvlfTKiVN8NjzIzoUYacHxmDbzHdjNW0t72mrPDQGHw64iUG7ECh6CLqDJhO0xlAY45tDt3u6Ndt01&#xD;&#xA;Host: apps.turanto.com&#xD;&#xA;Referer: https://apps.turanto.com/wsh_hr_v35/T_Position/SetFSearch?search=&amp;SortOrder=&amp;GroupByColumn=&amp;HideColumns=null&amp;viewtype=IndexPartial&amp;FilterCondition=%5BT_PositionIdentifierID.DisplayValue%5D%2CContains%2CE%20EMPLOYEE%2COR%3F%5BT_PositionIdentifierID.DisplayValue%5D%2CContains%2CM%20MANAGER%2CAND%3F&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&#xD;&#xA;X-Requested-With: XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/wsh_hr_v35" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v35\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="Admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="Admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="Admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/wsh_hr_v35/Customer/GetPropertyDP" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v35\GeneratorBase.MVC\Customer\GetPropertyDP" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="entityName=Position%20Level&amp;propertyName=DisplayValue&amp;_=1472819389655" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="60749" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/wsh_hr_v35/Customer/GetPropertyDP" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/wsh_hr_v35/Customer/GetPropertyDP" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="*/*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, sdch, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="wsh_hr_v32=DxE4IwkA8_Db41V5XjSMe2nhy6UcAdq0xrFwS0xGIc6VK5Fu0sHtsZDs1Xhb600ht92hszmg9SbWRBzQn9yFJyHftYVD9i9opKePVRxDLulyw9SkP9wVQjGtID3nUU5MWKLjlJJ30667lOT8xetDBsKHbWsnpPiEq_49rSINMyjXjcdoZ1Cz9G-5Ri-rD3JGUp4XZTOLWYY8HcDVjQeL9fdet5pyrkYLim6i7nMS6c1eYM7a3qTVSqbnxqV8YB08gtEcv64vyOZhpLym0sXSnF1N0zZPBZqqOLb2y0nJzKTurGz0jZLNYMOpajBotPPmf0b0jFmUI8Hgtu0LC6tnv2w_nLFtx0Gcf85zmUsOefoQjGVXUAu1GdK0Gl__Vo1j6qRfxEsP93X5_ssO8EA9vFr1zKkQq4o6vBYxGQdCOD7Q-5lh65KwnhxXepz-1NrlQcSbi1z8uEHAhc89HqEUMavfndW1MNqomXvh1FDSwFfea-un7AALE3uY-tfeo9FW; __RequestVerificationToken_L3dzaF9ocl92MzU1=KCmRPK-Zidw9d1gcmet7pW2CLa1lhFyvlfTKiVN8NjzIzoUYacHxmDbzHdjNW0t72mrPDQGHw64iUG7ECh6CLqDJhO0xlAY45tDt3u6Ndt01" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://apps.turanto.com/wsh_hr_v35/T_Position/SetFSearch?search=&amp;SortOrder=&amp;GroupByColumn=&amp;HideColumns=null&amp;viewtype=IndexPartial&amp;FilterCondition=%5BT_PositionIdentifierID.DisplayValue%5D%2CContains%2CE%20EMPLOYEE%2COR%3F%5BT_PositionIdentifierID.DisplayValue%5D%2CContains%2CM%20MANAGER%2CAND%3F" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36" />
+    </item>
+    <item name="HTTP_X_REQUESTED_WITH">
+      <value string="XMLHttpRequest" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="entityName">
+      <value string="Position Level" />
+    </item>
+    <item name="propertyName">
+      <value string="DisplayValue" />
+    </item>
+    <item name="_">
+      <value string="1472819389655" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name="wsh_hr_v32">
+      <value string="DxE4IwkA8_Db41V5XjSMe2nhy6UcAdq0xrFwS0xGIc6VK5Fu0sHtsZDs1Xhb600ht92hszmg9SbWRBzQn9yFJyHftYVD9i9opKePVRxDLulyw9SkP9wVQjGtID3nUU5MWKLjlJJ30667lOT8xetDBsKHbWsnpPiEq_49rSINMyjXjcdoZ1Cz9G-5Ri-rD3JGUp4XZTOLWYY8HcDVjQeL9fdet5pyrkYLim6i7nMS6c1eYM7a3qTVSqbnxqV8YB08gtEcv64vyOZhpLym0sXSnF1N0zZPBZqqOLb2y0nJzKTurGz0jZLNYMOpajBotPPmf0b0jFmUI8Hgtu0LC6tnv2w_nLFtx0Gcf85zmUsOefoQjGVXUAu1GdK0Gl__Vo1j6qRfxEsP93X5_ssO8EA9vFr1zKkQq4o6vBYxGQdCOD7Q-5lh65KwnhxXepz-1NrlQcSbi1z8uEHAhc89HqEUMavfndW1MNqomXvh1FDSwFfea-un7AALE3uY-tfeo9FW" />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MzU1">
+      <value string="KCmRPK-Zidw9d1gcmet7pW2CLa1lhFyvlfTKiVN8NjzIzoUYacHxmDbzHdjNW0t72mrPDQGHw64iUG7ECh6CLqDJhO0xlAY45tDt3u6Ndt01" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="uzuxauteuhymelh332bxuh3k" />
+    </item>
+  </cookies>
+</error>

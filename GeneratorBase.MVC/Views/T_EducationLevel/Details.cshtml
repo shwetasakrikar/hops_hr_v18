@@ -1,0 +1,220 @@
+﻿@model GeneratorBase.MVC.Models.T_EducationLevel
+@using PagedList;
+@{
+    ViewBag.Title = "View Education Level";
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_EducationLevel");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Education Level";
+}
+<script>
+    $(document).ready(function () {
+			 if ($.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') != null) {
+				$('a[href="#' + $.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') + '"]').click();
+			 }
+    });
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_EducationLevelIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_EducationLevelIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_EducationLevelIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_EducationLevelIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_EducationLevelIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_EducationLevelIsSetValueUIRule);
+    }
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-hand-down text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span>View</span>
+        </h1>
+        <h2 class="text-primary"><span id="HostingEntityDisplayValue">@Html.DisplayFor(model => model.DisplayValue)</span>
+			<div class="btn-group pull-right fixactionbut">
+            <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle pull-right">
+                Action
+                <span class="caret">    </span>
+            </button>
+			<ul class="dropdown-menu pull-left">               
+				<li>
+                    @if ( User.CanEdit("T_EducationLevel"))
+                    {
+                        <a href="@Url.Action("Edit","T_EducationLevel", new {UrlReferrer = Request.UrlReferrer,id = Model.Id,AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    }
+                </li>             
+				<li>
+                    @if ( User.CanDelete("T_EducationLevel"))
+                    {
+                        <a href="@Url.Action("Delete", "T_EducationLevel", new { UrlReferrer = Request.UrlReferrer,id = Model.Id, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Delete</a>
+                    }
+                </li>
+	<li class="divider" style="clear:both"></li>
+	<li class="dropdown-submenu pull-left" id="AddAssociationdropmenuT_EducationLevel">
+	 @{ var dropmenu = false; }
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu pull-left">
+				@if ( User.CanAdd("T_Education"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Education", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_LevelOfEducation", 
+							HostingEntityName = "T_EducationLevel",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Level Of Education
+						</a>
+					</li>
+				}
+							@if ( User.CanAdd("T_RequiredEducation"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_RequiredEducation", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_RequiredEducationEducationLevel", 
+							HostingEntityName = "T_EducationLevel",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Required Education
+						</a>
+					</li>
+				}
+			</ul>
+</li>
+@if(!dropmenu)
+{
+    <script>
+        $("#AddAssociationdropmenuT_EducationLevel").hide();
+    </script>
+}
+			</ul>
+
+
+		</h2>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+	 <li class="active"><a href="#Details" onclick="ClearTabCookie('@User.JavaScriptEncodedName@Model.Id');" data-toggle="tab">Details</a></li>
+		 <li @(!User.CanView("T_Education") ?"style=display:none;":"")><a onclick="LoadTab('T_LevelOfEducation','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_Education", new {RenderPartial=true, HostingEntity ="T_EducationLevel", HostingEntityID = @Model.Id, AssociatedType = "T_LevelOfEducation",TabToken = DateTime.Now.Ticks,}))')" href="#T_LevelOfEducation" data-toggle="tab">
+		 Level Of Education
+		 <span class="badge bg-blue"><div id="dvcnt_T_LevelOfEducation">@ViewBag.T_LevelOfEducationCount</div></span>
+		 		 </a></li>
+		 <li @(!User.CanView("T_RequiredEducation") ?"style=display:none;":"")><a onclick="LoadTab('T_RequiredEducationEducationLevel','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_RequiredEducation", new {RenderPartial=true, HostingEntity ="T_EducationLevel", HostingEntityID = @Model.Id, AssociatedType = "T_RequiredEducationEducationLevel",TabToken = DateTime.Now.Ticks,}))')" href="#T_RequiredEducationEducationLevel" data-toggle="tab">
+		 Required Education
+		 <span class="badge bg-blue"><div id="dvcnt_T_RequiredEducationEducationLevel">@ViewBag.T_RequiredEducationEducationLevelCount</div></span>
+		 		 </a></li>
+		 <li @(!User.CanView("JournalEntry")?"style=display:none;":"")><a onclick="LoadTab('JournalEntryToT_EducationLevelRelation','@User.JavaScriptEncodedName@Model.Id','@Url.Action("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_EducationLevel", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry", TabToken = DateTime.Now.Ticks })')" href="#JournalEntryToT_EducationLevelRelation" data-toggle="tab">Education Level Journal</a></li>
+    </ul>
+	  @Html.HiddenFor(model => model.Id)
+	    <div class="tab-content">
+		   <div class="tab-pane fade in active" id="Details">
+				 <div class="panel panel-default AppForm">
+					<div class="panel-body">
+                                  
+			
+			<div class="row">
+@if(User.CanView("T_EducationLevel","T_Name"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Name">
+	<div class='form-group' title="@Model.T_Name">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Name) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_Name" class="viewlabel">@Model.T_Name</p>
+					
+					</div>
+	</div>
+</div>
+}
+		</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+				<a class="btn btn-default btn-sm pull-left formbuttonfix" Onclick="goBack('@Url.Action("Index","T_EducationLevel")');">Back</a>
+				@*@Html.ActionLink("Back", "Cancel", new { UrlReferrer = Request.UrlReferrer }, new { @class = "btn btn-default btn-sm pull-left formbuttonfix" })*@
+					
+					 @if ( User.CanEdit("T_EducationLevel"))
+                     {
+                          @Html.ActionLink("Edit", "Edit", new { UrlReferrer = Request.UrlReferrer, id = Model.Id, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, new { @class = "btn btn-primary btn-sm pull-left formbuttonfix" })
+                     }
+				   
+ @{ var dropmenubottom = false; }
+<div class="dropdown pull-left formbuttonfix" style="" id="AddAssociationdropmenubottomT_EducationLevel">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+			@if (User.CanAdd("T_Education"))
+            {
+			    dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Education",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_LevelOfEducation", 
+						HostingEntityName = "T_EducationLevel",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Level Of Education
+                </a>
+				</li>
+            }
+
+			
+			@if (User.CanAdd("T_RequiredEducation"))
+            {
+			    dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_RequiredEducation",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_RequiredEducationEducationLevel", 
+						HostingEntityName = "T_EducationLevel",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Required Education
+                </a>
+				</li>
+            }
+
+			
+</ul>
+</div>
+@if(!dropmenubottom)
+{
+    <script>
+        $("#AddAssociationdropmenubottomT_EducationLevel").hide();
+    </script>
+}
+			</div> 
+			</div><div class="clearfix" style="clear:both"></div>
+	</div>    
+<div class="tab-pane fade in" id="T_LevelOfEducation">
+     @if ( User.CanView("T_Education"))
+	{
+	  // Html.RenderAction("Index", "T_Education", new {RenderPartial=true, HostingEntity = "T_EducationLevel", HostingEntityID = @Model.Id, AssociatedType = "T_LevelOfEducation" }); 
+	}
+  </div>
+<div class="tab-pane fade in" id="JournalEntryToT_EducationLevelRelation">
+            @if ( User.CanView("JournalEntry"))
+		   {
+			//	Html.RenderAction("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_EducationLevel", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry" });
+		   }
+  </div>
+<div class="tab-pane fade in" id="T_RequiredEducationEducationLevel">
+     @if ( User.CanView("T_RequiredEducation"))
+	{
+	  // Html.RenderAction("Index", "T_RequiredEducation", new {RenderPartial=true, HostingEntity = "T_EducationLevel", HostingEntityID = @Model.Id, AssociatedType = "T_RequiredEducationEducationLevel" }); 
+	}
+  </div>
+	</div> <!-- /tab-content --><br />
+
+<br/>
+</div>
+ 

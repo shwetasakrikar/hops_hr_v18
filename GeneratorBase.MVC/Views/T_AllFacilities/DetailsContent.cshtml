@@ -1,0 +1,313 @@
+﻿@model GeneratorBase.MVC.Models.T_AllFacilities
+@using PagedList;
+@{
+    ViewBag.Title = "View All Facilities";
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_AllFacilities");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "All Facilities";
+}
+<script>
+    $(document).ready(function () {
+			 if ($.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') != null) {
+				$('a[href="#' + $.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') + '"]').click();
+			 }
+    });
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_AllFacilitiesIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_AllFacilitiesIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_AllFacilitiesIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_AllFacilitiesIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_AllFacilitiesIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_AllFacilitiesIsSetValueUIRule);
+    }
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-hand-down text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span>View</span>
+        </h1>
+        <h2 class="text-primary"><span id="HostingEntityDisplayValue">@Html.DisplayFor(model => model.DisplayValue)</span>
+			<div class="btn-group pull-right fixactionbut">
+            <button data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-default pull-right">
+                Action
+                <span class="caret">    </span>
+            </button>
+			<ul class="dropdown-menu pull-left">               
+				<li>
+                    @if ( User.CanEdit("T_AllFacilities"))
+                    {
+                        <a href="@Url.Action("Edit","T_AllFacilities", new { id = Model.Id,  UrlReferrer = Request.Url, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    }
+                </li>             
+				<li>
+                    @if ( User.CanDelete("T_AllFacilities"))
+                    {
+                        <a href="@Url.Action("Delete", "T_AllFacilities", new { id = Model.Id, UrlReferrer = Request.Url, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Delete</a>
+                    }
+                </li>
+	<li class="divider" style="clear:both"></li>
+	<li class="dropdown-submenu pull-left">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu pull-left">
+				@if ( User.CanAdd("T_ServiceRecord"))
+				{
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_ServiceRecord", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_EmploymentRecordHiredAtFacility", 
+							HostingEntityName = "T_AllFacilities",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Service Record Hired At Facility
+						</a>
+					</li>
+				}
+							@if ( User.CanAdd("T_ServiceRecord"))
+				{
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_ServiceRecord", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_EmployeeRecordTerminationFacility", 
+							HostingEntityName = "T_AllFacilities",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  After Termination Service Record
+						</a>
+					</li>
+				}
+							@if ( User.CanAdd("T_EmployeeInjury"))
+				{
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_EmployeeInjury", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_FacilityAccidentOccured", 
+							HostingEntityName = "T_AllFacilities",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Employee Injury
+						</a>
+					</li>
+				}
+							@if ( User.CanAdd("T_AllFacilitiesUnit"))
+				{
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_AllFacilitiesUnit", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_UnitsforAllFacilties", 
+							HostingEntityName = "T_AllFacilities",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Unit
+						</a>
+					</li>
+				}
+			</ul>
+</li>
+			</ul>
+</div>
+		</h2>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+	 <li class="active"><a href="#Details" onclick="ClearTabCookie('@User.JavaScriptEncodedName@Model.Id');" data-toggle="tab">Details</a></li>
+		 <li @(!User.CanView("T_ServiceRecord")?"style=display:none;":"")><a onclick="LoadTab('T_EmploymentRecordHiredAtFacility','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_ServiceRecord", new {RenderPartial=true, HostingEntity ="T_AllFacilities", HostingEntityID = @Model.Id, AssociatedType = "T_EmploymentRecordHiredAtFacility",TabToken = DateTime.Now.Ticks,}))')" href="#T_EmploymentRecordHiredAtFacility" data-toggle="tab">
+		 Service Record Hired At Facility
+		 <span class="badge bg-blue"><div id="dvcnt_T_EmploymentRecordHiredAtFacility">@ViewBag.T_EmploymentRecordHiredAtFacilityCount</div></span>
+		 		 </a></li>
+		 <li @(!User.CanView("T_ServiceRecord")?"style=display:none;":"")><a onclick="LoadTab('T_EmployeeRecordTerminationFacility','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_ServiceRecord", new {RenderPartial=true, HostingEntity ="T_AllFacilities", HostingEntityID = @Model.Id, AssociatedType = "T_EmployeeRecordTerminationFacility",TabToken = DateTime.Now.Ticks,}))')" href="#T_EmployeeRecordTerminationFacility" data-toggle="tab">
+		 After Termination Service Record
+		 <span class="badge bg-blue"><div id="dvcnt_T_EmployeeRecordTerminationFacility">@ViewBag.T_EmployeeRecordTerminationFacilityCount</div></span>
+		 		 </a></li>
+		 <li @(!User.CanView("T_EmployeeInjury")?"style=display:none;":"")><a onclick="LoadTab('T_FacilityAccidentOccured','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_EmployeeInjury", new {RenderPartial=true, HostingEntity ="T_AllFacilities", HostingEntityID = @Model.Id, AssociatedType = "T_FacilityAccidentOccured",TabToken = DateTime.Now.Ticks,}))')" href="#T_FacilityAccidentOccured" data-toggle="tab">
+		 Employee Injury
+		 <span class="badge bg-blue"><div id="dvcnt_T_FacilityAccidentOccured">@ViewBag.T_FacilityAccidentOccuredCount</div></span>
+		 		 </a></li>
+		 <li @(!User.CanView("T_AllFacilitiesUnit")?"style=display:none;":"")><a onclick="LoadTab('T_UnitsforAllFacilties','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_AllFacilitiesUnit", new {RenderPartial=true, HostingEntity ="T_AllFacilities", HostingEntityID = @Model.Id, AssociatedType = "T_UnitsforAllFacilties",TabToken = DateTime.Now.Ticks,}))')" href="#T_UnitsforAllFacilties" data-toggle="tab">
+		 Unit
+		 <span class="badge bg-blue"><div id="dvcnt_T_UnitsforAllFacilties">@ViewBag.T_UnitsforAllFaciltiesCount</div></span>
+		 		 </a></li>
+    </ul>
+	    <div class="tab-content">
+		   <div class="tab-pane fade in active" id="Details">
+				 <div class="panel panel-default AppForm">
+					<div class="panel-body">
+                                  
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-xs-12">
+			<div class="row">
+@if(User.CanView("T_AllFacilities","T_Name"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Name">
+	<div class='form-group' title="Name">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Name) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@Model.T_Name</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_AllFacilities","T_Description"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Description">
+	<div class='form-group' title="Description">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Description)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		<p class="viewlabel">@Model.T_Description</p>
+		</div>
+	</div>
+</div>
+}
+		</div>
+				</div>
+			</div>
+		</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					@Html.ActionLink("Back", "Cancel", new { UrlReferrer = Request.UrlReferrer }, new { @class = "btn btn-default btn-sm pull-left formbuttonfix" })
+					 @if ( User.CanEdit("T_AllFacilities"))
+                     {
+                          @Html.ActionLink("Edit", "Edit", new { id = Model.Id, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, new { @class = "btn btn-primary btn-sm pull-left formbuttonfix" })
+                     }
+				</div>
+			</div>    
+
+<div class="dropdown pull-left formbuttonfix" style="margin-top:-30px; margin-left:102px;">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
+           
+			@if ( User.CanAdd("T_ServiceRecord"))
+            {
+				 <li>
+				 <a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_ServiceRecord",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_EmploymentRecordHiredAtFacility", 
+						HostingEntityName = "T_AllFacilities",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');") style="margin-top:5px;">
+                   Add  Service Record Hired At Facility</a>
+			</li>
+            }
+			
+
+        </ul>
+
+			</div>
+
+<div class="dropdown pull-left formbuttonfix" style="margin-top:-30px; margin-left:102px;">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
+           
+			@if ( User.CanAdd("T_ServiceRecord"))
+            {
+				 <li>
+				 <a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_ServiceRecord",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_EmployeeRecordTerminationFacility", 
+						HostingEntityName = "T_AllFacilities",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');") style="margin-top:5px;">
+                   Add  After Termination Service Record</a>
+			</li>
+            }
+			
+
+        </ul>
+
+			</div>
+
+<div class="dropdown pull-left formbuttonfix" style="margin-top:-30px; margin-left:102px;">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
+           
+			@if ( User.CanAdd("T_EmployeeInjury"))
+            {
+				 <li>
+				 <a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_EmployeeInjury",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_FacilityAccidentOccured", 
+						HostingEntityName = "T_AllFacilities",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');") style="margin-top:5px;">
+                   Add  Employee Injury</a>
+			</li>
+            }
+			
+
+        </ul>
+
+			</div>
+
+<div class="dropdown pull-left formbuttonfix" style="margin-top:-30px; margin-left:102px;">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
+           
+			@if ( User.CanAdd("T_AllFacilitiesUnit"))
+            {
+				 <li>
+				 <a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_AllFacilitiesUnit",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_UnitsforAllFacilties", 
+						HostingEntityName = "T_AllFacilities",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');") style="margin-top:5px;">
+                   Add  Unit</a>
+			</li>
+            }
+			
+
+        </ul>
+
+			</div>
+	</div>    
+<div class="tab-pane fade in" id="T_EmploymentRecordHiredAtFacility">
+     @if ( User.CanView("T_ServiceRecord"))
+	{
+	  // Html.RenderAction("Index", "T_ServiceRecord", new {RenderPartial=true, HostingEntity = "T_AllFacilities", HostingEntityID = @Model.Id, AssociatedType = "T_EmploymentRecordHiredAtFacility" }); 
+	}
+  </div>
+<div class="tab-pane fade in" id="T_EmployeeRecordTerminationFacility">
+     @if ( User.CanView("T_ServiceRecord"))
+	{
+	  // Html.RenderAction("Index", "T_ServiceRecord", new {RenderPartial=true, HostingEntity = "T_AllFacilities", HostingEntityID = @Model.Id, AssociatedType = "T_EmployeeRecordTerminationFacility" }); 
+	}
+  </div>
+<div class="tab-pane fade in" id="T_FacilityAccidentOccured">
+     @if ( User.CanView("T_EmployeeInjury"))
+	{
+	  // Html.RenderAction("Index", "T_EmployeeInjury", new {RenderPartial=true, HostingEntity = "T_AllFacilities", HostingEntityID = @Model.Id, AssociatedType = "T_FacilityAccidentOccured" }); 
+	}
+  </div>
+<div class="tab-pane fade in" id="T_UnitsforAllFacilties">
+     @if ( User.CanView("T_AllFacilitiesUnit"))
+	{
+	  // Html.RenderAction("Index", "T_AllFacilitiesUnit", new {RenderPartial=true, HostingEntity = "T_AllFacilities", HostingEntityID = @Model.Id, AssociatedType = "T_UnitsforAllFacilties" }); 
+	}
+  </div>
+	</div> <!-- /tab-content --><br />
+
+<br/>
+</div>
+ 

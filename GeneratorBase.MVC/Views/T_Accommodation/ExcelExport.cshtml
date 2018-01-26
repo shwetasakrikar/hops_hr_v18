@@ -1,0 +1,107 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_Accommodation>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Accommodation.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_Accommodation","T_EmployeeAccomodationID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>Employee</th>
+}
+@if(User.CanView("T_Accommodation","T_AccommodationInjuryID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_EmployeeInjury"?"hidden":"")>Employee Injury</th>
+}
+@if(User.CanView("T_Accommodation","T_AccommodationStartDate"))
+{
+		<th>Accommodation Start Date</th>
+}
+@if(User.CanView("T_Accommodation","T_AccommodationEndDate"))
+{
+		<th>Accommodation End Date</th>
+}
+@if(User.CanView("T_Accommodation","T_NinetyDaysSinceAccommodation"))
+{
+		<th>Ninety Days Since Accommodation</th>
+}
+@if(User.CanView("T_Accommodation","T_TemporaryAccommodation"))
+{
+		<th>Temporary Accommodation</th>
+}
+@if(User.CanView("T_Accommodation","T_DateLetterGivenToEmployee"))
+{
+		<th>Date Letter Given To Employee</th>
+}
+@if(User.CanView("T_Accommodation","T_Restriction"))
+{
+		<th>Restriction</th>
+}
+@if(User.CanView("T_Accommodation","T_AccommodationNotes"))
+{
+		<th>Accommodation Notes</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_Accommodation","T_EmployeeAccomodationID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeeaccomodation.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Accommodation","T_AccommodationInjuryID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_EmployeeInjury"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_accommodationinjury.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Accommodation","T_AccommodationStartDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_AccommodationStartDate)
+        </td>
+}
+@if(User.CanView("T_Accommodation","T_AccommodationEndDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_AccommodationEndDate)
+        </td>
+}
+@if(User.CanView("T_Accommodation","T_NinetyDaysSinceAccommodation"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_NinetyDaysSinceAccommodation)
+        </td>
+}
+@if(User.CanView("T_Accommodation","T_TemporaryAccommodation"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_TemporaryAccommodation)
+        </td>
+}
+@if(User.CanView("T_Accommodation","T_DateLetterGivenToEmployee"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_DateLetterGivenToEmployee)
+        </td>
+}
+@if(User.CanView("T_Accommodation","T_Restriction"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Restriction)
+        </td>
+}
+@if(User.CanView("T_Accommodation","T_AccommodationNotes"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_AccommodationNotes)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

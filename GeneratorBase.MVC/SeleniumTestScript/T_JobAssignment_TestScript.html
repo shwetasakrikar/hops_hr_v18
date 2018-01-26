@@ -1,0 +1,1303 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://apps.turanto.com/HOPS_HR_v18" />
+<title>Job Assignment</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">T_JobAssignment</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/HOPS_HR_v18/Home</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#liT_JobAssignment &gt; a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//button[@type='button'])[5]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_EmployeePercent</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_StartDate</td>
+	<td>12/11/2017 5:52:52 PM</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_EndDate</td>
+	<td>12/11/2017 5:52:52 PM</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=T_Primary</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=T_Active</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_PositionLevel</td>
+	<td>Position Level</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_RoleCode</td>
+	<td>Role Code </td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_ClassCode</td>
+	<td>Class Code </td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_WorkersCompCode</td>
+	<td>Workers Comp Code</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_SOCCode</td>
+	<td>SOC Code</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_OvertimeEligibility</td>
+	<td>Overtime Eligibility</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_CostCenter</td>
+	<td>Cost Center</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Program</td>
+	<td>Program</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_DepartmentArea</td>
+	<td>Department Area</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Department</td>
+	<td>Department</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_SupervisorEmail</td>
+	<td>Supervisor Email</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Notes</td>
+	<td>Notes</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeJobAssignmentID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeJobAssignmentID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeJobAssignmentflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeJobAssignmentflag</td>
+	<td>T_EmployeeJobAssignment</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_EmployeeJobAssignmentID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_PID</td>
+	<td>Employee PID</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=T_DateOfBirth</td>
+	<td>12/11/2017 5:52:52 PM</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_LastName</td>
+	<td>Employee Last Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_FirstName</td>
+	<td>Employee First Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_MiddleName</td>
+	<td>Employee Middle Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_WorkEmail</td>
+	<td>testmail@test.com</td>
+</tr>
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeAtFacilityID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeAtFacilityID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeAtFacilityflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeAtFacilityflag == false</td>
+	<td>T_EmployeeAtFacility</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeAtFacilityID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeAtFacilityID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeAtFacility</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeStatusID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeStatusID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeStatusflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeStatusflag == false</td>
+	<td>T_EmployeeStatus</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeStatusID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeStatusID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeStatus</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeGenderID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeGenderID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeGenderflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeGenderflag == false</td>
+	<td>T_EmployeeGender</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeGenderID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeGenderID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeGender</td>
+	<td></td>
+</tr>
+		
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeJobAssignment</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeJobAssignmentID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeJobAssignmentID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionJobAssignmentID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_PositionJobAssignmentID_chosen']/div/ul/li[2]</td>
+	<td>T_PositionJobAssignmentflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_PositionJobAssignmentflag</td>
+	<td>T_PositionJobAssignment</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_PositionJobAssignmentID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_PositionNumber</td>
+	<td>Position Number Position Number</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_PositionFill</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=T_EffectiveDate</td>
+	<td>12/11/2017 5:52:52 PM</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_SalaryBand</td>
+	<td>Position Number Salary Band</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=T_ShiftStart</td>
+	<td>12/11/2017 5:52:52 PM</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=T_ShiftEnd</td>
+	<td>12/11/2017 5:52:52 PM</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=T_EstablishedDate</td>
+	<td>12/11/2017 5:52:52 PM</td>
+</tr>
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_FacilityAssignedToID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_FacilityAssignedToID_chosen']/div/ul/li[2]</td>
+	<td>T_FacilityAssignedToflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_FacilityAssignedToflag == false</td>
+	<td>T_FacilityAssignedTo</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_FacilityAssignedToID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_FacilityAssignedToID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_FacilityAssignedTo</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_TypeOfPositionID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_TypeOfPositionID_chosen']/div/ul/li[2]</td>
+	<td>T_TypeOfPositionflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_TypeOfPositionflag == false</td>
+	<td>T_TypeOfPosition</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_TypeOfPositionID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_TypeOfPositionID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_TypeOfPosition</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_AssociatedPositionStatusID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_AssociatedPositionStatusID_chosen']/div/ul/li[2]</td>
+	<td>T_AssociatedPositionStatusflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_AssociatedPositionStatusflag == false</td>
+	<td>T_AssociatedPositionStatus</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_AssociatedPositionStatusID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_AssociatedPositionStatusID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_AssociatedPositionStatus</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionWorkingTitleAssociationID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_PositionWorkingTitleAssociationID_chosen']/div/ul/li[2]</td>
+	<td>T_PositionWorkingTitleAssociationflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_PositionWorkingTitleAssociationflag == false</td>
+	<td>T_PositionWorkingTitleAssociation</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_PositionWorkingTitleAssociationID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionWorkingTitleAssociationID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_PositionWorkingTitleAssociation</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionRoleCodeID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_PositionRoleCodeID_chosen']/div/ul/li[2]</td>
+	<td>T_PositionRoleCodeflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_PositionRoleCodeflag == false</td>
+	<td>T_PositionRoleCode</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_PositionRoleCodeID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionRoleCodeID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_PositionRoleCode</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionClassCodeID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_PositionClassCodeID_chosen']/div/ul/li[2]</td>
+	<td>T_PositionClassCodeflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_PositionClassCodeflag == false</td>
+	<td>T_PositionClassCode</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_PositionClassCodeID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionClassCodeID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_PositionClassCode</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionShiftTimeID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_PositionShiftTimeID_chosen']/div/ul/li[2]</td>
+	<td>T_PositionShiftTimeflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_PositionShiftTimeflag == false</td>
+	<td>T_PositionShiftTime</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_PositionShiftTimeID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionShiftTimeID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_PositionShiftTime</td>
+	<td></td>
+</tr>
+		
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_PositionJobAssignment</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_PositionJobAssignmentID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionJobAssignmentID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_JobAssignmentReasonID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_JobAssignmentReasonID_chosen']/div/ul/li[2]</td>
+	<td>T_JobAssignmentReasonflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_JobAssignmentReasonflag</td>
+	<td>T_JobAssignmentReason</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_JobAssignmentReasonID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Job Assignment Reason Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Job Assignment Reason Description</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_JobAssignmentReason</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_JobAssignmentReasonID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_JobAssignmentReasonID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_JobAssignmentUnitXID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_JobAssignmentUnitXID_chosen']/div/ul/li[2]</td>
+	<td>T_JobAssignmentUnitXflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_JobAssignmentUnitXflag</td>
+	<td>T_JobAssignmentUnitX</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_JobAssignmentUnitXID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Unit</td>
+	<td>UnitX Unit</td>
+</tr>
+<tr>
+	<td>typeKeys</td>
+	<td>id=T_UnitPhoneNumber</td>
+	<td>9999999999</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_TotalBeds</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Program</td>
+	<td>UnitX Program</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Fund</td>
+	<td>UnitX Fund </td>
+</tr>
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_FacilityUnitXID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_FacilityUnitXID_chosen']/div/ul/li[2]</td>
+	<td>T_FacilityUnitXflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_FacilityUnitXflag == false</td>
+	<td>T_FacilityUnitX</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_FacilityUnitXID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_FacilityUnitXID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_FacilityUnitX</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_WardDepartmentID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_WardDepartmentID_chosen']/div/ul/li[2]</td>
+	<td>T_WardDepartmentflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_WardDepartmentflag == false</td>
+	<td>T_WardDepartment</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_WardDepartmentID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_WardDepartmentID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_WardDepartment</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_UnitXDepartmentAreaID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_UnitXDepartmentAreaID_chosen']/div/ul/li[2]</td>
+	<td>T_UnitXDepartmentAreaflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_UnitXDepartmentAreaflag == false</td>
+	<td>T_UnitXDepartmentArea</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_UnitXDepartmentAreaID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_UnitXDepartmentAreaID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_UnitXDepartmentArea</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_WardOrgCodeID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_WardOrgCodeID_chosen']/div/ul/li[2]</td>
+	<td>T_WardOrgCodeflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_WardOrgCodeflag == false</td>
+	<td>T_WardOrgCode</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_WardOrgCodeID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_WardOrgCodeID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_WardOrgCode</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_UnitXFloorID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_UnitXFloorID_chosen']/div/ul/li[2]</td>
+	<td>T_UnitXFloorflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_UnitXFloorflag == false</td>
+	<td>T_UnitXFloor</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_UnitXFloorID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_UnitXFloorID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_UnitXFloor</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeAdministratorID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeAdministratorID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeAdministratorflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeAdministratorflag == false</td>
+	<td>T_EmployeeAdministrator</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeAdministratorID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeAdministratorID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeAdministrator</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeUnitXHeadID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeUnitXHeadID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeUnitXHeadflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeUnitXHeadflag == false</td>
+	<td>T_EmployeeUnitXHead</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeUnitXHeadID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeUnitXHeadID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeUnitXHead</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_WardCostCenterID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_WardCostCenterID_chosen']/div/ul/li[2]</td>
+	<td>T_WardCostCenterflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_WardCostCenterflag == false</td>
+	<td>T_WardCostCenter</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_WardCostCenterID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_WardCostCenterID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_WardCostCenter</td>
+	<td></td>
+</tr>
+		
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_JobAssignmentUnitX</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_JobAssignmentUnitXID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_JobAssignmentUnitXID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_JobAssignmentManagerEmployeeID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_JobAssignmentManagerEmployeeID_chosen']/div/ul/li[2]</td>
+	<td>T_JobAssignmentManagerEmployeeflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_JobAssignmentManagerEmployeeflag</td>
+	<td>T_JobAssignmentManagerEmployee</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_JobAssignmentManagerEmployeeID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_PID</td>
+	<td>Manager PID</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=T_DateOfBirth</td>
+	<td>12/11/2017 5:52:52 PM</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_LastName</td>
+	<td>Manager Last Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_FirstName</td>
+	<td>Manager First Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_MiddleName</td>
+	<td>Manager Middle Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_WorkEmail</td>
+	<td>testmail@test.com</td>
+</tr>
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeAtFacilityID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeAtFacilityID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeAtFacilityflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeAtFacilityflag == false</td>
+	<td>T_EmployeeAtFacility</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeAtFacilityID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeAtFacilityID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeAtFacility</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeStatusID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeStatusID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeStatusflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeStatusflag == false</td>
+	<td>T_EmployeeStatus</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeStatusID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeStatusID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeStatus</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeGenderID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeGenderID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeGenderflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeGenderflag == false</td>
+	<td>T_EmployeeGender</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeGenderID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeGenderID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeGender</td>
+	<td></td>
+</tr>
+		
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_JobAssignmentManagerEmployee</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_JobAssignmentManagerEmployeeID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_JobAssignmentManagerEmployeeID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeSupervisorID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeSupervisorID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeSupervisorflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeSupervisorflag</td>
+	<td>T_EmployeeSupervisor</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_EmployeeSupervisorID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_PID</td>
+	<td>Supervisor PID</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=T_DateOfBirth</td>
+	<td>12/11/2017 5:52:52 PM</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_LastName</td>
+	<td>Supervisor Last Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_FirstName</td>
+	<td>Supervisor First Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_MiddleName</td>
+	<td>Supervisor Middle Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_WorkEmail</td>
+	<td>testmail@test.com</td>
+</tr>
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeAtFacilityID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeAtFacilityID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeAtFacilityflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeAtFacilityflag == false</td>
+	<td>T_EmployeeAtFacility</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeAtFacilityID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeAtFacilityID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeAtFacility</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeStatusID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeStatusID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeStatusflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeStatusflag == false</td>
+	<td>T_EmployeeStatus</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeStatusID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeStatusID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeStatus</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeGenderID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeGenderID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeGenderflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeGenderflag == false</td>
+	<td>T_EmployeeGender</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeGenderID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeGenderID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeGender</td>
+	<td></td>
+</tr>
+		
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeSupervisor</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeSupervisorID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeSupervisorID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+
+
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@name='command' and @Value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Home</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
+

@@ -1,0 +1,165 @@
+﻿<error errorId="2c1ea8fc-15d0-407c-b067-c614239ff968" application="/LM/W3SVC/258/ROOT" host="TURANTOMVC" type="System.Web.HttpException" message="A potentially dangerous Request.Path value was detected from the client (&amp;)." source="System.Web" detail="System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (&amp;).&#xD;&#xA;   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()&#xD;&#xA;   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)" time="2016-08-05T09:20:46.0037828Z" statusCode="400">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_ACCEPT:text/html, application/xhtml+xml, */*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=BhkKMZkKaLfha63ZVs5pRqzhNGpQlUagH-AWeyTjzYHLZjGAnLuktSxbGWjNeMOgV5UGsXPaaRxW7WxJIObNYvsI9mpoDestLJ4ZOYx9EaU1; wsh_hr_v29=fkav9SkS_FBbpKr62TdMOjl3b5RsRtKLtHTwmNO6_R0uEVKpCnzr2xTIGOPBmwfyr89Fgq7V_4tf1pNZsCtdfv5brUER5YW907JlEkblK7SCL0gfj4nrQm-1PRictzRlyBuBusy0dwXzWC1ufhf98N5vQhcKsII2QqUYKU7u516HGyj0boD2ihmlyfmgMOdGwgeTN3Oguncj8HfkfPtpC9qq25RL2MyvJQOgF8TYnpdOfomsd21Zf-xZf5eQZ8d6bX9kydy1GY3q5rgYeKTqx31VvqUZrjLl8zrGBQi0QzL6fHysxXwH6WKqBW2s6qmW-O1g0Yy7Urm46C8DfCMLVFvml8ZXgAjMIQ_rI1-A6yIzkaEc4aYLFj9UlCyCTdgjxNC3e6ylph7aP_n5WQO0ezaKqRiWqWjVg7Y8V0kFAQ07YvLp1vmHlwsgNtHfOD2d80XlgukFrHfR7N_etnqfdScWwTj6MCy0T_VrxzMJQGljocjLoSle9oZzKkFxnnSu&#xD;&#xA;HTTP_HOST:localhost:50116&#xD;&#xA;HTTP_REFERER:http://localhost:50116/Account/RoleList&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: Keep-Alive&#xD;&#xA;Accept: text/html, application/xhtml+xml, */*&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US&#xD;&#xA;Cookie: __RequestVerificationToken=BhkKMZkKaLfha63ZVs5pRqzhNGpQlUagH-AWeyTjzYHLZjGAnLuktSxbGWjNeMOgV5UGsXPaaRxW7WxJIObNYvsI9mpoDestLJ4ZOYx9EaU1; wsh_hr_v29=fkav9SkS_FBbpKr62TdMOjl3b5RsRtKLtHTwmNO6_R0uEVKpCnzr2xTIGOPBmwfyr89Fgq7V_4tf1pNZsCtdfv5brUER5YW907JlEkblK7SCL0gfj4nrQm-1PRictzRlyBuBusy0dwXzWC1ufhf98N5vQhcKsII2QqUYKU7u516HGyj0boD2ihmlyfmgMOdGwgeTN3Oguncj8HfkfPtpC9qq25RL2MyvJQOgF8TYnpdOfomsd21Zf-xZf5eQZ8d6bX9kydy1GY3q5rgYeKTqx31VvqUZrjLl8zrGBQi0QzL6fHysxXwH6WKqBW2s6qmW-O1g0Yy7Urm46C8DfCMLVFvml8ZXgAjMIQ_rI1-A6yIzkaEc4aYLFj9UlCyCTdgjxNC3e6ylph7aP_n5WQO0ezaKqRiWqWjVg7Y8V0kFAQ07YvLp1vmHlwsgNtHfOD2d80XlgukFrHfR7N_etnqfdScWwTj6MCy0T_VrxzMJQGljocjLoSle9oZzKkFxnnSu&#xD;&#xA;Host: localhost:50116&#xD;&#xA;Referer: http://localhost:50116/Account/RoleList&#xD;&#xA;User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/258/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v29\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="258" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/258" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Account/EditRole/HR Drug &amp; Alcoho" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v29\GeneratorBase.MVC\Account\EditRole\HR Drug &amp; Alcoho" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="53967" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Account/EditRole/HR Drug &amp; Alcoho" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="50116" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/Account/EditRole/HR Drug &amp; Alcoho" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html, application/xhtml+xml, */*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=BhkKMZkKaLfha63ZVs5pRqzhNGpQlUagH-AWeyTjzYHLZjGAnLuktSxbGWjNeMOgV5UGsXPaaRxW7WxJIObNYvsI9mpoDestLJ4ZOYx9EaU1; wsh_hr_v29=fkav9SkS_FBbpKr62TdMOjl3b5RsRtKLtHTwmNO6_R0uEVKpCnzr2xTIGOPBmwfyr89Fgq7V_4tf1pNZsCtdfv5brUER5YW907JlEkblK7SCL0gfj4nrQm-1PRictzRlyBuBusy0dwXzWC1ufhf98N5vQhcKsII2QqUYKU7u516HGyj0boD2ihmlyfmgMOdGwgeTN3Oguncj8HfkfPtpC9qq25RL2MyvJQOgF8TYnpdOfomsd21Zf-xZf5eQZ8d6bX9kydy1GY3q5rgYeKTqx31VvqUZrjLl8zrGBQi0QzL6fHysxXwH6WKqBW2s6qmW-O1g0Yy7Urm46C8DfCMLVFvml8ZXgAjMIQ_rI1-A6yIzkaEc4aYLFj9UlCyCTdgjxNC3e6ylph7aP_n5WQO0ezaKqRiWqWjVg7Y8V0kFAQ07YvLp1vmHlwsgNtHfOD2d80XlgukFrHfR7N_etnqfdScWwTj6MCy0T_VrxzMJQGljocjLoSle9oZzKkFxnnSu" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:50116" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:50116/Account/RoleList" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="BhkKMZkKaLfha63ZVs5pRqzhNGpQlUagH-AWeyTjzYHLZjGAnLuktSxbGWjNeMOgV5UGsXPaaRxW7WxJIObNYvsI9mpoDestLJ4ZOYx9EaU1" />
+    </item>
+    <item name="wsh_hr_v29">
+      <value string="fkav9SkS_FBbpKr62TdMOjl3b5RsRtKLtHTwmNO6_R0uEVKpCnzr2xTIGOPBmwfyr89Fgq7V_4tf1pNZsCtdfv5brUER5YW907JlEkblK7SCL0gfj4nrQm-1PRictzRlyBuBusy0dwXzWC1ufhf98N5vQhcKsII2QqUYKU7u516HGyj0boD2ihmlyfmgMOdGwgeTN3Oguncj8HfkfPtpC9qq25RL2MyvJQOgF8TYnpdOfomsd21Zf-xZf5eQZ8d6bX9kydy1GY3q5rgYeKTqx31VvqUZrjLl8zrGBQi0QzL6fHysxXwH6WKqBW2s6qmW-O1g0Yy7Urm46C8DfCMLVFvml8ZXgAjMIQ_rI1-A6yIzkaEc4aYLFj9UlCyCTdgjxNC3e6ylph7aP_n5WQO0ezaKqRiWqWjVg7Y8V0kFAQ07YvLp1vmHlwsgNtHfOD2d80XlgukFrHfR7N_etnqfdScWwTj6MCy0T_VrxzMJQGljocjLoSle9oZzKkFxnnSu" />
+    </item>
+  </cookies>
+</error>

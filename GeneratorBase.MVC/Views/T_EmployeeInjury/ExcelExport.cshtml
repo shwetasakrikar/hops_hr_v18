@@ -1,0 +1,317 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_EmployeeInjury>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Employee Injury.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_EmployeeInjury","T_EmployeeEmployeeInjuryID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>Employee</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_TypeofClaimMCIID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_ClaimTypeMCI"?"hidden":"")>Type of Claim MCI</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_ClaimNo"))
+{
+		<th>Claim No.</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_OSHA"))
+{
+		<th>OSHA</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_AccidentShiftID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_ShiftTime"?"hidden":"")>Shift Working When Accident Occurred</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_Location"))
+{
+		<th>Location </th>
+}
+@if(User.CanView("T_EmployeeInjury","T_FacilityAccidentOccuredID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_AllFacilities"?"hidden":"")>Facility Accident Occurred At</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_UnitWhereAccidentOccuredID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_AllFacilitiesUnit"?"hidden":"")>Unit Where Accident Occured</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_EmployeInjuryFloorID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_AllFacilitiesFloor"?"hidden":"")>Floor Accident Occurred on</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_LocationOfAccidentID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_WCAccident"?"hidden":"")>Location Of Accident</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_AccidentDate"))
+{
+		<th>Accident Date & Time</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_DescribeHowInjuryOrIllnessOccurred"))
+{
+		<th>Describe How Injury Or Illness Occurred</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_EmployeeInjuryCauseID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_InjuryCause"?"hidden":"")>Cause Of Injury </th>
+}
+@if(User.CanView("T_EmployeeInjury","T_EmployeeInjuryNatureID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_InjuryNature"?"hidden":"")>Nature Of Injury Or Illness</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_EmployeeInjuryBodyPartsAffectedID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_BodyPartsAffected"?"hidden":"")>Parts Of Body Affected</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_EMployeeInjuryMachineToolID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_MachineTool"?"hidden":"")>Machine, Tool Or Object Causing Illness Or Injury </th>
+}
+@if(User.CanView("T_EmployeeInjury","T_InitialTreatmentListID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_InitialTreatment"?"hidden":"")>Initial Treatment List</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_PatientInvolvedRegnoepi"))
+{
+		<th>Patient Involved (Regnoepi)</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_EmployeeInjuryMedicalFacilityForTreatmentID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_MedicalFacilityForTreatment"?"hidden":"")>Medical Facility For Treatment</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_ExaminingPhysician"))
+{
+		<th>Examining Physician</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_ReferringPhysician"))
+{
+		<th>Referring Physician</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_Diagnosis"))
+{
+		<th>Diagnosis </th>
+}
+@if(User.CanView("T_EmployeeInjury","T_DaysOff"))
+{
+		<th>Days Off</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_DaysRestricted"))
+{
+		<th>Days Restricted</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_DetailsOfRestriction"))
+{
+		<th>Details Of Restriction</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_RestrictionStartDate"))
+{
+		<th>Restriction Start Date</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_RestrictionEndDate"))
+{
+		<th>Restriction End Date</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_EmployeeInjuryRefusalID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Refusal"?"hidden":"")>Restriction Refusal Reason</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_AccidentNotes"))
+{
+		<th>Accident Notes</th>
+}
+@if(User.CanView("T_EmployeeInjury","T_RestrictionNotes"))
+{
+		<th>Restriction Notes</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_EmployeeInjury","T_EmployeeEmployeeInjuryID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeeemployeeinjury.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_TypeofClaimMCIID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_ClaimTypeMCI"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_typeofclaimmci.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_ClaimNo"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_ClaimNo)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_OSHA"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_OSHA)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_AccidentShiftID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_ShiftTime"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_accidentshift.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_Location"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Location)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_FacilityAccidentOccuredID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_AllFacilities"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_facilityaccidentoccured.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_UnitWhereAccidentOccuredID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_AllFacilitiesUnit"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_unitwhereaccidentoccured.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_EmployeInjuryFloorID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_AllFacilitiesFloor"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeinjuryfloor.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_LocationOfAccidentID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_WCAccident"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_locationofaccident.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_AccidentDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_AccidentDate)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_DescribeHowInjuryOrIllnessOccurred"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_DescribeHowInjuryOrIllnessOccurred)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_EmployeeInjuryCauseID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_InjuryCause"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeeinjurycause.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_EmployeeInjuryNatureID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_InjuryNature"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeeinjurynature.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_EmployeeInjuryBodyPartsAffectedID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_BodyPartsAffected"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeeinjurybodypartsaffected.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_EMployeeInjuryMachineToolID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_MachineTool"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeeinjurymachinetool.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_InitialTreatmentListID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_InitialTreatment"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_initialtreatmentlist.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_PatientInvolvedRegnoepi"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_PatientInvolvedRegnoepi)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_EmployeeInjuryMedicalFacilityForTreatmentID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_MedicalFacilityForTreatment"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeeinjurymedicalfacilityfortreatment.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_ExaminingPhysician"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_ExaminingPhysician)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_ReferringPhysician"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_ReferringPhysician)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_Diagnosis"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Diagnosis)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_DaysOff"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_DaysOff)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_DaysRestricted"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_DaysRestricted)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_DetailsOfRestriction"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_DetailsOfRestriction)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_RestrictionStartDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_RestrictionStartDate)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_RestrictionEndDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_RestrictionEndDate)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_EmployeeInjuryRefusalID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Refusal"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeeinjuryrefusal.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_AccidentNotes"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_AccidentNotes)
+        </td>
+}
+@if(User.CanView("T_EmployeeInjury","T_RestrictionNotes"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_RestrictionNotes)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

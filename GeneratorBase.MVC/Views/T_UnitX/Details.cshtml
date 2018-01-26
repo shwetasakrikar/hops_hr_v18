@@ -1,0 +1,539 @@
+﻿@model GeneratorBase.MVC.Models.T_UnitX
+@using PagedList;
+@{
+    ViewBag.Title = "View UnitX";
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_UnitX");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "UnitX";
+}
+<script>
+    $(document).ready(function () {
+			 if ($.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') != null) {
+				$('a[href="#' + $.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') + '"]').click();
+			 }
+    });
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_UnitXIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_UnitXIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_UnitXIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_UnitXIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_UnitXIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_UnitXIsSetValueUIRule);
+    }
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-hand-down text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span>View</span>
+        </h1>
+        <h2 class="text-primary"><span id="HostingEntityDisplayValue">@Html.DisplayFor(model => model.DisplayValue)</span>
+			<div class="btn-group pull-right fixactionbut">
+            <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle pull-right">
+                Action
+                <span class="caret">    </span>
+            </button>
+			<ul class="dropdown-menu pull-left">               
+				<li>
+                    @if ( User.CanEdit("T_UnitX"))
+                    {
+                        <a href="@Url.Action("Edit","T_UnitX", new {UrlReferrer = Request.UrlReferrer,id = Model.Id,AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    }
+                </li>             
+				<li>
+                    @if ( User.CanDelete("T_UnitX"))
+                    {
+                        <a href="@Url.Action("Delete", "T_UnitX", new { UrlReferrer = Request.UrlReferrer,id = Model.Id, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Delete</a>
+                    }
+                </li>
+	<li class="divider" style="clear:both"></li>
+	<li class="dropdown-submenu pull-left" id="AddAssociationdropmenuT_UnitX">
+	 @{ var dropmenu = false; }
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu pull-left">
+				@if ( User.CanAdd("T_JobAssignment"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_JobAssignment", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_JobAssignmentUnitX", 
+							HostingEntityName = "T_UnitX",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Job Assignment Ward
+						</a>
+					</li>
+				}
+			</ul>
+</li>
+@if(!dropmenu)
+{
+    <script>
+        $("#AddAssociationdropmenuT_UnitX").hide();
+    </script>
+}
+ <li class="divider" style="clear:both"></li>
+ <li class="dropdown-submenu pull-left">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;">Find Matching</a>
+    <ul class="dropdown-menu pull-left">
+<li>
+		<a href="@Url.Action("FindFSearch", "FileDocument", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Document</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Licenses", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Licenses</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Department", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Department</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Position", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Position</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_ServiceRecord", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Service Record</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Employee", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Employee</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_DepartmentArea", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Department Area</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Comment", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Comment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_ClaimType", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Claim Type</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Restrictions", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Restrictions</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_DrugAlcoholTest", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Drug & Alcohol Test</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_JobAssignment", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Job Assignment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_LeaveProfile", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Leave</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_EmployeeInjury", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Employee Injury</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_BackgroundCheck", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Background Check</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Unit", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Unit</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Education", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Education</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Accommodation", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Accommodation</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_PayDetails", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Pay Details </a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_SalaryRange", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Salary Range</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_FacilityConfiguration", new {sourceEntity="T_UnitX",id=Model.Id}, null)">Facility Configuration</a>
+</li>
+</ul>
+</li>
+			</ul>
+
+		
+		<a href="#" class="btn btn-xs closeall pull-right"><i class="glyphicon glyphicon-chevron-up"></i> Collapse All</a> <a href="#" class="btn btn-xs openall pull-right" style="margin-right:5px;"><i class="glyphicon glyphicon-chevron-down"></i> Expand All</a>
+</div>
+
+
+		</h2>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+	 <li class="active"><a href="#Details" onclick="ClearTabCookie('@User.JavaScriptEncodedName@Model.Id');" data-toggle="tab">Details</a></li>
+		 <li @(!User.CanView("T_JobAssignment") ?"style=display:none;":"")><a onclick="LoadTab('T_JobAssignmentUnitX','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_JobAssignment", new {RenderPartial=true, HostingEntity ="T_UnitX", HostingEntityID = @Model.Id, AssociatedType = "T_JobAssignmentUnitX",TabToken = DateTime.Now.Ticks,}))')" href="#T_JobAssignmentUnitX" data-toggle="tab">
+		 Job Assignment Ward
+		 <span class="badge bg-blue"><div id="dvcnt_T_JobAssignmentUnitX">@ViewBag.T_JobAssignmentUnitXCount</div></span>
+		 		 </a></li>
+		 <li @(!User.CanView("JournalEntry")?"style=display:none;":"")><a onclick="LoadTab('JournalEntryToT_UnitXRelation','@User.JavaScriptEncodedName@Model.Id','@Url.Action("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_UnitX", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry", TabToken = DateTime.Now.Ticks })')" href="#JournalEntryToT_UnitXRelation" data-toggle="tab">UnitX Journal</a></li>
+    </ul>
+	  @Html.HiddenFor(model => model.Id)
+	    <div class="tab-content">
+		   <div class="tab-pane fade in active" id="Details">
+				 <div class="panel panel-default AppForm">
+					<div class="panel-body">
+                                  
+			
+<div class="row">
+				<div class="col-sm-12 col-md-12 col-xs-12">
+			<div class="panel panel-default" id="dvGroup48907">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#basicdetailsbody"><span class="glyphicon glyphicon-chevron-down"></span> Basic Details</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="basicdetailsbody">					
+@if(User.CanView("T_UnitX","T_FacilityUnitXID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FacilityUnitX">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_FacilityUnitXID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_facilityunitx!=null && !string.IsNullOrEmpty(Model.t_facilityunitx.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_FacilityUnitX">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_facilityunitx.DisplayValue).ToString(), "Details", "T_Facility", new { Id = Html.DisplayFor(model => model.t_facilityunitx.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_UnitX","T_UnitXUnitAssociationID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_UnitXUnitAssociation">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_UnitXUnitAssociationID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		@if (@Model.T_UnitXUnitAssociationID == 0 || @Model.T_UnitXUnitAssociationID == null || @Model.t_unitxunitassociation == null)
+		{
+	         <p id="lblT_UnitXUnitAssociationID" class="viewlabel"></p>
+        }
+        else
+        {
+		     <p id="lblT_UnitXUnitAssociationID" class="viewlabel" title="@Model.t_unitxunitassociation.DisplayValue">@Model.t_unitxunitassociation.DisplayValue</p>
+        }
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_UnitX","T_WardDepartmentID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WardDepartment">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_WardDepartmentID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_warddepartment!=null && !string.IsNullOrEmpty(Model.t_warddepartment.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_WardDepartment">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_warddepartment.DisplayValue).ToString(), "Details", "T_Department", new { Id = Html.DisplayFor(model => model.t_warddepartment.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_UnitX","T_UnitXDepartmentAreaID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_UnitXDepartmentArea">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_UnitXDepartmentAreaID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_unitxdepartmentarea!=null && !string.IsNullOrEmpty(Model.t_unitxdepartmentarea.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_UnitXDepartmentArea">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_unitxdepartmentarea.DisplayValue).ToString(), "Details", "T_DepartmentArea", new { Id = Html.DisplayFor(model => model.t_unitxdepartmentarea.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_UnitX","T_WardOrgCodeID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WardOrgCode">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_WardOrgCodeID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_wardorgcode!=null && !string.IsNullOrEmpty(Model.t_wardorgcode.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_WardOrgCode">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_wardorgcode.DisplayValue).ToString(), "Details", "T_OrgCodes", new { Id = Html.DisplayFor(model => model.t_wardorgcode.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_UnitX","T_Unit"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Unit">
+	<div class='form-group' title="@Model.T_Unit">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Unit) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_Unit" class="viewlabel">@Model.T_Unit</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_UnitX","T_UnitXFloorID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_UnitXFloor">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_UnitXFloorID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		@if (@Model.T_UnitXFloorID == 0 || @Model.T_UnitXFloorID == null || @Model.t_unitxfloor == null)
+		{
+	         <p id="lblT_UnitXFloorID" class="viewlabel"></p>
+        }
+        else
+        {
+		     <p id="lblT_UnitXFloorID" class="viewlabel" title="@Model.t_unitxfloor.DisplayValue">@Model.t_unitxfloor.DisplayValue</p>
+        }
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_UnitX","T_UnitPhoneNumber"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_UnitPhoneNumber">
+	<div class='form-group' title="@Model.T_UnitPhoneNumber">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_UnitPhoneNumber) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_UnitPhoneNumber" class="viewlabel">@Model.T_UnitPhoneNumber</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_UnitX","T_MailDistributor"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_MailDistributor">
+	<div class='form-group' title="@Model.T_MailDistributor">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_MailDistributor) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_MailDistributor" class="viewlabel">@Model.T_MailDistributor</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_UnitX","T_EmployeeAdministratorID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeAdministrator">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EmployeeAdministratorID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_employeeadministrator!=null && !string.IsNullOrEmpty(Model.t_employeeadministrator.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_EmployeeAdministrator">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_employeeadministrator.DisplayValue).ToString(), "Details", "T_Employee", new { Id = Html.DisplayFor(model => model.t_employeeadministrator.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_UnitX","T_EmployeeUnitXHeadID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeUnitXHead">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EmployeeUnitXHeadID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_employeeunitxhead!=null && !string.IsNullOrEmpty(Model.t_employeeunitxhead.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_EmployeeUnitXHead">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_employeeunitxhead.DisplayValue).ToString(), "Details", "T_Employee", new { Id = Html.DisplayFor(model => model.t_employeeunitxhead.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+	</div>
+	</div>
+<div class="row">
+				<div class="col-sm-12 col-md-12 col-xs-12">
+			<div class="panel panel-default" id="dvGroup48909">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#bedsbody"><span class="glyphicon glyphicon-chevron-down"></span> Beds</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="bedsbody">					
+@if(User.CanView("T_UnitX","T_MaleBeds"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_MaleBeds">
+	<div class='form-group' title="@Model.T_MaleBeds">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_MaleBeds) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_MaleBeds" class="viewlabel">@Model.T_MaleBeds</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_UnitX","T_FemaleBeds"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FemaleBeds">
+	<div class='form-group' title="@Model.T_FemaleBeds">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_FemaleBeds) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_FemaleBeds" class="viewlabel">@Model.T_FemaleBeds</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_UnitX","T_TotalBeds"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TotalBeds">
+	<div class='form-group' title="@Model.T_TotalBeds">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_TotalBeds) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_TotalBeds" class="viewlabel">@Model.T_TotalBeds</p>
+					
+					</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+	</div>
+	</div>
+<div class="row">
+				<div class="col-sm-12 col-md-12 col-xs-12">
+			<div class="panel panel-default" id="dvGroup48908">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#accountingcodesbody"><span class="glyphicon glyphicon-chevron-down"></span> Accounting Codes</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="accountingcodesbody">					
+@if(User.CanView("T_UnitX","T_WardCostCenterID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WardCostCenter">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_WardCostCenterID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_wardcostcenter!=null && !string.IsNullOrEmpty(Model.t_wardcostcenter.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_WardCostCenter">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_wardcostcenter.DisplayValue).ToString(), "Details", "T_CostCenter", new { Id = Html.DisplayFor(model => model.t_wardcostcenter.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_UnitX","T_Program"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Program">
+	<div class='form-group' title="@Model.T_Program">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Program) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_Program" class="viewlabel">@Model.T_Program</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_UnitX","T_Fund"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Fund">
+	<div class='form-group' title="@Model.T_Fund">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Fund) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_Fund" class="viewlabel">@Model.T_Fund</p>
+					
+					</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+	</div>
+	</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+				<a class="btn btn-default btn-sm pull-left formbuttonfix" Onclick="goBack('@Url.Action("Index","T_UnitX")');">Back</a>
+				@*@Html.ActionLink("Back", "Cancel", new { UrlReferrer = Request.UrlReferrer }, new { @class = "btn btn-default btn-sm pull-left formbuttonfix" })*@
+					
+					 @if ( User.CanEdit("T_UnitX"))
+                     {
+                          @Html.ActionLink("Edit", "Edit", new { UrlReferrer = Request.UrlReferrer, id = Model.Id, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, new { @class = "btn btn-primary btn-sm pull-left formbuttonfix" })
+                     }
+				   
+ @{ var dropmenubottom = false; }
+<div class="dropdown pull-left formbuttonfix" style="" id="AddAssociationdropmenubottomT_UnitX">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+			@if (User.CanAdd("T_JobAssignment"))
+            {
+			    dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_JobAssignment",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_JobAssignmentUnitX", 
+						HostingEntityName = "T_UnitX",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Job Assignment Ward
+                </a>
+				</li>
+            }
+
+			
+</ul>
+</div>
+@if(!dropmenubottom)
+{
+    <script>
+        $("#AddAssociationdropmenubottomT_UnitX").hide();
+    </script>
+}
+			</div> 
+			</div><div class="clearfix" style="clear:both"></div>
+	</div>    
+<div class="tab-pane fade in" id="T_JobAssignmentUnitX">
+     @if ( User.CanView("T_JobAssignment"))
+	{
+	  // Html.RenderAction("Index", "T_JobAssignment", new {RenderPartial=true, HostingEntity = "T_UnitX", HostingEntityID = @Model.Id, AssociatedType = "T_JobAssignmentUnitX" }); 
+	}
+  </div>
+<div class="tab-pane fade in" id="JournalEntryToT_UnitXRelation">
+            @if ( User.CanView("JournalEntry"))
+		   {
+			//	Html.RenderAction("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_UnitX", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry" });
+		   }
+  </div>
+	</div> <!-- /tab-content --><br />
+
+<br/>
+</div>
+ 

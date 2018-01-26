@@ -1,0 +1,202 @@
+﻿<error errorId="974e6e3b-3248-4f12-8212-8c64bc568347" application="/LM/W3SVC/1/ROOT/wsh_hr_v33" host="TURANTOMVC" type="System.Web.Mvc.HttpAntiForgeryException" message="The anti-forgery cookie token and form field token do not match." source="System.Web.WebPages" detail="System.Web.Mvc.HttpAntiForgeryException (0x80004005): The anti-forgery cookie token and form field token do not match.&#xD;&#xA;   at System.Web.Helpers.AntiXsrf.TokenValidator.ValidateTokens(HttpContextBase httpContext, IIdentity identity, AntiForgeryToken sessionToken, AntiForgeryToken fieldToken)&#xD;&#xA;   at System.Web.Helpers.AntiXsrf.AntiForgeryWorker.Validate(HttpContextBase httpContext)&#xD;&#xA;   at System.Web.Helpers.AntiForgery.Validate()&#xD;&#xA;   at System.Web.Mvc.ValidateAntiForgeryTokenAttribute.OnAuthorization(AuthorizationContext filterContext)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__19(AsyncCallback asyncCallback, Object asyncState)" user="Kimberly.Harman@dbhds.virginia.gov" time="2016-08-25T09:44:02.6020637Z" statusCode="500">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:205&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:wsh_hr_v32=9JkAZm3LKTau9Mq1HNVB_4gucXq6n5sHQpQJL7pezVCv_qi6jnD1qFKUlmqc79luMthsnTz_QeV1tBS-9A3d-NmOoiAOnf71cDqMUHgMATyULBlkTWBXC8SksF6kpMc3zDCbi0WNmkVVtYoV9UM-_uuSLRdU66zYtd7gcQuiPZ5NcKRwdNdWJk7C2UscW_bcoo1mlyN3l_MW1UCqdy80V1bGPunocNoyCYjxJWmAlv0fPXFPq6QYhX1TJTJRGa2fkiOBr25K9Js_WU80DaqFYrWL5Mr-yezgbN5-Pb92q3t9KNnL0bDjPSthp_VwiIu70wCNHm6bOT6Pr_mC_t0bFMB7Bl0Rr5XEaB5XvUk7Q6JL26l75VCZ5-E5P4CNwbyXCUIHQNLlVddYyV-f2BaAVzKh7ZktUgfyGGPkmymY-eK1L73szJlRfjcnys6Y0V5pM_QbyXY7Wq_qu6_vITj4_XsvVmW4hVkcRpdjRB9q08E3oZ_b_iHQibL9DdRdzuZBx5k2B5p7PFaYc7i_p-oi4Y8g1otNHKI3LeLA9ohyc2dY79xqFwctdnUoqRyalRXy; __RequestVerificationToken_L3dzaF9ocl92MzM1=DkqJYN5hGOSDuyH4J4M34g2-dqWUu_JRIgsAI6WxEYOBvJAugUSj2zSw0EhBfUSe9j-insqkwXd1KzgptA--pH6pQw9MwTAHibfUNIaSS2g1&#xD;&#xA;HTTP_HOST:apps.turanto.com&#xD;&#xA;HTTP_REFERER:https://apps.turanto.com/wsh_hr_v33/Account/Login?ReturnUrl=%2Fwsh_hr_v33%2FAccount%2FLogOff&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:https://apps.turanto.com&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Content-Length: 205&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: wsh_hr_v32=9JkAZm3LKTau9Mq1HNVB_4gucXq6n5sHQpQJL7pezVCv_qi6jnD1qFKUlmqc79luMthsnTz_QeV1tBS-9A3d-NmOoiAOnf71cDqMUHgMATyULBlkTWBXC8SksF6kpMc3zDCbi0WNmkVVtYoV9UM-_uuSLRdU66zYtd7gcQuiPZ5NcKRwdNdWJk7C2UscW_bcoo1mlyN3l_MW1UCqdy80V1bGPunocNoyCYjxJWmAlv0fPXFPq6QYhX1TJTJRGa2fkiOBr25K9Js_WU80DaqFYrWL5Mr-yezgbN5-Pb92q3t9KNnL0bDjPSthp_VwiIu70wCNHm6bOT6Pr_mC_t0bFMB7Bl0Rr5XEaB5XvUk7Q6JL26l75VCZ5-E5P4CNwbyXCUIHQNLlVddYyV-f2BaAVzKh7ZktUgfyGGPkmymY-eK1L73szJlRfjcnys6Y0V5pM_QbyXY7Wq_qu6_vITj4_XsvVmW4hVkcRpdjRB9q08E3oZ_b_iHQibL9DdRdzuZBx5k2B5p7PFaYc7i_p-oi4Y8g1otNHKI3LeLA9ohyc2dY79xqFwctdnUoqRyalRXy; __RequestVerificationToken_L3dzaF9ocl92MzM1=DkqJYN5hGOSDuyH4J4M34g2-dqWUu_JRIgsAI6WxEYOBvJAugUSj2zSw0EhBfUSe9j-insqkwXd1KzgptA--pH6pQw9MwTAHibfUNIaSS2g1&#xD;&#xA;Host: apps.turanto.com&#xD;&#xA;Referer: https://apps.turanto.com/wsh_hr_v33/Account/Login?ReturnUrl=%2Fwsh_hr_v33%2FAccount%2FLogOff&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&#xD;&#xA;Origin: https://apps.turanto.com&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/wsh_hr_v33" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v33\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="Kimberly.Harman@dbhds.virginia.gov" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="Kimberly.Harman@dbhds.virginia.gov" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="Kimberly.Harman@dbhds.virginia.gov" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="205" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/wsh_hr_v33/Account/Login" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v33\GeneratorBase.MVC\Account\Login" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="ReturnUrl=%2Fwsh_hr_v33%2FAccount%2FLogOff" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="2993" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/wsh_hr_v33/Account/Login" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/wsh_hr_v33/Account/Login" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="205" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="wsh_hr_v32=9JkAZm3LKTau9Mq1HNVB_4gucXq6n5sHQpQJL7pezVCv_qi6jnD1qFKUlmqc79luMthsnTz_QeV1tBS-9A3d-NmOoiAOnf71cDqMUHgMATyULBlkTWBXC8SksF6kpMc3zDCbi0WNmkVVtYoV9UM-_uuSLRdU66zYtd7gcQuiPZ5NcKRwdNdWJk7C2UscW_bcoo1mlyN3l_MW1UCqdy80V1bGPunocNoyCYjxJWmAlv0fPXFPq6QYhX1TJTJRGa2fkiOBr25K9Js_WU80DaqFYrWL5Mr-yezgbN5-Pb92q3t9KNnL0bDjPSthp_VwiIu70wCNHm6bOT6Pr_mC_t0bFMB7Bl0Rr5XEaB5XvUk7Q6JL26l75VCZ5-E5P4CNwbyXCUIHQNLlVddYyV-f2BaAVzKh7ZktUgfyGGPkmymY-eK1L73szJlRfjcnys6Y0V5pM_QbyXY7Wq_qu6_vITj4_XsvVmW4hVkcRpdjRB9q08E3oZ_b_iHQibL9DdRdzuZBx5k2B5p7PFaYc7i_p-oi4Y8g1otNHKI3LeLA9ohyc2dY79xqFwctdnUoqRyalRXy; __RequestVerificationToken_L3dzaF9ocl92MzM1=DkqJYN5hGOSDuyH4J4M34g2-dqWUu_JRIgsAI6WxEYOBvJAugUSj2zSw0EhBfUSe9j-insqkwXd1KzgptA--pH6pQw9MwTAHibfUNIaSS2g1" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://apps.turanto.com/wsh_hr_v33/Account/Login?ReturnUrl=%2Fwsh_hr_v33%2FAccount%2FLogOff" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="https://apps.turanto.com" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="ReturnUrl">
+      <value string="/wsh_hr_v33/Account/LogOff" />
+    </item>
+  </queryString>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="Fld5OoJyoYEktYlvm-4wsu-daweQZygvimM_x2c6Js_Qk0x78ORUQawdS_6U5JuGtUGmE_DWpo2lv2ByVIyDfOyMkQwCRZgHnEojUY4StBI1" />
+    </item>
+    <item name="UserName">
+      <value string="rupali.pendse@etelic.com" />
+    </item>
+    <item name="Password">
+      <value string="test123" />
+    </item>
+    <item name="RememberMe">
+      <value string="false" />
+    </item>
+  </form>
+  <cookies>
+    <item name="wsh_hr_v32">
+      <value string="9JkAZm3LKTau9Mq1HNVB_4gucXq6n5sHQpQJL7pezVCv_qi6jnD1qFKUlmqc79luMthsnTz_QeV1tBS-9A3d-NmOoiAOnf71cDqMUHgMATyULBlkTWBXC8SksF6kpMc3zDCbi0WNmkVVtYoV9UM-_uuSLRdU66zYtd7gcQuiPZ5NcKRwdNdWJk7C2UscW_bcoo1mlyN3l_MW1UCqdy80V1bGPunocNoyCYjxJWmAlv0fPXFPq6QYhX1TJTJRGa2fkiOBr25K9Js_WU80DaqFYrWL5Mr-yezgbN5-Pb92q3t9KNnL0bDjPSthp_VwiIu70wCNHm6bOT6Pr_mC_t0bFMB7Bl0Rr5XEaB5XvUk7Q6JL26l75VCZ5-E5P4CNwbyXCUIHQNLlVddYyV-f2BaAVzKh7ZktUgfyGGPkmymY-eK1L73szJlRfjcnys6Y0V5pM_QbyXY7Wq_qu6_vITj4_XsvVmW4hVkcRpdjRB9q08E3oZ_b_iHQibL9DdRdzuZBx5k2B5p7PFaYc7i_p-oi4Y8g1otNHKI3LeLA9ohyc2dY79xqFwctdnUoqRyalRXy" />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MzM1">
+      <value string="DkqJYN5hGOSDuyH4J4M34g2-dqWUu_JRIgsAI6WxEYOBvJAugUSj2zSw0EhBfUSe9j-insqkwXd1KzgptA--pH6pQw9MwTAHibfUNIaSS2g1" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="i2k40kzvt0qte3m0gkgexgty" />
+    </item>
+  </cookies>
+</error>

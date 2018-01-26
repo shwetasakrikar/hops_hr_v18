@@ -1,0 +1,57 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_SalaryRange>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Salary Range.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_SalaryRange","T_SalaryBandSalaryRangeAssociationID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_SalaryBand"?"hidden":"")>Salary Band</th>
+}
+@if(User.CanView("T_SalaryRange","T_FacilitySalaryRangeAssociationID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Facility"?"hidden":"")>Facility</th>
+}
+@if(User.CanView("T_SalaryRange","T_Minimum"))
+{
+		<th>Minimum</th>
+}
+@if(User.CanView("T_SalaryRange","T_Maximum"))
+{
+		<th>Maximum</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_SalaryRange","T_SalaryBandSalaryRangeAssociationID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_SalaryBand"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_salarybandsalaryrangeassociation.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_SalaryRange","T_FacilitySalaryRangeAssociationID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Facility"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_facilitysalaryrangeassociation.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_SalaryRange","T_Minimum"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Minimum)
+        </td>
+}
+@if(User.CanView("T_SalaryRange","T_Maximum"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Maximum)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

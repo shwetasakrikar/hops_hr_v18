@@ -1,0 +1,665 @@
+﻿@model GeneratorBase.MVC.Models.T_Position
+@using PagedList;
+@{
+    ViewBag.Title = "View Position";
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_Position");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Position";
+}
+<script>
+    $(document).ready(function () {
+			 if ($.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') != null) {
+				$('a[href="#' + $.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') + '"]').click();
+			 }
+    });
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_PositionIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_PositionIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_PositionIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_PositionIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_PositionIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_PositionIsSetValueUIRule);
+    }
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-hand-down text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span>View</span>
+        </h1>
+        <h2 class="text-primary"><span id="HostingEntityDisplayValue">@Html.DisplayFor(model => model.DisplayValue)</span>
+			<div class="btn-group pull-right fixactionbut">
+            <button data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-default pull-right">
+                Action
+                <span class="caret">    </span>
+            </button>
+			<ul class="dropdown-menu pull-left">               
+				<li>
+                    @if ( User.CanEdit("T_Position"))
+                    {
+                        <a href="@Url.Action("Edit","T_Position", new { id = Model.Id,  UrlReferrer = Request.Url, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    }
+                </li>             
+				<li>
+                    @if ( User.CanDelete("T_Position"))
+                    {
+                        <a href="@Url.Action("Delete", "T_Position", new { id = Model.Id, UrlReferrer = Request.Url, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Delete</a>
+                    }
+                </li>
+	<li class="divider" style="clear:both"></li>
+	<li class="dropdown-submenu pull-left">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu pull-left">
+				@if ( User.CanAdd("T_JobAssignment"))
+				{
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_JobAssignment", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_PositionJobAssignment", 
+							HostingEntityName = "T_Position",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Position Job Assignment
+						</a>
+					</li>
+				}
+			</ul>
+</li>
+ <li class="divider" style="clear:both"></li>
+ <li class="dropdown-submenu pull-left">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;">Find Matching</a>
+    <ul class="dropdown-menu pull-left">
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Department", new {sourceEntity="T_Position",id=Model.Id}, null)">Department</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Employee", new {sourceEntity="T_Position",id=Model.Id}, null)">Employee</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_DepartmentArea", new {sourceEntity="T_Position",id=Model.Id}, null)">Department Area</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_ClaimType", new {sourceEntity="T_Position",id=Model.Id}, null)">Claim Type</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Restrictions", new {sourceEntity="T_Position",id=Model.Id}, null)">Restrictions</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_UnitX", new {sourceEntity="T_Position",id=Model.Id}, null)">UnitX</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_EmployeeInjury", new {sourceEntity="T_Position",id=Model.Id}, null)">Employee Injury</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Unit", new {sourceEntity="T_Position",id=Model.Id}, null)">Unit</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_RequiredEducation", new {sourceEntity="T_Position",id=Model.Id}, null)">Required Education</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_SalaryRange", new {sourceEntity="T_Position",id=Model.Id}, null)">Salary Range</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_FacilityConfiguration", new {sourceEntity="T_Position",id=Model.Id}, null)">Facility Configuration</a>
+</li>
+</ul>
+</li>
+			</ul>
+</div>
+		
+		<a href="#" class="btn btn-default btn-xs closeall pull-right"><i class="glyphicon glyphicon-chevron-up"></i> Collapse All</a> <a href="#" class="btn btn-default btn-xs openall pull-right" style="margin-right:5px;"><i class="glyphicon glyphicon-chevron-down"></i> Expand All</a>
+		</h2>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+	 <li class="active"><a href="#Details" onclick="ClearTabCookie('@User.JavaScriptEncodedName@Model.Id');" data-toggle="tab">Details</a></li>
+		 <li @(!User.CanView("T_JobAssignment")?"style=display:none;":"")><a onclick="LoadTab('T_PositionJobAssignment','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_JobAssignment", new {RenderPartial=true, HostingEntity ="T_Position", HostingEntityID = @Model.Id, AssociatedType = "T_PositionJobAssignment",TabToken = DateTime.Now.Ticks,}))')" href="#T_PositionJobAssignment" data-toggle="tab">
+		 Position Job Assignment
+		 <span class="badge bg-blue"><div id="dvcnt_T_PositionJobAssignment">@ViewBag.T_PositionJobAssignmentCount</div></span>
+		 		 </a></li>
+		 <li @(!User.CanView("JournalEntry")?"style=display:none;":"")><a onclick="LoadTab('JournalEntryToT_PositionRelation','@User.JavaScriptEncodedName@Model.Id','@Url.Action("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_Position", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry", TabToken = DateTime.Now.Ticks })')" href="#JournalEntryToT_PositionRelation" data-toggle="tab">Position Journal</a></li>
+    </ul>
+	    <div class="tab-content">
+		   <div class="tab-pane fade in active" id="Details">
+				 <div class="panel panel-default AppForm">
+					<div class="panel-body">
+                                  
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-xs-12">
+			<div class="panel panel-default" id="dvGroup48888">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#basic detailsbody"><span class="glyphicon glyphicon-chevron-down"></span> Basic Details</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="basic detailsbody">					
+@if(User.CanView("T_Position","T_FacilityAssignedToID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FacilityAssignedTo">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_FacilityAssignedToID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_facilityassignedto!=null && !string.IsNullOrEmpty(Model.t_facilityassignedto.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_facilityassignedto.DisplayValue).ToString(), "Details", "T_Facility", new { Id = Html.DisplayFor(model => model.t_facilityassignedto.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_PositionNumber"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionNumber">
+	<div class='form-group' title="Position  Number">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_PositionNumber) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@Model.T_PositionNumber</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_TypeOfPositionID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TypeOfPosition">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_TypeOfPositionID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_typeofposition!=null && !string.IsNullOrEmpty(Model.t_typeofposition.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_typeofposition.DisplayValue).ToString(), "Details", "T_PositionType", new { Id = Html.DisplayFor(model => model.t_typeofposition.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_AssociatedPositionStatusID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_AssociatedPositionStatus">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_AssociatedPositionStatusID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_associatedpositionstatus!=null && !string.IsNullOrEmpty(Model.t_associatedpositionstatus.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_associatedpositionstatus.DisplayValue).ToString(), "Details", "T_Positionstatus", new { Id = Html.DisplayFor(model => model.t_associatedpositionstatus.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_PositionIdentifierID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionIdentifier">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_PositionIdentifierID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_positionidentifier!=null && !string.IsNullOrEmpty(Model.t_positionidentifier.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_positionidentifier.DisplayValue).ToString(), "Details", "T_PositionLevel", new { Id = Html.DisplayFor(model => model.t_positionidentifier.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_PositionFill"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionFill">
+	<div class='form-group' title="Position Fill %">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_PositionFill) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@Model.T_PositionFill</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_QuasiFill"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_QuasiFill">
+	<div class='form-group' title="Quasi Fill">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_QuasiFill) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				@Html.DisplayFor(model => model.T_QuasiFill)
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_PositionWorkingTitleAssociationID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionWorkingTitleAssociation">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_PositionWorkingTitleAssociationID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		@if (@Model.T_PositionWorkingTitleAssociationID == 0 || @Model.T_PositionWorkingTitleAssociationID == null || @Model.t_positionworkingtitleassociation == null)
+		{
+	         <p class="viewlabel"></p>
+        }
+        else
+        {
+		     <p class="viewlabel">@Model.t_positionworkingtitleassociation.DisplayValue</p>
+        }
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+			<div class="panel panel-default" id="dvGroup48890">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#position codesbody"><span class="glyphicon glyphicon-chevron-down"></span> Position Codes</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="position codesbody">					
+@if(User.CanView("T_Position","T_EffectiveDate"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EffectiveDate">
+	<div class='form-group' title="Role change effective date">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EffectiveDate) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_EffectiveDate)</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_PositionRoleCodeID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionRoleCode">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_PositionRoleCodeID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_positionrolecode!=null && !string.IsNullOrEmpty(Model.t_positionrolecode.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_positionrolecode.DisplayValue).ToString(), "Details", "T_RoleCode", new { Id = Html.DisplayFor(model => model.t_positionrolecode.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_SalaryBand"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_SalaryBand">
+	<div class='form-group' title="Salary Band">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_SalaryBand) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@Model.T_SalaryBand</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_PositionSOCCodeID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionSOCCode">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_PositionSOCCodeID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_positionsoccode!=null && !string.IsNullOrEmpty(Model.t_positionsoccode.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_positionsoccode.DisplayValue).ToString(), "Details", "T_SocCode", new { Id = Html.DisplayFor(model => model.t_positionsoccode.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_PositionClassCodeID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionClassCode">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_PositionClassCodeID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_positionclasscode!=null && !string.IsNullOrEmpty(Model.t_positionclasscode.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_positionclasscode.DisplayValue).ToString(), "Details", "T_ClassCode", new { Id = Html.DisplayFor(model => model.t_positionclasscode.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_WorkersCompCodePositionID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WorkersCompCodePosition">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_WorkersCompCodePositionID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_workerscompcodeposition!=null && !string.IsNullOrEmpty(Model.t_workerscompcodeposition.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_workerscompcodeposition.DisplayValue).ToString(), "Details", "T_WCCode", new { Id = Html.DisplayFor(model => model.t_workerscompcodeposition.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_CardApprvr"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_CardApprvr">
+	<div class='form-group' title="CardApprvr">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_CardApprvr) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@Model.T_CardApprvr</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_PositionCostCenterAssociationID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionCostCenterAssociation">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_PositionCostCenterAssociationID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		@if (@Model.T_PositionCostCenterAssociationID == 0 || @Model.T_PositionCostCenterAssociationID == null || @Model.t_positioncostcenterassociation == null)
+		{
+	         <p class="viewlabel"></p>
+        }
+        else
+        {
+		     <p class="viewlabel">@Model.t_positioncostcenterassociation.DisplayValue</p>
+        }
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+			<div class="panel panel-default" id="dvGroup48889">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#time and other detailsbody"><span class="glyphicon glyphicon-chevron-down"></span> Time and Other Details</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="time and other detailsbody">					
+@if(User.CanView("T_Position","T_ShiftStart"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ShiftStart">
+	<div class='form-group' title="Shift Start">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_ShiftStart) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel" id="timeT_ShiftStart">@String.Format("{0:hh:mm tt}", Model.T_ShiftStart)</p>
+		@Html.Raw("<script> $(function () {$('timeT_ShiftStart').datetimepickerIndex({divid:'timeT_ShiftStart',format: 'hh:mm',val:'" + @Html.DisplayFor(model => model.T_ShiftStart) + "'})});</script>")        
+				
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_ShiftEnd"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ShiftEnd">
+	<div class='form-group' title="Shift End">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_ShiftEnd) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel" id="timeT_ShiftEnd">@String.Format("{0:hh:mm tt}", Model.T_ShiftEnd)</p>
+		@Html.Raw("<script> $(function () {$('timeT_ShiftEnd').datetimepickerIndex({divid:'timeT_ShiftEnd',format: 'hh:mm',val:'" + @Html.DisplayFor(model => model.T_ShiftEnd) + "'})});</script>")        
+				
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_PositionShiftMealTimeID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionShiftMealTime">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_PositionShiftMealTimeID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_positionshiftmealtime!=null && !string.IsNullOrEmpty(Model.t_positionshiftmealtime.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_positionshiftmealtime.DisplayValue).ToString(), "Details", "T_ShiftMealTime", new { Id = Html.DisplayFor(model => model.t_positionshiftmealtime.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_PositionShiftTimeID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionShiftTime">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_PositionShiftTimeID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_positionshifttime!=null && !string.IsNullOrEmpty(Model.t_positionshifttime.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_positionshifttime.DisplayValue).ToString(), "Details", "T_ShiftTime", new { Id = Html.DisplayFor(model => model.t_positionshifttime.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_PositionShiftDurationID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionShiftDuration">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_PositionShiftDurationID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_positionshiftduration!=null && !string.IsNullOrEmpty(Model.t_positionshiftduration.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_positionshiftduration.DisplayValue).ToString(), "Details", "T_ShiftDuration", new { Id = Html.DisplayFor(model => model.t_positionshiftduration.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_PositionOvertimeEligibilityID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionOvertimeEligibility">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_PositionOvertimeEligibilityID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_positionovertimeeligibility!=null && !string.IsNullOrEmpty(Model.t_positionovertimeeligibility.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_positionovertimeeligibility.DisplayValue).ToString(), "Details", "T_OvertimeEligibility", new { Id = Html.DisplayFor(model => model.t_positionovertimeeligibility.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_DualIncumbent"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DualIncumbent">
+	<div class='form-group' title="Dual  Incumbent">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_DualIncumbent) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				@Html.DisplayFor(model => model.T_DualIncumbent)
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_DualIncumbentStartDate"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DualIncumbentStartDate">
+	<div class='form-group' title="Dual  Incumbent  Start  Date">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_DualIncumbentStartDate) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_DualIncumbentStartDate)</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_DualIncumbentEndDate"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DualIncumbentEndDate">
+	<div class='form-group' title="Dual  Incumbent  End  Date">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_DualIncumbentEndDate) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_DualIncumbentEndDate)</p>
+					
+					</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+			<div class="panel panel-default" id="dvGroup48887">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#position statusbody"><span class="glyphicon glyphicon-chevron-down"></span> Position Status</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="position statusbody">					
+@if(User.CanView("T_Position","T_PositionStatusforPostingID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionStatusforPosting">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_PositionStatusforPostingID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_positionstatusforposting!=null && !string.IsNullOrEmpty(Model.t_positionstatusforposting.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_positionstatusforposting.DisplayValue).ToString(), "Details", "T_PositionPostStatus", new { Id = Html.DisplayFor(model => model.t_positionstatusforposting.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_Funded"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Funded">
+	<div class='form-group' title="Funded">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Funded) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				@Html.DisplayFor(model => model.T_Funded)
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_EstablishedDate"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EstablishedDate">
+	<div class='form-group' title="Established  Date">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EstablishedDate) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_EstablishedDate)</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Position","T_AbolishDate"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_AbolishDate">
+	<div class='form-group' title="Abolish  Date">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_AbolishDate) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_AbolishDate)</p>
+					
+					</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+				</div>
+			</div>
+		</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					@Html.ActionLink("Back", "Cancel", new { UrlReferrer = Request.UrlReferrer }, new { @class = "btn btn-default btn-sm pull-left formbuttonfix" })
+					 @if ( User.CanEdit("T_Position"))
+                     {
+                          @Html.ActionLink("Edit", "Edit", new { id = Model.Id, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, new { @class = "btn btn-primary btn-sm pull-left formbuttonfix" })
+                     }
+				</div>
+			</div>    
+
+<div class="dropdown pull-left formbuttonfix" style="margin-top:-30px; margin-left:102px;">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
+           
+			@if ( User.CanAdd("T_JobAssignment"))
+            {
+				 <li>
+				 <a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_JobAssignment",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_PositionJobAssignment", 
+						HostingEntityName = "T_Position",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');") style="margin-top:5px;">
+                   Add  Position Job Assignment</a>
+			</li>
+            }
+			
+
+        </ul>
+
+			</div>
+	</div>    
+<div class="tab-pane fade in" id="T_PositionJobAssignment">
+     @if ( User.CanView("T_JobAssignment"))
+	{
+	  // Html.RenderAction("Index", "T_JobAssignment", new {RenderPartial=true, HostingEntity = "T_Position", HostingEntityID = @Model.Id, AssociatedType = "T_PositionJobAssignment" }); 
+	}
+  </div>
+<div class="tab-pane fade in" id="JournalEntryToT_PositionRelation">
+            @if ( User.CanView("JournalEntry"))
+		   {
+			//	Html.RenderAction("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_Position", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry" });
+		   }
+  </div>
+	</div> <!-- /tab-content --><br />
+
+<br/>
+</div>
+ 

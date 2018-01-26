@@ -1,0 +1,87 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_PayDetails>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Pay Details .xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_PayDetails","T_EmployeePayDetailsID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>Employee</th>
+}
+@if(User.CanView("T_PayDetails","T_PayDetailsJobAssignmentID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_JobAssignment"?"hidden":"")>Job Assignment</th>
+}
+@if(User.CanView("T_PayDetails","T_OtherPayDetailsTypeID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_PayType"?"hidden":"")>Pay Type</th>
+}
+@if(User.CanView("T_PayDetails","T_Amount"))
+{
+		<th>Amount</th>
+}
+@if(User.CanView("T_PayDetails","T_StartDate"))
+{
+		<th>Start Date</th>
+}
+@if(User.CanView("T_PayDetails","T_EndDate"))
+{
+		<th>End Date</th>
+}
+@if(User.CanView("T_PayDetails","T_Notes"))
+{
+		<th>Notes</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_PayDetails","T_EmployeePayDetailsID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeepaydetails.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_PayDetails","T_PayDetailsJobAssignmentID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_JobAssignment"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_paydetailsjobassignment.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_PayDetails","T_OtherPayDetailsTypeID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_PayType"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_otherpaydetailstype.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_PayDetails","T_Amount"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Amount)
+        </td>
+}
+@if(User.CanView("T_PayDetails","T_StartDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_StartDate)
+        </td>
+}
+@if(User.CanView("T_PayDetails","T_EndDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_EndDate)
+        </td>
+}
+@if(User.CanView("T_PayDetails","T_Notes"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Notes)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

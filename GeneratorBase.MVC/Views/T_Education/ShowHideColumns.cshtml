@@ -1,0 +1,55 @@
+﻿<script type="text/javascript">
+    $(document).ready(function ()
+    {
+         var usrName = "@User.JavaScriptEncodedName";
+        var myCookie = usrName + "T_Education" + "@ViewData["AssociatedType"]";
+        var host = "#T_Education";
+        if ("@ViewData["AssociatedType"]".length > 0)
+            host = "#" + "@ViewData["AssociatedType"]";
+        if ($.cookie(myCookie) != null) {
+            var column = $.cookie(myCookie).split(',');
+            for (var i = 0; i < column.length; i++) {
+                if (column[i] == "col1")
+                    continue;
+                $('input[name=' + column[i] + ']', $(host)).attr('checked', false);
+                var index = column[i].substr(3)
+               //index--;
+                $('table tr', $(host)).each(function () {
+                    $('td:eq(' + index + ')', this).toggle();
+                });
+                $('th.' + column[i], $(host)).toggle();
+            }
+        }
+    });
+</script>           
+<div id="ColumnShowHideT_Education" class="collapse">
+    <div class="row">
+        <div class='col-sm-12'>
+            <div class="panel panel-default">
+                <div class="panel-heading clearfix">
+                    <h3 class="panel-title">Show / Hide Table  Column </h3>
+                </div>
+                <div class="panel-body">
+					<p id="lblT_Education" class="label label-success " style="display:none; width:100%; padding:5px; text-align:left; font-size:13px">Table display format successfully saved.</p>
+					<p id="lblWarningT_Education" class="label label-warning " style="display:none; width:100%; padding:5px; text-align:left; font-size:13px">Select at least one property to display on grid.</p>
+                    <div class='form-group'>
+                        <div class="input-group">
+						    @*<input type="checkbox" name="col0" checked="checked" style="display:none;" />*@
+                            <input type="checkbox" name="col1" checked="checked" style="display:none;" />
+<input type="checkbox" name="col2" checked="checked" onclick="ColumnClick(event,'T_Education')" /> Employee
+<input type="checkbox" name="col3" checked="checked" onclick="ColumnClick(event,'T_Education')" /> Level Of Education
+<input type="checkbox" name="col4" checked="checked" onclick="ColumnClick(event,'T_Education')" /> Major In
+<input type="checkbox" name="col5" checked="checked" onclick="ColumnClick(event,'T_Education')" /> Education Verification Vendor
+	<input type="checkbox" name="col6" checked="checked" onclick="ColumnClick(event,'T_Education')" /> Details of Education
+	<input type="checkbox" name="col7" checked="checked" onclick="ColumnClick(event,'T_Education')" /> Date Verified
+	<input type="checkbox" name="col8" checked="checked" onclick="ColumnClick(event,'T_Education')" /> Education Notes
+                        </div>
+                       <input type="button" id="btnSave" value="Set as Default" onclick="showhideSaveCookies(event, 'T_Education', '@User.JavaScriptEncodedName','@ViewData["AssociatedType"]');" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

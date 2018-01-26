@@ -1,0 +1,44 @@
+﻿@model GeneratorBase.MVC.Models.ReportsInRole
+@{
+    ViewBag.Title = "Assign Roles For Report";
+    Layout = null;
+}
+<link href="@Url.Content("~/Content/bootstrap-multiselect.css")" rel="stylesheet" type="text/css" />
+@using (Html.BeginForm("Edit", "Reports", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.ReportId)
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-sx-12">
+            <div class="panel panel-default">
+                <div class="panel-heading clearfix" style="margin:0px; padding:4px 10px;">
+                    Assign Roles For Report
+                </div>
+                <div class="panel-body" style="margin:0px; padding:8px;">
+                    @if (ViewBag.RoleId != null)
+                    {
+                        foreach (var chkitem in ViewBag.RoleId as Dictionary<string, string>)
+                        {
+                            <input type="checkbox" name="SelectedRoleId" value="@chkitem.Key" @((Model.SelectedRoleId != null) ? Model.SelectedRoleId.Contains(chkitem.Key) ? "checked" : "" : "") /> @chkitem.Value
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="CancelQuickAdd" type="button" class="btn btn-default btn-sm" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <input type="submit" value="Save" class="btn btn-primary btn-sm" onclick="QuickAddFromIndex(event,true,'Reports','null','null',0);" />
+}
+@Scripts.Render("~/bundles/jqueryval")
+<script src="@Url.Content("~/Scripts/Common2/bootstrap-multiselect.js")" type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
+        $('#RoleId').multiselect({
+            buttonWidth: '100%'
+        });
+    });
+</script>
+

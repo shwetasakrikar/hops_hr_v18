@@ -1,0 +1,194 @@
+﻿<error errorId="40dcdf55-92f1-42ab-a5d9-a6a9d052ff95" application="/LM/W3SVC/1/ROOT/wsh_hr_v35" host="TURANTOMVC" type="System.NullReferenceException" message="Object reference not set to an instance of an object." source="GeneratorBase.MVC" detail="System.NullReferenceException: Object reference not set to an instance of an object.&#xD;&#xA;   at GeneratorBase.MVC.Controllers.T_EmployeeController.SendEmailtoIT(Nullable`1 id, IUser VerbUser, ApplicationContext Verbdb, Boolean FromContext) in d:\GenApps\wsh_hr_v35\GeneratorBase.MVC\Controllers\T_Employee\T_EmployeeVerbController.cs:line 64&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)" user="michelle.decker@dbhds.virginia.gov" time="2016-09-01T14:09:24.0542721Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_VIA:SWG&#xD;&#xA;HTTP_ACCEPT:*/*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US&#xD;&#xA;HTTP_COOKIE:paginationmichelle.decker%40dbhds.virginia.govT_Employee=2; wsh_hr_v32=QoAt8MkPBjdyKzLzAEmobfOJbETdxVdd1loa_oMKktLcx-r4MreFAR6C82Hcax1HGrsq1nc7XcWUZLABOziRFrZ4HAcHKcgJWMNp1DPB5EfpJ2CfPHrvqrpAey27sfAVVGkpTf4_9Tcwckmmkn_HqW-KEFi34kWU9uccpzQJY6TXmEUYp3s2Jh8Yl3ici13p1WXmtvBSwmEnjoUVsBQacG9LmfXLH-WXfn9LDhd4GHx3sSTKDfq0xAxG8IZvLCIQgyRgfzos4RcjqVLFjfuhOti90QiaMJodGgI507F4Rkmc-EdwI9OVBI_SaxoFDCwfjOoyo7ebaY0h3PPtm9q0RuYYJu6-tEinwgR3wkFiOirR4pOiBW8mHmQqQeyxrigrXxouW21lycKTSaR8zBN9-vtT3LTMX6zcaiSzlgfr8KDa1VMUYQmFdzJgWtIbqDVQSa0oou7POvggE40MpIett_PjQxobLx-jz0QvL2J4-cqFuVFU-Ba3CTFfIMc4qpK-xaFyOjOZr9322C3Cy7gPKLmlevBCsCTwiJgzqVOUJBP7RH5q2nZjZsT4vE1IyVwX; __RequestVerificationToken_L3dzaF9ocl92MzU1=3_sRjIZ3skS7FHrLWYIEwppyYg9UEI3nKxhQUlxRWjgSSMvMPe_gPi9wq7S0PBty06QopxcEDJEEGA7qyQfvvPZcFti520GI15LJacvWpMc1; wsh_hr_v35CurrentRole=Admin,&#xD;&#xA;HTTP_HOST:mvc.turanto.com&#xD;&#xA;HTTP_REFERER:https://mvc.turanto.com/wsh_hr_v35/T_Employee&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;HTTP_X_REQUESTED_WITH:XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: Keep-Alive&#xD;&#xA;Via: SWG&#xD;&#xA;Accept: */*&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US&#xD;&#xA;Cookie: paginationmichelle.decker%40dbhds.virginia.govT_Employee=2; wsh_hr_v32=QoAt8MkPBjdyKzLzAEmobfOJbETdxVdd1loa_oMKktLcx-r4MreFAR6C82Hcax1HGrsq1nc7XcWUZLABOziRFrZ4HAcHKcgJWMNp1DPB5EfpJ2CfPHrvqrpAey27sfAVVGkpTf4_9Tcwckmmkn_HqW-KEFi34kWU9uccpzQJY6TXmEUYp3s2Jh8Yl3ici13p1WXmtvBSwmEnjoUVsBQacG9LmfXLH-WXfn9LDhd4GHx3sSTKDfq0xAxG8IZvLCIQgyRgfzos4RcjqVLFjfuhOti90QiaMJodGgI507F4Rkmc-EdwI9OVBI_SaxoFDCwfjOoyo7ebaY0h3PPtm9q0RuYYJu6-tEinwgR3wkFiOirR4pOiBW8mHmQqQeyxrigrXxouW21lycKTSaR8zBN9-vtT3LTMX6zcaiSzlgfr8KDa1VMUYQmFdzJgWtIbqDVQSa0oou7POvggE40MpIett_PjQxobLx-jz0QvL2J4-cqFuVFU-Ba3CTFfIMc4qpK-xaFyOjOZr9322C3Cy7gPKLmlevBCsCTwiJgzqVOUJBP7RH5q2nZjZsT4vE1IyVwX; __RequestVerificationToken_L3dzaF9ocl92MzU1=3_sRjIZ3skS7FHrLWYIEwppyYg9UEI3nKxhQUlxRWjgSSMvMPe_gPi9wq7S0PBty06QopxcEDJEEGA7qyQfvvPZcFti520GI15LJacvWpMc1; wsh_hr_v35CurrentRole=Admin,&#xD;&#xA;Host: mvc.turanto.com&#xD;&#xA;Referer: https://mvc.turanto.com/wsh_hr_v35/T_Employee&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;X-Requested-With: XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/wsh_hr_v35" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v35\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="michelle.decker@dbhds.virginia.gov" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="michelle.decker@dbhds.virginia.gov" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="michelle.decker@dbhds.virginia.gov" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/wsh_hr_v35/T_Employee/SendEmailtoIT/131" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v35\GeneratorBase.MVC\T_Employee\SendEmailtoIT\131" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="VerbUser=GeneratorBase.MVC.Models.CustomPrincipal&amp;Verbdb=GeneratorBase.MVC.ApplicationContext&amp;FromContext=False&amp;_=1472738935750" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="166.67.66.241" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="166.67.66.241" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="53599" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/wsh_hr_v35/T_Employee/SendEmailtoIT/131" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/wsh_hr_v35/T_Employee/SendEmailtoIT/131" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_VIA">
+      <value string="SWG" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="*/*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="paginationmichelle.decker%40dbhds.virginia.govT_Employee=2; wsh_hr_v32=QoAt8MkPBjdyKzLzAEmobfOJbETdxVdd1loa_oMKktLcx-r4MreFAR6C82Hcax1HGrsq1nc7XcWUZLABOziRFrZ4HAcHKcgJWMNp1DPB5EfpJ2CfPHrvqrpAey27sfAVVGkpTf4_9Tcwckmmkn_HqW-KEFi34kWU9uccpzQJY6TXmEUYp3s2Jh8Yl3ici13p1WXmtvBSwmEnjoUVsBQacG9LmfXLH-WXfn9LDhd4GHx3sSTKDfq0xAxG8IZvLCIQgyRgfzos4RcjqVLFjfuhOti90QiaMJodGgI507F4Rkmc-EdwI9OVBI_SaxoFDCwfjOoyo7ebaY0h3PPtm9q0RuYYJu6-tEinwgR3wkFiOirR4pOiBW8mHmQqQeyxrigrXxouW21lycKTSaR8zBN9-vtT3LTMX6zcaiSzlgfr8KDa1VMUYQmFdzJgWtIbqDVQSa0oou7POvggE40MpIett_PjQxobLx-jz0QvL2J4-cqFuVFU-Ba3CTFfIMc4qpK-xaFyOjOZr9322C3Cy7gPKLmlevBCsCTwiJgzqVOUJBP7RH5q2nZjZsT4vE1IyVwX; __RequestVerificationToken_L3dzaF9ocl92MzU1=3_sRjIZ3skS7FHrLWYIEwppyYg9UEI3nKxhQUlxRWjgSSMvMPe_gPi9wq7S0PBty06QopxcEDJEEGA7qyQfvvPZcFti520GI15LJacvWpMc1; wsh_hr_v35CurrentRole=Admin," />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://mvc.turanto.com/wsh_hr_v35/T_Employee" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko" />
+    </item>
+    <item name="HTTP_X_REQUESTED_WITH">
+      <value string="XMLHttpRequest" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="VerbUser">
+      <value string="GeneratorBase.MVC.Models.CustomPrincipal" />
+    </item>
+    <item name="Verbdb">
+      <value string="GeneratorBase.MVC.ApplicationContext" />
+    </item>
+    <item name="FromContext">
+      <value string="False" />
+    </item>
+    <item name="_">
+      <value string="1472738935750" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name="paginationmichelle.decker%40dbhds.virginia.govT_Employee">
+      <value string="2" />
+    </item>
+    <item name="wsh_hr_v32">
+      <value string="QoAt8MkPBjdyKzLzAEmobfOJbETdxVdd1loa_oMKktLcx-r4MreFAR6C82Hcax1HGrsq1nc7XcWUZLABOziRFrZ4HAcHKcgJWMNp1DPB5EfpJ2CfPHrvqrpAey27sfAVVGkpTf4_9Tcwckmmkn_HqW-KEFi34kWU9uccpzQJY6TXmEUYp3s2Jh8Yl3ici13p1WXmtvBSwmEnjoUVsBQacG9LmfXLH-WXfn9LDhd4GHx3sSTKDfq0xAxG8IZvLCIQgyRgfzos4RcjqVLFjfuhOti90QiaMJodGgI507F4Rkmc-EdwI9OVBI_SaxoFDCwfjOoyo7ebaY0h3PPtm9q0RuYYJu6-tEinwgR3wkFiOirR4pOiBW8mHmQqQeyxrigrXxouW21lycKTSaR8zBN9-vtT3LTMX6zcaiSzlgfr8KDa1VMUYQmFdzJgWtIbqDVQSa0oou7POvggE40MpIett_PjQxobLx-jz0QvL2J4-cqFuVFU-Ba3CTFfIMc4qpK-xaFyOjOZr9322C3Cy7gPKLmlevBCsCTwiJgzqVOUJBP7RH5q2nZjZsT4vE1IyVwX" />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MzU1">
+      <value string="3_sRjIZ3skS7FHrLWYIEwppyYg9UEI3nKxhQUlxRWjgSSMvMPe_gPi9wq7S0PBty06QopxcEDJEEGA7qyQfvvPZcFti520GI15LJacvWpMc1" />
+    </item>
+    <item name="wsh_hr_v35CurrentRole">
+      <value string="Admin," />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="gtz5yyutafp24lnfcl1qffrr" />
+    </item>
+  </cookies>
+</error>

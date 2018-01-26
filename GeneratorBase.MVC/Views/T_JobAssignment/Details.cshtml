@@ -1,0 +1,637 @@
+﻿@model GeneratorBase.MVC.Models.T_JobAssignment
+@using PagedList;
+@{
+    ViewBag.Title = "View Job Assignment";
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_JobAssignment");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Job Assignment";
+}
+<script>
+    $(document).ready(function () {
+			 if ($.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') != null) {
+				$('a[href="#' + $.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') + '"]').click();
+			 }
+    });
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_JobAssignmentIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_JobAssignmentIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_JobAssignmentIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_JobAssignmentIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_JobAssignmentIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_JobAssignmentIsSetValueUIRule);
+    }
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-hand-down text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span>View</span>
+        </h1>
+        <h2 class="text-primary"><span id="HostingEntityDisplayValue">@Html.DisplayFor(model => model.DisplayValue)</span>
+			<div class="btn-group pull-right fixactionbut">
+            <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle pull-right">
+                Action
+                <span class="caret">    </span>
+            </button>
+			<ul class="dropdown-menu pull-left">               
+				<li>
+                    @if ( User.CanEdit("T_JobAssignment"))
+                    {
+                        <a href="@Url.Action("Edit","T_JobAssignment", new {UrlReferrer = Request.UrlReferrer,id = Model.Id,AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    }
+                </li>             
+				<li>
+                    @if ( User.CanDelete("T_JobAssignment"))
+                    {
+                        <a href="@Url.Action("Delete", "T_JobAssignment", new { UrlReferrer = Request.UrlReferrer,id = Model.Id, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Delete</a>
+                    }
+                </li>
+	<li class="divider" style="clear:both"></li>
+	<li class="dropdown-submenu pull-left" id="AddAssociationdropmenuT_JobAssignment">
+	 @{ var dropmenu = false; }
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu pull-left">
+				@if ( User.CanAdd("T_Comment"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Comment", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_JobAssignmentComments", 
+							HostingEntityName = "T_JobAssignment",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Comment
+						</a>
+					</li>
+				}
+							@if ( User.CanAdd("T_PayDetails"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_PayDetails", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_PayDetailsJobAssignment", 
+							HostingEntityName = "T_JobAssignment",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Salary 
+						</a>
+					</li>
+				}
+			</ul>
+</li>
+@if(!dropmenu)
+{
+    <script>
+        $("#AddAssociationdropmenuT_JobAssignment").hide();
+    </script>
+}
+ <li class="divider" style="clear:both"></li>
+ <li class="dropdown-submenu pull-left">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;">Find Matching</a>
+    <ul class="dropdown-menu pull-left">
+<li>
+		<a href="@Url.Action("FindFSearch", "FileDocument", new {sourceEntity="T_JobAssignment",id=Model.Id}, null)">Document</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Licenses", new {sourceEntity="T_JobAssignment",id=Model.Id}, null)">Licenses</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_ServiceRecord", new {sourceEntity="T_JobAssignment",id=Model.Id}, null)">Service Record</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Comment", new {sourceEntity="T_JobAssignment",id=Model.Id}, null)">Comment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_DrugAlcoholTest", new {sourceEntity="T_JobAssignment",id=Model.Id}, null)">Drug & Alcohol Test</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_UnitX", new {sourceEntity="T_JobAssignment",id=Model.Id}, null)">UnitX</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_LeaveProfile", new {sourceEntity="T_JobAssignment",id=Model.Id}, null)">Leave</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_EmployeeInjury", new {sourceEntity="T_JobAssignment",id=Model.Id}, null)">Employee Injury</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_BackgroundCheck", new {sourceEntity="T_JobAssignment",id=Model.Id}, null)">Background Check</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Education", new {sourceEntity="T_JobAssignment",id=Model.Id}, null)">Education</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Accommodation", new {sourceEntity="T_JobAssignment",id=Model.Id}, null)">Accommodation</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_PayDetails", new {sourceEntity="T_JobAssignment",id=Model.Id}, null)">Pay Details </a>
+</li>
+</ul>
+</li>
+			</ul>
+
+		
+		<a href="#" class="btn btn-xs closeall pull-right"><i class="glyphicon glyphicon-chevron-up"></i> Collapse All</a> <a href="#" class="btn btn-xs openall pull-right" style="margin-right:5px;"><i class="glyphicon glyphicon-chevron-down"></i> Expand All</a>
+</div>
+
+		@using (Html.BeginForm("CopyFromT_JobAssignment", "T_JobAssignment", new { UrlReferrer = Convert.ToString(ViewData["T_JobAssignmentParentUrl"]), IsDDAdd = ViewBag.IsDDAdd }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken();
+            @Html.Hidden("T_JobAssignmentID", @Model.Id)
+           <input type="submit" name="command" value="Copy to JobAssignment" class="btn btn-default btn-xs fixcopyto pull-right" />
+        }
+
+		</h2>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+	 <li class="active"><a href="#Details" onclick="ClearTabCookie('@User.JavaScriptEncodedName@Model.Id');" data-toggle="tab">Details</a></li>
+		 <li @(!User.CanView("T_Comment") ?"style=display:none;":"")><a onclick="LoadTab('T_JobAssignmentComments','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_Comment", new {RenderPartial=true, HostingEntity ="T_JobAssignment", HostingEntityID = @Model.Id, AssociatedType = "T_JobAssignmentComments",TabToken = DateTime.Now.Ticks,}))')" href="#T_JobAssignmentComments" data-toggle="tab">
+		 Comment
+		 <span class="badge bg-blue"><div id="dvcnt_T_JobAssignmentComments">@ViewBag.T_JobAssignmentCommentsCount</div></span>
+		 		 </a></li>
+		 <li @(!User.CanView("T_PayDetails") ?"style=display:none;":"")><a onclick="LoadTab('T_PayDetailsJobAssignment','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_PayDetails", new {RenderPartial=true, HostingEntity ="T_JobAssignment", HostingEntityID = @Model.Id, AssociatedType = "T_PayDetailsJobAssignment",TabToken = DateTime.Now.Ticks,}))')" href="#T_PayDetailsJobAssignment" data-toggle="tab">
+		 Salary 
+		 <span class="badge bg-blue"><div id="dvcnt_T_PayDetailsJobAssignment">@ViewBag.T_PayDetailsJobAssignmentCount</div></span>
+		 		 </a></li>
+		 <li @(!User.CanView("JournalEntry")?"style=display:none;":"")><a onclick="LoadTab('JournalEntryToT_JobAssignmentRelation','@User.JavaScriptEncodedName@Model.Id','@Url.Action("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_JobAssignment", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry", TabToken = DateTime.Now.Ticks })')" href="#JournalEntryToT_JobAssignmentRelation" data-toggle="tab">Job Assignment Journal</a></li>
+    </ul>
+	  @Html.HiddenFor(model => model.Id)
+	    <div class="tab-content">
+		   <div class="tab-pane fade in active" id="Details">
+				 <div class="panel panel-default AppForm">
+					<div class="panel-body">
+                                  
+			
+<div class="row">
+				<div class="col-sm-12 col-md-12 col-xs-12">
+			<div class="panel panel-default" id="dvGroup48911">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#employeeassignedbody"><span class="glyphicon glyphicon-chevron-down"></span> Employee Assigned</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="employeeassignedbody">					
+@if(User.CanView("T_JobAssignment","T_EmployeeJobAssignmentID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeJobAssignment">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EmployeeJobAssignmentID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_employeejobassignment!=null && !string.IsNullOrEmpty(Model.t_employeejobassignment.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_EmployeeJobAssignment">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_employeejobassignment.DisplayValue).ToString(), "Details", "T_Employee", new { Id = Html.DisplayFor(model => model.t_employeejobassignment.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_EmployeePercent"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeePercent">
+	<div class='form-group' title="@Model.T_EmployeePercent">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EmployeePercent) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_EmployeePercent" class="viewlabel">@Model.T_EmployeePercent</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_StartDate"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_StartDate">
+	<div class='form-group' title="@String.Format("{0:MM/dd/yyyy}", Model.T_StartDate)">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_StartDate) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_StartDate" class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_StartDate)</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_EndDate"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EndDate">
+	<div class='form-group' title="@String.Format("{0:MM/dd/yyyy}", Model.T_EndDate)">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EndDate) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_EndDate" class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_EndDate)</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_Primary"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Primary">
+	<div class='form-group' title="@Model.T_Primary">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Primary) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				@Html.DisplayFor(model => model.T_Primary)
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_Active"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Active">
+	<div class='form-group' title="@Model.T_Active">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Active) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				@Html.DisplayFor(model => model.T_Active)
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+	</div>
+	</div>
+<div class="row">
+				<div class="col-sm-12 col-md-12 col-xs-12">
+			<div class="panel panel-default" id="dvGroup48913">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+											
+									<h3 class="panel-title">Position Details</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_JobAssignment","T_PositionJobAssignmentID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionJobAssignment">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_PositionJobAssignmentID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_positionjobassignment!=null && !string.IsNullOrEmpty(Model.t_positionjobassignment.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_PositionJobAssignment">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_positionjobassignment.DisplayValue).ToString(), "Details", "T_Position", new { Id = Html.DisplayFor(model => model.t_positionjobassignment.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_PositionLevel"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionLevel">
+	<div class='form-group' title="@Model.T_PositionLevel">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_PositionLevel) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_PositionLevel" class="viewlabel">@Model.T_PositionLevel</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_RoleCode"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_RoleCode">
+	<div class='form-group' title="@Model.T_RoleCode">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_RoleCode) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_RoleCode" class="viewlabel">@Model.T_RoleCode</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_ClassCode"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ClassCode">
+	<div class='form-group' title="@Model.T_ClassCode">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_ClassCode) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_ClassCode" class="viewlabel">@Model.T_ClassCode</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_WorkersCompCode"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WorkersCompCode">
+	<div class='form-group' title="@Model.T_WorkersCompCode">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_WorkersCompCode) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_WorkersCompCode" class="viewlabel">@Model.T_WorkersCompCode</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_SOCCode"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_SOCCode">
+	<div class='form-group' title="@Model.T_SOCCode">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_SOCCode) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_SOCCode" class="viewlabel">@Model.T_SOCCode</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_OvertimeEligibility"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_OvertimeEligibility">
+	<div class='form-group' title="@Model.T_OvertimeEligibility">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_OvertimeEligibility) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_OvertimeEligibility" class="viewlabel">@Model.T_OvertimeEligibility</p>
+					
+					</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+	</div>
+	</div>
+<div class="row">
+				<div class="col-sm-12 col-md-12 col-xs-12">
+			<div class="panel panel-default" id="dvGroup48910">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+											
+									<h3 class="panel-title">Assignment Details</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_JobAssignment","T_JobAssignmentReasonID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_JobAssignmentReason">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_JobAssignmentReasonID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_jobassignmentreason!=null && !string.IsNullOrEmpty(Model.t_jobassignmentreason.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_JobAssignmentReason">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_jobassignmentreason.DisplayValue).ToString(), "Details", "T_ReasonforHire", new { Id = Html.DisplayFor(model => model.t_jobassignmentreason.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_JobAssignmentUnitXID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_JobAssignmentUnitX">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_JobAssignmentUnitXID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_jobassignmentunitx!=null && !string.IsNullOrEmpty(Model.t_jobassignmentunitx.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_JobAssignmentUnitX">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_jobassignmentunitx.DisplayValue).ToString(), "Details", "T_UnitX", new { Id = Html.DisplayFor(model => model.t_jobassignmentunitx.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_CostCenter"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_CostCenter">
+	<div class='form-group' title="@Model.T_CostCenter">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_CostCenter) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_CostCenter" class="viewlabel">@Model.T_CostCenter</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_Program"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Program">
+	<div class='form-group' title="@Model.T_Program">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Program) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_Program" class="viewlabel">@Model.T_Program</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_DepartmentArea"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DepartmentArea">
+	<div class='form-group' title="@Model.T_DepartmentArea">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_DepartmentArea) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_DepartmentArea" class="viewlabel">@Model.T_DepartmentArea</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_Department"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Department">
+	<div class='form-group' title="@Model.T_Department">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Department) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_Department" class="viewlabel">@Model.T_Department</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_JobAssignmentManagerEmployeeID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_JobAssignmentManagerEmployee">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_JobAssignmentManagerEmployeeID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_jobassignmentmanageremployee!=null && !string.IsNullOrEmpty(Model.t_jobassignmentmanageremployee.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_JobAssignmentManagerEmployee">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_jobassignmentmanageremployee.DisplayValue).ToString(), "Details", "T_Employee", new { Id = Html.DisplayFor(model => model.t_jobassignmentmanageremployee.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_EmployeeSupervisorID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeSupervisor">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EmployeeSupervisorID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_employeesupervisor!=null && !string.IsNullOrEmpty(Model.t_employeesupervisor.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_EmployeeSupervisor">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_employeesupervisor.DisplayValue).ToString(), "Details", "T_Employee", new { Id = Html.DisplayFor(model => model.t_employeesupervisor.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_JobAssignment","T_SupervisorEmail"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_SupervisorEmail">
+	<div class='form-group' title="@Model.T_SupervisorEmail">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_SupervisorEmail) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_SupervisorEmail" class="viewlabel">@Model.T_SupervisorEmail</p>
+					
+					</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+	</div>
+	</div>
+<div class="row">
+				<div class="col-sm-12 col-md-12 col-xs-12">
+			<div class="panel panel-default" id="dvGroup48912">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#notesbody"><span class="glyphicon glyphicon-chevron-down"></span> Notes</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="notesbody">					
+@if(User.CanView("T_JobAssignment","T_Notes"))
+{
+<div class='col-sm-12 col-md-12 col-xs-12' id="dvT_Notes">
+	<div class='form-group' title="@Model.T_Notes">
+		<label class="col-sm-2 col-md-2 col-xs-12">@Html.DisplayNameFor(model => model.T_Notes)</label>
+		<div class="input-group col-sm-10 col-md-10 col-xs-12">
+		<p class="viewlabelmultiline">@Model.T_Notes</p>
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+	</div>
+	</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+				<a class="btn btn-default btn-sm pull-left formbuttonfix" Onclick="goBack('@Url.Action("Index","T_JobAssignment")');">Back</a>
+				@*@Html.ActionLink("Back", "Cancel", new { UrlReferrer = Request.UrlReferrer }, new { @class = "btn btn-default btn-sm pull-left formbuttonfix" })*@
+					
+					 @if ( User.CanEdit("T_JobAssignment"))
+                     {
+                          @Html.ActionLink("Edit", "Edit", new { UrlReferrer = Request.UrlReferrer, id = Model.Id, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, new { @class = "btn btn-primary btn-sm pull-left formbuttonfix" })
+                     }
+				   
+ @{ var dropmenubottom = false; }
+<div class="dropdown pull-left formbuttonfix" style="" id="AddAssociationdropmenubottomT_JobAssignment">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+			@if (User.CanAdd("T_Comment"))
+            {
+			    dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Comment",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_JobAssignmentComments", 
+						HostingEntityName = "T_JobAssignment",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Comment
+                </a>
+				</li>
+            }
+
+			
+			@if (User.CanAdd("T_PayDetails"))
+            {
+			    dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_PayDetails",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_PayDetailsJobAssignment", 
+						HostingEntityName = "T_JobAssignment",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Salary 
+                </a>
+				</li>
+            }
+
+			
+</ul>
+</div>
+@if(!dropmenubottom)
+{
+    <script>
+        $("#AddAssociationdropmenubottomT_JobAssignment").hide();
+    </script>
+}
+			</div> 
+			</div><div class="clearfix" style="clear:both"></div>
+	</div>    
+<div class="tab-pane fade in" id="T_JobAssignmentComments">
+     @if ( User.CanView("T_Comment"))
+	{
+	  // Html.RenderAction("Index", "T_Comment", new {RenderPartial=true, HostingEntity = "T_JobAssignment", HostingEntityID = @Model.Id, AssociatedType = "T_JobAssignmentComments" }); 
+	}
+  </div>
+<div class="tab-pane fade in" id="T_PayDetailsJobAssignment">
+     @if ( User.CanView("T_PayDetails"))
+	{
+	  // Html.RenderAction("Index", "T_PayDetails", new {RenderPartial=true, HostingEntity = "T_JobAssignment", HostingEntityID = @Model.Id, AssociatedType = "T_PayDetailsJobAssignment" }); 
+	}
+  </div>
+<div class="tab-pane fade in" id="JournalEntryToT_JobAssignmentRelation">
+            @if ( User.CanView("JournalEntry"))
+		   {
+			//	Html.RenderAction("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_JobAssignment", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry" });
+		   }
+  </div>
+	</div> <!-- /tab-content --><br />
+
+<br/>
+</div>
+ 

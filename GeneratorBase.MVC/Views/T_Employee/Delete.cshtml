@@ -1,0 +1,283 @@
+﻿@model GeneratorBase.MVC.Models.T_Employee
+@{
+    ViewBag.Title = "Delete Employee";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-hand-down text-primary"></i>Delete Employee  <i class="glyphicon glyphicon-chevron-right small"></i> 
+            <span style="color:red;">  Are you sure you want to delete this?</span>
+        </h1>
+        <h2 class="text-primary">@Html.DisplayFor(model => model.DisplayValue)</h2>
+    </div>
+</div>
+<div class="row">
+<label id="ErrMsg" class="text-primary small" style="color:red; vertical-align:middle; font-weight:100;"></label>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ConcurrencyKey)
+    @Html.HiddenFor(model => model.Id)
+                                  
+    <dl class="dl-horizontal">
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_EmployeeGenderID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_employeegender.DisplayValue)
+			 @Html.HiddenFor(model => model.T_EmployeeGenderID)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_EmployeeAtFacilityID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_employeeatfacility.DisplayValue)
+			 @Html.HiddenFor(model => model.T_EmployeeAtFacilityID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_StateHireDate)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_StateHireDate)
+			@Html.HiddenFor(model => model.T_StateHireDate)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_EmployeeRaceID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_employeerace.DisplayValue)
+			 @Html.HiddenFor(model => model.T_EmployeeRaceID)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_EmployeeAddressID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_employeeaddress.DisplayValue)
+			 @Html.HiddenFor(model => model.T_EmployeeAddressID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_EmergencyContactName)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_EmergencyContactName)
+			@Html.HiddenFor(model => model.T_EmergencyContactName)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_BadgeNumber)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_BadgeNumber)
+			@Html.HiddenFor(model => model.T_BadgeNumber)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_AdjustedHireDate)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_AdjustedHireDate)
+			@Html.HiddenFor(model => model.T_AdjustedHireDate)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_PID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_PID)
+			@Html.HiddenFor(model => model.T_PID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_PriorServiceinmonths)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_PriorServiceinmonths)
+			@Html.HiddenFor(model => model.T_PriorServiceinmonths)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_PersonalEmail)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_PersonalEmail)
+			@Html.HiddenFor(model => model.T_PersonalEmail)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_EmergencyContactRelationship)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_EmergencyContactRelationship)
+			@Html.HiddenFor(model => model.T_EmergencyContactRelationship)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_EffectiveDateTime)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_EffectiveDateTime)
+			@Html.HiddenFor(model => model.T_EffectiveDateTime)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_SSN)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_SSN)
+			@Html.HiddenFor(model => model.T_SSN)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_CurrentServiceinmonths)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_CurrentServiceinmonths)
+			@Html.HiddenFor(model => model.T_CurrentServiceinmonths)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_EmployeeNationalityAssociationID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_employeenationalityassociation.DisplayValue)
+			 @Html.HiddenFor(model => model.T_EmployeeNationalityAssociationID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_MobilePhone)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_MobilePhone)
+			@Html.HiddenFor(model => model.T_MobilePhone)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_EmergencyMobilePhone)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_EmergencyMobilePhone)
+			@Html.HiddenFor(model => model.T_EmergencyMobilePhone)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_DateOfBirth)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_DateOfBirth)
+			@Html.HiddenFor(model => model.T_DateOfBirth)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_EmployeeVeteranStatusID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_employeeveteranstatus.DisplayValue)
+			 @Html.HiddenFor(model => model.T_EmployeeVeteranStatusID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_HomePhone)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_HomePhone)
+			@Html.HiddenFor(model => model.T_HomePhone)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_EmergencyWorkPhone)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_EmergencyWorkPhone)
+			@Html.HiddenFor(model => model.T_EmergencyWorkPhone)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_EmployeeStatusID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_employeestatus.DisplayValue)
+			 @Html.HiddenFor(model => model.T_EmployeeStatusID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_SAMAccount)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_SAMAccount)
+			@Html.HiddenFor(model => model.T_SAMAccount)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_EmployeeCardEmplGrpAssociationID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_employeecardemplgrpassociation.DisplayValue)
+			 @Html.HiddenFor(model => model.T_EmployeeCardEmplGrpAssociationID)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_EmployeeUserLoginID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_employeeuserlogin.UserName)
+			 @Html.HiddenFor(model => model.T_EmployeeUserLoginID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_LastName)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_LastName)
+			@Html.HiddenFor(model => model.T_LastName)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_EmployeeCardLvPlanAssociationID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_employeecardlvplanassociation.DisplayValue)
+			 @Html.HiddenFor(model => model.T_EmployeeCardLvPlanAssociationID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_FirstName)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_FirstName)
+			@Html.HiddenFor(model => model.T_FirstName)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_MiddleName)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_MiddleName)
+			@Html.HiddenFor(model => model.T_MiddleName)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_Suffix)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_Suffix)
+			@Html.HiddenFor(model => model.T_Suffix)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_WorkEmail)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_WorkEmail)
+			@Html.HiddenFor(model => model.T_WorkEmail)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_CurrentEmployeeEmploymentProfileID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_currentemployeeemploymentprofile.DisplayValue)
+			 @Html.HiddenFor(model => model.T_CurrentEmployeeEmploymentProfileID)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_CurrentEmployeeJobAssignmentID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_currentemployeejobassignment.DisplayValue)
+			 @Html.HiddenFor(model => model.T_CurrentEmployeeJobAssignmentID)
+        </dd>
+    </dl>
+	<br/>
+        <div class="row deletefix">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+		<label class="small alert-danger" style="padding:3px; margin-top:5px; display:block;">All Licenses will be deleted associated with @Html.DisplayFor(model => model.DisplayValue)!</label>
+		<label class="small alert-danger" style="padding:3px; margin-top:5px; display:block;">All Injury will be deleted associated with @Html.DisplayFor(model => model.DisplayValue)!</label>
+		<label class="small alert-danger" style="padding:3px; margin-top:5px; display:block;">All Background Check  will be deleted associated with @Html.DisplayFor(model => model.DisplayValue)!</label>
+		<label class="small alert-danger" style="padding:3px; margin-top:5px; display:block;">All Accommodation will be deleted associated with @Html.DisplayFor(model => model.DisplayValue)!</label>
+		<label class="small alert-danger" style="padding:3px; margin-top:5px; display:block;">All Service Record will be deleted associated with @Html.DisplayFor(model => model.DisplayValue)!</label>
+		<label class="small alert-danger" style="padding:3px; margin-top:5px; display:block;">All Job Assignment will be deleted associated with @Html.DisplayFor(model => model.DisplayValue)!</label>
+		<label class="small alert-danger" style="padding:3px; margin-top:5px; display:block;">All Salary And Bonus will be deleted associated with @Html.DisplayFor(model => model.DisplayValue)!</label>
+		<label class="small alert-danger" style="padding:3px; margin-top:5px; display:block;">All Drug & Alcohol Test will be deleted associated with @Html.DisplayFor(model => model.DisplayValue)!</label>
+         <a class="btn btn-default btn-sm" Onclick="goBack('@Url.Action("Index","T_Employee")');">Back</a>
+        @*@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default btn-sm" })*@
+ 
+	@if ( User.CanDelete("T_Employee"))
+     {
+			<input type="submit" value="Delete" class="btn btn-primary btn-sm" /> 
+	}
+        </div>
+            </div>
+    }
+</div>

@@ -1,0 +1,238 @@
+﻿<error errorId="bd79b539-fa89-4905-947c-75921f2eacf5" application="/LM/W3SVC/1/ROOT/wsh_hr_v34" host="TURANTOMVC" type="System.ArgumentNullException" message="Value cannot be null.&#xD;&#xA;Parameter name: entity" source="EntityFramework" detail="System.ArgumentNullException: Value cannot be null.&#xD;&#xA;Parameter name: entity&#xD;&#xA;   at System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)&#xD;&#xA;   at System.Data.Entity.DbContext.Entry[TEntity](TEntity entity)&#xD;&#xA;   at GeneratorBase.MVC.Controllers.T_JobAssignmentController.DeleteBulk(Int64[] ids, String UrlReferrer) in d:\GenApps\wsh_hr_v34\GeneratorBase.MVC\Controllers\T_JobAssignment\T_JobAssignmentCRUDController.cs:line 680&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)" user="Admin" time="2016-08-30T15:56:17.3502913Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:710&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded; charset=UTF-8&#xD;&#xA;HTTP_ACCEPT:*/*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:pageSizeAdminT_JobAssignment=50; wsh_hr_v32=sntQ16bRDUrv4Fkji-7dNxmukcp8i89ynE5nrvNWQ_etqxYaUmFjABXZz8JrpWpMA-aoFIK-5fWYp0tTCMmU9A_ilSkAbe0TW1JQhSsEYfeXgYYdrnykAKySasdnt7CodHFgOSMSo-XiQKI-1guMyRlgQxyuM_erNVjdT2ioYgPUYWZ3Ocd_UoeRkHgx-vK7Do57o_NrUITCd3qYbwaW76ccRfWRrSxrwUU6aX0EIsWwW20UxDJVzrL9vcmVDbJLvjfyHc-9sXhbYha-2y5vc-cPx55lM612CVlnoTfaoSvFxK71PInAopRcc6pRBFqdkn8qSJaq4SFiHbeyYO_2M1W8C5F2Brh_nmOhoz03OkPzsPHrZkOp6A2nB9ybuiFZ93sye_sxZYcJF0-S72hUZzHxuHrtS00pC88bRpRkk7UcX3FWXcaTvMfvU6PwGAS8-kWuuCe-Kz7WDxwVS0im9TVdXsxpqpH7RlYtJq9NFWHcoEDtbKPo9UNzjffaBGM1; __RequestVerificationToken_L3dzaF9ocl92MzQ1=92AWzfeDi3NTeM6W6PS_LgTvocJjC0Df6NDYYc9lf2bFigF15oUnD7aDSTir8wc_eNR8HYvzKvra95N3zGMnloIf0ip2ilFvn3ZRc48J0WQ1&#xD;&#xA;HTTP_HOST:mvc.turanto.com&#xD;&#xA;HTTP_REFERER:https://mvc.turanto.com/wsh_hr_v34/T_JobAssignment&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:https://mvc.turanto.com&#xD;&#xA;HTTP_X_REQUESTED_WITH:XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Content-Length: 710&#xD;&#xA;Content-Type: application/x-www-form-urlencoded; charset=UTF-8&#xD;&#xA;Accept: */*&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: pageSizeAdminT_JobAssignment=50; wsh_hr_v32=sntQ16bRDUrv4Fkji-7dNxmukcp8i89ynE5nrvNWQ_etqxYaUmFjABXZz8JrpWpMA-aoFIK-5fWYp0tTCMmU9A_ilSkAbe0TW1JQhSsEYfeXgYYdrnykAKySasdnt7CodHFgOSMSo-XiQKI-1guMyRlgQxyuM_erNVjdT2ioYgPUYWZ3Ocd_UoeRkHgx-vK7Do57o_NrUITCd3qYbwaW76ccRfWRrSxrwUU6aX0EIsWwW20UxDJVzrL9vcmVDbJLvjfyHc-9sXhbYha-2y5vc-cPx55lM612CVlnoTfaoSvFxK71PInAopRcc6pRBFqdkn8qSJaq4SFiHbeyYO_2M1W8C5F2Brh_nmOhoz03OkPzsPHrZkOp6A2nB9ybuiFZ93sye_sxZYcJF0-S72hUZzHxuHrtS00pC88bRpRkk7UcX3FWXcaTvMfvU6PwGAS8-kWuuCe-Kz7WDxwVS0im9TVdXsxpqpH7RlYtJq9NFWHcoEDtbKPo9UNzjffaBGM1; __RequestVerificationToken_L3dzaF9ocl92MzQ1=92AWzfeDi3NTeM6W6PS_LgTvocJjC0Df6NDYYc9lf2bFigF15oUnD7aDSTir8wc_eNR8HYvzKvra95N3zGMnloIf0ip2ilFvn3ZRc48J0WQ1&#xD;&#xA;Host: mvc.turanto.com&#xD;&#xA;Referer: https://mvc.turanto.com/wsh_hr_v34/T_JobAssignment&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&#xD;&#xA;Origin: https://mvc.turanto.com&#xD;&#xA;X-Requested-With: XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/wsh_hr_v34" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v34\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="Admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="Admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="Admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="710" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded; charset=UTF-8" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/wsh_hr_v34/T_JobAssignment/DeleteBulk" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v34\GeneratorBase.MVC\T_JobAssignment\DeleteBulk" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="96.253.89.230" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="96.253.89.230" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="64452" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/wsh_hr_v34/T_JobAssignment/DeleteBulk" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/wsh_hr_v34/T_JobAssignment/DeleteBulk" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="710" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded; charset=UTF-8" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="*/*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="pageSizeAdminT_JobAssignment=50; wsh_hr_v32=sntQ16bRDUrv4Fkji-7dNxmukcp8i89ynE5nrvNWQ_etqxYaUmFjABXZz8JrpWpMA-aoFIK-5fWYp0tTCMmU9A_ilSkAbe0TW1JQhSsEYfeXgYYdrnykAKySasdnt7CodHFgOSMSo-XiQKI-1guMyRlgQxyuM_erNVjdT2ioYgPUYWZ3Ocd_UoeRkHgx-vK7Do57o_NrUITCd3qYbwaW76ccRfWRrSxrwUU6aX0EIsWwW20UxDJVzrL9vcmVDbJLvjfyHc-9sXhbYha-2y5vc-cPx55lM612CVlnoTfaoSvFxK71PInAopRcc6pRBFqdkn8qSJaq4SFiHbeyYO_2M1W8C5F2Brh_nmOhoz03OkPzsPHrZkOp6A2nB9ybuiFZ93sye_sxZYcJF0-S72hUZzHxuHrtS00pC88bRpRkk7UcX3FWXcaTvMfvU6PwGAS8-kWuuCe-Kz7WDxwVS0im9TVdXsxpqpH7RlYtJq9NFWHcoEDtbKPo9UNzjffaBGM1; __RequestVerificationToken_L3dzaF9ocl92MzQ1=92AWzfeDi3NTeM6W6PS_LgTvocJjC0Df6NDYYc9lf2bFigF15oUnD7aDSTir8wc_eNR8HYvzKvra95N3zGMnloIf0ip2ilFvn3ZRc48J0WQ1" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://mvc.turanto.com/wsh_hr_v34/T_JobAssignment" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="https://mvc.turanto.com" />
+    </item>
+    <item name="HTTP_X_REQUESTED_WITH">
+      <value string="XMLHttpRequest" />
+    </item>
+  </serverVariables>
+  <form>
+    <item name="ids[]">
+      <value string="237" />
+      <value string="236" />
+      <value string="235" />
+      <value string="233" />
+      <value string="232" />
+      <value string="231" />
+      <value string="230" />
+      <value string="229" />
+      <value string="228" />
+      <value string="227" />
+      <value string="226" />
+      <value string="225" />
+      <value string="224" />
+      <value string="223" />
+      <value string="222" />
+      <value string="219" />
+      <value string="218" />
+      <value string="217" />
+      <value string="216" />
+      <value string="215" />
+      <value string="214" />
+      <value string="213" />
+      <value string="212" />
+      <value string="211" />
+      <value string="210" />
+      <value string="209" />
+      <value string="208" />
+      <value string="207" />
+      <value string="206" />
+      <value string="205" />
+      <value string="204" />
+      <value string="203" />
+      <value string="202" />
+      <value string="201" />
+      <value string="200" />
+      <value string="196" />
+      <value string="195" />
+      <value string="194" />
+      <value string="193" />
+      <value string="192" />
+      <value string="191" />
+      <value string="190" />
+      <value string="189" />
+      <value string="188" />
+      <value string="187" />
+      <value string="186" />
+      <value string="185" />
+      <value string="184" />
+      <value string="182" />
+      <value string="181" />
+      <value string="" />
+    </item>
+  </form>
+  <cookies>
+    <item name="pageSizeAdminT_JobAssignment">
+      <value string="50" />
+    </item>
+    <item name="wsh_hr_v32">
+      <value string="sntQ16bRDUrv4Fkji-7dNxmukcp8i89ynE5nrvNWQ_etqxYaUmFjABXZz8JrpWpMA-aoFIK-5fWYp0tTCMmU9A_ilSkAbe0TW1JQhSsEYfeXgYYdrnykAKySasdnt7CodHFgOSMSo-XiQKI-1guMyRlgQxyuM_erNVjdT2ioYgPUYWZ3Ocd_UoeRkHgx-vK7Do57o_NrUITCd3qYbwaW76ccRfWRrSxrwUU6aX0EIsWwW20UxDJVzrL9vcmVDbJLvjfyHc-9sXhbYha-2y5vc-cPx55lM612CVlnoTfaoSvFxK71PInAopRcc6pRBFqdkn8qSJaq4SFiHbeyYO_2M1W8C5F2Brh_nmOhoz03OkPzsPHrZkOp6A2nB9ybuiFZ93sye_sxZYcJF0-S72hUZzHxuHrtS00pC88bRpRkk7UcX3FWXcaTvMfvU6PwGAS8-kWuuCe-Kz7WDxwVS0im9TVdXsxpqpH7RlYtJq9NFWHcoEDtbKPo9UNzjffaBGM1" />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MzQ1">
+      <value string="92AWzfeDi3NTeM6W6PS_LgTvocJjC0Df6NDYYc9lf2bFigF15oUnD7aDSTir8wc_eNR8HYvzKvra95N3zGMnloIf0ip2ilFvn3ZRc48J0WQ1" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="24nuuurp53vimoedmf24sutd" />
+    </item>
+  </cookies>
+</error>

@@ -1,0 +1,179 @@
+﻿<error errorId="4ea73687-158a-4733-ad6e-a30bf8fbd314" application="/LM/W3SVC/1/ROOT/HOPS_HR_V9" host="TURANTOMVC" type="System.Data.Entity.ModelConfiguration.ModelValidationException" message="One or more validation errors were detected during model generation:&#xD;&#xA;&#xD;&#xA;GeneratorBase.MVC.IdentityUserLogin: : EntityType 'IdentityUserLogin' has no key defined. Define the key for this EntityType.&#xD;&#xA;GeneratorBase.MVC.IdentityUserRole: : EntityType 'IdentityUserRole' has no key defined. Define the key for this EntityType.&#xD;&#xA;IdentityUserLogins: EntityType: EntitySet 'IdentityUserLogins' is based on type 'IdentityUserLogin' that has no keys defined.&#xD;&#xA;IdentityUserRoles: EntityType: EntitySet 'IdentityUserRoles' is based on type 'IdentityUserRole' that has no keys defined.&#xD;&#xA;" source="EntityFramework" detail="System.InvalidOperationException: An error occurred when trying to create a controller of type 'GeneratorBase.MVC.Controllers.AccountController'. Make sure that the controller has a parameterless public constructor. ---&gt; System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---&gt; System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:&#xD;&#xA;&#xD;&#xA;GeneratorBase.MVC.IdentityUserLogin: : EntityType 'IdentityUserLogin' has no key defined. Define the key for this EntityType.&#xD;&#xA;GeneratorBase.MVC.IdentityUserRole: : EntityType 'IdentityUserRole' has no key defined. Define the key for this EntityType.&#xD;&#xA;IdentityUserLogins: EntityType: EntitySet 'IdentityUserLogins' is based on type 'IdentityUserLogin' that has no keys defined.&#xD;&#xA;IdentityUserRoles: EntityType: EntitySet 'IdentityUserRoles' is based on type 'IdentityUserRole' that has no keys defined.&#xD;&#xA;&#xD;&#xA;   at System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()&#xD;&#xA;   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)&#xD;&#xA;   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)&#xD;&#xA;   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)&#xD;&#xA;   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)&#xD;&#xA;   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)&#xD;&#xA;   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()&#xD;&#xA;   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()&#xD;&#xA;   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()&#xD;&#xA;   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)&#xD;&#xA;   at GeneratorBase.MVC.Controllers.AccountController..ctor(UserManager`1 userManager) in d:\Turanto12.7.6Beta\TurantoCompile\GB\GeneratorBase\GeneratorBase.MVC\Controllers\Account_Permission\AccountController.cs:line 48&#xD;&#xA;   at GeneratorBase.MVC.Controllers.AccountController..ctor() in d:\Turanto12.7.6Beta\TurantoCompile\GB\GeneratorBase\GeneratorBase.MVC\Controllers\Account_Permission\AccountController.cs:line 37&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean&amp; canBeCached, RuntimeMethodHandleInternal&amp; ctor, Boolean&amp; bNeedSecurityCheck)&#xD;&#xA;   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark&amp; stackMark)&#xD;&#xA;   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark&amp; stackMark)&#xD;&#xA;   at System.Activator.CreateInstance(Type type, Boolean nonPublic)&#xD;&#xA;   at System.Activator.CreateInstance(Type type)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   at Castle.Proxies.Invocations.IControllerFactory_CreateController.InvokeMethodOnTarget()&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Glimpse.Core.Extensibility.CastleInvocationToAlternateMethodContextAdapter.Proceed()&#xD;&#xA;   at Glimpse.Core.Extensions.AlternateMethodContextExtensions.TryProceedWithTimer(IAlternateMethodContext context, TimerResult&amp; timerResult)&#xD;&#xA;   at Glimpse.Core.Extensibility.AlternateMethod.NewImplementation(IAlternateMethodContext context)&#xD;&#xA;   at Glimpse.Core.Extensibility.AlternateTypeToCastleInterceptorAdapter.Intercept(IInvocation invocation)&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Castle.Proxies.IControllerFactoryProxy.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" time="2017-02-02T12:09:41.9015877Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, sdch, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken_L1R1cmFudG81=w8-xQfpHgMdfFEluLHdT60ORBoxviVh_CYIazygN7iIC3EvWdVDfJTT90fPpLzemWaMwJGQlTwiEE9UlFN_MP2pYL8CYntdLCxRSOISjgss1; Turanto%20Version%20-%2012.7.6=O0FTvFyrvXuofdi4-GLQkNG_tYAeaI7aOHz74JlM2jSypr4rh9-SFmPYMuE_Nhf6h_sRZijswl16utafgBl6oOpgEArqHJZtMzar_FZrkE3IQ5iBIZJb8w2w1O-G2j2hn3Em8TrJPovN6QOORuDBiciauQe4IcOd15cc9rQwbAdjqWM78ZKmlRXGGB_usO93JQCYyZgGUvHVAV1gHAspBaN0b8qwII09zoQeMFuyJlWwlHMtsYuRgfqnCTBikAsEcmJXWagGrXL-GHE47m6fHuTX9FBy8UTg5-YbNot4_wrOAd8ef-kmofJ2IuoILPBiRPd2LFxLzsKEANSUHw-1J3zTnYivm6sh2R8U0Intd9Hr7-xUeq-V0C4zH5iG68Fp1c6ktL_hUdmSKqg6i_4j9E_mzFhBiUY6-3lCuR2lmQqWjF5voAj8kmst0gVoktQC&#xD;&#xA;HTTP_HOST:mvc.turanto.com&#xD;&#xA;HTTP_REFERER:https://mvc.turanto.com/HOPS_HR_V9&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;HTTP_ORIGIN:http://evil.com/&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, sdch, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: __RequestVerificationToken_L1R1cmFudG81=w8-xQfpHgMdfFEluLHdT60ORBoxviVh_CYIazygN7iIC3EvWdVDfJTT90fPpLzemWaMwJGQlTwiEE9UlFN_MP2pYL8CYntdLCxRSOISjgss1; Turanto%20Version%20-%2012.7.6=O0FTvFyrvXuofdi4-GLQkNG_tYAeaI7aOHz74JlM2jSypr4rh9-SFmPYMuE_Nhf6h_sRZijswl16utafgBl6oOpgEArqHJZtMzar_FZrkE3IQ5iBIZJb8w2w1O-G2j2hn3Em8TrJPovN6QOORuDBiciauQe4IcOd15cc9rQwbAdjqWM78ZKmlRXGGB_usO93JQCYyZgGUvHVAV1gHAspBaN0b8qwII09zoQeMFuyJlWwlHMtsYuRgfqnCTBikAsEcmJXWagGrXL-GHE47m6fHuTX9FBy8UTg5-YbNot4_wrOAd8ef-kmofJ2IuoILPBiRPd2LFxLzsKEANSUHw-1J3zTnYivm6sh2R8U0Intd9Hr7-xUeq-V0C4zH5iG68Fp1c6ktL_hUdmSKqg6i_4j9E_mzFhBiUY6-3lCuR2lmQqWjF5voAj8kmst0gVoktQC&#xD;&#xA;Host: mvc.turanto.com&#xD;&#xA;Referer: https://mvc.turanto.com/HOPS_HR_V9&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;Origin: http://evil.com/&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/HOPS_HR_V9" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\HOPS_HR_V9\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/HOPS_HR_V9/Account/Login" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\HOPS_HR_V9\GeneratorBase.MVC\Account\Login" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="returnUrl=%2FHOPS_HR_V9%2FHome" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="54777" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/HOPS_HR_V9/Account/Login" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/HOPS_HR_V9/Account/Login" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, sdch, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken_L1R1cmFudG81=w8-xQfpHgMdfFEluLHdT60ORBoxviVh_CYIazygN7iIC3EvWdVDfJTT90fPpLzemWaMwJGQlTwiEE9UlFN_MP2pYL8CYntdLCxRSOISjgss1; Turanto%20Version%20-%2012.7.6=O0FTvFyrvXuofdi4-GLQkNG_tYAeaI7aOHz74JlM2jSypr4rh9-SFmPYMuE_Nhf6h_sRZijswl16utafgBl6oOpgEArqHJZtMzar_FZrkE3IQ5iBIZJb8w2w1O-G2j2hn3Em8TrJPovN6QOORuDBiciauQe4IcOd15cc9rQwbAdjqWM78ZKmlRXGGB_usO93JQCYyZgGUvHVAV1gHAspBaN0b8qwII09zoQeMFuyJlWwlHMtsYuRgfqnCTBikAsEcmJXWagGrXL-GHE47m6fHuTX9FBy8UTg5-YbNot4_wrOAd8ef-kmofJ2IuoILPBiRPd2LFxLzsKEANSUHw-1J3zTnYivm6sh2R8U0Intd9Hr7-xUeq-V0C4zH5iG68Fp1c6ktL_hUdmSKqg6i_4j9E_mzFhBiUY6-3lCuR2lmQqWjF5voAj8kmst0gVoktQC" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://mvc.turanto.com/HOPS_HR_V9" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="http://evil.com/" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="returnUrl">
+      <value string="/HOPS_HR_V9/Home" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name="__RequestVerificationToken_L1R1cmFudG81">
+      <value string="w8-xQfpHgMdfFEluLHdT60ORBoxviVh_CYIazygN7iIC3EvWdVDfJTT90fPpLzemWaMwJGQlTwiEE9UlFN_MP2pYL8CYntdLCxRSOISjgss1" />
+    </item>
+    <item name="Turanto%20Version%20-%2012.7.6">
+      <value string="O0FTvFyrvXuofdi4-GLQkNG_tYAeaI7aOHz74JlM2jSypr4rh9-SFmPYMuE_Nhf6h_sRZijswl16utafgBl6oOpgEArqHJZtMzar_FZrkE3IQ5iBIZJb8w2w1O-G2j2hn3Em8TrJPovN6QOORuDBiciauQe4IcOd15cc9rQwbAdjqWM78ZKmlRXGGB_usO93JQCYyZgGUvHVAV1gHAspBaN0b8qwII09zoQeMFuyJlWwlHMtsYuRgfqnCTBikAsEcmJXWagGrXL-GHE47m6fHuTX9FBy8UTg5-YbNot4_wrOAd8ef-kmofJ2IuoILPBiRPd2LFxLzsKEANSUHw-1J3zTnYivm6sh2R8U0Intd9Hr7-xUeq-V0C4zH5iG68Fp1c6ktL_hUdmSKqg6i_4j9E_mzFhBiUY6-3lCuR2lmQqWjF5voAj8kmst0gVoktQC" />
+    </item>
+  </cookies>
+</error>

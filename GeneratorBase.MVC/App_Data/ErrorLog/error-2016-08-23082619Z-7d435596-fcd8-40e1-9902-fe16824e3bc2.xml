@@ -1,0 +1,191 @@
+﻿<error errorId="7d435596-fcd8-40e1-9902-fe16824e3bc2" application="/LM/W3SVC/1/ROOT/wsh_hr_v32" host="TURANTOMVC" type="System.InvalidOperationException" message="There is already an open DataReader associated with this Command which must be closed first." source="System.Data" detail="System.Data.Entity.Core.EntityCommandExecutionException: An error occurred while executing the command definition. See the inner exception for details. ---&gt; System.InvalidOperationException: There is already an open DataReader associated with this Command which must be closed first.&#xD;&#xA;   at System.Data.SqlClient.SqlInternalConnectionTds.ValidateConnectionForExecute(SqlCommand command)&#xD;&#xA;   at System.Data.SqlClient.SqlConnection.ValidateConnectionForExecute(String method, SqlCommand command)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.ValidateCommand(String method, Boolean async)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task&amp; task, Boolean asyncWrite)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.&lt;Reader&gt;b__c(DbCommand t, DbCommandInterceptionContext`1 c)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)&#xD;&#xA;   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)&#xD;&#xA;   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.&lt;&gt;c__DisplayClass7.&lt;GetResults&gt;b__6()&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.&lt;&gt;c__DisplayClass7.&lt;GetResults&gt;b__5()&#xD;&#xA;   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)&#xD;&#xA;   at System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Load(MergeOption mergeOption)&#xD;&#xA;   at System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.DeferredLoad()&#xD;&#xA;   at System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)&#xD;&#xA;   at System.Data.Entity.Core.Objects.Internal.LazyLoadBehavior.&lt;&gt;c__DisplayClass7`2.&lt;GetInterceptorDelegate&gt;b__2(TProxy proxy, TItem item)&#xD;&#xA;   at System.Data.Entity.DynamicProxies.T_Position_E9832335CECBDFCC66D8D7D7EA0937CFF0C2AF733C7E5DFC5595CD00FAF511F0.get_t_positionidentifier()&#xD;&#xA;   at GeneratorBase.MVC.Models.T_JobAssignment.get_T_PositionLevel() in d:\GenApps\wsh_hr_v32\GeneratorBase.MVC\Models\T_JobAssignment.cs:line 74&#xD;&#xA;   at lambda_method(Closure , T_JobAssignment )&#xD;&#xA;   at System.Linq.Lookup`2.Create[TSource](IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector, IEqualityComparer`1 comparer)&#xD;&#xA;   at System.Linq.GroupedEnumerable`3.GetEnumerator()&#xD;&#xA;   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()&#xD;&#xA;   at GeneratorBase.MVC.Controllers.T_JobAssignmentController.FSearch(String currentFilter, String searchString, String FSFilter, String sortBy, String isAsc, Nullable`1 page, Nullable`1 itemsPerPage, String search, Nullable`1 IsExport, String t_employeejobassignment, String t_positionjobassignment, String t_jobassignmentreason, String t_jobassignmentunitx, String t_employeesupervisor, String t_jobassignmentmanageremployee, String T_EmployeePercentFrom, String T_EmployeePercentTo, String T_StartDateFrom, String T_StartDateTo, String T_EndDateFrom, String T_EndDateTo, String T_Primary, String T_Active, String T_EmployeeSalaryFrom, String T_EmployeeSalaryTo, String HostingEntity, String AssociatedType, String HostingEntityID, String viewtype, String SortOrder, String HideColumns, String GroupByColumn) in d:\GenApps\wsh_hr_v32\GeneratorBase.MVC\Controllers\T_JobAssignment\T_JobAssignmentController.cs:line 828&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)" user="Admin" time="2016-08-23T08:26:19.9861531Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, sdch, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken_L0lzc3VlVHJhY2tlcg2=zCDHczbA_eiilAvhUbuYlYVF1QMF6p6Es9JgxuTR4J2GGKFEfWKiUWndTb7PUp-flfxhAtsB8lKxCKWQGIVJd20RyAl5_a7NZ5-aqdZTn-41; IssueTracker=u-Wi7QxnzTfYwxWQQdU9vNt7-FuhbF3SKDiP89gRjfcforzCCoxjMkt8A4YkAYHlnPFEl0vXPqv0qEBR-Lf9q3cF7I6IuXHNfnscGaWoxMzMZ2uLGvqFPGkIhlBBhzc2c1zXtF_H6j-L9W_R_cSTZyeD7liDymzORSDuLKBPxhIdD5QqFbVD9upp148VthRSTR_sjUGRKD9vaWDR7-4-pjNdl33KThl6zJ5FfRANvz5duBxaIDIjRCqr6_b1OeJFbm3V5_klu6_Vi_QfbE4PdZFjzQ0jm_0qK7jNDKWpGcc_B2lvqxO5My4ib4A_uWikGUhLMfz-cHpIRd3mq-qwHYZULwhrfvCIXmB8WG5PVjKKjruVQFAmjrzpHRJdEQzN0QLAZ6MBD7xzMerbx6Mve9_jps-AbsyabyPmO3OSlrENH2g35eOg4V1bFLZeTwZTG-cHCYu7PQTtpkD-JtbZON7oJy-eMPeT1A3jW3f7wjWECHtQdOW3x0j0gUbiKTgPtMpa7TvG_mULP6DtNsLmYA; __RequestVerificationToken_L3dzaF9ocl92MzI1=cXo0lFntgdvbbjGuJ9B7xH-Dg9AQwSorDuEwDzFpr7GKdOYLiJiPYuIYrA70xmsU8m5-0EZKj2gRGD9AFfkkOJ7nqWZsl_lD1GHhI_whiKg1; wsh_hr_v32=nQTZdnKU5qBQHozEgtBzT9pEFXJKEj8kx-Exl6ImbAHjkPRRqVnyk8sOHf3QKcTDVc6qe7oTkd7C4BRHgcmg4JZwOAPyZ19UUB83MoQMlht-PoYASS2xWTHA_FSWWvFfoSCTwYVSVFDrLDauN9HVg-1nNRjFMoykQP8oMs274LsPfgDznCi22zq4ZS72ViYoOSVyl3CSuTHBW-MHczwSA8BBghWtRK7ZxzVjW5SOcLBKkzgIPJ91oaRCPuw4nYpk1gYGjJmCasmdBMxpttbaCW1s9QQCYbr7-ZMYckSAq3k_hSkgfppb5MKeRVA3jTg9XnW3_slmfVQvckDEM8pfF362N4p4xxD71J0elJQfF9RlC3Bt79g1fTEkQSMs8KUkhnL15MbcfHofc3zXQC7VXxY2efCRZBoWhCBHfHYAZ6Q1HC_lG8GBXFLV18dADQGiLNuOPBLaiy7_Odv-BSsCYkbR6g9L42JFaMJjVYEbJHTSjHkzntLv7TfildqAv613&#xD;&#xA;HTTP_HOST:mvc.turanto.com&#xD;&#xA;HTTP_REFERER:https://mvc.turanto.com/wsh_hr_v32/T_JobAssignment/FSearch?search=&amp;SortOrder=&amp;GroupByColumn=T_PositionLevel%2CT_EmployeePercent%2C&amp;HideColumns=null&amp;viewtype=IndexPartial&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, sdch, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: __RequestVerificationToken_L0lzc3VlVHJhY2tlcg2=zCDHczbA_eiilAvhUbuYlYVF1QMF6p6Es9JgxuTR4J2GGKFEfWKiUWndTb7PUp-flfxhAtsB8lKxCKWQGIVJd20RyAl5_a7NZ5-aqdZTn-41; IssueTracker=u-Wi7QxnzTfYwxWQQdU9vNt7-FuhbF3SKDiP89gRjfcforzCCoxjMkt8A4YkAYHlnPFEl0vXPqv0qEBR-Lf9q3cF7I6IuXHNfnscGaWoxMzMZ2uLGvqFPGkIhlBBhzc2c1zXtF_H6j-L9W_R_cSTZyeD7liDymzORSDuLKBPxhIdD5QqFbVD9upp148VthRSTR_sjUGRKD9vaWDR7-4-pjNdl33KThl6zJ5FfRANvz5duBxaIDIjRCqr6_b1OeJFbm3V5_klu6_Vi_QfbE4PdZFjzQ0jm_0qK7jNDKWpGcc_B2lvqxO5My4ib4A_uWikGUhLMfz-cHpIRd3mq-qwHYZULwhrfvCIXmB8WG5PVjKKjruVQFAmjrzpHRJdEQzN0QLAZ6MBD7xzMerbx6Mve9_jps-AbsyabyPmO3OSlrENH2g35eOg4V1bFLZeTwZTG-cHCYu7PQTtpkD-JtbZON7oJy-eMPeT1A3jW3f7wjWECHtQdOW3x0j0gUbiKTgPtMpa7TvG_mULP6DtNsLmYA; __RequestVerificationToken_L3dzaF9ocl92MzI1=cXo0lFntgdvbbjGuJ9B7xH-Dg9AQwSorDuEwDzFpr7GKdOYLiJiPYuIYrA70xmsU8m5-0EZKj2gRGD9AFfkkOJ7nqWZsl_lD1GHhI_whiKg1; wsh_hr_v32=nQTZdnKU5qBQHozEgtBzT9pEFXJKEj8kx-Exl6ImbAHjkPRRqVnyk8sOHf3QKcTDVc6qe7oTkd7C4BRHgcmg4JZwOAPyZ19UUB83MoQMlht-PoYASS2xWTHA_FSWWvFfoSCTwYVSVFDrLDauN9HVg-1nNRjFMoykQP8oMs274LsPfgDznCi22zq4ZS72ViYoOSVyl3CSuTHBW-MHczwSA8BBghWtRK7ZxzVjW5SOcLBKkzgIPJ91oaRCPuw4nYpk1gYGjJmCasmdBMxpttbaCW1s9QQCYbr7-ZMYckSAq3k_hSkgfppb5MKeRVA3jTg9XnW3_slmfVQvckDEM8pfF362N4p4xxD71J0elJQfF9RlC3Bt79g1fTEkQSMs8KUkhnL15MbcfHofc3zXQC7VXxY2efCRZBoWhCBHfHYAZ6Q1HC_lG8GBXFLV18dADQGiLNuOPBLaiy7_Odv-BSsCYkbR6g9L42JFaMJjVYEbJHTSjHkzntLv7TfildqAv613&#xD;&#xA;Host: mvc.turanto.com&#xD;&#xA;Referer: https://mvc.turanto.com/wsh_hr_v32/T_JobAssignment/FSearch?search=&amp;SortOrder=&amp;GroupByColumn=T_PositionLevel%2CT_EmployeePercent%2C&amp;HideColumns=null&amp;viewtype=IndexPartial&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/wsh_hr_v32" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v32\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="Admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="Admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="Admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/wsh_hr_v32/T_JobAssignment/FSearch" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v32\GeneratorBase.MVC\T_JobAssignment\FSearch" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="search=&amp;SortOrder=&amp;GroupByColumn=T_PositionLevel%2CT_EmployeePercent%2C&amp;HideColumns=null&amp;viewtype=IndexPartial" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="50937" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/wsh_hr_v32/T_JobAssignment/FSearch" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/wsh_hr_v32/T_JobAssignment/FSearch" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, sdch, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken_L0lzc3VlVHJhY2tlcg2=zCDHczbA_eiilAvhUbuYlYVF1QMF6p6Es9JgxuTR4J2GGKFEfWKiUWndTb7PUp-flfxhAtsB8lKxCKWQGIVJd20RyAl5_a7NZ5-aqdZTn-41; IssueTracker=u-Wi7QxnzTfYwxWQQdU9vNt7-FuhbF3SKDiP89gRjfcforzCCoxjMkt8A4YkAYHlnPFEl0vXPqv0qEBR-Lf9q3cF7I6IuXHNfnscGaWoxMzMZ2uLGvqFPGkIhlBBhzc2c1zXtF_H6j-L9W_R_cSTZyeD7liDymzORSDuLKBPxhIdD5QqFbVD9upp148VthRSTR_sjUGRKD9vaWDR7-4-pjNdl33KThl6zJ5FfRANvz5duBxaIDIjRCqr6_b1OeJFbm3V5_klu6_Vi_QfbE4PdZFjzQ0jm_0qK7jNDKWpGcc_B2lvqxO5My4ib4A_uWikGUhLMfz-cHpIRd3mq-qwHYZULwhrfvCIXmB8WG5PVjKKjruVQFAmjrzpHRJdEQzN0QLAZ6MBD7xzMerbx6Mve9_jps-AbsyabyPmO3OSlrENH2g35eOg4V1bFLZeTwZTG-cHCYu7PQTtpkD-JtbZON7oJy-eMPeT1A3jW3f7wjWECHtQdOW3x0j0gUbiKTgPtMpa7TvG_mULP6DtNsLmYA; __RequestVerificationToken_L3dzaF9ocl92MzI1=cXo0lFntgdvbbjGuJ9B7xH-Dg9AQwSorDuEwDzFpr7GKdOYLiJiPYuIYrA70xmsU8m5-0EZKj2gRGD9AFfkkOJ7nqWZsl_lD1GHhI_whiKg1; wsh_hr_v32=nQTZdnKU5qBQHozEgtBzT9pEFXJKEj8kx-Exl6ImbAHjkPRRqVnyk8sOHf3QKcTDVc6qe7oTkd7C4BRHgcmg4JZwOAPyZ19UUB83MoQMlht-PoYASS2xWTHA_FSWWvFfoSCTwYVSVFDrLDauN9HVg-1nNRjFMoykQP8oMs274LsPfgDznCi22zq4ZS72ViYoOSVyl3CSuTHBW-MHczwSA8BBghWtRK7ZxzVjW5SOcLBKkzgIPJ91oaRCPuw4nYpk1gYGjJmCasmdBMxpttbaCW1s9QQCYbr7-ZMYckSAq3k_hSkgfppb5MKeRVA3jTg9XnW3_slmfVQvckDEM8pfF362N4p4xxD71J0elJQfF9RlC3Bt79g1fTEkQSMs8KUkhnL15MbcfHofc3zXQC7VXxY2efCRZBoWhCBHfHYAZ6Q1HC_lG8GBXFLV18dADQGiLNuOPBLaiy7_Odv-BSsCYkbR6g9L42JFaMJjVYEbJHTSjHkzntLv7TfildqAv613" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://mvc.turanto.com/wsh_hr_v32/T_JobAssignment/FSearch?search=&amp;SortOrder=&amp;GroupByColumn=T_PositionLevel%2CT_EmployeePercent%2C&amp;HideColumns=null&amp;viewtype=IndexPartial" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="search">
+      <value string="" />
+    </item>
+    <item name="SortOrder">
+      <value string="" />
+    </item>
+    <item name="GroupByColumn">
+      <value string="T_PositionLevel,T_EmployeePercent," />
+    </item>
+    <item name="HideColumns">
+      <value string="null" />
+    </item>
+    <item name="viewtype">
+      <value string="IndexPartial" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name="__RequestVerificationToken_L0lzc3VlVHJhY2tlcg2">
+      <value string="zCDHczbA_eiilAvhUbuYlYVF1QMF6p6Es9JgxuTR4J2GGKFEfWKiUWndTb7PUp-flfxhAtsB8lKxCKWQGIVJd20RyAl5_a7NZ5-aqdZTn-41" />
+    </item>
+    <item name="IssueTracker">
+      <value string="u-Wi7QxnzTfYwxWQQdU9vNt7-FuhbF3SKDiP89gRjfcforzCCoxjMkt8A4YkAYHlnPFEl0vXPqv0qEBR-Lf9q3cF7I6IuXHNfnscGaWoxMzMZ2uLGvqFPGkIhlBBhzc2c1zXtF_H6j-L9W_R_cSTZyeD7liDymzORSDuLKBPxhIdD5QqFbVD9upp148VthRSTR_sjUGRKD9vaWDR7-4-pjNdl33KThl6zJ5FfRANvz5duBxaIDIjRCqr6_b1OeJFbm3V5_klu6_Vi_QfbE4PdZFjzQ0jm_0qK7jNDKWpGcc_B2lvqxO5My4ib4A_uWikGUhLMfz-cHpIRd3mq-qwHYZULwhrfvCIXmB8WG5PVjKKjruVQFAmjrzpHRJdEQzN0QLAZ6MBD7xzMerbx6Mve9_jps-AbsyabyPmO3OSlrENH2g35eOg4V1bFLZeTwZTG-cHCYu7PQTtpkD-JtbZON7oJy-eMPeT1A3jW3f7wjWECHtQdOW3x0j0gUbiKTgPtMpa7TvG_mULP6DtNsLmYA" />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MzI1">
+      <value string="cXo0lFntgdvbbjGuJ9B7xH-Dg9AQwSorDuEwDzFpr7GKdOYLiJiPYuIYrA70xmsU8m5-0EZKj2gRGD9AFfkkOJ7nqWZsl_lD1GHhI_whiKg1" />
+    </item>
+    <item name="wsh_hr_v32">
+      <value string="nQTZdnKU5qBQHozEgtBzT9pEFXJKEj8kx-Exl6ImbAHjkPRRqVnyk8sOHf3QKcTDVc6qe7oTkd7C4BRHgcmg4JZwOAPyZ19UUB83MoQMlht-PoYASS2xWTHA_FSWWvFfoSCTwYVSVFDrLDauN9HVg-1nNRjFMoykQP8oMs274LsPfgDznCi22zq4ZS72ViYoOSVyl3CSuTHBW-MHczwSA8BBghWtRK7ZxzVjW5SOcLBKkzgIPJ91oaRCPuw4nYpk1gYGjJmCasmdBMxpttbaCW1s9QQCYbr7-ZMYckSAq3k_hSkgfppb5MKeRVA3jTg9XnW3_slmfVQvckDEM8pfF362N4p4xxD71J0elJQfF9RlC3Bt79g1fTEkQSMs8KUkhnL15MbcfHofc3zXQC7VXxY2efCRZBoWhCBHfHYAZ6Q1HC_lG8GBXFLV18dADQGiLNuOPBLaiy7_Odv-BSsCYkbR6g9L42JFaMJjVYEbJHTSjHkzntLv7TfildqAv613" />
+    </item>
+  </cookies>
+</error>

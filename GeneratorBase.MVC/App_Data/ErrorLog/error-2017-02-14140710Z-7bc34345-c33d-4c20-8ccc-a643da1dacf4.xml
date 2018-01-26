@@ -1,0 +1,370 @@
+﻿<error errorId="7bc34345-c33d-4c20-8ccc-a643da1dacf4" application="/LM/W3SVC/1/ROOT/HOPS_HR_V9" host="TURANTOMVC" type="System.Data.SqlClient.SqlException" message="The INSERT statement conflicted with the FOREIGN KEY constraint &quot;FK_tbl_ServiceRecord_tbl_Facility_EmploymentRecordHiredAtFacility&quot;. The conflict occurred in database &quot;D:\GENAPPS\HOPS_HR_V9\GENERATORBASE.MVC\APP_DATA\DATABASEMVC.MDF&quot;, table &quot;dbo.tbl_Facility&quot;, column 'Id'.&#xD;&#xA;The statement has been terminated." source=".Net SqlClient Data Provider" detail="System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---&gt; System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---&gt; System.Data.SqlClient.SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint &quot;FK_tbl_ServiceRecord_tbl_Facility_EmploymentRecordHiredAtFacility&quot;. The conflict occurred in database &quot;D:\GENAPPS\HOPS_HR_V9\GENERATORBASE.MVC\APP_DATA\DATABASEMVC.MDF&quot;, table &quot;dbo.tbl_Facility&quot;, column 'Id'.&#xD;&#xA;The statement has been terminated.&#xD;&#xA;   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)&#xD;&#xA;   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean&amp; dataReady)&#xD;&#xA;   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()&#xD;&#xA;   at System.Data.SqlClient.SqlDataReader.get_MetaData()&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task&amp; task, Boolean asyncWrite, SqlDataReader ds)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task&amp; task, Boolean asyncWrite)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)&#xD;&#xA;   at Glimpse.Ado.AlternateType.GlimpseDbCommand.ExecuteDbDataReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.&lt;Reader&gt;b__c(DbCommand t, DbCommandInterceptionContext`1 c)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)&#xD;&#xA;   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)&#xD;&#xA;   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()&#xD;&#xA;   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.&lt;Update&gt;b__2(UpdateTranslator ut)&#xD;&#xA;   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)&#xD;&#xA;   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.&lt;SaveChangesToStore&gt;b__35()&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.&lt;&gt;c__DisplayClass2a.&lt;SaveChangesInternal&gt;b__27()&#xD;&#xA;   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.SaveChanges()&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.SaveChanges()&#xD;&#xA;   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()&#xD;&#xA;   at System.Data.Entity.DbContext.SaveChanges()&#xD;&#xA;   at GeneratorBase.MVC.ApplicationContext.SaveChanges() in d:\GenApps\HOPS_HR_V9\GeneratorBase.MVC\Models\ApplicationContext.cs:line 172&#xD;&#xA;   at GeneratorBase.MVC.Controllers.T_EmployeeController.Create(T_Employee t_employee, String UrlReferrer, Nullable`1 IsDDAdd) in d:\GenApps\HOPS_HR_V9\GeneratorBase.MVC\Controllers\T_Employee\T_EmployeeCRUDController.cs:line 474&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)" user="rupali.pendse@etelic.com" time="2017-02-14T14:07:10.1609583Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:7124&#xD;&#xA;HTTP_CONTENT_TYPE:multipart/form-data; boundary=----WebKitFormBoundarybNAEqAL4mjG0nHDG&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:paginationundefinedT_Department=2; paginationundefinedT_CostCenter=2; __RequestVerificationToken_L0hPUFNfSFJfVjk1=wnHEv8L77iKQtHbTIhwr3bFvq0gthAut6Kav6sluvomhX6-M753pNuCTRkMB4wRjX6zchtdIanXbO_pYrev_MGTKvkYUuRX_CQLdYqbY8uY1; ASP.NET_SessionId=40lrz1lqo1mmlv2jqhxxooq1; HOPS_HR_V9CurrentRole=HR Manager,; HOPS_HR_V9=N0qod2QH__lytiCAJRwHX_JhwTm9i46ZijKbPk1od7YYSS175JIssKIcj04FSyGyLnMgDV9zKQ38FDUIDpfSHCbELQjXpUrQ4pjBoFuIerd3d2qmYFscm9pn3ea1t3ZqBo3EaTQi0AbhlNLojXPVQz5tP6Qpy_OUs8PwU6yVI841OWTVi28OSon83Zr6tu8tTfxwrvBN-9s4jLVn9fDfRrHVNdNSvcyEUGIqYrue5KjcFQos3tvn9jQ2i1SboUsz_khee0JZ5-x_83x-7gkkNntLyNaF6Mf9LiHpkxEmNJ4oNPvAKMqUo_IKBO7f7ri2ZKDKXWczuaNGqajrVBhSYY6BfB1TqlxnTfEAYkBTD-STWuQB9zUCvicSLETHKwjLX3D49tSXPSwhYu8VYFgiXPEZVq_c6ibAOFrE6bM7raKW0pe_4t7NUhvbmhPJXw48P4eRc4pg1skZix43lCvEVijbBlXUdglWurES9SWvP7PHMxYhxGS8s7LpNmoBclQYqPK9qI4v8Dt1mIrpCKD8YAfRhRHm83l61wamrNkOJes&#xD;&#xA;HTTP_HOST:apps.turanto.com&#xD;&#xA;HTTP_REFERER:https://apps.turanto.com/HOPS_HR_V9/T_Employee/Create?UrlReferrer=https:%2F%2Fapps.turanto.com%2FHOPS_HR_V9%2FT_Employee&amp;viewtype=IndexPartial&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:https://apps.turanto.com&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Content-Length: 7124&#xD;&#xA;Content-Type: multipart/form-data; boundary=----WebKitFormBoundarybNAEqAL4mjG0nHDG&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: paginationundefinedT_Department=2; paginationundefinedT_CostCenter=2; __RequestVerificationToken_L0hPUFNfSFJfVjk1=wnHEv8L77iKQtHbTIhwr3bFvq0gthAut6Kav6sluvomhX6-M753pNuCTRkMB4wRjX6zchtdIanXbO_pYrev_MGTKvkYUuRX_CQLdYqbY8uY1; ASP.NET_SessionId=40lrz1lqo1mmlv2jqhxxooq1; HOPS_HR_V9CurrentRole=HR Manager,; HOPS_HR_V9=N0qod2QH__lytiCAJRwHX_JhwTm9i46ZijKbPk1od7YYSS175JIssKIcj04FSyGyLnMgDV9zKQ38FDUIDpfSHCbELQjXpUrQ4pjBoFuIerd3d2qmYFscm9pn3ea1t3ZqBo3EaTQi0AbhlNLojXPVQz5tP6Qpy_OUs8PwU6yVI841OWTVi28OSon83Zr6tu8tTfxwrvBN-9s4jLVn9fDfRrHVNdNSvcyEUGIqYrue5KjcFQos3tvn9jQ2i1SboUsz_khee0JZ5-x_83x-7gkkNntLyNaF6Mf9LiHpkxEmNJ4oNPvAKMqUo_IKBO7f7ri2ZKDKXWczuaNGqajrVBhSYY6BfB1TqlxnTfEAYkBTD-STWuQB9zUCvicSLETHKwjLX3D49tSXPSwhYu8VYFgiXPEZVq_c6ibAOFrE6bM7raKW0pe_4t7NUhvbmhPJXw48P4eRc4pg1skZix43lCvEVijbBlXUdglWurES9SWvP7PHMxYhxGS8s7LpNmoBclQYqPK9qI4v8Dt1mIrpCKD8YAfRhRHm83l61wamrNkOJes&#xD;&#xA;Host: apps.turanto.com&#xD;&#xA;Referer: https://apps.turanto.com/HOPS_HR_V9/T_Employee/Create?UrlReferrer=https:%2F%2Fapps.turanto.com%2FHOPS_HR_V9%2FT_Employee&amp;viewtype=IndexPartial&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36&#xD;&#xA;Origin: https://apps.turanto.com&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/HOPS_HR_V9" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\HOPS_HR_V9\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="rupali.pendse@etelic.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="rupali.pendse@etelic.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="7124" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="multipart/form-data; boundary=----WebKitFormBoundarybNAEqAL4mjG0nHDG" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/HOPS_HR_V9/T_Employee/Create" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\HOPS_HR_V9\GeneratorBase.MVC\T_Employee\Create" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="UrlReferrer=https%3A%2F%2Fapps.turanto.com%2FHOPS_HR_V9%2FT_Employee" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="173.67.241.208" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="173.67.241.208" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="51579" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/HOPS_HR_V9/T_Employee/Create" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/HOPS_HR_V9/T_Employee/Create" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="7124" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="multipart/form-data; boundary=----WebKitFormBoundarybNAEqAL4mjG0nHDG" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="paginationundefinedT_Department=2; paginationundefinedT_CostCenter=2; __RequestVerificationToken_L0hPUFNfSFJfVjk1=wnHEv8L77iKQtHbTIhwr3bFvq0gthAut6Kav6sluvomhX6-M753pNuCTRkMB4wRjX6zchtdIanXbO_pYrev_MGTKvkYUuRX_CQLdYqbY8uY1; ASP.NET_SessionId=40lrz1lqo1mmlv2jqhxxooq1; HOPS_HR_V9CurrentRole=HR Manager,; HOPS_HR_V9=N0qod2QH__lytiCAJRwHX_JhwTm9i46ZijKbPk1od7YYSS175JIssKIcj04FSyGyLnMgDV9zKQ38FDUIDpfSHCbELQjXpUrQ4pjBoFuIerd3d2qmYFscm9pn3ea1t3ZqBo3EaTQi0AbhlNLojXPVQz5tP6Qpy_OUs8PwU6yVI841OWTVi28OSon83Zr6tu8tTfxwrvBN-9s4jLVn9fDfRrHVNdNSvcyEUGIqYrue5KjcFQos3tvn9jQ2i1SboUsz_khee0JZ5-x_83x-7gkkNntLyNaF6Mf9LiHpkxEmNJ4oNPvAKMqUo_IKBO7f7ri2ZKDKXWczuaNGqajrVBhSYY6BfB1TqlxnTfEAYkBTD-STWuQB9zUCvicSLETHKwjLX3D49tSXPSwhYu8VYFgiXPEZVq_c6ibAOFrE6bM7raKW0pe_4t7NUhvbmhPJXw48P4eRc4pg1skZix43lCvEVijbBlXUdglWurES9SWvP7PHMxYhxGS8s7LpNmoBclQYqPK9qI4v8Dt1mIrpCKD8YAfRhRHm83l61wamrNkOJes" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://apps.turanto.com/HOPS_HR_V9/T_Employee/Create?UrlReferrer=https:%2F%2Fapps.turanto.com%2FHOPS_HR_V9%2FT_Employee&amp;viewtype=IndexPartial" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="https://apps.turanto.com" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="UrlReferrer">
+      <value string="https://apps.turanto.com/HOPS_HR_V9/T_Employee" />
+    </item>
+  </queryString>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="I_IGIgxgL_fCuU9zDlxieP8xhZsVz9kup14As6GmdFqRHqMWoHqWTUyMhOCkZdyumGdrocrOStyopRRorl9YVKIpf4GNC7SkEkxrum_F-v0EwiEkDlKCRrWDNPj74iaCCwoaAMctXgD3ANEaSKZVWQ2" />
+    </item>
+    <item name="T_EmployeeAtFacilityID">
+      <value string="14" />
+    </item>
+    <item name="T_PID">
+      <value string="9999" />
+    </item>
+    <item name="T_SSN">
+      <value string="" />
+    </item>
+    <item name="T_DateOfBirth">
+      <value string="01/01/1975" />
+    </item>
+    <item name="T_EmployeeStatusID">
+      <value string="9" />
+    </item>
+    <item name="T_SAMAccount">
+      <value string="" />
+    </item>
+    <item name="T_LastName">
+      <value string="Salary" />
+    </item>
+    <item name="T_FirstName">
+      <value string="First" />
+    </item>
+    <item name="T_MiddleName">
+      <value string="" />
+    </item>
+    <item name="T_Suffix">
+      <value string="" />
+    </item>
+    <item name="T_WorkEmail">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_EmploymentRecordEmployeeTypeID">
+      <value string="3" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_IsCurrent">
+      <value string="True" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_EmploymentRecordHiredAtFacilityID">
+      <value string="5" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_HireDate">
+      <value string="01/01/2016" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_TerminationDate">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_EmployeeTerminationReasonID">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_EmployeeRecordTerminationFacilityID">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_EligibleForRehire">
+      <value string="false" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_EmployeePercent">
+      <value string="100" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_StartDate">
+      <value string="01/01/2016" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_Primary">
+      <value string="True" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_Active">
+      <value string="false" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_PositionJobAssignmentID">
+      <value string="640" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_PositionLevel">
+      <value string="E EMPLOYEE " />
+    </item>
+    <item name="t_currentemployeejobassignment.T_RoleCode">
+      <value string="19011 ADMINISTRATIVE &amp; OFFICE SPECIALIST I" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_ClassCode">
+      <value string="11023 OFFICE SERVICES AIDE" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_JobAssignmentReasonID">
+      <value string="1" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_JobAssignmentUnitXID">
+      <value string="248" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_CostCenter">
+      <value string="32 ADMINISTRATIVE SERVICES" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_JobAssignmentManagerEmployeeID">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_EmployeeSupervisorID">
+      <value string="" />
+    </item>
+    <item name="T_StateHireDate">
+      <value string="01/05/2011" />
+    </item>
+    <item name="T_PriorServiceinmonths">
+      <value string="0" />
+    </item>
+    <item name="T_CurrentServiceinmonths">
+      <value string="0" />
+    </item>
+    <item name="T_AdjustedHireDate">
+      <value string="" />
+    </item>
+    <item name="T_EmployeeGenderID">
+      <value string="" />
+    </item>
+    <item name="T_EmployeeRaceID">
+      <value string="" />
+    </item>
+    <item name="T_EmployeeVeteranStatusID">
+      <value string="" />
+    </item>
+    <item name="t_employeeaddress.T_AddressLine1">
+      <value string="" />
+    </item>
+    <item name="t_employeeaddress.T_AddressLine2">
+      <value string="" />
+    </item>
+    <item name="t_employeeaddress.T_ZipCode">
+      <value string="" />
+    </item>
+    <item name="t_employeeaddress.T_AddressCountryID">
+      <value string="" />
+    </item>
+    <item name="t_employeeaddress.T_AddressStateID">
+      <value string="" />
+    </item>
+    <item name="t_employeeaddress.T_AddressCityID">
+      <value string="" />
+    </item>
+    <item name="T_PersonalEmail">
+      <value string="" />
+    </item>
+    <item name="T_MobilePhone">
+      <value string="" />
+    </item>
+    <item name="T_HomePhone">
+      <value string="" />
+    </item>
+    <item name="T_EmployeeUserLoginID">
+      <value string="" />
+    </item>
+    <item name="T_EmergencyContactName">
+      <value string="" />
+    </item>
+    <item name="T_EmergencyContactRelationship">
+      <value string="" />
+    </item>
+    <item name="T_EmergencyMobilePhone">
+      <value string="" />
+    </item>
+    <item name="T_EmergencyWorkPhone">
+      <value string="" />
+    </item>
+    <item name="T_BadgeNumber">
+      <value string="" />
+    </item>
+    <item name="T_EffectiveDateTime">
+      <value string="" />
+    </item>
+    <item name="hdncommand">
+      <value string="save" />
+    </item>
+  </form>
+  <cookies>
+    <item name="paginationundefinedT_Department">
+      <value string="2" />
+    </item>
+    <item name="paginationundefinedT_CostCenter">
+      <value string="2" />
+    </item>
+    <item name="__RequestVerificationToken_L0hPUFNfSFJfVjk1">
+      <value string="wnHEv8L77iKQtHbTIhwr3bFvq0gthAut6Kav6sluvomhX6-M753pNuCTRkMB4wRjX6zchtdIanXbO_pYrev_MGTKvkYUuRX_CQLdYqbY8uY1" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="40lrz1lqo1mmlv2jqhxxooq1" />
+    </item>
+    <item name="HOPS_HR_V9CurrentRole">
+      <value string="HR Manager," />
+    </item>
+    <item name="HOPS_HR_V9">
+      <value string="N0qod2QH__lytiCAJRwHX_JhwTm9i46ZijKbPk1od7YYSS175JIssKIcj04FSyGyLnMgDV9zKQ38FDUIDpfSHCbELQjXpUrQ4pjBoFuIerd3d2qmYFscm9pn3ea1t3ZqBo3EaTQi0AbhlNLojXPVQz5tP6Qpy_OUs8PwU6yVI841OWTVi28OSon83Zr6tu8tTfxwrvBN-9s4jLVn9fDfRrHVNdNSvcyEUGIqYrue5KjcFQos3tvn9jQ2i1SboUsz_khee0JZ5-x_83x-7gkkNntLyNaF6Mf9LiHpkxEmNJ4oNPvAKMqUo_IKBO7f7ri2ZKDKXWczuaNGqajrVBhSYY6BfB1TqlxnTfEAYkBTD-STWuQB9zUCvicSLETHKwjLX3D49tSXPSwhYu8VYFgiXPEZVq_c6ibAOFrE6bM7raKW0pe_4t7NUhvbmhPJXw48P4eRc4pg1skZix43lCvEVijbBlXUdglWurES9SWvP7PHMxYhxGS8s7LpNmoBclQYqPK9qI4v8Dt1mIrpCKD8YAfRhRHm83l61wamrNkOJes" />
+    </item>
+  </cookies>
+</error>

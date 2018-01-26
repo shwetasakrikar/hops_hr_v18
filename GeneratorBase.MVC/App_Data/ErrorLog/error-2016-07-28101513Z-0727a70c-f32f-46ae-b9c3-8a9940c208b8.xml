@@ -1,0 +1,177 @@
+﻿<error errorId="0727a70c-f32f-46ae-b9c3-8a9940c208b8" application="/LM/W3SVC/1/ROOT/wsh_hr_v26" host="TURANTOMVC" type="System.NullReferenceException" message="Object reference not set to an instance of an object." source="GeneratorBase.MVC" detail="System.NullReferenceException: Object reference not set to an instance of an object.&#xD;&#xA;   at GeneratorBase.MVC.Controllers.T_EmployeeController.Dispose(Boolean disposing) in d:\GenApps\wsh_hr_v26\GeneratorBase.MVC\Controllers\T_Employee\T_EmployeeCRUDController.cs:line 1011&#xD;&#xA;   at System.Web.Mvc.Controller.Dispose()&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.ReleaseController(IController controller)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="Admin" time="2016-07-28T10:15:13.2635595Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.5&#xD;&#xA;HTTP_COOKIE:pageSizeAdminApplicationFeedback=20; paginationAdminApplicationFeedback=2; pageSizeAdminT_City=100; paginationAdminT_ClassCode=10; __RequestVerificationToken_L3dzaF9ocl92MjY1=drW44xjX0bFnFjxu1-idhF4M8xfP8Tb_vRZ8HVNMlxcgYi3OHLWMpeZyqzeJeU6_sLg2m3UQvoxXU31YCV5q3kCSK4DHsKBEkQBd_HHx-LY1; wsh_hr_v21=z6ErYCsabpB3GuIqcS1PZGOvODa9XlDl0G2GeP_O5LXBkk_ZgF-nxWne1tttlzJQ6ERzuqzr_TPKhkyGZJv3FMJJSYMWTSzMGy4mk3H4akhS5dOve8h2r8U9VOQgp4xa-TIPDmuktkWZAfM3dbCOXMa2GIXKyhIX0OykMuC1ct1pD5LSSs04hnH-VbN4gRZCkkAxeFGyxumLMJAiCmLjfXoLnaBnErPFH838TL6lO2SuT-enArj03o790Vvq_SdmdtVhhT2ujykIQ_y-6En-_qsychHNdjXBtvtl5ghvcw9U6ed9lzBMKgbmPM0Qwfl4dDhOkokOLBMgd_CTEp5sSbAIJLE4S-STo2ah41RW8hd_xYvuwRmdjDt6OFbHoRQcPHo1fzPouewWkYuZzdxAuZxFz78JIkw-c8Y047UyKVb6v64inOdmFWNplx0MuqaUJVHiQNQIDZL23GqFhd5qUYSinhNCfgLDT5T6XtmV3Ck5BGzwLKWOrlTeAO7kw6Gv&#xD;&#xA;HTTP_HOST:mvc.turanto.com&#xD;&#xA;HTTP_REFERER:https://mvc.turanto.com/wsh_hr_v26/T_Employee/ImportData&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.5&#xD;&#xA;Cookie: pageSizeAdminApplicationFeedback=20; paginationAdminApplicationFeedback=2; pageSizeAdminT_City=100; paginationAdminT_ClassCode=10; __RequestVerificationToken_L3dzaF9ocl92MjY1=drW44xjX0bFnFjxu1-idhF4M8xfP8Tb_vRZ8HVNMlxcgYi3OHLWMpeZyqzeJeU6_sLg2m3UQvoxXU31YCV5q3kCSK4DHsKBEkQBd_HHx-LY1; wsh_hr_v21=z6ErYCsabpB3GuIqcS1PZGOvODa9XlDl0G2GeP_O5LXBkk_ZgF-nxWne1tttlzJQ6ERzuqzr_TPKhkyGZJv3FMJJSYMWTSzMGy4mk3H4akhS5dOve8h2r8U9VOQgp4xa-TIPDmuktkWZAfM3dbCOXMa2GIXKyhIX0OykMuC1ct1pD5LSSs04hnH-VbN4gRZCkkAxeFGyxumLMJAiCmLjfXoLnaBnErPFH838TL6lO2SuT-enArj03o790Vvq_SdmdtVhhT2ujykIQ_y-6En-_qsychHNdjXBtvtl5ghvcw9U6ed9lzBMKgbmPM0Qwfl4dDhOkokOLBMgd_CTEp5sSbAIJLE4S-STo2ah41RW8hd_xYvuwRmdjDt6OFbHoRQcPHo1fzPouewWkYuZzdxAuZxFz78JIkw-c8Y047UyKVb6v64inOdmFWNplx0MuqaUJVHiQNQIDZL23GqFhd5qUYSinhNCfgLDT5T6XtmV3Ck5BGzwLKWOrlTeAO7kw6Gv&#xD;&#xA;Host: mvc.turanto.com&#xD;&#xA;Referer: https://mvc.turanto.com/wsh_hr_v26/T_Employee/ImportData&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/wsh_hr_v26" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v26\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="Admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="Admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="Admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/wsh_hr_v26/T_Employee/ImportData" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v26\GeneratorBase.MVC\T_Employee\ImportData" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="71.62.53.175" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="71.62.53.175" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="52100" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/wsh_hr_v26/T_Employee/ImportData" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/wsh_hr_v26/T_Employee/ImportData" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.5" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="pageSizeAdminApplicationFeedback=20; paginationAdminApplicationFeedback=2; pageSizeAdminT_City=100; paginationAdminT_ClassCode=10; __RequestVerificationToken_L3dzaF9ocl92MjY1=drW44xjX0bFnFjxu1-idhF4M8xfP8Tb_vRZ8HVNMlxcgYi3OHLWMpeZyqzeJeU6_sLg2m3UQvoxXU31YCV5q3kCSK4DHsKBEkQBd_HHx-LY1; wsh_hr_v21=z6ErYCsabpB3GuIqcS1PZGOvODa9XlDl0G2GeP_O5LXBkk_ZgF-nxWne1tttlzJQ6ERzuqzr_TPKhkyGZJv3FMJJSYMWTSzMGy4mk3H4akhS5dOve8h2r8U9VOQgp4xa-TIPDmuktkWZAfM3dbCOXMa2GIXKyhIX0OykMuC1ct1pD5LSSs04hnH-VbN4gRZCkkAxeFGyxumLMJAiCmLjfXoLnaBnErPFH838TL6lO2SuT-enArj03o790Vvq_SdmdtVhhT2ujykIQ_y-6En-_qsychHNdjXBtvtl5ghvcw9U6ed9lzBMKgbmPM0Qwfl4dDhOkokOLBMgd_CTEp5sSbAIJLE4S-STo2ah41RW8hd_xYvuwRmdjDt6OFbHoRQcPHo1fzPouewWkYuZzdxAuZxFz78JIkw-c8Y047UyKVb6v64inOdmFWNplx0MuqaUJVHiQNQIDZL23GqFhd5qUYSinhNCfgLDT5T6XtmV3Ck5BGzwLKWOrlTeAO7kw6Gv" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://mvc.turanto.com/wsh_hr_v26/T_Employee/ImportData" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="pageSizeAdminApplicationFeedback">
+      <value string="20" />
+    </item>
+    <item name="paginationAdminApplicationFeedback">
+      <value string="2" />
+    </item>
+    <item name="pageSizeAdminT_City">
+      <value string="100" />
+    </item>
+    <item name="paginationAdminT_ClassCode">
+      <value string="10" />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MjY1">
+      <value string="drW44xjX0bFnFjxu1-idhF4M8xfP8Tb_vRZ8HVNMlxcgYi3OHLWMpeZyqzeJeU6_sLg2m3UQvoxXU31YCV5q3kCSK4DHsKBEkQBd_HHx-LY1" />
+    </item>
+    <item name="wsh_hr_v21">
+      <value string="z6ErYCsabpB3GuIqcS1PZGOvODa9XlDl0G2GeP_O5LXBkk_ZgF-nxWne1tttlzJQ6ERzuqzr_TPKhkyGZJv3FMJJSYMWTSzMGy4mk3H4akhS5dOve8h2r8U9VOQgp4xa-TIPDmuktkWZAfM3dbCOXMa2GIXKyhIX0OykMuC1ct1pD5LSSs04hnH-VbN4gRZCkkAxeFGyxumLMJAiCmLjfXoLnaBnErPFH838TL6lO2SuT-enArj03o790Vvq_SdmdtVhhT2ujykIQ_y-6En-_qsychHNdjXBtvtl5ghvcw9U6ed9lzBMKgbmPM0Qwfl4dDhOkokOLBMgd_CTEp5sSbAIJLE4S-STo2ah41RW8hd_xYvuwRmdjDt6OFbHoRQcPHo1fzPouewWkYuZzdxAuZxFz78JIkw-c8Y047UyKVb6v64inOdmFWNplx0MuqaUJVHiQNQIDZL23GqFhd5qUYSinhNCfgLDT5T6XtmV3Ck5BGzwLKWOrlTeAO7kw6Gv" />
+    </item>
+  </cookies>
+</error>

@@ -1,0 +1,2697 @@
+﻿@model GeneratorBase.MVC.Models.T_Employee
+@using PagedList;
+@{
+    ViewBag.Title = "Edit Employee";
+	var EditPermission = User.CanEditItem("T_Employee", Model, User);
+	var DeletePermission = User.CanDeleteItem("T_Employee", Model, User);
+}
+@functions {
+    object getHtmlAttributes(string Property)
+    {
+		if(Property=="T_PriorServiceinmonths")
+		 return new { @class = "form-control", @readonly = "readonly" };
+		if(Property=="T_CurrentServiceinmonths")
+		 return new { @class = "form-control", @readonly = "readonly" };
+        if (User.CanEdit("T_Employee", Property))
+        {
+            return new { @class = "form-control" };
+        } return new { @class = "form-control", @readonly = "readonly" };
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_EmployeeIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_EmployeeIsHiddenRule);
+    }
+}
+@using (Html.BeginForm("EditWizard", "T_Employee", new { UrlReferrer = Convert.ToString(ViewData["T_EmployeeParentUrl"]) }, FormMethod.Post, new { enctype = "multipart/form-data",@id="frmT_Employee" })) 
+{
+	@Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+    @Html.HiddenFor(model => model.Id)
+	@Html.HiddenFor(model => model.ConcurrencyKey)
+	@*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+    <input type="hidden" id="ErrMsg" />
+    <div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+    </div>
+    <div id="divDisplayBRmsgMandatory" style="display:none;">
+    </div>
+    <div id="divDisplayLockRecord" style="display:none;">
+    </div>
+    <div id="divDisplayBRReadOnly" style="display:none;">
+    </div>
+	<div id="divDisplayCodeFragment" style="display:none;">
+	</div>
+			if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+    {
+        <div class="alert alert-danger" role="alert">
+            <a class="close" data-dismiss="alert">&times;</a>
+            @foreach (var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+            {
+                <p>@modelError.ErrorMessage</p>
+            }
+        </div>
+    }
+		<div class="row">
+        <br />
+        <div id=wizard>
+			<ol>
+		<li>Initial Information</li>
+		<li>Current Service Record</li>
+		<li>Other Employee Details</li>
+		<li>Contact</li>
+		<li>Emergency Contact</li>
+		<li>Badge Information</li>
+            @if ( User.CanEdit("T_Licenses"))
+                {
+				<li>Licenses</li>
+				}
+                   @if ( User.CanEdit("T_EmployeeInjury"))
+                {
+				<li>Injury</li>
+				}
+                   @if ( User.CanEdit("T_BackgroundCheck"))
+                {
+				<li>Background Check </li>
+				}
+                   @if ( User.CanEdit("T_Comment"))
+                {
+				<li>Employee Comments</li>
+				}
+                   @if ( User.CanEdit("T_LeaveProfile"))
+                {
+				<li>Leave </li>
+				}
+                   @if ( User.CanEdit("T_Education"))
+                {
+				<li>Education</li>
+				}
+                   @if ( User.CanEdit("T_Accommodation"))
+                {
+				<li>Accommodation</li>
+				}
+                   @if ( User.CanEdit("T_ServiceRecord"))
+                {
+				<li>Service Record</li>
+				}
+                   @if ( User.CanEdit("T_JobAssignment"))
+                {
+				<li>Job Assignment</li>
+				}
+                   @if ( User.CanEdit("T_PayDetails"))
+                {
+				<li>Salary And Bonus</li>
+				}
+                   @if ( User.CanEdit("T_DrugAlcoholTest"))
+                {
+				<li>Drug & Alcohol Test</li>
+				}
+                   @if ( User.CanEdit("T_UnitX"))
+                {
+				<li>Administrator For</li>
+				}
+                   @if ( User.CanEdit("T_UnitX"))
+                {
+				<li>Head For </li>
+				}
+                   @if ( User.CanEdit("T_JobAssignment"))
+                {
+				<li>Manager For</li>
+				}
+                   @if ( User.CanEdit("T_JobAssignment"))
+                {
+				<li>Supervisor For</li>
+				}
+                   @if ( User.CanEdit("T_BackgroundCheck"))
+                {
+				<li>Reviewer </li>
+				}
+       		@if ( (User.CanEdit("T_Langauge") && User.CanEdit("T_ConversationalEmployeeForeignLanguage")))
+                {
+				<li>Conversational Foreign Language</li>
+				}
+		@if ( (User.CanEdit("T_Langauge") && User.CanEdit("T_LanguageCertifiedIn")))
+                {
+				<li>Languages Certified In</li>
+				}
+            @if ( User.CanEdit("FileDocument"))
+                {
+				<li>Document</li>
+				}
+       		</ol>
+			<div style="background-color:transparent; padding:0px;">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default AppForm">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Initial Information</h3>
+                            </div>
+                            <div class="panel-body">
+@if(User.CanView("T_Employee","T_EmployeeAtFacilityID"))
+{
+                    <div class='col-sm-4 col-md-4 col-xs-12' id="dvT_EmployeeAtFacilityID">
+                        <div class='form-group'>
+                            <label class="col-sm-7 col-md-7 col-xs-12" >@Html.LabelFor(model => model.T_EmployeeAtFacilityID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-5 col-md-5 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Employee", "T_EmployeeAtFacilityID"))
+		{
+			@Html.DropDownList("T_EmployeeAtFacilityID", null, "-- Select --", new {  @required ="required",      @class = "chosen-select form-control", @HostingName = "T_Facility", @dataurl = Url.Action("GetAllValue", "T_Facility",new { caller = "T_EmployeeAtFacilityID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EmployeeAtFacilityID, new { @class = "form-control" })
+			@Html.DropDownList("T_EmployeeAtFacilityID", null, "-- Select --", new {   @required ="required",     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Facility", @dataurl = Url.Action("GetAllValue", "T_Facility",new { caller = "T_EmployeeAtFacilityID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_EmployeeAtFacilityID)
+								 @if ( User.CanAdd("T_Facility"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Facility','dvPopup','" + Url.Action("CreateQuick", "T_Facility", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_EmployeeAtFacilityID, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_PID"))
+{
+						<div class='col-sm-4 col-md-4 col-xs-12' id="dvT_PID">
+							<div class='form-group' title="Employee Number">
+								<label class="col-sm-7 col-md-7 col-xs-12" >@Html.LabelFor(model => model.T_PID) <span class="text-danger-reg">*</span> </label>
+                                <div class="input-group col-sm-5 col-md-5 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_PID,  getHtmlAttributes("T_PID"))
+									@Html.ValidationMessageFor(model => model.T_PID)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_PID, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_SSN"))
+{
+						<div class='col-sm-4 col-md-4 col-xs-12' id="dvT_SSN">
+							<div class='form-group' title="Social Security Number">
+								<label class="col-sm-7 col-md-7 col-xs-12" >@Html.LabelFor(model => model.T_SSN)  </label>
+                                <div class="input-group col-sm-5 col-md-5 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_SSN,  getHtmlAttributes("T_SSN"))
+									@Html.ValidationMessageFor(model => model.T_SSN)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_SSN, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_DateOfBirth"))
+{
+                            <div class='col-sm-4 col-md-4 col-xs-12' id="dvT_DateOfBirth">
+                                <label class="col-sm-7 col-md-7 col-xs-12" >@Html.LabelFor(model => model.T_DateOfBirth) </label>
+                                <div class="form-group" title="Date  Of  Birth">
+								<div class="input-group col-sm-5 col-md-5 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_DateOfBirth">
+									    @Html.TextBoxFor(model => model.T_DateOfBirth, "{0:MM/dd/yyyy}", User.CanEdit("T_Employee", "T_DateOfBirth") ? (object)new {@class = "form-control" } : (object)new { @class = "form-control", @readonly="readonly"})
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_DateOfBirth)
+								</div>
+                                </div>
+	
+                               @if(User.CanEdit("T_Employee", "T_DateOfBirth"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_DateOfBirth').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_DateOfBirth').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+								}
+								
+                            </div>
+} else { @Html.HiddenFor(model => model.T_DateOfBirth, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_EmployeeStatusID"))
+{
+                    <div class='col-sm-4 col-md-4 col-xs-12' id="dvT_EmployeeStatusID">
+                        <div class='form-group'>
+                            <label class="col-sm-7 col-md-7 col-xs-12" >@Html.LabelFor(model => model.T_EmployeeStatusID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-5 col-md-5 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Employee", "T_EmployeeStatusID"))
+		{
+			@Html.DropDownList("T_EmployeeStatusID", null, "-- Select --", new {  @required ="required",      @class = "chosen-select form-control", @HostingName = "T_EmployeeStatusCode", @dataurl = Url.Action("GetAllValue", "T_EmployeeStatusCode",new { caller = "T_EmployeeStatusID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EmployeeStatusID, new { @class = "form-control" })
+			@Html.DropDownList("T_EmployeeStatusID", null, "-- Select --", new {   @required ="required",     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_EmployeeStatusCode", @dataurl = Url.Action("GetAllValue", "T_EmployeeStatusCode",new { caller = "T_EmployeeStatusID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_EmployeeStatusID)
+								 @if ( User.CanAdd("T_EmployeeStatusCode"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee Status','dvPopup','" + Url.Action("CreateQuick", "T_EmployeeStatusCode", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_EmployeeStatusCode"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_EmployeeStatusCode" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_EmployeeStatusCode" target="_blank" href="@Url.Action("Details", "T_EmployeeStatusCode", new { Id = Html.DisplayFor(model => model.t_employeestatus.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_employeestatus == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_EmployeeStatusCode").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_EmployeeStatusCode").attr("title", '@Model.t_employeestatus.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_EmployeeStatusID, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_SAMAccount"))
+{
+						<div class='col-sm-4 col-md-4 col-xs-12' id="dvT_SAMAccount">
+							<div class='form-group' title="SAM Account">
+								<label class="col-sm-7 col-md-7 col-xs-12" >@Html.LabelFor(model => model.T_SAMAccount)  </label>
+                                <div class="input-group col-sm-5 col-md-5 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_SAMAccount,  getHtmlAttributes("T_SAMAccount"))
+									@Html.ValidationMessageFor(model => model.T_SAMAccount)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_SAMAccount, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_LastName"))
+{
+						<div class='col-sm-4 col-md-4 col-xs-12' id="dvT_LastName">
+							<div class='form-group' title="Last Name">
+								<label class="col-sm-7 col-md-7 col-xs-12" >@Html.LabelFor(model => model.T_LastName) <span class="text-danger-reg">*</span> </label>
+                                <div class="input-group col-sm-5 col-md-5 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_LastName,  getHtmlAttributes("T_LastName"))
+									@Html.ValidationMessageFor(model => model.T_LastName)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_LastName, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_FirstName"))
+{
+						<div class='col-sm-4 col-md-4 col-xs-12' id="dvT_FirstName">
+							<div class='form-group' title="First Name">
+								<label class="col-sm-7 col-md-7 col-xs-12" >@Html.LabelFor(model => model.T_FirstName) <span class="text-danger-reg">*</span> </label>
+                                <div class="input-group col-sm-5 col-md-5 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_FirstName,  getHtmlAttributes("T_FirstName"))
+									@Html.ValidationMessageFor(model => model.T_FirstName)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_FirstName, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_MiddleName"))
+{
+						<div class='col-sm-4 col-md-4 col-xs-12' id="dvT_MiddleName">
+							<div class='form-group' title="Middle Name">
+								<label class="col-sm-7 col-md-7 col-xs-12" >@Html.LabelFor(model => model.T_MiddleName)  </label>
+                                <div class="input-group col-sm-5 col-md-5 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_MiddleName,  getHtmlAttributes("T_MiddleName"))
+									@Html.ValidationMessageFor(model => model.T_MiddleName)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_MiddleName, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_Suffix"))
+{
+						<div class='col-sm-4 col-md-4 col-xs-12' id="dvT_Suffix">
+							<div class='form-group' title="Suffix">
+								<label class="col-sm-7 col-md-7 col-xs-12" >@Html.LabelFor(model => model.T_Suffix)  </label>
+                                <div class="input-group col-sm-5 col-md-5 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_Suffix,  getHtmlAttributes("T_Suffix"))
+									@Html.ValidationMessageFor(model => model.T_Suffix)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_Suffix, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_WorkEmail"))
+{
+						<div class='col-sm-4 col-md-4 col-xs-12' id="dvT_WorkEmail">
+							<div class='form-group' title="Work  Email">
+								<label class="col-sm-7 col-md-7 col-xs-12" >@Html.LabelFor(model => model.T_WorkEmail)  </label>
+                                <div class="input-group col-sm-5 col-md-5 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_WorkEmail,  getHtmlAttributes("T_WorkEmail"))
+									@Html.ValidationMessageFor(model => model.T_WorkEmail)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_WorkEmail, new { @class = "form-control" })}
+@if(User.CanView("T_ServiceRecord"))
+{
+                    <div class='col-sm-4 col-md-4 col-xs-12' style="display:none;">
+                        <div class='form-group' style="width:100%;">
+                            <label class="col-sm-7 col-md-7 col-xs-12" >@Html.LabelFor(model => model.T_CurrentEmployeeEmploymentProfileID) </label>
+							<div class="input-group col-sm-5 col-md-5 col-xs-12">
+								@Html.DropDownList("T_CurrentEmployeeEmploymentProfileID", null, "--Select Service Record--", new { @onclick = Html.Raw("select('T_CurrentEmployeeEmploymentProfileID')"), @class = "form-control", @HostingName = "T_ServiceRecord" })
+                                @Html.ValidationMessageFor(model => model.T_CurrentEmployeeEmploymentProfileID)								
+                                <div class="input-group-btn">
+                                  <a class="btn btn-default btn ie8fix" href="@Url.Action("Create", "T_ServiceRecord", new {UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsDDAdd = true })">
+                                            <span class="glyphicon glyphicon-plus-sign"></span>
+                                        </a>
+                                </div>								
+							</div>
+                        </div>
+                    </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12" id="dvT_CurrentEmployeeEmploymentProfileID">
+                                <div class="panel panel-default">
+                                  <div class="panel-sub-heading clearfix">
+                                        <h3 class="panel-title">@Html.LabelFor(model => model.T_CurrentEmployeeEmploymentProfileID)</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="row">
+ @{if (Model.t_currentemployeeemploymentprofile!=null) {Model.t_currentemployeeemploymentprofile.setDateTimeToClientTime();}}
+@if (Model.t_currentemployeeemploymentprofile!=null)
+{ 
+   <div class='col-sm-6' style="display:none;">
+    <div class='form-group'>
+        <label class="col-xs-5">@Html.LabelFor(model => model.t_currentemployeeemploymentprofile.Id)</label>
+		@Html.HiddenFor(model => model.t_currentemployeeemploymentprofile.ConcurrencyKey)
+        <div class="input-group col-xs-7">
+            @Html.TextBoxFor(model => model.t_currentemployeeemploymentprofile.Id, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.t_currentemployeeemploymentprofile.Id)
+        </div>
+    </div>
+</div>
+}
+				<div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">
+							@Html.LabelFor(model => model.t_currentemployeeemploymentprofile.T_EmployeeEmploymentProfileID) <span class="text-danger-reg">*</span></label>
+                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                <div class="input-group" style="width:100%;">
+										@if (User.CanEdit("T_ServiceRecord", "T_EmployeeEmploymentProfileID"))
+		{
+			@Html.DropDownListFor(model => model.t_currentemployeeemploymentprofile.T_EmployeeEmploymentProfileID, (SelectList)ViewBag.T_CurrentEmployeeEmploymentProfile_T_EmployeeEmploymentProfileID, "--Select--", new {  @required ="required",     @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeEmploymentProfileID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model =>  model.t_currentemployeeemploymentprofile.T_EmployeeEmploymentProfileID, new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.t_currentemployeeemploymentprofile.T_EmployeeEmploymentProfileID, (SelectList)ViewBag.T_CurrentEmployeeEmploymentProfile_T_EmployeeEmploymentProfileID, "--Select--", new {  @required ="required",     @class = "chosen-select form-control", @HostingName = "T_Employee", @disabled="disabled", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeEmploymentProfileID" }) })
+		}
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeeemploymentprofile.T_EmployeeEmploymentProfileID)
+									@if ( User.CanAdd("T_Employee"))
+                                    {
+                                    <div class="input-group-btn">
+                                        <a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                    </div>
+									}
+																				@if ( User.CanView("T_Employee"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_Employee" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_Employee" target="_blank" href="@Url.Action("Details", "t_currentemployeeemploymentprofile", new { Id = Html.DisplayFor(model => model.t_currentemployeeemploymentprofile.t_employeeemploymentprofile.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_currentemployeeemploymentprofile == null || Model.t_currentemployeeemploymentprofile.t_employeeemploymentprofile== null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Employee").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Employee").attr("title", '@Model.t_currentemployeeemploymentprofile.t_employeeemploymentprofile.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+											
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                               
+				<div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">
+							@Html.LabelFor(model => model.t_currentemployeeemploymentprofile.T_EmploymentRecordEmployeeTypeID) <span class="text-danger-reg">*</span></label>
+                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                <div class="input-group" style="width:100%;">
+										@if (User.CanEdit("T_ServiceRecord", "T_EmploymentRecordEmployeeTypeID"))
+		{
+			@Html.DropDownListFor(model => model.t_currentemployeeemploymentprofile.T_EmploymentRecordEmployeeTypeID, (SelectList)ViewBag.T_CurrentEmployeeEmploymentProfile_T_EmploymentRecordEmployeeTypeID, "--Select--", new {  @required ="required",     @class = "chosen-select form-control", @HostingName = "T_EmployeeType", @dataurl = Url.Action("GetAllValue", "T_EmployeeType",new { caller = "T_EmploymentRecordEmployeeTypeID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model =>  model.t_currentemployeeemploymentprofile.T_EmploymentRecordEmployeeTypeID, new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.t_currentemployeeemploymentprofile.T_EmploymentRecordEmployeeTypeID, (SelectList)ViewBag.T_CurrentEmployeeEmploymentProfile_T_EmploymentRecordEmployeeTypeID, "--Select--", new {  @required ="required",     @class = "chosen-select form-control", @HostingName = "T_EmployeeType", @disabled="disabled", @dataurl = Url.Action("GetAllValue", "T_EmployeeType",new { caller = "T_EmploymentRecordEmployeeTypeID" }) })
+		}
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeeemploymentprofile.T_EmploymentRecordEmployeeTypeID)
+									@if ( User.CanAdd("T_EmployeeType"))
+                                    {
+                                    <div class="input-group-btn">
+                                        <a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee Type','dvPopup','" + Url.Action("CreateQuick", "T_EmployeeType", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                    </div>
+									}
+																				@if ( User.CanView("T_EmployeeType"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_EmployeeType" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_EmployeeType" target="_blank" href="@Url.Action("Details", "t_currentemployeeemploymentprofile", new { Id = Html.DisplayFor(model => model.t_currentemployeeemploymentprofile.t_employmentrecordemployeetype.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_currentemployeeemploymentprofile == null || Model.t_currentemployeeemploymentprofile.t_employmentrecordemployeetype== null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_EmployeeType").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_EmployeeType").attr("title", '@Model.t_currentemployeeemploymentprofile.t_employmentrecordemployeetype.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+											
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                               
+						<div class='col-sm-6 col-md-6 col-xs-12'>
+						<div class="form-group" title="Current Active Service Record">
+                                <label class="col-sm-5 col-md-5 col-xs-12">
+                                    @Html.LabelFor(model => model.t_currentemployeeemploymentprofile.T_IsCurrent) 
+                                </label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									@Html.CheckBox("t_currentemployeeemploymentprofile.T_IsCurrent",Model.t_currentemployeeemploymentprofile != null &&  Model.t_currentemployeeemploymentprofile.T_IsCurrent.HasValue ? Model.t_currentemployeeemploymentprofile.T_IsCurrent : false)
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeeemploymentprofile.T_IsCurrent)
+                                </div>
+								</div>
+                            </div>
+                                               
+				<div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">
+							@Html.LabelFor(model => model.t_currentemployeeemploymentprofile.T_EmploymentRecordHiredAtFacilityID) <span class="text-danger-reg">*</span></label>
+                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                <div class="input-group" style="width:100%;">
+										@if (User.CanEdit("T_ServiceRecord", "T_EmploymentRecordHiredAtFacilityID"))
+		{
+			@Html.DropDownListFor(model => model.t_currentemployeeemploymentprofile.T_EmploymentRecordHiredAtFacilityID, (SelectList)ViewBag.T_CurrentEmployeeEmploymentProfile_T_EmploymentRecordHiredAtFacilityID, "--Select--", new {  @required ="required",     @class = "chosen-select form-control", @HostingName = "T_AllFacilities", @dataurl = Url.Action("GetAllValue", "T_AllFacilities",new { caller = "T_EmploymentRecordHiredAtFacilityID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model =>  model.t_currentemployeeemploymentprofile.T_EmploymentRecordHiredAtFacilityID, new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.t_currentemployeeemploymentprofile.T_EmploymentRecordHiredAtFacilityID, (SelectList)ViewBag.T_CurrentEmployeeEmploymentProfile_T_EmploymentRecordHiredAtFacilityID, "--Select--", new {  @required ="required",     @class = "chosen-select form-control", @HostingName = "T_AllFacilities", @disabled="disabled", @dataurl = Url.Action("GetAllValue", "T_AllFacilities",new { caller = "T_EmploymentRecordHiredAtFacilityID" }) })
+		}
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeeemploymentprofile.T_EmploymentRecordHiredAtFacilityID)
+									@if ( User.CanAdd("T_AllFacilities"))
+                                    {
+                                    <div class="input-group-btn">
+                                        <a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Hired At Facility','dvPopup','" + Url.Action("CreateQuick", "T_AllFacilities", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                    </div>
+									}
+																				@if ( User.CanView("T_AllFacilities"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_AllFacilities" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_AllFacilities" target="_blank" href="@Url.Action("Details", "t_currentemployeeemploymentprofile", new { Id = Html.DisplayFor(model => model.t_currentemployeeemploymentprofile.t_employmentrecordhiredatfacility.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_currentemployeeemploymentprofile == null || Model.t_currentemployeeemploymentprofile.t_employmentrecordhiredatfacility== null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_AllFacilities").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_AllFacilities").attr("title", '@Model.t_currentemployeeemploymentprofile.t_employmentrecordhiredatfacility.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+											
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                               
+					<div class='col-sm-6 col-md-6 col-xs-12'>
+					<div class="form-group" title="Hire  Date">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_currentemployeeemploymentprofile.T_HireDate) <span class="text-danger-reg">*</span></label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickert_currentemployeeemploymentprofileT_HireDate">
+                                        @Html.TextBoxFor(model => model.t_currentemployeeemploymentprofile.T_HireDate, "{0:MM/dd/yyyy}",  (object)new { @id = "t_currentemployeeemploymentprofileT_HireDate", @class = "form-control" })
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeeemploymentprofile.T_HireDate)
+								</div>
+                                </div>
+                               @if(User.CanEdit("T_ServiceRecord", "T_HireDate"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#t_currentemployeeemploymentprofileT_HireDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickert_currentemployeeemploymentprofileT_HireDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+								}
+                            </div>
+                                               
+					<div class='col-sm-6 col-md-6 col-xs-12'>
+					<div class="form-group" title="Separation Date">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_currentemployeeemploymentprofile.T_TerminationDate) </label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickert_currentemployeeemploymentprofileT_TerminationDate">
+                                        @Html.TextBoxFor(model => model.t_currentemployeeemploymentprofile.T_TerminationDate, "{0:MM/dd/yyyy}",  (object)new { @id = "t_currentemployeeemploymentprofileT_TerminationDate", @class = "form-control" })
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeeemploymentprofile.T_TerminationDate)
+								</div>
+                                </div>
+                               @if(User.CanEdit("T_ServiceRecord", "T_TerminationDate"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#t_currentemployeeemploymentprofileT_TerminationDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickert_currentemployeeemploymentprofileT_TerminationDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+								}
+                            </div>
+                                               
+					<div class='col-sm-6 col-md-6 col-xs-12'>
+					<div class="form-group" title="Three Month Due">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_currentemployeeemploymentprofile.T_ThreeMonthDue) </label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickert_currentemployeeemploymentprofileT_ThreeMonthDue">
+                                        @Html.TextBoxFor(model => model.t_currentemployeeemploymentprofile.T_ThreeMonthDue, "{0:MM/dd/yyyy}",  (object)new { @id = "t_currentemployeeemploymentprofileT_ThreeMonthDue", @class = "form-control",@actualvalue = Model.t_currentemployeeemploymentprofile.T_ThreeMonthDue.HasValue ? Model.t_currentemployeeemploymentprofile.T_ThreeMonthDue.Value : DateTime.UtcNow,@format = "hh:mm" })
+									
+									<div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" onclick="GetCalculationValue(event,'@Url.Action("GetCalculationValues")');">
+											<span class="fam-arrow-refresh"></span>
+                                        </a>
+                                    </div>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeeemploymentprofile.T_ThreeMonthDue)
+								</div>
+                                </div>
+                            </div>
+                                               
+						<div class='col-sm-6 col-md-6 col-xs-12'>
+						<div class="form-group" title="Three Month Review Completed">
+                                <label class="col-sm-5 col-md-5 col-xs-12">
+                                    @Html.LabelFor(model => model.t_currentemployeeemploymentprofile.T_ThreeMonthReviewCompleted) 
+                                </label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									@Html.CheckBox("t_currentemployeeemploymentprofile.T_ThreeMonthReviewCompleted",Model.t_currentemployeeemploymentprofile != null &&  Model.t_currentemployeeemploymentprofile.T_ThreeMonthReviewCompleted.HasValue ? Model.t_currentemployeeemploymentprofile.T_ThreeMonthReviewCompleted : false)
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeeemploymentprofile.T_ThreeMonthReviewCompleted)
+                                </div>
+								</div>
+                            </div>
+                                               
+				<div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">
+							@Html.LabelFor(model => model.t_currentemployeeemploymentprofile.T_EmployeeTerminationReasonID) </label>
+                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                <div class="input-group" style="width:100%;">
+										@if (User.CanEdit("T_ServiceRecord", "T_EmployeeTerminationReasonID"))
+		{
+			@Html.DropDownListFor(model => model.t_currentemployeeemploymentprofile.T_EmployeeTerminationReasonID, (SelectList)ViewBag.T_CurrentEmployeeEmploymentProfile_T_EmployeeTerminationReasonID, "--Select--", new {     @class = "chosen-select form-control", @HostingName = "T_TerminationReason", @dataurl = Url.Action("GetAllValue", "T_TerminationReason",new { caller = "T_EmployeeTerminationReasonID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model =>  model.t_currentemployeeemploymentprofile.T_EmployeeTerminationReasonID, new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.t_currentemployeeemploymentprofile.T_EmployeeTerminationReasonID, (SelectList)ViewBag.T_CurrentEmployeeEmploymentProfile_T_EmployeeTerminationReasonID, "--Select--", new {     @class = "chosen-select form-control", @HostingName = "T_TerminationReason", @disabled="disabled", @dataurl = Url.Action("GetAllValue", "T_TerminationReason",new { caller = "T_EmployeeTerminationReasonID" }) })
+		}
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeeemploymentprofile.T_EmployeeTerminationReasonID)
+									@if ( User.CanAdd("T_TerminationReason"))
+                                    {
+                                    <div class="input-group-btn">
+                                        <a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Separation Reason','dvPopup','" + Url.Action("CreateQuick", "T_TerminationReason", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                    </div>
+									}
+																				@if ( User.CanView("T_TerminationReason"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_TerminationReason" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_TerminationReason" target="_blank" href="@Url.Action("Details", "t_currentemployeeemploymentprofile", new { Id = Html.DisplayFor(model => model.t_currentemployeeemploymentprofile.t_employeeterminationreason.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_currentemployeeemploymentprofile == null || Model.t_currentemployeeemploymentprofile.t_employeeterminationreason== null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_TerminationReason").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_TerminationReason").attr("title", '@Model.t_currentemployeeemploymentprofile.t_employeeterminationreason.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+											
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                               
+				<div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">
+							@Html.LabelFor(model => model.t_currentemployeeemploymentprofile.T_EmployeeRecordTerminationFacilityID) </label>
+                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                <div class="input-group" style="width:100%;">
+										@if (User.CanEdit("T_ServiceRecord", "T_EmployeeRecordTerminationFacilityID"))
+		{
+			@Html.DropDownListFor(model => model.t_currentemployeeemploymentprofile.T_EmployeeRecordTerminationFacilityID, (SelectList)ViewBag.T_CurrentEmployeeEmploymentProfile_T_EmployeeRecordTerminationFacilityID, "--Select--", new {     @class = "chosen-select form-control", @HostingName = "T_AllFacilities", @dataurl = Url.Action("GetAllValue", "T_AllFacilities",new { caller = "T_EmployeeRecordTerminationFacilityID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model =>  model.t_currentemployeeemploymentprofile.T_EmployeeRecordTerminationFacilityID, new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.t_currentemployeeemploymentprofile.T_EmployeeRecordTerminationFacilityID, (SelectList)ViewBag.T_CurrentEmployeeEmploymentProfile_T_EmployeeRecordTerminationFacilityID, "--Select--", new {     @class = "chosen-select form-control", @HostingName = "T_AllFacilities", @disabled="disabled", @dataurl = Url.Action("GetAllValue", "T_AllFacilities",new { caller = "T_EmployeeRecordTerminationFacilityID" }) })
+		}
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeeemploymentprofile.T_EmployeeRecordTerminationFacilityID)
+									@if ( User.CanAdd("T_AllFacilities"))
+                                    {
+                                    <div class="input-group-btn">
+                                        <a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','After Termination Joined Facility','dvPopup','" + Url.Action("CreateQuick", "T_AllFacilities", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                    </div>
+									}
+																				@if ( User.CanView("T_AllFacilities"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_AllFacilities" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_AllFacilities" target="_blank" href="@Url.Action("Details", "t_currentemployeeemploymentprofile", new { Id = Html.DisplayFor(model => model.t_currentemployeeemploymentprofile.t_employeerecordterminationfacility.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_currentemployeeemploymentprofile == null || Model.t_currentemployeeemploymentprofile.t_employeerecordterminationfacility== null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_AllFacilities").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_AllFacilities").attr("title", '@Model.t_currentemployeeemploymentprofile.t_employeerecordterminationfacility.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+											
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                               
+						<div class='col-sm-6 col-md-6 col-xs-12'>
+						<div class="form-group" title="Not  Eligible  For  Rehire">
+                                <label class="col-sm-5 col-md-5 col-xs-12">
+                                    @Html.LabelFor(model => model.t_currentemployeeemploymentprofile.T_EligibleForRehire) 
+                                </label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									@Html.CheckBox("t_currentemployeeemploymentprofile.T_EligibleForRehire",Model.t_currentemployeeemploymentprofile != null &&  Model.t_currentemployeeemploymentprofile.T_EligibleForRehire.HasValue ? Model.t_currentemployeeemploymentprofile.T_EligibleForRehire : false)
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeeemploymentprofile.T_EligibleForRehire)
+                                </div>
+								</div>
+                            </div>
+                                               
+					
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.T_CurrentEmployeeEmploymentProfileID)
+                                    </div>
+                                </div>
+                            </div>
+                       }
+					   else
+                       { @Html.HiddenFor(model => model.T_CurrentEmployeeEmploymentProfileID, new { @class = "form-control" })}
+@if(User.CanView("T_JobAssignment"))
+{
+                    <div class='col-sm-4 col-md-4 col-xs-12' style="display:none;">
+                        <div class='form-group' style="width:100%;">
+                            <label class="col-sm-7 col-md-7 col-xs-12" >@Html.LabelFor(model => model.T_CurrentEmployeeJobAssignmentID) </label>
+							<div class="input-group col-sm-5 col-md-5 col-xs-12">
+								@Html.DropDownList("T_CurrentEmployeeJobAssignmentID", null, "--Select Primary Job Assignment--", new { @onclick = Html.Raw("select('T_CurrentEmployeeJobAssignmentID')"), @class = "form-control", @HostingName = "T_JobAssignment" })
+                                @Html.ValidationMessageFor(model => model.T_CurrentEmployeeJobAssignmentID)								
+                                <div class="input-group-btn">
+                                  <a class="btn btn-default btn ie8fix" href="@Url.Action("Create", "T_JobAssignment", new {UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsDDAdd = true })">
+                                            <span class="glyphicon glyphicon-plus-sign"></span>
+                                        </a>
+                                </div>								
+							</div>
+                        </div>
+                    </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12" id="dvT_CurrentEmployeeJobAssignmentID">
+                                <div class="panel panel-default">
+                                  <div class="panel-sub-heading clearfix">
+                                        <h3 class="panel-title">@Html.LabelFor(model => model.T_CurrentEmployeeJobAssignmentID)</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="row">
+ @{if (Model.t_currentemployeejobassignment!=null) {Model.t_currentemployeejobassignment.setDateTimeToClientTime();}}
+@if (Model.t_currentemployeejobassignment!=null)
+{ 
+   <div class='col-sm-6' style="display:none;">
+    <div class='form-group'>
+        <label class="col-xs-5">@Html.LabelFor(model => model.t_currentemployeejobassignment.Id)</label>
+		@Html.HiddenFor(model => model.t_currentemployeejobassignment.ConcurrencyKey)
+        <div class="input-group col-xs-7">
+            @Html.TextBoxFor(model => model.t_currentemployeejobassignment.Id, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.t_currentemployeejobassignment.Id)
+        </div>
+    </div>
+</div>
+}
+				<div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">
+							@Html.LabelFor(model => model.t_currentemployeejobassignment.T_EmployeeJobAssignmentID) <span class="text-danger-reg">*</span></label>
+                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                <div class="input-group" style="width:100%;">
+										@if (User.CanEdit("T_JobAssignment", "T_EmployeeJobAssignmentID"))
+		{
+			@Html.DropDownListFor(model => model.t_currentemployeejobassignment.T_EmployeeJobAssignmentID, (SelectList)ViewBag.T_CurrentEmployeeJobAssignment_T_EmployeeJobAssignmentID, "--Select--", new {  @required ="required",     @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeJobAssignmentID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model =>  model.t_currentemployeejobassignment.T_EmployeeJobAssignmentID, new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.t_currentemployeejobassignment.T_EmployeeJobAssignmentID, (SelectList)ViewBag.T_CurrentEmployeeJobAssignment_T_EmployeeJobAssignmentID, "--Select--", new {  @required ="required",     @class = "chosen-select form-control", @HostingName = "T_Employee", @disabled="disabled", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeJobAssignmentID" }) })
+		}
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeejobassignment.T_EmployeeJobAssignmentID)
+									@if ( User.CanAdd("T_Employee"))
+                                    {
+                                    <div class="input-group-btn">
+                                        <a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                    </div>
+									}
+																				@if ( User.CanView("T_Employee"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_Employee" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_Employee" target="_blank" href="@Url.Action("Details", "t_currentemployeejobassignment", new { Id = Html.DisplayFor(model => model.t_currentemployeejobassignment.t_employeejobassignment.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_currentemployeejobassignment == null || Model.t_currentemployeejobassignment.t_employeejobassignment== null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Employee").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Employee").attr("title", '@Model.t_currentemployeejobassignment.t_employeejobassignment.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+											
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                               
+							<div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Employee  Percent (%)">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_currentemployeejobassignment.T_EmployeePercent) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+																	@if (User.CanEdit("T_JobAssignment", "T_EmployeePercent"))
+									{
+								@Html.TextBoxFor(model => model.t_currentemployeejobassignment.T_EmployeePercent, new { @class = "form-control" })
+									}
+									else
+									{
+									@Html.TextBoxFor(model => model.t_currentemployeejobassignment.T_EmployeePercent, new { @class = "form-control",@readonly="readonly" })
+									}
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeejobassignment.T_EmployeePercent)
+                                
+								</div>
+                            </div>
+                        </div>
+                                               
+					<div class='col-sm-6 col-md-6 col-xs-12'>
+					<div class="form-group" title="Start  Date">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_currentemployeejobassignment.T_StartDate) <span class="text-danger-reg">*</span></label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickert_currentemployeejobassignmentT_StartDate">
+                                        @Html.TextBoxFor(model => model.t_currentemployeejobassignment.T_StartDate, "{0:MM/dd/yyyy}",  (object)new { @id = "t_currentemployeejobassignmentT_StartDate", @class = "form-control" })
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeejobassignment.T_StartDate)
+								</div>
+                                </div>
+                               @if(User.CanEdit("T_JobAssignment", "T_StartDate"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#t_currentemployeejobassignmentT_StartDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickert_currentemployeejobassignmentT_StartDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+								}
+                            </div>
+                                               
+					<div class='col-sm-6 col-md-6 col-xs-12'>
+					<div class="form-group" title="End  Date">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_currentemployeejobassignment.T_EndDate) </label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickert_currentemployeejobassignmentT_EndDate">
+                                        @Html.TextBoxFor(model => model.t_currentemployeejobassignment.T_EndDate, "{0:MM/dd/yyyy}",  (object)new { @id = "t_currentemployeejobassignmentT_EndDate", @class = "form-control" })
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeejobassignment.T_EndDate)
+								</div>
+                                </div>
+                               @if(User.CanEdit("T_JobAssignment", "T_EndDate"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#t_currentemployeejobassignmentT_EndDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickert_currentemployeejobassignmentT_EndDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+								}
+                            </div>
+                                               
+						<div class='col-sm-6 col-md-6 col-xs-12'>
+						<div class="form-group" title="Primary">
+                                <label class="col-sm-5 col-md-5 col-xs-12">
+                                    @Html.LabelFor(model => model.t_currentemployeejobassignment.T_Primary) 
+                                </label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									@Html.CheckBox("t_currentemployeejobassignment.T_Primary",Model.t_currentemployeejobassignment != null &&  Model.t_currentemployeejobassignment.T_Primary.HasValue ? Model.t_currentemployeejobassignment.T_Primary : false)
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeejobassignment.T_Primary)
+                                </div>
+								</div>
+                            </div>
+                                               
+						<div class='col-sm-6 col-md-6 col-xs-12'>
+						<div class="form-group" title="Active">
+                                <label class="col-sm-5 col-md-5 col-xs-12">
+                                    @Html.LabelFor(model => model.t_currentemployeejobassignment.T_Active) 
+                                </label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									@Html.CheckBox("t_currentemployeejobassignment.T_Active",Model.t_currentemployeejobassignment != null &&  Model.t_currentemployeejobassignment.T_Active.HasValue ? Model.t_currentemployeejobassignment.T_Active : false)
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeejobassignment.T_Active)
+                                </div>
+								</div>
+                            </div>
+                                               
+				<div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">
+							@Html.LabelFor(model => model.t_currentemployeejobassignment.T_PositionJobAssignmentID) <span class="text-danger-reg">*</span></label>
+                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                <div class="input-group" style="width:100%;">
+										@if (User.CanEdit("T_JobAssignment", "T_PositionJobAssignmentID"))
+		{
+			@Html.DropDownListFor(model => model.t_currentemployeejobassignment.T_PositionJobAssignmentID, (SelectList)ViewBag.T_CurrentEmployeeJobAssignment_T_PositionJobAssignmentID, "--Select--", new {  @required ="required",     @class = "chosen-select form-control", @HostingName = "T_Position", @dataurl = Url.Action("GetAllValue", "T_Position",new { caller = "T_PositionJobAssignmentID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model =>  model.t_currentemployeejobassignment.T_PositionJobAssignmentID, new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.t_currentemployeejobassignment.T_PositionJobAssignmentID, (SelectList)ViewBag.T_CurrentEmployeeJobAssignment_T_PositionJobAssignmentID, "--Select--", new {  @required ="required",     @class = "chosen-select form-control", @HostingName = "T_Position", @disabled="disabled", @dataurl = Url.Action("GetAllValue", "T_Position",new { caller = "T_PositionJobAssignmentID" }) })
+		}
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeejobassignment.T_PositionJobAssignmentID)
+									@if ( User.CanAdd("T_Position"))
+                                    {
+                                    <div class="input-group-btn">
+                                        <a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Position Number','dvPopup','" + Url.Action("CreateQuick", "T_Position", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                    </div>
+									}
+																				@if ( User.CanView("T_Position"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_Position" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_Position" target="_blank" href="@Url.Action("Details", "t_currentemployeejobassignment", new { Id = Html.DisplayFor(model => model.t_currentemployeejobassignment.t_positionjobassignment.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_currentemployeejobassignment == null || Model.t_currentemployeejobassignment.t_positionjobassignment== null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Position").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Position").attr("title", '@Model.t_currentemployeejobassignment.t_positionjobassignment.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+											
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                               
+							<div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Position Level">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_currentemployeejobassignment.T_PositionLevel) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+																	@if (User.CanEdit("T_JobAssignment", "T_PositionLevel"))
+									{
+								@Html.TextBoxFor(model => model.t_currentemployeejobassignment.T_PositionLevel, new { @class = "form-control" })
+									}
+									else
+									{
+									@Html.TextBoxFor(model => model.t_currentemployeejobassignment.T_PositionLevel, new { @class = "form-control",@readonly="readonly" })
+									}
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeejobassignment.T_PositionLevel)
+                                
+								</div>
+                            </div>
+                        </div>
+                                               
+							<div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Role Code">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_currentemployeejobassignment.T_RoleCode) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+																	@if (User.CanEdit("T_JobAssignment", "T_RoleCode"))
+									{
+								@Html.TextBoxFor(model => model.t_currentemployeejobassignment.T_RoleCode, new { @class = "form-control" })
+									}
+									else
+									{
+									@Html.TextBoxFor(model => model.t_currentemployeejobassignment.T_RoleCode, new { @class = "form-control",@readonly="readonly" })
+									}
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeejobassignment.T_RoleCode)
+                                
+								</div>
+                            </div>
+                        </div>
+                                               
+							<div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Class Code">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_currentemployeejobassignment.T_ClassCode) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+																	@if (User.CanEdit("T_JobAssignment", "T_ClassCode"))
+									{
+								@Html.TextBoxFor(model => model.t_currentemployeejobassignment.T_ClassCode, new { @class = "form-control" })
+									}
+									else
+									{
+									@Html.TextBoxFor(model => model.t_currentemployeejobassignment.T_ClassCode, new { @class = "form-control",@readonly="readonly" })
+									}
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeejobassignment.T_ClassCode)
+                                
+								</div>
+                            </div>
+                        </div>
+                                               
+				<div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">
+							@Html.LabelFor(model => model.t_currentemployeejobassignment.T_JobAssignmentReasonID) <span class="text-danger-reg">*</span></label>
+                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                <div class="input-group" style="width:100%;">
+										@if (User.CanEdit("T_JobAssignment", "T_JobAssignmentReasonID"))
+		{
+			@Html.DropDownListFor(model => model.t_currentemployeejobassignment.T_JobAssignmentReasonID, (SelectList)ViewBag.T_CurrentEmployeeJobAssignment_T_JobAssignmentReasonID, "--Select--", new {  @required ="required",     @class = "chosen-select form-control", @HostingName = "T_ReasonforHire", @dataurl = Url.Action("GetAllValue", "T_ReasonforHire",new { caller = "T_JobAssignmentReasonID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model =>  model.t_currentemployeejobassignment.T_JobAssignmentReasonID, new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.t_currentemployeejobassignment.T_JobAssignmentReasonID, (SelectList)ViewBag.T_CurrentEmployeeJobAssignment_T_JobAssignmentReasonID, "--Select--", new {  @required ="required",     @class = "chosen-select form-control", @HostingName = "T_ReasonforHire", @disabled="disabled", @dataurl = Url.Action("GetAllValue", "T_ReasonforHire",new { caller = "T_JobAssignmentReasonID" }) })
+		}
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeejobassignment.T_JobAssignmentReasonID)
+									@if ( User.CanAdd("T_ReasonforHire"))
+                                    {
+                                    <div class="input-group-btn">
+                                        <a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Job Assignment Reason','dvPopup','" + Url.Action("CreateQuick", "T_ReasonforHire", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                    </div>
+									}
+																				@if ( User.CanView("T_ReasonforHire"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_ReasonforHire" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_ReasonforHire" target="_blank" href="@Url.Action("Details", "t_currentemployeejobassignment", new { Id = Html.DisplayFor(model => model.t_currentemployeejobassignment.t_jobassignmentreason.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_currentemployeejobassignment == null || Model.t_currentemployeejobassignment.t_jobassignmentreason== null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_ReasonforHire").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_ReasonforHire").attr("title", '@Model.t_currentemployeejobassignment.t_jobassignmentreason.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+											
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                               
+				<div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">
+							@Html.LabelFor(model => model.t_currentemployeejobassignment.T_JobAssignmentUnitXID) <span class="text-danger-reg">*</span></label>
+                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                <div class="input-group" style="width:100%;">
+										@if (User.CanEdit("T_JobAssignment", "T_JobAssignmentUnitXID"))
+		{
+			@Html.DropDownListFor(model => model.t_currentemployeejobassignment.T_JobAssignmentUnitXID, (SelectList)ViewBag.T_CurrentEmployeeJobAssignment_T_JobAssignmentUnitXID, "--Select--", new {  @required ="required",     @class = "chosen-select form-control", @HostingName = "T_UnitX", @dataurl = Url.Action("GetAllValue", "T_UnitX",new { caller = "T_JobAssignmentUnitXID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model =>  model.t_currentemployeejobassignment.T_JobAssignmentUnitXID, new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.t_currentemployeejobassignment.T_JobAssignmentUnitXID, (SelectList)ViewBag.T_CurrentEmployeeJobAssignment_T_JobAssignmentUnitXID, "--Select--", new {  @required ="required",     @class = "chosen-select form-control", @HostingName = "T_UnitX", @disabled="disabled", @dataurl = Url.Action("GetAllValue", "T_UnitX",new { caller = "T_JobAssignmentUnitXID" }) })
+		}
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeejobassignment.T_JobAssignmentUnitXID)
+									@if ( User.CanAdd("T_UnitX"))
+                                    {
+                                    <div class="input-group-btn">
+                                        <a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','UnitX','dvPopup','" + Url.Action("CreateQuick", "T_UnitX", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                    </div>
+									}
+																				@if ( User.CanView("T_UnitX"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_UnitX" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_UnitX" target="_blank" href="@Url.Action("Details", "t_currentemployeejobassignment", new { Id = Html.DisplayFor(model => model.t_currentemployeejobassignment.t_jobassignmentunitx.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_currentemployeejobassignment == null || Model.t_currentemployeejobassignment.t_jobassignmentunitx== null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_UnitX").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_UnitX").attr("title", '@Model.t_currentemployeejobassignment.t_jobassignmentunitx.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+											
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                               
+							<div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Cost  Center">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_currentemployeejobassignment.T_CostCenter) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+																	@if (User.CanEdit("T_JobAssignment", "T_CostCenter"))
+									{
+								@Html.TextBoxFor(model => model.t_currentemployeejobassignment.T_CostCenter, new { @class = "form-control" })
+									}
+									else
+									{
+									@Html.TextBoxFor(model => model.t_currentemployeejobassignment.T_CostCenter, new { @class = "form-control",@readonly="readonly" })
+									}
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeejobassignment.T_CostCenter)
+                                
+								</div>
+                            </div>
+                        </div>
+                                               
+							<div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Program">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_currentemployeejobassignment.T_Program) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+																	@if (User.CanEdit("T_JobAssignment", "T_Program"))
+									{
+								@Html.TextBoxFor(model => model.t_currentemployeejobassignment.T_Program, new { @class = "form-control" })
+									}
+									else
+									{
+									@Html.TextBoxFor(model => model.t_currentemployeejobassignment.T_Program, new { @class = "form-control",@readonly="readonly" })
+									}
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeejobassignment.T_Program)
+                                
+								</div>
+                            </div>
+                        </div>
+                                               
+				<div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">
+							@Html.LabelFor(model => model.t_currentemployeejobassignment.T_JobAssignmentManagerEmployeeID) </label>
+                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                <div class="input-group" style="width:100%;">
+										@if (User.CanEdit("T_JobAssignment", "T_JobAssignmentManagerEmployeeID"))
+		{
+			@Html.DropDownListFor(model => model.t_currentemployeejobassignment.T_JobAssignmentManagerEmployeeID, (SelectList)ViewBag.T_CurrentEmployeeJobAssignment_T_JobAssignmentManagerEmployeeID, "--Select--", new {     @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_JobAssignmentManagerEmployeeID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model =>  model.t_currentemployeejobassignment.T_JobAssignmentManagerEmployeeID, new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.t_currentemployeejobassignment.T_JobAssignmentManagerEmployeeID, (SelectList)ViewBag.T_CurrentEmployeeJobAssignment_T_JobAssignmentManagerEmployeeID, "--Select--", new {     @class = "chosen-select form-control", @HostingName = "T_Employee", @disabled="disabled", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_JobAssignmentManagerEmployeeID" }) })
+		}
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeejobassignment.T_JobAssignmentManagerEmployeeID)
+									@if ( User.CanAdd("T_Employee"))
+                                    {
+                                    <div class="input-group-btn">
+                                        <a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Manager','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                    </div>
+									}
+																				@if ( User.CanView("T_Employee"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_Employee" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_Employee" target="_blank" href="@Url.Action("Details", "t_currentemployeejobassignment", new { Id = Html.DisplayFor(model => model.t_currentemployeejobassignment.t_jobassignmentmanageremployee.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_currentemployeejobassignment == null || Model.t_currentemployeejobassignment.t_jobassignmentmanageremployee== null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Employee").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Employee").attr("title", '@Model.t_currentemployeejobassignment.t_jobassignmentmanageremployee.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+											
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                               
+				<div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">
+							@Html.LabelFor(model => model.t_currentemployeejobassignment.T_EmployeeSupervisorID) </label>
+                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                <div class="input-group" style="width:100%;">
+										@if (User.CanEdit("T_JobAssignment", "T_EmployeeSupervisorID"))
+		{
+			@Html.DropDownListFor(model => model.t_currentemployeejobassignment.T_EmployeeSupervisorID, (SelectList)ViewBag.T_CurrentEmployeeJobAssignment_T_EmployeeSupervisorID, "--Select--", new {     @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeSupervisorID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model =>  model.t_currentemployeejobassignment.T_EmployeeSupervisorID, new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.t_currentemployeejobassignment.T_EmployeeSupervisorID, (SelectList)ViewBag.T_CurrentEmployeeJobAssignment_T_EmployeeSupervisorID, "--Select--", new {     @class = "chosen-select form-control", @HostingName = "T_Employee", @disabled="disabled", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeSupervisorID" }) })
+		}
+                                    @Html.ValidationMessageFor(model => model.t_currentemployeejobassignment.T_EmployeeSupervisorID)
+									@if ( User.CanAdd("T_Employee"))
+                                    {
+                                    <div class="input-group-btn">
+                                        <a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Supervisor','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                    </div>
+									}
+																				@if ( User.CanView("T_Employee"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_Employee" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_Employee" target="_blank" href="@Url.Action("Details", "t_currentemployeejobassignment", new { Id = Html.DisplayFor(model => model.t_currentemployeejobassignment.t_employeesupervisor.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_currentemployeejobassignment == null || Model.t_currentemployeejobassignment.t_employeesupervisor== null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Employee").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Employee").attr("title", '@Model.t_currentemployeejobassignment.t_employeesupervisor.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+											
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                               
+					
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.T_CurrentEmployeeJobAssignmentID)
+                                    </div>
+                                </div>
+                            </div>
+                       }
+					   else
+                       { @Html.HiddenFor(model => model.T_CurrentEmployeeJobAssignmentID, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+					</div>
+				</div>
+			<div style="background-color:transparent; padding:0px;">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default AppForm">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Current Service Record</h3>
+                            </div>
+                            <div class="panel-body">
+@if(User.CanView("T_Employee","T_StateHireDate"))
+{
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_StateHireDate">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_StateHireDate) </label>
+                                <div class="form-group" title="State Hire Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_StateHireDate">
+									    @Html.TextBoxFor(model => model.T_StateHireDate, "{0:MM/dd/yyyy}", User.CanEdit("T_Employee", "T_StateHireDate") ? (object)new {@class = "form-control" } : (object)new { @class = "form-control", @readonly="readonly"})
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_StateHireDate)
+								</div>
+                                </div>
+	
+                               @if(User.CanEdit("T_Employee", "T_StateHireDate"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_StateHireDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_StateHireDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+								}
+								
+                            </div>
+} else { @Html.HiddenFor(model => model.T_StateHireDate, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_AdjustedHireDate"))
+{
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_AdjustedHireDate">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_AdjustedHireDate) </label>
+                                <div class="form-group" title="Adjusted Hire Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_AdjustedHireDate">
+									    @Html.TextBoxFor(model => model.T_AdjustedHireDate, "{0:MM/dd/yyyy}", User.CanEdit("T_Employee", "T_AdjustedHireDate") ? (object)new {@class = "form-control" } : (object)new { @class = "form-control", @readonly="readonly"})
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_AdjustedHireDate)
+								</div>
+                                </div>
+	
+                               @if(User.CanEdit("T_Employee", "T_AdjustedHireDate"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_AdjustedHireDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_AdjustedHireDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+								}
+								
+                            </div>
+} else { @Html.HiddenFor(model => model.T_AdjustedHireDate, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_PriorServiceinmonths"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PriorServiceinmonths">
+							<div class='form-group' title="Prior Service (in months)">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_PriorServiceinmonths)  </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_PriorServiceinmonths,  getHtmlAttributes("T_PriorServiceinmonths"))
+									
+									<div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" onclick="GetCalculationValue(event,'@Url.Action("GetCalculationValues")');">
+											<span class="fam-arrow-refresh"></span>
+                                        </a>
+                                    </div>
+									@Html.ValidationMessageFor(model => model.T_PriorServiceinmonths)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_PriorServiceinmonths, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_CurrentServiceinmonths"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_CurrentServiceinmonths">
+							<div class='form-group' title="Current Service (in months)">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_CurrentServiceinmonths)  </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_CurrentServiceinmonths,  getHtmlAttributes("T_CurrentServiceinmonths"))
+									
+									<div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" onclick="GetCalculationValue(event,'@Url.Action("GetCalculationValues")');">
+											<span class="fam-arrow-refresh"></span>
+                                        </a>
+                                    </div>
+									@Html.ValidationMessageFor(model => model.T_CurrentServiceinmonths)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_CurrentServiceinmonths, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+					</div>
+				</div>
+			<div style="background-color:transparent; padding:0px;">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default AppForm">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Other Employee Details</h3>
+                            </div>
+                            <div class="panel-body">
+@if(User.CanView("T_Employee","T_EmployeeGenderID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeGenderID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmployeeGenderID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Employee", "T_EmployeeGenderID"))
+		{
+			@Html.DropDownList("T_EmployeeGenderID", null, "-- Select --", new {      @class = "chosen-select form-control", @HostingName = "T_Gender", @dataurl = Url.Action("GetAllValue", "T_Gender",new { caller = "T_EmployeeGenderID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EmployeeGenderID, new { @class = "form-control" })
+			@Html.DropDownList("T_EmployeeGenderID", null, "-- Select --", new {      @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Gender", @dataurl = Url.Action("GetAllValue", "T_Gender",new { caller = "T_EmployeeGenderID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_EmployeeGenderID)
+								 @if ( User.CanAdd("T_Gender"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Gender','dvPopup','" + Url.Action("CreateQuick", "T_Gender", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_Gender"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_Gender" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_Gender" target="_blank" href="@Url.Action("Details", "T_Gender", new { Id = Html.DisplayFor(model => model.t_employeegender.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_employeegender == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Gender").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Gender").attr("title", '@Model.t_employeegender.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_EmployeeGenderID, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_EmployeeRaceID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeRaceID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmployeeRaceID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Employee", "T_EmployeeRaceID"))
+		{
+			@Html.DropDownList("T_EmployeeRaceID", null, "-- Select --", new {      @class = "chosen-select form-control", @HostingName = "T_Race", @dataurl = Url.Action("GetAllValue", "T_Race",new { caller = "T_EmployeeRaceID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EmployeeRaceID, new { @class = "form-control" })
+			@Html.DropDownList("T_EmployeeRaceID", null, "-- Select --", new {      @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Race", @dataurl = Url.Action("GetAllValue", "T_Race",new { caller = "T_EmployeeRaceID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_EmployeeRaceID)
+								 @if ( User.CanAdd("T_Race"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Race','dvPopup','" + Url.Action("CreateQuick", "T_Race", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_Race"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_Race" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_Race" target="_blank" href="@Url.Action("Details", "T_Race", new { Id = Html.DisplayFor(model => model.t_employeerace.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_employeerace == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Race").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Race").attr("title", '@Model.t_employeerace.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_EmployeeRaceID, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_EmployeeNationalityAssociationID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeNationalityAssociationID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmployeeNationalityAssociationID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Employee", "T_EmployeeNationalityAssociationID"))
+		{
+			@Html.DropDownList("T_EmployeeNationalityAssociationID", null, "-- Select --", new {      @class = "chosen-select form-control", @HostingName = "T_Nationality", @dataurl = Url.Action("GetAllValue", "T_Nationality",new { caller = "T_EmployeeNationalityAssociationID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EmployeeNationalityAssociationID, new { @class = "form-control" })
+			@Html.DropDownList("T_EmployeeNationalityAssociationID", null, "-- Select --", new {      @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Nationality", @dataurl = Url.Action("GetAllValue", "T_Nationality",new { caller = "T_EmployeeNationalityAssociationID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_EmployeeNationalityAssociationID)
+								 @if ( User.CanAdd("T_Nationality"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Nationality','dvPopup','" + Url.Action("CreateQuick", "T_Nationality", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_EmployeeNationalityAssociationID, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_EmployeeVeteranStatusID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeVeteranStatusID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmployeeVeteranStatusID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Employee", "T_EmployeeVeteranStatusID"))
+		{
+			@Html.DropDownList("T_EmployeeVeteranStatusID", null, "-- Select --", new {      @class = "chosen-select form-control", @HostingName = "T_VeteranStatus", @dataurl = Url.Action("GetAllValue", "T_VeteranStatus",new { caller = "T_EmployeeVeteranStatusID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EmployeeVeteranStatusID, new { @class = "form-control" })
+			@Html.DropDownList("T_EmployeeVeteranStatusID", null, "-- Select --", new {      @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_VeteranStatus", @dataurl = Url.Action("GetAllValue", "T_VeteranStatus",new { caller = "T_EmployeeVeteranStatusID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_EmployeeVeteranStatusID)
+								 @if ( User.CanAdd("T_VeteranStatus"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Veteran Status','dvPopup','" + Url.Action("CreateQuick", "T_VeteranStatus", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_VeteranStatus"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_VeteranStatus" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_VeteranStatus" target="_blank" href="@Url.Action("Details", "T_VeteranStatus", new { Id = Html.DisplayFor(model => model.t_employeeveteranstatus.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_employeeveteranstatus == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_VeteranStatus").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_VeteranStatus").attr("title", '@Model.t_employeeveteranstatus.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_EmployeeVeteranStatusID, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_EmployeeCardEmplGrpAssociationID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeCardEmplGrpAssociationID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmployeeCardEmplGrpAssociationID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Employee", "T_EmployeeCardEmplGrpAssociationID"))
+		{
+			@Html.DropDownList("T_EmployeeCardEmplGrpAssociationID", null, "-- Select --", new {      @class = "chosen-select form-control", @HostingName = "T_CardEmplGrp", @dataurl = Url.Action("GetAllValue", "T_CardEmplGrp",new { caller = "T_EmployeeCardEmplGrpAssociationID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EmployeeCardEmplGrpAssociationID, new { @class = "form-control" })
+			@Html.DropDownList("T_EmployeeCardEmplGrpAssociationID", null, "-- Select --", new {      @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_CardEmplGrp", @dataurl = Url.Action("GetAllValue", "T_CardEmplGrp",new { caller = "T_EmployeeCardEmplGrpAssociationID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_EmployeeCardEmplGrpAssociationID)
+								 @if ( User.CanAdd("T_CardEmplGrp"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','CardEmplGrp','dvPopup','" + Url.Action("CreateQuick", "T_CardEmplGrp", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_EmployeeCardEmplGrpAssociationID, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_EmployeeCardLvPlanAssociationID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeCardLvPlanAssociationID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmployeeCardLvPlanAssociationID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Employee", "T_EmployeeCardLvPlanAssociationID"))
+		{
+			@Html.DropDownList("T_EmployeeCardLvPlanAssociationID", null, "-- Select --", new {      @class = "chosen-select form-control", @HostingName = "T_CardLvPlan", @dataurl = Url.Action("GetAllValue", "T_CardLvPlan",new { caller = "T_EmployeeCardLvPlanAssociationID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EmployeeCardLvPlanAssociationID, new { @class = "form-control" })
+			@Html.DropDownList("T_EmployeeCardLvPlanAssociationID", null, "-- Select --", new {      @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_CardLvPlan", @dataurl = Url.Action("GetAllValue", "T_CardLvPlan",new { caller = "T_EmployeeCardLvPlanAssociationID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_EmployeeCardLvPlanAssociationID)
+								 @if ( User.CanAdd("T_CardLvPlan"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','CardAltLvPlan','dvPopup','" + Url.Action("CreateQuick", "T_CardLvPlan", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_EmployeeCardLvPlanAssociationID, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+					</div>
+				</div>
+			<div style="background-color:transparent; padding:0px;">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default AppForm">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Contact</h3>
+                            </div>
+                            <div class="panel-body">
+@if(User.CanView("T_Address"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' style="display:none;">
+                        <div class='form-group' style="width:100%;">
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmployeeAddressID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+								@Html.DropDownList("T_EmployeeAddressID", null, "--Select Employee Address--", new { @onclick = Html.Raw("select('T_EmployeeAddressID')"), @class = "form-control", @HostingName = "T_Address" })
+                                @Html.ValidationMessageFor(model => model.T_EmployeeAddressID)								
+                                <div class="input-group-btn">
+                                  <a class="btn btn-default btn ie8fix" href="@Url.Action("Create", "T_Address", new {UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsDDAdd = true })">
+                                            <span class="glyphicon glyphicon-plus-sign"></span>
+                                        </a>
+                                </div>								
+							</div>
+                        </div>
+                    </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12" id="dvT_EmployeeAddressID">
+                                <div class="panel panel-default">
+                                  <div class="panel-sub-heading clearfix">
+                                        <h3 class="panel-title">@Html.LabelFor(model => model.T_EmployeeAddressID)</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="row">
+ @{if (Model.t_employeeaddress!=null) {Model.t_employeeaddress.setDateTimeToClientTime();}}
+@if (Model.t_employeeaddress!=null)
+{ 
+   <div class='col-sm-6' style="display:none;">
+    <div class='form-group'>
+        <label class="col-xs-5">@Html.LabelFor(model => model.t_employeeaddress.Id)</label>
+		@Html.HiddenFor(model => model.t_employeeaddress.ConcurrencyKey)
+        <div class="input-group col-xs-7">
+            @Html.TextBoxFor(model => model.t_employeeaddress.Id, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.t_employeeaddress.Id)
+        </div>
+    </div>
+</div>
+}
+							<div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="AddressLine1">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_employeeaddress.T_AddressLine1) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+																	@if (User.CanEdit("T_Address", "T_AddressLine1"))
+									{
+								@Html.TextBoxFor(model => model.t_employeeaddress.T_AddressLine1, new { @class = "form-control" })
+									}
+									else
+									{
+									@Html.TextBoxFor(model => model.t_employeeaddress.T_AddressLine1, new { @class = "form-control",@readonly="readonly" })
+									}
+                                    @Html.ValidationMessageFor(model => model.t_employeeaddress.T_AddressLine1)
+                                
+								</div>
+                            </div>
+                        </div>
+                                               
+							<div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="AddressLine2">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_employeeaddress.T_AddressLine2) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+																	@if (User.CanEdit("T_Address", "T_AddressLine2"))
+									{
+								@Html.TextBoxFor(model => model.t_employeeaddress.T_AddressLine2, new { @class = "form-control" })
+									}
+									else
+									{
+									@Html.TextBoxFor(model => model.t_employeeaddress.T_AddressLine2, new { @class = "form-control",@readonly="readonly" })
+									}
+                                    @Html.ValidationMessageFor(model => model.t_employeeaddress.T_AddressLine2)
+                                
+								</div>
+                            </div>
+                        </div>
+                                               
+							<div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="ZipCode">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_employeeaddress.T_ZipCode) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+																	@if (User.CanEdit("T_Address", "T_ZipCode"))
+									{
+								@Html.TextBoxFor(model => model.t_employeeaddress.T_ZipCode, new { @class = "form-control" })
+									}
+									else
+									{
+									@Html.TextBoxFor(model => model.t_employeeaddress.T_ZipCode, new { @class = "form-control",@readonly="readonly" })
+									}
+                                    @Html.ValidationMessageFor(model => model.t_employeeaddress.T_ZipCode)
+                                
+								</div>
+                            </div>
+                        </div>
+                                               
+				<div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">
+							@Html.LabelFor(model => model.t_employeeaddress.T_AddressCountryID) </label>
+                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                <div class="input-group" style="width:100%;">
+										@if (User.CanEdit("T_Address", "T_AddressCountryID"))
+		{
+			@Html.DropDownListFor(model => model.t_employeeaddress.T_AddressCountryID, (SelectList)ViewBag.T_EmployeeAddress_T_AddressCountryID, "--Select--", new {     @class = "chosen-select form-control", @HostingName = "T_Country", @dataurl = Url.Action("GetAllValue", "T_Country",new { caller = "T_AddressCountryID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model =>  model.t_employeeaddress.T_AddressCountryID, new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.t_employeeaddress.T_AddressCountryID, (SelectList)ViewBag.T_EmployeeAddress_T_AddressCountryID, "--Select--", new {     @class = "chosen-select form-control", @HostingName = "T_Country", @disabled="disabled", @dataurl = Url.Action("GetAllValue", "T_Country",new { caller = "T_AddressCountryID" }) })
+		}
+                                    @Html.ValidationMessageFor(model => model.t_employeeaddress.T_AddressCountryID)
+									@if ( User.CanAdd("T_Country"))
+                                    {
+                                    <div class="input-group-btn">
+                                        <a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Address Country','dvPopup','" + Url.Action("CreateQuick", "T_Country", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                    </div>
+									}
+									
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                               
+				<div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">
+							@Html.LabelFor(model => model.t_employeeaddress.T_AddressStateID) </label>
+                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                <div class="input-group" style="width:100%;">
+										@if (User.CanEdit("T_Address", "T_AddressStateID"))
+		{
+			@Html.DropDownListFor(model => model.t_employeeaddress.T_AddressStateID, (SelectList)ViewBag.T_EmployeeAddress_T_AddressStateID, "--Select--", new {     @class = "chosen-select form-control", @HostingName = "T_State", @dataurl = Url.Action("GetAllValue", "T_State",new { caller = "T_AddressStateID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model =>  model.t_employeeaddress.T_AddressStateID, new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.t_employeeaddress.T_AddressStateID, (SelectList)ViewBag.T_EmployeeAddress_T_AddressStateID, "--Select--", new {     @class = "chosen-select form-control", @HostingName = "T_State", @disabled="disabled", @dataurl = Url.Action("GetAllValue", "T_State",new { caller = "T_AddressStateID" }) })
+		}
+                                    @Html.ValidationMessageFor(model => model.t_employeeaddress.T_AddressStateID)
+									@if ( User.CanAdd("T_State"))
+                                    {
+                                    <div class="input-group-btn">
+                                        <a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Address State','dvPopup','" + Url.Action("CreateQuick", "T_State", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                    </div>
+									}
+																				@if ( User.CanView("T_State"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_State" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_State" target="_blank" href="@Url.Action("Details", "t_employeeaddress", new { Id = Html.DisplayFor(model => model.t_employeeaddress.t_addressstate.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_employeeaddress == null || Model.t_employeeaddress.t_addressstate== null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_State").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_State").attr("title", '@Model.t_employeeaddress.t_addressstate.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+											
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                               
+				<div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">
+							@Html.LabelFor(model => model.t_employeeaddress.T_AddressCityID) </label>
+                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                <div class="input-group" style="width:100%;">
+										@if (User.CanEdit("T_Address", "T_AddressCityID"))
+		{
+			@Html.DropDownListFor(model => model.t_employeeaddress.T_AddressCityID, (SelectList)ViewBag.T_EmployeeAddress_T_AddressCityID, "--Select--", new {     @class = "chosen-select form-control", @HostingName = "T_City", @dataurl = Url.Action("GetAllValue", "T_City",new { caller = "T_AddressCityID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model =>  model.t_employeeaddress.T_AddressCityID, new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.t_employeeaddress.T_AddressCityID, (SelectList)ViewBag.T_EmployeeAddress_T_AddressCityID, "--Select--", new {     @class = "chosen-select form-control", @HostingName = "T_City", @disabled="disabled", @dataurl = Url.Action("GetAllValue", "T_City",new { caller = "T_AddressCityID" }) })
+		}
+                                    @Html.ValidationMessageFor(model => model.t_employeeaddress.T_AddressCityID)
+									@if ( User.CanAdd("T_City"))
+                                    {
+                                    <div class="input-group-btn">
+                                        <a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Address City','dvPopup','" + Url.Action("CreateQuick", "T_City", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                    </div>
+									}
+																				@if ( User.CanView("T_City"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_City" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_City" target="_blank" href="@Url.Action("Details", "t_employeeaddress", new { Id = Html.DisplayFor(model => model.t_employeeaddress.t_addresscity.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_employeeaddress == null || Model.t_employeeaddress.t_addresscity== null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_City").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_City").attr("title", '@Model.t_employeeaddress.t_addresscity.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+											
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                               
+					
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.T_EmployeeAddressID)
+                                    </div>
+                                </div>
+                            </div>
+                       }
+					   else
+                       { @Html.HiddenFor(model => model.T_EmployeeAddressID, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_PersonalEmail"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PersonalEmail">
+							<div class='form-group' title="Personal  Email">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_PersonalEmail)  </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_PersonalEmail,  getHtmlAttributes("T_PersonalEmail"))
+									@Html.ValidationMessageFor(model => model.T_PersonalEmail)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_PersonalEmail, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_MobilePhone"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_MobilePhone">
+							<div class='form-group' title="Mobile Phone">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_MobilePhone)  </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_MobilePhone,  getHtmlAttributes("T_MobilePhone"))
+									@Html.ValidationMessageFor(model => model.T_MobilePhone)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_MobilePhone, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_HomePhone"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_HomePhone">
+							<div class='form-group' title="Home Phone">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_HomePhone)  </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_HomePhone,  getHtmlAttributes("T_HomePhone"))
+									@Html.ValidationMessageFor(model => model.T_HomePhone)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_HomePhone, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_EmployeeUserLoginID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeUserLoginID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmployeeUserLoginID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+															 @Html.DropDownList("T_EmployeeUserLoginID", null, "--Select Employee User Login--", new { @class = "chosen-select form-control", @HostingName = "UserDropDown", @dataurl = Url.Action("GetAllValueUserLogin", "T_Employee", null) })
+								                                @Html.ValidationMessageFor(model => model.T_EmployeeUserLoginID)
+								 @if ( User.CanAdd("User"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee User Login','dvPopup','" + Url.Action("CreateQuick", "User", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_EmployeeUserLoginID, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+					</div>
+				</div>
+			<div style="background-color:transparent; padding:0px;">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default AppForm">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Emergency Contact</h3>
+                            </div>
+                            <div class="panel-body">
+@if(User.CanView("T_Employee","T_EmergencyContactName"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmergencyContactName">
+							<div class='form-group' title="Emergency  Contact  Name">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmergencyContactName)  </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_EmergencyContactName,  getHtmlAttributes("T_EmergencyContactName"))
+									@Html.ValidationMessageFor(model => model.T_EmergencyContactName)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_EmergencyContactName, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_EmergencyContactRelationship"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmergencyContactRelationship">
+							<div class='form-group' title="Emergency  Contact  Relationship">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmergencyContactRelationship)  </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_EmergencyContactRelationship,  getHtmlAttributes("T_EmergencyContactRelationship"))
+									@Html.ValidationMessageFor(model => model.T_EmergencyContactRelationship)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_EmergencyContactRelationship, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_EmergencyMobilePhone"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmergencyMobilePhone">
+							<div class='form-group' title="Emergency Mobile Phone">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmergencyMobilePhone)  </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_EmergencyMobilePhone,  getHtmlAttributes("T_EmergencyMobilePhone"))
+									@Html.ValidationMessageFor(model => model.T_EmergencyMobilePhone)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_EmergencyMobilePhone, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_EmergencyWorkPhone"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmergencyWorkPhone">
+							<div class='form-group' title="Emergency Work Phone">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmergencyWorkPhone)  </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_EmergencyWorkPhone,  getHtmlAttributes("T_EmergencyWorkPhone"))
+									@Html.ValidationMessageFor(model => model.T_EmergencyWorkPhone)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_EmergencyWorkPhone, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+					</div>
+				</div>
+			<div style="background-color:transparent; padding:0px;">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default AppForm">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Badge Information</h3>
+                            </div>
+                            <div class="panel-body">
+@if(User.CanView("T_Employee","T_BadgeNumber"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_BadgeNumber">
+							<div class='form-group' title="Badge  Number">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_BadgeNumber)  </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								 
+									@Html.TextBoxFor(model => model.T_BadgeNumber,  getHtmlAttributes("T_BadgeNumber"))
+									@Html.ValidationMessageFor(model => model.T_BadgeNumber)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_BadgeNumber, new { @class = "form-control" })}
+@if(User.CanView("T_Employee","T_EffectiveDateTime"))
+{
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EffectiveDateTime">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EffectiveDateTime) </label>
+                                <div class="form-group" title="Effective  Date &  Time">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_EffectiveDateTime">
+									    @Html.TextBoxFor(model => model.T_EffectiveDateTime, "{0:MM/dd/yyyy hh:mm tt}", User.CanEdit("T_Employee", "T_EffectiveDateTime") ? (object)new {@class = "form-control",@format = "MM/DD/YYYY hh:mm" } : (object)new { @class = "form-control", @readonly="readonly",@format = "MM/DD/YYYY hh:mm"})
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_EffectiveDateTime)
+								</div>
+                                </div>
+	
+                               @if(User.CanEdit("T_Employee", "T_EffectiveDateTime"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_EffectiveDateTime').datetimepicker({ });
+                                        $('#datetimepickerT_EffectiveDateTime').datetimepicker({ });
+                                    });
+                                </script>
+								}
+								
+                            </div>
+} else { @Html.HiddenFor(model => model.T_EffectiveDateTime, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+					</div>
+				</div>
+@if ( User.CanEdit("T_Licenses"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Licenses</h3>
+                            </div>
+                            <div class="panel-body" id="T_LicenseRecords">
+                                @if ( User.CanView("T_Licenses"))
+                                {
+                                    Html.RenderAction("Index", "T_Licenses", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_LicenseRecords" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("T_EmployeeInjury"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Injury</h3>
+                            </div>
+                            <div class="panel-body" id="T_EmployeeEmployeeInjury">
+                                @if ( User.CanView("T_EmployeeInjury"))
+                                {
+                                    Html.RenderAction("Index", "T_EmployeeInjury", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_EmployeeEmployeeInjury" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("T_BackgroundCheck"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Background Check </h3>
+                            </div>
+                            <div class="panel-body" id="T_EmployeeCriminalBackgroundCheck">
+                                @if ( User.CanView("T_BackgroundCheck"))
+                                {
+                                    Html.RenderAction("Index", "T_BackgroundCheck", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_EmployeeCriminalBackgroundCheck" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("T_Comment"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Employee Comments</h3>
+                            </div>
+                            <div class="panel-body" id="T_EmployeeComments">
+                                @if ( User.CanView("T_Comment"))
+                                {
+                                    Html.RenderAction("Index", "T_Comment", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_EmployeeComments" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("T_LeaveProfile"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Leave </h3>
+                            </div>
+                            <div class="panel-body" id="T_EmployeeLeaveProfile">
+                                @if ( User.CanView("T_LeaveProfile"))
+                                {
+                                    Html.RenderAction("Index", "T_LeaveProfile", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_EmployeeLeaveProfile" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("T_Education"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Education</h3>
+                            </div>
+                            <div class="panel-body" id="T_EmployeeEducation">
+                                @if ( User.CanView("T_Education"))
+                                {
+                                    Html.RenderAction("Index", "T_Education", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_EmployeeEducation" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("T_Accommodation"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Accommodation</h3>
+                            </div>
+                            <div class="panel-body" id="T_EmployeeAccomodation">
+                                @if ( User.CanView("T_Accommodation"))
+                                {
+                                    Html.RenderAction("Index", "T_Accommodation", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_EmployeeAccomodation" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("T_ServiceRecord"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Service Record</h3>
+                            </div>
+                            <div class="panel-body" id="T_EmployeeEmploymentProfile">
+                                @if ( User.CanView("T_ServiceRecord"))
+                                {
+                                    Html.RenderAction("Index", "T_ServiceRecord", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_EmployeeEmploymentProfile" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("T_JobAssignment"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Job Assignment</h3>
+                            </div>
+                            <div class="panel-body" id="T_EmployeeJobAssignment">
+                                @if ( User.CanView("T_JobAssignment"))
+                                {
+                                    Html.RenderAction("Index", "T_JobAssignment", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_EmployeeJobAssignment" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("T_PayDetails"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Salary And Bonus</h3>
+                            </div>
+                            <div class="panel-body" id="T_EmployeePayDetails">
+                                @if ( User.CanView("T_PayDetails"))
+                                {
+                                    Html.RenderAction("Index", "T_PayDetails", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_EmployeePayDetails" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("T_DrugAlcoholTest"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Drug & Alcohol Test</h3>
+                            </div>
+                            <div class="panel-body" id="T_EmployeeDrugAlcoholTest">
+                                @if ( User.CanView("T_DrugAlcoholTest"))
+                                {
+                                    Html.RenderAction("Index", "T_DrugAlcoholTest", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_EmployeeDrugAlcoholTest" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("T_UnitX"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Administrator For</h3>
+                            </div>
+                            <div class="panel-body" id="T_EmployeeAdministrator">
+                                @if ( User.CanView("T_UnitX"))
+                                {
+                                    Html.RenderAction("Index", "T_UnitX", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_EmployeeAdministrator" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("T_UnitX"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Head For </h3>
+                            </div>
+                            <div class="panel-body" id="T_EmployeeUnitXHead">
+                                @if ( User.CanView("T_UnitX"))
+                                {
+                                    Html.RenderAction("Index", "T_UnitX", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_EmployeeUnitXHead" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("T_JobAssignment"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Manager For</h3>
+                            </div>
+                            <div class="panel-body" id="T_JobAssignmentManagerEmployee">
+                                @if ( User.CanView("T_JobAssignment"))
+                                {
+                                    Html.RenderAction("Index", "T_JobAssignment", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_JobAssignmentManagerEmployee" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("T_JobAssignment"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Supervisor For</h3>
+                            </div>
+                            <div class="panel-body" id="T_EmployeeSupervisor">
+                                @if ( User.CanView("T_JobAssignment"))
+                                {
+                                    Html.RenderAction("Index", "T_JobAssignment", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_EmployeeSupervisor" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("T_BackgroundCheck"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Reviewer </h3>
+                            </div>
+                            <div class="panel-body" id="T_Reviewer">
+                                @if ( User.CanView("T_BackgroundCheck"))
+                                {
+                                    Html.RenderAction("Index", "T_BackgroundCheck", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_Reviewer" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("T_ConversationalEmployeeForeignLanguage"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Conversational Foreign Language</h3>
+                            </div>
+                            <div class="panel-body" id="T_ConversationalEmployeeForeignLanguage_T_Employee">
+                                @if ( User.CanView("T_ConversationalEmployeeForeignLanguage"))
+                                {
+                                    Html.RenderAction("Index", "T_ConversationalEmployeeForeignLanguage", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_ConversationalEmployeeForeignLanguage_T_Employee" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("T_LanguageCertifiedIn"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Languages Certified In</h3>
+                            </div>
+                            <div class="panel-body" id="T_LanguageCertifiedIn_T_Employee">
+                                @if ( User.CanView("T_LanguageCertifiedIn"))
+                                {
+                                    Html.RenderAction("Index", "T_LanguageCertifiedIn", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_LanguageCertifiedIn_T_Employee" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+@if ( User.CanEdit("FileDocument"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Document</h3>
+                            </div>
+                            <div class="panel-body" id="T_EmployeeDocuments">
+                                @if ( User.CanView("FileDocument"))
+                                {
+                                    Html.RenderAction("Index", "FileDocument", new {RenderPartial=true, HostingEntity = "T_Employee", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_EmployeeDocuments" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+</div>
+   @Html.ActionLink("C", "Cancel", new { UrlReferrer = ViewData["T_EmployeeParentUrl"] }, new { @id = "cancel", @style = "display:none;" })
+        @if (EditPermission)
+        {
+            <input type="submit"  name="command" id="WizardSubmit" style="display:none;" />
+        }
+        <input type="hidden" name="hdncommand" value="" />
+    </div>
+ <br />
+}
+<script>
+    $(document).ready(function () {
+        try {
+            focusOnControl('frmT_Employee');
+        }
+        catch (ex) { }
+    });
+</script>
+ <script>
+
+ 	   $(".js-example-basic-multiple").select2({placeholder: "Select/Search",allowClear: true}); 
+	  
+    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+<script>
+	$("input[type='submit']").click(function (event) {
+	if (!$("#frmT_Employee").valid()) return;
+	var $this = $(this);
+					GetCalculationValue(event,'@Url.Action("GetCalculationValues")');
+	$('input:hidden[name="hdncommand"]').val($this.val());
+	});
+	$(document).ready(function () {
+		DisableTabOnReadonlyProperty("frmT_Donation");
+	});
+</script>
+@{
+var businessrule = User.businessrules.Where(p => p.EntityName == "T_Employee").ToList();
+		var businessurlinline = User.businessrules.Where(p => p.EntityName == "T_ServiceRecord" ||  p.EntityName == "T_JobAssignment" ||  p.EntityName == "T_Address").ToList();
+		var inlineruleids = businessurlinline.Select(q => q.Id).ToList();
+		var inlinetypelist  = string.Join(",", (new GeneratorBase.MVC.Models.RuleActionContext()).RuleActions.Where(p => inlineruleids.Contains(p.RuleActionID.Value) && p.associatedactiontype.TypeNo.HasValue).Select(p => p.associatedactiontype.TypeNo.Value).Distinct().ToList());
+
+if ((businessrule != null && businessrule.Count > 0)  || (businessurlinline != null && businessurlinline.Count > 0) )
+{
+var ruleids = businessrule.Select(q => q.Id).ToList();
+var typelist  = string.Join(",", (new GeneratorBase.MVC.Models.RuleActionContext()).RuleActions.Where(p => ruleids.Contains(p.RuleActionID.Value) && p.associatedactiontype.TypeNo.HasValue).Select(p => p.associatedactiontype.TypeNo.Value).Distinct().ToList());
+
+    <script>
+		$(document).ready(function () {
+				document.getElementById("ErrMsg").innerHTML = "";
+				var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+
+					form = $("#frmT_Employee").find(":not(#dvT_CurrentEmployeeEmploymentProfileID *,#dvT_CurrentEmployeeJobAssignmentID *,#dvT_EmployeeAddressID *)").serialize();
+				dataurl = "@Url.Action("businessruletype", "T_Employee", new { ruleType = "OnEdit"})";
+                ApplyBusinessRuleOnPageLoad("@typelist", dataurl, "T_Employee", false, "ErrMsg", form);
+				//business rules on inline associations
+                inlinecount = "@businessurlinline.Where(p => p.EntityName == "T_ServiceRecord").Count()";
+                if (inlinecount != "0") {
+                    form = $('#dvT_CurrentEmployeeEmploymentProfileID :input').serialize();
+                    form = form.replaceAll("t_currentemployeeemploymentprofile.", "");
+                    dataurl = "@Url.Action("businessruletype", "T_ServiceRecord", new { ruleType = "OnEdit" })";
+                    ApplyBusinessRuleOnPageLoad("@inlinetypelist",dataurl, "T_ServiceRecord", true, "ErrMsg", form, "T_CurrentEmployeeEmploymentProfile", "Service Record");
+                }
+                inlinecount = "@businessurlinline.Where(p => p.EntityName == "T_JobAssignment").Count()";
+                if (inlinecount != "0") {
+                    form = $('#dvT_CurrentEmployeeJobAssignmentID :input').serialize();
+                    form = form.replaceAll("t_currentemployeejobassignment.", "");
+                    dataurl = "@Url.Action("businessruletype", "T_JobAssignment", new { ruleType = "OnEdit" })";
+                    ApplyBusinessRuleOnPageLoad("@inlinetypelist",dataurl, "T_JobAssignment", true, "ErrMsg", form, "T_CurrentEmployeeJobAssignment", "Primary Job Assignment");
+                }
+                inlinecount = "@businessurlinline.Where(p => p.EntityName == "T_Address").Count()";
+                if (inlinecount != "0") {
+                    form = $('#dvT_EmployeeAddressID :input').serialize();
+                    form = form.replaceAll("t_employeeaddress.", "");
+                    dataurl = "@Url.Action("businessruletype", "T_Address", new { ruleType = "OnEdit" })";
+                    ApplyBusinessRuleOnPageLoad("@inlinetypelist",dataurl, "T_Address", true, "ErrMsg", form, "T_EmployeeAddress", "Employee Address");
+                }
+
+    });
+</script>
+<script>
+    $("form").submit(function (event) {
+	if (!$("#frmT_Employee").valid()) return;
+			document.getElementById("ErrMsg").innerHTML = "";
+            var flag = true;
+            var dataurl = "";
+            var form = "";
+            var inlinecount = "0";
+				 form = $("#frmT_Employee").find(":not(#dvT_CurrentEmployeeEmploymentProfileID *,#dvT_CurrentEmployeeJobAssignmentID *,#dvT_EmployeeAddressID *)").serialize();
+   
+				 dataurl = "@Url.Action("businessruletype", "T_Employee", new { ruleType = "OnEdit"})";
+                 flag = ApplyBusinessRuleOnSubmit(dataurl, "T_Employee", false, "ErrMsg", form);
+
+  				 //business rules on inline associations
+                inlinecount = "@businessurlinline.Where(p => p.EntityName == "T_ServiceRecord").Count()";
+                if (inlinecount != "0") {
+                    form = $('#dvT_CurrentEmployeeEmploymentProfileID :input').serialize();
+                    form = form.replaceAll("t_currentemployeeemploymentprofile.", "");
+                    dataurl = "@Url.Action("businessruletype", "T_ServiceRecord", new { ruleType = "OnEdit" })";
+                    flag = flag && ApplyBusinessRuleOnSubmit(dataurl, "T_ServiceRecord", true, "ErrMsg", form, "T_CurrentEmployeeEmploymentProfile", "Service Record");
+                }
+                inlinecount = "@businessurlinline.Where(p => p.EntityName == "T_JobAssignment").Count()";
+                if (inlinecount != "0") {
+                    form = $('#dvT_CurrentEmployeeJobAssignmentID :input').serialize();
+                    form = form.replaceAll("t_currentemployeejobassignment.", "");
+                    dataurl = "@Url.Action("businessruletype", "T_JobAssignment", new { ruleType = "OnEdit" })";
+                    flag = flag && ApplyBusinessRuleOnSubmit(dataurl, "T_JobAssignment", true, "ErrMsg", form, "T_CurrentEmployeeJobAssignment", "Primary Job Assignment");
+                }
+                inlinecount = "@businessurlinline.Where(p => p.EntityName == "T_Address").Count()";
+                if (inlinecount != "0") {
+                    form = $('#dvT_EmployeeAddressID :input').serialize();
+                    form = form.replaceAll("t_employeeaddress.", "");
+                    dataurl = "@Url.Action("businessruletype", "T_Address", new { ruleType = "OnEdit" })";
+                    flag = flag && ApplyBusinessRuleOnSubmit(dataurl, "T_Address", true, "ErrMsg", form, "T_EmployeeAddress", "Employee Address");
+                }
+               
+			 if (flag)
+                    $("form").find(':input').removeAttr('disabled');
+            return flag;
+		});
+		 $(document).ready(function () {
+                $("input[type='submit']").on('blur', function () {
+                    $("input[type='submit']").removeAttr('disabled');
+                });
+               
+            });
+</script>
+}
+ 
+}
+ <script type='text/javascript'>$(document).ready(function () {   $('#T_SSN').mask('999-99-9999'); $('#T_MobilePhone').mask('999-999-9999'); $('#T_HomePhone').mask('999-999-9999'); $('#T_EmergencyMobilePhone').mask('999-999-9999'); $('#T_EmergencyWorkPhone').mask('999-999-9999');  });</script>
+

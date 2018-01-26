@@ -1,0 +1,1063 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://apps.turanto.com/HOPS_HR_v18" />
+<title>Position</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">T_Position</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/HOPS_HR_v18/Home</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#liT_Position &gt; a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//button[@type='button'])[5]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_PositionNumber</td>
+	<td>Position Number</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_PositionFill</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=T_QuasiFill</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_EffectiveDate</td>
+	<td>12/11/2017 5:52:16 PM</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_SalaryBand</td>
+	<td>Salary Band</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_CardApprvr</td>
+	<td>CardApprvr</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_ShiftStart</td>
+	<td>12/11/2017 5:52:16 PM</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_ShiftEnd</td>
+	<td>12/11/2017 5:52:16 PM</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=T_DualIncumbent</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_DualIncumbentStartDate</td>
+	<td>12/11/2017 5:52:16 PM</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_DualIncumbentEndDate</td>
+	<td>12/11/2017 5:52:16 PM</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=T_Funded</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_EstablishedDate</td>
+	<td>12/11/2017 5:52:16 PM</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_AbolishDate</td>
+	<td>12/11/2017 5:52:16 PM</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_FacilityAssignedToID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_FacilityAssignedToID_chosen']/div/ul/li[2]</td>
+	<td>T_FacilityAssignedToflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_FacilityAssignedToflag</td>
+	<td>T_FacilityAssignedTo</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_FacilityAssignedToID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_FacilityCode</td>
+	<td>Facility Facility Code</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_FacilityName</td>
+	<td>Facility Facility Name</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_FacilityAssignedTo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_FacilityAssignedToID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_FacilityAssignedToID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_TypeOfPositionID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_TypeOfPositionID_chosen']/div/ul/li[2]</td>
+	<td>T_TypeOfPositionflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_TypeOfPositionflag</td>
+	<td>T_TypeOfPosition</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_TypeOfPositionID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Position Type Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Position Type Description</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_TypeOfPosition</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_TypeOfPositionID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_TypeOfPositionID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_AssociatedPositionStatusID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_AssociatedPositionStatusID_chosen']/div/ul/li[2]</td>
+	<td>T_AssociatedPositionStatusflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_AssociatedPositionStatusflag</td>
+	<td>T_AssociatedPositionStatus</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_AssociatedPositionStatusID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Position Status Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_SortOrder</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Position Status Description</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_AssociatedPositionStatus</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_AssociatedPositionStatusID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_AssociatedPositionStatusID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionIdentifierID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_PositionIdentifierID_chosen']/div/ul/li[2]</td>
+	<td>T_PositionIdentifierflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_PositionIdentifierflag</td>
+	<td>T_PositionIdentifier</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_PositionIdentifierID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Position Level Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Position Level Description</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_PositionIdentifier</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_PositionIdentifierID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionIdentifierID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionWorkingTitleAssociationID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_PositionWorkingTitleAssociationID_chosen']/div/ul/li[2]</td>
+	<td>T_PositionWorkingTitleAssociationflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_PositionWorkingTitleAssociationflag</td>
+	<td>T_PositionWorkingTitleAssociation</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_PositionWorkingTitleAssociationID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Working Title  Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Working Title  Description</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_PositionWorkingTitleAssociation</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_PositionWorkingTitleAssociationID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionWorkingTitleAssociationID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionRoleCodeID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_PositionRoleCodeID_chosen']/div/ul/li[2]</td>
+	<td>T_PositionRoleCodeflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_PositionRoleCodeflag</td>
+	<td>T_PositionRoleCode</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_PositionRoleCodeID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Code</td>
+	<td>Role Code Code</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Title</td>
+	<td>Role Code Title</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Role_TitleA</td>
+	<td>Role Code Role_TitleA</td>
+</tr>
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_RoleCodeSalaryBandID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_RoleCodeSalaryBandID_chosen']/div/ul/li[2]</td>
+	<td>T_RoleCodeSalaryBandflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_RoleCodeSalaryBandflag == false</td>
+	<td>T_RoleCodeSalaryBand</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_RoleCodeSalaryBandID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_RoleCodeSalaryBandID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_RoleCodeSalaryBand</td>
+	<td></td>
+</tr>
+		
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_PositionRoleCode</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_PositionRoleCodeID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionRoleCodeID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionSOCCodeID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_PositionSOCCodeID_chosen']/div/ul/li[2]</td>
+	<td>T_PositionSOCCodeflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_PositionSOCCodeflag</td>
+	<td>T_PositionSOCCode</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_PositionSOCCodeID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Code</td>
+	<td>SOC Code Code</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Title</td>
+	<td>SOC Code Title</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_PositionSOCCode</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_PositionSOCCodeID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionSOCCodeID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionClassCodeID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_PositionClassCodeID_chosen']/div/ul/li[2]</td>
+	<td>T_PositionClassCodeflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_PositionClassCodeflag</td>
+	<td>T_PositionClassCode</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_PositionClassCodeID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Code</td>
+	<td>Class Code Code</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Title</td>
+	<td>Class Code Title</td>
+</tr>
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_ClassEEOCodeID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_ClassEEOCodeID_chosen']/div/ul/li[2]</td>
+	<td>T_ClassEEOCodeflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_ClassEEOCodeflag == false</td>
+	<td>T_ClassEEOCode</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_ClassEEOCodeID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_ClassEEOCodeID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_ClassEEOCode</td>
+	<td></td>
+</tr>
+		
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_PositionClassCode</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_PositionClassCodeID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionClassCodeID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_WorkersCompCodePositionID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_WorkersCompCodePositionID_chosen']/div/ul/li[2]</td>
+	<td>T_WorkersCompCodePositionflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_WorkersCompCodePositionflag</td>
+	<td>T_WorkersCompCodePosition</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_WorkersCompCodePositionID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>WC Code Code</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>WC Code Description</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_WorkersCompCodePosition</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_WorkersCompCodePositionID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_WorkersCompCodePositionID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionCostCenterAssociationID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_PositionCostCenterAssociationID_chosen']/div/ul/li[2]</td>
+	<td>T_PositionCostCenterAssociationflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_PositionCostCenterAssociationflag</td>
+	<td>T_PositionCostCenterAssociation</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_PositionCostCenterAssociationID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_CC</td>
+	<td>CardDept CC</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_CCDescription</td>
+	<td>CardDept CC Description</td>
+</tr>
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_CostProgramID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_CostProgramID_chosen']/div/ul/li[2]</td>
+	<td>T_CostProgramflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_CostProgramflag == false</td>
+	<td>T_CostProgram</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_CostProgramID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_CostProgramID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_CostProgram</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_CostFundID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_CostFundID_chosen']/div/ul/li[2]</td>
+	<td>T_CostFundflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_CostFundflag == false</td>
+	<td>T_CostFund</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_CostFundID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_CostFundID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_CostFund</td>
+	<td></td>
+</tr>
+		
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_PositionCostCenterAssociation</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_PositionCostCenterAssociationID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionCostCenterAssociationID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionShiftMealTimeID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_PositionShiftMealTimeID_chosen']/div/ul/li[2]</td>
+	<td>T_PositionShiftMealTimeflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_PositionShiftMealTimeflag</td>
+	<td>T_PositionShiftMealTime</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_PositionShiftMealTimeID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_MealTime</td>
+	<td>Shift Meal Time Meal Time</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_PositionShiftMealTime</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_PositionShiftMealTimeID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionShiftMealTimeID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionShiftTimeID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_PositionShiftTimeID_chosen']/div/ul/li[2]</td>
+	<td>T_PositionShiftTimeflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_PositionShiftTimeflag</td>
+	<td>T_PositionShiftTime</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_PositionShiftTimeID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Shift Time Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Shift Time Description</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_PositionShiftTime</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_PositionShiftTimeID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionShiftTimeID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionShiftDurationID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_PositionShiftDurationID_chosen']/div/ul/li[2]</td>
+	<td>T_PositionShiftDurationflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_PositionShiftDurationflag</td>
+	<td>T_PositionShiftDuration</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_PositionShiftDurationID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Shift Duration Name</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_PositionShiftDuration</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_PositionShiftDurationID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionShiftDurationID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionOvertimeEligibilityID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_PositionOvertimeEligibilityID_chosen']/div/ul/li[2]</td>
+	<td>T_PositionOvertimeEligibilityflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_PositionOvertimeEligibilityflag</td>
+	<td>T_PositionOvertimeEligibility</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_PositionOvertimeEligibilityID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Overtime Eligibility Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Overtime Eligibility Description</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_PositionOvertimeEligibility</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_PositionOvertimeEligibilityID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionOvertimeEligibilityID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionStatusforPostingID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_PositionStatusforPostingID_chosen']/div/ul/li[2]</td>
+	<td>T_PositionStatusforPostingflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_PositionStatusforPostingflag</td>
+	<td>T_PositionStatusforPosting</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_PositionStatusforPostingID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Position Post Status Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Position Post Status Description</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_PositionStatusforPosting</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_PositionStatusforPostingID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_PositionStatusforPostingID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+
+
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@name='command' and @Value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Home</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
+

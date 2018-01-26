@@ -1,0 +1,93 @@
+﻿@model GeneratorBase.MVC.Models.T_Licenses
+@{
+    ViewBag.Title = "Delete Licenses";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-hand-down text-primary"></i>Delete Licenses  <i class="glyphicon glyphicon-chevron-right small"></i> 
+            <span style="color:red;">  Are you sure you want to delete this?</span>
+        </h1>
+        <h2 class="text-primary">@Html.DisplayFor(model => model.DisplayValue)</h2>
+    </div>
+</div>
+<div class="row">
+<label id="ErrMsg" class="text-primary small" style="color:red; vertical-align:middle; font-weight:100;"></label>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ConcurrencyKey)
+    @Html.HiddenFor(model => model.Id)
+                                  
+    <dl class="dl-horizontal">
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_AssociatedLicensesTypeID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_associatedlicensestype.DisplayValue)
+			 @Html.HiddenFor(model => model.T_AssociatedLicensesTypeID)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_LicenseRecordsID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_licenserecords.DisplayValue)
+			 @Html.HiddenFor(model => model.T_LicenseRecordsID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_LicenseNumber)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_LicenseNumber)
+			@Html.HiddenFor(model => model.T_LicenseNumber)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_Notes)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_Notes)
+			@Html.HiddenFor(model => model.T_Notes)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_NameontheLicense)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_NameontheLicense)
+			@Html.HiddenFor(model => model.T_NameontheLicense)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_InitialLicenseDate)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_InitialLicenseDate)
+			@Html.HiddenFor(model => model.T_InitialLicenseDate)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_ExpiryDate)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_ExpiryDate)
+			@Html.HiddenFor(model => model.T_ExpiryDate)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_PrintDate)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_PrintDate)
+			@Html.HiddenFor(model => model.T_PrintDate)
+        </dd>
+    </dl>
+	<br/>
+        <div class="row deletefix">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+         <a class="btn btn-default btn-sm" Onclick="goBack('@Url.Action("Index","T_Licenses")');">Back</a>
+        @*@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default btn-sm" })*@
+ 
+	@if ( User.CanDelete("T_Licenses"))
+     {
+			<input type="submit" value="Delete" class="btn btn-primary btn-sm" /> 
+	}
+        </div>
+            </div>
+    }
+</div>

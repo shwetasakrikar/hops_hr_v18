@@ -1,0 +1,263 @@
+﻿@model GeneratorBase.MVC.Models.T_CostCenter
+@using PagedList;
+@{
+    ViewBag.Title = "View Cost Center";
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_CostCenter");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Cost Center";
+}
+<script>
+    $(document).ready(function () {
+			 if ($.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') != null) {
+				$('a[href="#' + $.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') + '"]').click();
+			 }
+    });
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_CostCenterIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_CostCenterIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_CostCenterIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_CostCenterIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_CostCenterIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_CostCenterIsSetValueUIRule);
+    }
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-hand-down text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span>View</span>
+        </h1>
+        <h2 class="text-primary"><span id="HostingEntityDisplayValue">@Html.DisplayFor(model => model.DisplayValue)</span>
+			<div class="btn-group pull-right fixactionbut">
+            <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle pull-right">
+                Action
+                <span class="caret">    </span>
+            </button>
+			<ul class="dropdown-menu pull-left">               
+				<li>
+                    @if ( User.CanEdit("T_CostCenter"))
+                    {
+                        <a href="@Url.Action("Edit","T_CostCenter", new {UrlReferrer = Request.UrlReferrer,id = Model.Id,AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    }
+                </li>             
+				<li>
+                    @if ( User.CanDelete("T_CostCenter"))
+                    {
+                        <a href="@Url.Action("Delete", "T_CostCenter", new { UrlReferrer = Request.UrlReferrer,id = Model.Id, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Delete</a>
+                    }
+                </li>
+	<li class="divider" style="clear:both"></li>
+	<li class="dropdown-submenu pull-left" id="AddAssociationdropmenuT_CostCenter">
+	 @{ var dropmenu = false; }
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu pull-left">
+				@if ( User.CanAdd("T_UnitX"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_UnitX", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_WardCostCenter", 
+							HostingEntityName = "T_CostCenter",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Ward
+						</a>
+					</li>
+				}
+							@if ( User.CanAdd("T_Position"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Position", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_PositionCostCenterAssociation", 
+							HostingEntityName = "T_CostCenter",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Position
+						</a>
+					</li>
+				}
+			</ul>
+</li>
+@if(!dropmenu)
+{
+    <script>
+        $("#AddAssociationdropmenuT_CostCenter").hide();
+    </script>
+}
+			</ul>
+
+
+		</h2>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+	 <li class="active"><a href="#Details" onclick="ClearTabCookie('@User.JavaScriptEncodedName@Model.Id');" data-toggle="tab">Details</a></li>
+		 <li @(!User.CanView("T_UnitX") ?"style=display:none;":"")><a onclick="LoadTab('T_WardCostCenter','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_UnitX", new {RenderPartial=true, HostingEntity ="T_CostCenter", HostingEntityID = @Model.Id, AssociatedType = "T_WardCostCenter",TabToken = DateTime.Now.Ticks,}))')" href="#T_WardCostCenter" data-toggle="tab">
+		 Ward
+		 <span class="badge bg-blue"><div id="dvcnt_T_WardCostCenter">@ViewBag.T_WardCostCenterCount</div></span>
+		 		 </a></li>
+		 <li @(!User.CanView("T_Position") ?"style=display:none;":"")><a onclick="LoadTab('T_PositionCostCenterAssociation','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_Position", new {RenderPartial=true, HostingEntity ="T_CostCenter", HostingEntityID = @Model.Id, AssociatedType = "T_PositionCostCenterAssociation",TabToken = DateTime.Now.Ticks,}))')" href="#T_PositionCostCenterAssociation" data-toggle="tab">
+		 Position
+		 <span class="badge bg-blue"><div id="dvcnt_T_PositionCostCenterAssociation">@ViewBag.T_PositionCostCenterAssociationCount</div></span>
+		 		 </a></li>
+		 <li @(!User.CanView("JournalEntry")?"style=display:none;":"")><a onclick="LoadTab('JournalEntryToT_CostCenterRelation','@User.JavaScriptEncodedName@Model.Id','@Url.Action("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_CostCenter", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry", TabToken = DateTime.Now.Ticks })')" href="#JournalEntryToT_CostCenterRelation" data-toggle="tab">Cost Center Journal</a></li>
+    </ul>
+	  @Html.HiddenFor(model => model.Id)
+	    <div class="tab-content">
+		   <div class="tab-pane fade in active" id="Details">
+				 <div class="panel panel-default AppForm">
+					<div class="panel-body">
+                                  
+			
+			<div class="row">
+@if(User.CanView("T_CostCenter","T_CC"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_CC">
+	<div class='form-group' title="@Model.T_CC">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_CC) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p id="lblT_CC" class="viewlabel">@Model.T_CC</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_CostCenter","T_CCDescription"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_CCDescription">
+	<div class='form-group' title="@Model.T_CCDescription">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_CCDescription)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		<p class="viewlabelmultiline">@Model.T_CCDescription</p>
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_CostCenter","T_CostProgramID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_CostProgram">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_CostProgramID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_costprogram!=null && !string.IsNullOrEmpty(Model.t_costprogram.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_CostProgram">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_costprogram.DisplayValue).ToString(), "Details", "T_Program", new { Id = Html.DisplayFor(model => model.t_costprogram.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_CostCenter","T_CostFundID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_CostFund">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_CostFundID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_costfund!=null && !string.IsNullOrEmpty(Model.t_costfund.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_CostFund">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_costfund.DisplayValue).ToString(), "Details", "T_Fund", new { Id = Html.DisplayFor(model => model.t_costfund.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+		</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+				<a class="btn btn-default btn-sm pull-left formbuttonfix" Onclick="goBack('@Url.Action("Index","T_CostCenter")');">Back</a>
+				@*@Html.ActionLink("Back", "Cancel", new { UrlReferrer = Request.UrlReferrer }, new { @class = "btn btn-default btn-sm pull-left formbuttonfix" })*@
+					
+					 @if ( User.CanEdit("T_CostCenter"))
+                     {
+                          @Html.ActionLink("Edit", "Edit", new { UrlReferrer = Request.UrlReferrer, id = Model.Id, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, new { @class = "btn btn-primary btn-sm pull-left formbuttonfix" })
+                     }
+				   
+ @{ var dropmenubottom = false; }
+<div class="dropdown pull-left formbuttonfix" style="" id="AddAssociationdropmenubottomT_CostCenter">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+			@if (User.CanAdd("T_UnitX"))
+            {
+			    dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_UnitX",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_WardCostCenter", 
+						HostingEntityName = "T_CostCenter",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Ward
+                </a>
+				</li>
+            }
+
+			
+			@if (User.CanAdd("T_Position"))
+            {
+			    dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Position",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_PositionCostCenterAssociation", 
+						HostingEntityName = "T_CostCenter",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Position
+                </a>
+				</li>
+            }
+
+			
+</ul>
+</div>
+@if(!dropmenubottom)
+{
+    <script>
+        $("#AddAssociationdropmenubottomT_CostCenter").hide();
+    </script>
+}
+			</div> 
+			</div><div class="clearfix" style="clear:both"></div>
+	</div>    
+<div class="tab-pane fade in" id="T_WardCostCenter">
+     @if ( User.CanView("T_UnitX"))
+	{
+	  // Html.RenderAction("Index", "T_UnitX", new {RenderPartial=true, HostingEntity = "T_CostCenter", HostingEntityID = @Model.Id, AssociatedType = "T_WardCostCenter" }); 
+	}
+  </div>
+<div class="tab-pane fade in" id="JournalEntryToT_CostCenterRelation">
+            @if ( User.CanView("JournalEntry"))
+		   {
+			//	Html.RenderAction("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_CostCenter", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry" });
+		   }
+  </div>
+<div class="tab-pane fade in" id="T_PositionCostCenterAssociation">
+     @if ( User.CanView("T_Position"))
+	{
+	  // Html.RenderAction("Index", "T_Position", new {RenderPartial=true, HostingEntity = "T_CostCenter", HostingEntityID = @Model.Id, AssociatedType = "T_PositionCostCenterAssociation" }); 
+	}
+  </div>
+	</div> <!-- /tab-content --><br />
+
+<br/>
+</div>
+ 

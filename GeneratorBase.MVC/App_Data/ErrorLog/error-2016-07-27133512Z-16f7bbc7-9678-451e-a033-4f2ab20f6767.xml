@@ -1,0 +1,171 @@
+﻿<error errorId="16f7bbc7-9678-451e-a033-4f2ab20f6767" application="/LM/W3SVC/1/ROOT/wsh_hr_v26" host="TURANTOMVC" type="System.Web.HttpException" message="The controller for path '/wsh_hr_v26/T_ServiceRecords' was not found or does not implement IController." source="System.Web.Mvc" detail="System.Web.HttpException (0x80004005): The controller for path '/wsh_hr_v26/T_ServiceRecords' was not found or does not implement IController.&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="Admin" time="2016-07-27T13:35:12.0272700Z" statusCode="404">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, sdch, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:pageSizeAdminT_Salary=20; BX=d254lgpbi3in1&amp;b=3&amp;s=29; __RequestVerificationToken_L3dzaF9ocl92MjY1=XixA2KA77VxLUgLpTiPXnrmaw-QQf8vf2NmZrD57UPpvbFfsZyTfm5CXImWFIcVa3vuyHsTyUL6nKHW1gGr1zBEe7lAcGEWlS3829XV1x6s1; wsh_hr_v21=PXjSfWVs4IhngGvvbyWjZD8ZvoBJzVD94lSaCtWY_cjOYeuz9voOyZIQW1cSxuCTvmDiaY7hKIxs1B_cf1XAXsuIrKj3NPkURO5_fwz6b7FCRSLsAOtRMtgH03SUJcPiobMvz_DTRoffkxRx5V4uh7UVuof1y5uZ2E-eYHIaywxJzXhBiupzgKCi7pVZbwPaZGYWveJfJdZ9-BFPekZXkuNFDEz8lmDwCnFkM_hxN69B-qZ1xKipDofJiOUk8SES2fyvYVB4i7Y4jn5IQext--JIusOMjog0uvmombHiqBx_kkczao3Z23tLL4r2HsoG8pYjUj-vbtNqNeNORqLRD--2JsroWC0YuzKDCKTeKiZBTzp8_TEttf1jIVVJxyVxbUJ4v6nm4GNEjI5Dgp2uvBLrURIrFh-v5wj2G4RH8Hmg-VEZVCI_OWZNL5p4N0E2pKAJJfv0dKcYlVD2nf98TkUadNEq5McZvaS1Eiw3dVtqWAmeMeI910JI39V6C-mN&#xD;&#xA;HTTP_HOST:apps.turanto.com&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, sdch, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: pageSizeAdminT_Salary=20; BX=d254lgpbi3in1&amp;b=3&amp;s=29; __RequestVerificationToken_L3dzaF9ocl92MjY1=XixA2KA77VxLUgLpTiPXnrmaw-QQf8vf2NmZrD57UPpvbFfsZyTfm5CXImWFIcVa3vuyHsTyUL6nKHW1gGr1zBEe7lAcGEWlS3829XV1x6s1; wsh_hr_v21=PXjSfWVs4IhngGvvbyWjZD8ZvoBJzVD94lSaCtWY_cjOYeuz9voOyZIQW1cSxuCTvmDiaY7hKIxs1B_cf1XAXsuIrKj3NPkURO5_fwz6b7FCRSLsAOtRMtgH03SUJcPiobMvz_DTRoffkxRx5V4uh7UVuof1y5uZ2E-eYHIaywxJzXhBiupzgKCi7pVZbwPaZGYWveJfJdZ9-BFPekZXkuNFDEz8lmDwCnFkM_hxN69B-qZ1xKipDofJiOUk8SES2fyvYVB4i7Y4jn5IQext--JIusOMjog0uvmombHiqBx_kkczao3Z23tLL4r2HsoG8pYjUj-vbtNqNeNORqLRD--2JsroWC0YuzKDCKTeKiZBTzp8_TEttf1jIVVJxyVxbUJ4v6nm4GNEjI5Dgp2uvBLrURIrFh-v5wj2G4RH8Hmg-VEZVCI_OWZNL5p4N0E2pKAJJfv0dKcYlVD2nf98TkUadNEq5McZvaS1Eiw3dVtqWAmeMeI910JI39V6C-mN&#xD;&#xA;Host: apps.turanto.com&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/wsh_hr_v26" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v26\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="Admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="Admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="Admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/wsh_hr_v26/T_ServiceRecords" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v26\GeneratorBase.MVC\T_ServiceRecords" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="4467" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/wsh_hr_v26/T_ServiceRecords" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/wsh_hr_v26/T_ServiceRecords" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, sdch, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="pageSizeAdminT_Salary=20; BX=d254lgpbi3in1&amp;b=3&amp;s=29; __RequestVerificationToken_L3dzaF9ocl92MjY1=XixA2KA77VxLUgLpTiPXnrmaw-QQf8vf2NmZrD57UPpvbFfsZyTfm5CXImWFIcVa3vuyHsTyUL6nKHW1gGr1zBEe7lAcGEWlS3829XV1x6s1; wsh_hr_v21=PXjSfWVs4IhngGvvbyWjZD8ZvoBJzVD94lSaCtWY_cjOYeuz9voOyZIQW1cSxuCTvmDiaY7hKIxs1B_cf1XAXsuIrKj3NPkURO5_fwz6b7FCRSLsAOtRMtgH03SUJcPiobMvz_DTRoffkxRx5V4uh7UVuof1y5uZ2E-eYHIaywxJzXhBiupzgKCi7pVZbwPaZGYWveJfJdZ9-BFPekZXkuNFDEz8lmDwCnFkM_hxN69B-qZ1xKipDofJiOUk8SES2fyvYVB4i7Y4jn5IQext--JIusOMjog0uvmombHiqBx_kkczao3Z23tLL4r2HsoG8pYjUj-vbtNqNeNORqLRD--2JsroWC0YuzKDCKTeKiZBTzp8_TEttf1jIVVJxyVxbUJ4v6nm4GNEjI5Dgp2uvBLrURIrFh-v5wj2G4RH8Hmg-VEZVCI_OWZNL5p4N0E2pKAJJfv0dKcYlVD2nf98TkUadNEq5McZvaS1Eiw3dVtqWAmeMeI910JI39V6C-mN" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="pageSizeAdminT_Salary">
+      <value string="20" />
+    </item>
+    <item name="BX">
+      <value string="d254lgpbi3in1&amp;b=3&amp;s=29" />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MjY1">
+      <value string="XixA2KA77VxLUgLpTiPXnrmaw-QQf8vf2NmZrD57UPpvbFfsZyTfm5CXImWFIcVa3vuyHsTyUL6nKHW1gGr1zBEe7lAcGEWlS3829XV1x6s1" />
+    </item>
+    <item name="wsh_hr_v21">
+      <value string="PXjSfWVs4IhngGvvbyWjZD8ZvoBJzVD94lSaCtWY_cjOYeuz9voOyZIQW1cSxuCTvmDiaY7hKIxs1B_cf1XAXsuIrKj3NPkURO5_fwz6b7FCRSLsAOtRMtgH03SUJcPiobMvz_DTRoffkxRx5V4uh7UVuof1y5uZ2E-eYHIaywxJzXhBiupzgKCi7pVZbwPaZGYWveJfJdZ9-BFPekZXkuNFDEz8lmDwCnFkM_hxN69B-qZ1xKipDofJiOUk8SES2fyvYVB4i7Y4jn5IQext--JIusOMjog0uvmombHiqBx_kkczao3Z23tLL4r2HsoG8pYjUj-vbtNqNeNORqLRD--2JsroWC0YuzKDCKTeKiZBTzp8_TEttf1jIVVJxyVxbUJ4v6nm4GNEjI5Dgp2uvBLrURIrFh-v5wj2G4RH8Hmg-VEZVCI_OWZNL5p4N0E2pKAJJfv0dKcYlVD2nf98TkUadNEq5McZvaS1Eiw3dVtqWAmeMeI910JI39V6C-mN" />
+    </item>
+  </cookies>
+</error>

@@ -1,0 +1,35 @@
+﻿@model GeneratorBase.MVC.Models.T_ServiceRecord
+@{
+    ViewBag.Title = "Create Service Record";
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_ServiceRecord");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Service Record";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title" style="margin-bottom:10px">
+		@{
+                var hostingValue = "";
+                if (ViewBag.DisplayVal != null)
+                {
+                    hostingValue = " - " + ViewBag.DisplayVal;
+                }
+            }
+            <i class="glyphicon glyphicon-save text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span> Add Service Record @hostingValue</span>
+<div class="btn-group pull-right" style="margin-top:3px; margin-right:3px">
+
+    @if (ViewData["HostingEntity"]==null)
+	{ 
+			 <a href="@(Url.Action("SetFSearch", "T_ServiceRecord")+Request.Url.Query)" data-original-title="Faceted Search"  class="btn btn-xs" alt="Search" title="Search"><i class="glyphicon glyphicon-search"></i> Search</a>
+	}
+			<a class="btn btn-xs pull-right" type="button" data-original-title="List View" data-placement="top" onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Index", "T_ServiceRecord") + "');") alt="Search" title="List">
+				<i class="glyphicon glyphicon-list"></i> List
+			</a>
+			</div>
+	
+
+        </h1>
+        <h2 class="text-primary">@Html.DisplayFor(model => model.DisplayValue)</h2>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+@Html.Partial("~/Views/T_ServiceRecord/CreatePartial.cshtml", Model)

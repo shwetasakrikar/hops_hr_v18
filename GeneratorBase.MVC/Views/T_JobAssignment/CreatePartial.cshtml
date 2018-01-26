@@ -1,0 +1,601 @@
+﻿@model GeneratorBase.MVC.Models.T_JobAssignment
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_JobAssignmentIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_JobAssignmentIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_JobAssignmentIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_JobAssignmentIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_JobAssignmentIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_JobAssignmentIsSetValueUIRule);
+    }
+}
+@using (Html.BeginForm("Create", "T_JobAssignment",new {UrlReferrer = Convert.ToString(ViewData["T_JobAssignmentParentUrl"]), IsDDAdd = ViewBag.IsDDAdd }, FormMethod.Post, new { enctype = "multipart/form-data",id="frmT_JobAssignment" }))
+{
+   @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+	<input type="hidden" id="ErrMsg" />
+	@*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+    <div id="errorContainer" style="display: none">
+        <div id="errorsMsg"></div>
+        <div id="errors"></div>
+    </div>
+	 
+	 <div id="divDisplayThresholdLimit" style="display:none;">
+	</div>
+	 <div id="divDisplayBRmsgMandatory" style="display:none;">
+	</div>
+	<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+	</div>
+	<div id="divDisplayCodeFragment" style="display:none;">
+	</div>
+
+	<div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="AppForm">
+                <div class="">
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48911">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#employeeassignedbody" alt="Employee Assigned" title="Employee Assigned"><span class="glyphicon glyphicon-chevron-down"></span> Employee Assigned</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="employeeassignedbody">					
+      <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeJobAssignmentID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_EmployeeJobAssignmentID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_EmployeeJobAssignmentID", null, "-- Select --", new {   @required ="required",      @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeJobAssignmentID" }) })
+			@Html.ValidationMessageFor(model => model.T_EmployeeJobAssignmentID)
+			@if ( User.CanAdd("T_Employee"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_Employee"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+			 @if(User.CanView("T_JobAssignment","T_EmployeePercent"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeePercent">
+                                <div class='form-group' title="Employee  Percent (%)">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmployeePercent) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_EmployeePercent, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_EmployeePercent)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+   @if(User.CanView("T_JobAssignment","T_StartDate"))
+{
+		  <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_StartDate">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_StartDate) <span class="text-danger-reg">*</span></label>
+                                <div class="form-group" title="Start  Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_StartDate">
+                                        @Html.TextBoxFor(model => model.T_StartDate, new { @class = "form-control" ,@Value = DateTime.Now.ToString("MM/dd/yyyy")  })
+                                        
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_StartDate)
+
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_StartDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_StartDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+							}
+		  
+                          
+   @if(User.CanView("T_JobAssignment","T_EndDate"))
+{
+		  <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EndDate">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EndDate) </label>
+                                <div class="form-group" title="End  Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_EndDate">
+                                        @Html.TextBoxFor(model => model.T_EndDate, new { @class = "form-control"   })
+                                        
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_EndDate)
+
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_EndDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_EndDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+							}
+		  
+                          
+								  @if(User.CanView("T_JobAssignment","T_Primary"))
+								{
+								<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Primary">
+									<div class="form-group" title="Primary">
+										<label class="col-sm-5 col-md-5 col-xs-12" >
+											@Html.LabelFor(model => model.T_Primary) 
+										</label>
+										<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    
+											@Html.CheckBox("T_Primary", false)
+											@Html.ValidationMessageFor(model => model.T_Primary)		
+										</div>
+										</div>
+									</div>   
+								}                         
+								  @if(User.CanView("T_JobAssignment","T_Active"))
+								{
+								<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Active">
+									<div class="form-group" title="Active">
+										<label class="col-sm-5 col-md-5 col-xs-12" >
+											@Html.LabelFor(model => model.T_Active) 
+										</label>
+										<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    
+											@Html.CheckBox("T_Active", false)
+											@Html.ValidationMessageFor(model => model.T_Active)		
+										</div>
+										</div>
+									</div>   
+								}                         
+							</div>
+                         </div>
+                      </div>
+       </div>
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48913">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+											
+									<h3 class="panel-title" alt="Position Details" title="Position Details">Position Details</h3>
+								</div>
+                                <div class="panel-body">
+      <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionJobAssignmentID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_PositionJobAssignmentID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_PositionJobAssignmentID", null, "-- Select --", new {   @required ="required",  @derivedurl = Url.Action("GetDerivedDetails", "T_JobAssignment"),   @onchange = Html.Raw("FillDerivedDetails(this,event);") ,  @class = "chosen-select form-control", @HostingName = "T_Position", @dataurl = Url.Action("GetAllValue", "T_Position",new { caller = "T_PositionJobAssignmentID" }) })
+			@Html.ValidationMessageFor(model => model.T_PositionJobAssignmentID)
+			@if ( User.CanAdd("T_Position"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_Position"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Position Number','dvPopup','" + Url.Action("CreateQuick", "T_Position", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+			 @if(User.CanView("T_JobAssignment","T_PositionLevel"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionLevel">
+                                <div class='form-group' title="Position Level">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_PositionLevel) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_PositionLevel, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_PositionLevel)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+			 @if(User.CanView("T_JobAssignment","T_RoleCode"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_RoleCode">
+                                <div class='form-group' title="Role Code">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_RoleCode) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_RoleCode, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_RoleCode)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+			 @if(User.CanView("T_JobAssignment","T_ClassCode"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ClassCode">
+                                <div class='form-group' title="Class Code">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_ClassCode) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_ClassCode, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_ClassCode)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+			 @if(User.CanView("T_JobAssignment","T_WorkersCompCode"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WorkersCompCode">
+                                <div class='form-group' title="Workers Comp Code">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_WorkersCompCode) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_WorkersCompCode, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_WorkersCompCode)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+			 @if(User.CanView("T_JobAssignment","T_SOCCode"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_SOCCode">
+                                <div class='form-group' title="SOC Code as per PMIS">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_SOCCode) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_SOCCode, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_SOCCode)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+			 @if(User.CanView("T_JobAssignment","T_OvertimeEligibility"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_OvertimeEligibility">
+                                <div class='form-group' title="Overtime Eligibility">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_OvertimeEligibility) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_OvertimeEligibility, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_OvertimeEligibility)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+							</div>
+                         </div>
+                      </div>
+       </div>
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48910">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+											
+									<h3 class="panel-title" alt="Assignment Details" title="Assignment Details">Assignment Details</h3>
+								</div>
+                                <div class="panel-body">
+      <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_JobAssignmentReasonID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_JobAssignmentReasonID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_JobAssignmentReasonID", null, "-- Select --", new {   @required ="required",      @class = "chosen-select form-control", @HostingName = "T_ReasonforHire", @dataurl = Url.Action("GetAllValue", "T_ReasonforHire",new { caller = "T_JobAssignmentReasonID" }) })
+			@Html.ValidationMessageFor(model => model.T_JobAssignmentReasonID)
+			@if ( User.CanAdd("T_ReasonforHire"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_ReasonforHire"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Job Assignment Reason','dvPopup','" + Url.Action("CreateQuick", "T_ReasonforHire", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+      <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_JobAssignmentUnitXID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_JobAssignmentUnitXID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_JobAssignmentUnitXID", null, "-- Select --", new {   @required ="required",  @derivedurl = Url.Action("GetDerivedDetails", "T_JobAssignment"),   @onchange = Html.Raw("FillDerivedDetails(this,event);") ,  @class = "chosen-select form-control", @HostingName = "T_UnitX", @dataurl = Url.Action("GetAllValue", "T_UnitX",new { caller = "T_JobAssignmentUnitXID" }) })
+			@Html.ValidationMessageFor(model => model.T_JobAssignmentUnitXID)
+			@if ( User.CanAdd("T_UnitX"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_UnitX"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','UnitX','dvPopup','" + Url.Action("CreateQuick", "T_UnitX", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+			 @if(User.CanView("T_JobAssignment","T_CostCenter"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_CostCenter">
+                                <div class='form-group' title="Cost  Center">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_CostCenter) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_CostCenter, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_CostCenter)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+			 @if(User.CanView("T_JobAssignment","T_Program"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Program">
+                                <div class='form-group' title="Program">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Program) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_Program, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_Program)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+			 @if(User.CanView("T_JobAssignment","T_DepartmentArea"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DepartmentArea">
+                                <div class='form-group' title="Department Area">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_DepartmentArea) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_DepartmentArea, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_DepartmentArea)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+			 @if(User.CanView("T_JobAssignment","T_Department"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Department">
+                                <div class='form-group' title="Department">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Department) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_Department, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_Department)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+@if(User.CanView("T_JobAssignment","T_JobAssignmentManagerEmployeeID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_JobAssignmentManagerEmployeeID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_JobAssignmentManagerEmployeeID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_JobAssignmentManagerEmployeeID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_JobAssignmentManagerEmployeeID" }) })
+			@Html.ValidationMessageFor(model => model.T_JobAssignmentManagerEmployeeID)
+			@if ( User.CanAdd("T_Employee"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_Employee"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Manager','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  @if(User.CanView("T_JobAssignment","T_EmployeeSupervisorID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeSupervisorID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_EmployeeSupervisorID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_EmployeeSupervisorID", null, "-- Select --", new {   @derivedurl = Url.Action("GetDerivedDetails", "T_JobAssignment"),   @onchange = Html.Raw("FillDerivedDetails(this,event);") ,  @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeSupervisorID" }) })
+			@Html.ValidationMessageFor(model => model.T_EmployeeSupervisorID)
+			@if ( User.CanAdd("T_Employee"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_Employee"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Supervisor','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  			 @if(User.CanView("T_JobAssignment","T_SupervisorEmail"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_SupervisorEmail">
+                                <div class='form-group' title="Supervisor Email Address">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_SupervisorEmail) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_SupervisorEmail, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_SupervisorEmail)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+							</div>
+                         </div>
+                      </div>
+       </div>
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48912">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#notesbody" alt="Notes" title="Notes"><span class="glyphicon glyphicon-chevron-down"></span> Notes</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse collapse" id="notesbody">					
+						@if(User.CanView("T_JobAssignment","T_Notes"))
+								{
+						<div class='col-sm-12 col-md-12 col-xs-12' id="dvT_Notes">
+                                <div class='form-group' title="Notes">
+                                   <label class="col-sm-2 col-md-2 col-xs-12" >@Html.LabelFor(model => model.T_Notes) </label>
+									<div class="input-group col-sm-10 col-md-10 col-xs-12">
+                                    @Html.TextAreaFor(model => model.T_Notes, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_Notes)
+									</div>
+                                </div>
+						</div>
+						}
+							</div>
+                         </div>
+                      </div>
+       </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+		<a class="btn btn-default btn-sm" onclick="goBack('@Url.Action("Index","T_JobAssignment")');" alt="Cancel" title="Cancel">Cancel</a>
+          @*@Html.ActionLink("Cancel", "Cancel", new { UrlReferrer = ViewData["T_JobAssignmentParentUrl"] }, new { @onclick = "", @class = "btn btn-default btn-sm" })*@
+	<input type="submit" name="command" value="Create" class="btn btn-primary btn-sm" alt="Create" title="Create"/>
+    if (ViewBag.IsDDAdd == null && User.CanEdit("T_JobAssignment"))
+    {
+	<input type="submit" name="command" value="Create & Continue" class="btn btn-primary btn-sm" alt="Create & Continue" title="Create & Continue"/>
+	}
+	 <input type="hidden" name="hdncommand" value="" />
+	<br/><br/>
+}
+	<script>
+	    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+	
+@{
+		var businessrule = User.businessrules.Where(p => p.EntityName == "T_JobAssignment").ToList();
+		
+if ((businessrule != null && businessrule.Count > 0) )
+    {
+        <script>
+            $("form").submit(function (event) {
+			if (!$("#frmT_JobAssignment").valid()) return;
+			var flag = true;
+							document.getElementById("ErrMsg").innerHTML = "";
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+                //var form = $(this).serialize();
+ form = $("#frmT_JobAssignment").serialize();
+  
+                dataurl = "@Url.Action("businessruletype", "T_JobAssignment", new { ruleType = "OnCreate"})";
+                flag = ApplyBusinessRuleOnSubmit(dataurl, "T_JobAssignment", false, "ErrMsg", form);
+				//business rules on inline associations
+				if (flag) {
+				                    $('input:hidden[name="hdncommand"]').val($(document.activeElement).val());
+
+					 $("#frmT_JobAssignment").find(':input').removeAttr('disabled');
+                }
+				return flag;
+			 });	
+        </script>
+    }
+    else
+    {
+	<script>
+            $("input[type='submit']").click(function (event) {
+			if (!$("#frmT_JobAssignment").valid()) return;
+                var $this = $(this);
+                $('input:hidden[name="hdncommand"]').val($this.val());
+            });
+	</script>
+           
+    }
+}
+
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+		 focusOnControl('frmT_JobAssignment');
+        }
+        catch (ex) { }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        try {
+            var hostingEntityName = "";
+            if ('@Convert.ToString(ViewData["AssociatedType"])'.length > 0) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+                 $('#' + hostingEntityName + 'ID').attr("lock","true");
+				  $('#' + hostingEntityName + 'ID').trigger("change");
+            }
+			
+        }
+        catch (ex) { }
+		});
+</script>
+

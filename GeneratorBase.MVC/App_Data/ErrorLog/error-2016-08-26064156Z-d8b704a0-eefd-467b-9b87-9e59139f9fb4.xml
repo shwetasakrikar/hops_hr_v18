@@ -1,0 +1,174 @@
+﻿<error errorId="d8b704a0-eefd-467b-9b87-9e59139f9fb4" application="/LM/W3SVC/1/ROOT/wsh_hr_v34" host="TURANTOMVC" type="System.Web.HttpException" message="Server cannot append header after HTTP headers have been sent." source="System.Web" detail="System.Web.HttpException (0x80004005): Server cannot append header after HTTP headers have been sent.&#xD;&#xA;   at System.Web.HttpHeaderCollection.SetHeader(String name, String value, Boolean replace)&#xD;&#xA;   at System.Web.HttpHeaderCollection.Set(String name, String value)&#xD;&#xA;   at Microsoft.Owin.Host.SystemWeb.CallHeaders.AspNetResponseHeaders.Set(String key, String[] values)&#xD;&#xA;   at Microsoft.Owin.Host.SystemWeb.CallHeaders.AspNetResponseHeaders.set_Item(String key, String[] value)&#xD;&#xA;   at Microsoft.Owin.Infrastructure.OwinHelpers.SetHeaderUnmodified(IDictionary`2 headers, String key, String[] values)&#xD;&#xA;   at Microsoft.Owin.Infrastructure.OwinHelpers.AppendHeaderUnmodified(IDictionary`2 headers, String key, String[] values)&#xD;&#xA;   at Microsoft.Owin.HeaderDictionary.AppendValues(String key, String[] values)&#xD;&#xA;   at Microsoft.Owin.Infrastructure.ChunkingCookieManager.AppendResponseCookie(IOwinContext context, String key, String value, CookieOptions options)&#xD;&#xA;   at Microsoft.Owin.Security.Cookies.CookieAuthenticationHandler.&lt;ApplyResponseGrantAsync&gt;d__f.MoveNext()&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   at Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.&lt;ApplyResponseCoreAsync&gt;d__b.MoveNext()&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   at Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.&lt;ApplyResponseAsync&gt;d__8.MoveNext()&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   at Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.&lt;TeardownAsync&gt;d__5.MoveNext()&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   at Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1.&lt;Invoke&gt;d__0.MoveNext()&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.&lt;RunApp&gt;d__5.MoveNext()&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.&lt;DoFinalWork&gt;d__2.MoveNext()&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)&#xD;&#xA;   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)&#xD;&#xA;   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="Admin" time="2016-08-26T06:41:56.6459208Z" statusCode="500">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:no-cache&#xD;&#xA;HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_ACCEPT:text/html, application/xhtml+xml, */*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US&#xD;&#xA;HTTP_COOKIE:ASP.NET_SessionId=mkpkcyudcsq5rtfrkhrfevko; wsh_hr_v32=3HjN8Wb3opzlzXbsrMZsGWsVowZDHsDqGO_3jS32_XSl9AwgEzGzKu1-uAVwVRww6oTk2J-ZSbUtERc4-ZQRmFn5wm4LuRf9UBGtnAU6F7iQBtMRq6e2aXiIsBzDHOiLYkxnEcEnMkIxm9eAV3hwEggyUdHIoU3syl6U747Cl84AMnwjSHl5yB-oaY3Row5XsusUMzBVcvdV2Aq9xqD-9IIYdghfOUpP1RjU054VvxP-6xQBphejSmHeysbm7m6wIIXbQWYqftIiEzMk4-nsom4yXrLeGN-Rih5l0LM6lH_tu7BV1w8ihrwpksICuFWV9aijC9a0KtTWUAjOPTj1eDe1rbzdC4qR5t-huoRbQQOS4lmNtqTFC9dvNIqY_yIAKAdkk4CbLjWFnW5Xo4OILXR49loaubo5dyYBmSAEc5dkhA8krcagE5VuOSwwviashabP1HEoYsnVrH_T6XtyCQSy8Iwn1fzqt-MX3F5v4xcMrAbh_QKwa3mI-wnpCPPZ; __RequestVerificationToken_L3dzaF9ocl92MzQ1=UwhiEeD4pXLwwz_eujCo34PHHRD8ZIypS_LnkyB2eGsTwi3s8pkT5eM1DGuJzlLJS3TKtlQra7ZpL076gSKOxKNmBchP5fGlmsLg2-2R2SU1&#xD;&#xA;HTTP_HOST:apps.turanto.com&#xD;&#xA;HTTP_REFERER:http://apps.turanto.com/wsh_hr_v34/T_Employee/Edit/124?UrlReferrer=http%3A%2F%2Fapps.turanto.com%2Fwsh_hr_v34%2FT_Employee&amp;viewtype=IndexPartial&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;HTTP_DNT:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: no-cache&#xD;&#xA;Connection: Keep-Alive&#xD;&#xA;Accept: text/html, application/xhtml+xml, */*&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US&#xD;&#xA;Cookie: ASP.NET_SessionId=mkpkcyudcsq5rtfrkhrfevko; wsh_hr_v32=3HjN8Wb3opzlzXbsrMZsGWsVowZDHsDqGO_3jS32_XSl9AwgEzGzKu1-uAVwVRww6oTk2J-ZSbUtERc4-ZQRmFn5wm4LuRf9UBGtnAU6F7iQBtMRq6e2aXiIsBzDHOiLYkxnEcEnMkIxm9eAV3hwEggyUdHIoU3syl6U747Cl84AMnwjSHl5yB-oaY3Row5XsusUMzBVcvdV2Aq9xqD-9IIYdghfOUpP1RjU054VvxP-6xQBphejSmHeysbm7m6wIIXbQWYqftIiEzMk4-nsom4yXrLeGN-Rih5l0LM6lH_tu7BV1w8ihrwpksICuFWV9aijC9a0KtTWUAjOPTj1eDe1rbzdC4qR5t-huoRbQQOS4lmNtqTFC9dvNIqY_yIAKAdkk4CbLjWFnW5Xo4OILXR49loaubo5dyYBmSAEc5dkhA8krcagE5VuOSwwviashabP1HEoYsnVrH_T6XtyCQSy8Iwn1fzqt-MX3F5v4xcMrAbh_QKwa3mI-wnpCPPZ; __RequestVerificationToken_L3dzaF9ocl92MzQ1=UwhiEeD4pXLwwz_eujCo34PHHRD8ZIypS_LnkyB2eGsTwi3s8pkT5eM1DGuJzlLJS3TKtlQra7ZpL076gSKOxKNmBchP5fGlmsLg2-2R2SU1&#xD;&#xA;Host: apps.turanto.com&#xD;&#xA;Referer: http://apps.turanto.com/wsh_hr_v34/T_Employee/Edit/124?UrlReferrer=http%3A%2F%2Fapps.turanto.com%2Fwsh_hr_v34%2FT_Employee&amp;viewtype=IndexPartial&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;DNT: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/wsh_hr_v34" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v34\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="Admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="Admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="Admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/wsh_hr_v34/Files/EmployeeProfile.xls" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v34\GeneratorBase.MVC\Files\EmployeeProfile.xls" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="9776" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/wsh_hr_v34/Files/EmployeeProfile.xls" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="80" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/wsh_hr_v34/Files/EmployeeProfile.xls" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="no-cache" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html, application/xhtml+xml, */*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="ASP.NET_SessionId=mkpkcyudcsq5rtfrkhrfevko; wsh_hr_v32=3HjN8Wb3opzlzXbsrMZsGWsVowZDHsDqGO_3jS32_XSl9AwgEzGzKu1-uAVwVRww6oTk2J-ZSbUtERc4-ZQRmFn5wm4LuRf9UBGtnAU6F7iQBtMRq6e2aXiIsBzDHOiLYkxnEcEnMkIxm9eAV3hwEggyUdHIoU3syl6U747Cl84AMnwjSHl5yB-oaY3Row5XsusUMzBVcvdV2Aq9xqD-9IIYdghfOUpP1RjU054VvxP-6xQBphejSmHeysbm7m6wIIXbQWYqftIiEzMk4-nsom4yXrLeGN-Rih5l0LM6lH_tu7BV1w8ihrwpksICuFWV9aijC9a0KtTWUAjOPTj1eDe1rbzdC4qR5t-huoRbQQOS4lmNtqTFC9dvNIqY_yIAKAdkk4CbLjWFnW5Xo4OILXR49loaubo5dyYBmSAEc5dkhA8krcagE5VuOSwwviashabP1HEoYsnVrH_T6XtyCQSy8Iwn1fzqt-MX3F5v4xcMrAbh_QKwa3mI-wnpCPPZ; __RequestVerificationToken_L3dzaF9ocl92MzQ1=UwhiEeD4pXLwwz_eujCo34PHHRD8ZIypS_LnkyB2eGsTwi3s8pkT5eM1DGuJzlLJS3TKtlQra7ZpL076gSKOxKNmBchP5fGlmsLg2-2R2SU1" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://apps.turanto.com/wsh_hr_v34/T_Employee/Edit/124?UrlReferrer=http%3A%2F%2Fapps.turanto.com%2Fwsh_hr_v34%2FT_Employee&amp;viewtype=IndexPartial" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko" />
+    </item>
+    <item name="HTTP_DNT">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="ASP.NET_SessionId">
+      <value string="mkpkcyudcsq5rtfrkhrfevko" />
+    </item>
+    <item name="wsh_hr_v32">
+      <value string="3HjN8Wb3opzlzXbsrMZsGWsVowZDHsDqGO_3jS32_XSl9AwgEzGzKu1-uAVwVRww6oTk2J-ZSbUtERc4-ZQRmFn5wm4LuRf9UBGtnAU6F7iQBtMRq6e2aXiIsBzDHOiLYkxnEcEnMkIxm9eAV3hwEggyUdHIoU3syl6U747Cl84AMnwjSHl5yB-oaY3Row5XsusUMzBVcvdV2Aq9xqD-9IIYdghfOUpP1RjU054VvxP-6xQBphejSmHeysbm7m6wIIXbQWYqftIiEzMk4-nsom4yXrLeGN-Rih5l0LM6lH_tu7BV1w8ihrwpksICuFWV9aijC9a0KtTWUAjOPTj1eDe1rbzdC4qR5t-huoRbQQOS4lmNtqTFC9dvNIqY_yIAKAdkk4CbLjWFnW5Xo4OILXR49loaubo5dyYBmSAEc5dkhA8krcagE5VuOSwwviashabP1HEoYsnVrH_T6XtyCQSy8Iwn1fzqt-MX3F5v4xcMrAbh_QKwa3mI-wnpCPPZ" />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MzQ1">
+      <value string="UwhiEeD4pXLwwz_eujCo34PHHRD8ZIypS_LnkyB2eGsTwi3s8pkT5eM1DGuJzlLJS3TKtlQra7ZpL076gSKOxKNmBchP5fGlmsLg2-2R2SU1" />
+    </item>
+  </cookies>
+</error>

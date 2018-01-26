@@ -1,0 +1,157 @@
+﻿@model GeneratorBase.MVC.Models.T_UnitX
+@{
+    ViewBag.Title = "Delete UnitX";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-hand-down text-primary"></i>Delete UnitX  <i class="glyphicon glyphicon-chevron-right small"></i> 
+            <span style="color:red;">  Are you sure you want to delete this?</span>
+        </h1>
+        <h2 class="text-primary">@Html.DisplayFor(model => model.DisplayValue)</h2>
+    </div>
+</div>
+<div class="row">
+<label id="ErrMsg" class="text-primary small" style="color:red; vertical-align:middle; font-weight:100;"></label>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ConcurrencyKey)
+    @Html.HiddenFor(model => model.Id)
+                                  
+    <dl class="dl-horizontal">
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_FacilityUnitXID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_facilityunitx.DisplayValue)
+			 @Html.HiddenFor(model => model.T_FacilityUnitXID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_MaleBeds)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_MaleBeds)
+			@Html.HiddenFor(model => model.T_MaleBeds)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_UnitXUnitAssociationID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_unitxunitassociation.DisplayValue)
+			 @Html.HiddenFor(model => model.T_UnitXUnitAssociationID)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_WardDepartmentID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_warddepartment.DisplayValue)
+			 @Html.HiddenFor(model => model.T_WardDepartmentID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_FemaleBeds)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_FemaleBeds)
+			@Html.HiddenFor(model => model.T_FemaleBeds)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_WardCostCenterID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_wardcostcenter.DisplayValue)
+			 @Html.HiddenFor(model => model.T_WardCostCenterID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_TotalBeds)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_TotalBeds)
+			@Html.HiddenFor(model => model.T_TotalBeds)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_Program)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_Program)
+			@Html.HiddenFor(model => model.T_Program)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_UnitXDepartmentAreaID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_unitxdepartmentarea.DisplayValue)
+			 @Html.HiddenFor(model => model.T_UnitXDepartmentAreaID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_Fund)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_Fund)
+			@Html.HiddenFor(model => model.T_Fund)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_WardOrgCodeID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_wardorgcode.DisplayValue)
+			 @Html.HiddenFor(model => model.T_WardOrgCodeID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_Unit)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_Unit)
+			@Html.HiddenFor(model => model.T_Unit)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_UnitXFloorID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_unitxfloor.DisplayValue)
+			 @Html.HiddenFor(model => model.T_UnitXFloorID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_UnitPhoneNumber)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_UnitPhoneNumber)
+			@Html.HiddenFor(model => model.T_UnitPhoneNumber)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_MailDistributor)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_MailDistributor)
+			@Html.HiddenFor(model => model.T_MailDistributor)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_EmployeeAdministratorID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_employeeadministrator.DisplayValue)
+			 @Html.HiddenFor(model => model.T_EmployeeAdministratorID)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_EmployeeUnitXHeadID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_employeeunitxhead.DisplayValue)
+			 @Html.HiddenFor(model => model.T_EmployeeUnitXHeadID)
+        </dd>
+    </dl>
+	<br/>
+        <div class="row deletefix">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+		<label class="small alert-danger" style="padding:3px; margin-top:5px; display:block;">All Job Assignment Ward will be deleted associated with @Html.DisplayFor(model => model.DisplayValue)!</label>
+         <a class="btn btn-default btn-sm" Onclick="goBack('@Url.Action("Index","T_UnitX")');">Back</a>
+        @*@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default btn-sm" })*@
+ 
+	@if ( User.CanDelete("T_UnitX"))
+     {
+			<input type="submit" value="Delete" class="btn btn-primary btn-sm" /> 
+	}
+        </div>
+            </div>
+    }
+</div>

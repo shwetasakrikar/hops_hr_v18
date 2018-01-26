@@ -1,0 +1,37 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_Patient>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Patient.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_Patient","T_RegisterNumber"))
+{
+		<th>Register Number</th>
+}
+@if(User.CanView("T_Patient","T_PatientName"))
+{
+		<th>Patient Name</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_Patient","T_RegisterNumber"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_RegisterNumber)
+        </td>
+}
+@if(User.CanView("T_Patient","T_PatientName"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_PatientName)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

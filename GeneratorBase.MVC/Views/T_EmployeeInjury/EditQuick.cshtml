@@ -1,0 +1,542 @@
+﻿@model GeneratorBase.MVC.Models.T_EmployeeInjury
+@using PagedList;
+@{
+    ViewBag.Title = "Edit Employee Injury";
+	var EditPermission = User.CanEditItem("T_EmployeeInjury", Model, User);
+	var DeletePermission = User.CanDeleteItem("T_EmployeeInjury", Model, User);
+	Layout = null;
+	
+}
+@functions {
+    object getHtmlAttributes(string Property)
+    {
+        if (User.CanEdit("T_EmployeeInjury", Property))
+        {
+            return new { @class = "form-control" };
+        } return new { @class = "form-control", @readonly = "readonly" };
+    }
+}
+<script>
+    $(document).ready(function () {
+        try {
+		 if ($('#EntityT_EmployeeInjuryDisplayValue').has('option').length > 0) {
+			var RecId = $("#Id").val()
+            $("#T_EmployeeInjuryDD").append($("#EntityT_EmployeeInjuryDisplayValue").html());
+            $("#T_EmployeeInjuryDD").val(RecId);
+
+			var text = $("option:selected", $("#T_EmployeeInjuryDD")).text();
+            $("#T_EmployeeInjuryDD").attr('data-toggle', 'tooltip')
+            $("#T_EmployeeInjuryDD").attr('title', text);
+
+            var lastOptionVal = $('#T_EmployeeInjuryDD option:last-child').val();
+            var fristOptionVal = $('#T_EmployeeInjuryDD option:first-child').val();
+            if (lastOptionVal == RecId)
+			{
+                $('#next').hide();
+				$('#SaveAndContinue').hide();
+				}
+
+            if (fristOptionVal == RecId)
+                $('#prev').hide();
+			} else {  $('#dvsavenext').hide(); $('#SaveAndContinue').hide(); }
+            var hostingEntityName = "";
+            if ('@Convert.ToString(ViewData["AssociatedType"])' != null) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+				if( '@Convert.ToBoolean(ViewData["IsFilter"])'!="False")
+				$('#' + hostingEntityName + 'ID').attr("lock","true");
+				$('#' + hostingEntityName + 'ID').trigger("change");
+				 $("input[type='radio'][name='" + hostingEntityName + "ID']").each(function () {
+                    if (!this.checked)
+                        this.closest("li").style.display = "none";
+                });		
+						
+            }
+        }
+        catch (ex) { }
+    });
+</script>
+<script type="text/javascript">
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': { allow_single_deselect: true },
+        '.chosen-select-no-single': { disable_search_threshold: 10 },
+        '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+        '.chosen-select-width': { width: "95%" }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_EmployeeInjuryIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_EmployeeInjuryIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_EmployeeInjuryIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_EmployeeInjuryIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_EmployeeInjuryIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_EmployeeInjuryIsSetValueUIRule);
+    }
+}
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-lg-12">
+        @*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+		<input type="hidden" id="ErrMsg" />
+		<div id="errorContainerEdit" style="display: none">
+            <div id="errorsMsgEdit"></div>
+            <div id="errorsEdit"></div>
+        </div>
+     <div class="col-sm-6 col-md-6 col-xs-12" style="margin-top: -12px;">
+            <h2 class="text-primary">
+                <span id="HostingEntityDisplayValue">@Html.DisplayFor(model => model.DisplayValue)</span>
+            </h2>
+        </div>
+        @if (EditPermission)
+            {
+            <div class="col-sm-6 col-md-6 col-xs-12" id="dvsavenext">
+                <button class="btn btn-default btn-xs pull-right" id="next" onclick="@Html.Raw("nextFun('T_EmployeeInjury')")">Next >></button>
+                @Html.DropDownList("T_EmployeeInjuryDD", null, null, new { @onchange = "FillDisplayValueQEdit('T_EmployeeInjury')", @required = "required", @class = "pull-right", @Style = "height: 22px;width: 170px;" })
+                <button class="btn btn-default btn-xs pull-right" id="prev" onclick="@Html.Raw("prevFun('T_EmployeeInjury')")"><< Prev</button>
+            </div>
+        }
+    </div>
+    <!-- /.col-lg-12 -->
+	<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+</div>
+<div id="divDisplayBRmsgMandatory" style="display:none;">
+</div>
+<div id="divDisplayLockRecord" style="display:none;">
+</div>
+<div id="divDisplayBRReadOnly" style="display:none;">
+</div>
+<br/>
+</div>
+	
+@using (Html.BeginForm("EditQuick","T_EmployeeInjury",new {UrlReferrer =Convert.ToString(ViewData["T_EmployeeInjuryParentUrl"])}, FormMethod.Post, new { enctype = "multipart/form-data", @id = "frmQEditT_EmployeeInjury" }))
+{
+     Html.ValidationSummary(true);
+                Html.EnableClientValidation();
+    @Html.HiddenFor(model => model.Id)
+	@Html.HiddenFor(model => model.ConcurrencyKey)
+	 <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px;">
+                    <div class="panel panel-default AppForm">
+						<div class="panel-body">
+						    @Html.Hidden("AssociatedEntity", Convert.ToString(ViewData["AssociatedType"]))
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48918">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#basic informationbody" alt="Basic Information" title="Basic Information"><span class="glyphicon glyphicon-chevron-down"></span> Basic Information</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="basic informationbody">					
+				@if(User.CanView("T_EmployeeInjury","T_EmployeeEmployeeInjuryID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeEmployeeInjuryID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_EmployeeEmployeeInjuryID) <span class="text-danger-reg">*</span></label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_EmployeeInjury", "T_EmployeeEmployeeInjuryID"))
+		{
+			@Html.DropDownList("T_EmployeeEmployeeInjuryID", null, "-- Select --", new {   @required ="required",     @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeEmployeeInjuryID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EmployeeEmployeeInjuryID, new { @class = "form-control" })
+			@Html.DropDownList("T_EmployeeEmployeeInjuryID", null, "-- Select --", new {  @required ="required",     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeEmployeeInjuryID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_EmployeeEmployeeInjuryID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_EmployeeEmployeeInjuryID, new { @class = "form-control" })}
+				@if(User.CanView("T_EmployeeInjury","T_TypeofClaimMCIID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TypeofClaimMCIID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_TypeofClaimMCIID) </label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_EmployeeInjury", "T_TypeofClaimMCIID"))
+		{
+			@Html.DropDownList("T_TypeofClaimMCIID", null, "-- Select --", new {      @class = "chosen-select form-control", @HostingName = "T_ClaimTypeMCI", @dataurl = Url.Action("GetAllValue", "T_ClaimTypeMCI",new { caller = "T_TypeofClaimMCIID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_TypeofClaimMCIID, new { @class = "form-control" })
+			@Html.DropDownList("T_TypeofClaimMCIID", null, "-- Select --", new {     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_ClaimTypeMCI", @dataurl = Url.Action("GetAllValue", "T_ClaimTypeMCI",new { caller = "T_TypeofClaimMCIID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_TypeofClaimMCIID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_TypeofClaimMCIID, new { @class = "form-control" })}
+@if(User.CanView("T_EmployeeInjury","T_ClaimNo"))
+{
+
+
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ClaimNo">
+							<div class='form-group' title="Claim  No.">
+								<label  >@Html.LabelFor(model => model.T_ClaimNo)   </label>
+                                
+											
+									@Html.TextBoxFor(model => model.T_ClaimNo,  getHtmlAttributes("T_ClaimNo"))
+									@Html.ValidationMessageFor(model => model.T_ClaimNo)
+									
+								
+                             </div>
+						</div>
+
+				
+					
+
+
+} else { @Html.HiddenFor(model => model.T_ClaimNo, new { @class = "form-control" })}
+@if(User.CanView("T_EmployeeInjury","T_OSHA"))
+{
+
+					
+
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_OSHA">
+							  <div class="form-group" title="O S H A">
+                                <label  >
+                                    @Html.LabelFor(model => model.T_OSHA) 
+                                </label>
+								
+									@Html.CheckBox("T_OSHA", Model.T_OSHA.HasValue ? Model.T_OSHA : false)
+                                    @Html.ValidationMessageFor(model => model.T_OSHA)
+                                
+								</div>
+                            </div>
+				} else { @Html.HiddenFor(model => model.T_OSHA, new { @class = "form-control" })}
+@if(User.CanView("T_EmployeeInjury","T_Location"))
+{
+
+
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Location">
+							<div class='form-group' title="Location">
+								<label  >@Html.LabelFor(model => model.T_Location)   </label>
+                                
+											
+									@Html.TextBoxFor(model => model.T_Location,  getHtmlAttributes("T_Location"))
+									@Html.ValidationMessageFor(model => model.T_Location)
+									
+								
+                             </div>
+						</div>
+
+				
+					
+
+
+} else { @Html.HiddenFor(model => model.T_Location, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+       </div>
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48919">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#accident detailsbody" alt="Accident Details" title="Accident Details"><span class="glyphicon glyphicon-chevron-down"></span> Accident Details</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="accident detailsbody">					
+@if(User.CanView("T_EmployeeInjury","T_AccidentDate"))
+{
+                      
+					  						 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_AccidentDate">
+							  <div class="form-group" title="Accident Date & Time">
+                                <label  >@Html.LabelFor(model => model.T_AccidentDate) <span class="text-danger-reg">*</span></label>
+								
+                                    <div class="input-group date" id="datetimepickerT_AccidentDate">
+ @Html.TextBoxFor(model => model.T_AccidentDate, "{0:MM/dd/yyyy hh:mm tt}", User.CanEdit("T_EmployeeInjury", "T_AccidentDate") ? (object)new {@class = "form-control",@format = "MM/DD/YYYY hh:mm" } : (object)new { @class = "form-control", @readonly="readonly" ,@format = "MM/DD/YYYY hh:mm"})
+
+                                        <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_AccidentDate)
+								
+                                </div>
+	
+								@if(User.CanEdit("T_EmployeeInjury", "T_AccidentDate"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_AccidentDate').datetimepicker({ });
+                                        $('#datetimepickerT_AccidentDate').datetimepicker({ });
+                                    });
+                                </script>
+								}
+                            </div>
+											  
+					        
+} else { @Html.HiddenFor(model => model.T_AccidentDate, new { @class = "form-control" })}
+				@if(User.CanView("T_EmployeeInjury","T_InitialTreatmentListID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_InitialTreatmentListID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_InitialTreatmentListID) </label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_EmployeeInjury", "T_InitialTreatmentListID"))
+		{
+			@Html.DropDownList("T_InitialTreatmentListID", null, "-- Select --", new {      @class = "chosen-select form-control", @HostingName = "T_InitialTreatment", @dataurl = Url.Action("GetAllValue", "T_InitialTreatment",new { caller = "T_InitialTreatmentListID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_InitialTreatmentListID, new { @class = "form-control" })
+			@Html.DropDownList("T_InitialTreatmentListID", null, "-- Select --", new {     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_InitialTreatment", @dataurl = Url.Action("GetAllValue", "T_InitialTreatment",new { caller = "T_InitialTreatmentListID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_InitialTreatmentListID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_InitialTreatmentListID, new { @class = "form-control" })}
+@if(User.CanView("T_EmployeeInjury","T_Diagnosis"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Diagnosis">
+							<div class='form-group' title="Diagnosis">
+								<label  >@Html.LabelFor(model => model.T_Diagnosis) </label>
+                                
+								@Html.TextAreaFor(model => model.T_Diagnosis, getHtmlAttributes("T_Diagnosis"))
+									@Html.ValidationMessageFor(model => model.T_Diagnosis)
+								
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_Diagnosis, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+       </div>
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48920">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#restrictionbody" alt="Restriction" title="Restriction"><span class="glyphicon glyphicon-chevron-down"></span> Restriction</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="restrictionbody">					
+@if(User.CanView("T_EmployeeInjury","T_DaysOff"))
+{
+
+
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DaysOff">
+							<div class='form-group' title="Days  Off">
+								<label  >@Html.LabelFor(model => model.T_DaysOff)   </label>
+                                
+											
+									@Html.TextBoxFor(model => model.T_DaysOff,  getHtmlAttributes("T_DaysOff"))
+									@Html.ValidationMessageFor(model => model.T_DaysOff)
+									
+								
+                             </div>
+						</div>
+
+				
+					
+
+
+} else { @Html.HiddenFor(model => model.T_DaysOff, new { @class = "form-control" })}
+@if(User.CanView("T_EmployeeInjury","T_DaysRestricted"))
+{
+
+
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DaysRestricted">
+							<div class='form-group' title="Days  Restricted">
+								<label  >@Html.LabelFor(model => model.T_DaysRestricted)   </label>
+                                
+											
+									@Html.TextBoxFor(model => model.T_DaysRestricted,  getHtmlAttributes("T_DaysRestricted"))
+									@Html.ValidationMessageFor(model => model.T_DaysRestricted)
+									
+								
+                             </div>
+						</div>
+
+				
+					
+
+
+} else { @Html.HiddenFor(model => model.T_DaysRestricted, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+       </div>
+
+			@Html.HiddenFor(model => model.T_AccidentShiftID, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_FacilityAccidentOccuredID, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_UnitWhereAccidentOccuredID, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_EmployeInjuryFloorID, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_LocationOfAccidentID, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_DescribeHowInjuryOrIllnessOccurred, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_EmployeeInjuryCauseID, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_EmployeeInjuryNatureID, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_EmployeeInjuryBodyPartsAffectedID, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_EMployeeInjuryMachineToolID, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_PatientInvolvedRegnoepi, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_EmployeeInjuryMedicalFacilityForTreatmentID, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_ExaminingPhysician, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_ReferringPhysician, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_DetailsOfRestriction, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_RestrictionStartDate, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_RestrictionEndDate, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_EmployeeInjuryRefusalID, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_AccidentNotes, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_RestrictionNotes, new { @class = "form-control" })
+
+	@if ( (User.CanEdit("T_ClaimType") && User.CanEdit("T_TypeofClaim")))
+                    {
+		<div class="row">
+                        <div class="col-sm-12 col-md-12 col-sx-12" id="dvT_EmployeeInjury">
+                            <div class="panel panel-default">
+                                <div class="panel-heading clearfix" style="margin:0px; padding:8px;">
+                                     Type of Claim Facility
+                                </div>
+								 <div class="panel-body">
+									 @Html.DropDownList("SelectedT_ClaimType_T_TypeofClaim", null, new { @multiple = "multiple", @HostingName = "T_ClaimType", @dataurl = Url.Action("GetAllMultiSelectValue", "T_ClaimType", null) })
+								</div>
+						</div>
+                    </div>
+             </div>
+			 <script>
+			$(document).ready(function () {
+			 	 $('#SelectedT_ClaimType_T_TypeofClaim').multiselect({ buttonWidth: '100%'});
+			});
+		</script>
+		}
+@if ( (User.CanEdit("T_Restrictions") && User.CanEdit("T_TypeOfRestrictions")))
+                    {
+		<div class="row">
+                        <div class="col-sm-12 col-md-12 col-sx-12" id="dvT_EmployeeInjury">
+                            <div class="panel panel-default">
+                                <div class="panel-heading clearfix" style="margin:0px; padding:8px;">
+                                     Type Of Restrictions
+                                </div>
+								 <div class="panel-body">
+									 @Html.DropDownList("SelectedT_Restrictions_T_TypeOfRestrictions", null, new { @multiple = "multiple", @HostingName = "T_Restrictions", @dataurl = Url.Action("GetAllMultiSelectValue", "T_Restrictions", null) })
+								</div>
+						</div>
+                    </div>
+             </div>
+			 <script>
+			$(document).ready(function () {
+			 	 $('#SelectedT_Restrictions_T_TypeOfRestrictions').multiselect({ buttonWidth: '100%'});
+			});
+		</script>
+		}
+            </div>
+        </div>
+	</div>
+</div>
+		 @Html.AntiForgeryToken();
+		 var businessrule1 = User.businessrules.Where(p => p.EntityName == "T_EmployeeInjury").ToList();
+		 var lstinlineentityname = "";
+		 var lstinlineassocdispname ="";
+		 var lstinlineassocname = "";
+		 <button id="CancelQuickAdd" type="button" class="btn btn-default btn-sm" data-dismiss="modal" aria-hidden="true">Cancel</button>
+		 if (EditPermission)
+         {
+			    <input type="submit" id="command" name="command" value="Save & Close" class="btn btn-primary btn-sm" onclick="QuickEditFromGrid(event,true,'T_EmployeeInjury','@ViewData["AssociatedType"]',false,'@businessrule1',@businessrule1.Count,'OnEdit','ErrMsg',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname');" />
+				<input type="submit" id="sevranBtn" style="display:none;" name="command" value="Save" class="btn btn-primary btn-sm" onclick="QuickEditFromGrid(event,true,'T_EmployeeInjury','@ViewData["AssociatedType"]',false,'@businessrule1',@businessrule1.Count,'OnEdit','ErrMsg',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname','True');" />
+                <button type="button" id="SaveAndContinue" name="SaveAndContinue" class="btn btn-primary btn-sm" onclick="@Html.Raw("SaveAndContinueEdit('T_EmployeeInjury',event)")">Save & Next</button>
+				<input type="hidden" name="hdncommand" value="" />
+  		 }	
+}
+<script src="@Url.Content("~/bundles/jqueryval")" type="text/javascript"></script>
+<script src="@Url.Content("~/bundles/common3")" type="text/javascript"></script>
+
+<script>
+    $("input[type='submit']").click(function (event) {
+	if (!$("#frmQEditT_EmployeeInjury").valid()) return;
+	
+        var $this = $(this);
+        $('input:hidden[name="hdncommand"]').val($this.val());
+    });
+</script>
+@{
+var businessrule = User.businessrules.Where(p => p.EntityName == "T_EmployeeInjury").ToList();
+
+
+	
+
+
+if ((businessrule != null && businessrule.Count > 0) )
+{
+var ruleids = businessrule.Select(q => q.Id).ToList();
+var typelist  = string.Join(",", (new GeneratorBase.MVC.Models.RuleActionContext()).RuleActions.Where(p => ruleids.Contains(p.RuleActionID.Value) && p.associatedactiontype.TypeNo.HasValue).Select(p => p.associatedactiontype.TypeNo.Value).Distinct().ToList());
+
+    <script>
+    $(document).ready(function () {
+	document.getElementById("ErrMsg").innerHTML = "";
+		 var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+
+				 form = $("#frmQEditT_EmployeeInjury").serialize();
+					 dataurl = "@Url.Action("businessruletype", "T_EmployeeInjury", new { ruleType = "OnEdit"})";
+            ApplyBusinessRuleOnPageLoad("@typelist",dataurl, "T_EmployeeInjury", false, "ErrMsg", form);
+			//business rules on inline associations
+    });
+</script>
+<script>
+    $("form").submit(function (event) {
+	if (!$("#frmQEditT_EmployeeInjury").valid()) return;
+	document.getElementById("ErrMsg").innerHTML = "";
+            var flag = true;
+		var form = $("#frmQEditT_EmployeeInjury").serialize();
+					});
+</script>
+}
+ 
+}
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+            document.getElementsByTagName("body")[0].focus();
+            $("#addPopup").removeAttr("tabindex");
+            var cltcoll = $("#dvPopup").find('input[type=text]:not([class=hidden]):not([readonly]),textarea:not([readonly])')
+            var cltid = "";
+            $(cltcoll).each(function () {
+			  if ($(this).attr("id") == undefined)
+                    return
+                var dvhidden = $("#dv" + $(this).attr("id"));
+				var dvDate = $("#datetimepicker" + $(this).attr("id")).attr("id");
+                if (!(dvhidden.css('display') == 'none') && dvDate == undefined) {
+                    cltid = $(this);
+                    return false;
+                }
+            });
+            if (cltid != "" && cltid != undefined)
+                setTimeout(function () { $(cltid).focus(); }, 500)
+        }
+        catch (ex) { }
+    });
+</script>
+

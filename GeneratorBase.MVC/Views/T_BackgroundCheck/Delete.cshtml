@@ -1,0 +1,128 @@
+﻿@model GeneratorBase.MVC.Models.T_BackgroundCheck
+@{
+    ViewBag.Title = "Delete Background Check";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-hand-down text-primary"></i>Delete Background Check  <i class="glyphicon glyphicon-chevron-right small"></i> 
+            <span style="color:red;">  Are you sure you want to delete this?</span>
+        </h1>
+        <h2 class="text-primary">@Html.DisplayFor(model => model.DisplayValue)</h2>
+    </div>
+</div>
+<div class="row">
+<label id="ErrMsg" class="text-primary small" style="color:red; vertical-align:middle; font-weight:100;"></label>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ConcurrencyKey)
+    @Html.HiddenFor(model => model.Id)
+                                  
+    <dl class="dl-horizontal">
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_EmployeeCriminalBackgroundCheckID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_employeecriminalbackgroundcheck.DisplayValue)
+			 @Html.HiddenFor(model => model.T_EmployeeCriminalBackgroundCheckID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_DateFingerPrintTaken)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_DateFingerPrintTaken)
+			@Html.HiddenFor(model => model.T_DateFingerPrintTaken)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_DateCheckInitiated)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_DateCheckInitiated)
+			@Html.HiddenFor(model => model.T_DateCheckInitiated)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_Notes)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_Notes)
+			@Html.HiddenFor(model => model.T_Notes)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_RetainTablePreEmploymentCheckID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_retaintablepreemploymentcheck.DisplayValue)
+			 @Html.HiddenFor(model => model.T_RetainTablePreEmploymentCheckID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_DateInformationReceivedFromCBC)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_DateInformationReceivedFromCBC)
+			@Html.HiddenFor(model => model.T_DateInformationReceivedFromCBC)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_DateCPSResultReceived)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_DateCPSResultReceived)
+			@Html.HiddenFor(model => model.T_DateCPSResultReceived)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_PreEmploymentCheckResultsVAStateID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_preemploymentcheckresultsvastate.DisplayValue)
+			 @Html.HiddenFor(model => model.T_PreEmploymentCheckResultsVAStateID)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_CPSResultID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_cpsresult.DisplayValue)
+			 @Html.HiddenFor(model => model.T_CPSResultID)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_BackgroundDispositionDate)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_BackgroundDispositionDate)
+			@Html.HiddenFor(model => model.T_BackgroundDispositionDate)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_CPSReviewDate)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_CPSReviewDate)
+			@Html.HiddenFor(model => model.T_CPSReviewDate)
+        </dd>
+		  <dt>		   
+            @Html.DisplayNameFor(model => model.T_ReviewDate)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.T_ReviewDate)
+			@Html.HiddenFor(model => model.T_ReviewDate)
+        </dd>
+		 <dt>
+            @Html.DisplayNameFor(model => model.T_ReviewerID)
+        </dt>
+		<dd class="clearfix">
+            @Html.DisplayFor(model => model.t_reviewer.DisplayValue)
+			 @Html.HiddenFor(model => model.T_ReviewerID)
+        </dd>
+    </dl>
+	<br/>
+        <div class="row deletefix">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+         <a class="btn btn-default btn-sm" Onclick="goBack('@Url.Action("Index","T_BackgroundCheck")');">Back</a>
+        @*@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default btn-sm" })*@
+ 
+	@if ( User.CanDelete("T_BackgroundCheck"))
+     {
+			<input type="submit" value="Delete" class="btn btn-primary btn-sm" /> 
+	}
+        </div>
+            </div>
+    }
+</div>

@@ -1,0 +1,1046 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using GeneratorBase.MVC.Models;
+using PagedList;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.SqlServer;
+using System.Linq.Expressions;
+using System.Text;
+using System.IO;
+using System.Data.OleDb;
+using System.ComponentModel.DataAnnotations;
+using System.Drawing.Imaging;
+using System.Web.Helpers;
+namespace GeneratorBase.MVC.Controllers
+{
+
+    public partial class T_UnitXController : BaseController
+    {
+        // GET: /T_UnitX/
+		[Audit("ViewList")]
+        public ActionResult Index(string currentFilter, string searchString, string sortBy, string isAsc, int? page, int? itemsPerPage, string HostingEntity, int? HostingEntityID, string AssociatedType, bool? IsExport, bool? IsDeepSearch, bool? IsFilter, bool? RenderPartial, string BulkOperation,string parent,string Wfsearch,string caller, bool? BulkAssociate, string viewtype,string isMobileHome, bool? IsHomeList)
+        {
+            if (string.IsNullOrEmpty(isAsc) && !string.IsNullOrEmpty(sortBy))
+            {
+                isAsc = "ASC";
+            }
+            ViewBag.isAsc = isAsc;
+            ViewBag.CurrentSort = sortBy;
+			ViewData["HostingEntity"] = HostingEntity;
+            ViewData["HostingEntityID"] = HostingEntityID;
+			ViewData["AssociatedType"] = AssociatedType;
+			ViewData["IsFilter"] = IsFilter;
+			ViewData["BulkOperation"] = BulkOperation;
+			ViewData["caller"] = caller;
+			if (!string.IsNullOrEmpty(viewtype))
+            {
+                viewtype = viewtype.Replace("?IsAddPop=true", "");
+                ViewBag.TemplatesName = viewtype;
+            }
+			if (searchString != null)
+                page = null;
+            else
+                searchString = currentFilter;
+            ViewBag.CurrentFilter = searchString;
+			CustomLoadViewDataListOnIndex(HostingEntity, HostingEntityID, AssociatedType);
+			var lstT_UnitX = from s in db.T_UnitXs
+                            select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                lstT_UnitX = searchRecords(lstT_UnitX, searchString.ToUpper(), IsDeepSearch);
+            }
+	   if (parent != null && parent == "Home")
+            {
+                ViewBag.Homeval = searchString;
+            }
+            if (!String.IsNullOrEmpty(sortBy) && !String.IsNullOrEmpty(isAsc))
+            {
+                lstT_UnitX = sortRecords(lstT_UnitX, sortBy, isAsc);
+            }
+            else lstT_UnitX = lstT_UnitX.OrderByDescending(c => c.Id);
+			lstT_UnitX = CustomSorting(lstT_UnitX);
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+			ViewBag.Pages = page;
+			if (itemsPerPage != null)
+            {
+                pageSize = (int)itemsPerPage;
+                ViewBag.CurrentItemsPerPage = itemsPerPage;
+            }
+			 //Cookies for pagesize 
+            if (Request.Cookies["pageSize" + HttpUtility.UrlEncode(User.Name)  + "T_UnitX"] != null)
+            {
+                pageSize = Convert.ToInt32(Request.Cookies["pageSize" + HttpUtility.UrlEncode(User.Name)  + "T_UnitX"].Value);
+                ViewBag.CurrentItemsPerPage = itemsPerPage;
+            }
+            pageSize = pageSize > 100 ? 100 : pageSize;
+			//Cookies for pagination 
+            if (Request.Cookies["pagination" + HttpUtility.UrlEncode(User.Name) + "T_UnitX"] != null)
+            {
+                pageNumber = Convert.ToInt32(Request.Cookies["pagination" + HttpUtility.UrlEncode(User.Name) + "T_UnitX"].Value);
+                ViewBag.Pages = pageNumber;
+            }
+            //
+            //
+			 ViewBag.PageSize = pageSize;
+			var _T_UnitX = lstT_UnitX.Include(t=>t.t_facilityunitx).Include(t=>t.t_unitxunitassociation).Include(t=>t.t_warddepartment).Include(t=>t.t_unitxdepartmentarea).Include(t=>t.t_wardorgcode).Include(t=>t.t_unitxfloor).Include(t=>t.t_employeeadministrator).Include(t=>t.t_employeeunitxhead).Include(t=>t.t_wardcostcenter);
+		 if (HostingEntity == "T_Facility" && AssociatedType == "T_FacilityUnitX")
+         {
+			 if (HostingEntityID != null)
+             {
+                long hostid = Convert.ToInt64(HostingEntityID);
+                _T_UnitX = _T_UnitX.Where(p => p.T_FacilityUnitXID == hostid);
+			 }
+			 else
+			     _T_UnitX = _T_UnitX.Where(p => p.T_FacilityUnitXID == null);
+         }
+		 if (HostingEntity == "T_Unit" && AssociatedType == "T_UnitXUnitAssociation")
+         {
+			 if (HostingEntityID != null)
+             {
+                long hostid = Convert.ToInt64(HostingEntityID);
+                _T_UnitX = _T_UnitX.Where(p => p.T_UnitXUnitAssociationID == hostid);
+			 }
+			 else
+			     _T_UnitX = _T_UnitX.Where(p => p.T_UnitXUnitAssociationID == null);
+         }
+		 if (HostingEntity == "T_Department" && AssociatedType == "T_WardDepartment")
+         {
+			 if (HostingEntityID != null)
+             {
+                long hostid = Convert.ToInt64(HostingEntityID);
+                _T_UnitX = _T_UnitX.Where(p => p.T_WardDepartmentID == hostid);
+			 }
+			 else
+			     _T_UnitX = _T_UnitX.Where(p => p.T_WardDepartmentID == null);
+         }
+		 if (HostingEntity == "T_DepartmentArea" && AssociatedType == "T_UnitXDepartmentArea")
+         {
+			 if (HostingEntityID != null)
+             {
+                long hostid = Convert.ToInt64(HostingEntityID);
+                _T_UnitX = _T_UnitX.Where(p => p.T_UnitXDepartmentAreaID == hostid);
+			 }
+			 else
+			     _T_UnitX = _T_UnitX.Where(p => p.T_UnitXDepartmentAreaID == null);
+         }
+		 if (HostingEntity == "T_OrgCodes" && AssociatedType == "T_WardOrgCode")
+         {
+			 if (HostingEntityID != null)
+             {
+                long hostid = Convert.ToInt64(HostingEntityID);
+                _T_UnitX = _T_UnitX.Where(p => p.T_WardOrgCodeID == hostid);
+			 }
+			 else
+			     _T_UnitX = _T_UnitX.Where(p => p.T_WardOrgCodeID == null);
+         }
+		 if (HostingEntity == "T_Floor" && AssociatedType == "T_UnitXFloor")
+         {
+			 if (HostingEntityID != null)
+             {
+                long hostid = Convert.ToInt64(HostingEntityID);
+                _T_UnitX = _T_UnitX.Where(p => p.T_UnitXFloorID == hostid);
+			 }
+			 else
+			     _T_UnitX = _T_UnitX.Where(p => p.T_UnitXFloorID == null);
+         }
+		 if (HostingEntity == "T_Employee" && AssociatedType == "T_EmployeeAdministrator")
+         {
+			 if (HostingEntityID != null)
+             {
+                long hostid = Convert.ToInt64(HostingEntityID);
+                _T_UnitX = _T_UnitX.Where(p => p.T_EmployeeAdministratorID == hostid);
+			 }
+			 else
+			     _T_UnitX = _T_UnitX.Where(p => p.T_EmployeeAdministratorID == null);
+         }
+		 if (HostingEntity == "T_Employee" && AssociatedType == "T_EmployeeUnitXHead")
+         {
+			 if (HostingEntityID != null)
+             {
+                long hostid = Convert.ToInt64(HostingEntityID);
+                _T_UnitX = _T_UnitX.Where(p => p.T_EmployeeUnitXHeadID == hostid);
+			 }
+			 else
+			     _T_UnitX = _T_UnitX.Where(p => p.T_EmployeeUnitXHeadID == null);
+         }
+		 if (HostingEntity == "T_CostCenter" && AssociatedType == "T_WardCostCenter")
+         {
+			 if (HostingEntityID != null)
+             {
+                long hostid = Convert.ToInt64(HostingEntityID);
+                _T_UnitX = _T_UnitX.Where(p => p.T_WardCostCenterID == hostid);
+			 }
+			 else
+			     _T_UnitX = _T_UnitX.Where(p => p.T_WardCostCenterID == null);
+         }
+	
+			if (Convert.ToBoolean(IsExport))
+            {
+				if (!((CustomPrincipal)User).CanUseVerb("ExportExcel", "T_UnitX", User) || !User.CanView("T_UnitX"))
+                {
+                    return RedirectToAction("Index", "Error");
+                }
+                pageNumber = 1;
+                if (_T_UnitX.Count() > 0)
+                    pageSize = _T_UnitX.Count();
+                return View("ExcelExport", _T_UnitX.ToPagedList(pageNumber, pageSize));
+            }
+			else
+            {
+			 if (pageNumber > 1)
+			 {
+                var totalListCount = _T_UnitX.Count();
+                int quotient = totalListCount / pageSize;
+                var remainder = totalListCount % pageSize;
+                var maxpagenumber = quotient + (remainder > 0 ? 1 : 0);
+                if (pageNumber > maxpagenumber)
+                {
+                    pageNumber = 1;
+                }
+			 }
+            }			 
+			 if (!(RenderPartial==null?false:RenderPartial.Value) && !Request.IsAjaxRequest())
+			 {
+				if (string.IsNullOrEmpty(viewtype))
+                    viewtype = "IndexPartial";
+                GetTemplatesForList(viewtype);
+                if ((ViewBag.TemplatesName != null && viewtype != null) && ViewBag.TemplatesName != viewtype)
+                    ViewBag.TemplatesName = viewtype;
+				var list = _T_UnitX.ToPagedList(pageNumber, pageSize);
+                ViewBag.EntityT_UnitXDisplayValue = new SelectList(list.Select(z => new { ID = z.Id, DisplayValue = z.DisplayValue }), "ID", "DisplayValue");
+                TempData["T_UnitXlist"] = list.Select(z => new { ID = z.Id, DisplayValue = z.DisplayValue });
+				return View(list);
+			 }
+			 else
+				{
+					if (BulkOperation != null && (BulkOperation == "single" || BulkOperation == "multiple"))
+					{
+						ViewData["BulkAssociate"] = BulkAssociate;
+						if (!string.IsNullOrEmpty(caller))
+						{
+							FilterApplicationDropdowns _fad = new FilterApplicationDropdowns();
+							_T_UnitX = _fad.FilterDropdown<T_UnitX>(User,  _T_UnitX, "T_UnitX", caller);
+						}
+						if (Convert.ToBoolean(BulkAssociate))
+						{
+							if (!String.IsNullOrEmpty(sortBy) && !String.IsNullOrEmpty(isAsc))
+								return PartialView("BulkOperation",sortRecords(lstT_UnitX.Except(_T_UnitX),sortBy,isAsc).ToPagedList(pageNumber, pageSize));
+							else
+								return PartialView("BulkOperation", lstT_UnitX.Except(_T_UnitX).OrderBy(q => q.DisplayValue).ToPagedList(pageNumber, pageSize));
+						}
+						else
+						{
+							if (!String.IsNullOrEmpty(sortBy) && !String.IsNullOrEmpty(isAsc))
+								return PartialView("BulkOperation", _T_UnitX.ToPagedList(pageNumber, pageSize));
+							else
+								return PartialView("BulkOperation", _T_UnitX.OrderBy(q=>q.DisplayValue).ToPagedList(pageNumber, pageSize)); 
+						}
+					}
+					else
+					{
+					  if (ViewBag.TemplatesName == null)
+					  {
+						    if (!string.IsNullOrEmpty(isMobileHome))
+                            {
+								 pageSize = _T_UnitX.Count() == 0 ? 1 : _T_UnitX.Count();
+                            }
+							ViewData["HomePartialList"] = IsHomeList;
+							var list = _T_UnitX.ToPagedList(pageNumber, Convert.ToBoolean(IsHomeList) ? 5 : pageSize);
+							ViewBag.EntityT_UnitXDisplayValue = new SelectList(list.Select(z => new { ID = z.Id, DisplayValue = z.DisplayValue }), "ID", "DisplayValue");
+							TempData["T_UnitXlist"] = list.Select(z => new { ID = z.Id, DisplayValue = z.DisplayValue });
+							return PartialView(Convert.ToBoolean(IsHomeList) ? "HomePartialList" : "IndexPartial", list);
+					  }
+					  else
+					  {
+							if (!string.IsNullOrEmpty(isMobileHome))
+                            {
+                                pageSize = _T_UnitX.Count() == 0 ? 1 : _T_UnitX.Count();
+                            }
+							var list = _T_UnitX.ToPagedList(pageNumber, pageSize);
+							ViewBag.EntityT_UnitXDisplayValue = new SelectList(list.Select(z => new { ID = z.Id, DisplayValue = z.DisplayValue }), "ID", "DisplayValue");
+							TempData["T_UnitXlist"] = list.Select(z => new { ID = z.Id, DisplayValue = z.DisplayValue });
+							return PartialView(ViewBag.TemplatesName, list);
+					  }
+					}
+				}
+        }
+		 // GET: /T_UnitX/Details/5
+		 		[Audit("View")]
+		public ActionResult Details(int? id,string HostingEntityName, string AssociatedType, string defaultview)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+			if (!CustomAuthorizationBeforeDetails(id, HostingEntityName, AssociatedType))
+            {
+                return RedirectToAction("Index", "Error");
+            }
+            T_UnitX t_unitx = db.T_UnitXs.Find(id);
+            if (t_unitx == null)
+            {
+                return HttpNotFound();
+            }
+			if (string.IsNullOrEmpty(defaultview))
+                defaultview = "Details";
+            GetTemplatesForDetails(defaultview);
+			ViewData["AssociatedType"] = AssociatedType;
+		    ViewData["HostingEntityName"] = HostingEntityName;
+			LoadViewDataBeforeOnEdit(t_unitx);	
+			if (!string.IsNullOrEmpty(AssociatedType))
+                    LoadViewDataForCount(t_unitx, AssociatedType);
+            ViewBag.T_UnitXIsHiddenRule = checkHidden("T_UnitX", "OnDetails", false);
+			ViewBag.T_UnitXIsGroupsHiddenRule = checkHidden("T_UnitX", "OnDetails", true);
+			ViewBag.T_UnitXIsSetValueUIRule = checkSetValueUIRule("T_UnitX", "OnDetails");
+			return View(ViewBag.TemplatesName,t_unitx);
+        }
+        // GET: /T_UnitX/Create
+        public ActionResult Create(string UrlReferrer,string HostingEntityName, string HostingEntityID, string AssociatedType, bool? IsDDAdd, string viewtype )
+        {
+            if (!User.CanAdd("T_UnitX") || !CustomAuthorizationBeforeCreate(HostingEntityName, HostingEntityID, AssociatedType))
+            {
+                return RedirectToAction("Index", "Error");
+            }
+		  if (IsDDAdd != null)
+                ViewBag.IsDDAdd = Convert.ToBoolean(IsDDAdd);
+		   if (string.IsNullOrEmpty(viewtype))
+                viewtype = "Create";
+            GetTemplatesForCreate(viewtype);
+		  ViewData["T_UnitXParentUrl"] = UrlReferrer;
+		  ViewData["AssociatedType"] = AssociatedType;
+		  ViewData["HostingEntityName"] = HostingEntityName;
+		  ViewData["HostingEntityID"] = HostingEntityID;
+		  LoadViewDataBeforeOnCreate(HostingEntityName, HostingEntityID, AssociatedType);
+		  ViewBag.T_UnitXIsHiddenRule = checkHidden("T_UnitX", "OnCreate", false);
+			ViewBag.T_UnitXIsGroupsHiddenRule = checkHidden("T_UnitX", "OnCreate", true);
+		  ViewBag.T_UnitXIsSetValueUIRule = checkSetValueUIRule("T_UnitX", "OnCreate");
+          return View();
+        }
+		// GET: /T_UnitX/CreateWizard
+        public ActionResult CreateWizard(string UrlReferrer,string HostingEntityName, string HostingEntityID,string AssociatedType, string viewtype)
+        {
+            if (!User.CanAdd("T_UnitX") || !CustomAuthorizationBeforeCreate(HostingEntityName, HostingEntityID, AssociatedType))
+            {
+                return RedirectToAction("Index", "Error");
+            }
+	
+			if (string.IsNullOrEmpty(viewtype))
+                viewtype = "CreateWizard";
+            GetTemplatesForCreateWizard(viewtype);
+		    ViewData["T_UnitXParentUrl"] = UrlReferrer;
+			LoadViewDataBeforeOnCreate(HostingEntityName, HostingEntityID, AssociatedType);
+			 ViewBag.T_UnitXIsHiddenRule = checkHidden("T_UnitX", "OnCreate", false);
+			ViewBag.T_UnitXIsGroupsHiddenRule = checkHidden("T_UnitX", "OnCreate", true);
+			 ViewBag.T_UnitXIsSetValueUIRule = checkSetValueUIRule("T_UnitX", "OnCreate");
+            return View();
+        }
+		// POST: /T_UnitX/CreateWizard
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateWizard([Bind(Include="Id,ConcurrencyKey,T_FacilityUnitXID,T_UnitXUnitAssociationID,T_WardDepartmentID,T_UnitXDepartmentAreaID,T_WardOrgCodeID,T_Unit,T_UnitXFloorID,T_UnitPhoneNumber,T_MailDistributor,T_EmployeeAdministratorID,T_EmployeeUnitXHeadID,T_MaleBeds,T_FemaleBeds,T_TotalBeds,T_WardCostCenterID,T_Program,T_Fund")] T_UnitX t_unitx, string UrlReferrer)
+        {
+			CheckBeforeSave(t_unitx);
+            if (ModelState.IsValid)
+            {
+				bool customcreate_hasissues = false;
+				if (!CustomSaveOnCreate(t_unitx,out customcreate_hasissues,"Create"))
+                {
+                    db.T_UnitXs.Add(t_unitx);
+					db.SaveChanges();
+                }
+				if (!customcreate_hasissues)
+                {
+					RedirectToRouteResult customRedirectAction = CustomRedirectUrl(t_unitx,"Create","");
+					if (customRedirectAction != null) return customRedirectAction;
+					if(!string.IsNullOrEmpty(UrlReferrer))
+					   return Redirect(UrlReferrer);
+					else return RedirectToAction("Index");
+				}
+            }
+	
+			LoadViewDataAfterOnCreate(t_unitx);
+			ViewBag.T_UnitXIsHiddenRule = checkHidden("T_UnitX", "OnCreate", false);
+			ViewBag.T_UnitXIsGroupsHiddenRule = checkHidden("T_UnitX", "OnCreate", true);
+			ViewBag.T_UnitXIsSetValueUIRule = checkSetValueUIRule("T_UnitX", "OnCreate");	
+            return View(t_unitx);
+        }
+		 // GET: /T_UnitX/CreateQuick
+        public ActionResult CreateQuick(string UrlReferrer, string HostingEntityName, string HostingEntityID, string AssociatedType, bool? IsAddPop, string viewtype)
+        {
+            if (!User.CanAdd("T_UnitX") || !CustomAuthorizationBeforeCreate(HostingEntityName, HostingEntityID, AssociatedType))
+            {
+                return RedirectToAction("Index", "Error");
+            }
+			if (string.IsNullOrEmpty(viewtype))
+                viewtype = "CreateQuick";
+            GetTemplatesForCreateQuick(viewtype);
+			 ViewBag.IsAddPop = IsAddPop;
+		   ViewData["T_UnitXParentUrl"] = UrlReferrer;
+		   ViewData["AssociatedType"] = AssociatedType;
+           ViewData["HostingEntityName"] = HostingEntityName;
+		   ViewData["HostingEntityID"] = HostingEntityID;
+		   LoadViewDataBeforeOnCreate(HostingEntityName, HostingEntityID, AssociatedType);
+		    ViewBag.T_UnitXIsHiddenRule = checkHidden("T_UnitX", "OnCreate", false);
+			ViewBag.T_UnitXIsGroupsHiddenRule = checkHidden("T_UnitX", "OnCreate", true);
+			ViewBag.T_UnitXIsSetValueUIRule = checkSetValueUIRule("T_UnitX", "OnCreate");
+            return View();
+        }
+		  // POST: /T_UnitX/CreateQuick
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+		        public ActionResult CreateQuick([Bind(Include="Id,ConcurrencyKey,T_FacilityUnitXID,T_UnitXUnitAssociationID,T_WardDepartmentID,T_UnitXDepartmentAreaID,T_WardOrgCodeID,T_Unit,T_UnitXFloorID,T_UnitPhoneNumber,T_EmployeeAdministratorID,T_EmployeeUnitXHeadID,T_TotalBeds,T_WardCostCenterID,T_Program,T_Fund")] T_UnitX t_unitx,  string UrlReferrer, bool? IsAddPop, string AssociatedEntity, string HostingEntityName, string HostingEntityID)
+        {
+			CheckBeforeSave(t_unitx);
+            if (ModelState.IsValid)
+            {
+				bool customcreate_hasissues = false;
+				if (!CustomSaveOnCreate(t_unitx,out customcreate_hasissues,"Create"))
+                {
+                    db.T_UnitXs.Add(t_unitx);
+					db.SaveChanges();
+                }
+				if (!customcreate_hasissues)
+					return Json("FROMPOPUP", "application/json", System.Text.Encoding.UTF8, JsonRequestBehavior.AllowGet);
+            }
+			else
+			{
+				var errors = "";
+				foreach (ModelState modelState in ViewData.ModelState.Values)
+				{
+					foreach (ModelError error in modelState.Errors)
+					{
+						errors+=error.ErrorMessage+".  ";
+					}
+				}
+				return Json(errors, "application/json", System.Text.Encoding.UTF8, JsonRequestBehavior.AllowGet);
+			}
+			LoadViewDataAfterOnCreate(t_unitx);
+			ViewBag.T_UnitXIsHiddenRule = checkHidden("T_UnitX", "OnCreate", false);
+			ViewBag.T_UnitXIsGroupsHiddenRule = checkHidden("T_UnitX", "OnCreate", true);
+			ViewBag.T_UnitXIsSetValueUIRule = checkSetValueUIRule("T_UnitX", "OnCreate");
+            if (!string.IsNullOrEmpty(AssociatedEntity))
+                    LoadViewDataForCount(t_unitx, AssociatedEntity);
+			return View(t_unitx);
+        }
+		public ActionResult Cancel(string UrlReferrer)
+        {
+                 if (!string.IsNullOrEmpty(UrlReferrer))
+                 {
+                     var uri = new Uri(UrlReferrer);
+                     var query = HttpUtility.ParseQueryString(uri.Query);
+                     if(Convert.ToBoolean(query.Get("IsFilter")) == true)
+                         return RedirectToAction("Index");
+                     else
+                        return Redirect(UrlReferrer);
+                 }
+                 else
+                     return RedirectToAction("Index");
+        }
+        // POST: /T_UnitX/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+       [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include="Id,ConcurrencyKey,T_FacilityUnitXID,T_UnitXUnitAssociationID,T_WardDepartmentID,T_UnitXDepartmentAreaID,T_WardOrgCodeID,T_Unit,T_UnitXFloorID,T_UnitPhoneNumber,T_MailDistributor,T_EmployeeAdministratorID,T_EmployeeUnitXHeadID,T_MaleBeds,T_FemaleBeds,T_TotalBeds,T_WardCostCenterID,T_Program,T_Fund")] T_UnitX t_unitx, string UrlReferrer, bool? IsDDAdd)
+        {
+			string command = Request.Form["hdncommand"];
+			CheckBeforeSave(t_unitx, command);
+			
+            if (ModelState.IsValid)
+            {
+				bool customcreate_hasissues = false;
+                if (!CustomSaveOnCreate(t_unitx,out customcreate_hasissues,command))
+                {
+                    db.T_UnitXs.Add(t_unitx);
+					db.SaveChanges();
+                }
+				if (!customcreate_hasissues)
+				{
+					RedirectToRouteResult customRedirectAction = CustomRedirectUrl(t_unitx,"Create",command);
+					if (customRedirectAction != null) return customRedirectAction;
+					 if (command == "Create & Continue")
+						return RedirectToAction("Edit", new { Id = t_unitx.Id, UrlReferrer = UrlReferrer });
+					if(!string.IsNullOrEmpty(UrlReferrer))
+					   return Redirect(UrlReferrer);
+					else return RedirectToAction("Index");
+				}
+            }
+	
+		 if (IsDDAdd != null)
+              ViewBag.IsDDAdd = Convert.ToBoolean(IsDDAdd);
+		LoadViewDataAfterOnCreate(t_unitx);
+			ViewData["T_UnitXParentUrl"] = UrlReferrer;
+			ViewBag.T_UnitXIsHiddenRule = checkHidden("T_UnitX", "OnCreate", false);
+			ViewBag.T_UnitXIsGroupsHiddenRule = checkHidden("T_UnitX", "OnCreate", true);
+			ViewBag.T_UnitXIsSetValueUIRule = checkSetValueUIRule("T_UnitX", "OnCreate");
+            return View(t_unitx);
+        }
+		// GET: /T_UnitX/Edit/5
+		[Audit("View")]
+        public ActionResult EditQuick(int? id, string UrlReferrer, string HostingEntityName, string AssociatedType, string viewtype)
+        {
+            if (!User.CanEdit("T_UnitX") || !CustomAuthorizationBeforeEdit(id, HostingEntityName, AssociatedType))
+            {
+                return RedirectToAction("Index", "Error");
+            }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+			if (string.IsNullOrEmpty(viewtype))
+                viewtype = "EditQuick";
+            GetTemplatesForEditQuick(viewtype);
+            T_UnitX t_unitx = db.T_UnitXs.Find(id);
+            if (t_unitx == null)
+            {
+                return HttpNotFound();
+            }
+		if (UrlReferrer != null)
+                ViewData["T_UnitXParentUrl"] = UrlReferrer;
+		if(ViewData["T_UnitXParentUrl"] == null  && Request.UrlReferrer !=null && ! Request.UrlReferrer.AbsolutePath.EndsWith("/T_UnitX")  && !Request.UrlReferrer.AbsolutePath.EndsWith("/T_UnitX/Edit/" + t_unitx.Id + "") && !Request.UrlReferrer.AbsolutePath.EndsWith("/T_UnitX/Create"))
+			ViewData["T_UnitXParentUrl"] = Request.UrlReferrer;
+		 ViewData["HostingEntityName"] = HostingEntityName;
+         ViewData["AssociatedType"] = AssociatedType;
+		  LoadViewDataBeforeOnEdit(t_unitx);
+		   ViewBag.T_UnitXIsHiddenRule = checkHidden("T_UnitX", "OnEdit", false);
+			ViewBag.T_UnitXIsGroupsHiddenRule = checkHidden("T_UnitX", "OnEdit", true);
+		   ViewBag.T_UnitXIsSetValueUIRule = checkSetValueUIRule("T_UnitX", "OnEdit");
+		    var objT_UnitX = new List<T_UnitX>();
+            ViewBag.T_UnitXDD = new SelectList(objT_UnitX, "ID", "DisplayValue"); 
+          return View(t_unitx);
+        }
+		// POST: /T_UnitX/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditQuick([Bind(Include="Id,ConcurrencyKey,T_FacilityUnitXID,T_UnitXUnitAssociationID,T_WardDepartmentID,T_UnitXDepartmentAreaID,T_WardOrgCodeID,T_Unit,T_UnitXFloorID,T_UnitPhoneNumber,T_MailDistributor,T_EmployeeAdministratorID,T_EmployeeUnitXHeadID,T_MaleBeds,T_FemaleBeds,T_TotalBeds,T_WardCostCenterID,T_Program,T_Fund")] T_UnitX t_unitx,  string UrlReferrer, bool? IsAddPop, string AssociatedEntity)
+        {
+			string command = Request.Form["hdncommand"];
+			CheckBeforeSave(t_unitx, command);
+			
+            if (ModelState.IsValid)
+            {
+				bool customsave_hasissues = false;
+				if (!CustomSaveOnEdit(t_unitx,out customsave_hasissues,command))
+                {
+					db.Entry(t_unitx).State = EntityState.Modified;
+					db.SaveChanges();
+                }
+			  var result = new { Result = "Succeed", UrlRefr =UrlReferrer };
+			  if (!customsave_hasissues)
+				return Json(result, "application/json", System.Text.Encoding.UTF8, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                var errors = "";
+                foreach (ModelState modelState in ViewData.ModelState.Values)
+                {
+                    foreach (ModelError error in modelState.Errors)
+                    {
+                        errors += error.ErrorMessage + ".  ";
+                    }
+                }
+				var result = new { Result = "fail", UrlRefr = errors };
+                return Json(result, "application/json", System.Text.Encoding.UTF8, JsonRequestBehavior.AllowGet);
+            }
+			
+			LoadViewDataAfterOnEdit(t_unitx);
+			ViewBag.T_UnitXIsHiddenRule = checkHidden("T_UnitX", "OnEdit", false);
+			ViewBag.T_UnitXIsGroupsHiddenRule = checkHidden("T_UnitX", "OnEdit", true);
+			ViewBag.T_UnitXIsSetValueUIRule = checkSetValueUIRule("T_UnitX", "OnEdit");
+            return View(t_unitx);
+        }
+        // GET: /T_UnitX/Edit/5
+		[Audit("View")]
+        public ActionResult Edit(int? id, string UrlReferrer, string HostingEntityName, string AssociatedType, string defaultview)
+        {
+            if (!User.CanEdit("T_UnitX") || !CustomAuthorizationBeforeEdit(id, HostingEntityName, AssociatedType))
+            {
+                return RedirectToAction("Index", "Error");
+            }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            T_UnitX t_unitx = db.T_UnitXs.Find(id);
+			 // NEXT-PREVIOUS DROP DOWN CODE
+			TempData.Keep();
+            string json = "";
+            if (TempData["T_UnitXlist"] == null)
+            {
+                json = Newtonsoft.Json.JsonConvert.SerializeObject(db.T_UnitXs.Select(z => new { ID = z.Id, DisplayValue = z.DisplayValue }).ToList());
+            }
+            else
+            {
+                ViewBag.EntityT_UnitXDisplayValueEdit = TempData["T_UnitXlist"];
+                json = Newtonsoft.Json.JsonConvert.SerializeObject(TempData["T_UnitXlist"]);
+            }
+
+			Newtonsoft.Json.JsonSerializerSettings serSettings = new    Newtonsoft.Json.JsonSerializerSettings();
+            serSettings.ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
+            var lst = Newtonsoft.Json.JsonConvert.DeserializeObject<IEnumerable<object>>(json, serSettings);
+            ViewBag.EntityT_UnitXDisplayValueEdit = new SelectList(lst, "ID", "DisplayValue");
+			//
+            if (t_unitx == null)
+            {
+                return HttpNotFound();
+            }
+		if (string.IsNullOrEmpty(defaultview))
+                defaultview = "Edit";
+            GetTemplatesForEdit(defaultview);
+			  // NEXT-PREVIOUS DROP DOWN CODE
+			SelectList selitm = new SelectList(lst, "ID", "DisplayValue");
+             List<SelectListItem> newList = selitm.ToList();
+			 if(Request.UrlReferrer != null && Request.UrlReferrer.AbsolutePath.EndsWith("/T_UnitX/Create"))
+            {
+                newList.Insert(0, (new SelectListItem { Text = t_unitx.DisplayValue, Value = t_unitx.Id.ToString() }));
+                ViewBag.EntityT_UnitXDisplayValueEdit = newList;
+				TempData["T_UnitXlist"] = newList.Select(z => new { ID = z.Value, DisplayValue = z.Text});
+            }
+			else if(!newList.Exists(p => p.Value == Convert.ToString(t_unitx.Id)))
+            {
+                if (newList.Count > 0)
+                {
+                    newList[0].Text = t_unitx.DisplayValue;
+                    newList[0].Value = t_unitx.Id.ToString();
+                }
+                else
+                {
+                    newList.Insert(0, (new SelectListItem { Text = t_unitx.DisplayValue, Value = t_unitx.Id.ToString() }));
+                }
+                ViewBag.EntityT_UnitXDisplayValueEdit = newList;
+				TempData["T_UnitXlist"] = newList.Select(z => new { ID = z.Value, DisplayValue = z.Text});
+            }
+			//
+		if (UrlReferrer != null)
+                ViewData["T_UnitXParentUrl"] = UrlReferrer;
+		if(ViewData["T_UnitXParentUrl"] == null  && Request.UrlReferrer !=null && ! Request.UrlReferrer.AbsolutePath.EndsWith("/T_UnitX")  && !Request.UrlReferrer.AbsolutePath.EndsWith("/T_UnitX/Edit/" + t_unitx.Id + "") && !Request.UrlReferrer.AbsolutePath.EndsWith("/T_UnitX/Create"))
+			ViewData["T_UnitXParentUrl"] = Request.UrlReferrer;
+		 ViewData["HostingEntityName"] = HostingEntityName;
+         ViewData["AssociatedType"] = AssociatedType;
+		  LoadViewDataBeforeOnEdit(t_unitx);
+		   ViewBag.T_UnitXIsHiddenRule = checkHidden("T_UnitX", "OnEdit", false);
+			ViewBag.T_UnitXIsGroupsHiddenRule = checkHidden("T_UnitX", "OnEdit", true);
+		   ViewBag.T_UnitXIsSetValueUIRule = checkSetValueUIRule("T_UnitX", "OnEdit");
+          return View(t_unitx);
+        }
+        // POST: /T_UnitX/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include="Id,ConcurrencyKey,T_FacilityUnitXID,T_UnitXUnitAssociationID,T_WardDepartmentID,T_UnitXDepartmentAreaID,T_WardOrgCodeID,T_Unit,T_UnitXFloorID,T_UnitPhoneNumber,T_MailDistributor,T_EmployeeAdministratorID,T_EmployeeUnitXHeadID,T_MaleBeds,T_FemaleBeds,T_TotalBeds,T_WardCostCenterID,T_Program,T_Fund")] T_UnitX t_unitx,  string UrlReferrer)
+        {
+			string command = Request.Form["hdncommand"];
+			CheckBeforeSave(t_unitx, command);
+            if (ModelState.IsValid)
+            {
+			bool customsave_hasissues = false;
+			if (!CustomSaveOnEdit(t_unitx,out customsave_hasissues,command))
+            {
+				db.Entry(t_unitx).State = EntityState.Modified;
+				db.SaveChanges();
+            }
+		 if (!customsave_hasissues)
+		 {
+				 RedirectToRouteResult customRedirectAction = CustomRedirectUrl(t_unitx,"Edit",command);
+				 if (customRedirectAction != null) return customRedirectAction;
+				 if (command != "Save")
+				 {
+				   if (command == "SaveNextPrev")
+                     {
+                        long NextPreId = Convert.ToInt64(Request.Form["hdnNextPrevId"]);
+                        return RedirectToAction("Edit", new { Id = NextPreId, UrlReferrer = UrlReferrer });
+                     }
+                    else
+                       return RedirectToAction("Edit", new { Id = t_unitx.Id, UrlReferrer = UrlReferrer });
+			     }
+                 if (!string.IsNullOrEmpty(UrlReferrer))
+                 {
+                     var uri = new Uri(UrlReferrer);
+                     var query = HttpUtility.ParseQueryString(uri.Query);
+                     if(Convert.ToBoolean(query.Get("IsFilter")) == true)
+                         return RedirectToAction("Index");
+                     else
+                        return Redirect(UrlReferrer);
+                 }
+                 else
+                     return RedirectToAction("Index");
+			}
+     }
+			
+			// NEXT-PREVIOUS DROP DOWN CODE
+			TempData.Keep();
+            string json = "";
+            if (TempData["T_UnitXlist"] == null)
+            {
+                json = Newtonsoft.Json.JsonConvert.SerializeObject(db.T_UnitXs.Select(z => new { ID = z.Id, DisplayValue = z.DisplayValue }).ToList());
+            }
+            else
+            {
+                ViewBag.EntityT_UnitXDisplayValueEdit = TempData["T_UnitXlist"];
+                json = Newtonsoft.Json.JsonConvert.SerializeObject(TempData["T_UnitXlist"]);
+            }
+            
+			Newtonsoft.Json.JsonSerializerSettings serSettings = new    Newtonsoft.Json.JsonSerializerSettings();
+            serSettings.ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
+            var lst = Newtonsoft.Json.JsonConvert.DeserializeObject<IEnumerable<object>>(json, serSettings);
+            
+            ViewBag.EntityT_UnitXDisplayValueEdit = new SelectList(lst, "ID", "DisplayValue");
+			//
+			LoadViewDataAfterOnEdit(t_unitx);
+			 ViewData["T_UnitXParentUrl"] = UrlReferrer;
+			ViewBag.T_UnitXIsHiddenRule = checkHidden("T_UnitX", "OnEdit", false);
+			ViewBag.T_UnitXIsGroupsHiddenRule = checkHidden("T_UnitX", "OnEdit", true);
+			ViewBag.T_UnitXIsSetValueUIRule = checkSetValueUIRule("T_UnitX", "OnEdit");
+            return View(t_unitx);
+        }
+		// GET: /T_UnitX/EditWizard/5
+         public ActionResult EditWizard(int? id, string UrlReferrer,string HostingEntityName, string AssociatedType, string viewtype)
+        {
+            if (!User.CanEdit("T_UnitX") || !CustomAuthorizationBeforeEdit(id, HostingEntityName, AssociatedType))
+            {
+                return RedirectToAction("Index", "Error");
+            }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+			if (string.IsNullOrEmpty(viewtype))
+                viewtype = "EditWizard";
+            GetTemplatesForEditWizard(viewtype);
+			            T_UnitX t_unitx = db.T_UnitXs.Find(id);
+            if (t_unitx == null)
+            {
+                return HttpNotFound();
+            }
+	
+		 if (UrlReferrer != null)
+                ViewData["T_UnitXParentUrl"] = UrlReferrer;
+		if(ViewData["T_UnitXParentUrl"] == null  && Request.UrlReferrer !=null && ! Request.UrlReferrer.AbsolutePath.EndsWith("/T_UnitX"))
+			ViewData["T_UnitXParentUrl"] = Request.UrlReferrer;
+			 LoadViewDataBeforeOnEdit(t_unitx);
+			 ViewBag.T_UnitXIsHiddenRule = checkHidden("T_UnitX", "OnEdit", false);
+			ViewBag.T_UnitXIsGroupsHiddenRule = checkHidden("T_UnitX", "OnEdit", true);
+			 ViewBag.T_UnitXIsSetValueUIRule = checkSetValueUIRule("T_UnitX", "OnEdit");
+          return View(t_unitx);
+        }
+        // POST: /T_UnitX/EditWizard/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+       [ValidateAntiForgeryToken]
+        public ActionResult EditWizard([Bind(Include="Id,ConcurrencyKey,T_FacilityUnitXID,T_UnitXUnitAssociationID,T_WardDepartmentID,T_UnitXDepartmentAreaID,T_WardOrgCodeID,T_Unit,T_UnitXFloorID,T_UnitPhoneNumber,T_MailDistributor,T_EmployeeAdministratorID,T_EmployeeUnitXHeadID,T_MaleBeds,T_FemaleBeds,T_TotalBeds,T_WardCostCenterID,T_Program,T_Fund")] T_UnitX t_unitx,string UrlReferrer)
+        {
+			CheckBeforeSave(t_unitx);
+            if (ModelState.IsValid)
+            {
+			bool customsave_hasissues = false;
+			if (!CustomSaveOnEdit(t_unitx,out customsave_hasissues,"Save"))
+            {
+				db.Entry(t_unitx).State = EntityState.Modified;
+				db.SaveChanges();
+            }
+           if (!customsave_hasissues)
+		   {
+				 RedirectToRouteResult customRedirectAction = CustomRedirectUrl(t_unitx,"Edit","");
+				 if (customRedirectAction != null) return customRedirectAction;
+				 if (!string.IsNullOrEmpty(UrlReferrer))
+                 {
+                     var uri = new Uri(UrlReferrer);
+                     var query = HttpUtility.ParseQueryString(uri.Query);
+                     if(Convert.ToBoolean(query.Get("IsFilter")) == true)
+                         return RedirectToAction("Index");
+                     else
+                        return Redirect(UrlReferrer);
+                 }
+                 else
+                     return RedirectToAction("Index");
+			}
+     }
+			LoadViewDataAfterOnEdit(t_unitx);
+			ViewBag.T_UnitXIsHiddenRule = checkHidden("T_UnitX", "OnEdit", false);
+			ViewBag.T_UnitXIsGroupsHiddenRule = checkHidden("T_UnitX", "OnEdit", true);
+			ViewBag.T_UnitXIsSetValueUIRule = checkSetValueUIRule("T_UnitX", "OnEdit");
+            return View(t_unitx);
+        }
+        // GET: /T_UnitX/Delete/5
+        public ActionResult Delete(int id)
+        {
+			if (!User.CanDelete("T_UnitX") || !CustomAuthorizationBeforeDelete(id))
+            {
+                return RedirectToAction("Index", "Error");
+            }			
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+			            T_UnitX t_unitx = db.T_UnitXs.Find(id);
+            if (t_unitx == null)
+            {
+                throw(new Exception("Deleted"));
+            }
+			if(ViewData["T_UnitXParentUrl"] == null  && Request.UrlReferrer !=null && ! Request.UrlReferrer.AbsolutePath.EndsWith("/T_UnitX"))
+			 ViewData["T_UnitXParentUrl"] = Request.UrlReferrer;
+            return View(t_unitx);
+        }
+        // POST: /T_UnitX/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(T_UnitX t_unitx, string UrlReferrer)
+        {
+			if (!User.CanDelete("T_UnitX"))
+            {
+                return RedirectToAction("Index", "Error");
+            }
+			 if (CheckBeforeDelete(t_unitx))
+            {
+				bool customdelete_hasissues = false;
+                if (!CustomDelete(t_unitx, out customdelete_hasissues, "Delete"))
+                {
+            var listT_JobAssignmentUnitX = db.T_JobAssignments.Where(p => p.T_JobAssignmentUnitXID == t_unitx.Id);
+            foreach (var lst in listT_JobAssignmentUnitX)
+               db.T_JobAssignments.Remove(lst);
+           db.SaveChanges();
+			db.Entry(t_unitx).State = EntityState.Deleted;
+            db.T_UnitXs.Remove(t_unitx);
+            db.SaveChanges();
+		}
+				if (!customdelete_hasissues)
+                {
+					if (!string.IsNullOrEmpty(UrlReferrer))
+						return Redirect(UrlReferrer);
+					if (ViewData["T_UnitXParentUrl"] != null)
+					{
+						string parentUrl = ViewData["T_UnitXParentUrl"].ToString();
+						ViewData["T_UnitXParentUrl"] = null;
+						return Redirect(parentUrl);
+					}
+					else return RedirectToAction("Index");
+				}
+			 }
+            return View(t_unitx);
+        }
+		public ActionResult BulkAssociate(long[] ids, string AssociatedType, string HostingEntity, string HostingEntityID)
+        {
+            var HostingID = Convert.ToInt64(HostingEntityID);
+            if (HostingID == 0)
+                return Json("Error", "application/json", System.Text.Encoding.UTF8, JsonRequestBehavior.AllowGet);
+            if (HostingEntity == "T_Facility" && AssociatedType == "T_FacilityUnitX")
+            {
+                foreach (var id in ids.Where(p => p > 0))
+                {
+                    T_UnitX obj = db.T_UnitXs.Find(id);
+                    db.Entry(obj).State = EntityState.Modified;
+                    obj.T_FacilityUnitXID = HostingID;
+                    db.SaveChanges();
+                }
+            }
+            if (HostingEntity == "T_Unit" && AssociatedType == "T_UnitXUnitAssociation")
+            {
+                foreach (var id in ids.Where(p => p > 0))
+                {
+                    T_UnitX obj = db.T_UnitXs.Find(id);
+                    db.Entry(obj).State = EntityState.Modified;
+                    obj.T_UnitXUnitAssociationID = HostingID;
+                    db.SaveChanges();
+                }
+            }
+            if (HostingEntity == "T_Department" && AssociatedType == "T_WardDepartment")
+            {
+                foreach (var id in ids.Where(p => p > 0))
+                {
+                    T_UnitX obj = db.T_UnitXs.Find(id);
+                    db.Entry(obj).State = EntityState.Modified;
+                    obj.T_WardDepartmentID = HostingID;
+                    db.SaveChanges();
+                }
+            }
+            if (HostingEntity == "T_DepartmentArea" && AssociatedType == "T_UnitXDepartmentArea")
+            {
+                foreach (var id in ids.Where(p => p > 0))
+                {
+                    T_UnitX obj = db.T_UnitXs.Find(id);
+                    db.Entry(obj).State = EntityState.Modified;
+                    obj.T_UnitXDepartmentAreaID = HostingID;
+                    db.SaveChanges();
+                }
+            }
+            if (HostingEntity == "T_OrgCodes" && AssociatedType == "T_WardOrgCode")
+            {
+                foreach (var id in ids.Where(p => p > 0))
+                {
+                    T_UnitX obj = db.T_UnitXs.Find(id);
+                    db.Entry(obj).State = EntityState.Modified;
+                    obj.T_WardOrgCodeID = HostingID;
+                    db.SaveChanges();
+                }
+            }
+            if (HostingEntity == "T_Floor" && AssociatedType == "T_UnitXFloor")
+            {
+                foreach (var id in ids.Where(p => p > 0))
+                {
+                    T_UnitX obj = db.T_UnitXs.Find(id);
+                    db.Entry(obj).State = EntityState.Modified;
+                    obj.T_UnitXFloorID = HostingID;
+                    db.SaveChanges();
+                }
+            }
+            if (HostingEntity == "T_Employee" && AssociatedType == "T_EmployeeAdministrator")
+            {
+                foreach (var id in ids.Where(p => p > 0))
+                {
+                    T_UnitX obj = db.T_UnitXs.Find(id);
+                    db.Entry(obj).State = EntityState.Modified;
+                    obj.T_EmployeeAdministratorID = HostingID;
+                    db.SaveChanges();
+                }
+            }
+            if (HostingEntity == "T_Employee" && AssociatedType == "T_EmployeeUnitXHead")
+            {
+                foreach (var id in ids.Where(p => p > 0))
+                {
+                    T_UnitX obj = db.T_UnitXs.Find(id);
+                    db.Entry(obj).State = EntityState.Modified;
+                    obj.T_EmployeeUnitXHeadID = HostingID;
+                    db.SaveChanges();
+                }
+            }
+            if (HostingEntity == "T_CostCenter" && AssociatedType == "T_WardCostCenter")
+            {
+                foreach (var id in ids.Where(p => p > 0))
+                {
+                    T_UnitX obj = db.T_UnitXs.Find(id);
+                    db.Entry(obj).State = EntityState.Modified;
+                    obj.T_WardCostCenterID = HostingID;
+                    db.SaveChanges();
+                }
+            }
+            return Json("Success", "application/json", System.Text.Encoding.UTF8, JsonRequestBehavior.AllowGet);
+        }
+		public ActionResult DeleteBulk(long[] ids, string UrlReferrer)
+		{
+			if (User != null && (!((CustomPrincipal)User).CanUseVerb("BulkDelete", "T_UnitX", User) || !User.CanDelete("T_UnitX")))
+            {
+                return RedirectToAction("Index", "Error");
+            }
+			bool customdelete_hasissues = false;
+            foreach (var id in ids.Where(p => p > 0))
+            {
+			customdelete_hasissues = false;
+            T_UnitX t_unitx = db.T_UnitXs.Find(id);
+		if (CheckBeforeDelete(t_unitx))
+        {
+            if (!CustomDelete(t_unitx, out customdelete_hasissues, "DeleteBulk"))
+            {
+            var listT_JobAssignmentUnitX = db.T_JobAssignments.Where(p => p.T_JobAssignmentUnitXID == id);
+            foreach (var lst in listT_JobAssignmentUnitX)
+               db.T_JobAssignments.Remove(lst);
+           db.SaveChanges();
+                db.Entry(t_unitx).State = EntityState.Deleted;
+                db.T_UnitXs.Remove(t_unitx);
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch { }
+			}
+		}
+				
+			}
+			return Json("Success", "application/json", System.Text.Encoding.UTF8, JsonRequestBehavior.AllowGet);
+		}
+		[HttpGet]
+        public ActionResult BulkUpdate(string UrlReferrer, string HostingEntityName, string HostingEntityID, string AssociatedType, bool? IsDDUpdate)
+        {
+            if (!((CustomPrincipal)User).CanUseVerb("BulkUpdate", "T_UnitX", User) || !User.CanEdit("T_UnitX") || !CustomAuthorizationBeforeBulkUpdate(HostingEntityName, HostingEntityID, AssociatedType))
+            {
+                return RedirectToAction("Index", "Error");
+            }
+            if (IsDDUpdate != null)
+                ViewBag.IsDDAdd = Convert.ToBoolean(IsDDUpdate);
+            ViewData["T_UnitXParentUrl"] = UrlReferrer;
+            ViewData["AssociatedType"] = AssociatedType;
+            ViewData["HostingEntityName"] = HostingEntityName;
+            ViewData["HostingEntityID"] = HostingEntityID;
+            LoadViewDataBeforeOnCreate(HostingEntityName, HostingEntityID, AssociatedType);
+            string ids = string.Empty;
+            if (Request.QueryString["ids"] != null)
+                ids = Request.QueryString["ids"];
+            ViewBag.BulkUpdate = ids;
+            return View();
+        }
+        [HttpPost]
+		public ActionResult BulkUpdate([Bind(Include="Id,ConcurrencyKey,T_FacilityUnitXID,T_UnitXUnitAssociationID,T_WardDepartmentID,T_UnitXDepartmentAreaID,T_WardOrgCodeID,T_Unit,T_UnitXFloorID,T_UnitPhoneNumber,T_MailDistributor,T_EmployeeAdministratorID,T_EmployeeUnitXHeadID,T_MaleBeds,T_FemaleBeds,T_TotalBeds,T_WardCostCenterID,T_Program,T_Fund")] T_UnitX t_unitx,FormCollection collection, string UrlReferrer)
+        {
+            var bulkIds = collection["BulkUpdate"].Split(',').ToList();
+            var chkUpdate = collection["chkUpdate"];
+			if (!string.IsNullOrEmpty(chkUpdate))
+            {
+			bool customsave_hasissues = false;
+            foreach (var id in bulkIds.Where(p => p != string.Empty))
+            {
+                long objId = long.Parse(id);
+                T_UnitX target = db.T_UnitXs.Find(objId);
+				target.setDateTimeToClientTime();
+                EntityCopy.CopyValuesForSameObjectType(t_unitx, target, chkUpdate); 
+				customsave_hasissues = false;
+				CheckBeforeSave(target,"BulkUpdate");
+				if (ValidateModel(target) && !CustomSaveOnEdit(target, out customsave_hasissues, "BulkUpdate"))
+                {
+						db.Entry(target).State = EntityState.Modified;
+						try
+						{
+							if (target.t_facilityunitx != null)
+							  db.Entry(target.t_facilityunitx).State = EntityState.Unchanged;
+							if (target.t_unitxunitassociation != null)
+							  db.Entry(target.t_unitxunitassociation).State = EntityState.Unchanged;
+							if (target.t_warddepartment != null)
+							  db.Entry(target.t_warddepartment).State = EntityState.Unchanged;
+							if (target.t_unitxdepartmentarea != null)
+							  db.Entry(target.t_unitxdepartmentarea).State = EntityState.Unchanged;
+							if (target.t_wardorgcode != null)
+							  db.Entry(target.t_wardorgcode).State = EntityState.Unchanged;
+							if (target.t_unitxfloor != null)
+							  db.Entry(target.t_unitxfloor).State = EntityState.Unchanged;
+							if (target.t_employeeadministrator != null)
+							  db.Entry(target.t_employeeadministrator).State = EntityState.Unchanged;
+							if (target.t_employeeunitxhead != null)
+							  db.Entry(target.t_employeeunitxhead).State = EntityState.Unchanged;
+							if (target.t_wardcostcenter != null)
+							  db.Entry(target.t_wardcostcenter).State = EntityState.Unchanged;
+							db.SaveChanges();
+						}
+						catch { }
+				}
+            }
+			}
+			RedirectToRouteResult customRedirectAction = CustomRedirectUrl(t_unitx,"BulkUpdate","");
+			if (customRedirectAction != null) return customRedirectAction;
+            if (!string.IsNullOrEmpty(UrlReferrer))
+                return Redirect(UrlReferrer);
+            else
+                return RedirectToAction("Index");
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if(db!=null) db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}

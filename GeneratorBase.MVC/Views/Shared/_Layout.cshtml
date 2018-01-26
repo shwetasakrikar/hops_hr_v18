@@ -1,0 +1,577 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+     DisplayModeProvider.Instance.RequireConsistentDisplayMode = true;
+	var currentController = ViewContext.RouteData.Values["controller"].ToString();
+    var commonObj = GeneratorBase.MVC.Models.CommonFunction.Instance;
+    var AppName = commonObj.AppName();
+    var Compprofile = commonObj.getCompanyProfile(User);
+    var timeoutAlert = commonObj.ApplicationSessionTimeOutAlert();
+    var onloadEvent = timeoutAlert == "true" ? "onload=initSession()".ToString() : "";
+	var MainEntityValue = "All";
+    if (User.MultiTenantLoginSelected != null && User.MultiTenantLoginSelected.Count() > 0)
+    { 
+        MainEntityValue = User.MultiTenantLoginSelected[0].T_MainEntityValue;
+    }
+	string AppUrl = System.Configuration.ConfigurationManager.AppSettings["AppUrl"];
+	var MultipleRoleSelection = commonObj.MultipleRoleSelection();
+	var url = Url.Content("~/logo/" + Compprofile.Icon);
+    if (HttpContext.Current.Request.Url.Host == "localhost")
+    { url = Url.Content("~/logo/" + Compprofile.Icon); }
+	var AppIcon = url;
+    var AppIconWidth = Compprofile.IconWidth == null ? "28px" : Compprofile.IconWidth;
+    var AppIconHeight = Compprofile.IconHeight == null ? "28px" : Compprofile.IconHeight;
+} 
+<!DOCTYPE html>
+<html>
+
+<head>
+ @if (commonObj.EnableGoogleAnalytics().ToLower() == "true")
+    {
+        var trackId = commonObj.TrackingID();
+        var customdimensionname = "";
+        if (commonObj.CustomDimensionName().ToLower() != "none")
+        {
+            var customdimensionnameval = commonObj.CustomDimensionName();
+            customdimensionname = "ga('create', '" + trackId + "', {'" + customdimensionnameval + "': username});" +
+            "ga('set', '&uid', username);" +
+            "ga('require', 'displayfeatures');" +
+            "ga('set', 'dimension1', username);" +
+            "ga('send', 'pageview');";
+        }
+        else
+        {
+            customdimensionname = "ga('create', '" + trackId + "', 'auto');" +
+                "ga('send', 'pageview');";
+        }
+        <script>
+            var username = '@User.Name';
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+            @Html.Raw(customdimensionname)
+        </script>
+    }
+    <meta charset="utf-8" />
+	    <meta http-equiv="x-ua-compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title-@AppName.ToString()</title>
+	    <link rel="icon" href="~/Content/images/turanto.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="~/Content/images/turanto.ico" type="image/x-icon">
+    @Styles.Render("~/Content/css")
+	<link href="@Url.Content("~/Content/" + commonObj.getTenantSiteScript(User))" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/Content/fontawesome")
+    @Styles.Render("~/Content/csstheme")
+    @Scripts.Render("~/bundles/modernizr")
+	 <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")" type="text/javascript"></script>
+	  <script src="@Url.Content("~/Scripts/Entity.js?636486116102182848")" type="text/javascript"></script>
+	   <script src="@Url.Content("~/Scripts/Common1/jstz.main.js?636486116102182848")" type="text/javascript"></script>
+	<script src="~/Scripts/jquery-ui.js"></script>
+	   @Scripts.Render("~/bundles/common1?636486116102182848")
+	   	   @Scripts.Render("~/bundles/select2js")
+	   @Styles.Render("~/Content/select2css")
+		 
+    <!--[if IE 8]>
+            <link href="@Url.Content("~/Content/IE8/ie8.css")" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <script type="text/javascript">
+        function cookieExists(name) {
+            var nameToFind = name + "=";
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                if (cookies[i].trim().indexOf(name) === 0) {
+                    var tz = jstz.determine();
+                    var storedTimeZone = ($.cookie(name));
+                    var currentTimeZone = getTimezoneName();
+                    if (storedTimeZone !== currentTimeZone) {
+                        document.cookie = "_timezone=" + getTimezoneName() + ";path=/;" + document.cookie; location.reload();
+                    }
+                    return true;
+                }
+            }
+            return false;
+        }
+        if (!cookieExists("_timezone")) {
+            var tz = jstz.determine();
+            document.cookie = "_timezone=" + getTimezoneName() + ";path=/;" + document.cookie;
+        }
+    </script>
+    <script>
+		 var isClose = false;
+        $(document).ready(function () {
+            $(window).resize(responsive);
+            $(window).trigger('resize');
+			if ('@ViewBag.ApplicationError'.length > 0) {
+				//alert('@ViewBag.ApplicationError');
+				$("#ErrMsg").text('@ViewBag.ApplicationError');
+				$("#ErrMsgQuickAdd").text('@ViewBag.ApplicationError');
+
+				$("#divDisplayCodeFragment").removeAttr("style");
+			    $("#divDisplayCodeFragment").html(getMsgTableCodeFragment());
+			    $("#ErrmsgtrCodeFragment").text('@ViewBag.ApplicationError');
+			}
+        });
+		$.ajaxSetup({
+					beforeSend: function () {
+					    $('body').css({ 'cursor': 'wait' })
+					   
+					},
+					complete: function (xhr, status) {
+					    $('body').css({ 'cursor': 'default' });
+					    
+                LoginRequired(xhr.status);
+            }
+        });
+
+        function LoginRequired(response_data) {
+            if (response_data == "400")
+                window.location.href = "@Url.Action("Login","Account")";
+
+        }
+		function favorite() {
+		$('#liFavorite').addClass("dropdown").removeClass("dropdown open");
+            var thelink = "@Url.Action("FavoriteSave", "Home")";
+            var data = $('#Favorite').val();
+			 $('#lblFavoriteSuceeess').text("");
+		    if (data == "")
+		    {
+		        $('#lblFavoriteSuceeess').text("Favorite Name is required.");
+		        return false;
+		    }
+            $.ajax({
+                url: thelink,
+                cache: false,
+                data: { Id: $('#hdnFavorite').val(), Name: $('#Favorite').val() },
+                success: function (data) {
+                    if (data == "success") {
+                        $('.fa.fa-1x.fa-star').css('color', '#F90');
+                        $('#liFavorite').addClass("dropdown").removeClass("dropdown open");
+						$('#Favorite').val('');
+                    }
+                    if (data == "error") {
+                        $('.fa.fa-1x.fa-star').css('color', '#FFF');
+                        $('#lblFavoriteSuceeess').addClass("warning").removeClass("success");
+                        $('#lblFavoriteSuceeess').text("Url not added in favourite.");
+						$('#Favorite').val('');
+                    }
+                }
+            })
+            return true;
+        }
+    </script>
+	  <script>
+        $(function () {
+            $(".limit").each(function (i) {
+                len = $(this).text().length;
+                if (len > 2) {
+                    $(this).text($(this).text().substr(0, 1));
+                }
+            });
+        });
+       
+    </script>
+</head>
+<body id="@ViewBag.CurrentPage" @onloadEvent>
+    @if (commonObj.EnablePrototypingTool() == "true" && User.CanAdd("ApplicationFeedback"))
+    {
+        var EntName = GeneratorBase.MVC.Controllers.BaseController.FavoriteUrlEntityName;
+        var PageUrl = GeneratorBase.MVC.Controllers.BaseController.FavoriteUrl;
+        string actionName = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+        var prototypeurl = Url.Action("CreateQuick", "ApplicationFeedback", new { EntityName = EntName, FieldName = "_FieldName", PageName = actionName, UIControlName = "_UIControlName", TS = DateTime.Now });
+        <script src="@Url.Content("~/Scripts/PrototypeCommenting.js")" type="text/javascript"></script>
+         <script>
+            document.onmousedown = function (e) {
+                e = e || window.event;
+                if (e.which == 3) {
+                    PrototypeCommenting('@Html.Raw(prototypeurl)', isClose, e);
+                }
+            }
+        </script>
+    }
+  		
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MobileNav">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+					<img src="@AppIcon" style="width:@AppIconWidth; height:@AppIconHeight;" class="logoimg" alt="Logo - @AppName.ToString()" title="Logo - @AppName.ToString()"/>
+                    @Html.ActionLink(AppName.ToString(), "Index", "Home", null, new { @class = "navbar-brand",@alt = "Application Name", @title = "Application Name"  })
+                </div>
+			@if (!(User.userroles.Count() > 1 && Request.Cookies[AppUrl + "CurrentRole"] == null))
+            {
+                <label class="label text-center FacilityLabel" > Facility : @MainEntityValue (@string.Join(", ", User.userroles) Role)</label> 
+            }
+                   <ul class="nav navbar-top-links navbar-right collapse navbar-collapse" style="background:transparent">
+					@if (GeneratorBase.MVC.ModelReflector.Entities.Where(p => p.Name == Request.RequestContext.RouteData.Values["controller"].ToString() && !p.IsAdminEntity && (!p.IsDefault || p.Name == "T_Schedule")).Count() > 0)
+                    {
+                        <li id="liFavorite" class="dropdown">
+                            @{
+                        string starcolor = GeneratorBase.MVC.Controllers.BaseController.objFavorite == null ? " color: #FFF;" : "color: #F90;";
+                        string favoriteId = GeneratorBase.MVC.Controllers.BaseController.objFavorite == null ? "" : GeneratorBase.MVC.Controllers.BaseController.objFavorite.Id.ToString();
+                        string favoriteName = GeneratorBase.MVC.Controllers.BaseController.objFavorite == null ? "" : GeneratorBase.MVC.Controllers.BaseController.objFavorite.Name;
+                            }
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown" title="Favorite"><i class="fa fa-1x fa-star" style="margin-right:5px; @starcolor"></i></a>
+                            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+                                <form method="post" accept-charset="UTF-8">
+                                    <h2>Add to Favorite</h2>
+                                    <div class="col-sm-2" style="padding-left:0px;"><label class="label" style="color:#000; padding-left:0px;">Name :</label></div>
+                                    <div class="col-sm-4" style="padding-left:10px; margin-right:10px"> <input style="margin-bottom: 15px;" type="text" placeholder="Favorite Name" id="Favorite" name="Favorite" required value="@favoriteName" /></div>
+                                    <input type="hidden" id="hdnFavorite" name="hdnFavorite" value="@favoriteId" />
+									<label id="lblFavoriteSuceeess" class="field-validation-error" style="font-weight:normal;"></label>
+                                    <input class="btn btn-primary btn-block" type="submit" id="save" onclick="return favorite();" value="Save" />
+                                    <br>
+                                </form>
+                            </div>
+                        </li>
+                    }
+
+                    @if ( User.CanView("Reports"))
+                    {
+					<li class="dropdown bg-green">
+                        <a href="@Url.Action("Index", "Reports")" alt="Reports" title="Reports" >
+                            <i class="fa fa-file-text fa-fw ie8-icon" style="font-size:14px">  </i>
+                        </a>
+                        <!-- /.dropdown-user -->
+                    </li>
+					}
+					@if (User.HasAdminPrivileges())
+                    {
+                            <li class="dropdown bg-purpul">
+                                <a href="@Url.Action("Index", "Admin")" title="Application Settings" alt ="Application Settings">
+                                     <i class="fa fa-cog fa-fw" style="font-size:14px"> </i>
+                                </a>
+                                <!-- /.dropdown-user -->
+                            </li>
+                    }
+                    <!-- /.dropdown -->
+                    <li class="dropdown bg-blue">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" alt="@User.Name" title="@User.Name">
+                            <i class="fa fa-user fa-fw" style="font-size:14px"></i>  @User.Name
+                              <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                @Html.ActionLink("Profile", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Profile", alt = "Profile" })
+                            </li>
+
+							<li>
+                                @Html.ActionLink("About Application", "About", "Home", routeValues: null, htmlAttributes: new { title = "About Us", alt = "About us" })
+                            </li>
+                           
+							
+							@if (User.CanView("ApplicationFeedback"))
+                            {
+								<li class="divider"></li>
+								<li>
+									@Html.ActionLink("Application Feedback", "Index", "ApplicationFeedback", routeValues: null, htmlAttributes: new { title = "Application Feedback", alt = "Application Feedback" })
+								</li>
+                            }
+			@if (!(User.userroles.Count() > 1 && Request.Cookies[AppUrl + "CurrentRole"] == null))
+            {
+						<li class="divider"></li>
+                                <li>
+                                    <a href="#" style="color:black;" alt = "Security Filter is Active on Facility : @MainEntityValue" title="Security Filter is Active on Facility : @MainEntityValue">Security Filter is Active on Facility : @MainEntityValue</a>
+                                </li>
+			}
+
+<li class="divider"></li>
+                            @if (Request.IsAuthenticated)
+                            {
+								 <li>
+                                    <a href="#" style="color:black;">You are logged in as : @string.Join(", ", User.userroles)</a>
+                                </li><li class="divider"></li>
+                                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <li>
+                                        <a id="logoutbtn" style="color:black;" alt="Logout" title="Logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                                    </li>
+                                    <script>
+                                        $(function ()
+                                        {
+                                            $("#logoutbtn").click(function (e) {
+                                                e.preventDefault();
+                                                var _form = $("#logoutForm");
+                                                ClearFilterCookies();
+                                                 var url = '@Url.Action("Index", "Home")';
+                                                $.post("@Url.Action("LogOff", "Account")", _form.serialize(), function (result) {
+                                                    window.location.href = url;
+                                                });
+                                            });
+                                        });
+                                    </script>
+                                }
+                            }
+                        </ul>
+                        <!-- /.dropdown-user -->
+                    </li>
+                </ul>
+            </div>
+        </div>	
+		<div class="collapse" id="MobileNav">
+
+        <ul class="nav mobile-nav open">
+		 <li @(currentController == "Home" ? "class=active" : "")>
+					<a  href="@Url.Action("Index", "Home" )" alt="Home" title="Home">
+						Home
+					</a>
+					                
+                 </li>
+
+				 		</ul>
+    </div>
+
+		 @{ var sidebarId = (currentController != "UserDefinePages") ? "wrapper" : "";
+			var sidebarClass = (currentController != "UserDefinePages") ? "toggled-2" : "";
+			sidebarClass = (currentController != "UserDefinePages" && Request.Cookies["sidebartoggle" + HttpUtility.UrlEncode(User.Name)] != null) ? Request.Cookies["sidebartoggle" + HttpUtility.UrlEncode(User.Name) + ""].Value : "";
+		  }
+	 @RenderSection("scripts", required: false)
+	 @*div popup window for Quick Add*@
+    <div class="modal fade" id="addPopup" tabindex="-1" role="dialog" aria-labelledby="addPopupLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="cancelQuickAdd()">&times;</button>
+                    <center><h4 class="modal-title" id="addPopupLabel">Add EntityName</h4>
+					 <div class="text-primary" style="color:red; word-wrap:break-word;" id="dvPopupError"></div>
+					</center>
+                    <div id="dvPopup" class="modal-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="modal fade" id="PopupBulkOperation" tabindex="-1" role="dialog" aria-labelledby="PopupBulkOperationLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <center><h4 id="PopupBulkOperationLabel"></h4></center>
+                <div id="dvPopupBulkOperation" class="modal-body"  style="padding:0px;">
+                </div>
+                <button type="button" id="closePopupBulkOperation" class="btn btn-default btn-sm" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+    </div>
+	</div>
+    <div id="@sidebarId" class="@sidebarClass">
+		@if(User != null)
+        {
+			var homecls = (currentController != "UserDefinePages") ? "page-content-wrapper" : "";
+            var tooglecls = (currentController != "UserDefinePages") ? "" : "style=display:none;";
+        if (currentController != "UserDefinePages")
+        {
+            <div id="sidebar-wrapper">
+                  <ul class="sidebar-nav nav-pills nav-stacked toggled" id="menu">
+				 <li @(currentController == "Home" ? "class=active" : "")>
+					<a  href="@Url.Action("Index", "Home" )">
+						<span class="fa-stack fa-lg pull-left" style=" margin: 0px 9px 0px 3px;"><i class="glyphicon glyphicon-home fa-stack-1x"></i></span>Home
+					</a>
+					<a class="pull-right" style="color:black !important; margin: -40px 9px 0px 0px; background:transparent;" @tooglecls data-toggle="collapse" id="menu-toggle-2" onclick="togglesidebar(event, this, '@User.JavaScriptEncodedName');"> <span class="fa fa-thumb-tack" title="Hide/Unhide" aria-hidden="true"></span></a>
+                           
+                 </li>
+					@if ( User.CanView("T_Position"))
+					{
+					  var EntityReflectorObj = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_Position");
+                      var DisplayString = EntityReflectorObj != null ? EntityReflectorObj.DisplayName : "Position";
+					  <li id="liT_Position" @(currentController == "T_Position" ? "class=active" : "") alt="@DisplayString" title="@DisplayString">
+						<a href="@Url.Action("RedirectToEntity","Home", new { EntityName="T_Position"})"><label class="LimitSidebar pull-left limit">@DisplayString</label>@DisplayString<span class="label label-info pull-right" alt="Count - @ViewBag.T_PositionCount" title="Count - @ViewBag.T_PositionCount">@ViewBag.T_PositionCount</span></a>
+                      </li>
+					 }
+					@if ( User.CanView("T_Employee"))
+					{
+					  var EntityReflectorObj = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_Employee");
+                      var DisplayString = EntityReflectorObj != null ? EntityReflectorObj.DisplayName : "Employee";
+					  <li id="liT_Employee" @(currentController == "T_Employee" ? "class=active" : "") alt="@DisplayString" title="@DisplayString">
+						<a href="@Url.Action("RedirectToEntity","Home", new { EntityName="T_Employee"})"><label class="LimitSidebar pull-left limit">@DisplayString</label>@DisplayString<span class="label label-success pull-right" alt="Count - @ViewBag.T_EmployeeCount" title="Count - @ViewBag.T_EmployeeCount">@ViewBag.T_EmployeeCount</span></a>
+                      </li>
+					 }
+					@if ( User.CanView("T_JobAssignment"))
+					{
+					  var EntityReflectorObj = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_JobAssignment");
+                      var DisplayString = EntityReflectorObj != null ? EntityReflectorObj.DisplayName : "Job Assignment";
+					  <li id="liT_JobAssignment" @(currentController == "T_JobAssignment" ? "class=active" : "") alt="@DisplayString" title="@DisplayString">
+						<a href="@Url.Action("RedirectToEntity","Home", new { EntityName="T_JobAssignment"})"><label class="LimitSidebar pull-left limit">@DisplayString</label>@DisplayString<span class="label label-warning pull-right" alt="Count - @ViewBag.T_JobAssignmentCount" title="Count - @ViewBag.T_JobAssignmentCount">@ViewBag.T_JobAssignmentCount</span></a>
+                      </li>
+					 }
+					@if ( User.CanView("T_Licenses"))
+					{
+					  var EntityReflectorObj = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_Licenses");
+                      var DisplayString = EntityReflectorObj != null ? EntityReflectorObj.DisplayName : "Licenses";
+					  <li id="liT_Licenses" @(currentController == "T_Licenses" ? "class=active" : "") alt="@DisplayString" title="@DisplayString">
+						<a href="@Url.Action("RedirectToEntity","Home", new { EntityName="T_Licenses"})"><label class="LimitSidebar pull-left limit">@DisplayString</label>@DisplayString<span class="label label-danger pull-right" alt="Count - @ViewBag.T_LicensesCount" title="Count - @ViewBag.T_LicensesCount">@ViewBag.T_LicensesCount</span></a>
+                      </li>
+					 }
+					@if ( User.CanView("T_EmployeeInjury"))
+					{
+					  var EntityReflectorObj = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_EmployeeInjury");
+                      var DisplayString = EntityReflectorObj != null ? EntityReflectorObj.DisplayName : "Employee Injury";
+					  <li id="liT_EmployeeInjury" @(currentController == "T_EmployeeInjury" ? "class=active" : "") alt="@DisplayString" title="@DisplayString">
+						<a href="@Url.Action("RedirectToEntity","Home", new { EntityName="T_EmployeeInjury"})"><label class="LimitSidebar pull-left limit">@DisplayString</label>@DisplayString<span class="label label-primary pull-right" alt="Count - @ViewBag.T_EmployeeInjuryCount" title="Count - @ViewBag.T_EmployeeInjuryCount">@ViewBag.T_EmployeeInjuryCount</span></a>
+                      </li>
+					 }
+					@if ( User.CanView("T_DrugAlcoholTest"))
+					{
+					  var EntityReflectorObj = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_DrugAlcoholTest");
+                      var DisplayString = EntityReflectorObj != null ? EntityReflectorObj.DisplayName : "Drug & Alcohol Test";
+					  <li id="liT_DrugAlcoholTest" @(currentController == "T_DrugAlcoholTest" ? "class=active" : "") alt="@DisplayString" title="@DisplayString">
+						<a href="@Url.Action("RedirectToEntity","Home", new { EntityName="T_DrugAlcoholTest"})"><label class="LimitSidebar pull-left limit">@DisplayString</label>@DisplayString<span class="label label-info pull-right" alt="Count - @ViewBag.T_DrugAlcoholTestCount" title="Count - @ViewBag.T_DrugAlcoholTestCount">@ViewBag.T_DrugAlcoholTestCount</span></a>
+                      </li>
+					 }
+					@if ( User.CanView("T_BackgroundCheck"))
+					{
+					  var EntityReflectorObj = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_BackgroundCheck");
+                      var DisplayString = EntityReflectorObj != null ? EntityReflectorObj.DisplayName : "Background Check";
+					  <li id="liT_BackgroundCheck" @(currentController == "T_BackgroundCheck" ? "class=active" : "") alt="@DisplayString" title="@DisplayString">
+						<a href="@Url.Action("RedirectToEntity","Home", new { EntityName="T_BackgroundCheck"})"><label class="LimitSidebar pull-left limit">@DisplayString</label>@DisplayString<span class="label label-success pull-right" alt="Count - @ViewBag.T_BackgroundCheckCount" title="Count - @ViewBag.T_BackgroundCheckCount">@ViewBag.T_BackgroundCheckCount</span></a>
+                      </li>
+					 }
+ 
+                </ul>
+                <!-- /#side-menu -->
+            </div>
+            <!-- /.sidebar-collapse -->
+          }
+            <div id="@homecls">
+                <div class="container-fluid xyz">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+	 <div style="clear:both"></div>
+	 @if (Compprofile.LegalInformation != null || Compprofile.PrivacyPolicy != null
+                || Compprofile.TermsOfService != null || Compprofile.Emailto != null
+                || Compprofile.CreatedBy != null)
+    {
+        <div id="footer">
+            <footer class="footer">
+                <div class="container-fluid">
+                    <span class="text-muted pull-left">
+                        @Compprofile.CreatedBy <a href="@Compprofile.CreatedByLink" target="_blank" alt="" title="">@Compprofile.CreatedByName</a> |
+                        @Compprofile.Emailto:<a href="@Html.Encode("mailto:" + Compprofile.EmailtoAddress)" target="_blank" alt="" title="">@Compprofile.EmailtoAddress</a>
+                    </span>
+                    <span class="text-muted pull-right">
+                        <a href="@Html.Encode(commonObj.getBaseUri() + Compprofile.LegalInformationLink)" target="_blank" alt="Legal Information" title="Legal Information">@Compprofile.LegalInformation</a>
+                        | <a href="@Html.Encode(commonObj.getBaseUri() + Compprofile.TermsOfServiceLink)" target="_blank" alt="Terms Of Service" title="Terms Of Service">
+                            @Compprofile.TermsOfService
+                        </a> | <a href="@Html.Encode(commonObj.getBaseUri() + Compprofile.PrivacyPolicyLink)" target="_blank" alt="Privacy Policy" title="Privacy Policy"> 
+                            @Compprofile.PrivacyPolicy
+                        </a>
+                    </span>
+                </div>
+            </footer>
+        </div>
+    }
+    else
+    {
+        <div id="footer">
+            <ul class="footer">
+                <li>Created With <a href="http://www.turanto.com" target="_blank">Turanto</a></li>&nbsp;&nbsp; | &nbsp;&nbsp;
+                <li>Email:<a href="mailto:contact@turanto.com" alt="Email:contact@turanto.com" title="Email:contact@turanto.com">contact@turanto.com</a></li>
+            </ul>
+        </div>
+    }
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+	@Scripts.Render("~/bundles/common2?636486116102182848")
+    @Scripts.Render("~/bundles/common3?636486116102182848")
+	@if(User.userroles.Count() > 1 && Request.Cookies[AppUrl + "CurrentRole"] == null && currentController != "Home")
+    {
+        GeneratorBase.MVC.Models.ApplicationDbContext ac = new GeneratorBase.MVC.Models.ApplicationDbContext(true);
+        var oldAccess = ac.MultiTenantLoginSelected.FirstOrDefault(p => p.T_User == User.Name);
+        if (oldAccess != null)
+        {
+            ac.MultiTenantLoginSelected.Remove(oldAccess);
+            ac.SaveChanges();
+        }
+        <script>
+            ClearFilterCookies();
+            var url = '@Url.Action("Index", "Home")';
+            window.location.href = url;
+        </script>
+    }
+	<script src="~/Content/dist/js/bootstrap-colorpicker.js"></script>
+    <script src="~/Content/src/js/docs.js"></script>
+    <script type="text/javascript">
+        var config = {
+            '.chosen-select': {},
+            '.chosen-select-deselect': { allow_single_deselect: true },
+            '.chosen-select-no-single': { disable_search_threshold: 10 },
+            '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+            '.chosen-select-width': { width: "95%" }
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    </script>
+	
+	 <script>
+    
+    document.onkeydown = checkKeycode
+    function checkKeycode(e) {
+        var keycode;
+        if (window.event)
+            keycode = window.event.keyCode;
+        else if (e)
+            keycode = e.which;
+        if (keycode == 116) {
+            isClose = true;
+        }
+    }
+    function SetClose() {
+        isClose = true;
+    }
+    function bodyUnload() {
+        if (isClose == false) {
+            var request = GetRequest();
+            request.open("GET", "@Url.Action("BrowserClose", "Account")", false);
+            request.send();
+        }
+    }
+    function GetRequest() {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        return xmlhttp;
+    }
+    </script>
+	  @if (timeoutAlert == "true")
+    {
+        var expirationMinutes =commonObj.ApplicationSessionTimeOut();
+        <script>
+            var sess_expirationMinutes = parseInt(@expirationMinutes)
+            var sess_warningMinutes = sess_expirationMinutes - 5;
+            var sess_pollInterval = 60000;
+            if (sess_expirationMinutes <= 5)
+                sess_warningMinutes = sess_expirationMinutes - 1;
+
+        </script>
+    }
+<script>
+    jQuery('body').on('focus', '.chosen-container-single input', function () {
+        if (!jQuery(this).closest('.chosen-container').hasClass('chosen-container-active')) {
+            jQuery(this).closest('.chosen-container').prev().trigger('chosen:open');
+        }
+    });
+        $('.modal-dialog').draggable({
+            handle: ".modal-title"
+        });
+    </script>
+</body>
+</html>
+

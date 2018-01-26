@@ -1,0 +1,735 @@
+﻿@model GeneratorBase.MVC.Models.T_Position
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_PositionIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_PositionIsHiddenRule);
+    }
+}
+@using (Html.BeginForm("CreateWizard", "T_Position",new {UrlReferrer = Convert.ToString(ViewData["T_PositionParentUrl"])}, FormMethod.Post, new { enctype = "multipart/form-data" ,id="frmT_Position" }))
+{
+    @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+	 <input type="hidden" id="ErrMsg" />
+                            @*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+                            <div id="divDisplayThresholdLimit" style="display:none;">
+                            </div>
+							<div id="divDisplayBRmsgMandatory" style="display:none;">
+                            </div>
+                            <div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+                            </div>
+							<div id="divDisplayCodeFragment" style="display:none;">
+							</div>
+	if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+    {
+        <div class="alert alert-danger" role="alert">
+            <a class="close" data-dismiss="alert">&times;</a>
+            @foreach (var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+            {
+                <p>@modelError.ErrorMessage</p>
+            }
+        </div>
+    }
+	    <div class="row">
+	<br/>
+	<div id = "wizard">
+	<ol>
+		<li>Basic Details</li>
+		<li>Position Codes</li>
+		<li>Time and Other Details</li>
+		<li>Position Status</li>
+	
+	</ol>
+			<div>
+               <div class="row">         
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default AppForm">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+<!-- T_FacilityAssignedTo ---- Facility Assigned To-->
+<!-- T_PositionNumber ---- Position Number-->
+<!-- T_TypeOfPosition ---- Type Of Position-->
+<!-- T_AssociatedPositionStatus ---- Associated  Position Status-->
+<!-- T_PositionIdentifier ---- Position Identifier-->
+<!-- T_PositionFill ---- Position Fill %-->
+<!-- T_QuasiFill ---- Quasi Fill-->
+<!-- T_PositionWorkingTitleAssociation ---- PositionWorking Title Association-->
+                                            <h3 class="panel-title">Basic Details</h3>
+                                        </div>
+                                        <div class="panel-body">
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FacilityAssignedTo">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_FacilityAssignedToID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_FacilityAssignedToID", null, "-- Select --", new {    @required ="required",     @class = "chosen-select form-control", @HostingName = "T_Facility", @dataurl = Url.Action("GetAllValue", "T_Facility",new { caller = "T_FacilityAssignedToID" }) })
+                                @Html.ValidationMessageFor(model => model.T_FacilityAssignedToID)
+								@if ( User.CanAdd("T_Facility"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Facility','dvPopup','" + Url.Action("CreateQuick", "T_Facility", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionNumber">
+                                <div class='form-group' title="Position  Number">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_PositionNumber) <span class="text-danger-reg">*</span></label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_PositionNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_PositionNumber)
+									</div>
+                                </div>
+					</div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TypeOfPosition">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_TypeOfPositionID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_TypeOfPositionID", null, "-- Select --", new {    @required ="required",     @class = "chosen-select form-control", @HostingName = "T_PositionType", @dataurl = Url.Action("GetAllValue", "T_PositionType",new { caller = "T_TypeOfPositionID" }) })
+                                @Html.ValidationMessageFor(model => model.T_TypeOfPositionID)
+								@if ( User.CanAdd("T_PositionType"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Position Type','dvPopup','" + Url.Action("CreateQuick", "T_PositionType", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_AssociatedPositionStatus">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_AssociatedPositionStatusID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_AssociatedPositionStatusID", null, "-- Select --", new {    @required ="required",     @class = "chosen-select form-control", @HostingName = "T_Positionstatus", @dataurl = Url.Action("GetAllValue", "T_Positionstatus",new { caller = "T_AssociatedPositionStatusID" }) })
+                                @Html.ValidationMessageFor(model => model.T_AssociatedPositionStatusID)
+								@if ( User.CanAdd("T_Positionstatus"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Position Status','dvPopup','" + Url.Action("CreateQuick", "T_Positionstatus", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionIdentifier">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_PositionIdentifierID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_PositionIdentifierID", null, "-- Select --", new {    @required ="required",     @class = "chosen-select form-control", @HostingName = "T_PositionLevel", @dataurl = Url.Action("GetAllValue", "T_PositionLevel",new { caller = "T_PositionIdentifierID" }) })
+                                @Html.ValidationMessageFor(model => model.T_PositionIdentifierID)
+								@if ( User.CanAdd("T_PositionLevel"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Position Level','dvPopup','" + Url.Action("CreateQuick", "T_PositionLevel", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionFill">
+                                <div class='form-group' title="Position Fill %">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_PositionFill) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_PositionFill, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_PositionFill)
+									
+									<div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" onclick="GetCalculationValue(event,'@Url.Action("GetCalculationValues")');">
+											<span class="fam-arrow-refresh"></span>
+                                        </a>
+                                    </div>
+									</div>
+                                </div>
+					</div>
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_QuasiFill">
+							<div class="form-group" title="Quasi Fill">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >
+                                    @Html.LabelFor(model => model.T_QuasiFill) 
+                                </label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    
+									@Html.CheckBox("T_QuasiFill", false)
+                                    @Html.ValidationMessageFor(model => model.T_QuasiFill)		
+								</div>
+                                </div>
+                            </div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionWorkingTitleAssociation">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_PositionWorkingTitleAssociationID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_PositionWorkingTitleAssociationID", null, "-- Select --", new {    @required ="required",     @class = "chosen-select form-control", @HostingName = "T_WorkingTitle", @dataurl = Url.Action("GetAllValue", "T_WorkingTitle",new { caller = "T_PositionWorkingTitleAssociationID" }) })
+                                @Html.ValidationMessageFor(model => model.T_PositionWorkingTitleAssociationID)
+								@if ( User.CanAdd("T_WorkingTitle"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Working Title ','dvPopup','" + Url.Action("CreateQuick", "T_WorkingTitle", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+							</div>
+                         </div>
+                      </div>
+				  </div>
+       </div>
+			<div>
+               <div class="row">         
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default AppForm">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+<!-- T_EffectiveDate ---- Effective Date-->
+<!-- T_PositionRoleCode ---- Position Role Code-->
+<!-- T_SalaryBand ---- Salary Band-->
+<!-- T_PositionSOCCode ---- Position SOC Code-->
+<!-- T_PositionClassCode ---- Position Class Code-->
+<!-- T_WorkersCompCodePosition ---- Workers Comp Code Position-->
+<!-- T_CardApprvr ---- CardApprvr-->
+<!-- T_PositionCostCenterAssociation ---- PositionCost CenterAssociation-->
+                                            <h3 class="panel-title">Position Codes</h3>
+                                        </div>
+                                        <div class="panel-body">
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EffectiveDate">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EffectiveDate) </label>
+                                <div class="form-group" title="Role change effective date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_EffectiveDate">
+                                        @Html.TextBoxFor(model => model.T_EffectiveDate, new {@class = "form-control" })
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                        
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_EffectiveDate)
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_EffectiveDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_EffectiveDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionRoleCode">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_PositionRoleCodeID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_PositionRoleCodeID", null, "-- Select --", new { @derivedurl = Url.Action("GetDerivedDetails", "T_Position"),     @onchange = Html.Raw("FillDerivedDetails(this,event);") ,  @class = "chosen-select form-control", @HostingName = "T_RoleCode", @dataurl = Url.Action("GetAllValue", "T_RoleCode",new { caller = "T_PositionRoleCodeID" }) })
+                                @Html.ValidationMessageFor(model => model.T_PositionRoleCodeID)
+								@if ( User.CanAdd("T_RoleCode"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Role Code','dvPopup','" + Url.Action("CreateQuick", "T_RoleCode", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_SalaryBand">
+                                <div class='form-group' title="Salary Band">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_SalaryBand) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_SalaryBand, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_SalaryBand)
+									</div>
+                                </div>
+					</div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionSOCCode">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_PositionSOCCodeID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_PositionSOCCodeID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_SocCode", @dataurl = Url.Action("GetAllValue", "T_SocCode",new { caller = "T_PositionSOCCodeID" }) })
+                                @Html.ValidationMessageFor(model => model.T_PositionSOCCodeID)
+								@if ( User.CanAdd("T_SocCode"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','SOC Code','dvPopup','" + Url.Action("CreateQuick", "T_SocCode", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionClassCode">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_PositionClassCodeID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_PositionClassCodeID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_ClassCode", @dataurl = Url.Action("GetAllValue", "T_ClassCode",new { caller = "T_PositionClassCodeID" }) })
+                                @Html.ValidationMessageFor(model => model.T_PositionClassCodeID)
+								@if ( User.CanAdd("T_ClassCode"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Class Code','dvPopup','" + Url.Action("CreateQuick", "T_ClassCode", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WorkersCompCodePosition">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_WorkersCompCodePositionID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_WorkersCompCodePositionID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_WCCode", @dataurl = Url.Action("GetAllValue", "T_WCCode",new { caller = "T_WorkersCompCodePositionID" }) })
+                                @Html.ValidationMessageFor(model => model.T_WorkersCompCodePositionID)
+								@if ( User.CanAdd("T_WCCode"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','WC Code','dvPopup','" + Url.Action("CreateQuick", "T_WCCode", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_CardApprvr">
+                                <div class='form-group' title="CardApprvr">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_CardApprvr) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_CardApprvr, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_CardApprvr)
+									</div>
+                                </div>
+					</div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionCostCenterAssociation">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_PositionCostCenterAssociationID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_PositionCostCenterAssociationID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_CostCenter", @dataurl = Url.Action("GetAllValue", "T_CostCenter",new { caller = "T_PositionCostCenterAssociationID" }) })
+                                @Html.ValidationMessageFor(model => model.T_PositionCostCenterAssociationID)
+								@if ( User.CanAdd("T_CostCenter"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','CardDept','dvPopup','" + Url.Action("CreateQuick", "T_CostCenter", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+							</div>
+                         </div>
+                      </div>
+				  </div>
+       </div>
+			<div>
+               <div class="row">         
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default AppForm">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+<!-- T_ShiftStart ---- Shift Start-->
+<!-- T_ShiftEnd ---- Shift End-->
+<!-- T_PositionShiftMealTime ---- Position Shift Meal Time -->
+<!-- T_PositionShiftTime ---- Position Shift Time -->
+<!-- T_PositionShiftDuration ---- Position Shift Duration-->
+<!-- T_PositionOvertimeEligibility ---- Position Overtime Eligibility-->
+<!-- T_DualIncumbent ---- Dual Incumbent-->
+<!-- T_DualIncumbentStartDate ---- Dual Incumbent Start Date-->
+<!-- T_DualIncumbentEndDate ---- Dual Incumbent End Date-->
+                                            <h3 class="panel-title">Time and Other Details</h3>
+                                        </div>
+                                        <div class="panel-body">
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ShiftStart">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_ShiftStart) </label>
+                                <div class="form-group" title="Shift Start">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_ShiftStart">
+                                        @Html.TextBoxFor(model => model.T_ShiftStart, new {@class = "form-control",@format = "hh:mm" })
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                        
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_ShiftStart)
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_ShiftStart').datetimepicker({ pickDate:false, minuteStepping: 15 });
+                                        $('#datetimepickerT_ShiftStart').datetimepicker({ pickDate:false, minuteStepping: 15 });
+                                    });
+                                </script>
+                            </div>
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ShiftEnd">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_ShiftEnd) </label>
+                                <div class="form-group" title="Shift End">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_ShiftEnd">
+                                        @Html.TextBoxFor(model => model.T_ShiftEnd, new {@class = "form-control",@format = "hh:mm" })
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                        
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_ShiftEnd)
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_ShiftEnd').datetimepicker({ pickDate:false, minuteStepping: 15 });
+                                        $('#datetimepickerT_ShiftEnd').datetimepicker({ pickDate:false, minuteStepping: 15 });
+                                    });
+                                </script>
+                            </div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionShiftMealTime">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_PositionShiftMealTimeID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_PositionShiftMealTimeID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_ShiftMealTime", @dataurl = Url.Action("GetAllValue", "T_ShiftMealTime",new { caller = "T_PositionShiftMealTimeID" }) })
+                                @Html.ValidationMessageFor(model => model.T_PositionShiftMealTimeID)
+								@if ( User.CanAdd("T_ShiftMealTime"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Shift Meal Time','dvPopup','" + Url.Action("CreateQuick", "T_ShiftMealTime", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionShiftTime">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_PositionShiftTimeID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_PositionShiftTimeID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_ShiftTime", @dataurl = Url.Action("GetAllValue", "T_ShiftTime",new { caller = "T_PositionShiftTimeID" }) })
+                                @Html.ValidationMessageFor(model => model.T_PositionShiftTimeID)
+								@if ( User.CanAdd("T_ShiftTime"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Shift Time','dvPopup','" + Url.Action("CreateQuick", "T_ShiftTime", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionShiftDuration">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_PositionShiftDurationID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_PositionShiftDurationID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_ShiftDuration", @dataurl = Url.Action("GetAllValue", "T_ShiftDuration",new { caller = "T_PositionShiftDurationID" }) })
+                                @Html.ValidationMessageFor(model => model.T_PositionShiftDurationID)
+								@if ( User.CanAdd("T_ShiftDuration"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Shift Duration','dvPopup','" + Url.Action("CreateQuick", "T_ShiftDuration", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionOvertimeEligibility">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_PositionOvertimeEligibilityID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_PositionOvertimeEligibilityID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_OvertimeEligibility", @dataurl = Url.Action("GetAllValue", "T_OvertimeEligibility",new { caller = "T_PositionOvertimeEligibilityID" }) })
+                                @Html.ValidationMessageFor(model => model.T_PositionOvertimeEligibilityID)
+								@if ( User.CanAdd("T_OvertimeEligibility"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Overtime Eligibility','dvPopup','" + Url.Action("CreateQuick", "T_OvertimeEligibility", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DualIncumbent">
+							<div class="form-group" title="Dual  Incumbent">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >
+                                    @Html.LabelFor(model => model.T_DualIncumbent) 
+                                </label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    
+									@Html.CheckBox("T_DualIncumbent", false)
+                                    @Html.ValidationMessageFor(model => model.T_DualIncumbent)		
+								</div>
+                                </div>
+                            </div>
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DualIncumbentStartDate">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_DualIncumbentStartDate) </label>
+                                <div class="form-group" title="Dual  Incumbent  Start  Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_DualIncumbentStartDate">
+                                        @Html.TextBoxFor(model => model.T_DualIncumbentStartDate, new {@class = "form-control" })
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                        
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_DualIncumbentStartDate)
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_DualIncumbentStartDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_DualIncumbentStartDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DualIncumbentEndDate">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_DualIncumbentEndDate) </label>
+                                <div class="form-group" title="Dual  Incumbent  End  Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_DualIncumbentEndDate">
+                                        @Html.TextBoxFor(model => model.T_DualIncumbentEndDate, new {@class = "form-control" })
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                        
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_DualIncumbentEndDate)
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_DualIncumbentEndDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_DualIncumbentEndDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+							</div>
+                         </div>
+                      </div>
+				  </div>
+       </div>
+			<div>
+               <div class="row">         
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default AppForm">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+<!-- T_PositionStatusforPosting ---- Position Status for Posting-->
+<!-- T_Funded ---- Funded-->
+<!-- T_EstablishedDate ---- Established Date-->
+<!-- T_AbolishDate ---- Abolish Date-->
+                                            <h3 class="panel-title">Position Status</h3>
+                                        </div>
+                                        <div class="panel-body">
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PositionStatusforPosting">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_PositionStatusforPostingID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_PositionStatusforPostingID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_PositionPostStatus", @dataurl = Url.Action("GetAllValue", "T_PositionPostStatus",new { caller = "T_PositionStatusforPostingID" }) })
+                                @Html.ValidationMessageFor(model => model.T_PositionStatusforPostingID)
+								@if ( User.CanAdd("T_PositionPostStatus"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Position Post Status','dvPopup','" + Url.Action("CreateQuick", "T_PositionPostStatus", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Funded">
+							<div class="form-group" title="Funded">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >
+                                    @Html.LabelFor(model => model.T_Funded) 
+                                </label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    
+									@Html.CheckBox("T_Funded", false)
+                                    @Html.ValidationMessageFor(model => model.T_Funded)		
+								</div>
+                                </div>
+                            </div>
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EstablishedDate">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EstablishedDate) <span class="text-danger-reg">*</span></label>
+                                <div class="form-group" title="Established  Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_EstablishedDate">
+                                        @Html.TextBoxFor(model => model.T_EstablishedDate, new {@class = "form-control",@Value = DateTime.Now.ToString("MM/dd/yyyy") })
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                        
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_EstablishedDate)
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_EstablishedDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_EstablishedDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_AbolishDate">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_AbolishDate) </label>
+                                <div class="form-group" title="Abolish  Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_AbolishDate">
+                                        @Html.TextBoxFor(model => model.T_AbolishDate, new {@class = "form-control" })
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                        
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_AbolishDate)
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_AbolishDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_AbolishDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+							</div>
+                         </div>
+                      </div>
+				  </div>
+       </div>
+	</div>
+
+							 @if (ViewBag.IsDDAdd == null && User.CanEdit("T_Position"))
+                                {
+                                    <input type="submit" name="command" id="WizardSubmit" style="display:none;" />
+                                }
+                                @Html.ActionLink("C", "Cancel", new { UrlReferrer = ViewData["T_PositionParentUrl"] }, new { @id = "cancel", @style = "display:none;" })
+                                <input type="hidden" name="hdncommand" value="" />
+          
+				</div>
+			<br/>
+}
+<script>
+    $(document).ready(function () {
+        try {
+             focusOnControl('frmT_Position');
+        }
+        catch (ex) { }
+    });
+</script>
+<script>
+	    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+	<script>
+            $("input[type='submit']").click(function (event) {
+	if (!$("#frmT_Position").valid()) return;
+
+                var $this = $(this);
+				GetCalculationValue(event,'@Url.Action("GetCalculationValues")');
+                $('input:hidden[name="hdncommand"]').val($this.val());
+            });
+			$(document).ready(function () {
+				DisableTabOnReadonlyProperty("frmT_Donation");
+			});
+	</script>
+@{
+    var businessrule = User.businessrules.Where(p => p.EntityName == "T_Position").ToList();
+if ((businessrule != null && businessrule.Count > 0) )
+    {
+        <script>
+            $("form").submit(function (event) {
+			if (!$("#frmT_Position").valid()) return;
+				document.getElementById("ErrMsg").innerHTML = "";
+                var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+                
+                
+                //var form = $(this).serialize();
+ form = $("#frmT_Position").serialize();
+                dataurl = "@Url.Action("businessruletype", "T_Position", new { ruleType = "OnCreate"})";
+                flag = ApplyBusinessRuleOnSubmit(dataurl, "T_Position", false, "ErrMsg", form);
+				//business rules on inline associations
+				return flag;
+			 });	
+            $(document).ready(function () {
+                $("input[type='submit']").on('blur', function () {
+                    $("input[type='submit']").removeAttr('disabled');
+                });
+            });
+        </script>
+    }
+    else
+    {
+           
+    }
+}
+    
+
+

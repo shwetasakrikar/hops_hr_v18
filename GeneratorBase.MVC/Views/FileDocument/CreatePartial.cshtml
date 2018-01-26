@@ -1,0 +1,278 @@
+﻿@model GeneratorBase.MVC.Models.FileDocument
+@{
+    if (!string.IsNullOrEmpty(ViewBag.FileDocumentIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.FileDocumentIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.FileDocumentIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.FileDocumentIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.FileDocumentIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.FileDocumentIsSetValueUIRule);
+    }
+}
+@using (Html.BeginForm("Create", "FileDocument",new {UrlReferrer = Convert.ToString(ViewData["FileDocumentParentUrl"]), IsDDAdd = ViewBag.IsDDAdd }, FormMethod.Post, new { enctype = "multipart/form-data",id="frmFileDocument" }))
+{
+   @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+	<input type="hidden" id="ErrMsg" />
+	@*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+    <div id="errorContainer" style="display: none">
+        <div id="errorsMsg"></div>
+        <div id="errors"></div>
+    </div>
+	 
+	 <div id="divDisplayThresholdLimit" style="display:none;">
+	</div>
+	 <div id="divDisplayBRmsgMandatory" style="display:none;">
+	</div>
+	<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+	</div>
+	<div id="divDisplayCodeFragment" style="display:none;">
+	</div>
+
+	<div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="AppForm">
+                <div class="">
+               					<div class="row">
+				       
+			 @if(User.CanView("FileDocument","DocumentName"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvDocumentName">
+                                <div class='form-group' title="">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.DocumentName) <span class="text-danger-reg">*</span></label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.DocumentName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.DocumentName)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+			 @if(User.CanView("FileDocument","Description"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvDescription">
+                                <div class='form-group' title="">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.Description) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Description)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+				 @if(User.CanAdd("Document"))
+                 { 
+				   if(User.CanView("FileDocument","AttachDocument") && User.CanView("Document"))
+								{
+								<div class='col-sm-6 col-md-6 col-xs-12' id="dvAttachDocument">
+									<div class='form-group' title="">
+											<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.AttachDocument) </label>
+												<div class="input-group col-sm-7 col-md-7 col-xs-12">
+												<div style="position:relative;">
+													<a class='btn btn-primary btnupload' href='javascript:;'>
+														Upload File
+													<input id="AttachDocument"  type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;width:105px;' name="AttachDocument" onchange='$("#upload-file-infoAttachDocument").html($(this).val());'>
+												</a>
+												&nbsp;
+												<span class='label uploadlblFix' id="upload-file-infoAttachDocument"></span>
+											</div> 
+											</div>
+									</div>
+								</div>
+	   }
+
+				  
+				 }
+   @if(User.CanView("FileDocument","DateCreated"))
+{
+		  <div class='col-sm-6 col-md-6 col-xs-12' id="dvDateCreated">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.DateCreated) <span class="text-danger-reg">*</span></label>
+                                <div class="form-group" title="">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerDateCreated">
+                                        @Html.TextBoxFor(model => model.DateCreated, new { @class = "form-control" ,@Value = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt") ,@format = "MM/DD/YYYY hh:mm" })
+                                        
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.DateCreated)
+
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#DateCreated').datetimepicker({IsRequired: true});
+                                        $('#datetimepickerDateCreated').datetimepicker({IsRequired: true});
+                                    });
+                                </script>
+                            </div>
+							}
+		  
+                          
+   @if(User.CanView("FileDocument","DateLastUpdated"))
+{
+		  <div class='col-sm-6 col-md-6 col-xs-12' id="dvDateLastUpdated">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.DateLastUpdated) <span class="text-danger-reg">*</span></label>
+                                <div class="form-group" title="">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerDateLastUpdated">
+                                        @Html.TextBoxFor(model => model.DateLastUpdated, new { @class = "form-control" ,@Value = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt") ,@format = "MM/DD/YYYY hh:mm" })
+                                        
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.DateLastUpdated)
+
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#DateLastUpdated').datetimepicker({IsRequired: true});
+                                        $('#datetimepickerDateLastUpdated').datetimepicker({IsRequired: true});
+                                    });
+                                </script>
+                            </div>
+							}
+		  
+                          
+@if(User.CanView("FileDocument","T_EmployeeDocumentsID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeDocumentsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_EmployeeDocumentsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_EmployeeDocumentsID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeDocumentsID" }) })
+			@Html.ValidationMessageFor(model => model.T_EmployeeDocumentsID)
+			@if ( User.CanAdd("T_Employee"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_Employee"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+         </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+		<a class="btn btn-default btn-sm" onclick="goBack('@Url.Action("Index","FileDocument")');" alt="Cancel" title="Cancel">Cancel</a>
+          @*@Html.ActionLink("Cancel", "Cancel", new { UrlReferrer = ViewData["FileDocumentParentUrl"] }, new { @onclick = "", @class = "btn btn-default btn-sm" })*@
+	<input type="submit" name="command" value="Create" class="btn btn-primary btn-sm" alt="Create" title="Create"/>
+    if (ViewBag.IsDDAdd == null && User.CanEdit("FileDocument"))
+    {
+	<input type="submit" name="command" value="Create & Continue" class="btn btn-primary btn-sm" alt="Create & Continue" title="Create & Continue"/>
+	}
+	 <input type="hidden" name="hdncommand" value="" />
+	<br/><br/>
+}
+	<script>
+	    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+	
+@{
+		var businessrule = User.businessrules.Where(p => p.EntityName == "FileDocument").ToList();
+		
+if ((businessrule != null && businessrule.Count > 0) )
+    {
+        <script>
+            $("form").submit(function (event) {
+			if (!$("#frmFileDocument").valid()) return;
+			var flag = true;
+							document.getElementById("ErrMsg").innerHTML = "";
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+                //var form = $(this).serialize();
+ form = $("#frmFileDocument").serialize();
+  
+                dataurl = "@Url.Action("businessruletype", "FileDocument", new { ruleType = "OnCreate"})";
+                flag = ApplyBusinessRuleOnSubmit(dataurl, "FileDocument", false, "ErrMsg", form);
+				//business rules on inline associations
+				if (flag) {
+				                    $('input:hidden[name="hdncommand"]').val($(document.activeElement).val());
+
+					 $("#frmFileDocument").find(':input').removeAttr('disabled');
+                }
+				return flag;
+			 });	
+        </script>
+    }
+    else
+    {
+	<script>
+            $("input[type='submit']").click(function (event) {
+			if (!$("#frmFileDocument").valid()) return;
+                var $this = $(this);
+                $('input:hidden[name="hdncommand"]').val($this.val());
+            });
+	</script>
+           
+    }
+}
+
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+		 focusOnControl('frmFileDocument');
+        }
+        catch (ex) { }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        try {
+            var hostingEntityName = "";
+            if ('@Convert.ToString(ViewData["AssociatedType"])'.length > 0) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+                 $('#' + hostingEntityName + 'ID').attr("lock","true");
+				  $('#' + hostingEntityName + 'ID').trigger("change");
+            }
+			
+        }
+        catch (ex) { }
+		});
+</script>
+

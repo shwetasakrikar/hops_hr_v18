@@ -1,0 +1,984 @@
+﻿@model GeneratorBase.MVC.Models.T_Facility
+@using PagedList;
+@{
+    ViewBag.Title = "Edit Facility";
+	var EditPermission = User.CanEditItem("T_Facility", Model, User);
+	var DeletePermission = User.CanDeleteItem("T_Facility", Model, User);
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_Facility");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Facility";
+}
+@functions {
+    object getHtmlAttributes(string Property)
+    {
+        if (User.CanEdit("T_Facility", Property))
+        {
+            return new { @class = "form-control" };
+        } return new { @class = "form-control", @readonly = "readonly" };
+    }
+}
+<script>
+    $(document).ready(function () {
+        try {
+            var hostingEntityName = "";
+             if ('@Convert.ToString(ViewData["AssociatedType"])'.length > 0) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+				$('#' + hostingEntityName + 'ID').attr("lock","true");
+				// $('#' + hostingEntityName + 'ID').trigger("change");
+				  $("input[type='radio'][name='" + hostingEntityName + "ID']").each(function () {
+                    if (!this.checked)
+                        this.closest("li").style.display = "none";
+                });
+            }
+			if ($.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') != null) {
+				$('a[href="#' + $.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') + '"]').click();
+			}
+			 
+        }
+        catch (ex) { }
+    });
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_FacilityIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_FacilityIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_FacilityIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_FacilityIsGroupsHiddenRule);
+    }
+}
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_FacilityIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_FacilityIsSetValueUIRule);
+    }
+}
+	<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title" >
+            <i class="glyphicon glyphicon-edit text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span>Edit</span>
+
+			   <div class="btn-group pull-right" style="margin-top:3px;">
+			  
+
+
+            <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle" alt="Action" title="Action">
+                Action
+                <span class="caret" style="margin-bottom:2px">    </span>
+            </a>
+			<ul class="dropdown-menu pull-left">
+			
+				<li>
+                    @if (EditPermission)
+                    {
+                        <a href="@Url.Action("Edit","T_Facility", new { id = Model.Id,  UrlReferrer = Request.UrlReferrer, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    }
+                </li>             
+				<li>
+                    @if (EditPermission && User.CanDelete("T_Facility"))
+                    {
+                        <a href="@Url.Action("Delete", "T_Facility", new {UrlReferrer = Request.UrlReferrer, id = Model.Id, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Delete</a>
+                    }
+                </li>
+	<li class="divider" style="clear:both"></li>
+	<li class="dropdown-submenu pull-left" id="AddAssociationdropmenuT_Facility">
+	 @{ var dropmenu = false; }
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu pull-left">
+				@if (User.CanAdd("T_UnitX"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_UnitX", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_FacilityUnitX", 
+							HostingEntityName = "T_Facility",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  UnitX
+						</a>
+					</li>
+				}
+							@if (User.CanAdd("T_Position"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Position", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_FacilityAssignedTo", 
+							HostingEntityName = "T_Facility",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Position
+						</a>
+					</li>
+				}
+							@if (User.CanAdd("T_Unit"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Unit", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_FacilityUnit", 
+							HostingEntityName = "T_Facility",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Units in Facility
+						</a>
+					</li>
+				}
+							@if (User.CanAdd("T_SalaryRange"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_SalaryRange", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_FacilitySalaryRangeAssociation", 
+							HostingEntityName = "T_Facility",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Salary Range
+						</a>
+					</li>
+				}
+							@if (User.CanAdd("T_Department"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Department", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_DepartmentFacilityAssociation", 
+							HostingEntityName = "T_Facility",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Department
+						</a>
+					</li>
+				}
+							@if (User.CanAdd("T_DepartmentArea"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_DepartmentArea", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_DepartmentAreaEmployeeTypeAssociation", 
+							HostingEntityName = "T_Facility",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Department Area
+						</a>
+					</li>
+				}
+							@if (User.CanAdd("T_ClaimType"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_ClaimType", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_ClaimTypeFacilityAssociation", 
+							HostingEntityName = "T_Facility",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Claim Type
+						</a>
+					</li>
+				}
+							@if (User.CanAdd("T_Restrictions"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Restrictions", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_RestrictionsFacilityAssociation", 
+							HostingEntityName = "T_Facility",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Restrictions
+						</a>
+					</li>
+				}
+							@if (User.CanAdd("T_Employee"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Employee", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_EmployeeAtFacility", 
+							HostingEntityName = "T_Facility",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Employees at this Facility
+						</a>
+					</li>
+				}
+							@if (User.CanAdd("T_FacilityConfiguration"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_FacilityConfiguration", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_TenantConfigurationAssociation", 
+							HostingEntityName = "T_Facility",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Configuration
+						</a>
+					</li>
+				}
+			</ul>
+</li>
+@if(!dropmenu)
+{
+    <script>
+        $("#AddAssociationdropmenuT_Facility").hide();
+    </script>
+}
+			</ul>
+		</div>
+
+        </h1>
+
+     <h2 class="text-primary" style="padding:0px 5px 15px 0px">
+	  <span id="HostingEntityDisplayValue" class="EntityDisplayName" title="@Html.DisplayFor(model => model.DisplayValue)">@Html.DisplayFor(model => model.DisplayValue)</span>
+			@if (EditPermission)
+			{	
+				<div class="pull-right" style="margin-top:-3px">
+					<button class="btn btn-default btn-xs pull-right" id="nextEdit" onclick="@Html.Raw("nextFunEdit('T_Facility',event,'hdnNextPrevId')")" alt="Next" title="Next">Next >></button>
+					@Html.DropDownList("EntityT_FacilityDisplayValueEdit", null, null, new { @onchange = "FillDisplayValueEditPage('T_Facility','frmT_Facility','" + Model.Id + "',event)", @class = "pull-right", @Style = "height: 22px;width: 170px; font-size:12px; color:#333;" })
+					<button class="btn btn-default btn-xs pull-right" id="prevEdit" onclick="@Html.Raw("prevFunEdit('T_Facility',event,'hdnNextPrevId')")" alt="Prev" title="Prev"><< Prev</button>
+				</div>
+			}
+	 </h2>
+		
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<input type="hidden" id="ErrMsg" />
+<div id="errorContainerEdit" style="display: none">
+            <div id="errorsMsgEdit"></div>
+            <div id="errorsEdit"></div>
+        </div>
+
+<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+</div>
+<div id="divDisplayBRmsgMandatory" style="display:none;">
+</div>
+<div id="divDisplayLockRecord" style="display:none;">
+</div>
+<div id="divDisplayBRReadOnly" style="display:none;">
+</div>
+<div id="divDisplayCodeFragment" style="display:none;">
+</div>
+ <div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+	 <li class="active"><a href="#Details" onclick="ClearTabCookie('@User.JavaScriptEncodedName@Model.Id');" data-toggle="tab" alt="Details" title="Details">Details</a></li>
+		 <li @(!User.CanView("T_UnitX") ?"style=display:none;":"")>
+			<a onclick="LoadTab('T_FacilityUnitX','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_UnitX", new {RenderPartial=true, HostingEntity ="T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_FacilityUnitX",TabToken = DateTime.Now.Ticks,}))')" href="#T_FacilityUnitX" data-toggle="tab" alt="UnitX" title="UnitX">UnitX
+		 <span class="badge bg-blue"><div id="dvcnt_T_FacilityUnitX">@ViewBag.T_FacilityUnitXCount</div></span>
+		 </a></li>
+		 <li @(!User.CanView("T_Position") ?"style=display:none;":"")>
+			<a onclick="LoadTab('T_FacilityAssignedTo','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_Position", new {RenderPartial=true, HostingEntity ="T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_FacilityAssignedTo",TabToken = DateTime.Now.Ticks,}))')" href="#T_FacilityAssignedTo" data-toggle="tab" alt="Position" title="Position">Position
+		 <span class="badge bg-blue"><div id="dvcnt_T_FacilityAssignedTo">@ViewBag.T_FacilityAssignedToCount</div></span>
+		 </a></li>
+		 <li @(!User.CanView("T_Unit") ?"style=display:none;":"")>
+			<a onclick="LoadTab('T_FacilityUnit','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_Unit", new {RenderPartial=true, HostingEntity ="T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_FacilityUnit",TabToken = DateTime.Now.Ticks,}))')" href="#T_FacilityUnit" data-toggle="tab" alt="Units in Facility" title="Units in Facility">Units in Facility
+		 <span class="badge bg-blue"><div id="dvcnt_T_FacilityUnit">@ViewBag.T_FacilityUnitCount</div></span>
+		 </a></li>
+		 <li @(!User.CanView("T_SalaryRange") ?"style=display:none;":"")>
+			<a onclick="LoadTab('T_FacilitySalaryRangeAssociation','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_SalaryRange", new {RenderPartial=true, HostingEntity ="T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_FacilitySalaryRangeAssociation",TabToken = DateTime.Now.Ticks,}))')" href="#T_FacilitySalaryRangeAssociation" data-toggle="tab" alt="Salary Range" title="Salary Range">Salary Range
+		 <span class="badge bg-blue"><div id="dvcnt_T_FacilitySalaryRangeAssociation">@ViewBag.T_FacilitySalaryRangeAssociationCount</div></span>
+		 </a></li>
+		 <li @(!User.CanView("T_Department") ?"style=display:none;":"")>
+			<a onclick="LoadTab('T_DepartmentFacilityAssociation','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_Department", new {RenderPartial=true, HostingEntity ="T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_DepartmentFacilityAssociation",TabToken = DateTime.Now.Ticks,}))')" href="#T_DepartmentFacilityAssociation" data-toggle="tab" alt="Department" title="Department">Department
+		 <span class="badge bg-blue"><div id="dvcnt_T_DepartmentFacilityAssociation">@ViewBag.T_DepartmentFacilityAssociationCount</div></span>
+		 </a></li>
+		 <li @(!User.CanView("T_DepartmentArea") ?"style=display:none;":"")>
+			<a onclick="LoadTab('T_DepartmentAreaEmployeeTypeAssociation','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_DepartmentArea", new {RenderPartial=true, HostingEntity ="T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_DepartmentAreaEmployeeTypeAssociation",TabToken = DateTime.Now.Ticks,}))')" href="#T_DepartmentAreaEmployeeTypeAssociation" data-toggle="tab" alt="Department Area" title="Department Area">Department Area
+		 <span class="badge bg-blue"><div id="dvcnt_T_DepartmentAreaEmployeeTypeAssociation">@ViewBag.T_DepartmentAreaEmployeeTypeAssociationCount</div></span>
+		 </a></li>
+		 <li @(!User.CanView("T_ClaimType") ?"style=display:none;":"")>
+			<a onclick="LoadTab('T_ClaimTypeFacilityAssociation','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_ClaimType", new {RenderPartial=true, HostingEntity ="T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_ClaimTypeFacilityAssociation",TabToken = DateTime.Now.Ticks,}))')" href="#T_ClaimTypeFacilityAssociation" data-toggle="tab" alt="Claim Type" title="Claim Type">Claim Type
+		 <span class="badge bg-blue"><div id="dvcnt_T_ClaimTypeFacilityAssociation">@ViewBag.T_ClaimTypeFacilityAssociationCount</div></span>
+		 </a></li>
+		 <li @(!User.CanView("T_Restrictions") ?"style=display:none;":"")>
+			<a onclick="LoadTab('T_RestrictionsFacilityAssociation','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_Restrictions", new {RenderPartial=true, HostingEntity ="T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_RestrictionsFacilityAssociation",TabToken = DateTime.Now.Ticks,}))')" href="#T_RestrictionsFacilityAssociation" data-toggle="tab" alt="Restrictions" title="Restrictions">Restrictions
+		 <span class="badge bg-blue"><div id="dvcnt_T_RestrictionsFacilityAssociation">@ViewBag.T_RestrictionsFacilityAssociationCount</div></span>
+		 </a></li>
+		 <li @(!User.CanView("T_Employee") ?"style=display:none;":"")>
+			<a onclick="LoadTab('T_EmployeeAtFacility','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_Employee", new {RenderPartial=true, HostingEntity ="T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_EmployeeAtFacility",TabToken = DateTime.Now.Ticks,}))')" href="#T_EmployeeAtFacility" data-toggle="tab" alt="Employees at this Facility" title="Employees at this Facility">Employees at this Facility
+		 <span class="badge bg-blue"><div id="dvcnt_T_EmployeeAtFacility">@ViewBag.T_EmployeeAtFacilityCount</div></span>
+		 </a></li>
+		 <li @(!User.CanView("T_FacilityConfiguration") ?"style=display:none;":"")>
+			<a onclick="LoadTab('T_TenantConfigurationAssociation','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_FacilityConfiguration", new {RenderPartial=true, HostingEntity ="T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_TenantConfigurationAssociation",TabToken = DateTime.Now.Ticks,}))')" href="#T_TenantConfigurationAssociation" data-toggle="tab" alt="Configuration" title="Configuration">Configuration
+		 <span class="badge bg-blue"><div id="dvcnt_T_TenantConfigurationAssociation">@ViewBag.T_TenantConfigurationAssociationCount</div></span>
+		 </a></li>
+		 <li @(!User.CanView("T_FacilityUser") || !User.CanViewAdminFeature("User")?"style=display:none;":"")>
+			<a onclick="LoadTab('T_FacilityUser_T_Facility','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_FacilityUser", new {RenderPartial=true, HostingEntity ="T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_FacilityUser_T_Facility",TabToken = DateTime.Now.Ticks,}))')" href="#T_FacilityUser_T_Facility" data-toggle="tab" alt="Facility Users" title="Facility Users">Facility Users
+		 </a></li>
+		<li @(!User.CanViewAdminFeature("Role") ? "style=display:none;" : "")>
+			<a onclick="LoadTab('T_FacilityRoles','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("RoleList", "Account", new {RenderPartial=true, TenantId = @Model.Id,TabToken = DateTime.Now.Ticks,}))')" href="#T_FacilityRoles" data-toggle="tab" title="Roles" >
+                Roles
+            </a>
+        </li>
+		 <li @(!User.CanView("JournalEntry")?"style=display:none;":"")><a onclick="LoadTab('JournalEntryToT_FacilityRelation','@User.JavaScriptEncodedName@Model.Id','@Url.Action("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_Facility", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry", TabToken = DateTime.Now.Ticks })')" href="#JournalEntryToT_FacilityRelation" data-toggle="tab" alt="Facility Journal" title="Facility Journal">
+		 Facility Journal
+		 </a></li>
+
+    </ul>
+		<div class="tab-content">
+        <div class="tab-pane fade in active" id="Details">
+@using (Html.BeginForm("Edit","T_Facility",new {UrlReferrer =Convert.ToString(ViewData["T_FacilityParentUrl"])}, FormMethod.Post, new { enctype = "multipart/form-data",@id="frmT_Facility" }))
+{
+     Html.ValidationSummary(true);
+                Html.EnableClientValidation();
+    @Html.HiddenFor(model => model.Id)
+	@Html.HiddenFor(model => model.ConcurrencyKey)
+                <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px;">
+                    <div class="panel panel-default AppForm">
+						<div class="panel-body">
+						
+											<div class="row">
+				@if(User.CanView("T_Facility","T_FacilityCode"))
+{
+				<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FacilityCode">
+							<div class='form-group' title="Facility  Code">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_FacilityCode)  <span class="text-danger-reg">*</span> </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+											
+									@Html.TextBoxFor(model => model.T_FacilityCode,  getHtmlAttributes("T_FacilityCode"))
+									@Html.ValidationMessageFor(model => model.T_FacilityCode)
+								</div>
+                             </div>
+						</div>
+										
+} else { @Html.HiddenFor(model => model.T_FacilityCode, new { @class = "form-control" })}
+@if(User.CanView("T_Facility","T_WorkingHours"))
+{
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WorkingHours">
+							<div class='form-group' title="Working Hours">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_WorkingHours) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								@Html.TextAreaFor(model => model.T_WorkingHours, getHtmlAttributes("T_WorkingHours"))
+									@Html.ValidationMessageFor(model => model.T_WorkingHours)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_WorkingHours, new { @class = "form-control" })}
+@if(User.CanView("T_Facility","T_FacilityName"))
+{
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FacilityName">
+							<div class='form-group' title="Facility  Name">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_FacilityName) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								@Html.TextAreaFor(model => model.T_FacilityName, getHtmlAttributes("T_FacilityName"))
+									@Html.ValidationMessageFor(model => model.T_FacilityName)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_FacilityName, new { @class = "form-control" })}
+@if(User.CanView("T_Address"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' style="display:none;">
+                        <div class='form-group' style="width:100%;">
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_FacilityAddressID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+								@Html.DropDownList("T_FacilityAddressID", null, "--Select Address--", new { @onclick = Html.Raw("select('T_FacilityAddressID')"), @class = "form-control", @HostingName = "T_Address" })
+                                @Html.ValidationMessageFor(model => model.T_FacilityAddressID)								
+                                <div class="input-group-btn">
+                                  <a class="btn btn-default btn ie8fix" id="addT_Address"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Address','dvPopup','" + Url.Action("CreateQuick", "T_Address", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>								
+							</div>
+                        </div>
+                    </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 " id="dvT_FacilityAddressID">
+                                <div class="panel panel-default AppForm">
+                                  <div class="panel-sub-heading clearfix">
+                                        <h3 class="panel-title" alt="T_FacilityAddress" title="T_FacilityAddress">@Html.LabelFor(model => model.T_FacilityAddressID)</h3>
+
+                                    </div>
+                                    <div class="panel-body">
+                                        
+									<div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                        <div>
+ @{if (Model.t_facilityaddress!=null) {Model.t_facilityaddress.setDateTimeToClientTime();}}
+@if (Model.t_facilityaddress!=null)
+{ 
+   <div class='col-sm-6' style="display:none;">
+    <div class='form-group'>
+        <label class="col-xs-5">@Html.LabelFor(model => model.t_facilityaddress.Id)</label>
+		@Html.HiddenFor(model => model.t_facilityaddress.ConcurrencyKey)
+        <div class="input-group col-xs-7">
+            @Html.TextBoxFor(model => model.t_facilityaddress.Id, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.t_facilityaddress.Id)
+        </div>
+    </div>
+</div>
+}
+@if(User.CanView("T_Address","T_AddressLine1"))
+{
+							<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FacilityAddressID_T_AddressLine1">
+                            <div class='form-group' title="AddressLine1">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_facilityaddress.T_AddressLine1) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								@if (User.CanEdit("T_Address", "T_AddressLine1"))
+									{
+									@Html.TextBoxFor(model => model.t_facilityaddress.T_AddressLine1, new { @class = "form-control" })
+									}
+									else
+									{
+									@Html.TextBoxFor(model => model.t_facilityaddress.T_AddressLine1, new { @class = "form-control",@readonly="readonly" })
+									}
+                                    @Html.ValidationMessageFor(model => model.t_facilityaddress.T_AddressLine1)
+                                </div>
+                            </div>
+                        </div>
+}
+                                               
+@if(User.CanView("T_Address","T_AddressLine2"))
+{
+							<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FacilityAddressID_T_AddressLine2">
+                            <div class='form-group' title="AddressLine2">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_facilityaddress.T_AddressLine2) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								@if (User.CanEdit("T_Address", "T_AddressLine2"))
+									{
+									@Html.TextBoxFor(model => model.t_facilityaddress.T_AddressLine2, new { @class = "form-control" })
+									}
+									else
+									{
+									@Html.TextBoxFor(model => model.t_facilityaddress.T_AddressLine2, new { @class = "form-control",@readonly="readonly" })
+									}
+                                    @Html.ValidationMessageFor(model => model.t_facilityaddress.T_AddressLine2)
+                                </div>
+                            </div>
+                        </div>
+}
+                                               
+@if(User.CanView("T_Address","T_ZipCode"))
+{
+							<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FacilityAddressID_T_ZipCode">
+                            <div class='form-group' title="ZipCode">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.t_facilityaddress.T_ZipCode) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								@if (User.CanEdit("T_Address", "T_ZipCode"))
+									{
+									@Html.TextBoxFor(model => model.t_facilityaddress.T_ZipCode, new { @class = "form-control" })
+									}
+									else
+									{
+									@Html.TextBoxFor(model => model.t_facilityaddress.T_ZipCode, new { @class = "form-control",@readonly="readonly" })
+									}
+                                    @Html.ValidationMessageFor(model => model.t_facilityaddress.T_ZipCode)
+                                </div>
+                            </div>
+                        </div>
+}
+                                               
+					@if(User.CanView("T_Address","T_AddressCountryID"))
+						{
+
+						<div class='col-sm-6 col-md-6 col-xs-12'  id="dvT_FacilityAddressID_T_AddressCountryID">
+								<div class='form-group'>
+									<label class="col-sm-5 col-md-5 col-xs-12">
+									@Html.LabelFor(model => model.t_facilityaddress.T_AddressCountryID) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+										<div class="input-group" style="width:100%;">
+												@if (User.CanEdit("T_Address", "T_AddressCountryID"))
+		{
+			@Html.DropDownListFor(model => model.t_facilityaddress.T_AddressCountryID, (SelectList)ViewBag.T_FacilityAddress_T_AddressCountryID, "--Select--", new {       @class = "chosen-select form-control", @HostingName = "T_Country", @dataurl = Url.Action("GetAllValue", "T_Country",new { caller = "T_AddressCountryID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model =>  model.t_facilityaddress.T_AddressCountryID, new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.t_facilityaddress.T_AddressCountryID, (SelectList)ViewBag.T_FacilityAddress_T_AddressCountryID, "--Select--", new {     @class = "chosen-select form-control", @HostingName = "T_Country", @disabled="disabled", @dataurl = Url.Action("GetAllValue", "T_Country",new { caller = "T_AddressCountryID" }) })
+		}
+											@Html.ValidationMessageFor(model => model.t_facilityaddress.T_AddressCountryID)
+																					 @if (User.CanAdd("T_Country"))
+											{
+											<div class="input-group-btn">
+												<a class="btn btn-default btn ie8fix" id="addT_Country" data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Address Country','dvPopup','" + Url.Action("CreateQuick", "T_Country", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+													<span class="glyphicon glyphicon-plus-sign"></span>
+												</a>
+											</div>
+											}
+																						
+										</div>
+									</div>
+								</div>
+							</div>
+	}
+                                               
+					@if(User.CanView("T_Address","T_AddressStateID"))
+						{
+
+						<div class='col-sm-6 col-md-6 col-xs-12'  id="dvT_FacilityAddressID_T_AddressStateID">
+								<div class='form-group'>
+									<label class="col-sm-5 col-md-5 col-xs-12">
+									@Html.LabelFor(model => model.t_facilityaddress.T_AddressStateID) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+										<div class="input-group" style="width:100%;">
+												@if (User.CanEdit("T_Address", "T_AddressStateID"))
+		{
+			@Html.DropDownListFor(model => model.t_facilityaddress.T_AddressStateID, (SelectList)ViewBag.T_FacilityAddress_T_AddressStateID, "--Select--", new {       @class = "chosen-select form-control", @HostingName = "T_State", @dataurl = Url.Action("GetAllValue", "T_State",new { caller = "T_AddressStateID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model =>  model.t_facilityaddress.T_AddressStateID, new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.t_facilityaddress.T_AddressStateID, (SelectList)ViewBag.T_FacilityAddress_T_AddressStateID, "--Select--", new {     @class = "chosen-select form-control", @HostingName = "T_State", @disabled="disabled", @dataurl = Url.Action("GetAllValue", "T_State",new { caller = "T_AddressStateID" }) })
+		}
+											@Html.ValidationMessageFor(model => model.t_facilityaddress.T_AddressStateID)
+																					 @if (User.CanAdd("T_State"))
+											{
+											<div class="input-group-btn">
+												<a class="btn btn-default btn ie8fix" id="addT_State" data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Address State','dvPopup','" + Url.Action("CreateQuick", "T_State", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+													<span class="glyphicon glyphicon-plus-sign"></span>
+												</a>
+											</div>
+											}
+																						@if (User.CanView("T_State"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_State" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_State" target="_blank" href="@Url.Action(User.CanEdit("T_State") ? "Edit" : "Details", "T_State", new { Id = Html.DisplayFor(model => model.t_facilityaddress.t_addressstate.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_facilityaddress == null || Model.t_facilityaddress.t_addressstate== null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_State").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_State").attr("title", '@Model.t_facilityaddress.t_addressstate=.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+																						
+										</div>
+									</div>
+								</div>
+							</div>
+	}
+                                               
+					@if(User.CanView("T_Address","T_AddressCityID"))
+						{
+
+						<div class='col-sm-6 col-md-6 col-xs-12'  id="dvT_FacilityAddressID_T_AddressCityID">
+								<div class='form-group'>
+									<label class="col-sm-5 col-md-5 col-xs-12">
+									@Html.LabelFor(model => model.t_facilityaddress.T_AddressCityID) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+										<div class="input-group" style="width:100%;">
+												@if (User.CanEdit("T_Address", "T_AddressCityID"))
+		{
+			@Html.DropDownListFor(model => model.t_facilityaddress.T_AddressCityID, (SelectList)ViewBag.T_FacilityAddress_T_AddressCityID, "--Select--", new {       @class = "chosen-select form-control", @HostingName = "T_City", @dataurl = Url.Action("GetAllValue", "T_City",new { caller = "T_AddressCityID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model =>  model.t_facilityaddress.T_AddressCityID, new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.t_facilityaddress.T_AddressCityID, (SelectList)ViewBag.T_FacilityAddress_T_AddressCityID, "--Select--", new {     @class = "chosen-select form-control", @HostingName = "T_City", @disabled="disabled", @dataurl = Url.Action("GetAllValue", "T_City",new { caller = "T_AddressCityID" }) })
+		}
+											@Html.ValidationMessageFor(model => model.t_facilityaddress.T_AddressCityID)
+																					 @if (User.CanAdd("T_City"))
+											{
+											<div class="input-group-btn">
+												<a class="btn btn-default btn ie8fix" id="addT_City" data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Address City','dvPopup','" + Url.Action("CreateQuick", "T_City", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+													<span class="glyphicon glyphicon-plus-sign"></span>
+												</a>
+											</div>
+											}
+																						@if (User.CanView("T_City"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_City" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_City" target="_blank" href="@Url.Action(User.CanEdit("T_City") ? "Edit" : "Details", "T_City", new { Id = Html.DisplayFor(model => model.t_facilityaddress.t_addresscity.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_facilityaddress == null || Model.t_facilityaddress.t_addresscity== null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_City").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_City").attr("title", '@Model.t_facilityaddress.t_addresscity=.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+																						
+										</div>
+									</div>
+								</div>
+							</div>
+	}
+                                               
+					
+                                                </div>
+                                            </div>
+									</div>
+                                        @Html.ValidationMessageFor(model => model.T_FacilityAddressID)
+                                    </div>
+                                </div>
+                            </div>
+
+                       }
+					   else
+                       { @Html.HiddenFor(model => model.T_FacilityAddressID, new { @class = "form-control" })}
+       </div>
+            </div>
+        </div>
+		</div>
+		 @Html.AntiForgeryToken();
+		 <a class="btn btn-default btn-sm pull-left formbuttonfix" Onclick="goBack('@Url.Action("Index","T_Facility")');" alt="Cancel" title="Cancel">Cancel</a>
+		 @*@Html.ActionLink("Cancel", "Cancel", new { UrlReferrer = ViewData["T_FacilityParentUrl"] }, new { @onclick = "", @class = "btn btn-default btn-sm pull-left formbuttonfix", @alt="Cancel", @title="Cancel" })*@
+		 if (EditPermission)
+         {
+ 				<input type="submit" name="command" value="Save" class="btn btn-primary btn-sm pull-left formbuttonfix"  alt="Save" title="Save"/>
+				<input type="submit" id="sevranBtnEdit" style="display:none;" name="command" value="SaveNextPrev" alt="SaveNextPrev" title="SaveNextPrev"/>
+				<input type="submit" name="command" value="Save & Stay" class="btn btn-primary btn-sm pull-left formbuttonfix" alt="Save & Stay" title="Save & Stay"/>
+		}	
+				<input type="hidden" name="hdncommand" value="" />
+				<input type="hidden" name="hdnNextPrevId" value="" />
+}
+ @{ var dropmenubottom = false; }
+<div class="dropdown pull-left formbuttonfix"  id="AddAssociationdropmenubottomT_Facility">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" alt="Add Association" title="Add Association">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
+			@if (User.CanAdd("T_UnitX"))
+            {  dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_UnitX",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_FacilityUnitX", 
+						HostingEntityName = "T_Facility",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  UnitX
+                </a>
+				</li>
+            }
+
+			
+			@if (User.CanAdd("T_Position"))
+            {  dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Position",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_FacilityAssignedTo", 
+						HostingEntityName = "T_Facility",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Position
+                </a>
+				</li>
+            }
+
+			
+			@if (User.CanAdd("T_Unit"))
+            {  dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Unit",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_FacilityUnit", 
+						HostingEntityName = "T_Facility",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Units in Facility
+                </a>
+				</li>
+            }
+
+			
+			@if (User.CanAdd("T_SalaryRange"))
+            {  dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_SalaryRange",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_FacilitySalaryRangeAssociation", 
+						HostingEntityName = "T_Facility",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Salary Range
+                </a>
+				</li>
+            }
+
+			
+			@if (User.CanAdd("T_Department"))
+            {  dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Department",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_DepartmentFacilityAssociation", 
+						HostingEntityName = "T_Facility",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Department
+                </a>
+				</li>
+            }
+
+			
+			@if (User.CanAdd("T_DepartmentArea"))
+            {  dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_DepartmentArea",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_DepartmentAreaEmployeeTypeAssociation", 
+						HostingEntityName = "T_Facility",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Department Area
+                </a>
+				</li>
+            }
+
+			
+			@if (User.CanAdd("T_ClaimType"))
+            {  dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_ClaimType",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_ClaimTypeFacilityAssociation", 
+						HostingEntityName = "T_Facility",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Claim Type
+                </a>
+				</li>
+            }
+
+			
+			@if (User.CanAdd("T_Restrictions"))
+            {  dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Restrictions",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_RestrictionsFacilityAssociation", 
+						HostingEntityName = "T_Facility",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Restrictions
+                </a>
+				</li>
+            }
+
+			
+			@if (User.CanAdd("T_Employee"))
+            {  dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Employee",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_EmployeeAtFacility", 
+						HostingEntityName = "T_Facility",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Employees at this Facility
+                </a>
+				</li>
+            }
+
+			
+			@if (User.CanAdd("T_FacilityConfiguration"))
+            {  dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_FacilityConfiguration",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_TenantConfigurationAssociation", 
+						HostingEntityName = "T_Facility",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Configuration
+                </a>
+				</li>
+            }
+
+			
+</ul>
+</div>
+@if(!dropmenubottom || !EditPermission)
+{
+    <script>
+        $("#AddAssociationdropmenubottomT_Facility").hide();
+    </script>
+}
+<div class="clearfix" style="clear:both; margin-bottom:8px"></div>
+</div>
+ <div class="tab-pane fade in" id="T_FacilityUnitX">
+	@if (User.CanView("T_UnitX"))
+	{
+	  // Html.RenderAction("Index", "T_UnitX", new {RenderPartial=true, HostingEntity = "T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_FacilityUnitX" }); 
+	}
+  </div>
+ <div class="tab-pane fade in" id="T_FacilityAssignedTo">
+	@if (User.CanView("T_Position"))
+	{
+	  // Html.RenderAction("Index", "T_Position", new {RenderPartial=true, HostingEntity = "T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_FacilityAssignedTo" }); 
+	}
+  </div>
+ <div class="tab-pane fade in" id="JournalEntryToT_FacilityRelation">
+			 @if (User.CanView("JournalEntry"))
+			 {
+			  // Html.RenderAction("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_Facility", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry" });
+			 }
+  </div>
+ <div class="tab-pane fade in" id="T_FacilityUnit">
+	@if (User.CanView("T_Unit"))
+	{
+	  // Html.RenderAction("Index", "T_Unit", new {RenderPartial=true, HostingEntity = "T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_FacilityUnit" }); 
+	}
+  </div>
+ <div class="tab-pane fade in" id="T_FacilitySalaryRangeAssociation">
+	@if (User.CanView("T_SalaryRange"))
+	{
+	  // Html.RenderAction("Index", "T_SalaryRange", new {RenderPartial=true, HostingEntity = "T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_FacilitySalaryRangeAssociation" }); 
+	}
+  </div>
+ <div class="tab-pane fade in" id="T_DepartmentFacilityAssociation">
+	@if (User.CanView("T_Department"))
+	{
+	  // Html.RenderAction("Index", "T_Department", new {RenderPartial=true, HostingEntity = "T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_DepartmentFacilityAssociation" }); 
+	}
+  </div>
+ <div class="tab-pane fade in" id="T_DepartmentAreaEmployeeTypeAssociation">
+	@if (User.CanView("T_DepartmentArea"))
+	{
+	  // Html.RenderAction("Index", "T_DepartmentArea", new {RenderPartial=true, HostingEntity = "T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_DepartmentAreaEmployeeTypeAssociation" }); 
+	}
+  </div>
+ <div class="tab-pane fade in" id="T_ClaimTypeFacilityAssociation">
+	@if (User.CanView("T_ClaimType"))
+	{
+	  // Html.RenderAction("Index", "T_ClaimType", new {RenderPartial=true, HostingEntity = "T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_ClaimTypeFacilityAssociation" }); 
+	}
+  </div>
+ <div class="tab-pane fade in" id="T_RestrictionsFacilityAssociation">
+	@if (User.CanView("T_Restrictions"))
+	{
+	  // Html.RenderAction("Index", "T_Restrictions", new {RenderPartial=true, HostingEntity = "T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_RestrictionsFacilityAssociation" }); 
+	}
+  </div>
+ <div class="tab-pane fade in" id="T_EmployeeAtFacility">
+	@if (User.CanView("T_Employee"))
+	{
+	  // Html.RenderAction("Index", "T_Employee", new {RenderPartial=true, HostingEntity = "T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_EmployeeAtFacility" }); 
+	}
+  </div>
+ <div class="tab-pane fade in" id="T_TenantConfigurationAssociation">
+	@if (User.CanView("T_FacilityConfiguration"))
+	{
+	  // Html.RenderAction("Index", "T_FacilityConfiguration", new {RenderPartial=true, HostingEntity = "T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_TenantConfigurationAssociation" }); 
+	}
+  </div>
+ <div class="tab-pane fade in" id="T_FacilityUser_T_Facility">
+	@if (User.CanView("T_FacilityUser"))
+	{
+	  // Html.RenderAction("Index", "T_FacilityUser", new {RenderPartial=true, HostingEntity = "T_Facility", HostingEntityID = @Model.Id, AssociatedType = "T_FacilityUser_T_Facility" }); 
+	}
+  </div>
+				<div class="tab-pane fade in" id="T_FacilityRoles">
+				</div>
+
+</div> <!-- /tab-content --><br />
+
+<br/>
+</div>
+	<script>
+	</script>
+	
+
+@{
+var businessrule = User.businessrules.Where(p => p.EntityName == "T_Facility").ToList();
+		var businessurlinline = User.businessrules.Where(p => p.EntityName == "T_Address").ToList();
+		var inlineruleids = businessurlinline.Select(q => q.Id).ToList();
+		var inlinetypelist  = string.Join(",", (new GeneratorBase.MVC.Models.RuleActionContext()).RuleActions.Where(p => inlineruleids.Contains(p.RuleActionID.Value) && p.associatedactiontype.TypeNo.HasValue).Select(p => p.associatedactiontype.TypeNo.Value).Distinct().ToList());
+
+if ((businessrule != null && businessrule.Count > 0)  || (businessurlinline != null && businessurlinline.Count > 0) )
+{
+var ruleids = businessrule.Select(q => q.Id).ToList();
+var typelist  = string.Join(",", (new GeneratorBase.MVC.Models.RuleActionContext()).RuleActions.Where(p => ruleids.Contains(p.RuleActionID.Value) && p.associatedactiontype.TypeNo.HasValue).Select(p => p.associatedactiontype.TypeNo.Value).Distinct().ToList());
+
+    <script>
+		$(document).ready(function () {
+				document.getElementById("ErrMsg").innerHTML = "";
+				var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+
+	form = $("#frmT_Facility").find(":not(#dvT_FacilityAddressID *)").serialize();
+				dataurl = "@Url.Action("businessruletype", "T_Facility", new { ruleType = "OnEdit"})";
+                ApplyBusinessRuleOnPageLoad("@typelist",dataurl, "T_Facility", false, "ErrMsg", form);
+				//business rules on inline associations
+                inlinecount = "@businessurlinline.Where(p => p.EntityName == "T_Address").Count()";
+                if (inlinecount != "0") {
+                    form = $('#dvT_FacilityAddressID :input').serialize();
+                    form = form.replaceAll("t_facilityaddress.", "");
+                    dataurl = "@Url.Action("businessruletype", "T_Address", new { ruleType = "OnEdit" })";
+                    ApplyBusinessRuleOnPageLoad("@inlinetypelist",dataurl, "T_Address", true, "ErrMsg", form, "T_FacilityAddress", "Address");
+                }
+
+    });
+</script>
+<script>
+    $("form").submit(function (event) {
+	if (!$("#frmT_Facility").valid()) return;
+			document.getElementById("ErrMsg").innerHTML = "";
+            var flag = true;
+            var dataurl = "";
+            var form = "";
+            var inlinecount = "0";
+	 form = $("#frmT_Facility").find(":not(#dvT_FacilityAddressID *)").serialize();
+    
+				 dataurl = "@Url.Action("businessruletype", "T_Facility", new { ruleType = "OnEdit"})";
+                 flag = ApplyBusinessRuleOnSubmit(dataurl, "T_Facility", false, "ErrMsg", form);
+
+  				 //business rules on inline associations
+                inlinecount = "@businessurlinline.Where(p => p.EntityName == "T_Address").Count()";
+                if (inlinecount != "0") {
+                    form = $('#dvT_FacilityAddressID :input').serialize();
+                    form = form.replaceAll("t_facilityaddress.", "");
+                    dataurl = "@Url.Action("businessruletype", "T_Address", new { ruleType = "OnEdit" })";
+                    flag = flag && ApplyBusinessRuleOnSubmit(dataurl, "T_Address", true, "ErrMsg", form, "T_FacilityAddress", "Address");
+                }
+               
+			 if (flag)
+				{
+				                    $('input:hidden[name="hdncommand"]').val($(this.id).context.activeElement.value);
+					if ($(document.activeElement).attr('id') == "nextEdit" || $(document.activeElement).attr('id') == "prevEdit")
+			         $('input:hidden[name="hdncommand"]').val("SaveNextPrev");
+					 $("#frmT_Facility").find(':input').removeAttr('disabled');
+					}
+            return flag;
+		});
+</script>
+}
+ else
+    {
+       <script>
+    $("input[type='submit']").click(function (event) {
+	if (!$("#frmT_Facility").valid()) return;
+        var $this = $(this);
+                var actionName = $this.attr("actionName")
+                if (actionName == undefined)
+                    actionName = $this.val();
+                $('input:hidden[name="hdncommand"]').val(actionName);
+    });
+	</script>
+    }
+ 
+}
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+		focusOnControl('frmT_Facility');
+        }
+        catch (ex) { }
+    });
+	 $(document).ready(function () {
+		var RecIdEdit = $("#frmT_Facility").find("input:hidden[name='Id']").val();
+        $("#EntityT_FacilityDisplayValueEdit").val(RecIdEdit);
+
+		var textedit = $("option:selected", $("#EntityT_FacilityDisplayValueEdit")).text();
+		$("#EntityT_FacilityDisplayValueEdit").attr('data-toggle', 'tooltip')
+		$("#EntityT_FacilityDisplayValueEdit").attr('title', textedit);
+
+        var lastOptionValEdit = $('#EntityT_FacilityDisplayValueEdit option:last-child').val();
+        var fristOptionValEdit = $('#EntityT_FacilityDisplayValueEdit option:first-child').val();
+        if (lastOptionValEdit == RecIdEdit) {
+            $('#nextEdit').attr({ "disabled": "true", "style": "background-color:#eeeeee !important; color:#969696 !important; border-color:#ccc !important" });
+        }
+        if (fristOptionValEdit == RecIdEdit)
+            $('#prevEdit').attr({ "disabled": "true", "style": "background-color:#eeeeee !important; color:#969696 !important; border-color:#ccc !important" });
+    });
+</script>
+
+

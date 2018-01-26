@@ -1,0 +1,352 @@
+﻿@model GeneratorBase.MVC.Models.T_DrugAlcoholTest
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_DrugAlcoholTestIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_DrugAlcoholTestIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_DrugAlcoholTestIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_DrugAlcoholTestIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_DrugAlcoholTestIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_DrugAlcoholTestIsSetValueUIRule);
+    }
+}
+@using (Html.BeginForm("Create", "T_DrugAlcoholTest",new {UrlReferrer = Convert.ToString(ViewData["T_DrugAlcoholTestParentUrl"]), IsDDAdd = ViewBag.IsDDAdd }, FormMethod.Post, new { enctype = "multipart/form-data",id="frmT_DrugAlcoholTest" }))
+{
+   @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+	<input type="hidden" id="ErrMsg" />
+	@*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+    <div id="errorContainer" style="display: none">
+        <div id="errorsMsg"></div>
+        <div id="errors"></div>
+    </div>
+	 
+	 <div id="divDisplayThresholdLimit" style="display:none;">
+	</div>
+	 <div id="divDisplayBRmsgMandatory" style="display:none;">
+	</div>
+	<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+	</div>
+	<div id="divDisplayCodeFragment" style="display:none;">
+	</div>
+
+	<div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="AppForm">
+                <div class="">
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48904">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+											
+									<h3 class="panel-title" alt="Employee Information" title="Employee Information">Employee Information</h3>
+								</div>
+                                <div class="panel-body">
+      <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeDrugAlcoholTestID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_EmployeeDrugAlcoholTestID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_EmployeeDrugAlcoholTestID", null, "-- Select --", new {   @required ="required",      @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeDrugAlcoholTestID" }) })
+			@Html.ValidationMessageFor(model => model.T_EmployeeDrugAlcoholTestID)
+			@if ( User.CanAdd("T_Employee"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_Employee"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+							</div>
+                         </div>
+                      </div>
+       </div>
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48905">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#drugalcoholtestinformationbody" alt="Drug & Alcohol Test Information" title="Drug & Alcohol Test Information"><span class="glyphicon glyphicon-chevron-down"></span> Drug & Alcohol Test Information</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="drugalcoholtestinformationbody">					
+      <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TypeOfTestID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_TypeOfTestID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_TypeOfTestID", null, "-- Select --", new {   @required ="required",      @class = "chosen-select form-control", @HostingName = "T_TestType", @dataurl = Url.Action("GetAllValue", "T_TestType",new { caller = "T_TypeOfTestID" }) })
+			@Html.ValidationMessageFor(model => model.T_TypeOfTestID)
+			@if ( User.CanAdd("T_TestType"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_TestType"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Type Of Test','dvPopup','" + Url.Action("CreateQuick", "T_TestType", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+@if(User.CanView("T_DrugAlcoholTest","T_TestReasonID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TestReasonID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_TestReasonID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_TestReasonID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_ReasonForDrugTest", @dataurl = Url.Action("GetAllValue", "T_ReasonForDrugTest",new { caller = "T_TestReasonID" }) })
+			@Html.ValidationMessageFor(model => model.T_TestReasonID)
+			@if ( User.CanAdd("T_ReasonForDrugTest"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_ReasonForDrugTest"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Test Reason','dvPopup','" + Url.Action("CreateQuick", "T_ReasonForDrugTest", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+     @if(User.CanView("T_DrugAlcoholTest","T_DateOrdered"))
+{
+		  <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DateOrdered">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_DateOrdered) <span class="text-danger-reg">*</span></label>
+                                <div class="form-group" title="Date  Of  Test">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_DateOrdered">
+                                        @Html.TextBoxFor(model => model.T_DateOrdered, new { @class = "form-control" ,@Value = DateTime.Now.ToString("MM/dd/yyyy")  })
+                                        
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_DateOrdered)
+
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_DateOrdered').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_DateOrdered').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+							}
+		  
+                          
+			 @if(User.CanView("T_DrugAlcoholTest","T_ReviewersInitials"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ReviewersInitials">
+                                <div class='form-group' title="Administered  By">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_ReviewersInitials) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_ReviewersInitials, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_ReviewersInitials)
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+@if(User.CanView("T_DrugAlcoholTest","T_DrugTestResultsID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DrugTestResultsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_DrugTestResultsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_DrugTestResultsID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_DrugTestResult", @dataurl = Url.Action("GetAllValue", "T_DrugTestResult",new { caller = "T_DrugTestResultsID" }) })
+			@Html.ValidationMessageFor(model => model.T_DrugTestResultsID)
+			@if ( User.CanAdd("T_DrugTestResult"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_DrugTestResult"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Test Results','dvPopup','" + Url.Action("CreateQuick", "T_DrugTestResult", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+     @if(User.CanView("T_DrugAlcoholTest","T_ResultsReceivedDate"))
+{
+		  <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ResultsReceivedDate">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_ResultsReceivedDate) </label>
+                                <div class="form-group" title="Results  Received  Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_ResultsReceivedDate">
+                                        @Html.TextBoxFor(model => model.T_ResultsReceivedDate, new { @class = "form-control"   })
+                                        
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_ResultsReceivedDate)
+
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_ResultsReceivedDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_ResultsReceivedDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+							}
+		  
+                          
+							</div>
+                         </div>
+                      </div>
+       </div>
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48906">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#notesbody" alt="Notes" title="Notes"><span class="glyphicon glyphicon-chevron-down"></span> Notes</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse collapse" id="notesbody">					
+						@if(User.CanView("T_DrugAlcoholTest","T_Notes"))
+								{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Notes">
+                                <div class='form-group' title="Notes">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Notes) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    @Html.TextAreaFor(model => model.T_Notes, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_Notes)
+									</div>
+                                </div>
+						</div>
+						}
+							</div>
+                         </div>
+                      </div>
+       </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+		<a class="btn btn-default btn-sm" onclick="goBack('@Url.Action("Index","T_DrugAlcoholTest")');" alt="Cancel" title="Cancel">Cancel</a>
+          @*@Html.ActionLink("Cancel", "Cancel", new { UrlReferrer = ViewData["T_DrugAlcoholTestParentUrl"] }, new { @onclick = "", @class = "btn btn-default btn-sm" })*@
+	<input type="submit" name="command" value="Create" class="btn btn-primary btn-sm" alt="Create" title="Create"/>
+    if (ViewBag.IsDDAdd == null && User.CanEdit("T_DrugAlcoholTest"))
+    {
+	<input type="submit" name="command" value="Create & Continue" class="btn btn-primary btn-sm" alt="Create & Continue" title="Create & Continue"/>
+	}
+	 <input type="hidden" name="hdncommand" value="" />
+	<br/><br/>
+}
+	<script>
+	    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+	
+@{
+		var businessrule = User.businessrules.Where(p => p.EntityName == "T_DrugAlcoholTest").ToList();
+		
+if ((businessrule != null && businessrule.Count > 0) )
+    {
+        <script>
+            $("form").submit(function (event) {
+			if (!$("#frmT_DrugAlcoholTest").valid()) return;
+			var flag = true;
+							document.getElementById("ErrMsg").innerHTML = "";
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+                //var form = $(this).serialize();
+ form = $("#frmT_DrugAlcoholTest").serialize();
+  
+                dataurl = "@Url.Action("businessruletype", "T_DrugAlcoholTest", new { ruleType = "OnCreate"})";
+                flag = ApplyBusinessRuleOnSubmit(dataurl, "T_DrugAlcoholTest", false, "ErrMsg", form);
+				//business rules on inline associations
+				if (flag) {
+				                    $('input:hidden[name="hdncommand"]').val($(document.activeElement).val());
+
+					 $("#frmT_DrugAlcoholTest").find(':input').removeAttr('disabled');
+                }
+				return flag;
+			 });	
+        </script>
+    }
+    else
+    {
+	<script>
+            $("input[type='submit']").click(function (event) {
+			if (!$("#frmT_DrugAlcoholTest").valid()) return;
+                var $this = $(this);
+                $('input:hidden[name="hdncommand"]').val($this.val());
+            });
+	</script>
+           
+    }
+}
+
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+		 focusOnControl('frmT_DrugAlcoholTest');
+        }
+        catch (ex) { }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        try {
+            var hostingEntityName = "";
+            if ('@Convert.ToString(ViewData["AssociatedType"])'.length > 0) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+                 $('#' + hostingEntityName + 'ID').attr("lock","true");
+				  $('#' + hostingEntityName + 'ID').trigger("change");
+            }
+			
+        }
+        catch (ex) { }
+		});
+</script>
+

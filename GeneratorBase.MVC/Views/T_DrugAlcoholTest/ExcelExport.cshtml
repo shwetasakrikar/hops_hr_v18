@@ -1,0 +1,97 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_DrugAlcoholTest>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Drug & Alcohol Test.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_DrugAlcoholTest","T_EmployeeDrugAlcoholTestID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>Employee</th>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_TypeOfTestID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_TestType"?"hidden":"")>Type Of Test</th>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_TestReasonID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_ReasonForDrugTest"?"hidden":"")>Test Reason</th>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_DateOrdered"))
+{
+		<th>Date Of Test</th>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_ReviewersInitials"))
+{
+		<th>Administered By</th>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_DrugTestResultsID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_DrugTestResult"?"hidden":"")>Test Results</th>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_ResultsReceivedDate"))
+{
+		<th>Results Received Date</th>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_Notes"))
+{
+		<th>Notes</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_DrugAlcoholTest","T_EmployeeDrugAlcoholTestID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeedrugalcoholtest.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_TypeOfTestID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_TestType"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_typeoftest.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_TestReasonID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_ReasonForDrugTest"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_testreason.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_DateOrdered"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_DateOrdered)
+        </td>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_ReviewersInitials"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_ReviewersInitials)
+        </td>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_DrugTestResultsID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_DrugTestResult"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_drugtestresults.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_ResultsReceivedDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_ResultsReceivedDate)
+        </td>
+}
+@if(User.CanView("T_DrugAlcoholTest","T_Notes"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Notes)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

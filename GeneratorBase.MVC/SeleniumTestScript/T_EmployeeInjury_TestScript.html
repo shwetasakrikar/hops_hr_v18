@@ -1,0 +1,1054 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://apps.turanto.com/HOPS_HR_v18" />
+<title>Employee Injury</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">T_EmployeeInjury</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/HOPS_HR_v18/Home</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#liT_EmployeeInjury &gt; a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//button[@type='button'])[5]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_ClaimNo</td>
+	<td>Claim No.</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=T_OSHA</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Location</td>
+	<td>Location </td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_AccidentDate</td>
+	<td>12/11/2017 5:52:56 PM</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_DescribeHowInjuryOrIllnessOccurred</td>
+	<td>Describe How Injury Or Illness Occurred</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_PatientInvolvedRegnoepi</td>
+	<td>Patient Involved (Regnoepi)</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_ExaminingPhysician</td>
+	<td>Examining Physician</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_ReferringPhysician</td>
+	<td>Referring Physician</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Diagnosis</td>
+	<td>Diagnosis </td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_DaysOff</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_DaysRestricted</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_DetailsOfRestriction</td>
+	<td>Details Of Restriction</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_RestrictionStartDate</td>
+	<td>12/11/2017 5:52:56 PM</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_RestrictionEndDate</td>
+	<td>12/11/2017 5:52:56 PM</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_AccidentNotes</td>
+	<td>Accident Notes</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_RestrictionNotes</td>
+	<td>Restriction Notes</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeEmployeeInjuryID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeEmployeeInjuryID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeEmployeeInjuryflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeEmployeeInjuryflag</td>
+	<td>T_EmployeeEmployeeInjury</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_EmployeeEmployeeInjuryID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_PID</td>
+	<td>Employee PID</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=T_DateOfBirth</td>
+	<td>12/11/2017 5:52:56 PM</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_LastName</td>
+	<td>Employee Last Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_FirstName</td>
+	<td>Employee First Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_MiddleName</td>
+	<td>Employee Middle Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_WorkEmail</td>
+	<td>testmail@test.com</td>
+</tr>
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeAtFacilityID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeAtFacilityID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeAtFacilityflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeAtFacilityflag == false</td>
+	<td>T_EmployeeAtFacility</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeAtFacilityID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeAtFacilityID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeAtFacility</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeStatusID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeStatusID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeStatusflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeStatusflag == false</td>
+	<td>T_EmployeeStatus</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeStatusID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeStatusID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeStatus</td>
+	<td></td>
+</tr>
+		
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeGenderID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeGenderID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeGenderflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeGenderflag == false</td>
+	<td>T_EmployeeGender</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeGenderID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeGenderID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeGender</td>
+	<td></td>
+</tr>
+		
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeEmployeeInjury</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeEmployeeInjuryID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeEmployeeInjuryID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_TypeofClaimMCIID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_TypeofClaimMCIID_chosen']/div/ul/li[2]</td>
+	<td>T_TypeofClaimMCIflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_TypeofClaimMCIflag</td>
+	<td>T_TypeofClaimMCI</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_TypeofClaimMCIID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Type of Claim MCI Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Type of Claim MCI Description</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_TypeofClaimMCI</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_TypeofClaimMCIID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_TypeofClaimMCIID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_AccidentShiftID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_AccidentShiftID_chosen']/div/ul/li[2]</td>
+	<td>T_AccidentShiftflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_AccidentShiftflag</td>
+	<td>T_AccidentShift</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_AccidentShiftID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Shift Working When Accident Occurred Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Shift Working When Accident Occurred Description</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_AccidentShift</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_AccidentShiftID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_AccidentShiftID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_FacilityAccidentOccuredID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_FacilityAccidentOccuredID_chosen']/div/ul/li[2]</td>
+	<td>T_FacilityAccidentOccuredflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_FacilityAccidentOccuredflag</td>
+	<td>T_FacilityAccidentOccured</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_FacilityAccidentOccuredID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Facility Accident Occurred At Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Facility Accident Occurred At Description</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_FacilityAccidentOccured</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_FacilityAccidentOccuredID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_FacilityAccidentOccuredID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_UnitWhereAccidentOccuredID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_UnitWhereAccidentOccuredID_chosen']/div/ul/li[2]</td>
+	<td>T_UnitWhereAccidentOccuredflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_UnitWhereAccidentOccuredflag</td>
+	<td>T_UnitWhereAccidentOccured</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_UnitWhereAccidentOccuredID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Unit Where Accident Occured Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Unit Where Accident Occured Description</td>
+</tr>
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_UnitsforAllFaciltiesID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_UnitsforAllFaciltiesID_chosen']/div/ul/li[2]</td>
+	<td>T_UnitsforAllFaciltiesflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_UnitsforAllFaciltiesflag == false</td>
+	<td>T_UnitsforAllFacilties</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_UnitsforAllFaciltiesID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_UnitsforAllFaciltiesID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_UnitsforAllFacilties</td>
+	<td></td>
+</tr>
+		
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_UnitWhereAccidentOccured</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_UnitWhereAccidentOccuredID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_UnitWhereAccidentOccuredID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeInjuryFloorID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeInjuryFloorID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeInjuryFloorflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeInjuryFloorflag</td>
+	<td>T_EmployeInjuryFloor</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_EmployeInjuryFloorID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Floor Accident Occurred on Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Floor Accident Occurred on Description</td>
+</tr>
+	<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_AllUnitsFloorID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_AllUnitsFloorID_chosen']/div/ul/li[2]</td>
+	<td>T_AllUnitsFloorflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_AllUnitsFloorflag == false</td>
+	<td>T_AllUnitsFloor</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_AllUnitsFloorID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_AllUnitsFloorID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_AllUnitsFloor</td>
+	<td></td>
+</tr>
+		
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeInjuryFloor</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeInjuryFloorID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeInjuryFloorID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_LocationOfAccidentID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_LocationOfAccidentID_chosen']/div/ul/li[2]</td>
+	<td>T_LocationOfAccidentflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_LocationOfAccidentflag</td>
+	<td>T_LocationOfAccident</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_LocationOfAccidentID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Location Of Accident Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Location Of Accident Description</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_LocationOfAccident</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_LocationOfAccidentID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_LocationOfAccidentID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeInjuryCauseID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeInjuryCauseID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeInjuryCauseflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeInjuryCauseflag</td>
+	<td>T_EmployeeInjuryCause</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_EmployeeInjuryCauseID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Cause Of Injury  Name</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeInjuryCause</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeInjuryCauseID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeInjuryCauseID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeInjuryNatureID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeInjuryNatureID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeInjuryNatureflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeInjuryNatureflag</td>
+	<td>T_EmployeeInjuryNature</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_EmployeeInjuryNatureID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Nature Of Injury Or Illness Name</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeInjuryNature</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeInjuryNatureID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeInjuryNatureID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeInjuryBodyPartsAffectedID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeInjuryBodyPartsAffectedID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeInjuryBodyPartsAffectedflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeInjuryBodyPartsAffectedflag</td>
+	<td>T_EmployeeInjuryBodyPartsAffected</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_EmployeeInjuryBodyPartsAffectedID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Parts Of Body Affected Name</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeInjuryBodyPartsAffected</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeInjuryBodyPartsAffectedID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeInjuryBodyPartsAffectedID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EMployeeInjuryMachineToolID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EMployeeInjuryMachineToolID_chosen']/div/ul/li[2]</td>
+	<td>T_EMployeeInjuryMachineToolflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EMployeeInjuryMachineToolflag</td>
+	<td>T_EMployeeInjuryMachineTool</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_EMployeeInjuryMachineToolID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Machine, Tool Or Object Causing Illness Or Injury  Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Machine, Tool Or Object Causing Illness Or Injury  Description</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EMployeeInjuryMachineTool</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EMployeeInjuryMachineToolID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EMployeeInjuryMachineToolID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_InitialTreatmentListID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_InitialTreatmentListID_chosen']/div/ul/li[2]</td>
+	<td>T_InitialTreatmentListflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_InitialTreatmentListflag</td>
+	<td>T_InitialTreatmentList</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_InitialTreatmentListID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Initial Treatment List Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Initial Treatment List Description</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_InitialTreatmentList</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_InitialTreatmentListID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_InitialTreatmentListID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeInjuryMedicalFacilityForTreatmentID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeInjuryMedicalFacilityForTreatmentID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeInjuryMedicalFacilityForTreatmentflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeInjuryMedicalFacilityForTreatmentflag</td>
+	<td>T_EmployeeInjuryMedicalFacilityForTreatment</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_EmployeeInjuryMedicalFacilityForTreatmentID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Medical Facility For Treatment Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Medical Facility For Treatment Description</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeInjuryMedicalFacilityForTreatment</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeInjuryMedicalFacilityForTreatmentID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeInjuryMedicalFacilityForTreatmentID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeInjuryRefusalID_chosen']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//div[@id='T_EmployeeInjuryRefusalID_chosen']/div/ul/li[2]</td>
+	<td>T_EmployeeInjuryRefusalflag</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>storedVars.T_EmployeeInjuryRefusalflag</td>
+	<td>T_EmployeeInjuryRefusal</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='T_EmployeeInjuryRefusalID_chosen']/following-sibling::div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='dvPopup']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Name</td>
+	<td>Restriction Refusal Reason Name</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=T_Description</td>
+	<td>Restriction Refusal Reason Description</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>T_EmployeeInjuryRefusal</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>id=T_EmployeeInjuryRefusalID_chosen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='T_EmployeeInjuryRefusalID_chosen']/div/ul/li[2]</td>
+	<td></td>
+</tr>
+
+
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@name='command' and @Value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Home</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
+

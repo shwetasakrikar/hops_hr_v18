@@ -1,0 +1,773 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.FileDocument>
+@using PagedList.Mvc;
+@{
+    var ActionNameUrl = "Index";
+    if (HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().ToUpper() == "FSEARCH")
+    {
+        ActionNameUrl = "FSearch";
+    }
+	var BackUrl =  Request.Url;
+	 if (ViewData["HostingEntity"] != null && (Request.QueryString["TabToken"] != null || Request.IsAjaxRequest()))
+	{
+		BackUrl =  Request.UrlReferrer;
+	}
+	var EntityReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "FileDocument");
+	
+	}
+<div id="FileDocument">
+
+<style>
+    .table-responsive > .fixed-column {
+        position: absolute;
+        display: block;
+        width: auto;
+        border: 0px solid transparent;
+        border-top: 1px solid #c3ddec;
+    }
+    .fixed-column th {
+        background: #fff;
+    }
+    .fixed-column td {
+        background: #fff;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+	 $(".pagination a").click(function (e) {
+            //PaginationClick(e,'FileDocument')
+			PaginationClick(e, 'FileDocument','@User.JavaScriptEncodedName')
+        })
+	    if("@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().ToUpper()" == "FSEARCH")
+        {
+            $("#fsearchFileDocument").addClass('in');
+			if('@ViewData["HostingEntity"]'.length>0)
+	        {
+                $("#" + "@ViewData["HostingEntity"]" + "_FileDocument").hide();
+	        }
+			FSearchColumnsShowHideGalaryList('@ViewData["HideColumns"]', 'FileDocument');
+        }
+	    $("#SearchStringFileDocument").keypress(function (e) {
+			if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+				 $("#FileDocumentSearch").bind("click", (function () {
+                        }));
+                $('#FileDocumentSearch').trigger("click");
+                return false;
+			}
+        })
+        $("#btnShowHideFileDocument").mouseup(function () {
+            if (document.getElementById('ColumnShowHideFileDocument').className == 'collapse') {
+				 $('#lblFileDocument').css('display', 'none');
+            }
+        })
+		if ($("#ErrmsgLockRecord").length > 0 && $("#ErrmsgLockRecord").text().length > 0) {
+                    $(".pull-left.actionbar").hide();
+		}
+    });
+</script>
+@functions {
+    object getSortHtmlAttributes(string sortby, bool IsPaging, int? page, bool? IsExport)
+    {
+        if (IsPaging)
+        {
+            return new
+            {
+                page,
+                sortBy = ViewBag.CurrentSort,
+                isAsc = ViewBag.IsAsc,
+                currentFilter = ViewBag.CurrentFilter,
+                HostingEntity = @Convert.ToString(ViewData["HostingEntity"]),
+                AssociatedType = @Convert.ToString(ViewData["AssociatedType"]),
+                HostingEntityID = ViewData["HostingEntityID"],
+				IsExport = IsExport,
+				FSFilter = ViewBag.FSFilter == null ? "Fsearch" : ViewBag.FSFilter,
+				IsFilter = @Convert.ToBoolean(ViewData["IsFilter"]),
+                
+ t_employeedocuments = Request.QueryString["t_employeedocuments"],
+  DateCreatedFrom = Request.QueryString["DateCreatedFrom"],
+  DateCreatedFromhdn = Request.QueryString["DateCreatedFromhdn"],
+  DateCreatedTo = Request.QueryString["DateCreatedTo"],
+  DateCreatedTohdn = Request.QueryString["DateCreatedTohdn"],
+  DateLastUpdatedFrom = Request.QueryString["DateLastUpdatedFrom"],
+  DateLastUpdatedFromhdn = Request.QueryString["DateLastUpdatedFromhdn"],
+  DateLastUpdatedTo = Request.QueryString["DateLastUpdatedTo"],
+  DateLastUpdatedTohdn = Request.QueryString["DateLastUpdatedTohdn"],
+		search=Request.QueryString["search"],
+		SortOrder = Request.QueryString["SortOrder"],
+		viewtype = ViewBag.TemplatesName,
+		HideColumns = ViewData["HideColumns"],
+		 GroupByColumn = ViewBag.GroupByColumn,
+		 FilterCondition = ViewBag.FilterCondition,
+		 inbuiltSearchCriteria = ViewBag.inbuiltSearchCriteria
+            };
+        }
+        else
+        {
+            return new
+            {
+                sortBy = sortby,
+                currentFilter = Request.QueryString["currentFilter"],
+                searchString = Request.QueryString["searchString"],
+                isAsc = (ViewBag.IsAsc == "ASC" ? "DESC" : ""),
+                page = ViewBag.Pages,
+                HostingEntity = @Convert.ToString(ViewData["HostingEntity"]),
+                HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),
+                AssociatedType = @Convert.ToString(ViewData["AssociatedType"]),
+				IsExport = IsExport,
+				FSFilter = ViewBag.FSFilter == null ? "Fsearch" : ViewBag.FSFilter,
+				IsFilter = @Convert.ToBoolean(ViewData["IsFilter"]),
+ t_employeedocuments = Request.QueryString["t_employeedocuments"],
+ DateCreatedFrom = Request.QueryString["DateCreatedFrom"],
+  DateCreatedFromhdn = Request.QueryString["DateCreatedFromhdn"],
+  DateCreatedTo = Request.QueryString["DateCreatedTo"],
+  DateCreatedTohdn = Request.QueryString["DateCreatedTohdn"],
+ DateLastUpdatedFrom = Request.QueryString["DateLastUpdatedFrom"],
+  DateLastUpdatedFromhdn = Request.QueryString["DateLastUpdatedFromhdn"],
+  DateLastUpdatedTo = Request.QueryString["DateLastUpdatedTo"],
+  DateLastUpdatedTohdn = Request.QueryString["DateLastUpdatedTohdn"],
+		search=Request.QueryString["search"],
+		SortOrder = Request.QueryString["SortOrder"],
+		viewtype = ViewBag.TemplatesName,
+		HideColumns = ViewData["HideColumns"],
+		 GroupByColumn = ViewBag.GroupByColumn,
+		 FilterCondition = ViewBag.FilterCondition,
+		 inbuiltSearchCriteria = ViewBag.inbuiltSearchCriteria
+            };
+        }
+    }
+}
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-sx-12">
+        <div style="display:block; padding:0px 0px 5px 0px;">
+	    
+	   
+
+            <div class="pull-left actionbar">
+                 <div class="btn-group" id='@ViewData["HostingEntity"]_FileDocument'>
+				  @if (User.CanAdd("FileDocument"))
+				  {
+						
+					<a class="btn btn-sm" data-placement="top" id="addFileDocument" data-original-title="Quick Add" data-toggle="modal" data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Document','dvPopup','" + Url.Action("CreateQuick", "FileDocument", new { UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS=DateTime.Now,viewtype = Convert.ToString(ViewBag.TemplatesName) }) + "')")">
+						<i class="fa fa-plus-circle" style="margin-right:3px"></i> Quick Add
+                    </a>
+			}
+			
+                </div>
+				
+		<div class="btn-group">
+
+   	@if (ViewData["HostingEntity"] == null || Convert.ToBoolean(ViewData["IsFilter"]) == true)
+	{
+		if (User.CanView("T_Employee"))
+	{ 
+			<div class="btn-group">
+		<a class="btn btn-sm dropdown-toggle" data-original-title="Filter-Groupby" data-toggle="dropdown" href="#" >
+		<i class="fa fa-filter" style="margin-right:3px"></i> Filter
+		</a>
+		<ul class="dropdown-menu" role="menu">
+			@if (User.CanView("T_Employee"))
+			{
+				<li>
+					<a id="fltT_Employee" data-placement="top" onclick=@Html.Raw("SetCookieFlt('fltT_Employee');EntityFilter('FileDocument','" + Url.Action("GetAllValueForFilter", "T_Employee") + "','" + Html.Raw(Url.Action("Index", "FileDocument", new {FirstCall=true,FilterHostingEntityID = ViewData["HostingEntityID"], IsFilter = true, HostingEntity = "T_Employee", AssociatedType = "T_EmployeeDocuments", ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)})) + "','" + User.JavaScriptEncodedName + "');")>
+						<span>Employee</span>
+					</a>
+				</li>
+			}
+     <li>
+@Html.ActionLink("Clear", "Index", new { viewtype = Convert.ToString(ViewBag.TemplatesName) }, new { onclick = "ClearFilterCookies();", @class = "label label-primary pull-left filterLabel", @Style = "margin-left:20px;color: white" })</li>
+		</ul>
+		</div>
+		}
+		} 
+   
+
+                </div>
+					 <div class="btn-group">
+                        <a class="btn btn-sm dropdown-toggle tip-top" data-original-title="View  As" style="padding:3px 5px;" data-toggle="dropdown">
+                            <span class="fa fa fa-table"></span> View  As
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" style="min-width:110px">
+                            <li>
+                                <a data-placement="top" style="cursor:pointer;"
+                                   onclick="@Html.Raw("LoadTabTemplate('FileDocument','" + Url.Action("Index", "FileDocument", new { UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntity = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS = DateTime.Now, viewtype = "IndexPartialGallery" }) + "')")">
+                                    <span class="fa fa-th"></span> Gallery
+                                </a>
+                            </li>
+                            <li>
+                                <a style="display:block; margin:0px;"
+                                   onclick="@Html.Raw("LoadTabTemplate('FileDocument','" + Url.Action("Index", "FileDocument", new { UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntity = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS = DateTime.Now, viewtype = "IndexPartialList" }) + "')")">
+                                    <span class="fa fa-list"></span> List
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+<div class="btn-group">
+                            <a class="btn btn-sm dropdown-toggle tip-top" data-toggle="dropdown">
+                                Tools
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" style="min-width:110px">
+							 <li>
+							               @if (ViewData["HostingEntity"] == null)
+			   {
+                        <a data-placement="top" data-original-title="Show Graph" data-toggle="modal" data-target="#ShowGraphFileDocument" onclick=@Html.Raw("OpenDashBoard('dvShowGraphFileDocument');")>
+                            <span class="fa fa-area-chart" style="margin-right:3px"></span> Show Graph
+                        </a>
+				}
+	           
+                                </li>
+                                <li>
+								
+				@if ( User.CanAdd("FileDocument") && User.CanUseVerb("ImportExcel", "FileDocument", User))
+			{
+				if (ViewData["HostingEntity"]==null)
+				{ 
+				 <a  onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Upload", "FileDocument") + "');")>
+                        <i class="fa fa-upload" style="margin-right:3px"></i>    Import Excel
+                                         
+                 </a>
+				}
+			}
+
+                                  
+                                </li>
+
+                                <li>
+				 @if (User.CanView("FileDocument") && User.CanUseVerb("ExportExcel", "FileDocument", User))
+                {
+					<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action(ActionNameUrl,"FileDocument",getSortHtmlAttributes(null, false, null, true), null) + "');")>
+						<i class="fa fa-download" style="margin-right:3px"></i>  Export Excel
+                    
+					</a>
+				}
+                                   
+                                </li>
+                               			<li>
+                <a class="collapse-data-btn" id="btnShowHideFileDocument" data-original-title="Show/Hide Column" data-placement="top" onclick=@Html.Raw("showhideColumns(event,'FileDocument');")>
+                    <span class="fa fa-table"></span>  Show/Hide Column
+                </a>
+            </li>
+                 
+                            </ul>
+                        </div>
+
+</div>					
+
+				<div class="pull-right" style="width:300px; padding-top:4px; ">
+                        <div class="input-group">
+                            @Html.TextBox("SearchStringFileDocument", ViewBag.CurrentFilter as string, null, new { @class = "form-control fixsearchbox", @value = ViewBag.Homeval, @placeholder = "Search" })
+                            <div class="input-group-btn">
+                              <a id="FileDocumentSearch" onclick="SearchClick(event, 'FileDocument', '@Html.Raw(Url.Action("Index", "FileDocument", new { IsFilter = ViewData["IsFilter"], IsDeepSearch = false, searchString = "_SearchString", HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]),HideColumns = ViewData["HideColumns"], SearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName) }))','@User.JavaScriptEncodedName');" data-original-title="Grid Search" class="btn btn-default btn-default tip-top" style="padding:3px 5px; border:1px solid #ccc" ><span class="fa fa-search"></span></a>
+								<a id="FileDocumentDeepSearch" onclick="SearchClick(event, 'FileDocument', '@Html.Raw(Url.Action("Index", "FileDocument", new { IsFilter = ViewData["IsFilter"], IsDeepSearch = true, searchString = "_SearchString", HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]),HideColumns = ViewData["HideColumns"], SearchTimeStamp = DateTime.Now.Ticks.ToString() ,viewtype = Convert.ToString(ViewBag.TemplatesName)}))','@User.JavaScriptEncodedName');" data-original-title="Detail Search" class="btn btn-default btn-default tip-top" style="padding:3px 5px; border:1px solid #ccc; display:none;"><span class="fam-zoom-in"></span></a>
+ @if (ViewData["HostingEntity"]==null)
+	{ 
+			 <a href="@(Url.Action("SetFSearch", "FileDocument")+Request.Url.Query)" data-original-title="Faceted Search" class="btn btn-default btn-default tip-top" style="padding:3px 5px; border:1px solid #ccc"><span class="fa fa-binoculars"></span></a>
+	}
+								<button id="FileDocumentCancel" type="button" class="btn btn-default btn-default collapse-data-btn tip-top" onclick="CancelSearch('FileDocument','@Html.Raw(Url.Action("Index", "FileDocument", new {IsFilter=ViewData["IsFilter"], HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]), HideColumns = ViewData["HideColumns"], ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName) }))','@User.JavaScriptEncodedName')" data-original-title="Clear Search" data-placement="top" style="padding:3px 5px; border:1px solid #ccc">
+                                    <span class="fa fa-minus-circle"></span>
+                                </button>
+                                <button id="FileDocumentSearchCancel" type="button" class="btn btn-default btn-default collapse-data-btn tip-top" onclick="CancelSearch('FileDocument','@Html.Raw(Url.Action("Index", "FileDocument", new {IsFilter=ViewData["IsFilter"], itemsPerPage=Convert.ToInt32(ViewBag.PageSize),HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]),HideColumns = ViewData["HideColumns"], ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)}))','@User.JavaScriptEncodedName')" data-original-title="Refresh Grid" data-placement="top" style="padding:3px 5px; border:1px solid #ccc">
+                                    <span class="fa fa-refresh"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+            
+
+			 <div style="clear:both"></div>
+ @if (ViewData["HostingEntity"]==null)
+	{ 
+	if (ViewBag.SearchResult != "" )
+                            {
+			<div id="fsearchFileDocument" class="collapse MessageFSearch">
+                        @Html.Raw(Html.Encode(ViewBag.SearchResult).Replace(Environment.NewLine, "<br/>"))
+						 <a href="@Url.Action("Index", "FileDocument",new { viewtype = Convert.ToString(ViewBag.TemplatesName)})" style="margin-left:5px;float:right"><span class="glyphicon glyphicon-remove-sign"></span> Clear</a>
+						  <a href="@(Url.Action("SetFSearch", "FileDocument")+Request.Url.Query)" style="float:right" ><span class="glyphicon glyphicon-edit"></span> Modify</a>
+            </div>
+	}
+}
+	@Html.Partial("~/Views/FileDocument/ShowHideColumns.cshtml") 
+  @if (Model.Count > 0)
+        {
+						<div class="ViewMessage" style="margin-top: 0px;"> 
+							<label><input type="checkbox" value="" class="tip-top" data-placement="top" data-original-title="Select All" onclick="CommonSelectAllRows(this, 'divTurantoGrid');"> Select All</label>
+							
+						</div>
+		}
+         <div id="divTurantoGrid">
+	  @if (Model.Count > 0)
+	{
+	
+foreach (var item in Model) {
+  <div class="white-panel">
+   <h4 title="@item.DisplayValue" style="width:98%; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display:inline-block; margin-left:-3px; margin-top:-1px; font-size:12px; ">@item.DisplayValue</h4>
+   <div class="GenappGrid">
+				@if(User.CanView("FileDocument","DocumentName"))
+			{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "DocumentName");
+			<div class="col-sm-12 listwrapper" >
+			<div class="col2">
+                <div class="col-sm-4 listcolLeft overflow" title="Document Name">
+                   @Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "FileDocument", getSortHtmlAttributes("DocumentName", false, null, false), new { @onclick = "SortLinkClick(event,'FileDocument');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "DocumentName")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "DocumentName")
+				{<i class="fa fa-sort-asc"></i>}
+                </div>
+                <div class="col-sm-8 listcolRight overflow" title='@Html.DisplayFor(modelItem => item.DocumentName)'>
+                  : @Html.DisplayFor(modelItem => item.DocumentName)
+                </div>
+             </div>
+		  </div>
+			}
+						@if(User.CanView("FileDocument","Description"))
+			{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "Description");
+			<div class="col-sm-12 listwrapper" >
+			<div class="col3">
+                <div class="col-sm-4 listcolLeft overflow" title="Description">
+                   @Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "FileDocument", getSortHtmlAttributes("Description", false, null, false), new { @onclick = "SortLinkClick(event,'FileDocument');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "Description")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "Description")
+				{<i class="fa fa-sort-asc"></i>}
+                </div>
+                <div class="col-sm-8 listcolRight overflow" title='@Html.DisplayFor(modelItem => item.Description)'>
+                  : @Html.DisplayFor(modelItem => item.Description)
+                </div>
+             </div>
+		  </div>
+			}
+								@if(User.CanView("FileDocument","AttachDocument") && User.CanView("Document"))
+					{
+							 if(!string.IsNullOrEmpty(Html.DisplayFor(modelItem => item.AttachDocument).ToString()))
+							 {
+							 						@Html.ActionLink(item.AttachDocument, "Download", new { filename = item.AttachDocument }) 
+						
+			 
+												  }
+							  else{ <label>NA</label>} 
+					}
+								@if(User.CanView("FileDocument","DateCreated"))
+			{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "DateCreated");
+			<div class="col-sm-12 listwrapper" >
+			<div class="col5">
+                <div class="col-sm-4 listcolLeft overflow" title="Created">
+                   @Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "FileDocument", getSortHtmlAttributes("DateCreated", false, null, false), new { @onclick = "SortLinkClick(event,'FileDocument');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "DateCreated")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "DateCreated")
+				{<i class="fa fa-sort-asc"></i>}
+                </div>
+                <div class="col-sm-8 listcolRight overflow" title='@Html.DisplayFor(modelItem => item.DateCreated)'>
+                  : @Html.DisplayFor(modelItem => item.DateCreated)
+                </div>
+             </div>
+		  </div>
+			}
+						@if(User.CanView("FileDocument","DateLastUpdated"))
+			{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "DateLastUpdated");
+			<div class="col-sm-12 listwrapper" >
+			<div class="col6">
+                <div class="col-sm-4 listcolLeft overflow" title="Last Updated">
+                   @Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "FileDocument", getSortHtmlAttributes("DateLastUpdated", false, null, false), new { @onclick = "SortLinkClick(event,'FileDocument');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "DateLastUpdated")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "DateLastUpdated")
+				{<i class="fa fa-sort-asc"></i>}
+                </div>
+                <div class="col-sm-8 listcolRight overflow" title='@Html.DisplayFor(modelItem => item.DateLastUpdated)'>
+                  : @Html.DisplayFor(modelItem => item.DateLastUpdated)
+                </div>
+             </div>
+		  </div>
+			}
+			
+				<table>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="@item.Id" onclick="CommonSelectForBulkOperation(this,'@item.Id', 'divTurantoGrid');" style="position:absolute; top:5px; left:5px;  height:15px; width:15px;" />
+
+                        </td>
+                    </tr>
+                </table>
+			 <div class="pull-right" style="position:absolute; top:5px; right:5px;">
+                  <button data-toggle="dropdown" class="btn dropdown-toggle btn-default btn-xs">
+                   <span class="caret">    </span>
+                   </button>
+                        <ul class="dropdown-menu pull-left">
+                         
+                            @if (User.CanEdit("FileDocument"))
+                            {
+                                <li>
+                                    <a id='aBtnQuickEditFileDocument_@item.Id' data-toggle="modal" data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntityQuickEdit('addPopup','Edit Document','dvPopup','" + Url.Action("EditQuick", "FileDocument", new
+									{
+										id = item.Id,
+										UrlReferrer = Request.Url,
+										AssociatedType = ViewData["AssociatedType"],
+										HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]),
+										HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),
+										TS = DateTime.Now,viewtype = Convert.ToString(ViewBag.TemplatesName)
+									}) + "')")"><i class="fa fa-pencil"></i> Quick Edit</a>
+                                </li>
+                            }
+                         
+                           
+				@if (User.CanEdit("FileDocument"))
+                {
+				<li style="height:30px !important; margin:0px; ">
+                        <a href="@Url.Action("Edit","FileDocument", new { id = item.Id,  UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    
+                </li> 
+				}
+			@if (User.CanDelete("FileDocument"))
+                 {
+				<li style="height:30px !important; margin:0px; ">
+                    <a href="@Url.Action("Delete", "FileDocument", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) }, null)"><i class="glyphicon glyphicon-remove-sign" style="color: #E7574B;"></i> Delete</a>
+                </li>
+				 }
+ <li class="dropdown-submenu pull-left" style="height:30px !important; margin:0px;">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-zoom small"></i> Find Matching</a>
+    <ul class="dropdown-menu pull-left">
+<li  style="height:30px !important; margin:0px; ">
+		<a href="@Url.Action("FindFSearch", "T_Licenses", new {sourceEntity="FileDocument",id=item.Id}, null)">Licenses</a>
+</li>
+<li  style="height:30px !important; margin:0px; ">
+		<a href="@Url.Action("FindFSearch", "T_ServiceRecord", new {sourceEntity="FileDocument",id=item.Id}, null)">Service Record</a>
+</li>
+<li  style="height:30px !important; margin:0px; ">
+		<a href="@Url.Action("FindFSearch", "T_Comment", new {sourceEntity="FileDocument",id=item.Id}, null)">Comment</a>
+</li>
+<li  style="height:30px !important; margin:0px; ">
+		<a href="@Url.Action("FindFSearch", "T_DrugAlcoholTest", new {sourceEntity="FileDocument",id=item.Id}, null)">Drug & Alcohol Test</a>
+</li>
+<li  style="height:30px !important; margin:0px; ">
+		<a href="@Url.Action("FindFSearch", "T_UnitX", new {sourceEntity="FileDocument",id=item.Id}, null)">UnitX</a>
+</li>
+<li  style="height:30px !important; margin:0px; ">
+		<a href="@Url.Action("FindFSearch", "T_JobAssignment", new {sourceEntity="FileDocument",id=item.Id}, null)">Job Assignment</a>
+</li>
+<li  style="height:30px !important; margin:0px; ">
+		<a href="@Url.Action("FindFSearch", "T_LeaveProfile", new {sourceEntity="FileDocument",id=item.Id}, null)">Leave</a>
+</li>
+<li  style="height:30px !important; margin:0px; ">
+		<a href="@Url.Action("FindFSearch", "T_EmployeeInjury", new {sourceEntity="FileDocument",id=item.Id}, null)">Employee Injury</a>
+</li>
+<li  style="height:30px !important; margin:0px; ">
+		<a href="@Url.Action("FindFSearch", "T_BackgroundCheck", new {sourceEntity="FileDocument",id=item.Id}, null)">Background Check</a>
+</li>
+<li  style="height:30px !important; margin:0px; ">
+		<a href="@Url.Action("FindFSearch", "T_Education", new {sourceEntity="FileDocument",id=item.Id}, null)">Education</a>
+</li>
+<li  style="height:30px !important; margin:0px; ">
+		<a href="@Url.Action("FindFSearch", "T_Accommodation", new {sourceEntity="FileDocument",id=item.Id}, null)">Accommodation</a>
+</li>
+<li  style="height:30px !important; margin:0px; ">
+		<a href="@Url.Action("FindFSearch", "T_PayDetails", new {sourceEntity="FileDocument",id=item.Id}, null)">Pay Details </a>
+</li>
+</ul>
+</li>
+                        </ul>
+ </div>
+ 
+                    <div class="btn-group text-center" style="margin-top:10px;">
+                        <a title="View" href="@Url.Action(User.CanEdit("FileDocument") ? "Edit" : "Details", "FileDocument",
+                        new { id = item.Id, AssociatedType = ViewData["AssociatedType"],
+                            HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]),
+                            HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName)  },
+                            null)" class="btn btn-default">
+                            <span class="glyphicon glyphicon-eye-open icon-listbut"></span>
+                        </a>
+					@if (User.CanEdit("FileDocument"))
+						{
+						<a title="Quick Edit"
+							 class="btn btn-default" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Edit Document','dvPopup','" + Url.Action("EditQuick", "FileDocument", new
+								{
+									id = item.Id,
+									UrlReferrer = Request.Url,
+									AssociatedType = ViewData["AssociatedType"],
+									HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]),
+									HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),
+									TS = DateTime.Now,viewtype = Convert.ToString(ViewBag.TemplatesName)
+								}) + "')")">
+							<span class="fa fa-pencil icon-listbut"></span>
+						</a>
+					}
+					@if (User.CanEdit("FileDocument"))
+                      {
+                        <a title="Full Edit" href="@Url.Action("Edit","FileDocument",
+                        new { id = item.Id,  UrlReferrer = BackUrl,
+                            AssociatedType=ViewData["AssociatedType"],
+                            HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]),
+                            HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) },
+                            null)" class="btn btn-default">
+                            <span class="glyphicon glyphicon-edit icon-listbut"></span>
+                         </a>
+					  }
+						 <!--<a title="More" href="" class="btn btn-default">
+                            <span class="fa fa-chevron-circle-down"></span>
+                         </a>-->
+					  </div>
+					</div>
+				  </div>
+						   //model loop end    
+                            }
+					}
+						else
+                           {
+                                    <div class="ViewMessage"> <i class="fa fa-info-circle"></i> No Record Available!</div>
+                           }
+						   @Html.Hidden("SelectedItems")
+                   </div>
+				 </div>
+				 
+  			   @if (Model.Count > 0)
+                {
+                    <div id="pagination" class="MyPagination1">
+                        @Html.PagedListPager(Model, page => Url.Action(ActionNameUrl, "FileDocument", getSortHtmlAttributes(null, true, page, false)))
+                        <div class="fixPageSize">
+                            Page Size :
+                            @Html.DropDownList("PageSize", new SelectList(new Dictionary<string, int> { { "12", 12 }, { "20", 20 }, { "50", 50 }, { "100", 100 } }, "Key", "Value")
+							, new { @id = "pagesizelistFileDocument",
+							 @onchange = @Html.Raw("pagesizelistChange(event,'FileDocument','"
+							  + @User.JavaScriptEncodedName + "')"),
+							 @Url = Html.Raw(@Url.Action(ActionNameUrl, "FileDocument",
+							 getSortHtmlAttributes(ViewBag.CurrentSort, ViewBag.Pages == 1 ? false : true,
+							 null, false), null)) })
+							<span style="text-align:right;"> Total Count: @(Model.TotalItemCount)</span>
+                        </div>
+                    </div>
+                }
+				@Html.DropDownList("EntityFileDocumentDisplayValue", null,null, new { @Style = "display:none;" })
+           
+        </div>
+    </div> 
+ </div>
+    <div class="modal fade" id="ShowGraphFileDocument" tabindex="-1" role="dialog" aria-labelledby="ShowGraphFileDocumentLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:80%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="ShowGraphFileDocumentLabel">Dashboard Document</h4>
+                </div>
+				 <div  class="modal-body" >
+						<div id="dvShowGraphFileDocument" data-url="@Url.Action("ShowGraph", "FileDocument" , new { type = "all" })">
+						</div>
+						<div style="clear:both"></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+<script>
+    $(document).ready(function () {
+        $('#divTurantoGrid').TurantoGrid({
+            no_columns: 4,
+            padding_x: 10,
+            padding_y: 10,
+            margin_bottom: 50,
+            single_column_breakpoint: 700
+        });
+    });
+
+    (function ($, window, document, undefined) {
+        var pluginName = 'TurantoGrid',
+            defaults = {
+                padding_x: 10,
+                padding_y: 10,
+                no_columns: 3,
+                margin_bottom: 50,
+                single_column_breakpoint: 700
+            },
+            columns,
+            $article,
+            article_width;
+
+        function Plugin(element, options) {
+            this.element = element;
+            this.options = $.extend({}, defaults, options);
+            this._defaults = defaults;
+            this._name = pluginName;
+            this.init();
+        }
+
+        Plugin.prototype.init = function () {
+            var self = this,
+                resize_finish;
+
+            $(window).resize(function () {
+                clearTimeout(resize_finish);
+                resize_finish = setTimeout(function () {
+                    self.make_layout_change(self);
+                }, 11);
+            });
+
+            self.make_layout_change(self);
+
+            setTimeout(function () {
+                $(window).resize();
+            }, 500);
+        };
+
+        Plugin.prototype.calculate = function (single_column_mode) {
+            var self = this,
+                tallest = 0,
+                row = 0,
+                $container = $(this.element),
+                container_width = $container.width();
+            $article = $(this.element).children();
+
+            if (single_column_mode === true) {
+                article_width = $container.width() - self.options.padding_x;
+            } else {
+                article_width = ($container.width() - self.options.padding_x * self.options.no_columns) / self.options.no_columns;
+            }
+
+            $article.each(function () {
+                $(this).css('width', article_width);
+            });
+
+            columns = self.options.no_columns;
+
+            $article.each(function (index) {
+                var current_column,
+                    left_out = 0,
+                    top = 0,
+                    $this = $(this),
+                    prevAll = $this.prevAll(),
+                    tallest = 0;
+
+                if (single_column_mode === false) {
+                    current_column = (index % columns);
+                } else {
+                    current_column = 0;
+                }
+
+                for (var t = 0; t < columns; t++) {
+                    $this.removeClass('c' + t);
+                }
+
+                if (index % columns === 0) {
+                    row++;
+                }
+
+                $this.addClass('c' + current_column);
+                $this.addClass('r' + row);
+
+                prevAll.each(function (index) {
+                    if ($(this).hasClass('c' + current_column)) {
+                        top += $(this).outerHeight() + self.options.padding_y;
+                    }
+                });
+
+                if (single_column_mode === true) {
+                    left_out = 0;
+                } else {
+                    left_out = (index % columns) * (article_width + self.options.padding_x);
+                }
+
+                $this.css({
+                    'left': left_out,
+                    'top': top
+                });
+            });
+
+            this.tallest($container);
+            $(window).resize();
+        };
+
+        Plugin.prototype.tallest = function (_container) {
+            var column_heights = [],
+                largest = 0;
+
+            for (var z = 0; z < columns; z++) {
+                var temp_height = 0;
+                _container.find('.c' + z).each(function () {
+                    temp_height += $(this).outerHeight();
+                });
+                column_heights[z] = temp_height;
+            }
+
+            largest = Math.max.apply(Math, column_heights);
+            _container.css('height', largest + (this.options.padding_y + this.options.margin_bottom));
+        };
+
+        Plugin.prototype.make_layout_change = function (_self) {
+            if ($(window).width() < _self.options.single_column_breakpoint) {
+                _self.calculate(true);
+            } else {
+                _self.calculate(false);
+            }
+        };
+
+        $.fn[pluginName] = function (options) {
+            return this.each(function () {
+                if (!$.data(this, 'plugin_' + pluginName)) {
+                    $.data(this, 'plugin_' + pluginName,
+                    new Plugin(this, options));
+                }
+            });
+        }
+
+    })(jQuery, window, document);
+
+</script>
+<script>
+
+    $(document).ready(function () {
+
+        loadGallery(true, 'a.thumbnail');
+
+        //This function disables buttons when needed
+        function disableButtons(counter_max, counter_current) {
+            $('#show-previous-image, #show-next-image').show();
+            if (counter_max == counter_current) {
+                $('#show-next-image').hide();
+            } else if (counter_current == 1) {
+                $('#show-previous-image').hide();
+            }
+        }
+
+
+
+        function loadGallery(setIDs, setClickAttr) {
+            var current_image,
+                selector,
+                counter = 0;
+
+            $('#show-next-image, #show-previous-image').click(function () {
+                if ($(this).attr('id') == 'show-previous-image') {
+                    current_image--;
+                } else {
+                    current_image++;
+                }
+
+                selector = $('[data-image-id="' + current_image + '"]');
+                updateGallery(selector);
+            });
+
+            function updateGallery(selector) {
+                var $sel = selector;
+                current_image = $sel.data('image-id');
+                $('#image-gallery-caption').text($sel.data('caption'));
+                $('#image-gallery-title').text($sel.data('title'));
+                $('#image-gallery-image').attr('src', $sel.data('image'));
+                disableButtons(counter, $sel.data('image-id'));
+            }
+
+            if (setIDs == true) {
+                $('[data-image-id]').each(function () {
+                    counter++;
+                    $(this).attr('data-image-id', counter);
+                });
+            }
+            $(setClickAttr).on('click', function () {
+                updateGallery($(this));
+            });
+        }
+    });
+
+</script>

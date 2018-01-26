@@ -1,0 +1,250 @@
+﻿<error errorId="6e7872d9-18f9-461b-9b5d-214b7eaad7f9" application="/LM/W3SVC/1/ROOT/wsh_hr_v31" host="TURANTOMVC" type="System.Data.SqlClient.SqlException" message="String or binary data would be truncated.&#xD;&#xA;The statement has been terminated." source=".Net SqlClient Data Provider" detail="System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---&gt; System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---&gt; System.Data.SqlClient.SqlException: String or binary data would be truncated.&#xD;&#xA;The statement has been terminated.&#xD;&#xA;   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)&#xD;&#xA;   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean&amp; dataReady)&#xD;&#xA;   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()&#xD;&#xA;   at System.Data.SqlClient.SqlDataReader.get_MetaData()&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task&amp; task, Boolean asyncWrite, SqlDataReader ds)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task&amp; task, Boolean asyncWrite)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.&lt;Reader&gt;b__c(DbCommand t, DbCommandInterceptionContext`1 c)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)&#xD;&#xA;   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)&#xD;&#xA;   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()&#xD;&#xA;   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.&lt;Update&gt;b__2(UpdateTranslator ut)&#xD;&#xA;   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)&#xD;&#xA;   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.&lt;SaveChangesToStore&gt;b__35()&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.&lt;&gt;c__DisplayClass2a.&lt;SaveChangesInternal&gt;b__27()&#xD;&#xA;   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.SaveChanges()&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.SaveChanges()&#xD;&#xA;   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()&#xD;&#xA;   at System.Data.Entity.DbContext.SaveChanges()&#xD;&#xA;   at GeneratorBase.MVC.ApplicationContext.SaveChanges() in d:\GenApps\wsh_hr_v31\GeneratorBase.MVC\Models\ApplicationContext.cs:line 163&#xD;&#xA;   at GeneratorBase.MVC.Controllers.ApplicationFeedbackController.CreateQuick(ApplicationFeedback applicationfeedback, String UrlReferrer, Nullable`1 IsAddPop) in d:\GenApps\wsh_hr_v31\GeneratorBase.MVC\Controllers\FeedbackControllers\ApplicationFeedback\ApplicationFeedbackCRUDController.cs:line 248&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)" user="rupali.pendse@etelic.com" time="2016-08-15T15:50:43.3418233Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:3077&#xD;&#xA;HTTP_CONTENT_TYPE:multipart/form-data; boundary=----WebKitFormBoundary4mNSvupkGqeZ1TEO&#xD;&#xA;HTTP_ACCEPT:application/json, text/javascript, */*; q=0.01&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken_L3dzaF9ocl92MzE1=RfYxKeJjyVQRug8me5TI_2M4YB62QfYQhvKO8vc2oNHFoSuHAcBSFqA5aZg20UIuMDFfsUpPSkJk01p6Fw8rk0KItlXsn3fq5XFy4q0Ez3s1; __RequestVerificationToken_L1R1cmFudG81=VJxWI_UjLUJMmLclDuu8CgeixTl58tjsrdU7JWzpculceu0UkhrU0QYocg4pwbQkt7mWrTp7l9EjQO3BzMSs-K8AMty7SW_43B6aecvHASs1; __RequestVerificationToken_L3dzaF9ocl92MjA1=XT144RvdRXCCZ4CLKDp1g30BAiiIOwvHVhQFbHoX0bv31TuDbOLvpdKMfWh-CffX7U1g_sEkvuVvw1ctFlw6k5e5cNa0IqyHCsPyqdBesuQ1; Turanto12.5.8=24_ykPV8AGCGvMWOHOVwVn_kPDaYqWP0CNdyQXbpyYrYUoKQQRMzWrasoUed_rL35hG9SHXwd1J7jOxPHElD0dQ5Xn_RXINDilIa1bQaCDn6tF58W4_qhLe7wx7qibEdbpebyQ41csWOOUZHFAVL6ndq0hnfTPB3IpFKl6YKYXr9oXnGgnhJoiII6SR7I2_8uj0q3Xo1XDCAcMN49uAUTxAs_0V5Up3kVx1axnOPmQguwLiaElfq3o5zvBOCGd5uHa05pW3I_Xn56HAuCOSxhroO8OA74KWNROVJIUBMUuLWBNKnczkU2-RX8q96V1XJsTTC3yyWu40MQRXvMz0liNqbDSw88bM4MjgrNBcUib8aM2IT_v-t_fULU-ZC0pUfP2bpffFHh70qgUChv3SwwQgZnyJTA-JJm3m8597fLjstVy1BQpIvdobL0g331XMW; wsh_hr_v30=w0wOOrPhKqFhmC3tsTU0GmyP2oj3it4ZP3vCB3fWncCGbl4P4dgKoVuTVDimBbr12Rh7ACXaRZLlZVTIARPOOqjHkt3Q1FByWQxfobLt0rZpTJG_KYDsawwFQYWLsOxQkq6b1lhEmQqdb3zgYx5dEXNEqHpkRh7gXegEh68sexzRWYI-6bu70bxI9p_pTsAsddNKTqoiwVzZqTg6kERhIgd_efU3VYPbBaiJO-9dwmzUbCt5pZ8RipsAl6OhqAN_m4Wwk7kugbafWIm704EMqRUBLufY1UES4drFPSm0tN6Z4BCZZuZqVKD3tczUqYzltw4eI3ws-DpVmmIXXS5kyPVsD04H4Vjmo_raZ6Z5zq6CUOR-irxKjewQJs8Q5t864QmeK3_6JtfJdGTsNEFKbx9gC3_2aeYBlADwYyZz7Pmlh5I8M5V9qgpHXxnePI6i9Xa849y-LjpzgOkoSwbfdmvrJK3PObE-KlhSsBMsMsLGuhyv3YOvJsJzVuGp1mqXAhh3ZNjdKV17zn4Q2xIZ7LMoI_G6tEf1T1nlyrCHtJmHFItVHKy4Yr7CtDh-9dDC5au4ECYcGSzF-5VDeLriGCfEITHTSC4El3ydP0QhAB5H_GzhBgYOVWV2-MCVXOsjsj32sj7QllhRZLsAYzHnLVN5sc6gvy2KUOlzPH5TNeg&#xD;&#xA;HTTP_HOST:mvc.turanto.com&#xD;&#xA;HTTP_REFERER:https://mvc.turanto.com/wsh_hr_v31/T_EmployeeInjury/Create?UrlReferrer=https%3A%2F%2Fmvc.turanto.com%2Fwsh_hr_v31%2FT_Employee%2FEdit%2F108%3FUrlReferrer%3Dhttps%3A%252F%252Fmvc.turanto.com%252Fwsh_hr_v31%252FT_Employee%26viewtype%3DIndexPartial&amp;AssociatedType=T_EmployeeEmployeeInjury&amp;HostingEntityName=T_Employee&amp;HostingEntityID=108&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:https://mvc.turanto.com&#xD;&#xA;HTTP_X_REQUESTED_WITH:XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Content-Length: 3077&#xD;&#xA;Content-Type: multipart/form-data; boundary=----WebKitFormBoundary4mNSvupkGqeZ1TEO&#xD;&#xA;Accept: application/json, text/javascript, */*; q=0.01&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: __RequestVerificationToken_L3dzaF9ocl92MzE1=RfYxKeJjyVQRug8me5TI_2M4YB62QfYQhvKO8vc2oNHFoSuHAcBSFqA5aZg20UIuMDFfsUpPSkJk01p6Fw8rk0KItlXsn3fq5XFy4q0Ez3s1; __RequestVerificationToken_L1R1cmFudG81=VJxWI_UjLUJMmLclDuu8CgeixTl58tjsrdU7JWzpculceu0UkhrU0QYocg4pwbQkt7mWrTp7l9EjQO3BzMSs-K8AMty7SW_43B6aecvHASs1; __RequestVerificationToken_L3dzaF9ocl92MjA1=XT144RvdRXCCZ4CLKDp1g30BAiiIOwvHVhQFbHoX0bv31TuDbOLvpdKMfWh-CffX7U1g_sEkvuVvw1ctFlw6k5e5cNa0IqyHCsPyqdBesuQ1; Turanto12.5.8=24_ykPV8AGCGvMWOHOVwVn_kPDaYqWP0CNdyQXbpyYrYUoKQQRMzWrasoUed_rL35hG9SHXwd1J7jOxPHElD0dQ5Xn_RXINDilIa1bQaCDn6tF58W4_qhLe7wx7qibEdbpebyQ41csWOOUZHFAVL6ndq0hnfTPB3IpFKl6YKYXr9oXnGgnhJoiII6SR7I2_8uj0q3Xo1XDCAcMN49uAUTxAs_0V5Up3kVx1axnOPmQguwLiaElfq3o5zvBOCGd5uHa05pW3I_Xn56HAuCOSxhroO8OA74KWNROVJIUBMUuLWBNKnczkU2-RX8q96V1XJsTTC3yyWu40MQRXvMz0liNqbDSw88bM4MjgrNBcUib8aM2IT_v-t_fULU-ZC0pUfP2bpffFHh70qgUChv3SwwQgZnyJTA-JJm3m8597fLjstVy1BQpIvdobL0g331XMW; wsh_hr_v30=w0wOOrPhKqFhmC3tsTU0GmyP2oj3it4ZP3vCB3fWncCGbl4P4dgKoVuTVDimBbr12Rh7ACXaRZLlZVTIARPOOqjHkt3Q1FByWQxfobLt0rZpTJG_KYDsawwFQYWLsOxQkq6b1lhEmQqdb3zgYx5dEXNEqHpkRh7gXegEh68sexzRWYI-6bu70bxI9p_pTsAsddNKTqoiwVzZqTg6kERhIgd_efU3VYPbBaiJO-9dwmzUbCt5pZ8RipsAl6OhqAN_m4Wwk7kugbafWIm704EMqRUBLufY1UES4drFPSm0tN6Z4BCZZuZqVKD3tczUqYzltw4eI3ws-DpVmmIXXS5kyPVsD04H4Vjmo_raZ6Z5zq6CUOR-irxKjewQJs8Q5t864QmeK3_6JtfJdGTsNEFKbx9gC3_2aeYBlADwYyZz7Pmlh5I8M5V9qgpHXxnePI6i9Xa849y-LjpzgOkoSwbfdmvrJK3PObE-KlhSsBMsMsLGuhyv3YOvJsJzVuGp1mqXAhh3ZNjdKV17zn4Q2xIZ7LMoI_G6tEf1T1nlyrCHtJmHFItVHKy4Yr7CtDh-9dDC5au4ECYcGSzF-5VDeLriGCfEITHTSC4El3ydP0QhAB5H_GzhBgYOVWV2-MCVXOsjsj32sj7QllhRZLsAYzHnLVN5sc6gvy2KUOlzPH5TNeg&#xD;&#xA;Host: mvc.turanto.com&#xD;&#xA;Referer: https://mvc.turanto.com/wsh_hr_v31/T_EmployeeInjury/Create?UrlReferrer=https%3A%2F%2Fmvc.turanto.com%2Fwsh_hr_v31%2FT_Employee%2FEdit%2F108%3FUrlReferrer%3Dhttps%3A%252F%252Fmvc.turanto.com%252Fwsh_hr_v31%252FT_Employee%26viewtype%3DIndexPartial&amp;AssociatedType=T_EmployeeEmployeeInjury&amp;HostingEntityName=T_Employee&amp;HostingEntityID=108&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&#xD;&#xA;Origin: https://mvc.turanto.com&#xD;&#xA;X-Requested-With: XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/wsh_hr_v31" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v31\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="rupali.pendse@etelic.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="rupali.pendse@etelic.com" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="rupali.pendse@etelic.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="3077" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="multipart/form-data; boundary=----WebKitFormBoundary4mNSvupkGqeZ1TEO" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/wsh_hr_v31/ApplicationFeedback/CreateQuick" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v31\GeneratorBase.MVC\ApplicationFeedback\CreateQuick" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="IsAddPop=true" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="96.253.89.230" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="96.253.89.230" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="57456" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/wsh_hr_v31/ApplicationFeedback/CreateQuick" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/wsh_hr_v31/ApplicationFeedback/CreateQuick" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="3077" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="multipart/form-data; boundary=----WebKitFormBoundary4mNSvupkGqeZ1TEO" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="application/json, text/javascript, */*; q=0.01" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken_L3dzaF9ocl92MzE1=RfYxKeJjyVQRug8me5TI_2M4YB62QfYQhvKO8vc2oNHFoSuHAcBSFqA5aZg20UIuMDFfsUpPSkJk01p6Fw8rk0KItlXsn3fq5XFy4q0Ez3s1; __RequestVerificationToken_L1R1cmFudG81=VJxWI_UjLUJMmLclDuu8CgeixTl58tjsrdU7JWzpculceu0UkhrU0QYocg4pwbQkt7mWrTp7l9EjQO3BzMSs-K8AMty7SW_43B6aecvHASs1; __RequestVerificationToken_L3dzaF9ocl92MjA1=XT144RvdRXCCZ4CLKDp1g30BAiiIOwvHVhQFbHoX0bv31TuDbOLvpdKMfWh-CffX7U1g_sEkvuVvw1ctFlw6k5e5cNa0IqyHCsPyqdBesuQ1; Turanto12.5.8=24_ykPV8AGCGvMWOHOVwVn_kPDaYqWP0CNdyQXbpyYrYUoKQQRMzWrasoUed_rL35hG9SHXwd1J7jOxPHElD0dQ5Xn_RXINDilIa1bQaCDn6tF58W4_qhLe7wx7qibEdbpebyQ41csWOOUZHFAVL6ndq0hnfTPB3IpFKl6YKYXr9oXnGgnhJoiII6SR7I2_8uj0q3Xo1XDCAcMN49uAUTxAs_0V5Up3kVx1axnOPmQguwLiaElfq3o5zvBOCGd5uHa05pW3I_Xn56HAuCOSxhroO8OA74KWNROVJIUBMUuLWBNKnczkU2-RX8q96V1XJsTTC3yyWu40MQRXvMz0liNqbDSw88bM4MjgrNBcUib8aM2IT_v-t_fULU-ZC0pUfP2bpffFHh70qgUChv3SwwQgZnyJTA-JJm3m8597fLjstVy1BQpIvdobL0g331XMW; wsh_hr_v30=w0wOOrPhKqFhmC3tsTU0GmyP2oj3it4ZP3vCB3fWncCGbl4P4dgKoVuTVDimBbr12Rh7ACXaRZLlZVTIARPOOqjHkt3Q1FByWQxfobLt0rZpTJG_KYDsawwFQYWLsOxQkq6b1lhEmQqdb3zgYx5dEXNEqHpkRh7gXegEh68sexzRWYI-6bu70bxI9p_pTsAsddNKTqoiwVzZqTg6kERhIgd_efU3VYPbBaiJO-9dwmzUbCt5pZ8RipsAl6OhqAN_m4Wwk7kugbafWIm704EMqRUBLufY1UES4drFPSm0tN6Z4BCZZuZqVKD3tczUqYzltw4eI3ws-DpVmmIXXS5kyPVsD04H4Vjmo_raZ6Z5zq6CUOR-irxKjewQJs8Q5t864QmeK3_6JtfJdGTsNEFKbx9gC3_2aeYBlADwYyZz7Pmlh5I8M5V9qgpHXxnePI6i9Xa849y-LjpzgOkoSwbfdmvrJK3PObE-KlhSsBMsMsLGuhyv3YOvJsJzVuGp1mqXAhh3ZNjdKV17zn4Q2xIZ7LMoI_G6tEf1T1nlyrCHtJmHFItVHKy4Yr7CtDh-9dDC5au4ECYcGSzF-5VDeLriGCfEITHTSC4El3ydP0QhAB5H_GzhBgYOVWV2-MCVXOsjsj32sj7QllhRZLsAYzHnLVN5sc6gvy2KUOlzPH5TNeg" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://mvc.turanto.com/wsh_hr_v31/T_EmployeeInjury/Create?UrlReferrer=https%3A%2F%2Fmvc.turanto.com%2Fwsh_hr_v31%2FT_Employee%2FEdit%2F108%3FUrlReferrer%3Dhttps%3A%252F%252Fmvc.turanto.com%252Fwsh_hr_v31%252FT_Employee%26viewtype%3DIndexPartial&amp;AssociatedType=T_EmployeeEmployeeInjury&amp;HostingEntityName=T_Employee&amp;HostingEntityID=108" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="https://mvc.turanto.com" />
+    </item>
+    <item name="HTTP_X_REQUESTED_WITH">
+      <value string="XMLHttpRequest" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="IsAddPop">
+      <value string="true" />
+    </item>
+  </queryString>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="azZoIUy5UGSyZIhcpmS2eDQVJ7UFDxOu2tp5Okhj6Qk_CTAnwlbW4kzs45YXEJU11OoScxYzzdydFP4KBrU3j0C-sPRVE6k7h8hRAMBx4BQMePKjll5X7jYbFchqCxVuDwT--Fr8QWZTDL_L4xKujg2" />
+    </item>
+    <item name="EntityName">
+      <value string="T_EmployeeInjury" />
+      <value string="T_EmployeeInjury" />
+    </item>
+    <item name="FieldName">
+      <value string="" />
+    </item>
+    <item name="PageName">
+      <value string="Create" />
+      <value string="Create" />
+    </item>
+    <item name="PageUrlTitle">
+      <value string="T_EmployeeInjury" />
+    </item>
+    <item name="PageUrl">
+      <value string="https://mvc.turanto.com/wsh_hr_v31/T_EmployeeInjury/Create?UrlReferrer=https:%2F%2Fmvc.turanto.com%2Fwsh_hr_v31%2FT_Employee%2FEdit%2F108%3FUrlReferrer%3Dhttps:%252F%252Fmvc.turanto.com%252Fwsh_hr_v31%252FT_Employee%26viewtype%3DIndexPartial&amp;AssociatedType=T_EmployeeEmployeeInjury&amp;HostingEntityName=T_Employee&amp;HostingEntityID=108" />
+      <value string="https://mvc.turanto.com/wsh_hr_v31/T_EmployeeInjury/Create?UrlReferrer=https:%2F%2Fmvc.turanto.com%2Fwsh_hr_v31%2FT_Employee%2FEdit%2F108%3FUrlReferrer%3Dhttps:%252F%252Fmvc.turanto.com%252Fwsh_hr_v31%252FT_Employee%26viewtype%3DIndexPartial&amp;AssociatedType=T_EmployeeEmployeeInjury&amp;HostingEntityName=T_Employee&amp;HostingEntityID=108" />
+    </item>
+    <item name="Summary">
+      <value string="add - not work related, work related to the Multi check box for Type of claim Facility" />
+    </item>
+    <item name="Description">
+      <value string="" />
+    </item>
+    <item name="CommentId">
+      <value string="" />
+    </item>
+    <item name="AssociatedApplicationFeedbackTypeID">
+      <value string="" />
+    </item>
+    <item name="AssociatedApplicationFeedbackStatusID">
+      <value string="" />
+    </item>
+    <item name="ApplicationFeedbackPriorityID">
+      <value string="" />
+    </item>
+    <item name="ApplicationFeedbackSeverityID">
+      <value string="" />
+    </item>
+    <item name="ApplicationFeedbackResourceID">
+      <value string="" />
+    </item>
+    <item name="txtEntityName">
+      <value string="Employee Injury" />
+    </item>
+    <item name="PropertyName">
+      <value string="" />
+    </item>
+    <item name="UIControlName">
+      <value string="" />
+    </item>
+  </form>
+  <cookies>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MzE1">
+      <value string="RfYxKeJjyVQRug8me5TI_2M4YB62QfYQhvKO8vc2oNHFoSuHAcBSFqA5aZg20UIuMDFfsUpPSkJk01p6Fw8rk0KItlXsn3fq5XFy4q0Ez3s1" />
+    </item>
+    <item name="__RequestVerificationToken_L1R1cmFudG81">
+      <value string="VJxWI_UjLUJMmLclDuu8CgeixTl58tjsrdU7JWzpculceu0UkhrU0QYocg4pwbQkt7mWrTp7l9EjQO3BzMSs-K8AMty7SW_43B6aecvHASs1" />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MjA1">
+      <value string="XT144RvdRXCCZ4CLKDp1g30BAiiIOwvHVhQFbHoX0bv31TuDbOLvpdKMfWh-CffX7U1g_sEkvuVvw1ctFlw6k5e5cNa0IqyHCsPyqdBesuQ1" />
+    </item>
+    <item name="Turanto12.5.8">
+      <value string="24_ykPV8AGCGvMWOHOVwVn_kPDaYqWP0CNdyQXbpyYrYUoKQQRMzWrasoUed_rL35hG9SHXwd1J7jOxPHElD0dQ5Xn_RXINDilIa1bQaCDn6tF58W4_qhLe7wx7qibEdbpebyQ41csWOOUZHFAVL6ndq0hnfTPB3IpFKl6YKYXr9oXnGgnhJoiII6SR7I2_8uj0q3Xo1XDCAcMN49uAUTxAs_0V5Up3kVx1axnOPmQguwLiaElfq3o5zvBOCGd5uHa05pW3I_Xn56HAuCOSxhroO8OA74KWNROVJIUBMUuLWBNKnczkU2-RX8q96V1XJsTTC3yyWu40MQRXvMz0liNqbDSw88bM4MjgrNBcUib8aM2IT_v-t_fULU-ZC0pUfP2bpffFHh70qgUChv3SwwQgZnyJTA-JJm3m8597fLjstVy1BQpIvdobL0g331XMW" />
+    </item>
+    <item name="wsh_hr_v30">
+      <value string="w0wOOrPhKqFhmC3tsTU0GmyP2oj3it4ZP3vCB3fWncCGbl4P4dgKoVuTVDimBbr12Rh7ACXaRZLlZVTIARPOOqjHkt3Q1FByWQxfobLt0rZpTJG_KYDsawwFQYWLsOxQkq6b1lhEmQqdb3zgYx5dEXNEqHpkRh7gXegEh68sexzRWYI-6bu70bxI9p_pTsAsddNKTqoiwVzZqTg6kERhIgd_efU3VYPbBaiJO-9dwmzUbCt5pZ8RipsAl6OhqAN_m4Wwk7kugbafWIm704EMqRUBLufY1UES4drFPSm0tN6Z4BCZZuZqVKD3tczUqYzltw4eI3ws-DpVmmIXXS5kyPVsD04H4Vjmo_raZ6Z5zq6CUOR-irxKjewQJs8Q5t864QmeK3_6JtfJdGTsNEFKbx9gC3_2aeYBlADwYyZz7Pmlh5I8M5V9qgpHXxnePI6i9Xa849y-LjpzgOkoSwbfdmvrJK3PObE-KlhSsBMsMsLGuhyv3YOvJsJzVuGp1mqXAhh3ZNjdKV17zn4Q2xIZ7LMoI_G6tEf1T1nlyrCHtJmHFItVHKy4Yr7CtDh-9dDC5au4ECYcGSzF-5VDeLriGCfEITHTSC4El3ydP0QhAB5H_GzhBgYOVWV2-MCVXOsjsj32sj7QllhRZLsAYzHnLVN5sc6gvy2KUOlzPH5TNeg" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="3mhkmedat45tbmgvrsph4dv4" />
+    </item>
+  </cookies>
+</error>

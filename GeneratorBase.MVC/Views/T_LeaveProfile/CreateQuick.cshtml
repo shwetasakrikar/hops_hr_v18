@@ -1,0 +1,290 @@
+﻿@model GeneratorBase.MVC.Models.T_LeaveProfile
+@{
+    ViewBag.Title = "Create Leave";
+    Layout = null;
+}
+<script>
+    $(document).ready(function () {
+        try {
+            var hostingEntityName = "";
+            if ('@Convert.ToString(ViewData["AssociatedType"])' != null) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+                 $('#' + hostingEntityName + 'ID').attr("lock","true");
+				  $('#' + hostingEntityName + 'ID').trigger("change");
+            }
+			
+        }
+        catch (ex) { }
+		
+		 
+    });
+</script>
+<script type="text/javascript">
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': { allow_single_deselect: true },
+        '.chosen-select-no-single': { disable_search_threshold: 10 },
+        '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+        '.chosen-select-width': { width: "95%" }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_LeaveProfileIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_LeaveProfileIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_LeaveProfileIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_LeaveProfileIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_LeaveProfileIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_LeaveProfileIsSetValueUIRule);
+    }
+}
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<link href="@Url.Content("~/Content/chosen.css")" rel="stylesheet" type="text/css" />
+@using (Html.BeginForm("CreateQuick", "T_LeaveProfile",FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+	<input type="hidden" id="ErrMsgQuickAdd" />
+	@*<label id="ErrMsgQuickAdd" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+    <div id="errorContainerQuickAdd" style="display: none">
+        <div id="errorsMsgQuickAdd"></div>
+        <div id="errorsQuickAdd"></div>
+    </div>
+	<div id="divDisplayThresholdLimit" style="display:none;">
+	</div>
+	 <div id="divDisplayBRmsgMandatory" style="display:none;">
+	</div>
+	<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+	</div>
+		    <div class="row">
+	@Html.Hidden("AssociatedEntity", Convert.ToString(ViewData["AssociatedType"]))
+	@Html.Hidden("HostingEntityName", Convert.ToString(ViewData["HostingEntityName"]))
+    @Html.Hidden("HostingEntityID", Convert.ToString(ViewData["HostingEntityID"]))
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="panel panel-default AppForm">
+                <div class="panel-body">
+               					<div class="row">
+				        
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48916">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+                                            <h3 class="panel-title" alt="Employee Information" title="Employee Information">Employee Information</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                    
+
+			@if(User.CanView("T_LeaveProfile","T_EmployeeLeaveProfileID"))
+				{
+					
+							<div class='col-sm-6'  id="dvT_EmployeeLeaveProfileID">
+                        <div class='form-group'>
+                            <label>@Html.LabelFor(model => model.T_EmployeeLeaveProfileID) </label>
+                            <div class="input-group" style="width: 100%;">
+									@Html.DropDownList("T_EmployeeLeaveProfileID", null, "-- Select --", new {     @onchange = Html.Raw("ClearChildDD('T_InjuryRelatedLeaveID',this,'false');") ,   @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeLeaveProfileID" }) })
+ @*<script>
+    $(function () {
+        LoadUserDropdown('ID');
+    });
+</script>*@
+                                @Html.ValidationMessageFor(model => model.T_EmployeeLeaveProfileID)
+                            </div>
+                        </div>
+                    </div>
+     
+		}
+							</div>
+                         </div>
+                      </div>
+       </div>
+               					<div class="row">
+				        
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48914">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+                                            <h3 class="panel-title" alt="Basic Info About Leave" title="Basic Info About Leave">Basic Info About Leave</h3>
+                                        </div>
+                                        <div class="panel-body">
+
+@if(User.CanView("T_LeaveProfile","T_From"))
+{
+     
+                            <div class='col-sm-6' id="dvT_From">
+                                <label >@Html.LabelFor(model => model.T_From)</label>
+                                <div class="form-group" title="From Date">
+                                    <div class="input-group date" id="datetimepickerT_From">
+							@Html.TextBoxFor(model => model.T_From, new {@id = "T_From" ,@class = "form-control" })
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_From)
+                                </div>
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_From').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_From').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+		}
+
+
+
+@if(User.CanView("T_LeaveProfile","T_To"))
+{
+     
+                            <div class='col-sm-6' id="dvT_To">
+                                <label >@Html.LabelFor(model => model.T_To)</label>
+                                <div class="form-group" title="To Date">
+                                    <div class="input-group date" id="datetimepickerT_To">
+							@Html.TextBoxFor(model => model.T_To, new {@id = "T_To" ,@class = "form-control" })
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_To)
+                                </div>
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_To').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_To').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+		}
+
+
+
+						 @if(User.CanView("T_LeaveProfile","T_Intermittent"))
+			{
+     						<div class='col-sm-6' id="dvT_Intermittent">
+                                <label >
+                                    @Html.LabelFor(model => model.T_Intermittent) 
+                                </label>
+                                <div class="form-group" title="Intermittent">
+									@Html.CheckBox("T_Intermittent", false)
+                                    @Html.ValidationMessageFor(model => model.T_Intermittent)
+                                </div>
+                            </div>
+			}
+                            
+
+						 @if(User.CanView("T_LeaveProfile","T_FullDays"))
+			{
+     						<div class='col-sm-6' id="dvT_FullDays">
+                                <label >
+                                    @Html.LabelFor(model => model.T_FullDays) 
+                                </label>
+                                <div class="form-group" title="Full Days">
+									@Html.CheckBox("T_FullDays", false)
+                                    @Html.ValidationMessageFor(model => model.T_FullDays)
+                                </div>
+                            </div>
+			}
+                            
+							</div>
+                         </div>
+                      </div>
+       </div>
+               					<div class="row">
+				        
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48915">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+                                            <h3 class="panel-title" alt="Related Injury Information" title="Related Injury Information">Related Injury Information</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                    
+
+			@if(User.CanView("T_LeaveProfile","T_InjuryRelatedLeaveID"))
+				{
+					
+							<div class='col-sm-6'  id="dvT_InjuryRelatedLeaveID">
+                        <div class='form-group'>
+                            <label>@Html.LabelFor(model => model.T_InjuryRelatedLeaveID) </label>
+                            <div class="input-group" style="width: 100%;">
+									@Html.DropDownList("T_InjuryRelatedLeaveID", null, "-- Select --", new {   @ParentDD = "T_EmployeeLeaveProfileID" , @AssoNameWithParent = "T_EmployeeEmployeeInjuryID" ,    @class = "chosen-select form-control", @HostingName = "T_EmployeeInjury", @dataurl = Url.Action("GetAllValue", "T_EmployeeInjury",new { caller = "T_InjuryRelatedLeaveID" }) })
+ @*<script>
+    $(function () {
+        LoadUserDropdown('ID');
+    });
+</script>*@
+                                @Html.ValidationMessageFor(model => model.T_InjuryRelatedLeaveID)
+                            </div>
+                        </div>
+                    </div>
+     
+		}
+							</div>
+                         </div>
+                      </div>
+       </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+		<button id="CancelQuickAdd" type="button" class="btn btn-default btn-sm" data-dismiss="modal" aria-hidden="true">Cancel</button>
+
+		var busineesrule = User.businessrules.Where(p => p.EntityName == "T_LeaveProfile").ToList();
+		 var lstinlineentityname = "";
+		 var lstinlineassocdispname ="";
+		 var lstinlineassocname = "";
+        if (ViewBag.IsAddPop != null)
+		{
+			<input type="submit" value="Create" class="btn btn-primary btn-sm" onclick="GetCalculationValue(event,'@Url.Action("GetCalculationValues")');QuickAdd(event,'T_LeaveProfile','@busineesrule',@busineesrule.Count,'OnCreate','ErrMsgQuickAdd',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname');" />
+ <input type="submit"  value="Create & Continue" btnval="createcontinue" class="btn btn-primary btn-sm" onclick="GetCalculationValue(event,'@Url.Action("GetCalculationValues")');QuickAdd(event,'T_LeaveProfile','@busineesrule',@busineesrule.Count,'OnCreate','ErrMsgQuickAdd',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname');" />
+		}
+		else
+		{
+			<input type="submit" value="Create" class="btn btn-primary btn-sm" onclick="GetCalculationValue(event,'@Url.Action("GetCalculationValues")');QuickAddFromIndex(event,true,'T_LeaveProfile','@ViewData["AssociatedType"]','@busineesrule',@busineesrule.Count,'OnCreate','ErrMsgQuickAdd',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname');" />
+ <input type="submit" value="Create & Continue" btnval="createcontinue" class="btn btn-primary btn-sm" onclick="GetCalculationValue(event,'@Url.Action("GetCalculationValues")');QuickAddFromIndex(event,true,'T_LeaveProfile','@ViewData["AssociatedType"]','@busineesrule',@busineesrule.Count,'OnCreate','ErrMsgQuickAdd',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname');" />
+		}
+}
+<script src="@Url.Content("~/bundles/jqueryval")" type="text/javascript"></script>
+<script src="@Url.Content("~/bundles/common3")" type="text/javascript"></script>
+
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+            document.getElementsByTagName("body")[0].focus();
+            $("#addPopup").removeAttr("tabindex");
+            var cltcoll = $("#dvPopup").find('input[type=text]:not([class=hidden]):not([readonly]),textarea:not([readonly])');
+            var cltid = "";
+            $(cltcoll).each(function () {
+			  if ($(this).attr("id") == undefined)
+                    return
+                var dvhidden = $("#dv" + $(this).attr("id"));
+				var dvDate = $("#datetimepicker" + $(this).attr("id")).attr("id");
+
+                if (!(dvhidden.css('display') == 'none') && dvDate == undefined) {
+                    cltid = $(this);
+                    return false;
+                }
+            });
+            if (cltid != "" && cltid != undefined)
+                setTimeout(function () { $(cltid).focus(); }, 500);
+			var ctrlReadonly = $("#dvPopup").find('input[type=text][readonly],textarea[readonly]');
+            $(ctrlReadonly).each(function () {
+                $(ctrlReadonly).attr("tabindex", "-1");
+            });
+        }
+        catch (ex) { }
+    });
+</script>
+

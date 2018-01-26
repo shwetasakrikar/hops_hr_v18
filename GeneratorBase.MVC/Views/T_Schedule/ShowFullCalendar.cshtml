@@ -1,0 +1,20 @@
+﻿@model List<GeneratorBase.MVC.Models.T_Schedule>
+@{
+    ViewBag.Title = "";
+	var appcontext = new ApplicationContext(User);
+    List<Tuple<string, long>> eventlist = new List<Tuple<string, long>>();
+    foreach(var obj in Model)
+    {
+    }
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+			Calendar () 
+        </h1>
+        <h2 class="text-primary"> </h2>
+    </div>
+</div>
+@Html.Partial("~/Views/T_Schedule/CommonSearchParameters.cshtml",0)
+@Html.Partial("~/Views/T_Schedule/CalendarView.cshtml", eventlist, new ViewDataDictionary { { "TimeSlots", ViewData["TimeSlots"] }})
+

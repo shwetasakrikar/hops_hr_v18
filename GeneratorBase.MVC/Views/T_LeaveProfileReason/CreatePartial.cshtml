@@ -1,0 +1,382 @@
+﻿@model GeneratorBase.MVC.Models.T_LeaveProfileReason
+<script>
+    var delay = (function () {
+        var timer = 0;
+        return function (callback, ms) {
+            clearTimeout(timer);
+            timer = setTimeout(callback, ms);
+        };
+    })();
+ $(document).ready(function () {
+	 $('#btnT_LeaveReason').click(function () {
+        var dataurl = '@Url.Action("GetAllValues1")';
+        SearchListNew1($('#btnT_LeaveReason'), dataurl, $('#txtSearchT_LeaveReason').val(), 'T_LeaveProfile', '@ViewData["HostingEntityID"]', 'T_LeaveProfileReason_T_LeaveProfile', 'T_LeaveReasonIDAvailable', 't_leaveprofilereason');
+        return false;
+    });
+	 $('#btnT_LeaveProfile').click(function () {
+        var dataurl = '@Url.Action("GetAllValues1")';
+        SearchListNew1($('#btnT_LeaveProfile'), dataurl, $('#txtSearchT_LeaveProfile').val(), 'T_LeaveReason', '@ViewData["HostingEntityID"]', 'T_LeaveProfileReason_T_LeaveReason', 'T_LeaveProfileIDAvailable', 't_leaveprofilereason,t_employeeleaveprofile,t_injuryrelatedleave,T_Intermittent,T_FullDays');
+        return false;
+    });
+});
+</script>
+@using (Html.BeginForm("Create", "T_LeaveProfileReason",new {UrlReferrer = Convert.ToString(ViewData["T_LeaveProfileReasonParentUrl"]), IsDDAdd = ViewBag.IsDDAdd }, FormMethod.Post, new { enctype = "multipart/form-data", id = "frmT_LeaveProfileReason"  }))
+{
+   @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+	<input type="hidden" id="ErrMsg" />
+    <div id="errorContainer" style="display: none">
+        <div id="errorsMsg"></div>
+        <div id="errors"></div>
+    </div>
+    <div id="divDisplayThresholdLimit" style="display:none;">
+    </div>
+    <div id="divDisplayBRmsgMandatory" style="display:none;">
+    </div>
+    <div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+    </div>
+    <div id="divDisplayCodeFragment" style="display:none;">
+    </div>
+    <div class="row" style='display:none;' >
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="panel panel-default AppForm">
+                <div class="panel-body">
+               <div class="row" >         
+				@if (Convert.ToString(ViewData["AssociatedType"]).Trim() == "T_LeaveProfileReason_T_LeaveReason")
+                {
+				 <div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_LeaveReasonID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+		@Html.DropDownList("T_LeaveReasonID", null, "-- Select --", new {    @class = "chosen-select form-control", @HostingName = "T_LeaveReason", @dataurl = Url.Action("GetAllValue", "T_LeaveReason",null) })
+                                @Html.ValidationMessageFor(model => model.T_LeaveReasonID)
+								@if (User.CanAdd("T_LeaveReason"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Leave Reason','dvPopup','" + Url.Action("CreateQuick", "T_LeaveReason", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				}
+				@if (Convert.ToString(ViewData["AssociatedType"]).Trim() == "T_LeaveProfileReason_T_LeaveProfile")
+                {
+				 <div class='col-sm-6 col-md-6 col-xs-12'>
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_LeaveProfileID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+		@Html.DropDownList("T_LeaveProfileID", null, "-- Select --", new {    @class = "chosen-select form-control", @HostingName = "T_LeaveProfile", @dataurl = Url.Action("GetAllValue", "T_LeaveProfile",null) })
+                                @Html.ValidationMessageFor(model => model.T_LeaveProfileID)
+								@if (User.CanAdd("T_LeaveProfile"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Leave','dvPopup','" + Url.Action("CreateQuick", "T_LeaveProfile", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				}
+       </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+  if (Convert.ToString(ViewData["AssociatedType"]).Trim() != "T_LeaveProfileReason_T_LeaveReason")
+  { 
+	<div class="M2MList">
+		<div class="col-md-5" style="overflow:auto !important;max-height:400px;min-height:400px;">
+           
+            @Html.TextBox("txtSearchT_LeaveReason", null, new { @class = "form-control", placeholder = "Search Leave Reason", @size = 10, @dataurl = Url.Action("GetAllValues") })
+ 
+					@if (ViewBag.t_leaveprofilereason!=null)
+                    {
+						<div class='form-group col-sm-12' title="Leave" style="padding:10px 0px 0px 0px; margin:0px;">
+						<div class='form-group col-sm-4' style="padding:0px">
+							<label class="text-primary small"> Leave</label>
+						</div>
+                                <div class="input-group col-sm-6" id="dvt_leavereason">
+		
+	 @Html.DropDownList("t_leaveprofilereason", null, new {   @multiple = "multiple", @HostingName = "T_LeaveProfile", @dataurl = Url.Action("GetAllMultiSelectValue", "T_LeaveProfile",null) })
+                                </div>
+                        </div>
+					}
+		</div>
+		<label style="display:none;">@Html.LabelFor(model => model.T_LeaveReasonID) </label>
+		<div class="col-md-7">
+			<div class="col-md-12">
+				<h4><span class="unselected-title">Available Leave Reason </span> <span style="float:right; font-size:14px;"> Show @Html.DropDownList("PageSize", new SelectList(new Dictionary<string, string> { {"50","50"},{ "100", "100" }, { "200", "200" }, { "500", "500" }, { "All", "All" } }, "Key", "Value")
+                    ,new {@dataurl=Url.Action("GetAllValues"), onchange="ListBoxPagination(this,$('#txtSearchT_LeaveReason').val(),'T_LeaveProfile', '"+ViewData["HostingEntityID"]+"', 'T_LeaveProfileReason_T_LeaveReason', 'T_LeaveReasonIDAvailable');"})
+			</span></h4>
+				
+				@Html.ListBox("T_LeaveReasonIDAvailable", null, new { @class = "optionvalue", @size = 10 })
+				
+				 </div>
+			<div class="col-md-12  btn-group" style="margin-top:10px;">
+				<a id="MoveRightT_LeaveReason" onclick="Associate(event,'T_LeaveReason');" class="btn btn-primary col-md-6"><span id="MoveRightT_LeaveReason" class="glyphicon glyphicon-chevron-down"></span></a>
+				<a id="MoveLeftT_LeaveReason" onclick="Associate(event,'T_LeaveReason');" class="btn btn-primary col-md-6" ><span id="MoveLeftT_LeaveReason" class="glyphicon glyphicon-chevron-up"></span></a>
+			</div>
+			<div class="col-md-12">
+				<h4><span class="selected-title">Selected Leave Reason</span> 
+				 <span class="badge bg-blue"><label id="CntT_LeaveReasonIDSelected"></label></span>
+				</h4>
+				@Html.ListBox("T_LeaveReasonIDSelected", null, new { @class = "optionvalue", @size = 10 })
+			</div>
+		</div>
+	</div>
+    }
+  if (Convert.ToString(ViewData["AssociatedType"]).Trim() != "T_LeaveProfileReason_T_LeaveProfile")
+  { 
+	<div class="M2MList">
+		<div class="col-md-5" style="overflow:auto !important;max-height:400px;min-height:400px;">
+           
+            @Html.TextBox("txtSearchT_LeaveProfile", null, new { @class = "form-control", placeholder = "Search Leave", @size = 10, @dataurl = Url.Action("GetAllValues") })
+              
+				<div class='form-group col-sm-12' style="padding:10px 0px 0px 0px; margin:0px;">
+					<div class='form-group col-sm-4' style="padding:0px">
+						<label class="text-primary small"> Intermittent</label>
+					</div>
+                    <div class="input-group col-sm-6" id="dvT_Intermittent">
+                        <select class="form-control" id="T_Intermittent">
+                            <option value="">All</option>
+                            <option value="True">True</option>
+                            <option value="False">False</option>
+                        </select>
+                    </div>
+                </div>
+                          
+				<div class='form-group col-sm-12' style="padding:10px 0px 0px 0px; margin:0px;">
+					<div class='form-group col-sm-4' style="padding:0px">
+						<label class="text-primary small"> Full Days</label>
+					</div>
+                    <div class="input-group col-sm-6" id="dvT_FullDays">
+                        <select class="form-control" id="T_FullDays">
+                            <option value="">All</option>
+                            <option value="True">True</option>
+                            <option value="False">False</option>
+                        </select>
+                    </div>
+                </div>
+             
+				@if (ViewBag.t_employeeleaveprofile!=null)
+                {
+						<div class='form-group col-sm-12' title="Employee" style="padding:10px 0px 0px 0px; margin:0px;">
+							<div class='form-group col-sm-4' style="padding:0px">
+								<label class="text-primary small"> Employee</label>
+							</div>
+							<div class="input-group col-sm-6" id="dvt_employeeleaveprofile">
+		
+	 @Html.DropDownList("t_employeeleaveprofile", null, new {   @multiple = "multiple", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllMultiSelectValue", "T_Employee",null) })
+							</div>
+						</div>
+				}
+				@if (ViewBag.t_injuryrelatedleave!=null)
+                {
+						<div class='form-group col-sm-12' title="Related Injury If Any" style="padding:10px 0px 0px 0px; margin:0px;">
+							<div class='form-group col-sm-4' style="padding:0px">
+								<label class="text-primary small"> Related Injury If Any</label>
+							</div>
+							<div class="input-group col-sm-6" id="dvt_injuryrelatedleave">
+		
+	 @Html.DropDownList("t_injuryrelatedleave", null, new {   @multiple = "multiple", @HostingName = "T_EmployeeInjury", @dataurl = Url.Action("GetAllMultiSelectValue", "T_EmployeeInjury",null) })
+							</div>
+						</div>
+				}
+					@if (ViewBag.t_leaveprofilereason!=null)
+                    {
+						<div class='form-group col-sm-12' title="Leave Reason" style="padding:10px 0px 0px 0px; margin:0px;">
+						<div class='form-group col-sm-4' style="padding:0px">
+							<label class="text-primary small"> Leave Reason</label>
+						</div>
+                                <div class="input-group col-sm-6" id="dvt_leaveprofile">
+		
+	 @Html.DropDownList("t_leaveprofilereason", null, new {   @multiple = "multiple", @HostingName = "T_LeaveReason", @dataurl = Url.Action("GetAllMultiSelectValue", "T_LeaveReason",null) })
+                                </div>
+                        </div>
+					}
+		</div>
+		<label style="display:none;">@Html.LabelFor(model => model.T_LeaveProfileID) </label>
+		<div class="col-md-7">
+			<div class="col-md-12">
+				<h4><span class="unselected-title">Available Leave </span> <span style="float:right; font-size:14px;"> Show @Html.DropDownList("PageSize", new SelectList(new Dictionary<string, string> { {"50","50"},{ "100", "100" }, { "200", "200" }, { "500", "500" }, { "All", "All" } }, "Key", "Value")
+                    ,new {@dataurl=Url.Action("GetAllValues"), onchange="ListBoxPagination(this,$('#txtSearchT_LeaveProfile').val(),'T_LeaveReason', '"+ViewData["HostingEntityID"]+"', 'T_LeaveProfileReason_T_LeaveProfile', 'T_LeaveProfileIDAvailable');"})
+			</span></h4>
+				
+				@Html.ListBox("T_LeaveProfileIDAvailable", null, new { @class = "optionvalue", @size = 10 })
+				
+				 </div>
+			<div class="col-md-12  btn-group" style="margin-top:10px;">
+				<a id="MoveRightT_LeaveProfile" onclick="Associate(event,'T_LeaveProfile');" class="btn btn-primary col-md-6"><span id="MoveRightT_LeaveProfile" class="glyphicon glyphicon-chevron-down"></span></a>
+				<a id="MoveLeftT_LeaveProfile" onclick="Associate(event,'T_LeaveProfile');" class="btn btn-primary col-md-6" ><span id="MoveLeftT_LeaveProfile" class="glyphicon glyphicon-chevron-up"></span></a>
+			</div>
+			<div class="col-md-12">
+				<h4><span class="selected-title">Selected Leave</span> 
+				 <span class="badge bg-blue"><label id="CntT_LeaveProfileIDSelected"></label></span>
+				</h4>
+				@Html.ListBox("T_LeaveProfileIDSelected", null, new { @class = "optionvalue", @size = 10 })
+			</div>
+		</div>
+	</div>
+    }
+<div class="clearfix clear"></div><br />
+    <div class="col-md-5">
+		@if (Convert.ToString(ViewData["AssociatedType"]).Trim() != "T_LeaveProfileReason_T_LeaveReason")
+        {
+             <button id="btnT_LeaveReason" class="btn btn-primary btn-sm">Search</button>
+        }
+		@if (Convert.ToString(ViewData["AssociatedType"]).Trim() != "T_LeaveProfileReason_T_LeaveProfile")
+        {
+             <button id="btnT_LeaveProfile" class="btn btn-primary btn-sm">Search</button>
+        }
+ 
+
+
+    </div>
+    <div class="col-md-7">
+       @Html.ActionLink("Cancel", "Cancel", new { UrlReferrer = ViewData["T_LeaveProfileReasonParentUrl"] }, new { @onclick = "", @class = "btn btn-default btn-sm" })
+            <input type="submit" name="command" value="Create" class="btn btn-primary btn-sm" />
+	 <input type="hidden" name="hdncommand" value="" />
+    </div>
+    <br />
+}
+	<script>
+    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+@if(Convert.ToString(ViewData["AssociatedType"]).Trim() != "T_LeaveProfileReason_T_LeaveReason")
+{
+<script>
+function FillSelectedListBox()
+{
+	$("#T_LeaveReasonIDSelected option").prop("selected","selected");
+}
+</script>
+}
+@if(Convert.ToString(ViewData["AssociatedType"]).Trim() != "T_LeaveProfileReason_T_LeaveProfile")
+{
+<script>
+function FillSelectedListBox()
+{
+	$("#T_LeaveProfileIDSelected option").prop("selected","selected");
+}
+</script>
+}
+<script>
+    $(document).ready(function () {	 
+		$("#CntT_LeaveReasonIDSelected").html($("#T_LeaveReasonIDSelected :selected").length);
+		
+	$("#T_LeaveReasonIDSelected option").each(function () {
+            var value = '@ViewBag.SelectedListRemoved'.split(',');
+            for (i = 0; i < value.length; i++) {
+                if (value != "" && value != "undefined") {
+                    var optionvalue = $(this).val();
+                    if(optionvalue == value[i])
+                        $(this, "#T_LeaveReasonIDSelected").attr("style", "display:none;");
+                }
+            }
+        });
+	$("#CntT_LeaveProfileIDSelected").html($("#T_LeaveProfileIDSelected :selected").length);
+		
+	$("#T_LeaveProfileIDSelected option").each(function () {
+            var value = '@ViewBag.SelectedListRemoved'.split(',');
+            for (i = 0; i < value.length; i++) {
+                if (value != "" && value != "undefined") {
+                    var optionvalue = $(this).val();
+                    if(optionvalue == value[i])
+                        $(this, "#T_LeaveProfileIDSelected").attr("style", "display:none;");
+                }
+            }
+        });
+
+
+        $('#t_leaveprofilereason').multiselect({
+            buttonWidth: '100%',
+            nonSelectedText: 'ALL',
+        });
+        $('#t_employeeleaveprofile').multiselect({
+            buttonWidth: '100%',
+            nonSelectedText: 'ALL',
+        });
+        $('#t_injuryrelatedleave').multiselect({
+            buttonWidth: '100%',
+            nonSelectedText: 'ALL',
+        });
+        $('#T_Intermittent').multiselect({
+            buttonWidth: '100%',
+            nonSelectedText: 'ALL',
+        });
+        $('#T_FullDays').multiselect({
+            buttonWidth: '100%',
+            nonSelectedText: 'ALL',
+        });
+        $('#t_leaveprofilereason').multiselect({
+            buttonWidth: '100%',
+            nonSelectedText: 'ALL',
+        });
+	});
+</script>
+@{
+    var businessrule = User.businessrules.Where(p => p.EntityName == "T_LeaveProfileReason").ToList();
+    if ((businessrule != null && businessrule.Count > 0))
+    {
+        <script>
+            $("form").submit(function (event) {
+			if (!$("#frmT_LeaveProfileReason").valid()) return;
+                document.getElementById("ErrMsg").innerHTML = "";
+                var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+                form = $("#frmT_LeaveProfileReason").serialize();
+                dataurl = "@Url.Action("businessruletype", "T_LeaveProfileReason", new { ruleType = "OnCreate" })";
+                flag = ApplyBusinessRuleOnSubmit(dataurl, "T_LeaveProfileReason", false, "ErrMsg", form);
+                if (flag) {
+                    FillSelectedListBox();
+                    $('input:hidden[name="hdncommand"]').val($("input[type='submit']").val());
+                    $("form").find(':input').removeAttr('disabled');
+                }
+                return flag;
+            });
+            
+        </script>
+    }
+    else
+    {
+        <script>
+            $("input[type='submit']").click(function (event) {
+			if (!$("#frmT_LeaveProfileReason").valid()) return;
+                FillSelectedListBox();
+                var $this = $(this);
+                $('input:hidden[name="hdncommand"]').val($this.val());
+            });
+        </script>
+
+    }
+}
+
+

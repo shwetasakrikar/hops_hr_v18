@@ -1,0 +1,174 @@
+﻿<error errorId="5e23fa37-1c3c-4375-87a3-6e617d716ede" application="/LM/W3SVC/1/ROOT/wsh_hr_v26" host="TURANTOMVC" type="System.NullReferenceException" message="Object reference not set to an instance of an object." source="EntityFramework" detail="System.NullReferenceException: Object reference not set to an instance of an object.&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.QueryParameterExpression.EvaluateParameter(Object[] arguments)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.&lt;&gt;c__DisplayClass7.&lt;GetResults&gt;b__6()&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.&lt;&gt;c__DisplayClass7.&lt;GetResults&gt;b__5()&#xD;&#xA;   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.&lt;System.Collections.Generic.IEnumerable&lt;T&gt;.GetEnumerator&gt;b__0()&#xD;&#xA;   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()&#xD;&#xA;   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.&lt;GetElementFunction&gt;b__1[TResult](IEnumerable`1 sequence)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)&#xD;&#xA;   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)&#xD;&#xA;   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source, Expression`1 predicate)&#xD;&#xA;   at GeneratorBase.MVC.Views.T_JobAssignment.IndexPartial.Execute() in d:\GenApps\wsh_hr_v26\GeneratorBase.MVC\obj\CodeGen\Views\T_JobAssignment\IndexPartial.cshtml:line 492&#xD;&#xA;   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)&#xD;&#xA;   at RazorGenerator.Mvc.PrecompiledMvcView.Render(ViewContext viewContext, TextWriter writer)&#xD;&#xA;   at System.Web.Mvc.HtmlHelper.RenderPartialInternal(String partialViewName, ViewDataDictionary viewData, Object model, TextWriter writer, ViewEngineCollection viewEngineCollection)&#xD;&#xA;   at System.Web.Mvc.Html.PartialExtensions.Partial(HtmlHelper htmlHelper, String partialViewName, Object model, ViewDataDictionary viewData)&#xD;&#xA;   at System.Web.Mvc.Html.PartialExtensions.Partial(HtmlHelper htmlHelper, String partialViewName, Object model)&#xD;&#xA;   at GeneratorBase.MVC.Views.T_JobAssignment.Index.Execute() in d:\GenApps\wsh_hr_v26\GeneratorBase.MVC\obj\CodeGen\Views\T_JobAssignment\Index.cshtml:line 22&#xD;&#xA;   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.WebPages.StartPage.RunPage()&#xD;&#xA;   at System.Web.WebPages.StartPage.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)&#xD;&#xA;   at RazorGenerator.Mvc.PrecompiledMvcView.Render(ViewContext viewContext, TextWriter writer)&#xD;&#xA;   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)" user="Admin" time="2016-07-27T12:22:28.6014570Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, sdch, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:BX=d254lgpbi3in1&amp;b=3&amp;s=29; __RequestVerificationToken_L3dzaF9ocl92MjY1=XixA2KA77VxLUgLpTiPXnrmaw-QQf8vf2NmZrD57UPpvbFfsZyTfm5CXImWFIcVa3vuyHsTyUL6nKHW1gGr1zBEe7lAcGEWlS3829XV1x6s1; wsh_hr_v21=fVGoQhOHCzd96UHw6uiYkTp2h5vg45avIe2jap1AIGJQog0_mmjeR0yl8BkfFswsCma_c2WqAxNXaFZNsVX4Xwa6HfbXr0V5hupei4hbgw1Nz8XL2EPt3h9gZC1I_Mh9t6IuzaZ3o_Y0u7J7GUDWDBhFVB9b6LK14Z_braesH83pp8oH-rx6TmGdRQkjUL6kGwXV6ldNrP0Li3duRJxLEdimsjOoXzc1CbtsfMP8DVdNJaGkEF_P48bGU-yZJ3VGr0OCGCWzDo7mPGxV3kgcQm_GvAFRp3W8CcKbhjT228Xw41JGhxwFawowzdd3VW6AjlsavcXXVMOA0rhRekkSkq_QILcYFUVpF_-CvEs4fwMfRekd9yZzCtk7SkxXp3DGrRxHhJULZDpMa8Ees93SYWK6TrOW4ksdODPePOLnWO8KmHVUKuKQAOXAdixM8z-BGDwrUI3jv8i0MS7byYyPJwZWy9_eygVS_Yff3agjUATDlW1TQraDdOGxFpIB9QzD&#xD;&#xA;HTTP_HOST:apps.turanto.com&#xD;&#xA;HTTP_REFERER:https://apps.turanto.com/wsh_hr_v26/Account/Login?returnUrl=%2Fwsh_hr_v26%2FHome%2FRedirectToEntity%3FEntityName%3DT_JobAssignment&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, sdch, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: BX=d254lgpbi3in1&amp;b=3&amp;s=29; __RequestVerificationToken_L3dzaF9ocl92MjY1=XixA2KA77VxLUgLpTiPXnrmaw-QQf8vf2NmZrD57UPpvbFfsZyTfm5CXImWFIcVa3vuyHsTyUL6nKHW1gGr1zBEe7lAcGEWlS3829XV1x6s1; wsh_hr_v21=fVGoQhOHCzd96UHw6uiYkTp2h5vg45avIe2jap1AIGJQog0_mmjeR0yl8BkfFswsCma_c2WqAxNXaFZNsVX4Xwa6HfbXr0V5hupei4hbgw1Nz8XL2EPt3h9gZC1I_Mh9t6IuzaZ3o_Y0u7J7GUDWDBhFVB9b6LK14Z_braesH83pp8oH-rx6TmGdRQkjUL6kGwXV6ldNrP0Li3duRJxLEdimsjOoXzc1CbtsfMP8DVdNJaGkEF_P48bGU-yZJ3VGr0OCGCWzDo7mPGxV3kgcQm_GvAFRp3W8CcKbhjT228Xw41JGhxwFawowzdd3VW6AjlsavcXXVMOA0rhRekkSkq_QILcYFUVpF_-CvEs4fwMfRekd9yZzCtk7SkxXp3DGrRxHhJULZDpMa8Ees93SYWK6TrOW4ksdODPePOLnWO8KmHVUKuKQAOXAdixM8z-BGDwrUI3jv8i0MS7byYyPJwZWy9_eygVS_Yff3agjUATDlW1TQraDdOGxFpIB9QzD&#xD;&#xA;Host: apps.turanto.com&#xD;&#xA;Referer: https://apps.turanto.com/wsh_hr_v26/Account/Login?returnUrl=%2Fwsh_hr_v26%2FHome%2FRedirectToEntity%3FEntityName%3DT_JobAssignment&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/wsh_hr_v26" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v26\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="Admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="Admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="Admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/wsh_hr_v26/T_JobAssignment" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v26\GeneratorBase.MVC\T_JobAssignment" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="3659" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/wsh_hr_v26/T_JobAssignment" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/wsh_hr_v26/T_JobAssignment" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, sdch, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="BX=d254lgpbi3in1&amp;b=3&amp;s=29; __RequestVerificationToken_L3dzaF9ocl92MjY1=XixA2KA77VxLUgLpTiPXnrmaw-QQf8vf2NmZrD57UPpvbFfsZyTfm5CXImWFIcVa3vuyHsTyUL6nKHW1gGr1zBEe7lAcGEWlS3829XV1x6s1; wsh_hr_v21=fVGoQhOHCzd96UHw6uiYkTp2h5vg45avIe2jap1AIGJQog0_mmjeR0yl8BkfFswsCma_c2WqAxNXaFZNsVX4Xwa6HfbXr0V5hupei4hbgw1Nz8XL2EPt3h9gZC1I_Mh9t6IuzaZ3o_Y0u7J7GUDWDBhFVB9b6LK14Z_braesH83pp8oH-rx6TmGdRQkjUL6kGwXV6ldNrP0Li3duRJxLEdimsjOoXzc1CbtsfMP8DVdNJaGkEF_P48bGU-yZJ3VGr0OCGCWzDo7mPGxV3kgcQm_GvAFRp3W8CcKbhjT228Xw41JGhxwFawowzdd3VW6AjlsavcXXVMOA0rhRekkSkq_QILcYFUVpF_-CvEs4fwMfRekd9yZzCtk7SkxXp3DGrRxHhJULZDpMa8Ees93SYWK6TrOW4ksdODPePOLnWO8KmHVUKuKQAOXAdixM8z-BGDwrUI3jv8i0MS7byYyPJwZWy9_eygVS_Yff3agjUATDlW1TQraDdOGxFpIB9QzD" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://apps.turanto.com/wsh_hr_v26/Account/Login?returnUrl=%2Fwsh_hr_v26%2FHome%2FRedirectToEntity%3FEntityName%3DT_JobAssignment" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="BX">
+      <value string="d254lgpbi3in1&amp;b=3&amp;s=29" />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MjY1">
+      <value string="XixA2KA77VxLUgLpTiPXnrmaw-QQf8vf2NmZrD57UPpvbFfsZyTfm5CXImWFIcVa3vuyHsTyUL6nKHW1gGr1zBEe7lAcGEWlS3829XV1x6s1" />
+    </item>
+    <item name="wsh_hr_v21">
+      <value string="fVGoQhOHCzd96UHw6uiYkTp2h5vg45avIe2jap1AIGJQog0_mmjeR0yl8BkfFswsCma_c2WqAxNXaFZNsVX4Xwa6HfbXr0V5hupei4hbgw1Nz8XL2EPt3h9gZC1I_Mh9t6IuzaZ3o_Y0u7J7GUDWDBhFVB9b6LK14Z_braesH83pp8oH-rx6TmGdRQkjUL6kGwXV6ldNrP0Li3duRJxLEdimsjOoXzc1CbtsfMP8DVdNJaGkEF_P48bGU-yZJ3VGr0OCGCWzDo7mPGxV3kgcQm_GvAFRp3W8CcKbhjT228Xw41JGhxwFawowzdd3VW6AjlsavcXXVMOA0rhRekkSkq_QILcYFUVpF_-CvEs4fwMfRekd9yZzCtk7SkxXp3DGrRxHhJULZDpMa8Ees93SYWK6TrOW4ksdODPePOLnWO8KmHVUKuKQAOXAdixM8z-BGDwrUI3jv8i0MS7byYyPJwZWy9_eygVS_Yff3agjUATDlW1TQraDdOGxFpIB9QzD" />
+    </item>
+  </cookies>
+</error>

@@ -1,0 +1,245 @@
+﻿@model GeneratorBase.MVC.Models.LoginViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        @{
+           ViewBag.Title = "Log in";
+            Layout = null;
+            var commonObj = GeneratorBase.MVC.Models.CommonFunction.Instance;
+            var AppName = commonObj.AppName();
+            var CreateAnAccount = commonObj.EnableCreateAnAccount();
+            var Compprofile = commonObj.getCompanyProfile(User);
+	
+	var url = Url.Content("~/logo/logo_white.png");
+    if (HttpContext.Current.Request.Url.Host == "localhost")
+    { url = Url.Content("~/logo/logo_white.png"); }
+	var AppLogo = url;
+            var AppLogoWidth = Compprofile.LogoWidth == null ? "155px" : Compprofile.LogoWidth;
+            var AppLogoHeight = Compprofile.LogoHeight == null ? "29px" : Compprofile.LogoHeight;
+			string apkname = AppName.Replace(' ','.') + ".apk";
+        }
+    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    @Styles.Render("~/Content/css")
+	<link href="@Url.Content("~/Content/" + commonObj.getTenantSiteScript(User))" rel="stylesheet" type="text/css" />
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")" type="text/javascript"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="@Url.Content("~/Scripts/bootstrap-select.min.js")" type="text/javascript"></script>
+<link href="@Url.Content("~/Content/bootstrap-select.min.css")" rel="stylesheet" type="text/css" />
+    <script>		
+        function OpenQuickQddPopUp(dvName) {
+            var url = $("#" + dvName).data("url");
+            $("#" + dvName).load(url);
+        }
+    </script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<style>
+        .modal-backdrop {
+            position: relative;
+        }
+
+        .modal-header-login {
+            padding: 15px;
+            border-bottom: 1px solid #4197ca !important;
+            min-height: 16.428571429px;
+            background: #4197ca !important;
+            color: white !important;
+        }
+
+        .modal-content-login {
+            position: relative;
+            background-color: #fff;
+            border: 1px solid #62a8d1;
+            border: 1px solid rgb(98, 168, 209);
+            border-radius: 0px;
+            -webkit-box-shadow: 0 3px 9px rgb(19, 57, 80);
+            box-shadow: 0 3px 9px rgb(19, 57, 80);
+            background-clip: padding-box;
+            outline: 0;
+        }
+    </style>
+    </head>
+<body style="background:#eaeaea">
+    <div id="fullscreen_bg" class="fullscreen_bg" />
+   
+         <div class="container">
+        <div class="LoginBanner">
+             <h4 class="text-center">
+                <center>
+                      <img src="@AppLogo" style="width: @AppLogoWidth; height:@AppLogoHeight;" alt="Logo - @AppName.ToString()" title="Logo - @AppName.ToString()">
+                    <p style="color: white; margin: 15px 0px 5px 0px; font-size:24px" alt="App Name - @AppName.ToString()" title="App Name - @AppName.ToString()">@AppName.ToString()</p>
+                </center>
+            </h4>
+        </div>
+        <div class="row">
+
+		<div class="main">
+
+                <h3 alt="Sign-in" title="Sign-in">Sign-in </h3>
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+
+                    <div class="AccountLogin">
+                        <div class="form-group">
+
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Email or Username", @autofocus = "autofocus", @autocomplete="off",@alt = "Email or Username", @title = "Email or Username"})
+                            @Html.ValidationMessageFor(m => m.UserName)
+                        </div>
+                        <div class="form-group" style="position: relative;">
+                           @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", @autocomplete="off", @alt = "Password", @title = "Password"})
+                           <a class="pull-right" href="#" data-placement="top" data-original-title="Forgot Password" data-toggle="modal" data-target="#popupForgotPassword" onclick=@Html.Raw("OpenQuickQddPopUp('dvForgotPassword');") style="position:absolute; font-size:12px; right:5px; top:10px" alt="Forgot Password" title="Forgot Password">( Forgot? )</a>
+   @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn btn-primary" id="Login" alt="Submit Sign-in Form" title="Submit Sign-in Form"> Sign-in </button>   
+					if (!string.IsNullOrEmpty(CreateAnAccount) && CreateAnAccount.ToLower() == "true")
+                    {
+                        <span class="createaccount">or <a href="#" data-placement="top" data-original-title="Create an account" data-toggle="modal" data-target="#popupCreateanaccount" onclick=@Html.Raw("OpenQuickQddPopUp('dvCreateanaccount');") alt="Create an account" title="Create an account">Create an account</a></span>
+                    }
+                }
+
+
+
+
+
+            </div>
+        </div>
+
+		<center style="margin-top:20px;">
+            <a id="androidapp" href="~/@apkname" target="_self">
+                <img style="width:auto" src="~/Content/images/downloadapk.png" alt="Download Android APK" title="download android apk">
+            </a>
+        </center>
+		
+		@if (Compprofile.LegalInformation != null || Compprofile.PrivacyPolicy != null
+                || Compprofile.TermsOfService != null || Compprofile.Emailto != null
+                || Compprofile.CreatedBy != null)
+        {
+           <center>
+                <br>
+                <footer>
+                    <span>
+                        <a href="@Html.Encode(commonObj.getBaseUri() + Compprofile.LegalInformationLink)" target="_blank" alt="Legal Information" title="Legal Information">@Compprofile.LegalInformation</a>
+                        | <a href="@Html.Encode(commonObj.getBaseUri() + Compprofile.TermsOfServiceLink)" target="_blank" alt="Terms Of Service " title="Terms Of Service ">
+                            @Compprofile.TermsOfService
+                        </a> | <a href="@Html.Encode(commonObj.getBaseUri() + Compprofile.PrivacyPolicyLink)" target="_blank" alt="Privacy Policy" title="Privacy Policy">
+                            @Compprofile.PrivacyPolicy
+                        </a>
+                    </span>
+                    <p>&copy; Generated by <a href="@Compprofile.CreatedByLink" target="_blank" alt="http://www.turanto.com" title="http://www.turanto.com">@Compprofile.CreatedByName</a></p>
+                </footer>
+            </center>
+        }
+        else
+        {
+            <center>
+                <br>
+                <footer>
+                    <p>&copy; Generated by Turanto</p>
+                </footer>
+            </center>
+        }
+    </div>
+	<footer class="footer navbar-fixed-bottom">
+        <center>
+            @Html.Raw(Compprofile.Disclaimer)
+        </center>
+    </footer>
+	<div class="modal" id="popupCreateanaccount" tabindex="-1" role="dialog" aria-labelledby="popupCreateanaccountLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 45%;">
+            <div class="modal-content-login">
+                <div class="modal-header-login">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="popupCreateanaccountLabel">Create an account</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="dvCreateanaccount" data-url="@Url.Action("Register", "Account", null)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="modal" id="popupForgotPassword" tabindex="-1" role="dialog" aria-labelledby="popupForgotPasswordLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content-login">
+                <div class="modal-header-login">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="popupForgotPasswordLabel"> Forgot Password</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="dvForgotPassword" data-url="@Url.Action("ForgotPassword", "Account", null)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- /container -->
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/jqueryval")
+ <script type="text/javascript">
+            $(document).ready(function () {
+                $('.selectpicker').selectpicker({
+                    style: 'btn-default',
+                    size: false,
+                  
+                }); $(".bootstrap-select").click(function () {
+                    $(this).addClass("open");
+                 
+                });
+            });
+</script>
+		<script>
+            $("button[type='submit']").click(function () {
+                if ('@User.Original.Identity.IsAuthenticated' == 'True') {
+                    var r = confirm("You are already logged in as @User.Original.Identity.Name in other tab. Press OK to continue Login or Logout from other tabs.");
+                    if (r == true) {
+                        window.location.replace('@Url.Action("Index","Home")'); return false;
+                    } else {
+                        location.reload(true);
+                        return false;
+                    }
+                }
+            });
+        </script>
+        <script type="text/javascript">
+        $(document).ready(function () {
+            $("#top-bar a").click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+            detectmob();
+        });
+        function detectmob() {
+            if (navigator.userAgent.match(/Android/i)) {
+                document.getElementById("androidapp").style.visibility = "visible";
+            }
+            else
+                document.getElementById("androidapp").style.display = "none";
+            //else if (navigator.userAgent.match(/webOS/i)) { }
+            //else if (navigator.userAgent.match(/iPhone/i)) { }
+            //else if (navigator.userAgent.match(/iPad/i)) { }
+            //else if (navigator.userAgent.match(/iPod/i)) { }
+            //else if (navigator.userAgent.match(/BlackBerry/i)) { }
+            //else if (navigator.userAgent.match(/Windows Phone/i)) { }
+
+            //if (window.localStorage.getItem("fromapk") == "true")
+            //    document.getElementById("androidapp").style.visibility = "hidden";
+        }
+    </script>
+    </body>
+</html>
+

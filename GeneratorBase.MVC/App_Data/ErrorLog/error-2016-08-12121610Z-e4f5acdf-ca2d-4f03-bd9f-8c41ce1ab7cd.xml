@@ -1,0 +1,283 @@
+﻿<error errorId="e4f5acdf-ca2d-4f03-bd9f-8c41ce1ab7cd" application="/LM/W3SVC/1/ROOT/wsh_hr_v31" host="TURANTOMVC" type="System.NullReferenceException" message="Object reference not set to an instance of an object." source="GeneratorBase.MVC" detail="System.NullReferenceException: Object reference not set to an instance of an object.&#xD;&#xA;   at GeneratorBase.MVC.Controllers.T_JobAssignmentController.CheckBeforeSave(T_JobAssignment t_jobassignment) in d:\GenApps\wsh_hr_v31\GeneratorBase.MVC\Controllers\T_JobAssignment\T_JobAssignmentController.cs:line 3299&#xD;&#xA;   at GeneratorBase.MVC.Controllers.T_JobAssignmentController.Create(T_JobAssignment t_jobassignment, String UrlReferrer, Nullable`1 IsDDAdd) in d:\GenApps\wsh_hr_v31\GeneratorBase.MVC\Controllers\T_JobAssignment\T_JobAssignmentCRUDController.cs:line 356&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)" user="Admin" time="2016-08-12T12:16:10.3080401Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:2902&#xD;&#xA;HTTP_CONTENT_TYPE:multipart/form-data; boundary=----WebKitFormBoundaryCOnOZ4Yw9V5qtAdj&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:pageSizeAdminT_Employee=50; paginationAdminT_Position=1; BX=d254lgpbi3in1&amp;b=3&amp;s=29; __utma=260613201.533716664.1461913592.1469011900.1469791855.10; __utmz=260613201.1461913592.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __RequestVerificationToken_L3dzaF9ocl92MzE1=d3cRxa2ppynj6yOEEc0Agsae7Bgj2p36RyQ5SOiBH_AXE6CCnDrXUfq1pA3VgUeXzH0J1CdyUFsWVtMOWHoXP1jRTBiF7pfKqDHC51dPi0M1; __RequestVerificationToken_L1R1cmFudG8xMi41Ljk1=h6r1GsmArWUThoS0IZIZ1kaoDNSqXeXMmTqlnJA5LNEvWQw9PrUHumRP_JL2XBe5cRPVxvla78ZLMEGNrKVrWG2iyKDQ1GxzpOgjCyl9b7A1; Turanto12.5.9=wqKc4FUY35Yfz6bW2FW_N3RtAAZP3nwDBo9-Zj0077F0W2QZ0b34uVv_E8oWqSCZVIJnvVf1AuSQmxdi53HlGZMAtsWNHIWTvQ7sA7vUDc6BsADhgDZEGMEUF7l5n2ua8ymvjeEeKb5pSvDvhcU6R62kVw3fktfpBKGaUtsHgg-mEcImbJLtGoAsUlFFY5d5YBS9AJL2jllmBgFjF4JlRDEQ0xYHl-zuASPXlV-OMud-uLqdXIJffqZnhLT9HUKEwYE1rpvccxJrCMWWKsQPhXVON8NnAwh-IEcKsT1zbjoFd6Tceavo7w_l7THip-D2nITl8dyRdQGLpLl74Dpj5NmmoiwVU3Whi9Sw3fLHKapID0-kUhC3Y8OFtPWB5Egyv-Veio0wixax9VCJZB6JNSrywYmMSzZiVvmTlr2LNvdaxTOU2ntOefJDKS7ljUkj; wsh_hr_v30=3B_TT2ZkkidmMNjHGUaN43eWCP7kjDdVLLhElaGbNAW4e36ZEHhO9XQgTs2zOr1LEWXeI0rfgnzafX6GnM6j3UpKuNnYRBQ67BZxg83LwRJsAa5NeTwjrEydUOUv56WVC7tMeeArukr_PijsXm6Z6g-0eMoNSwRoxvh6gQmcpuz4_zvF2l01SYC1qK-vj6kh7VgXXkCA1rTNEeWcOSdl6iUTXMWipm9sgg2zj3RvMlpRgK9u0um74XBTv1jvj782n-UvMMxS8SE2eAVlptoF5JCNlOnSDhxVmCb0RJzsrokZJvjEYxZ4Fw9awaMXS4BlESd_E0VerjQByzb9nkvooE_kR-9634h_ng58KYrN9EXe7t6wn8MGqZfKrFYQQ-yr7Bodr5UdaQaYQc0gJrLB0OXRdl3q0y7zrVMuJ_f0XfkTbQEmxi68Is4neYZawIO5tu6F9Ozr_aFM42nt3Q-wSKCA5qjqKzBysfMSi75ysyDy-ccUONZ1Gk5Xfi0tzOv6&#xD;&#xA;HTTP_HOST:mvc.turanto.com&#xD;&#xA;HTTP_REFERER:https://mvc.turanto.com/wsh_hr_v31/T_JobAssignment/Create?UrlReferrer=https%3A%2F%2Fmvc.turanto.com%2Fwsh_hr_v31%2FT_Employee%2FEdit%2F109%3FUrlReferrer%3Dhttps%3A%252F%252Fmvc.turanto.com%252Fwsh_hr_v31%252FT_Employee%26viewtype%3DIndexPartial&amp;AssociatedType=T_EmployeeJobAssignment&amp;HostingEntityName=T_Employee&amp;HostingEntityID=109&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:https://mvc.turanto.com&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Content-Length: 2902&#xD;&#xA;Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryCOnOZ4Yw9V5qtAdj&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: pageSizeAdminT_Employee=50; paginationAdminT_Position=1; BX=d254lgpbi3in1&amp;b=3&amp;s=29; __utma=260613201.533716664.1461913592.1469011900.1469791855.10; __utmz=260613201.1461913592.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __RequestVerificationToken_L3dzaF9ocl92MzE1=d3cRxa2ppynj6yOEEc0Agsae7Bgj2p36RyQ5SOiBH_AXE6CCnDrXUfq1pA3VgUeXzH0J1CdyUFsWVtMOWHoXP1jRTBiF7pfKqDHC51dPi0M1; __RequestVerificationToken_L1R1cmFudG8xMi41Ljk1=h6r1GsmArWUThoS0IZIZ1kaoDNSqXeXMmTqlnJA5LNEvWQw9PrUHumRP_JL2XBe5cRPVxvla78ZLMEGNrKVrWG2iyKDQ1GxzpOgjCyl9b7A1; Turanto12.5.9=wqKc4FUY35Yfz6bW2FW_N3RtAAZP3nwDBo9-Zj0077F0W2QZ0b34uVv_E8oWqSCZVIJnvVf1AuSQmxdi53HlGZMAtsWNHIWTvQ7sA7vUDc6BsADhgDZEGMEUF7l5n2ua8ymvjeEeKb5pSvDvhcU6R62kVw3fktfpBKGaUtsHgg-mEcImbJLtGoAsUlFFY5d5YBS9AJL2jllmBgFjF4JlRDEQ0xYHl-zuASPXlV-OMud-uLqdXIJffqZnhLT9HUKEwYE1rpvccxJrCMWWKsQPhXVON8NnAwh-IEcKsT1zbjoFd6Tceavo7w_l7THip-D2nITl8dyRdQGLpLl74Dpj5NmmoiwVU3Whi9Sw3fLHKapID0-kUhC3Y8OFtPWB5Egyv-Veio0wixax9VCJZB6JNSrywYmMSzZiVvmTlr2LNvdaxTOU2ntOefJDKS7ljUkj; wsh_hr_v30=3B_TT2ZkkidmMNjHGUaN43eWCP7kjDdVLLhElaGbNAW4e36ZEHhO9XQgTs2zOr1LEWXeI0rfgnzafX6GnM6j3UpKuNnYRBQ67BZxg83LwRJsAa5NeTwjrEydUOUv56WVC7tMeeArukr_PijsXm6Z6g-0eMoNSwRoxvh6gQmcpuz4_zvF2l01SYC1qK-vj6kh7VgXXkCA1rTNEeWcOSdl6iUTXMWipm9sgg2zj3RvMlpRgK9u0um74XBTv1jvj782n-UvMMxS8SE2eAVlptoF5JCNlOnSDhxVmCb0RJzsrokZJvjEYxZ4Fw9awaMXS4BlESd_E0VerjQByzb9nkvooE_kR-9634h_ng58KYrN9EXe7t6wn8MGqZfKrFYQQ-yr7Bodr5UdaQaYQc0gJrLB0OXRdl3q0y7zrVMuJ_f0XfkTbQEmxi68Is4neYZawIO5tu6F9Ozr_aFM42nt3Q-wSKCA5qjqKzBysfMSi75ysyDy-ccUONZ1Gk5Xfi0tzOv6&#xD;&#xA;Host: mvc.turanto.com&#xD;&#xA;Referer: https://mvc.turanto.com/wsh_hr_v31/T_JobAssignment/Create?UrlReferrer=https%3A%2F%2Fmvc.turanto.com%2Fwsh_hr_v31%2FT_Employee%2FEdit%2F109%3FUrlReferrer%3Dhttps%3A%252F%252Fmvc.turanto.com%252Fwsh_hr_v31%252FT_Employee%26viewtype%3DIndexPartial&amp;AssociatedType=T_EmployeeJobAssignment&amp;HostingEntityName=T_Employee&amp;HostingEntityID=109&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&#xD;&#xA;Origin: https://mvc.turanto.com&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/wsh_hr_v31" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v31\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="Admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="Admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="Admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="2902" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="multipart/form-data; boundary=----WebKitFormBoundaryCOnOZ4Yw9V5qtAdj" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/wsh_hr_v31/T_JobAssignment/Create" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v31\GeneratorBase.MVC\T_JobAssignment\Create" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="UrlReferrer=https%3A%2F%2Fmvc.turanto.com%2Fwsh_hr_v31%2FT_Employee%2FEdit%2F109%3FUrlReferrer%3Dhttps%3A%252F%252Fmvc.turanto.com%252Fwsh_hr_v31%252FT_Employee%26viewtype%3DIndexPartial" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="182.72.49.82" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="18028" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/wsh_hr_v31/T_JobAssignment/Create" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/wsh_hr_v31/T_JobAssignment/Create" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="2902" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="multipart/form-data; boundary=----WebKitFormBoundaryCOnOZ4Yw9V5qtAdj" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="pageSizeAdminT_Employee=50; paginationAdminT_Position=1; BX=d254lgpbi3in1&amp;b=3&amp;s=29; __utma=260613201.533716664.1461913592.1469011900.1469791855.10; __utmz=260613201.1461913592.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __RequestVerificationToken_L3dzaF9ocl92MzE1=d3cRxa2ppynj6yOEEc0Agsae7Bgj2p36RyQ5SOiBH_AXE6CCnDrXUfq1pA3VgUeXzH0J1CdyUFsWVtMOWHoXP1jRTBiF7pfKqDHC51dPi0M1; __RequestVerificationToken_L1R1cmFudG8xMi41Ljk1=h6r1GsmArWUThoS0IZIZ1kaoDNSqXeXMmTqlnJA5LNEvWQw9PrUHumRP_JL2XBe5cRPVxvla78ZLMEGNrKVrWG2iyKDQ1GxzpOgjCyl9b7A1; Turanto12.5.9=wqKc4FUY35Yfz6bW2FW_N3RtAAZP3nwDBo9-Zj0077F0W2QZ0b34uVv_E8oWqSCZVIJnvVf1AuSQmxdi53HlGZMAtsWNHIWTvQ7sA7vUDc6BsADhgDZEGMEUF7l5n2ua8ymvjeEeKb5pSvDvhcU6R62kVw3fktfpBKGaUtsHgg-mEcImbJLtGoAsUlFFY5d5YBS9AJL2jllmBgFjF4JlRDEQ0xYHl-zuASPXlV-OMud-uLqdXIJffqZnhLT9HUKEwYE1rpvccxJrCMWWKsQPhXVON8NnAwh-IEcKsT1zbjoFd6Tceavo7w_l7THip-D2nITl8dyRdQGLpLl74Dpj5NmmoiwVU3Whi9Sw3fLHKapID0-kUhC3Y8OFtPWB5Egyv-Veio0wixax9VCJZB6JNSrywYmMSzZiVvmTlr2LNvdaxTOU2ntOefJDKS7ljUkj; wsh_hr_v30=3B_TT2ZkkidmMNjHGUaN43eWCP7kjDdVLLhElaGbNAW4e36ZEHhO9XQgTs2zOr1LEWXeI0rfgnzafX6GnM6j3UpKuNnYRBQ67BZxg83LwRJsAa5NeTwjrEydUOUv56WVC7tMeeArukr_PijsXm6Z6g-0eMoNSwRoxvh6gQmcpuz4_zvF2l01SYC1qK-vj6kh7VgXXkCA1rTNEeWcOSdl6iUTXMWipm9sgg2zj3RvMlpRgK9u0um74XBTv1jvj782n-UvMMxS8SE2eAVlptoF5JCNlOnSDhxVmCb0RJzsrokZJvjEYxZ4Fw9awaMXS4BlESd_E0VerjQByzb9nkvooE_kR-9634h_ng58KYrN9EXe7t6wn8MGqZfKrFYQQ-yr7Bodr5UdaQaYQc0gJrLB0OXRdl3q0y7zrVMuJ_f0XfkTbQEmxi68Is4neYZawIO5tu6F9Ozr_aFM42nt3Q-wSKCA5qjqKzBysfMSi75ysyDy-ccUONZ1Gk5Xfi0tzOv6" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://mvc.turanto.com/wsh_hr_v31/T_JobAssignment/Create?UrlReferrer=https%3A%2F%2Fmvc.turanto.com%2Fwsh_hr_v31%2FT_Employee%2FEdit%2F109%3FUrlReferrer%3Dhttps%3A%252F%252Fmvc.turanto.com%252Fwsh_hr_v31%252FT_Employee%26viewtype%3DIndexPartial&amp;AssociatedType=T_EmployeeJobAssignment&amp;HostingEntityName=T_Employee&amp;HostingEntityID=109" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="https://mvc.turanto.com" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="UrlReferrer">
+      <value string="https://mvc.turanto.com/wsh_hr_v31/T_Employee/Edit/109?UrlReferrer=https:%2F%2Fmvc.turanto.com%2Fwsh_hr_v31%2FT_Employee&amp;viewtype=IndexPartial" />
+    </item>
+  </queryString>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="8S4WNWoeUtXQ_qjdT7nNNJjSo4NUTQyYYZ8gyVs2mHLMFM7Dp5fjOKkI_a8YBQ3yCn_sSnnjdTCDZYvm7NjzmPJYHa8elLGeKrrxttWE1UbhTBPCTEfrm4l-TOAMyrrD6EQVqSscbhn751xUIs6smg2" />
+    </item>
+    <item name="T_EmployeeJobAssignmentID">
+      <value string="109" />
+    </item>
+    <item name="T_EmployeePercent">
+      <value string="28" />
+    </item>
+    <item name="T_StartDate">
+      <value string="08/12/2016" />
+    </item>
+    <item name="T_EndDate">
+      <value string="" />
+    </item>
+    <item name="T_Primary">
+      <value string="false" />
+    </item>
+    <item name="T_Active">
+      <value string="false" />
+    </item>
+    <item name="T_EmployeeSalary">
+      <value string="" />
+    </item>
+    <item name="T_PositionJobAssignmentID">
+      <value string="453" />
+    </item>
+    <item name="T_PositionLevel">
+      <value string="E EMPLOYEE" />
+    </item>
+    <item name="T_PosRoleCode">
+      <value string="" />
+    </item>
+    <item name="T_PosClassCode">
+      <value string="" />
+    </item>
+    <item name="T_PosSocCode">
+      <value string="29-1111   Registered Nurses" />
+    </item>
+    <item name="T_JobAssignmentReasonID">
+      <value string="1" />
+    </item>
+    <item name="T_JobAssignmentUnitXID">
+      <value string="95" />
+    </item>
+    <item name="T_UnitXPhone">
+      <value string="" />
+    </item>
+    <item name="T_CostCenter">
+      <value string="254  ADMIN SERVICES" />
+    </item>
+    <item name="T_Department">
+      <value string="37  EXTENDED REHAB" />
+    </item>
+    <item name="T_DepartmentArea">
+      <value string="41" />
+    </item>
+    <item name="T_EmployeeSupervisorID">
+      <value string="85" />
+    </item>
+    <item name="T_JobAssignmentManagerEmployeeID">
+      <value string="83" />
+    </item>
+    <item name="T_SupervisorEmailAddress">
+      <value string="" />
+    </item>
+    <item name="T_SupervisorPhoneNumber">
+      <value string="" />
+    </item>
+    <item name="T_Notes">
+      <value string="" />
+    </item>
+    <item name="hdncommand">
+      <value string="Create" />
+    </item>
+  </form>
+  <cookies>
+    <item name="pageSizeAdminT_Employee">
+      <value string="50" />
+    </item>
+    <item name="paginationAdminT_Position">
+      <value string="1" />
+    </item>
+    <item name="BX">
+      <value string="d254lgpbi3in1&amp;b=3&amp;s=29" />
+    </item>
+    <item name="__utma">
+      <value string="260613201.533716664.1461913592.1469011900.1469791855.10" />
+    </item>
+    <item name="__utmz">
+      <value string="260613201.1461913592.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)" />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MzE1">
+      <value string="d3cRxa2ppynj6yOEEc0Agsae7Bgj2p36RyQ5SOiBH_AXE6CCnDrXUfq1pA3VgUeXzH0J1CdyUFsWVtMOWHoXP1jRTBiF7pfKqDHC51dPi0M1" />
+    </item>
+    <item name="__RequestVerificationToken_L1R1cmFudG8xMi41Ljk1">
+      <value string="h6r1GsmArWUThoS0IZIZ1kaoDNSqXeXMmTqlnJA5LNEvWQw9PrUHumRP_JL2XBe5cRPVxvla78ZLMEGNrKVrWG2iyKDQ1GxzpOgjCyl9b7A1" />
+    </item>
+    <item name="Turanto12.5.9">
+      <value string="wqKc4FUY35Yfz6bW2FW_N3RtAAZP3nwDBo9-Zj0077F0W2QZ0b34uVv_E8oWqSCZVIJnvVf1AuSQmxdi53HlGZMAtsWNHIWTvQ7sA7vUDc6BsADhgDZEGMEUF7l5n2ua8ymvjeEeKb5pSvDvhcU6R62kVw3fktfpBKGaUtsHgg-mEcImbJLtGoAsUlFFY5d5YBS9AJL2jllmBgFjF4JlRDEQ0xYHl-zuASPXlV-OMud-uLqdXIJffqZnhLT9HUKEwYE1rpvccxJrCMWWKsQPhXVON8NnAwh-IEcKsT1zbjoFd6Tceavo7w_l7THip-D2nITl8dyRdQGLpLl74Dpj5NmmoiwVU3Whi9Sw3fLHKapID0-kUhC3Y8OFtPWB5Egyv-Veio0wixax9VCJZB6JNSrywYmMSzZiVvmTlr2LNvdaxTOU2ntOefJDKS7ljUkj" />
+    </item>
+    <item name="wsh_hr_v30">
+      <value string="3B_TT2ZkkidmMNjHGUaN43eWCP7kjDdVLLhElaGbNAW4e36ZEHhO9XQgTs2zOr1LEWXeI0rfgnzafX6GnM6j3UpKuNnYRBQ67BZxg83LwRJsAa5NeTwjrEydUOUv56WVC7tMeeArukr_PijsXm6Z6g-0eMoNSwRoxvh6gQmcpuz4_zvF2l01SYC1qK-vj6kh7VgXXkCA1rTNEeWcOSdl6iUTXMWipm9sgg2zj3RvMlpRgK9u0um74XBTv1jvj782n-UvMMxS8SE2eAVlptoF5JCNlOnSDhxVmCb0RJzsrokZJvjEYxZ4Fw9awaMXS4BlESd_E0VerjQByzb9nkvooE_kR-9634h_ng58KYrN9EXe7t6wn8MGqZfKrFYQQ-yr7Bodr5UdaQaYQc0gJrLB0OXRdl3q0y7zrVMuJ_f0XfkTbQEmxi68Is4neYZawIO5tu6F9Ozr_aFM42nt3Q-wSKCA5qjqKzBysfMSi75ysyDy-ccUONZ1Gk5Xfi0tzOv6" />
+    </item>
+  </cookies>
+</error>

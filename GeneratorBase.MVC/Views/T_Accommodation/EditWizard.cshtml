@@ -1,0 +1,477 @@
+﻿@model GeneratorBase.MVC.Models.T_Accommodation
+@using PagedList;
+@{
+    ViewBag.Title = "Edit Accommodation";
+	var EditPermission = User.CanEditItem("T_Accommodation", Model, User);
+	var DeletePermission = User.CanDeleteItem("T_Accommodation", Model, User);
+}
+@functions {
+    object getHtmlAttributes(string Property)
+    {
+		if(Property=="T_NinetyDaysSinceAccommodation")
+		 return new { @class = "form-control", @readonly = "readonly" };
+		if(Property=="T_Restriction")
+		 return new { @class = "form-control", @readonly = "readonly" };
+        if (User.CanEdit("T_Accommodation", Property))
+        {
+            return new { @class = "form-control" };
+        } return new { @class = "form-control", @readonly = "readonly" };
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_AccommodationIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_AccommodationIsHiddenRule);
+    }
+}
+@using (Html.BeginForm("EditWizard", "T_Accommodation", new { UrlReferrer = Convert.ToString(ViewData["T_AccommodationParentUrl"]) }, FormMethod.Post, new { enctype = "multipart/form-data",@id="frmT_Accommodation" })) 
+{
+	@Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+    @Html.HiddenFor(model => model.Id)
+	@Html.HiddenFor(model => model.ConcurrencyKey)
+	@*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+    <input type="hidden" id="ErrMsg" />
+    <div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+    </div>
+    <div id="divDisplayBRmsgMandatory" style="display:none;">
+    </div>
+    <div id="divDisplayLockRecord" style="display:none;">
+    </div>
+    <div id="divDisplayBRReadOnly" style="display:none;">
+    </div>
+	<div id="divDisplayCodeFragment" style="display:none;">
+	</div>
+			<div class="row">
+        <br />
+        <div id=wizard>
+			<ol>
+		<li>Employee Information</li>
+		<li>Accommodation Information</li>
+		<li>Notes</li>
+            @if ( User.CanEdit("T_Comment"))
+                {
+				<li>Comments</li>
+				}
+       		</ol>
+			<div style="background-color:transparent; padding:0px;">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default AppForm">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Employee Information</h3>
+                            </div>
+                            <div class="panel-body">
+@if(User.CanView("T_Accommodation","T_EmployeeAccomodationID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeAccomodationID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmployeeAccomodationID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Accommodation", "T_EmployeeAccomodationID"))
+		{
+			@Html.DropDownList("T_EmployeeAccomodationID", null, "-- Select --", new {  @required ="required",     @onchange = Html.Raw("ClearChildDD('T_AccommodationInjuryID',this,'false');") ,  @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeAccomodationID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EmployeeAccomodationID, new { @class = "form-control" })
+			@Html.DropDownList("T_EmployeeAccomodationID", null, "-- Select --", new {   @required ="required",    @onchange = Html.Raw("ClearChildDD('T_AccommodationInjuryID',this,'false');") ,  @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeAccomodationID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_EmployeeAccomodationID)
+								 @if ( User.CanAdd("T_Employee"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_Employee"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_Employee" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_Employee" target="_blank" href="@Url.Action("Details", "T_Employee", new { Id = Html.DisplayFor(model => model.t_employeeaccomodation.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_employeeaccomodation == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Employee").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Employee").attr("title", '@Model.t_employeeaccomodation.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_EmployeeAccomodationID, new { @class = "form-control" })}
+@if(User.CanView("T_Accommodation","T_AccommodationInjuryID"))
+{
+                    <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_AccommodationInjuryID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_AccommodationInjuryID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Accommodation", "T_AccommodationInjuryID"))
+		{
+			@Html.DropDownList("T_AccommodationInjuryID", null, "-- Select --", new {  @derivedurl = Url.Action("GetDerivedDetails", "T_Accommodation", new { IgnoreEditable = Convert.ToString(ViewData["AssociatedType"])}), @ParentDD = "T_EmployeeAccomodationID" , @AssoNameWithParent = "T_EmployeeEmployeeInjuryID" ,  @onchange = Html.Raw("FillDerivedDetails(this,event);") ,  @class = "chosen-select form-control", @HostingName = "T_EmployeeInjury", @dataurl = Url.Action("GetAllValue", "T_EmployeeInjury",new { caller = "T_AccommodationInjuryID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_AccommodationInjuryID, new { @class = "form-control" })
+			@Html.DropDownList("T_AccommodationInjuryID", null, "-- Select --", new { @derivedurl = Url.Action("GetDerivedDetails", "T_Accommodation", new { IgnoreEditable = Convert.ToString(ViewData["AssociatedType"])}),  @ParentDD = "T_EmployeeAccomodationID" , @AssoNameWithParent = "T_EmployeeEmployeeInjuryID" ,  @onchange = Html.Raw("FillDerivedDetails(this,event);") ,  @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_EmployeeInjury", @dataurl = Url.Action("GetAllValue", "T_EmployeeInjury",new { caller = "T_AccommodationInjuryID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_AccommodationInjuryID)
+								 @if ( User.CanAdd("T_EmployeeInjury"))
+                                    {
+                                <div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee Injury','dvPopup','" + Url.Action("CreateQuick", "T_EmployeeInjury", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+                                </div>
+								}
+								                                            
+											 @if ( User.CanView("T_EmployeeInjury"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_EmployeeInjury" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_EmployeeInjury" target="_blank" href="@Url.Action("Details", "T_EmployeeInjury", new { Id = Html.DisplayFor(model => model.t_accommodationinjury.Id).ToString()}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_accommodationinjury == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_EmployeeInjury").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_EmployeeInjury").attr("title", '@Model.t_accommodationinjury.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        
+
+							</div>
+							</div>
+                        </div>
+                    </div>
+					} else { @Html.HiddenFor(model => model.T_AccommodationInjuryID, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+					</div>
+				</div>
+			<div style="background-color:transparent; padding:0px;">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default AppForm">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Accommodation Information</h3>
+                            </div>
+                            <div class="panel-body">
+@if(User.CanView("T_Accommodation","T_AccommodationStartDate"))
+{
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_AccommodationStartDate">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_AccommodationStartDate) <span class="text-danger-reg">*</span></label>
+                                <div class="form-group" title="Accommodation  Start  Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_AccommodationStartDate">
+									    @Html.TextBoxFor(model => model.T_AccommodationStartDate, "{0:MM/dd/yyyy}", User.CanEdit("T_Accommodation", "T_AccommodationStartDate") ? (object)new {@class = "form-control" } : (object)new { @class = "form-control", @readonly="readonly"})
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_AccommodationStartDate)
+								</div>
+                                </div>
+	
+                               @if(User.CanEdit("T_Accommodation", "T_AccommodationStartDate"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_AccommodationStartDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_AccommodationStartDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+								}
+								
+                            </div>
+} else { @Html.HiddenFor(model => model.T_AccommodationStartDate, new { @class = "form-control" })}
+@if(User.CanView("T_Accommodation","T_AccommodationEndDate"))
+{
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_AccommodationEndDate">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_AccommodationEndDate) </label>
+                                <div class="form-group" title="Accommodation  End  Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_AccommodationEndDate">
+									    @Html.TextBoxFor(model => model.T_AccommodationEndDate, "{0:MM/dd/yyyy}", User.CanEdit("T_Accommodation", "T_AccommodationEndDate") ? (object)new {@class = "form-control" } : (object)new { @class = "form-control", @readonly="readonly"})
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_AccommodationEndDate)
+								</div>
+                                </div>
+	
+                               @if(User.CanEdit("T_Accommodation", "T_AccommodationEndDate"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_AccommodationEndDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_AccommodationEndDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+								}
+								
+                            </div>
+} else { @Html.HiddenFor(model => model.T_AccommodationEndDate, new { @class = "form-control" })}
+@if(User.CanView("T_Accommodation","T_NinetyDaysSinceAccommodation"))
+{
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_NinetyDaysSinceAccommodation">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_NinetyDaysSinceAccommodation) </label>
+                                <div class="form-group" title="Ninety Days Since Accommodation">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_NinetyDaysSinceAccommodation">
+									    @Html.TextBoxFor(model => model.T_NinetyDaysSinceAccommodation, "{0:MM/dd/yyyy}", User.CanEdit("T_Accommodation", "T_NinetyDaysSinceAccommodation") ? (object)new {@class = "form-control",@actualvalue = Model.T_NinetyDaysSinceAccommodation.HasValue ? Model.T_NinetyDaysSinceAccommodation.Value : DateTime.UtcNow,@format = "hh:mm" } : (object)new { @class = "form-control", @readonly="readonly",@actualvalue = Model.T_NinetyDaysSinceAccommodation.HasValue ? Model.T_NinetyDaysSinceAccommodation.Value : DateTime.UtcNow,@format = "hh:mm"})
+									
+									<div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" onclick="GetCalculationValue(event,'@Url.Action("GetCalculationValues")');">
+											<span class="fam-arrow-refresh"></span>
+                                        </a>
+                                    </div>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_NinetyDaysSinceAccommodation)
+								</div>
+                                </div>
+								
+                            </div>
+} else { @Html.HiddenFor(model => model.T_NinetyDaysSinceAccommodation, new { @class = "form-control" })}
+@if(User.CanView("T_Accommodation","T_TemporaryAccommodation"))
+{
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TemporaryAccommodation">
+							<div class="form-group" title="Temporary  Accommodation">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >
+                                    @Html.LabelFor(model => model.T_TemporaryAccommodation) 
+                                </label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									@Html.CheckBox("T_TemporaryAccommodation", Model.T_TemporaryAccommodation.HasValue ? Model.T_TemporaryAccommodation : false)
+                                    @Html.ValidationMessageFor(model => model.T_TemporaryAccommodation)
+                                </div>
+								</div>
+                            </div>
+} else { @Html.HiddenFor(model => model.T_TemporaryAccommodation, new { @class = "form-control" })}
+@if(User.CanView("T_Accommodation","T_DateLetterGivenToEmployee"))
+{
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DateLetterGivenToEmployee">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_DateLetterGivenToEmployee) </label>
+                                <div class="form-group" title="Date  Letter  Given  To  Employee">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_DateLetterGivenToEmployee">
+									    @Html.TextBoxFor(model => model.T_DateLetterGivenToEmployee, "{0:MM/dd/yyyy}", User.CanEdit("T_Accommodation", "T_DateLetterGivenToEmployee") ? (object)new {@class = "form-control" } : (object)new { @class = "form-control", @readonly="readonly"})
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_DateLetterGivenToEmployee)
+								</div>
+                                </div>
+	
+                               @if(User.CanEdit("T_Accommodation", "T_DateLetterGivenToEmployee"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_DateLetterGivenToEmployee').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_DateLetterGivenToEmployee').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+								}
+								
+                            </div>
+} else { @Html.HiddenFor(model => model.T_DateLetterGivenToEmployee, new { @class = "form-control" })}
+@if(User.CanView("T_Accommodation","T_Restriction"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Restriction">
+							<div class='form-group' title="Restriction">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Restriction) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								@Html.TextAreaFor(model => model.T_Restriction, getHtmlAttributes("T_Restriction"))
+									@Html.ValidationMessageFor(model => model.T_Restriction)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_Restriction, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+					</div>
+				</div>
+			<div style="background-color:transparent; padding:0px;">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default AppForm">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Notes</h3>
+                            </div>
+                            <div class="panel-body">
+@if(User.CanView("T_Accommodation","T_AccommodationNotes"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_AccommodationNotes">
+							<div class='form-group' title="Accommodation  Notes">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_AccommodationNotes) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								@Html.TextAreaFor(model => model.T_AccommodationNotes, getHtmlAttributes("T_AccommodationNotes"))
+									@Html.ValidationMessageFor(model => model.T_AccommodationNotes)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_AccommodationNotes, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+					</div>
+				</div>
+@if ( User.CanEdit("T_Comment"))
+                {
+			<div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <i class="icon-calendar"></i>
+                                <h3 class="panel-title">Comments</h3>
+                            </div>
+                            <div class="panel-body" id="T_AccommodationComments">
+                                @if ( User.CanView("T_Comment"))
+                                {
+                                    Html.RenderAction("Index", "T_Comment", new {RenderPartial=true, HostingEntity = "T_Accommodation", HostingEntityID = @Model.Id == null ? 0 : @Model.Id, AssociatedType = "T_AccommodationComments" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			}
+</div>
+   @Html.ActionLink("C", "Cancel", new { UrlReferrer = ViewData["T_AccommodationParentUrl"] }, new { @id = "cancel", @style = "display:none;" })
+        @if (EditPermission)
+        {
+            <input type="submit"  name="command" id="WizardSubmit" style="display:none;" />
+        }
+        <input type="hidden" name="hdncommand" value="" />
+    </div>
+ <br />
+}
+<script>
+    $(document).ready(function () {
+        try {
+            focusOnControl('frmT_Accommodation');
+        }
+        catch (ex) { }
+    });
+</script>
+ <script>
+
+   
+    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+<script>
+	$("input[type='submit']").click(function (event) {
+	if (!$("#frmT_Accommodation").valid()) return;
+	var $this = $(this);
+					GetCalculationValue(event,'@Url.Action("GetCalculationValues")');
+	$('input:hidden[name="hdncommand"]').val($this.val());
+	});
+	$(document).ready(function () {
+		DisableTabOnReadonlyProperty("frmT_Donation");
+	});
+</script>
+@{
+var businessrule = User.businessrules.Where(p => p.EntityName == "T_Accommodation").ToList();
+
+if ((businessrule != null && businessrule.Count > 0) )
+{
+var ruleids = businessrule.Select(q => q.Id).ToList();
+var typelist  = string.Join(",", (new GeneratorBase.MVC.Models.RuleActionContext()).RuleActions.Where(p => ruleids.Contains(p.RuleActionID.Value) && p.associatedactiontype.TypeNo.HasValue).Select(p => p.associatedactiontype.TypeNo.Value).Distinct().ToList());
+
+    <script>
+		$(document).ready(function () {
+				document.getElementById("ErrMsg").innerHTML = "";
+				var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+
+				 form = $("#frmT_Accommodation").serialize();
+				dataurl = "@Url.Action("businessruletype", "T_Accommodation", new { ruleType = "OnEdit"})";
+                ApplyBusinessRuleOnPageLoad("@typelist", dataurl, "T_Accommodation", false, "ErrMsg", form);
+				//business rules on inline associations
+
+    });
+</script>
+<script>
+    $("form").submit(function (event) {
+	if (!$("#frmT_Accommodation").valid()) return;
+			document.getElementById("ErrMsg").innerHTML = "";
+            var flag = true;
+            var dataurl = "";
+            var form = "";
+            var inlinecount = "0";
+			 form = $("#frmT_Accommodation").serialize();
+   
+				 dataurl = "@Url.Action("businessruletype", "T_Accommodation", new { ruleType = "OnEdit"})";
+                 flag = ApplyBusinessRuleOnSubmit(dataurl, "T_Accommodation", false, "ErrMsg", form);
+
+  				 //business rules on inline associations
+               
+			 if (flag)
+                    $("form").find(':input').removeAttr('disabled');
+            return flag;
+		});
+		 $(document).ready(function () {
+                $("input[type='submit']").on('blur', function () {
+                    $("input[type='submit']").removeAttr('disabled');
+                });
+               
+            });
+</script>
+}
+ 
+}
+
+

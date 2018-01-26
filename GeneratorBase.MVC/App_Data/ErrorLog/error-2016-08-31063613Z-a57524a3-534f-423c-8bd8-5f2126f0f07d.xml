@@ -1,0 +1,168 @@
+﻿<error errorId="a57524a3-534f-423c-8bd8-5f2126f0f07d" application="/LM/W3SVC/265/ROOT" host="TURANTOMVC" type="System.NullReferenceException" message="Object reference not set to an instance of an object." source="GeneratorBase.MVC" detail="System.NullReferenceException: Object reference not set to an instance of an object.&#xD;&#xA;   at GeneratorBase.MVC.Views.T_Employee.IndexPartial.Execute() in d:\GenApps\wsh_hr_v34\GeneratorBase.MVC\obj\CodeGen\Views\T_Employee\IndexPartial.cshtml:line 747&#xD;&#xA;   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)&#xD;&#xA;   at RazorGenerator.Mvc.PrecompiledMvcView.Render(ViewContext viewContext, TextWriter writer)&#xD;&#xA;   at System.Web.Mvc.HtmlHelper.RenderPartialInternal(String partialViewName, ViewDataDictionary viewData, Object model, TextWriter writer, ViewEngineCollection viewEngineCollection)&#xD;&#xA;   at System.Web.Mvc.Html.PartialExtensions.Partial(HtmlHelper htmlHelper, String partialViewName, Object model, ViewDataDictionary viewData)&#xD;&#xA;   at System.Web.Mvc.Html.PartialExtensions.Partial(HtmlHelper htmlHelper, String partialViewName, Object model)&#xD;&#xA;   at GeneratorBase.MVC.Views.T_Employee.Index.Execute() in d:\GenApps\wsh_hr_v34\GeneratorBase.MVC\obj\CodeGen\Views\T_Employee\Index.cshtml:line 22&#xD;&#xA;   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.WebPages.StartPage.RunPage()&#xD;&#xA;   at System.Web.WebPages.StartPage.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)&#xD;&#xA;   at RazorGenerator.Mvc.PrecompiledMvcView.Render(ViewContext viewContext, TextWriter writer)&#xD;&#xA;   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)" user="Admin" time="2016-08-31T06:36:13.6985007Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_ACCEPT:text/html, application/xhtml+xml, */*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US&#xD;&#xA;HTTP_COOKIE:ASP.NET_SessionId=dgfjswexrcjqhexd2ntbakwi; wsh_hr_v32=_vM4nQ26RvDEPCAizukYvO5emARRONl2LepgFb1JIMgMyDRgG4AGSMpTn4s_eH2-hfI962odPaLWmZ8OlWQ8ocWn_NYPVLFy5i8xSbVr1vfNW869L6bPR-oukW2KDurlEJA2mVA_fK4Bo2zYc00-WDUYbq83trMxyrP-83z4HtutfOzUIw9Ri46MueeZzq7pY9J27CVrLR7s6tF5efYerK-B45DqH1tYKSqKQJz8FxFVpfz4ErrVR3ZR6PJ-H_cI30OAa6gSQnswtlv46LjOdWM0n15huKcrDyEmhG4ee8K8L7dUrbOseDgmS57xoniE-gj5vsX44WPNE3ZqMlUP9yLqNW95hCqX0Ua05hVJSkbxxlNQOvijkwiSgO3aJLO5caneEF_Ir3bbxyTm28c3oz5w20WFrp3EuMMTakLFKVXxEywBNNyuQ4222l7QuZXh7OkAznS_uI_AGRIRIcrjP0CIiDtCyqoW_oE-Ep8ywp45dI5GN_TDaNedkvhFGWmg; __RequestVerificationToken=jrFhMbu68rOE_d9VqVVgamPEmnKp9b6WdRibbe37kkkahpozMzIFZlcbVLgp9V9Yq6bsQulSj-4qSQNOEGmmv5muA49C9bfs6HmImNw58GU1&#xD;&#xA;HTTP_HOST:localhost:50096&#xD;&#xA;HTTP_REFERER:http://localhost:50096/Home&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: Keep-Alive&#xD;&#xA;Accept: text/html, application/xhtml+xml, */*&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US&#xD;&#xA;Cookie: ASP.NET_SessionId=dgfjswexrcjqhexd2ntbakwi; wsh_hr_v32=_vM4nQ26RvDEPCAizukYvO5emARRONl2LepgFb1JIMgMyDRgG4AGSMpTn4s_eH2-hfI962odPaLWmZ8OlWQ8ocWn_NYPVLFy5i8xSbVr1vfNW869L6bPR-oukW2KDurlEJA2mVA_fK4Bo2zYc00-WDUYbq83trMxyrP-83z4HtutfOzUIw9Ri46MueeZzq7pY9J27CVrLR7s6tF5efYerK-B45DqH1tYKSqKQJz8FxFVpfz4ErrVR3ZR6PJ-H_cI30OAa6gSQnswtlv46LjOdWM0n15huKcrDyEmhG4ee8K8L7dUrbOseDgmS57xoniE-gj5vsX44WPNE3ZqMlUP9yLqNW95hCqX0Ua05hVJSkbxxlNQOvijkwiSgO3aJLO5caneEF_Ir3bbxyTm28c3oz5w20WFrp3EuMMTakLFKVXxEywBNNyuQ4222l7QuZXh7OkAznS_uI_AGRIRIcrjP0CIiDtCyqoW_oE-Ep8ywp45dI5GN_TDaNedkvhFGWmg; __RequestVerificationToken=jrFhMbu68rOE_d9VqVVgamPEmnKp9b6WdRibbe37kkkahpozMzIFZlcbVLgp9V9Yq6bsQulSj-4qSQNOEGmmv5muA49C9bfs6HmImNw58GU1&#xD;&#xA;Host: localhost:50096&#xD;&#xA;Referer: http://localhost:50096/Home&#xD;&#xA;User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/265/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v34\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="Admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="Admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="Admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="265" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/265" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/T_Employee" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v34\GeneratorBase.MVC\T_Employee" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="58093" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/T_Employee" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="50096" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/T_Employee" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html, application/xhtml+xml, */*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="ASP.NET_SessionId=dgfjswexrcjqhexd2ntbakwi; wsh_hr_v32=_vM4nQ26RvDEPCAizukYvO5emARRONl2LepgFb1JIMgMyDRgG4AGSMpTn4s_eH2-hfI962odPaLWmZ8OlWQ8ocWn_NYPVLFy5i8xSbVr1vfNW869L6bPR-oukW2KDurlEJA2mVA_fK4Bo2zYc00-WDUYbq83trMxyrP-83z4HtutfOzUIw9Ri46MueeZzq7pY9J27CVrLR7s6tF5efYerK-B45DqH1tYKSqKQJz8FxFVpfz4ErrVR3ZR6PJ-H_cI30OAa6gSQnswtlv46LjOdWM0n15huKcrDyEmhG4ee8K8L7dUrbOseDgmS57xoniE-gj5vsX44WPNE3ZqMlUP9yLqNW95hCqX0Ua05hVJSkbxxlNQOvijkwiSgO3aJLO5caneEF_Ir3bbxyTm28c3oz5w20WFrp3EuMMTakLFKVXxEywBNNyuQ4222l7QuZXh7OkAznS_uI_AGRIRIcrjP0CIiDtCyqoW_oE-Ep8ywp45dI5GN_TDaNedkvhFGWmg; __RequestVerificationToken=jrFhMbu68rOE_d9VqVVgamPEmnKp9b6WdRibbe37kkkahpozMzIFZlcbVLgp9V9Yq6bsQulSj-4qSQNOEGmmv5muA49C9bfs6HmImNw58GU1" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:50096" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:50096/Home" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="ASP.NET_SessionId">
+      <value string="dgfjswexrcjqhexd2ntbakwi" />
+    </item>
+    <item name="wsh_hr_v32">
+      <value string="_vM4nQ26RvDEPCAizukYvO5emARRONl2LepgFb1JIMgMyDRgG4AGSMpTn4s_eH2-hfI962odPaLWmZ8OlWQ8ocWn_NYPVLFy5i8xSbVr1vfNW869L6bPR-oukW2KDurlEJA2mVA_fK4Bo2zYc00-WDUYbq83trMxyrP-83z4HtutfOzUIw9Ri46MueeZzq7pY9J27CVrLR7s6tF5efYerK-B45DqH1tYKSqKQJz8FxFVpfz4ErrVR3ZR6PJ-H_cI30OAa6gSQnswtlv46LjOdWM0n15huKcrDyEmhG4ee8K8L7dUrbOseDgmS57xoniE-gj5vsX44WPNE3ZqMlUP9yLqNW95hCqX0Ua05hVJSkbxxlNQOvijkwiSgO3aJLO5caneEF_Ir3bbxyTm28c3oz5w20WFrp3EuMMTakLFKVXxEywBNNyuQ4222l7QuZXh7OkAznS_uI_AGRIRIcrjP0CIiDtCyqoW_oE-Ep8ywp45dI5GN_TDaNedkvhFGWmg" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="jrFhMbu68rOE_d9VqVVgamPEmnKp9b6WdRibbe37kkkahpozMzIFZlcbVLgp9V9Yq6bsQulSj-4qSQNOEGmmv5muA49C9bfs6HmImNw58GU1" />
+    </item>
+  </cookies>
+</error>

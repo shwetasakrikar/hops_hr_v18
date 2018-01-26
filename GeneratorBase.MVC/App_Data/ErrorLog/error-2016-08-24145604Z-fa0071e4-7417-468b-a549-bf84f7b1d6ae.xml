@@ -1,0 +1,174 @@
+﻿<error errorId="fa0071e4-7417-468b-a549-bf84f7b1d6ae" application="/LM/W3SVC/1/ROOT/wsh_hr_v33" host="TURANTOMVC" type="System.Web.HttpException" message="A public action method 'LogOff' was not found on controller 'GeneratorBase.MVC.Controllers.AccountController'." source="System.Web.Mvc" detail="System.Web.HttpException (0x80004005): A public action method 'LogOff' was not found on controller 'GeneratorBase.MVC.Controllers.AccountController'.&#xD;&#xA;   at System.Web.Mvc.Controller.HandleUnknownAction(String actionName)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="rupali.pendse@etelic.com" time="2016-08-24T14:56:04.4427510Z" statusCode="404">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:no-cache&#xD;&#xA;HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_VIA:SWG&#xD;&#xA;HTTP_ACCEPT:text/html, application/xhtml+xml, */*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken_L3dzaF9ocl92MzM1=q5D85je-ybxLGZDqaCnRWv3lIZfBa_IRahsXLM4Smk9iUNJ8wv9ZE9oKf4HTAfM3nUsgPvyuu25DqZbZCE95tslQrvtuGpYF70w8d58qrlo1; wsh_hr_v32=YdA0Sn-whjxOzoEMEL_fiNDWFtHy8j3_Kl5qsHuziCTnqvxe0cvtU7tItVPHkFZTi-DLDKPbB3q83-maC4QaPttuWb_4oc18tXmcqeCoLi626wXMvVGgXQa0-JBllPi8SQOqXwSsOm0yZItefmkHY6z1orKEtBSJtTKzi4K_o3VmfyoFjVuCsqko5DH7Nw2_2l-pVsYrAlHVs9kOy-l5PZEMZua5u_KT7V1NYiMMSMQBI9fgMAJSq4IgmjkPmb-zl3_pz6ukTcKOQWJQb9UKUfeH-FkPH0adg7WTDEqzHNgBSp-2o-Lo_0IyapDIgYWM22qWN0yRupknLpN31C4cLZRq30B-Go1oEcRawKIt14woLBUavwADoZ015rKzU3TVaMKEC0NRkpIE_IsVDJBBwPqjQufm1E6lndfshOwHLAUo9pq0eVqZ5dSou4VkBq08d7Gw4gVBL76c9_LHzjSgTWpECaXmKL4yR3Tfs3mqUHIQD21tQbqgysb0eZpAQEDL1xF_agep662ET7QX8f5sWdv-3c1spPbJj30haL1H99v4NsVktqroVg9TaMxeMBu0Byhz49slbKZf1IljXs_eB4e4AZV1qeXdvQV6w1uGQH3GztWqLjH36_d9sWKU7GUhPQ6gSGRpOuyeAAKpEJMpXxSrSKSm50K0VJVxBMrdPmY&#xD;&#xA;HTTP_HOST:mvc.turanto.com&#xD;&#xA;HTTP_REFERER:https://mvc.turanto.com/wsh_hr_v33/Account/Login?ReturnUrl=%2Fwsh_hr_v33%2FAccount%2FLogOff&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: no-cache&#xD;&#xA;Connection: Keep-Alive&#xD;&#xA;Via: SWG&#xD;&#xA;Accept: text/html, application/xhtml+xml, */*&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US&#xD;&#xA;Cookie: __RequestVerificationToken_L3dzaF9ocl92MzM1=q5D85je-ybxLGZDqaCnRWv3lIZfBa_IRahsXLM4Smk9iUNJ8wv9ZE9oKf4HTAfM3nUsgPvyuu25DqZbZCE95tslQrvtuGpYF70w8d58qrlo1; wsh_hr_v32=YdA0Sn-whjxOzoEMEL_fiNDWFtHy8j3_Kl5qsHuziCTnqvxe0cvtU7tItVPHkFZTi-DLDKPbB3q83-maC4QaPttuWb_4oc18tXmcqeCoLi626wXMvVGgXQa0-JBllPi8SQOqXwSsOm0yZItefmkHY6z1orKEtBSJtTKzi4K_o3VmfyoFjVuCsqko5DH7Nw2_2l-pVsYrAlHVs9kOy-l5PZEMZua5u_KT7V1NYiMMSMQBI9fgMAJSq4IgmjkPmb-zl3_pz6ukTcKOQWJQb9UKUfeH-FkPH0adg7WTDEqzHNgBSp-2o-Lo_0IyapDIgYWM22qWN0yRupknLpN31C4cLZRq30B-Go1oEcRawKIt14woLBUavwADoZ015rKzU3TVaMKEC0NRkpIE_IsVDJBBwPqjQufm1E6lndfshOwHLAUo9pq0eVqZ5dSou4VkBq08d7Gw4gVBL76c9_LHzjSgTWpECaXmKL4yR3Tfs3mqUHIQD21tQbqgysb0eZpAQEDL1xF_agep662ET7QX8f5sWdv-3c1spPbJj30haL1H99v4NsVktqroVg9TaMxeMBu0Byhz49slbKZf1IljXs_eB4e4AZV1qeXdvQV6w1uGQH3GztWqLjH36_d9sWKU7GUhPQ6gSGRpOuyeAAKpEJMpXxSrSKSm50K0VJVxBMrdPmY&#xD;&#xA;Host: mvc.turanto.com&#xD;&#xA;Referer: https://mvc.turanto.com/wsh_hr_v33/Account/Login?ReturnUrl=%2Fwsh_hr_v33%2FAccount%2FLogOff&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/wsh_hr_v33" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v33\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="rupali.pendse@etelic.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="rupali.pendse@etelic.com" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="rupali.pendse@etelic.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/wsh_hr_v33/Account/LogOff" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v33\GeneratorBase.MVC\Account\LogOff" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="166.67.66.245" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="166.67.66.245" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="48722" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/wsh_hr_v33/Account/LogOff" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/wsh_hr_v33/Account/LogOff" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="no-cache" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_VIA">
+      <value string="SWG" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html, application/xhtml+xml, */*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken_L3dzaF9ocl92MzM1=q5D85je-ybxLGZDqaCnRWv3lIZfBa_IRahsXLM4Smk9iUNJ8wv9ZE9oKf4HTAfM3nUsgPvyuu25DqZbZCE95tslQrvtuGpYF70w8d58qrlo1; wsh_hr_v32=YdA0Sn-whjxOzoEMEL_fiNDWFtHy8j3_Kl5qsHuziCTnqvxe0cvtU7tItVPHkFZTi-DLDKPbB3q83-maC4QaPttuWb_4oc18tXmcqeCoLi626wXMvVGgXQa0-JBllPi8SQOqXwSsOm0yZItefmkHY6z1orKEtBSJtTKzi4K_o3VmfyoFjVuCsqko5DH7Nw2_2l-pVsYrAlHVs9kOy-l5PZEMZua5u_KT7V1NYiMMSMQBI9fgMAJSq4IgmjkPmb-zl3_pz6ukTcKOQWJQb9UKUfeH-FkPH0adg7WTDEqzHNgBSp-2o-Lo_0IyapDIgYWM22qWN0yRupknLpN31C4cLZRq30B-Go1oEcRawKIt14woLBUavwADoZ015rKzU3TVaMKEC0NRkpIE_IsVDJBBwPqjQufm1E6lndfshOwHLAUo9pq0eVqZ5dSou4VkBq08d7Gw4gVBL76c9_LHzjSgTWpECaXmKL4yR3Tfs3mqUHIQD21tQbqgysb0eZpAQEDL1xF_agep662ET7QX8f5sWdv-3c1spPbJj30haL1H99v4NsVktqroVg9TaMxeMBu0Byhz49slbKZf1IljXs_eB4e4AZV1qeXdvQV6w1uGQH3GztWqLjH36_d9sWKU7GUhPQ6gSGRpOuyeAAKpEJMpXxSrSKSm50K0VJVxBMrdPmY" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://mvc.turanto.com/wsh_hr_v33/Account/Login?ReturnUrl=%2Fwsh_hr_v33%2FAccount%2FLogOff" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MzM1">
+      <value string="q5D85je-ybxLGZDqaCnRWv3lIZfBa_IRahsXLM4Smk9iUNJ8wv9ZE9oKf4HTAfM3nUsgPvyuu25DqZbZCE95tslQrvtuGpYF70w8d58qrlo1" />
+    </item>
+    <item name="wsh_hr_v32">
+      <value string="YdA0Sn-whjxOzoEMEL_fiNDWFtHy8j3_Kl5qsHuziCTnqvxe0cvtU7tItVPHkFZTi-DLDKPbB3q83-maC4QaPttuWb_4oc18tXmcqeCoLi626wXMvVGgXQa0-JBllPi8SQOqXwSsOm0yZItefmkHY6z1orKEtBSJtTKzi4K_o3VmfyoFjVuCsqko5DH7Nw2_2l-pVsYrAlHVs9kOy-l5PZEMZua5u_KT7V1NYiMMSMQBI9fgMAJSq4IgmjkPmb-zl3_pz6ukTcKOQWJQb9UKUfeH-FkPH0adg7WTDEqzHNgBSp-2o-Lo_0IyapDIgYWM22qWN0yRupknLpN31C4cLZRq30B-Go1oEcRawKIt14woLBUavwADoZ015rKzU3TVaMKEC0NRkpIE_IsVDJBBwPqjQufm1E6lndfshOwHLAUo9pq0eVqZ5dSou4VkBq08d7Gw4gVBL76c9_LHzjSgTWpECaXmKL4yR3Tfs3mqUHIQD21tQbqgysb0eZpAQEDL1xF_agep662ET7QX8f5sWdv-3c1spPbJj30haL1H99v4NsVktqroVg9TaMxeMBu0Byhz49slbKZf1IljXs_eB4e4AZV1qeXdvQV6w1uGQH3GztWqLjH36_d9sWKU7GUhPQ6gSGRpOuyeAAKpEJMpXxSrSKSm50K0VJVxBMrdPmY" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="qjchn3auhftftmlunoysephy" />
+    </item>
+  </cookies>
+</error>

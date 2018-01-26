@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<companyprofile>
+  <item>
+    <Name>Turanto</Name>
+    <Email>dfdfdfd@email.com</Email>
+    <Address>Sdsdsd</Address>
+    <Country>USA</Country>
+    <State>VA</State>
+    <City>Glen Allen</City>
+    <Zip>ssdsd</Zip>
+    <ContactNumber1>dfdfddfdf</ContactNumber1>
+    <ContactNumber2>dfdfd</ContactNumber2>
+    <SMTPServer>smtp.bizmail.yahoo.com</SMTPServer>
+    <SMTPPassword>V2VsY29tZTEj</SMTPPassword>
+    <SMTPPort>465</SMTPPort>
+    <SSL>True</SSL>
+    <AboutCompany>
+      &lt;section class="jumbotron text-xs-center"&gt;
+      &lt;div class="container"&gt;
+      &lt;h1 class="jumbotron-heading" style="margin-left:0px; margin-top:-15px;font-size:30px;"&gt;About&lt;/h1&gt;
+      &lt;p&gt;&lt;span style="color: rgb(153, 153, 153);"&gt;ftghjkyfjgfjhgfjfjytjyku&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="#" class="btn btn-primary"&gt;Main Action&lt;/a&gt;
+      &lt;a href="#" class="btn btn-secondary"&gt;Secondary Action&lt;/a&gt;
+      &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;/section&gt;
+
+    </AboutCompany>
+    <IconWidth>28px</IconWidth>
+    <IconHeight>28px</IconHeight>
+    <LogoWidth>155px</LogoWidth>
+    <LogoHeight>29px</LogoHeight>
+    <Icon>logo.gif</Icon>
+    <Logo>logo_white.gif</Logo>
+    <!--LegalInformation-->
+    <LegalInformation>Legal Information</LegalInformation>
+    <LegalInformationLink>/PolicyAndService/Licensing.pdf</LegalInformationLink>
+    <LegalInformationAttach>Licensing.pdf</LegalInformationAttach>
+    <!--end-->
+    <!--PrivacyPolicy-->
+    <PrivacyPolicy>Privacy Policy</PrivacyPolicy>
+    <PrivacyPolicyLink>/PolicyAndService/PrivacyPolicy.pdf</PrivacyPolicyLink>
+    <PrivacyPolicyAttach>PrivacyPolicy.pdf</PrivacyPolicyAttach>
+    <!--End-->
+    <!--Terms Of Service-->
+    <TermsOfService>Terms Of Service</TermsOfService>
+    <TermsOfServiceLink>/PolicyAndService/Terms_Of_Service.pdf</TermsOfServiceLink>
+    <TermsOfServiceAttach>Terms_Of_Service.pdf</TermsOfServiceAttach>
+    <!--End-->
+    <!--Emailto-->
+    <Emailto>Email To</Emailto>
+    <EmailtoAddress>contact@turanto.com</EmailtoAddress>
+    <!--End-->
+    <!--Create By-->
+    <CreatedBy>Created By</CreatedBy>
+    <CreatedByLink>http://www.turanto.com/</CreatedByLink>
+    <CreatedByName>Turanto</CreatedByName>
+    <!--End-->
+    <Disclaimer>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</Disclaimer>
+  </item>
+</companyprofile>

@@ -1,0 +1,57 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_RequiredEducation>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Required Education.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_RequiredEducation","T_RoleCodeRequiredEducationID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_RoleCode"?"hidden":"")>Role Code</th>
+}
+@if(User.CanView("T_RequiredEducation","T_RequiredEducationSOCCodeID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_SocCode"?"hidden":"")>SOC Code</th>
+}
+@if(User.CanView("T_RequiredEducation","T_RequiredEducationEducationLevelID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_EducationLevel"?"hidden":"")>Education Level</th>
+}
+@if(User.CanView("T_RequiredEducation","T_Description"))
+{
+		<th>Education Details</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_RequiredEducation","T_RoleCodeRequiredEducationID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_RoleCode"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_rolecoderequirededucation.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_RequiredEducation","T_RequiredEducationSOCCodeID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_SocCode"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_requirededucationsoccode.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_RequiredEducation","T_RequiredEducationEducationLevelID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_EducationLevel"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_requirededucationeducationlevel.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_RequiredEducation","T_Description"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Description)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

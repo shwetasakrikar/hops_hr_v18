@@ -1,0 +1,600 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_Vendor>
+@using PagedList.Mvc;
+@{
+    var ActionNameUrl = "Index";
+    if (HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().ToUpper() == "FSEARCH")
+    {
+        ActionNameUrl = "FSearch";
+    }
+	var BackUrl =  Request.Url;
+	 if (ViewData["HostingEntity"] != null && (Request.QueryString["TabToken"] != null || Request.IsAjaxRequest()))
+	{
+		BackUrl =  Request.UrlReferrer;
+	}
+	var EntityReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_Vendor");
+	
+	}
+<div id="T_Vendor">
+
+<style>
+    .table-responsive > .fixed-column {
+        position: absolute;
+        display: block;
+        width: auto;
+        border: 0px solid transparent;
+        border-top: 1px solid #c3ddec;
+    }
+    .fixed-column th {
+        background: #fff;
+    }
+    .fixed-column td {
+        background: #fff;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+	 $(".pagination a").click(function (e) {
+            //PaginationClick(e,'T_Vendor')
+			PaginationClick(e, 'T_Vendor','@User.JavaScriptEncodedName')
+        })
+	    $("#SearchStringT_Vendor").keypress(function (e) {
+			if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+				 $("#T_VendorSearch").bind("click", (function () {
+                        }));
+                $('#T_VendorSearch').trigger("click");
+                return false;
+			}
+        })
+        $("#btnShowHideT_Vendor").mouseup(function () {
+            if (document.getElementById('ColumnShowHideT_Vendor').className == 'collapse') {
+				 $('#lblT_Vendor').css('display', 'none');
+            }
+        })
+		if ($("#ErrmsgLockRecord").length > 0 && $("#ErrmsgLockRecord").text().length > 0) {
+                    $(".pull-left.actionbar").hide();
+		}
+    });
+</script>
+@functions {
+    object getSortHtmlAttributes(string sortby, bool IsPaging, int? page, bool? IsExport)
+    {
+        if (IsPaging)
+        {
+            return new
+            {
+                page,
+                sortBy = ViewBag.CurrentSort,
+                isAsc = ViewBag.IsAsc,
+                currentFilter = ViewBag.CurrentFilter,
+                HostingEntity = @Convert.ToString(ViewData["HostingEntity"]),
+                AssociatedType = @Convert.ToString(ViewData["AssociatedType"]),
+                HostingEntityID = ViewData["HostingEntityID"],
+				IsExport = IsExport,
+				FSFilter = ViewBag.FSFilter == null ? "Fsearch" : ViewBag.FSFilter,
+				IsFilter = @Convert.ToBoolean(ViewData["IsFilter"]),
+                
+				search=Request.QueryString["search"],
+		SortOrder = Request.QueryString["SortOrder"],
+		viewtype = ViewBag.TemplatesName,
+		HideColumns = ViewData["HideColumns"],
+		 GroupByColumn = ViewBag.GroupByColumn,
+		 FilterCondition = ViewBag.FilterCondition,
+		 inbuiltSearchCriteria = ViewBag.inbuiltSearchCriteria
+            };
+        }
+        else
+        {
+            return new
+            {
+                sortBy = sortby,
+                currentFilter = Request.QueryString["currentFilter"],
+                searchString = Request.QueryString["searchString"],
+                isAsc = (ViewBag.IsAsc == "ASC" ? "DESC" : ""),
+                page = ViewBag.Pages,
+                HostingEntity = @Convert.ToString(ViewData["HostingEntity"]),
+                HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),
+                AssociatedType = @Convert.ToString(ViewData["AssociatedType"]),
+				IsExport = IsExport,
+				FSFilter = ViewBag.FSFilter == null ? "Fsearch" : ViewBag.FSFilter,
+				IsFilter = @Convert.ToBoolean(ViewData["IsFilter"]),
+		search=Request.QueryString["search"],
+		SortOrder = Request.QueryString["SortOrder"],
+		viewtype = ViewBag.TemplatesName,
+		HideColumns = ViewData["HideColumns"],
+		 GroupByColumn = ViewBag.GroupByColumn,
+		 FilterCondition = ViewBag.FilterCondition,
+		 inbuiltSearchCriteria = ViewBag.inbuiltSearchCriteria
+            };
+        }
+    }
+}
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-sx-12">
+      
+	   <div style="display:block; padding:0px 0px 5px 0px;">
+	    
+	   
+
+            <div class="pull-left actionbar">
+                 <div class="btn-group" id='@ViewData["HostingEntity"]_T_Vendor'>
+				  @if (User.CanAdd("T_Vendor"))
+				  {
+						
+					<a class="btn btn-sm" data-placement="top" id="addT_Vendor" data-original-title="Quick Add" data-toggle="modal" data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Education Verification Vendor','dvPopup','" + Url.Action("CreateQuick", "T_Vendor", new { UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS=DateTime.Now,viewtype = Convert.ToString(ViewBag.TemplatesName) }) + "')")">
+						<i class="fa fa-plus-circle" style="margin-right:3px"></i> Quick Add
+                    </a>
+					<a class="btn btn-sm" type="button" data-original-title="Full Add" data-placement="top" onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Vendor", new { UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) }, null) + "');")>
+						<i class="fa fa-plus-circle" style="margin-right:3px"></i> Add
+					</a>
+			}
+			
+                </div>
+				
+		<div class="btn-group">
+
+                   </div>
+					 <div class="btn-group">
+                        <a class="btn btn-sm dropdown-toggle tip-top" data-original-title="View As" style="padding:3px 5px;" data-toggle="dropdown">
+                            <span class="fa fa fa-table"></span> View As
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" style="min-width:110px">
+                            <li>
+                                <a data-placement="top" style="cursor:pointer;"
+                                   onclick="@Html.Raw("LoadTabTemplate('T_Vendor','" + Url.Action("Index", "T_Vendor", new { UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntity = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS = DateTime.Now, viewtype = "IndexPartialGallery" }) + "')")">
+                                    <span class="fa fa-th"></span> Gallery
+                                </a>
+                            </li>
+                            <li>
+                                <a style="display:block; margin:0px;"
+                                   onclick="@Html.Raw("LoadTabTemplate('T_Vendor','" + Url.Action("Index", "T_Vendor", new { UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntity = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS = DateTime.Now, viewtype = "IndexPartialList" }) + "')")">
+                                    <span class="fa fa-list"></span> List
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+<div class="btn-group">
+                            <a class="btn btn-sm dropdown-toggle tip-top" data-toggle="dropdown">
+                                Tools
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" style="min-width:110px">
+							 <li>
+										@if (ViewData["HostingEntity"] != null && User.CanEdit(ViewData["HostingEntity"].ToString()))
+			{
+				<a id="showAssociateBtn"  data-placement="top" data-original-title="Associate Education Verification Vendor with @GeneratorBase.MVC.Models.ModelConversion.GetDisplayNameOfEntity(ViewData["HostingEntity"].ToString())" data-toggle="modal" data-target="#dvPopupBulkOperation" onclick="@Html.Raw("OpenPopUpEntity1M(this,'PopupBulkOperation','Education Verification Vendor','dvPopupBulkOperation','" + Url.Action("Index", "T_Vendor", new { BulkOperation = "multiple", BulkAssociate = true, UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntity = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS = DateTime.Now,viewtype = Convert.ToString(ViewBag.TemplatesName) }) + "')")">
+					<i class="fa fa-plus-circle" ></i> Add Association
+				</a>
+				<script>
+                                if($("#HostingEntityDisplayValue").attr('id')==undefined)
+                                    $("#showAssociateBtn").hide();
+                            </script>
+
+			}
+                               
+                                 
+                                    
+                                </li>
+                                <li>
+								
+				@if ( User.CanAdd("T_Vendor") && User.CanUseVerb("ImportExcel", "T_Vendor", User))
+			{
+				if (ViewData["HostingEntity"]==null)
+				{ 
+				 <a  onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Upload", "T_Vendor") + "');")>
+                        <i class="fa fa-upload" style="margin-right:3px"></i>    Import Excel
+                                         
+                 </a>
+				}
+			}
+
+                                  
+                                </li>
+
+                                <li>
+				@if (User.CanView("T_Vendor") && User.CanUseVerb("ExportExcel", "T_Vendor", User))
+                {
+					<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action(ActionNameUrl,"T_Vendor",getSortHtmlAttributes(null, false, null, true), null) + "');")>
+						<i class="fa fa-download" style="margin-right:3px"></i>  Export Excel
+                    
+					</a>
+				}
+                                   
+                                </li>
+                    			<li>
+                <a class="collapse-data-btn" id="btnShowHideT_Vendor" data-original-title="Show/Hide Column" data-placement="top" onclick=@Html.Raw("showhideColumns(event,'T_Vendor');")>
+                    <span class="fa fa-table"></span>  Show/Hide Column
+                </a>
+            </li>
+                 
+                            </ul>
+                        </div>
+
+</div>					
+
+					<div class="pull-right" style="width:300px; padding-top:4px; ">
+                        <div class="input-group">
+                            @Html.TextBox("SearchStringT_Vendor", ViewBag.CurrentFilter as string, null, new { @class = "form-control fixsearchbox", @value = ViewBag.Homeval, @placeholder = "Search" })
+                            <div class="input-group-btn">
+                              <a id="T_VendorSearch" onclick="SearchClick(event, 'T_Vendor', '@Html.Raw(Url.Action("Index", "T_Vendor", new { IsFilter = ViewData["IsFilter"], IsDeepSearch = false, searchString = "_SearchString", HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]),HideColumns = ViewData["HideColumns"], SearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName) }))','@User.JavaScriptEncodedName');" data-original-title="Grid Search" class="btn btn-default btn-default tip-top" style="padding:3px 5px; border:1px solid #ccc" ><span class="fa fa-search"></span></a>
+								<button id="T_VendorCancel" type="button" class="btn btn-default btn-default collapse-data-btn tip-top" onclick="CancelSearch('T_Vendor','@Html.Raw(Url.Action("Index", "T_Vendor", new {IsFilter=ViewData["IsFilter"], HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]), HideColumns = ViewData["HideColumns"], ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName) }))','@User.JavaScriptEncodedName')" data-original-title="Clear Search" data-placement="top" style="padding:3px 5px; border:1px solid #ccc">
+                                    <span class="fa fa-minus-circle"></span>
+                                </button>
+                                <button id="T_VendorSearchCancel" type="button" class="btn btn-default btn-default collapse-data-btn tip-top" onclick="CancelSearch('T_Vendor','@Html.Raw(Url.Action("Index", "T_Vendor", new {IsFilter=ViewData["IsFilter"], itemsPerPage=Convert.ToInt32(ViewBag.PageSize),HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]),HideColumns = ViewData["HideColumns"], ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)}))','@User.JavaScriptEncodedName')" data-original-title="Refresh Grid" data-placement="top" style="padding:3px 5px; border:1px solid #ccc">
+                                    <span class="fa fa-refresh"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+            
+            
+
+			 <div style="clear:both"></div>
+
+
+					@Html.Partial("~/Views/T_Vendor/ShowHideColumns.cshtml") 
+                    @if (Model.Count > 0)
+                    {
+                        <div class="ViewMessage" style="margin-top: 0px;">
+                            <label><input type="checkbox" value="" class="tip-top" data-placement="top" data-original-title="Select All" onclick="CommonSelectAllRows(this, 'divTurantoList');"> Select All</label>
+                           
+                        </div>
+                    }
+			 <div id="divTurantoList">
+ @if (Model.Count > 0)
+        {
+		@Html.Hidden("SelectedItems")
+foreach (var item in Model) 
+{
+<div  class="col-sm-12 GenappList">
+<table>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="@item.Id" onclick="CommonSelectForBulkOperation(this,'@item.Id', 'divTurantoList');" style="position:absolute; top:0px; left:4px; z-index:100; height:15px; width:15px;" />
+                    </td>
+                </tr>
+            </table>
+				 <div class="col-sm-2">
+				@if(User.CanView("T_Vendor","T_Picture") && User.CanView("Document"))
+					{
+					   <div class="thumbnail pull-left" style="border:none;">
+				@if(!string.IsNullOrEmpty(Html.DisplayFor(modelItem => item.T_Picture).ToString()))
+					{
+				    
+				 <a class="thumbnail pull-left" href="#" data-image-id="" data-toggle="modal" data-image="@(Url.Content("~/Files/")+Url.Content(Html.DisplayFor(modelItem => item.T_Picture).ToString()))" data-target="#image-gallery">
+					<img src="@(Url.Content("~/Files/")+Url.Content(Html.DisplayFor(modelItem => item.T_Picture).ToString()))" alt="" style="width:160px; height:160px;" />
+                  </a>
+								<div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="fa fa-close"></span><span class="sr-only">Close</span></button>
+                                                <h4 class="modal-title" id="image-gallery-title">@item.DisplayValue</h4>
+                                            </div>
+                                            <div class="modal-body">
+											<center>
+                                                <img id="image-gallery-image" class="img-responsive" src="">
+											</center>
+                                            </div>
+
+                                        </div>
+                                    </div>
+				 </div>
+
+					}
+                     else
+                     {
+					    <a class="thumbnail pull-left">
+							<img src="~/Content/images/user.png" alt="" style="width:160px; height:160px;">
+						</a>
+                     }
+				</div>
+                 }
+				 
+				</div>
+				  
+   <div class='col-sm-10' style='margin:0px; margin-left:-30px; padding:0px; text-align:left'>
+	 <h4 style="margin-top:-8px; padding:10px 10px 10px 0px"><span title="@item.DisplayValue" style="width:90%; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display:inline-block; font-size:12px; margin-left:3px">@item.DisplayValue</span>
+	 		<div class="dropdown pull-right" style="margin-top:-3px" >
+			<button class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown">
+                                                    Action
+                                                    <span class="caret"></span>
+                                                </button>
+                        <ul class="dropdown-menu">
+                           
+							                           
+				@if (User.CanEdit("T_Vendor"))
+                {
+				<li>
+                        <a href="@Url.Action("Edit","T_Vendor", new { id = item.Id,  UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    
+                </li> 
+				}
+			@if (User.CanDeleteItem("T_Vendor", item, User))
+                 {
+				<li>
+                    <a href="@Url.Action("Delete", "T_Vendor", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) }, null)"><i class="glyphicon glyphicon-remove-sign" style="color: #E7574B;"></i> Delete</a>
+                </li>
+				 }
+
+	<li class="dropdown-submenu pull-left" id="AddAssociationdropmenuT_Vendor_@item.Id">
+	 @{ var dropmenu = false; }
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu">
+				@if ( User.CanView("T_Education"))
+				{ dropmenu = true;
+				<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Education", 
+						new { UrlReferrer = BackUrl,
+								AssociatedType ="T_EducationVerificationVendor", 
+							HostingEntityName = "T_Vendor",
+							HostingEntityID = @Convert.ToString(item.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Employee Education
+						</a>
+					</li>
+	
+				}
+			</ul>
+</li>
+@if(!dropmenu)
+{
+    <script>
+        $("#AddAssociationdropmenuT_Vendor_@item.Id").hide();
+    </script>
+}
+                        </ul>
+                    </div>
+	
+	 
+	 
+	 
+	 </h4>
+  			@if(User.CanView("T_Vendor","T_Title"))
+			{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_Title");
+			<div class="col2">
+			 <div class="col-sm-2 overflow GenappListFix" title='Title'>
+            <strong>@Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_Vendor", getSortHtmlAttributes("T_Title", false, null, false), new { @onclick = "SortLinkClick(event,'T_Vendor');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_Title")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_Title")
+				{<i class="fa fa-sort-asc"></i>}</strong>
+                                        </div>
+                                        <div class="col-sm-2 overflow GenappListFix" title='@Html.DisplayFor(modelItem => item.T_Title)'>
+                                        @Html.DisplayFor(modelItem => item.T_Title)
+                                        </div>
+			</div>
+			}
+						@if(User.CanView("T_Vendor","T_FirstName"))
+			{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_FirstName");
+			<div class="col3">
+			 <div class="col-sm-2 overflow GenappListFix" title='First Name'>
+            <strong>@Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_Vendor", getSortHtmlAttributes("T_FirstName", false, null, false), new { @onclick = "SortLinkClick(event,'T_Vendor');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_FirstName")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_FirstName")
+				{<i class="fa fa-sort-asc"></i>}</strong>
+                                        </div>
+                                        <div class="col-sm-2 overflow GenappListFix" title='@Html.DisplayFor(modelItem => item.T_FirstName)'>
+                                        @Html.DisplayFor(modelItem => item.T_FirstName)
+                                        </div>
+			</div>
+			}
+						@if(User.CanView("T_Vendor","T_MiddleName"))
+			{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_MiddleName");
+			<div class="col4">
+			 <div class="col-sm-2 overflow GenappListFix" title='Middle Name'>
+            <strong>@Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_Vendor", getSortHtmlAttributes("T_MiddleName", false, null, false), new { @onclick = "SortLinkClick(event,'T_Vendor');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_MiddleName")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_MiddleName")
+				{<i class="fa fa-sort-asc"></i>}</strong>
+                                        </div>
+                                        <div class="col-sm-2 overflow GenappListFix" title='@Html.DisplayFor(modelItem => item.T_MiddleName)'>
+                                        @Html.DisplayFor(modelItem => item.T_MiddleName)
+                                        </div>
+			</div>
+			}
+						@if(User.CanView("T_Vendor","T_LastName"))
+			{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_LastName");
+			<div class="col5">
+			 <div class="col-sm-2 overflow GenappListFix" title='Last Name'>
+            <strong>@Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_Vendor", getSortHtmlAttributes("T_LastName", false, null, false), new { @onclick = "SortLinkClick(event,'T_Vendor');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_LastName")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_LastName")
+				{<i class="fa fa-sort-asc"></i>}</strong>
+                                        </div>
+                                        <div class="col-sm-2 overflow GenappListFix" title='@Html.DisplayFor(modelItem => item.T_LastName)'>
+                                        @Html.DisplayFor(modelItem => item.T_LastName)
+                                        </div>
+			</div>
+			}
+						@if(User.CanView("T_Vendor","T_Email"))
+			{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_Email");
+			<div class="col6">
+			 <div class="col-sm-2 overflow GenappListFix" title='Email'>
+            <strong>@Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_Vendor", getSortHtmlAttributes("T_Email", false, null, false), new { @onclick = "SortLinkClick(event,'T_Vendor');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_Email")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_Email")
+				{<i class="fa fa-sort-asc"></i>}</strong>
+                                        </div>
+                                        <div class="col-sm-2 overflow GenappListFix" title='@Html.DisplayFor(modelItem => item.T_Email)'>
+                                        @Html.DisplayFor(modelItem => item.T_Email)
+                                        </div>
+			</div>
+			}
+						@if(User.CanView("T_Vendor","T_PhoneNo"))
+			{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_PhoneNo");
+			<div class="col7">
+			 <div class="col-sm-2 overflow GenappListFix" title='Phone No'>
+            <strong>@Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_Vendor", getSortHtmlAttributes("T_PhoneNo", false, null, false), new { @onclick = "SortLinkClick(event,'T_Vendor');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_PhoneNo")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_PhoneNo")
+				{<i class="fa fa-sort-asc"></i>}</strong>
+                                        </div>
+                                        <div class="col-sm-2 overflow GenappListFix" title='@Html.DisplayFor(modelItem => item.T_PhoneNo)'>
+                                        @Html.DisplayFor(modelItem => item.T_PhoneNo)
+                                        </div>
+			</div>
+			}
+						@if(User.CanView("T_Vendor","T_IdentificationNo"))
+			{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_IdentificationNo");
+			<div class="col8">
+			 <div class="col-sm-2 overflow GenappListFix" title='Identification No'>
+            <strong>@Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_Vendor", getSortHtmlAttributes("T_IdentificationNo", false, null, false), new { @onclick = "SortLinkClick(event,'T_Vendor');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_IdentificationNo")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_IdentificationNo")
+				{<i class="fa fa-sort-asc"></i>}</strong>
+                                        </div>
+                                        <div class="col-sm-2 overflow GenappListFix" title='@Html.DisplayFor(modelItem => item.T_IdentificationNo)'>
+                                        @Html.DisplayFor(modelItem => item.T_IdentificationNo)
+                                        </div>
+			</div>
+			}
+			 </div>
+
+    <div class="col-sm-1 GenappListFix" style="display:none">
+      <div class="btn-group-vertical" style="left:-15px" >
+
+			
+                        <a title="View" href="@Url.Action(User.CanEdit("T_Vendor") ? "Edit" : "Details", "T_Vendor",
+                        new { id = item.Id, AssociatedType = ViewData["AssociatedType"],
+                            HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]),
+                            HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName)  },
+                            null)"  class="btn btn-default" style="text-align: left">
+                            <span class="glyphicon glyphicon-eye-open icon-listbut"></span> View
+                           
+                        </a>
+@if (User.CanEdit("T_Vendor"))
+                                                        {
+                        <a title="Quick Edit"  class="btn btn-default" style="text-align: left" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Edit Education Verification Vendor','dvPopup','" + Url.Action("EditQuick", "T_Vendor", new
+																			{
+																				id = item.Id,
+																				UrlReferrer = Request.Url,
+																				AssociatedType = ViewData["AssociatedType"],
+																				HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]),
+																				HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),
+																				TS = DateTime.Now,viewtype = Convert.ToString(ViewBag.TemplatesName)
+																			}) + "')")" >
+                            <span class="fa fa-pencil icon-listbut"></span> Quick Edit
+                        </a>
+}
+@if (User.CanEdit("T_Vendor"))
+                                                        {
+                        <a title="Full Edit" href="@Url.Action("Edit","T_Vendor",
+                        new { id = item.Id,  UrlReferrer = BackUrl,
+                            AssociatedType=ViewData["AssociatedType"],
+                            HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]),
+                            HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) },
+                            null)"  class="btn btn-default" style="text-align: left">
+                            <span class="glyphicon glyphicon-edit icon-listbut"></span> Edit
+                            
+                        </a>
+}
+ <a href="" class="btn btn-default" style="text-align:left;" ><span class="fa fa-chevron-circle-down"></span> more</a>
+					</div>
+</div>
+
+
+  </div>
+							  <div style="clear:both"></div>
+						   //model loop end    
+                            }
+					}
+					else
+								{
+								  <div class="ViewMessage"> <i class="fa fa-info-circle"></i> No Record Available!</div>
+					}
+               </div>       
+               
+  			   @if (Model.Count > 0)
+                {
+                    <div id="pagination" class="MyPagination1">
+                        @Html.PagedListPager(Model, page => Url.Action(ActionNameUrl, "T_Vendor", getSortHtmlAttributes(null, true, page, false)))
+                        <div class="fixPageSize">
+                            Page Size :
+                            @Html.DropDownList("PageSize", new SelectList(new Dictionary<string, int> { { "10", 10 }, { "20", 20 }, { "50", 50 }, { "100", 100 } }, "Key", "Value")
+							, new { @id = "pagesizelistT_Vendor",
+							 @onchange = @Html.Raw("pagesizelistChange(event,'T_Vendor','"
+							  + @User.JavaScriptEncodedName + "')"),
+							 @Url = Html.Raw(@Url.Action(ActionNameUrl, "T_Vendor",
+							 getSortHtmlAttributes(ViewBag.CurrentSort, ViewBag.Pages == 1 ? false : true,
+							 null, false), null)) })
+							<span style="text-align:right;"> Total Count: @(Model.TotalItemCount)</span>
+                        </div>
+                    </div>
+                }
+				@Html.DropDownList("EntityT_VendorDisplayValue", null,null, new { @Style = "display:none;" })
+				</div>
+            </div>
+        </div>
+    
+</div>
+<script>
+
+    $(document).ready(function () {
+
+        loadGallery(true, 'a.thumbnail');
+
+        //This function disables buttons when needed
+        function disableButtons(counter_max, counter_current) {
+            $('#show-previous-image, #show-next-image').show();
+            if (counter_max == counter_current) {
+                $('#show-next-image').hide();
+            } else if (counter_current == 1) {
+                $('#show-previous-image').hide();
+            }
+        }
+
+
+
+        function loadGallery(setIDs, setClickAttr) {
+            var current_image,
+                selector,
+                counter = 0;
+
+            $('#show-next-image, #show-previous-image').click(function () {
+                if ($(this).attr('id') == 'show-previous-image') {
+                    current_image--;
+                } else {
+                    current_image++;
+                }
+
+                selector = $('[data-image-id="' + current_image + '"]');
+                updateGallery(selector);
+            });
+
+            function updateGallery(selector) {
+                var $sel = selector;
+                current_image = $sel.data('image-id');
+                $('#image-gallery-caption').text($sel.data('caption'));
+                $('#image-gallery-title').text($sel.data('title'));
+                $('#image-gallery-image').attr('src', $sel.data('image'));
+                disableButtons(counter, $sel.data('image-id'));
+            }
+
+            if (setIDs == true) {
+                $('[data-image-id]').each(function () {
+                    counter++;
+                    $(this).attr('data-image-id', counter);
+                });
+            }
+            $(setClickAttr).on('click', function () {
+                updateGallery($(this));
+            });
+        }
+    });
+
+</script>
+

@@ -1,0 +1,386 @@
+﻿@model GeneratorBase.MVC.Models.T_DrugAlcoholTest
+@using PagedList;
+@{
+    ViewBag.Title = "Edit Drug & Alcohol Test";
+	var EditPermission = User.CanEditItem("T_DrugAlcoholTest", Model, User);
+	var DeletePermission = User.CanDeleteItem("T_DrugAlcoholTest", Model, User);
+	Layout = null;
+	
+}
+@functions {
+    object getHtmlAttributes(string Property)
+    {
+        if (User.CanEdit("T_DrugAlcoholTest", Property))
+        {
+            return new { @class = "form-control" };
+        } return new { @class = "form-control", @readonly = "readonly" };
+    }
+}
+<script>
+    $(document).ready(function () {
+        try {
+		 if ($('#EntityT_DrugAlcoholTestDisplayValue').has('option').length > 0) {
+			var RecId = $("#Id").val()
+            $("#T_DrugAlcoholTestDD").append($("#EntityT_DrugAlcoholTestDisplayValue").html());
+            $("#T_DrugAlcoholTestDD").val(RecId);
+
+			var text = $("option:selected", $("#T_DrugAlcoholTestDD")).text();
+            $("#T_DrugAlcoholTestDD").attr('data-toggle', 'tooltip')
+            $("#T_DrugAlcoholTestDD").attr('title', text);
+
+            var lastOptionVal = $('#T_DrugAlcoholTestDD option:last-child').val();
+            var fristOptionVal = $('#T_DrugAlcoholTestDD option:first-child').val();
+            if (lastOptionVal == RecId)
+			{
+                $('#next').hide();
+				$('#SaveAndContinue').hide();
+				}
+
+            if (fristOptionVal == RecId)
+                $('#prev').hide();
+			} else {  $('#dvsavenext').hide(); $('#SaveAndContinue').hide(); }
+            var hostingEntityName = "";
+            if ('@Convert.ToString(ViewData["AssociatedType"])' != null) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+				if( '@Convert.ToBoolean(ViewData["IsFilter"])'!="False")
+				$('#' + hostingEntityName + 'ID').attr("lock","true");
+				$('#' + hostingEntityName + 'ID').trigger("change");
+				 $("input[type='radio'][name='" + hostingEntityName + "ID']").each(function () {
+                    if (!this.checked)
+                        this.closest("li").style.display = "none";
+                });		
+						
+            }
+        }
+        catch (ex) { }
+    });
+</script>
+<script type="text/javascript">
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': { allow_single_deselect: true },
+        '.chosen-select-no-single': { disable_search_threshold: 10 },
+        '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+        '.chosen-select-width': { width: "95%" }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_DrugAlcoholTestIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_DrugAlcoholTestIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_DrugAlcoholTestIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_DrugAlcoholTestIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_DrugAlcoholTestIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_DrugAlcoholTestIsSetValueUIRule);
+    }
+}
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-lg-12">
+        @*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+		<input type="hidden" id="ErrMsg" />
+		<div id="errorContainerEdit" style="display: none">
+            <div id="errorsMsgEdit"></div>
+            <div id="errorsEdit"></div>
+        </div>
+     <div class="col-sm-6 col-md-6 col-xs-12" style="margin-top: -12px;">
+            <h2 class="text-primary">
+                <span id="HostingEntityDisplayValue">@Html.DisplayFor(model => model.DisplayValue)</span>
+            </h2>
+        </div>
+        @if (EditPermission)
+            {
+            <div class="col-sm-6 col-md-6 col-xs-12" id="dvsavenext">
+                <button class="btn btn-default btn-xs pull-right" id="next" onclick="@Html.Raw("nextFun('T_DrugAlcoholTest')")">Next >></button>
+                @Html.DropDownList("T_DrugAlcoholTestDD", null, null, new { @onchange = "FillDisplayValueQEdit('T_DrugAlcoholTest')", @required = "required", @class = "pull-right", @Style = "height: 22px;width: 170px;" })
+                <button class="btn btn-default btn-xs pull-right" id="prev" onclick="@Html.Raw("prevFun('T_DrugAlcoholTest')")"><< Prev</button>
+            </div>
+        }
+    </div>
+    <!-- /.col-lg-12 -->
+	<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+</div>
+<div id="divDisplayBRmsgMandatory" style="display:none;">
+</div>
+<div id="divDisplayLockRecord" style="display:none;">
+</div>
+<div id="divDisplayBRReadOnly" style="display:none;">
+</div>
+<br/>
+</div>
+	
+@using (Html.BeginForm("EditQuick","T_DrugAlcoholTest",new {UrlReferrer =Convert.ToString(ViewData["T_DrugAlcoholTestParentUrl"])}, FormMethod.Post, new { enctype = "multipart/form-data", @id = "frmQEditT_DrugAlcoholTest" }))
+{
+     Html.ValidationSummary(true);
+                Html.EnableClientValidation();
+    @Html.HiddenFor(model => model.Id)
+	@Html.HiddenFor(model => model.ConcurrencyKey)
+	 <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px;">
+                    <div class="panel panel-default AppForm">
+						<div class="panel-body">
+						    @Html.Hidden("AssociatedEntity", Convert.ToString(ViewData["AssociatedType"]))
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48904">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+											
+									<h3 class="panel-title" alt="Employee Information" title="Employee Information">Employee Information</h3>
+								</div>
+                                <div class="panel-body">
+				@if(User.CanView("T_DrugAlcoholTest","T_EmployeeDrugAlcoholTestID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeDrugAlcoholTestID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_EmployeeDrugAlcoholTestID) <span class="text-danger-reg">*</span></label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_DrugAlcoholTest", "T_EmployeeDrugAlcoholTestID"))
+		{
+			@Html.DropDownList("T_EmployeeDrugAlcoholTestID", null, "-- Select --", new {   @required ="required",     @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeDrugAlcoholTestID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EmployeeDrugAlcoholTestID, new { @class = "form-control" })
+			@Html.DropDownList("T_EmployeeDrugAlcoholTestID", null, "-- Select --", new {  @required ="required",     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeDrugAlcoholTestID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_EmployeeDrugAlcoholTestID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_EmployeeDrugAlcoholTestID, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+       </div>
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48905">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#drug & alcohol test informationbody" alt="Drug & Alcohol Test Information" title="Drug & Alcohol Test Information"><span class="glyphicon glyphicon-chevron-down"></span> Drug & Alcohol Test Information</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="drug & alcohol test informationbody">					
+				@if(User.CanView("T_DrugAlcoholTest","T_TypeOfTestID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TypeOfTestID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_TypeOfTestID) <span class="text-danger-reg">*</span></label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_DrugAlcoholTest", "T_TypeOfTestID"))
+		{
+			@Html.DropDownList("T_TypeOfTestID", null, "-- Select --", new {   @required ="required",     @class = "chosen-select form-control", @HostingName = "T_TestType", @dataurl = Url.Action("GetAllValue", "T_TestType",new { caller = "T_TypeOfTestID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_TypeOfTestID, new { @class = "form-control" })
+			@Html.DropDownList("T_TypeOfTestID", null, "-- Select --", new {  @required ="required",     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_TestType", @dataurl = Url.Action("GetAllValue", "T_TestType",new { caller = "T_TypeOfTestID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_TypeOfTestID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_TypeOfTestID, new { @class = "form-control" })}
+				@if(User.CanView("T_DrugAlcoholTest","T_TestReasonID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TestReasonID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_TestReasonID) </label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_DrugAlcoholTest", "T_TestReasonID"))
+		{
+			@Html.DropDownList("T_TestReasonID", null, "-- Select --", new {      @class = "chosen-select form-control", @HostingName = "T_ReasonForDrugTest", @dataurl = Url.Action("GetAllValue", "T_ReasonForDrugTest",new { caller = "T_TestReasonID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_TestReasonID, new { @class = "form-control" })
+			@Html.DropDownList("T_TestReasonID", null, "-- Select --", new {     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_ReasonForDrugTest", @dataurl = Url.Action("GetAllValue", "T_ReasonForDrugTest",new { caller = "T_TestReasonID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_TestReasonID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_TestReasonID, new { @class = "form-control" })}
+@if(User.CanView("T_DrugAlcoholTest","T_DateOrdered"))
+{
+                      
+					  						 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DateOrdered">
+							  <div class="form-group" title="Date  Of  Test">
+                                <label  >@Html.LabelFor(model => model.T_DateOrdered) <span class="text-danger-reg">*</span></label>
+								
+                                    <div class="input-group date" id="datetimepickerT_DateOrdered">
+ @Html.TextBoxFor(model => model.T_DateOrdered, "{0:MM/dd/yyyy}", User.CanEdit("T_DrugAlcoholTest", "T_DateOrdered") ? (object)new {@class = "form-control" } : (object)new { @class = "form-control", @readonly="readonly" })
+
+                                        <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_DateOrdered)
+								
+                                </div>
+	
+								@if(User.CanEdit("T_DrugAlcoholTest", "T_DateOrdered"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_DateOrdered').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_DateOrdered').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+								}
+                            </div>
+											  
+					        
+} else { @Html.HiddenFor(model => model.T_DateOrdered, new { @class = "form-control" })}
+				@if(User.CanView("T_DrugAlcoholTest","T_DrugTestResultsID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DrugTestResultsID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_DrugTestResultsID) </label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_DrugAlcoholTest", "T_DrugTestResultsID"))
+		{
+			@Html.DropDownList("T_DrugTestResultsID", null, "-- Select --", new {      @class = "chosen-select form-control", @HostingName = "T_DrugTestResult", @dataurl = Url.Action("GetAllValue", "T_DrugTestResult",new { caller = "T_DrugTestResultsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_DrugTestResultsID, new { @class = "form-control" })
+			@Html.DropDownList("T_DrugTestResultsID", null, "-- Select --", new {     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_DrugTestResult", @dataurl = Url.Action("GetAllValue", "T_DrugTestResult",new { caller = "T_DrugTestResultsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_DrugTestResultsID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_DrugTestResultsID, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+       </div>
+
+			@Html.HiddenFor(model => model.T_ReviewersInitials, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_ResultsReceivedDate, new { @class = "form-control" })
+			@Html.HiddenFor(model => model.T_Notes, new { @class = "form-control" })
+
+	            </div>
+        </div>
+	</div>
+</div>
+		 @Html.AntiForgeryToken();
+		 var businessrule1 = User.businessrules.Where(p => p.EntityName == "T_DrugAlcoholTest").ToList();
+		 var lstinlineentityname = "";
+		 var lstinlineassocdispname ="";
+		 var lstinlineassocname = "";
+		 <button id="CancelQuickAdd" type="button" class="btn btn-default btn-sm" data-dismiss="modal" aria-hidden="true">Cancel</button>
+		 if (EditPermission)
+         {
+			    <input type="submit" id="command" name="command" value="Save & Close" class="btn btn-primary btn-sm" onclick="QuickEditFromGrid(event,true,'T_DrugAlcoholTest','@ViewData["AssociatedType"]',false,'@businessrule1',@businessrule1.Count,'OnEdit','ErrMsg',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname');" />
+				<input type="submit" id="sevranBtn" style="display:none;" name="command" value="Save" class="btn btn-primary btn-sm" onclick="QuickEditFromGrid(event,true,'T_DrugAlcoholTest','@ViewData["AssociatedType"]',false,'@businessrule1',@businessrule1.Count,'OnEdit','ErrMsg',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname','True');" />
+                <button type="button" id="SaveAndContinue" name="SaveAndContinue" class="btn btn-primary btn-sm" onclick="@Html.Raw("SaveAndContinueEdit('T_DrugAlcoholTest',event)")">Save & Next</button>
+				<input type="hidden" name="hdncommand" value="" />
+  		 }	
+}
+<script src="@Url.Content("~/bundles/jqueryval")" type="text/javascript"></script>
+<script src="@Url.Content("~/bundles/common3")" type="text/javascript"></script>
+
+<script>
+    $("input[type='submit']").click(function (event) {
+	if (!$("#frmQEditT_DrugAlcoholTest").valid()) return;
+	
+        var $this = $(this);
+        $('input:hidden[name="hdncommand"]').val($this.val());
+    });
+</script>
+@{
+var businessrule = User.businessrules.Where(p => p.EntityName == "T_DrugAlcoholTest").ToList();
+
+
+	
+
+
+if ((businessrule != null && businessrule.Count > 0) )
+{
+var ruleids = businessrule.Select(q => q.Id).ToList();
+var typelist  = string.Join(",", (new GeneratorBase.MVC.Models.RuleActionContext()).RuleActions.Where(p => ruleids.Contains(p.RuleActionID.Value) && p.associatedactiontype.TypeNo.HasValue).Select(p => p.associatedactiontype.TypeNo.Value).Distinct().ToList());
+
+    <script>
+    $(document).ready(function () {
+	document.getElementById("ErrMsg").innerHTML = "";
+		 var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+
+				 form = $("#frmQEditT_DrugAlcoholTest").serialize();
+					 dataurl = "@Url.Action("businessruletype", "T_DrugAlcoholTest", new { ruleType = "OnEdit"})";
+            ApplyBusinessRuleOnPageLoad("@typelist",dataurl, "T_DrugAlcoholTest", false, "ErrMsg", form);
+			//business rules on inline associations
+    });
+</script>
+<script>
+    $("form").submit(function (event) {
+	if (!$("#frmQEditT_DrugAlcoholTest").valid()) return;
+	document.getElementById("ErrMsg").innerHTML = "";
+            var flag = true;
+		var form = $("#frmQEditT_DrugAlcoholTest").serialize();
+					});
+</script>
+}
+ 
+}
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+            document.getElementsByTagName("body")[0].focus();
+            $("#addPopup").removeAttr("tabindex");
+            var cltcoll = $("#dvPopup").find('input[type=text]:not([class=hidden]):not([readonly]),textarea:not([readonly])')
+            var cltid = "";
+            $(cltcoll).each(function () {
+			  if ($(this).attr("id") == undefined)
+                    return
+                var dvhidden = $("#dv" + $(this).attr("id"));
+				var dvDate = $("#datetimepicker" + $(this).attr("id")).attr("id");
+                if (!(dvhidden.css('display') == 'none') && dvDate == undefined) {
+                    cltid = $(this);
+                    return false;
+                }
+            });
+            if (cltid != "" && cltid != undefined)
+                setTimeout(function () { $(cltid).focus(); }, 500)
+        }
+        catch (ex) { }
+    });
+</script>
+

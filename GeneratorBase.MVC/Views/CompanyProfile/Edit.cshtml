@@ -1,0 +1,614 @@
+﻿@model GeneratorBase.MVC.Models.CompanyProfile
+@{
+    ViewBag.Title = "Edit Company Profile";
+    var url = Url.Content("~/logo/"+Model.Icon);
+    var url1 = Url.Content("~/logo/logo_white.png");
+    var commonObj = GeneratorBase.MVC.Models.CommonFunction.Instance;
+    if (HttpContext.Current.Request.Url.Host == "localhost")
+    {
+        url = Url.Content("~/logo/"+Model.Icon);
+        url1 = Url.Content("~/logo/logo_white.png");
+    }
+
+}
+@functions {
+    object getHtmlAttributes(string Property)
+    {
+        return new { @class = "form-control" };
+    }
+}
+<link href='@Url.Content("~/Scripts/summernote.css")' rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/summernote.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    function initHtmlEditor() {
+        $('#summernote').summernote();
+        $('#summernote1').summernote();
+    }
+    $(document).ready(function () {
+        initHtmlEditor();
+    });
+    function ChangeProfile(obj)
+    {
+        var element = $(obj);
+        var value = element.val();
+        var url = '@Url.Action("Edit", "CompanyProfile", new { tenantId = "_tenantid" })'.replace("_tenantid", value);
+        window.location.href = url;
+    }
+</script>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-edit text-primary"></i> Edit Company Profile  <i class="glyphicon glyphicon-chevron-right small"></i> <span>Edit</span>
+        </h1>
+    </div>
+</div>
+<div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#Details" data-toggle="tab">Company Information</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="Details">
+            @using (Html.BeginForm("Edit", "CompanyProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px;">
+                    <div class="panel panel-default AppForm">
+                        <div class="panel-body">
+                            <div class="row">
+                                @Html.ValidationSummary(true)
+
+                                
+@if (ViewBag.TenantList != null)
+{ 
+                                <div class='col-sm-6 col-md-6 col-xs-12'>
+                                    <div class='form-group'>
+                                        <label class="col-sm-5 col-md-5 col-xs-12">Select Tenant</label>
+                                        <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                            @Html.DropDownList("TenantList", null, null , new {@onchange="ChangeProfile(this);", @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+
+}
+                                <div class='col-sm-6 col-md-6 col-xs-12'>
+                                    <div class='form-group'>
+                                        <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.Name) <span class="text-danger-reg">*</span> </label>
+                                        <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                            @Html.TextBoxFor(model => model.Name, getHtmlAttributes("Name"))
+                                            @Html.ValidationMessageFor(model => model.Name)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-sm-6 col-md-6 col-xs-12'>
+                                    <div class='form-group'>
+                                        <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.Email) <span class="text-danger-reg">*</span> </label>
+                                        <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                            @Html.TextBoxFor(model => model.Email, getHtmlAttributes("Email"))
+                                            @Html.ValidationMessageFor(model => model.Email)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-sm-6 col-md-6 col-xs-12'>
+                                    <div class='form-group'>
+                                        <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.Address) </label>
+                                        <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                            @Html.TextBoxFor(model => model.Address, getHtmlAttributes("Address"))
+                                            @Html.ValidationMessageFor(model => model.Address)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-sm-6 col-md-6 col-xs-12'>
+                                    <div class='form-group'>
+                                        <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.Country) </label>
+                                        <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                            @Html.TextBoxFor(model => model.Country, getHtmlAttributes("Country"))
+                                            @Html.ValidationMessageFor(model => model.Country)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-sm-6 col-md-6 col-xs-12'>
+                                    <div class='form-group'>
+                                        <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.State) </label>
+                                        <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                            @Html.TextBoxFor(model => model.State, getHtmlAttributes("State"))
+                                            @Html.ValidationMessageFor(model => model.State)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-sm-6 col-md-6 col-xs-12'>
+                                    <div class='form-group'>
+                                        <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.City) </label>
+                                        <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                            @Html.TextBoxFor(model => model.City, getHtmlAttributes("City"))
+                                            @Html.ValidationMessageFor(model => model.City)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-sm-6 col-md-6 col-xs-12'>
+                                    <div class='form-group'>
+                                        <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.Zip) </label>
+                                        <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                            @Html.TextBoxFor(model => model.Zip, getHtmlAttributes("Zip"))
+                                            @Html.ValidationMessageFor(model => model.Zip)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-sm-6 col-md-6 col-xs-12'>
+                                    <div class='form-group'>
+                                        <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.ContactNumber1) </label>
+                                        <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                            @Html.TextBoxFor(model => model.ContactNumber1, getHtmlAttributes("ContactNumber1"))
+                                            @Html.ValidationMessageFor(model => model.ContactNumber1)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col-sm-6 col-md-6 col-xs-12'>
+                                    <div class='form-group'>
+                                        <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.ContactNumber2)</label>
+                                        <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                            @Html.TextBoxFor(model => model.ContactNumber2, getHtmlAttributes("ContactNumber2"))
+                                            @Html.ValidationMessageFor(model => model.ContactNumber2)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="clear:both"></div>
+                                @*logo*@
+                                @if(!Model.TenantId.HasValue || Model.TenantId.Value == 0)
+                                { 
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+                                            <h3 class="panel-title">LoginPage Logo Setting</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class='col-sm-2 col-md-2 col-xs-12'>
+                                                @{
+                                    var srcvalue = Model.Logo == null || Model.Logo == "logo_white.png" ? url1 : url1;
+                                                }
+                                                <img src='@srcvalue' style="width: 50px; height: 50px; border: 1px solid #edf5fa; padding: 3px; margin-bottom: 5px;" alt="NA" alt="LoginPage Logo" title="LoginPage Logo" />
+
+                                                <div style="position:relative;">
+                                                    @Html.TextBoxFor(model => model.Logo, new { @class = "hidden" })
+                                                    <a class='btn btn-primary btnupload' href='javascript:;'>
+                                                        Upload File
+                                                        <input id="Logo" type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;width:105px;'
+                                                               name="Logo" onchange='$("#upload-file-infoLogo").html($(this).val());'>
+                                                    </a>
+                                                    <span class='label uploadlblFix' id="upload-file-infoLogo"></span>
+                                                </div>
+
+
+                                            </div>
+                                            <div class='col-sm-10 col-md-10 col-xs-10'>
+                                                <div class='form-group'>
+                                                    <label class="col-sm-2 col-md-2 col-xs-12">Width</label>
+                                                    <div class="input-group col-sm-3 col-md-3 col-xs-12">
+                                                        @Html.TextBoxFor(model => model.LogoWidth, getHtmlAttributes("LogoWidth"))
+                                                        @Html.ValidationMessageFor(model => model.LogoWidth)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='col-sm-10 col-md-10 col-xs-10'>
+                                                <div class='form-group'>
+                                                    <label class="col-sm-2 col-md-2 col-xs-12">Height</label>
+                                                    <div class="input-group col-sm-3 col-md-3 col-xs-12">
+                                                        @Html.TextBoxFor(model => model.LogoHeight, getHtmlAttributes("LogoHeight"))
+                                                        @Html.ValidationMessageFor(model => model.LogoHeight)
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+                                @*End*@
+
+                                @*Icon*@
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+                                            <h3 class="panel-title">MasterPage Logo Setting</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class='col-sm-2 col-md-2 col-xs-12'>                                               
+                                                <img src="@url" style="width: 50px; height: 50px; border: 1px solid #edf5fa; padding: 3px; margin-bottom: 5px;" alt="MaterPage Logo" title="MasterPage Logo"  />
+                                                <div style="position:relative;">
+                                                    @Html.TextBoxFor(model => model.Icon, new { @class = "hidden" })
+                                                    <a class='btn btn-primary btnupload' href='javascript:;'>
+                                                        Upload File
+                                                        <input id="Icon" type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;width:105px;'
+                                                               name="Icon" onchange='$("#upload-file-infoIcon").html($(this).val());'>
+                                                    </a>
+                                                    <span class='label uploadlblFix' id="upload-file-infoIcon"></span>
+                                                </div>
+                                            </div>
+                                            <div class='col-sm-10 col-md-10 col-xs-10'>
+                                                <div class='form-group'>
+                                                    <label class="col-sm-2 col-md-2 col-xs-12">Width</label>
+                                                    <div class="input-group col-sm-3 col-md-3 col-xs-12">
+                                                        @Html.TextBoxFor(model => model.IconWidth, getHtmlAttributes("IconWidth"))
+                                                        @Html.ValidationMessageFor(model => model.IconWidth)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='col-sm-10 col-md-10 col-xs-10'>
+                                                <div class='form-group'>
+                                                    <label class="col-sm-2 col-md-2 col-xs-12">Height</label>
+                                                    <div class="input-group col-sm-3 col-md-3 col-xs-12">
+                                                        @Html.TextBoxFor(model => model.IconHeight, getHtmlAttributes("IconHeight"))
+                                                        @Html.ValidationMessageFor(model => model.IconHeight)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*end*@
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+                                            <h3 class="panel-title">Set SMTP Details</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class='col-sm-6 col-md-6 col-xs-12'>
+                                                <div class='form-group'>
+                                                    <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.SMTPServer) <span class="text-danger-reg">*</span> </label>
+                                                    <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                                        @Html.TextBoxFor(model => model.SMTPServer, getHtmlAttributes("SMTPServer"))
+                                                        @Html.ValidationMessageFor(model => model.SMTPServer)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='col-sm-6 col-md-6 col-xs-12'>
+                                                <div class='form-group'>
+                                                    <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.SMTPPassword) <span class="text-danger-reg">*</span> </label>
+                                                    <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                                        @Html.TextBoxFor(model => model.SMTPPassword, new { @class = "form-control", @type = "Password" })
+                                                        @Html.ValidationMessageFor(model => model.SMTPPassword)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='col-sm-6 col-md-6 col-xs-12'>
+                                                <div class='form-group'>
+                                                    <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.SMTPPort) <span class="text-danger-reg">*</span> </label>
+                                                    <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                                        @Html.TextBoxFor(model => model.SMTPPort, getHtmlAttributes("SMTPPort"))
+                                                        @Html.ValidationMessageFor(model => model.SMTPPort)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='col-sm-6 col-md-6 col-xs-12'>
+                                                <div class='form-group'>
+                                                    <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.SSL)  </label>
+                                                    <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                                        @Html.EditorFor(model => model.SSL, getHtmlAttributes("SSL"))
+                                                        @Html.ValidationMessageFor(model => model.SSL)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @Html.HiddenFor(model => model.TenantId)
+                                            @Html.HiddenFor(model => model.Type)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*Add Update Document*@
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="panel panel-default" style="color:black">
+                                        <div class="panel-heading clearfix">
+                                            <h3 class="panel-title">
+                                                Footer
+                                            </h3>
+                                        </div>
+                                        <div class="panel-body" style="padding:0px;">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            Name
+                                                        </th>
+                                                        <th>
+                                                            Web Link
+                                                        </th>
+                                                        <th>
+                                                            Document
+                                                        </th>
+                                                        <th width="50px">Edit</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @*Legal Information*@
+                                                    <tr id="trGridLegal">
+                                                        <td>
+                                                            @commonObj.Legal(User)
+                                                        </td>
+                                                        <td>
+                                                            <a href='@Html.Raw(commonObj.getBaseUri() + commonObj.LegalLink(User))' target="_blank">@commonObj.Legal(User)</a>
+                                                        </td>
+                                                        <td>
+                                                            @*<span class='label uploadlblFix' id="upload-file-infoLegalInformationAttach">@LegalAttach</span>*@
+                                                            @commonObj.LegalAttach(User)
+                                                        </td>
+                                                        <td align="center">
+                                                            <a onclick="EditLegal()" id="aLegalEdit" alt="Edit Footer Information" title="Edit Footer Information"><i class="fam-pencil"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="trEditLegal">
+                                                        <td>
+                                                            <input name="LegalInformation" placeholder="@commonObj.Legal(User)" id="LegalInformation" value="" />
+                                                        </td>
+                                                        <td>
+                                                            <input name="LegalInformationLink" placeholder="@commonObj.LegalLink(User)" id="LegalInformationLink" value='' />
+                                                        </td>
+                                                        <td>
+                                                            <div style="position:relative;">
+                                                                <a class='btn btn-primary btnupload' href='javascript:;'>
+                                                                    Upload File
+                                                                    <input type="file" name="LegalInformationAttach" id="LegalInformationAttach" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;width:105px;' />
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td align="center">
+                                                            <a onclick="CancelLegal()" id="aCancelLegal"><i class="fam-delete"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    @*Privacy Policy*@
+                                                    <tr id="trGridPrivacy">
+                                                        <td>
+                                                            @commonObj.Policy(User)
+                                                        </td>
+                                                        <td>
+                                                            <a href='@Html.Raw(commonObj.getBaseUri() + commonObj.PolicyLink(User))' target="_blank">@commonObj.Policy(User)</a>
+                                                        </td>
+                                                        <td>
+                                                            @*<span class='label uploadlblFix' id="upload-file-infoPrivacyAttach">@PolicyAttach</span>*@
+                                                            @commonObj.PolicyAttach(User)
+                                                        </td>
+                                                        <td align="center">
+                                                            
+                                                            <a onclick="EditPrivacy()" id="aPrivacyEdit"><i class="fam-pencil"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="trEditPrivacy">
+                                                        <td>
+                                                            <input name="PrivacyPolicy" placeholder="@commonObj.Policy(User)" id="PrivacyPolicy" value="" />
+                                                        </td>
+                                                        <td>
+                                                            <input name="PrivacyPolicyLink" placeholder="@commonObj.PolicyLink(User)" id="PrivacyPolicyLink" value="" />
+                                                        </td>
+                                                        <td>
+                                                            <div style="position:relative;">
+                                                                <a class='btn btn-primary btnupload' href='javascript:;'>
+                                                                    Upload File
+                                                                    <input type="file" name="PrivacyPolicyAttach" id="PrivacyPolicyAttach" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;width:105px;' />
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td align="center">
+                                                            <a onclick="CancelPrivacy()" id="aCancelPrivacy"><i class="fam-delete"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    @*Terms Of Service*@
+                                                    <tr id="trGridTerms">
+                                                        <td>
+                                                            @commonObj.Terms(User)
+                                                        </td>
+                                                        <td>
+                                                            <a href='@Html.Raw(commonObj.getBaseUri() + commonObj.TermsLink(User))' target="_blank">@commonObj.Terms(User)</a>
+                                                        </td>
+                                                        <td>
+                                                            @*<span class='label uploadlblFix' id="upload-file-infoTermsOfServiceAttach">@TermsAttach</span>*@
+                                                            @commonObj.TermsAttach(User)
+                                                        </td>
+                                                        <td align="center">
+                                                           
+                                                            <a onclick="EditTerms()" id="aTermsEdit"><i class="fam-pencil"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="trEditTerms">
+                                                        <td>
+                                                            <input name="TermsOfService" placeholder="@commonObj.Terms(User)" id="Terms Of Service" value="" />
+                                                        </td>
+                                                        <td>
+                                                            <input name="TermsOfServiceLink" placeholder="@commonObj.TermsLink(User)" id="TermsOfServiceLink" value="" />
+                                                        </td>
+                                                        <td>
+                                                            <div style="position:relative;">
+                                                                <a class='btn btn-primary btnupload' href='javascript:;'>
+                                                                    Upload File
+                                                                    <input type="file" name="TermsOfServiceAttach" id="TermsOfServiceAttach" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;width:105px;' />
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td align="center">
+                                                            <a onclick="CancelTerms()" id="aCancelTerms"><i class="fam-delete"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    @*Email*@
+                                                    <tr id="trGridEmailto">
+                                                        <td>
+                                                            @commonObj.Emailto(User)
+                                                        </td>
+                                                        <td>
+                                                            <a href='@Html.Raw("mailto:" + commonObj.EmailtoAddress(User))'>@commonObj.EmailtoAddress(User)</a>
+                                                        </td>
+                                                        <td></td>
+                                                        <td align="center">
+                                                          
+                                                            <a onclick="EditEmailto()" id="aEmailtoEdit"><i class="fam-pencil"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="trEditEmailto">
+                                                        <td>
+                                                            <input name="Emailto" placeholder="@commonObj.Emailto(User)" id="Emailto" value="" />
+                                                        </td>
+                                                        <td>
+                                                            <input name="EmailtoAddress" placeholder="@commonObj.EmailtoAddress(User)" id="EmailtoAddress" value="" />
+                                                        </td>
+                                                        <td></td>
+                                                        <td align="center">
+                                                            <a onclick="CancelEmailto()" id="aCancelEmailto"><i class="fam-delete"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    @* Created By*@
+                                                    <tr id="trGridCreatedBy">
+                                                        <td>
+                                                            @commonObj.CreatedBy(User)
+                                                        </td>
+                                                        <td>
+                                                            <a href="@commonObj.CreatedByLink(User)" target="_blank">@commonObj.CreatedByName(User)</a>
+                                                        </td>
+                                                        <td></td>
+                                                        <td align="center">
+                                                           
+                                                            <a onclick="EditCreatedBy()" id="aCreatedByEdit"><i class="fam-pencil"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="trEditCreatedBy">
+                                                        <td>
+                                                            <input name="CreatedBy" placeholder="@commonObj.CreatedBy(User)" id="Create By" value="" />
+                                                        </td>
+                                                        <td>
+                                                            <input name="CreatedByLink" placeholder="@commonObj.CreatedByLink(User)" id="CreatedByLink" value="" />
+                                                            <input name="CreatedByName" placeholder="@commonObj.CreatedByName(User)" id="CreatedByName" value="" />
+                                                        </td>
+                                                        <td></td>
+                                                        <td align="center">
+                                                            <a onclick="CancelCreatedBy()" id="aCancelCreatedBy"><i class="fam-delete"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*End*@
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+                                            <h3 class="panel-title">About</h3>
+                                        </div>
+                                        <div class="panel-body" style="margin:0px; padding:8px;">
+                                            @Html.TextAreaFor(model => model.AboutCompany, new { @id = "summernote" })
+                                            @Html.ValidationMessageFor(model => model.AboutCompany)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+@if(!Model.TenantId.HasValue || Model.TenantId.Value == 0)
+                                {
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+                                            <h3 class="panel-title">Disclaimer</h3>
+                                        </div>
+                                        <div class="panel-body" style="margin:0px; padding:8px;">
+                                            @Html.TextAreaFor(model => model.Disclaimer, new { @id = "summernote1" })
+                                            @Html.ValidationMessageFor(model => model.Disclaimer)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+}
+                        </div>
+                    </div>
+                </div>
+
+
+                @Html.ActionLink("Back to Admin Settings", "Index", "Admin", null, new { @class = "btn btn-default btn-sm" })
+                <input type="submit" value="Save" class="btn btn-primary btn-sm" />
+            }
+        </div>
+    </div><!-- /tab-content --><br />
+</div>
+<script>
+    $(document).ready(function () {
+        $("#trEditLegal").hide();
+        $("#trEditTerms").hide();
+        $("#trEditPrivacy").hide();
+        $("#trEditEmailto").hide();
+        $("#trEditCreatedBy").hide();
+    });
+    //Legal
+    function DeleteLegal() {
+        // alert('aLegalDelete')
+    }
+    function EditLegal() {
+        $("#trEditLegal").show()
+        $("#trGridLegal").hide();
+        //alert('aLegalEdit')
+    }
+    function CancelLegal() {
+        $("#trEditLegal").hide()
+        $("#trGridLegal").show();
+    }
+    //
+    //Terms
+    function DeleteTerms() {
+        //alert('aTermsDelete')
+    }
+    function EditTerms() {
+        $("#trEditTerms").show()
+        $("#trGridTerms").hide();
+    }
+    function CancelTerms() {
+        $("#trEditTerms").hide()
+        $("#trGridTerms").show();
+    }
+    //
+    //Privacy
+    function DeletePrivacy() {
+        //alert('aPrivacyDelete')
+    }
+    function EditPrivacy() {
+        $("#trEditPrivacy").show()
+        $("#trGridPrivacy").hide();
+    }
+    function CancelPrivacy() {
+        $("#trEditPrivacy").hide()
+        $("#trGridPrivacy").show();
+    }
+    //
+    //Emailto
+    function DeleteEmailto() {
+        //alert('aEmailtoDelete')
+    }
+    function EditEmailto() {
+        $("#trEditEmailto").show()
+        $("#trGridEmailto").hide();
+    }
+    function CancelEmailto() {
+        $("#trEditEmailto").hide()
+        $("#trGridEmailto").show();
+    }
+    //
+    //CreatedBy
+    function DeleteCreatedBy() {
+        //alert('aCreatedByDelete')
+    }
+    function EditCreatedBy() {
+        $("#trEditCreatedBy").show()
+        $("#trGridCreatedBy").hide();
+    }
+    function CancelCreatedBy() {
+        $("#trEditCreatedBy").hide()
+        $("#trGridCreatedBy").show();
+    }
+    //
+</script>
+
+

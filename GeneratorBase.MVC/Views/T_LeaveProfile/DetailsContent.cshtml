@@ -1,0 +1,369 @@
+﻿@model GeneratorBase.MVC.Models.T_LeaveProfile
+@using PagedList;
+@{
+    ViewBag.Title = "View Leave";
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_LeaveProfile");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Leave";
+}
+<script>
+    $(document).ready(function () {
+			 if ($.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') != null) {
+				$('a[href="#' + $.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') + '"]').click();
+			 }
+    });
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_LeaveProfileIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_LeaveProfileIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_LeaveProfileIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_LeaveProfileIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_LeaveProfileIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_LeaveProfileIsSetValueUIRule);
+    }
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-hand-down text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span>View</span>
+        </h1>
+        <h2 class="text-primary"><span id="HostingEntityDisplayValue">@Html.DisplayFor(model => model.DisplayValue)</span>
+			<div class="btn-group pull-right fixactionbut">
+            <button data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-default pull-right">
+                Action
+                <span class="caret">    </span>
+            </button>
+			<ul class="dropdown-menu pull-left">               
+				<li>
+                    @if ( User.CanEdit("T_LeaveProfile"))
+                    {
+                        <a href="@Url.Action("Edit","T_LeaveProfile", new { id = Model.Id,  UrlReferrer = Request.Url, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    }
+                </li>             
+				<li>
+                    @if ( User.CanEdit("T_LeaveProfile"))
+                    {
+                        <a href="@Url.Action("EditWizard","T_LeaveProfile", new { id = Model.Id,  UrlReferrer = Request.Url, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-share"></i>  Wizard</a>
+                    }
+                </li>
+				<li>
+                    @if ( User.CanDelete("T_LeaveProfile"))
+                    {
+                        <a href="@Url.Action("Delete", "T_LeaveProfile", new { id = Model.Id, UrlReferrer = Request.Url, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Delete</a>
+                    }
+                </li>
+	<li class="divider" style="clear:both"></li>
+	<li class="dropdown-submenu pull-left">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu pull-left">
+				@if ( User.CanAdd("T_Comment"))
+				{
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Comment", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_LeaveComments", 
+							HostingEntityName = "T_LeaveProfile",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Comment
+						</a>
+					</li>
+				}
+			</ul>
+</li>
+ <li class="divider" style="clear:both"></li>
+ <li class="dropdown-submenu pull-left">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;">Find Matching</a>
+    <ul class="dropdown-menu pull-left">
+<li>
+		<a href="@Url.Action("FindFSearch", "FileDocument", new {sourceEntity="T_LeaveProfile",id=Model.Id}, null)">Document</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Licenses", new {sourceEntity="T_LeaveProfile",id=Model.Id}, null)">Licenses</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_ServiceRecord", new {sourceEntity="T_LeaveProfile",id=Model.Id}, null)">Service Record</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Comment", new {sourceEntity="T_LeaveProfile",id=Model.Id}, null)">Comment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_DrugAlcoholTest", new {sourceEntity="T_LeaveProfile",id=Model.Id}, null)">Drug & Alcohol Test</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_UnitX", new {sourceEntity="T_LeaveProfile",id=Model.Id}, null)">UnitX</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_JobAssignment", new {sourceEntity="T_LeaveProfile",id=Model.Id}, null)">Job Assignment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_EmployeeInjury", new {sourceEntity="T_LeaveProfile",id=Model.Id}, null)">Employee Injury</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_BackgroundCheck", new {sourceEntity="T_LeaveProfile",id=Model.Id}, null)">Background Check</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Education", new {sourceEntity="T_LeaveProfile",id=Model.Id}, null)">Education</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Accommodation", new {sourceEntity="T_LeaveProfile",id=Model.Id}, null)">Accommodation</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_PayDetails", new {sourceEntity="T_LeaveProfile",id=Model.Id}, null)">Pay Details </a>
+</li>
+</ul>
+</li>
+			</ul>
+</div>
+		
+		<a href="#" class="btn btn-default btn-xs closeall pull-right"><i class="glyphicon glyphicon-chevron-up"></i> Collapse All</a> <a href="#" class="btn btn-default btn-xs openall pull-right" style="margin-right:5px;"><i class="glyphicon glyphicon-chevron-down"></i> Expand All</a>
+		</h2>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+	 <li class="active"><a href="#Details" onclick="ClearTabCookie('@User.JavaScriptEncodedName@Model.Id');" data-toggle="tab">Details</a></li>
+		 <li @(!User.CanView("T_Comment")?"style=display:none;":"")><a onclick="LoadTab('T_LeaveComments','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_Comment", new {RenderPartial=true, HostingEntity ="T_LeaveProfile", HostingEntityID = @Model.Id, AssociatedType = "T_LeaveComments",TabToken = DateTime.Now.Ticks,}))')" href="#T_LeaveComments" data-toggle="tab">
+		 Comment
+		 <span class="badge bg-blue"><div id="dvcnt_T_LeaveComments">@ViewBag.T_LeaveCommentsCount</div></span>
+		 		 </a></li>
+		 <li @(!User.CanView("JournalEntry")?"style=display:none;":"")><a onclick="LoadTab('JournalEntryToT_LeaveProfileRelation','@User.JavaScriptEncodedName@Model.Id','@Url.Action("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_LeaveProfile", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry", TabToken = DateTime.Now.Ticks })')" href="#JournalEntryToT_LeaveProfileRelation" data-toggle="tab">Leave Journal</a></li>
+    </ul>
+	    <div class="tab-content">
+		   <div class="tab-pane fade in active" id="Details">
+				 <div class="panel panel-default AppForm">
+					<div class="panel-body">
+                                  
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-xs-12">
+			<div class="panel panel-default" id="dvGroup48916">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+											
+									<h3 class="panel-title">Employee Information</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_LeaveProfile","T_EmployeeLeaveProfileID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeLeaveProfile">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EmployeeLeaveProfileID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_employeeleaveprofile!=null && !string.IsNullOrEmpty(Model.t_employeeleaveprofile.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_employeeleaveprofile.DisplayValue).ToString(), "Details", "T_Employee", new { Id = Html.DisplayFor(model => model.t_employeeleaveprofile.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+			<div class="panel panel-default" id="dvGroup48914">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#basic info about leavebody"><span class="glyphicon glyphicon-chevron-down"></span> Basic Info About Leave</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="basic info about leavebody">					
+@if(User.CanView("T_LeaveProfile","T_From"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_From">
+	<div class='form-group' title="From Date">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_From) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_From)</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_LeaveProfile","T_To"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_To">
+	<div class='form-group' title="To Date">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_To) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:MM/dd/yyyy}", Model.T_To)</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_LeaveProfile","T_DaysOff"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DaysOff">
+	<div class='form-group' title="Days Off">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_DaysOff) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				
+				<p class="viewlabel">@String.Format("{0:0.00}", Model.T_DaysOff)</p>
+					
+					</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_LeaveProfile","T_Intermittent"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Intermittent">
+	<div class='form-group' title="Intermittent">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Intermittent) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				@Html.DisplayFor(model => model.T_Intermittent)
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_LeaveProfile","T_FullDays"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FullDays">
+	<div class='form-group' title="Full Days">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_FullDays) </label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		
+				@Html.DisplayFor(model => model.T_FullDays)
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+			<div class="panel panel-default" id="dvGroup48915">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#related injury informationbody"><span class="glyphicon glyphicon-chevron-down"></span> Related Injury Information</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="related injury informationbody">					
+@if(User.CanView("T_LeaveProfile","T_InjuryRelatedLeaveID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_InjuryRelatedLeave">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_InjuryRelatedLeaveID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_injuryrelatedleave!=null && !string.IsNullOrEmpty(Model.t_injuryrelatedleave.DisplayValue))
+        {
+		 <p class="viewlabel">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_injuryrelatedleave.DisplayValue).ToString(), "Details", "T_EmployeeInjury", new { Id = Html.DisplayFor(model => model.t_injuryrelatedleave.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+			<div class="panel panel-default" id="dvGroup48917">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+											
+									<h3 class="panel-title">Notes</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_LeaveProfile","T_Notes"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Notes">
+	<div class='form-group' title="Notes">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Notes)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		<p class="viewlabel">@Model.T_Notes</p>
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+		<div class="row">
+                        <div class="col-sm-12 col-md-12 col-sx-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading clearfix" style="margin:0px; padding:8px;">
+                                    Leave Reason
+                                </div>
+                                <div class="panel-body" style="margin:0px; padding:8px;">
+                                    @foreach (var chkitem in Model.T_LeaveReason_T_LeaveProfileReason)
+                                    {
+										if ((Model.SelectedT_LeaveReason_T_LeaveProfileReason.Contains(chkitem.Id)))
+										{
+											<input type="checkbox" disabled name="SelectedT_LeaveReason_T_LeaveProfileReason" value="@chkitem.Id" checked /> @chkitem.DisplayValue
+										}
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					@Html.ActionLink("Back", "Cancel", new { UrlReferrer = Request.UrlReferrer }, new { @class = "btn btn-default btn-sm pull-left formbuttonfix" })
+					 @if ( User.CanEdit("T_LeaveProfile"))
+                     {
+                          @Html.ActionLink("Edit", "Edit", new { id = Model.Id, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, new { @class = "btn btn-primary btn-sm pull-left formbuttonfix" })
+                     }
+				</div>
+			</div>    
+
+<div class="dropdown pull-left formbuttonfix" style="margin-top:-30px; margin-left:102px;">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
+           
+			@if ( User.CanAdd("T_Comment"))
+            {
+				 <li>
+				 <a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Comment",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_LeaveComments", 
+						HostingEntityName = "T_LeaveProfile",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');") style="margin-top:5px;">
+                   Add  Comment</a>
+			</li>
+            }
+			
+
+        </ul>
+
+			</div>
+	</div>    
+<div class="tab-pane fade in" id="T_LeaveComments">
+     @if ( User.CanView("T_Comment"))
+	{
+	  // Html.RenderAction("Index", "T_Comment", new {RenderPartial=true, HostingEntity = "T_LeaveProfile", HostingEntityID = @Model.Id, AssociatedType = "T_LeaveComments" }); 
+	}
+  </div>
+<div class="tab-pane fade in" id="JournalEntryToT_LeaveProfileRelation">
+            @if ( User.CanView("JournalEntry"))
+		   {
+			//	Html.RenderAction("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_LeaveProfile", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry" });
+		   }
+  </div>
+<div class="tab-pane fade in" id="T_LeaveProfileReason_T_LeaveProfile">
+   </div>
+	</div> <!-- /tab-content --><br />
+
+<br/>
+</div>
+ 

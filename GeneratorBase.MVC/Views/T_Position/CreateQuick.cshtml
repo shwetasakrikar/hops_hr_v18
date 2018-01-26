@@ -1,0 +1,520 @@
+﻿@model GeneratorBase.MVC.Models.T_Position
+@{
+    ViewBag.Title = "Create Position";
+    Layout = null;
+}
+<script>
+    $(document).ready(function () {
+        try {
+            var hostingEntityName = "";
+            if ('@Convert.ToString(ViewData["AssociatedType"])' != null) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+                 $('#' + hostingEntityName + 'ID').attr("lock","true");
+				  $('#' + hostingEntityName + 'ID').trigger("change");
+            }
+			
+        }
+        catch (ex) { }
+		
+		 
+    });
+</script>
+<script type="text/javascript">
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': { allow_single_deselect: true },
+        '.chosen-select-no-single': { disable_search_threshold: 10 },
+        '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+        '.chosen-select-width': { width: "95%" }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_PositionIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_PositionIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_PositionIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_PositionIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_PositionIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_PositionIsSetValueUIRule);
+    }
+}
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<link href="@Url.Content("~/Content/chosen.css")" rel="stylesheet" type="text/css" />
+@using (Html.BeginForm("CreateQuick", "T_Position",FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+	<input type="hidden" id="ErrMsgQuickAdd" />
+	@*<label id="ErrMsgQuickAdd" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+    <div id="errorContainerQuickAdd" style="display: none">
+        <div id="errorsMsgQuickAdd"></div>
+        <div id="errorsQuickAdd"></div>
+    </div>
+	<div id="divDisplayThresholdLimit" style="display:none;">
+	</div>
+	 <div id="divDisplayBRmsgMandatory" style="display:none;">
+	</div>
+	<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+	</div>
+			if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+    {
+        <div class="alert alert-danger" role="alert">
+            <a class="close" data-dismiss="alert">&times;</a>
+            @foreach (var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+            {
+                <p>@modelError.ErrorMessage</p>
+            }
+        </div>
+    }
+	    <div class="row">
+	@Html.Hidden("AssociatedEntity", Convert.ToString(ViewData["AssociatedType"]))
+	@Html.Hidden("HostingEntityName", Convert.ToString(ViewData["HostingEntityName"]))
+    @Html.Hidden("HostingEntityID", Convert.ToString(ViewData["HostingEntityID"]))
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="panel panel-default AppForm">
+                <div class="panel-body">
+               					<div class="row">
+				        
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48888">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+                                            <h3 class="panel-title" alt="Basic Details" title="Basic Details">Basic Details</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                    
+
+			@if(User.CanView("T_Position","T_FacilityAssignedToID"))
+				{
+					
+							<div class='col-sm-6'  id="dvT_FacilityAssignedToID">
+                        <div class='form-group'>
+                            <label>@Html.LabelFor(model => model.T_FacilityAssignedToID) <span class="text-danger-reg">*</span></label>
+                            <div class="input-group" style="width: 100%;">
+									@Html.DropDownList("T_FacilityAssignedToID", null, "-- Select --", new {   @required ="required",      @class = "chosen-select form-control", @HostingName = "T_Facility", @dataurl = Url.Action("GetAllValue", "T_Facility",new { caller = "T_FacilityAssignedToID" }) })
+ @*<script>
+    $(function () {
+        LoadUserDropdown('ID');
+    });
+</script>*@
+                                @Html.ValidationMessageFor(model => model.T_FacilityAssignedToID)
+                            </div>
+                        </div>
+                    </div>
+     
+		}
+								@if(User.CanView("T_Position","T_PositionNumber"))
+						{
+				<div class='col-sm-6' id="dvT_PositionNumber">
+                                <div class='form-group' title="Position  Number">
+                                    <label>@Html.LabelFor(model => model.T_PositionNumber) <span class="text-danger-reg">*</span></label>
+									 
+                                    @Html.TextBoxFor(model => model.T_PositionNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_PositionNumber)
+									
+                                </div>
+					</div>
+						}
+     
+				
+                                    
+
+			@if(User.CanView("T_Position","T_TypeOfPositionID"))
+				{
+					
+							<div class='col-sm-6'  id="dvT_TypeOfPositionID">
+                        <div class='form-group'>
+                            <label>@Html.LabelFor(model => model.T_TypeOfPositionID) <span class="text-danger-reg">*</span></label>
+                            <div class="input-group" style="width: 100%;">
+									@Html.DropDownList("T_TypeOfPositionID", null, "-- Select --", new {   @required ="required",      @class = "chosen-select form-control", @HostingName = "T_PositionType", @dataurl = Url.Action("GetAllValue", "T_PositionType",new { caller = "T_TypeOfPositionID" }) })
+ @*<script>
+    $(function () {
+        LoadUserDropdown('ID');
+    });
+</script>*@
+                                @Html.ValidationMessageFor(model => model.T_TypeOfPositionID)
+                            </div>
+                        </div>
+                    </div>
+     
+		}
+                                    
+
+			@if(User.CanView("T_Position","T_AssociatedPositionStatusID"))
+				{
+					
+							<div class='col-sm-6'  id="dvT_AssociatedPositionStatusID">
+                        <div class='form-group'>
+                            <label>@Html.LabelFor(model => model.T_AssociatedPositionStatusID) <span class="text-danger-reg">*</span></label>
+                            <div class="input-group" style="width: 100%;">
+									@Html.DropDownList("T_AssociatedPositionStatusID", null, "-- Select --", new {   @required ="required",      @class = "chosen-select form-control", @HostingName = "T_Positionstatus", @dataurl = Url.Action("GetAllValue", "T_Positionstatus",new { caller = "T_AssociatedPositionStatusID" }) })
+ @*<script>
+    $(function () {
+        LoadUserDropdown('ID');
+    });
+</script>*@
+                                @Html.ValidationMessageFor(model => model.T_AssociatedPositionStatusID)
+                            </div>
+                        </div>
+                    </div>
+     
+		}
+								@if(User.CanView("T_Position","T_PositionFill"))
+						{
+				<div class='col-sm-6' id="dvT_PositionFill">
+                                <div class='form-group' title="Position Fill %">
+                                    <label>@Html.LabelFor(model => model.T_PositionFill) </label>
+									 
+                                    @Html.TextBoxFor(model => model.T_PositionFill, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_PositionFill)
+									
+									<div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" onclick="GetCalculationValue(event,'@Url.Action("GetCalculationValues")');">
+											<span class="fam-arrow-refresh"></span>
+                                        </a>
+                                    </div>
+									
+                                </div>
+					</div>
+						}
+     
+				
+                                    
+
+			@if(User.CanView("T_Position","T_PositionWorkingTitleAssociationID"))
+				{
+					
+							<div class='col-sm-6'  id="dvT_PositionWorkingTitleAssociationID">
+                        <div class='form-group'>
+                            <label>@Html.LabelFor(model => model.T_PositionWorkingTitleAssociationID) <span class="text-danger-reg">*</span></label>
+                            <div class="input-group" style="width: 100%;">
+									@Html.DropDownList("T_PositionWorkingTitleAssociationID", null, "-- Select --", new {   @required ="required",      @class = "chosen-select form-control", @HostingName = "T_WorkingTitle", @dataurl = Url.Action("GetAllValue", "T_WorkingTitle",new { caller = "T_PositionWorkingTitleAssociationID" }) })
+ @*<script>
+    $(function () {
+        LoadUserDropdown('ID');
+    });
+</script>*@
+                                @Html.ValidationMessageFor(model => model.T_PositionWorkingTitleAssociationID)
+                            </div>
+                        </div>
+                    </div>
+     
+		}
+							</div>
+                         </div>
+                      </div>
+					@Html.HiddenFor(model => model.T_PositionIdentifierID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionSOCCodeID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_WorkersCompCodePositionID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionCostCenterAssociationID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionShiftMealTimeID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionShiftDurationID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionOvertimeEligibilityID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionStatusforPostingID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+       </div>
+               					<div class="row">
+				        
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48890">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+                                            <h3 class="panel-title" alt="Position Codes" title="Position Codes">Position Codes</h3>
+                                        </div>
+                                        <div class="panel-body">
+
+@if(User.CanView("T_Position","T_EffectiveDate"))
+{
+     
+                            <div class='col-sm-6' id="dvT_EffectiveDate">
+                                <label >@Html.LabelFor(model => model.T_EffectiveDate)</label>
+                                <div class="form-group" title="Role change effective date">
+                                    <div class="input-group date" id="datetimepickerT_EffectiveDate">
+							@Html.TextBoxFor(model => model.T_EffectiveDate, new {@id = "T_EffectiveDate" ,@class = "form-control" })
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_EffectiveDate)
+                                </div>
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_EffectiveDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_EffectiveDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+		}
+
+
+                                    
+
+			@if(User.CanView("T_Position","T_PositionRoleCodeID"))
+				{
+					
+							<div class='col-sm-6'  id="dvT_PositionRoleCodeID">
+                        <div class='form-group'>
+                            <label>@Html.LabelFor(model => model.T_PositionRoleCodeID) </label>
+                            <div class="input-group" style="width: 100%;">
+									@Html.DropDownList("T_PositionRoleCodeID", null, "-- Select --", new {     @onchange = Html.Raw("FillDerivedDetails(this,event);") ,  @derivedurl = Url.Action("GetDerivedDetails", "T_Position"), @class = "chosen-select form-control", @HostingName = "T_RoleCode", @dataurl = Url.Action("GetAllValue", "T_RoleCode",new { caller = "T_PositionRoleCodeID" }) })
+ @*<script>
+    $(function () {
+        LoadUserDropdown('ID');
+    });
+</script>*@
+                                @Html.ValidationMessageFor(model => model.T_PositionRoleCodeID)
+                            </div>
+                        </div>
+                    </div>
+     
+		}
+								@if(User.CanView("T_Position","T_SalaryBand"))
+						{
+				<div class='col-sm-6' id="dvT_SalaryBand">
+                                <div class='form-group' title="Salary Band">
+                                    <label>@Html.LabelFor(model => model.T_SalaryBand) </label>
+									 
+                                    @Html.TextBoxFor(model => model.T_SalaryBand, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_SalaryBand)
+									
+                                </div>
+					</div>
+						}
+     
+				
+                                    
+
+			@if(User.CanView("T_Position","T_PositionClassCodeID"))
+				{
+					
+							<div class='col-sm-6'  id="dvT_PositionClassCodeID">
+                        <div class='form-group'>
+                            <label>@Html.LabelFor(model => model.T_PositionClassCodeID) </label>
+                            <div class="input-group" style="width: 100%;">
+									@Html.DropDownList("T_PositionClassCodeID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_ClassCode", @dataurl = Url.Action("GetAllValue", "T_ClassCode",new { caller = "T_PositionClassCodeID" }) })
+ @*<script>
+    $(function () {
+        LoadUserDropdown('ID');
+    });
+</script>*@
+                                @Html.ValidationMessageFor(model => model.T_PositionClassCodeID)
+                            </div>
+                        </div>
+                    </div>
+     
+		}
+							</div>
+                         </div>
+                      </div>
+					@Html.HiddenFor(model => model.T_PositionIdentifierID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionSOCCodeID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_WorkersCompCodePositionID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionCostCenterAssociationID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionShiftMealTimeID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionShiftDurationID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionOvertimeEligibilityID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionStatusforPostingID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+       </div>
+               					<div class="row">
+				        
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48889">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+                                            <h3 class="panel-title" alt="Time and Other Details" title="Time and Other Details">Time and Other Details</h3>
+                                        </div>
+                                        <div class="panel-body">
+
+@if(User.CanView("T_Position","T_ShiftStart"))
+{
+     
+                            <div class='col-sm-6' id="dvT_ShiftStart">
+                                <label >@Html.LabelFor(model => model.T_ShiftStart)</label>
+                                <div class="form-group" title="Shift Start">
+                                    <div class="input-group date" id="datetimepickerT_ShiftStart">
+							@Html.TextBoxFor(model => model.T_ShiftStart, new {@id = "T_ShiftStart" ,@class = "form-control" ,@format = "hh:mm"})
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_ShiftStart)
+                                </div>
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_ShiftStart').datetimepicker({ pickDate:false, minuteStepping: 15 });
+                                        $('#datetimepickerT_ShiftStart').datetimepicker({ pickDate:false, minuteStepping: 15 });
+                                    });
+                                </script>
+                            </div>
+		}
+
+
+
+@if(User.CanView("T_Position","T_ShiftEnd"))
+{
+     
+                            <div class='col-sm-6' id="dvT_ShiftEnd">
+                                <label >@Html.LabelFor(model => model.T_ShiftEnd)</label>
+                                <div class="form-group" title="Shift End">
+                                    <div class="input-group date" id="datetimepickerT_ShiftEnd">
+							@Html.TextBoxFor(model => model.T_ShiftEnd, new {@id = "T_ShiftEnd" ,@class = "form-control" ,@format = "hh:mm"})
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_ShiftEnd)
+                                </div>
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_ShiftEnd').datetimepicker({ pickDate:false, minuteStepping: 15 });
+                                        $('#datetimepickerT_ShiftEnd').datetimepicker({ pickDate:false, minuteStepping: 15 });
+                                    });
+                                </script>
+                            </div>
+		}
+
+
+                                    
+
+			@if(User.CanView("T_Position","T_PositionShiftTimeID"))
+				{
+					
+							<div class='col-sm-6'  id="dvT_PositionShiftTimeID">
+                        <div class='form-group'>
+                            <label>@Html.LabelFor(model => model.T_PositionShiftTimeID) </label>
+                            <div class="input-group" style="width: 100%;">
+									@Html.DropDownList("T_PositionShiftTimeID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_ShiftTime", @dataurl = Url.Action("GetAllValue", "T_ShiftTime",new { caller = "T_PositionShiftTimeID" }) })
+ @*<script>
+    $(function () {
+        LoadUserDropdown('ID');
+    });
+</script>*@
+                                @Html.ValidationMessageFor(model => model.T_PositionShiftTimeID)
+                            </div>
+                        </div>
+                    </div>
+     
+		}
+							</div>
+                         </div>
+                      </div>
+					@Html.HiddenFor(model => model.T_PositionIdentifierID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionSOCCodeID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_WorkersCompCodePositionID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionCostCenterAssociationID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionShiftMealTimeID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionShiftDurationID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionOvertimeEligibilityID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionStatusforPostingID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+       </div>
+               					<div class="row">
+				        
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48887">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+                                            <h3 class="panel-title" alt="Position Status" title="Position Status">Position Status</h3>
+                                        </div>
+                                        <div class="panel-body">
+
+@if(User.CanView("T_Position","T_EstablishedDate"))
+{
+     
+                            <div class='col-sm-6' id="dvT_EstablishedDate">
+                                <label >@Html.LabelFor(model => model.T_EstablishedDate)<span class="text-danger-reg">*</span></label>
+                                <div class="form-group" title="Established  Date">
+                                    <div class="input-group date" id="datetimepickerT_EstablishedDate">
+							@Html.TextBoxFor(model => model.T_EstablishedDate, new {@id = "T_EstablishedDate" ,@class = "form-control",@Value = DateTime.Now.ToString("MM/dd/yyyy") })
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_EstablishedDate)
+                                </div>
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_EstablishedDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_EstablishedDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+		}
+
+
+							</div>
+                         </div>
+                      </div>
+					@Html.HiddenFor(model => model.T_PositionIdentifierID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionSOCCodeID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_WorkersCompCodePositionID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionCostCenterAssociationID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionShiftMealTimeID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionShiftDurationID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionOvertimeEligibilityID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+					@Html.HiddenFor(model => model.T_PositionStatusforPostingID, new {@class = "form-control", Value = @ViewData["HostingEntityID"] })
+       </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+		<button id="CancelQuickAdd" type="button" class="btn btn-default btn-sm" data-dismiss="modal" aria-hidden="true">Cancel</button>
+
+		var busineesrule = User.businessrules.Where(p => p.EntityName == "T_Position").ToList();
+		 var lstinlineentityname = "";
+		 var lstinlineassocdispname ="";
+		 var lstinlineassocname = "";
+        if (ViewBag.IsAddPop != null)
+		{
+			<input type="submit" value="Create" class="btn btn-primary btn-sm" onclick="GetCalculationValue(event,'@Url.Action("GetCalculationValues")');QuickAdd(event,'T_Position','@busineesrule',@busineesrule.Count,'OnCreate','ErrMsgQuickAdd',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname');" />
+ <input type="submit"  value="Create & Continue" btnval="createcontinue" class="btn btn-primary btn-sm" onclick="GetCalculationValue(event,'@Url.Action("GetCalculationValues")');QuickAdd(event,'T_Position','@busineesrule',@busineesrule.Count,'OnCreate','ErrMsgQuickAdd',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname');" />
+		}
+		else
+		{
+			<input type="submit" value="Create" class="btn btn-primary btn-sm" onclick="GetCalculationValue(event,'@Url.Action("GetCalculationValues")');QuickAddFromIndex(event,true,'T_Position','@ViewData["AssociatedType"]','@busineesrule',@busineesrule.Count,'OnCreate','ErrMsgQuickAdd',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname');" />
+ <input type="submit" value="Create & Continue" btnval="createcontinue" class="btn btn-primary btn-sm" onclick="GetCalculationValue(event,'@Url.Action("GetCalculationValues")');QuickAddFromIndex(event,true,'T_Position','@ViewData["AssociatedType"]','@busineesrule',@busineesrule.Count,'OnCreate','ErrMsgQuickAdd',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname');" />
+		}
+}
+<script src="@Url.Content("~/bundles/jqueryval")" type="text/javascript"></script>
+<script src="@Url.Content("~/bundles/common3")" type="text/javascript"></script>
+
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+            document.getElementsByTagName("body")[0].focus();
+            $("#addPopup").removeAttr("tabindex");
+            var cltcoll = $("#dvPopup").find('input[type=text]:not([class=hidden]):not([readonly]),textarea:not([readonly])');
+            var cltid = "";
+            $(cltcoll).each(function () {
+			  if ($(this).attr("id") == undefined)
+                    return
+                var dvhidden = $("#dv" + $(this).attr("id"));
+				var dvDate = $("#datetimepicker" + $(this).attr("id")).attr("id");
+
+                if (!(dvhidden.css('display') == 'none') && dvDate == undefined) {
+                    cltid = $(this);
+                    return false;
+                }
+            });
+            if (cltid != "" && cltid != undefined)
+                setTimeout(function () { $(cltid).focus(); }, 500);
+			var ctrlReadonly = $("#dvPopup").find('input[type=text][readonly],textarea[readonly]');
+            $(ctrlReadonly).each(function () {
+                $(ctrlReadonly).attr("tabindex", "-1");
+            });
+        }
+        catch (ex) { }
+    });
+</script>
+

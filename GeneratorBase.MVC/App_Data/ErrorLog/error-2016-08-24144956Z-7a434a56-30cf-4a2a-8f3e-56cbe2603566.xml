@@ -1,0 +1,197 @@
+﻿<error errorId="7a434a56-30cf-4a2a-8f3e-56cbe2603566" application="/LM/W3SVC/1/ROOT/wsh_hr_v33" host="TURANTOMVC" type="System.NotSupportedException" message="The specified type member 'T_PID' is not supported in LINQ to Entities. Only initializers, entity members, and entity navigation properties are supported." source="EntityFramework" detail="System.NotSupportedException: The specified type member 'T_PID' is not supported in LINQ to Entities. Only initializers, entity members, and entity navigation properties are supported.&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MemberAccessTranslator.TypedTranslate(ExpressionConverter parent, MemberExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.ThenByTranslatorBase.Translate(ExpressionConverter parent, MethodCallExpression call)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.AggregateTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.Convert()&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.&lt;&gt;c__DisplayClass7.&lt;GetResults&gt;b__6()&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.&lt;&gt;c__DisplayClass7.&lt;GetResults&gt;b__5()&#xD;&#xA;   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.&lt;System.Collections.Generic.IEnumerable&lt;T&gt;.GetEnumerator&gt;b__0()&#xD;&#xA;   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()&#xD;&#xA;   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.&lt;GetElementFunction&gt;b__3[TResult](IEnumerable`1 sequence)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)&#xD;&#xA;   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)&#xD;&#xA;   at System.Linq.Queryable.Count[TSource](IQueryable`1 source)&#xD;&#xA;   at PagedList.PagedList`1..ctor(IQueryable`1 superset, Int32 pageNumber, Int32 pageSize)&#xD;&#xA;   at PagedList.PagedListExtensions.ToPagedList[T](IQueryable`1 superset, Int32 pageNumber, Int32 pageSize)&#xD;&#xA;   at GeneratorBase.MVC.Controllers.T_PreEmploymentChecksController.FSearch(String currentFilter, String searchString, String FSFilter, String sortBy, String isAsc, Nullable`1 page, Nullable`1 itemsPerPage, String search, Nullable`1 IsExport, String t_employeecriminalbackgroundcheck, String t_retaintablepreemploymentcheck, String t_preemploymentcheckresultsvastate, String t_reviewer, String t_cpsresult, String t_preemploymentdrugtest, String T_DateFingerPrintTakenFrom, String T_DateFingerPrintTakenTo, String T_DateInformationReceivedFromCBCFrom, String T_DateInformationReceivedFromCBCTo, String T_BackgroundDispositionDateFrom, String T_BackgroundDispositionDateTo, String T_ReviewDateFrom, String T_ReviewDateTo, String T_DateCheckInitiatedFrom, String T_DateCheckInitiatedTo, String T_DateCPSResultReceivedFrom, String T_DateCPSResultReceivedTo, String T_CPSReviewDateFrom, String T_CPSReviewDateTo, String HostingEntity, String AssociatedType, String HostingEntityID, String viewtype, String SortOrder, String HideColumns, String GroupByColumn) in d:\GenApps\wsh_hr_v33\GeneratorBase.MVC\Controllers\T_PreEmploymentChecks\T_PreEmploymentChecksController.cs:line 1096&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)" user="shweta.sakrikar@etelic.com" time="2016-08-24T14:49:56.3737104Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_VIA:SWG&#xD;&#xA;HTTP_ACCEPT:text/html, application/xhtml+xml, */*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken_L3dzaF9ocl92MzE1=R0TAhxQuYifwZdf4XhmzRY837X1aNGFMRk6-C4JJ9qP0rcbF5haCE_8A8yf1fKdTY_vX6JMGmkkDeN2CTBRcIRrXKXdmekJQQwSyTczvelc1; wsh_hr_v31=irhG-QEtke4Lhtpw7ZB8aapOJYMi9w0YNDIR2813QzPfv5RHseDfFgwmWhOM8WQh01zNyCskiCSgKYV476h8x6dvL93LH0QRUvuFeMwZDC1LpL4nvDZibeGrF85H3RpTy4KtgYgAiWUJT6BYrfFhCyNNAor0PNDHX3MhJqLlF68DnswtaYdg-SrLsV1RNIC_7rth405EH9WIaUve36kjWwgTbe5D3HTL3qA1dIV-WEOSThsVezZFueUqvNu_KdhEP9HdX_yfe_onjasKikLOMpkG75bb4hHrD-nF7t9aby-mmf8wfp378MuUFymI0dBI_sWnAfFo6uu_yaKIJMicUIoB5FwlZf-PI9dao8yAZeT-yGlNmuE2eRXGQHe3mZ2nul6gmu9vGb3xOEl66jeqZsS2Tl-U9c3qRvz6le3XgROGLjZlwMACHwFwFSoRH4vOPCjbF5noIAoP8s12Rc5wVhOJ5LtQwqFKLUmJvql510wpjssKjUkJFssENTTWvefsPD9p8mt7qVicKGDLZCovS8Ol7-PLdtjI3QF37wR6GN-Zxzyra9tHb1KR9mkvF7qrQiZyz2jz9YNyXvMtS3cuDA; CurrentRole=Admin,; __RequestVerificationToken_L3dzaF9ocl92MzM1=id71PGbl0iBlRz-szSDrclxKE0bezvE9J544khMdr7NDxSp9xYZ4FM5K65Hg1Ad7l94R-tWc-2ZrLTBTF_mn8T1eHNk92e6j2HkphCxhz3g1; wsh_hr_v32=7T71nLZXO7n0oDfeLTUWbGO8C73uq3QVIyNVTqVTfDhnkcYUuqdziLNS3I6seOz5XAGWPgmham9IGUGMUy_-HFlaOOPdTXcHCkXqn5w3Pz4pphVlionFhB3yMQH7rW99B9MSTrqOmEGOlMoinxqXpHu6NP1UHMCgEwIrf48dyMmY107Hvf15ndohth6ImgCNwS2Vak4FRbGKcZwS9mrm2lpkS5Lj94cNMjaD7KKleErJyiAVqwcT3wqpRgCoQB3FGGStmPrX_eDKUHC7_Djn8bz5rUde3BawNHZ75HoCV6duYrKH5QdkjGrT1nbQ7CIWzmwIdIilcNj3Q8OVpbcZ5G5YicWt2_Fhp95cq3VTymmOGrEpPJFzP1uo3MYN9tX5RCK1kgW-IXl61KNxEVn4TxdM8v_3atu1q_OLlmQ8Ep0o7UZVviuvT4uCncHrf-SxYO4Rga-IIqmFKu3Et8k14-G1AqQaRbtNMq3kBrvaTUTn65wJWZgaKMKOjUbNzXW7adAj3YI50V-je-XDRniHbA&#xD;&#xA;HTTP_HOST:mvc.turanto.com&#xD;&#xA;HTTP_REFERER:https://mvc.turanto.com/wsh_hr_v33/T_PreEmploymentChecks/FSearch?search=&amp;SortOrder=T_LastName%2CT_FirstName%2CT_PID%2C&amp;GroupByColumn=&amp;HideColumns=2%2C12%2C13&amp;viewtype=IndexPartial&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: Keep-Alive&#xD;&#xA;Via: SWG&#xD;&#xA;Accept: text/html, application/xhtml+xml, */*&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US&#xD;&#xA;Cookie: __RequestVerificationToken_L3dzaF9ocl92MzE1=R0TAhxQuYifwZdf4XhmzRY837X1aNGFMRk6-C4JJ9qP0rcbF5haCE_8A8yf1fKdTY_vX6JMGmkkDeN2CTBRcIRrXKXdmekJQQwSyTczvelc1; wsh_hr_v31=irhG-QEtke4Lhtpw7ZB8aapOJYMi9w0YNDIR2813QzPfv5RHseDfFgwmWhOM8WQh01zNyCskiCSgKYV476h8x6dvL93LH0QRUvuFeMwZDC1LpL4nvDZibeGrF85H3RpTy4KtgYgAiWUJT6BYrfFhCyNNAor0PNDHX3MhJqLlF68DnswtaYdg-SrLsV1RNIC_7rth405EH9WIaUve36kjWwgTbe5D3HTL3qA1dIV-WEOSThsVezZFueUqvNu_KdhEP9HdX_yfe_onjasKikLOMpkG75bb4hHrD-nF7t9aby-mmf8wfp378MuUFymI0dBI_sWnAfFo6uu_yaKIJMicUIoB5FwlZf-PI9dao8yAZeT-yGlNmuE2eRXGQHe3mZ2nul6gmu9vGb3xOEl66jeqZsS2Tl-U9c3qRvz6le3XgROGLjZlwMACHwFwFSoRH4vOPCjbF5noIAoP8s12Rc5wVhOJ5LtQwqFKLUmJvql510wpjssKjUkJFssENTTWvefsPD9p8mt7qVicKGDLZCovS8Ol7-PLdtjI3QF37wR6GN-Zxzyra9tHb1KR9mkvF7qrQiZyz2jz9YNyXvMtS3cuDA; CurrentRole=Admin,; __RequestVerificationToken_L3dzaF9ocl92MzM1=id71PGbl0iBlRz-szSDrclxKE0bezvE9J544khMdr7NDxSp9xYZ4FM5K65Hg1Ad7l94R-tWc-2ZrLTBTF_mn8T1eHNk92e6j2HkphCxhz3g1; wsh_hr_v32=7T71nLZXO7n0oDfeLTUWbGO8C73uq3QVIyNVTqVTfDhnkcYUuqdziLNS3I6seOz5XAGWPgmham9IGUGMUy_-HFlaOOPdTXcHCkXqn5w3Pz4pphVlionFhB3yMQH7rW99B9MSTrqOmEGOlMoinxqXpHu6NP1UHMCgEwIrf48dyMmY107Hvf15ndohth6ImgCNwS2Vak4FRbGKcZwS9mrm2lpkS5Lj94cNMjaD7KKleErJyiAVqwcT3wqpRgCoQB3FGGStmPrX_eDKUHC7_Djn8bz5rUde3BawNHZ75HoCV6duYrKH5QdkjGrT1nbQ7CIWzmwIdIilcNj3Q8OVpbcZ5G5YicWt2_Fhp95cq3VTymmOGrEpPJFzP1uo3MYN9tX5RCK1kgW-IXl61KNxEVn4TxdM8v_3atu1q_OLlmQ8Ep0o7UZVviuvT4uCncHrf-SxYO4Rga-IIqmFKu3Et8k14-G1AqQaRbtNMq3kBrvaTUTn65wJWZgaKMKOjUbNzXW7adAj3YI50V-je-XDRniHbA&#xD;&#xA;Host: mvc.turanto.com&#xD;&#xA;Referer: https://mvc.turanto.com/wsh_hr_v33/T_PreEmploymentChecks/FSearch?search=&amp;SortOrder=T_LastName%2CT_FirstName%2CT_PID%2C&amp;GroupByColumn=&amp;HideColumns=2%2C12%2C13&amp;viewtype=IndexPartial&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/wsh_hr_v33" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v33\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="shweta.sakrikar@etelic.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="shweta.sakrikar@etelic.com" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="shweta.sakrikar@etelic.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/wsh_hr_v33/T_PreEmploymentChecks/FSearch" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v33\GeneratorBase.MVC\T_PreEmploymentChecks\FSearch" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="search=&amp;SortOrder=T_LastName%2CT_FirstName%2CT_PID%2C&amp;GroupByColumn=&amp;HideColumns=2%2C12%2C13&amp;viewtype=IndexPartial" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="166.67.66.245" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="166.67.66.245" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="35026" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/wsh_hr_v33/T_PreEmploymentChecks/FSearch" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/wsh_hr_v33/T_PreEmploymentChecks/FSearch" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_VIA">
+      <value string="SWG" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html, application/xhtml+xml, */*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken_L3dzaF9ocl92MzE1=R0TAhxQuYifwZdf4XhmzRY837X1aNGFMRk6-C4JJ9qP0rcbF5haCE_8A8yf1fKdTY_vX6JMGmkkDeN2CTBRcIRrXKXdmekJQQwSyTczvelc1; wsh_hr_v31=irhG-QEtke4Lhtpw7ZB8aapOJYMi9w0YNDIR2813QzPfv5RHseDfFgwmWhOM8WQh01zNyCskiCSgKYV476h8x6dvL93LH0QRUvuFeMwZDC1LpL4nvDZibeGrF85H3RpTy4KtgYgAiWUJT6BYrfFhCyNNAor0PNDHX3MhJqLlF68DnswtaYdg-SrLsV1RNIC_7rth405EH9WIaUve36kjWwgTbe5D3HTL3qA1dIV-WEOSThsVezZFueUqvNu_KdhEP9HdX_yfe_onjasKikLOMpkG75bb4hHrD-nF7t9aby-mmf8wfp378MuUFymI0dBI_sWnAfFo6uu_yaKIJMicUIoB5FwlZf-PI9dao8yAZeT-yGlNmuE2eRXGQHe3mZ2nul6gmu9vGb3xOEl66jeqZsS2Tl-U9c3qRvz6le3XgROGLjZlwMACHwFwFSoRH4vOPCjbF5noIAoP8s12Rc5wVhOJ5LtQwqFKLUmJvql510wpjssKjUkJFssENTTWvefsPD9p8mt7qVicKGDLZCovS8Ol7-PLdtjI3QF37wR6GN-Zxzyra9tHb1KR9mkvF7qrQiZyz2jz9YNyXvMtS3cuDA; CurrentRole=Admin,; __RequestVerificationToken_L3dzaF9ocl92MzM1=id71PGbl0iBlRz-szSDrclxKE0bezvE9J544khMdr7NDxSp9xYZ4FM5K65Hg1Ad7l94R-tWc-2ZrLTBTF_mn8T1eHNk92e6j2HkphCxhz3g1; wsh_hr_v32=7T71nLZXO7n0oDfeLTUWbGO8C73uq3QVIyNVTqVTfDhnkcYUuqdziLNS3I6seOz5XAGWPgmham9IGUGMUy_-HFlaOOPdTXcHCkXqn5w3Pz4pphVlionFhB3yMQH7rW99B9MSTrqOmEGOlMoinxqXpHu6NP1UHMCgEwIrf48dyMmY107Hvf15ndohth6ImgCNwS2Vak4FRbGKcZwS9mrm2lpkS5Lj94cNMjaD7KKleErJyiAVqwcT3wqpRgCoQB3FGGStmPrX_eDKUHC7_Djn8bz5rUde3BawNHZ75HoCV6duYrKH5QdkjGrT1nbQ7CIWzmwIdIilcNj3Q8OVpbcZ5G5YicWt2_Fhp95cq3VTymmOGrEpPJFzP1uo3MYN9tX5RCK1kgW-IXl61KNxEVn4TxdM8v_3atu1q_OLlmQ8Ep0o7UZVviuvT4uCncHrf-SxYO4Rga-IIqmFKu3Et8k14-G1AqQaRbtNMq3kBrvaTUTn65wJWZgaKMKOjUbNzXW7adAj3YI50V-je-XDRniHbA" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://mvc.turanto.com/wsh_hr_v33/T_PreEmploymentChecks/FSearch?search=&amp;SortOrder=T_LastName%2CT_FirstName%2CT_PID%2C&amp;GroupByColumn=&amp;HideColumns=2%2C12%2C13&amp;viewtype=IndexPartial" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="search">
+      <value string="" />
+    </item>
+    <item name="SortOrder">
+      <value string="T_LastName,T_FirstName,T_PID," />
+    </item>
+    <item name="GroupByColumn">
+      <value string="" />
+    </item>
+    <item name="HideColumns">
+      <value string="2,12,13" />
+    </item>
+    <item name="viewtype">
+      <value string="IndexPartial" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MzE1">
+      <value string="R0TAhxQuYifwZdf4XhmzRY837X1aNGFMRk6-C4JJ9qP0rcbF5haCE_8A8yf1fKdTY_vX6JMGmkkDeN2CTBRcIRrXKXdmekJQQwSyTczvelc1" />
+    </item>
+    <item name="wsh_hr_v31">
+      <value string="irhG-QEtke4Lhtpw7ZB8aapOJYMi9w0YNDIR2813QzPfv5RHseDfFgwmWhOM8WQh01zNyCskiCSgKYV476h8x6dvL93LH0QRUvuFeMwZDC1LpL4nvDZibeGrF85H3RpTy4KtgYgAiWUJT6BYrfFhCyNNAor0PNDHX3MhJqLlF68DnswtaYdg-SrLsV1RNIC_7rth405EH9WIaUve36kjWwgTbe5D3HTL3qA1dIV-WEOSThsVezZFueUqvNu_KdhEP9HdX_yfe_onjasKikLOMpkG75bb4hHrD-nF7t9aby-mmf8wfp378MuUFymI0dBI_sWnAfFo6uu_yaKIJMicUIoB5FwlZf-PI9dao8yAZeT-yGlNmuE2eRXGQHe3mZ2nul6gmu9vGb3xOEl66jeqZsS2Tl-U9c3qRvz6le3XgROGLjZlwMACHwFwFSoRH4vOPCjbF5noIAoP8s12Rc5wVhOJ5LtQwqFKLUmJvql510wpjssKjUkJFssENTTWvefsPD9p8mt7qVicKGDLZCovS8Ol7-PLdtjI3QF37wR6GN-Zxzyra9tHb1KR9mkvF7qrQiZyz2jz9YNyXvMtS3cuDA" />
+    </item>
+    <item name="CurrentRole">
+      <value string="Admin," />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MzM1">
+      <value string="id71PGbl0iBlRz-szSDrclxKE0bezvE9J544khMdr7NDxSp9xYZ4FM5K65Hg1Ad7l94R-tWc-2ZrLTBTF_mn8T1eHNk92e6j2HkphCxhz3g1" />
+    </item>
+    <item name="wsh_hr_v32">
+      <value string="7T71nLZXO7n0oDfeLTUWbGO8C73uq3QVIyNVTqVTfDhnkcYUuqdziLNS3I6seOz5XAGWPgmham9IGUGMUy_-HFlaOOPdTXcHCkXqn5w3Pz4pphVlionFhB3yMQH7rW99B9MSTrqOmEGOlMoinxqXpHu6NP1UHMCgEwIrf48dyMmY107Hvf15ndohth6ImgCNwS2Vak4FRbGKcZwS9mrm2lpkS5Lj94cNMjaD7KKleErJyiAVqwcT3wqpRgCoQB3FGGStmPrX_eDKUHC7_Djn8bz5rUde3BawNHZ75HoCV6duYrKH5QdkjGrT1nbQ7CIWzmwIdIilcNj3Q8OVpbcZ5G5YicWt2_Fhp95cq3VTymmOGrEpPJFzP1uo3MYN9tX5RCK1kgW-IXl61KNxEVn4TxdM8v_3atu1q_OLlmQ8Ep0o7UZVviuvT4uCncHrf-SxYO4Rga-IIqmFKu3Et8k14-G1AqQaRbtNMq3kBrvaTUTn65wJWZgaKMKOjUbNzXW7adAj3YI50V-je-XDRniHbA" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="ft5cze30ykufr355vitnbwqv" />
+    </item>
+  </cookies>
+</error>

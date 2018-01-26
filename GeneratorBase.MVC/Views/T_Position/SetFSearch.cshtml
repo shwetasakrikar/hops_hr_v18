@@ -1,0 +1,1717 @@
+﻿@model GeneratorBase.MVC.Models.T_Position
+@{
+    ViewBag.Title = "Set Search Criteria";
+	var parentUrl = new System.Collections.Specialized.NameValueCollection();
+    if (Request.UrlReferrer != null && Request.QueryString["IsClear"] == null)
+    {
+        parentUrl = HttpUtility.ParseQueryString(Request.UrlReferrer.Query);
+    }
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_Position");
+	var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Position";
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-search text-primary"></i> @EntityDisplayName <i class="glyphicon glyphicon-chevron-right small"></i> <span>Faceted Search</span>
+        </h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div style="margin:-5px 5px 5px 0px;">
+                @if ( User.CanView("T_Position"))
+                { 
+
+				<button class="btn btn-default btn-sm tip-top" type="button" data-original-title="Full Add" data-placement="top" onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Index", "T_Position") + "');")>
+					<span class="glyphicon glyphicon-list"></span> List
+				</button>
+				}
+				@if ( User.CanAdd("T_Position"))
+                {
+					<button class="btn btn-default btn-sm tip-top" type="button" data-original-title="Create New" data-placement="top" onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Position", new { UrlReferrer = Request.Url, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null) + "');")>
+						<span class="fam-world-add"></span> Create New
+					</button>
+                   
+                }
+		<button class="btn btn-default btn-sm tip-top"  data-placement="top" type="button" data-original-title="Show Graph"  data-toggle="modal" data-target="#ShowGraphT_Position" onclick=@Html.Raw("OpenDashBoard('dvShowGraphT_Position');")>
+			<span class="fam-chart-bar"></span> Dashboard
+        </button>
+
+	@if (ViewBag.FavoriteItem != null)
+    {
+        <div class="btn-group">
+            <button data-toggle="dropdown"  type="button" class="btn btn-default btn-sm tip-top dropdown-toggle btn-default">
+                <span class="fa fa fa-star"></span> Favorite Items
+                <span class="caret">    </span>
+            </button>
+            <ul class="dropdown-menu pull-left">
+                @foreach (GeneratorBase.MVC.Models.FavoriteItem fItem in ViewBag.FavoriteItem)
+                {
+					var linkaddress = GeneratorBase.MVC.Models.CommonFunction.Instance.getBaseUri() + fItem.LinkAddress;
+					if(GeneratorBase.MVC.Models.CommonFunction.Instance.getBaseUri().EndsWith("/") && fItem.LinkAddress.StartsWith("/"))
+					{
+						linkaddress = GeneratorBase.MVC.Models.CommonFunction.Instance.getBaseUri() + fItem.LinkAddress.TrimStart("/".ToCharArray());
+					}
+					if (!GeneratorBase.MVC.Models.CommonFunction.Instance.getBaseUri().EndsWith("/") && !fItem.LinkAddress.StartsWith("/"))
+					{
+						linkaddress = GeneratorBase.MVC.Models.CommonFunction.Instance.getBaseUri()+"/" + fItem.LinkAddress.TrimStart("/".ToCharArray());
+					}
+                    <li>
+                        <a href='@linkaddress'>@fItem.Name</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+
+	<a href="#" class="btn btn-default closeall pull-right btn-sm"><i class="glyphicon glyphicon-chevron-up small"></i> close all</a> <a href="#" class="btn btn-default openall pull-right btn-sm" style="margin-right:5px;"><i class="glyphicon glyphicon-chevron-down small"></i> open all</a>
+
+			</div>
+			
+			 <div class="fsearch">
+			  
+			   
+					<div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading clearfix">
+                                    <i class="icon-calendar"></i>
+
+                                    <h3 class="panel-title">
+                                        All Field Search Criteria
+                                    </h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class='col-sm-12 col-md-12 col-xs-12'>
+                                       @{
+									var txtGenCriteria = String.IsNullOrEmpty(Convert.ToString(ViewBag.CurrentFilter)) ? "" : Convert.ToString(ViewBag.CurrentFilter);
+									}
+									<input type="text" id="FSearch" class="form-control" placeholder="Search Criteria" value="@txtGenCriteria" style="font-size:12px"/>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+					 <div  id="accordion"> 
+					 					 <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading clearfix">
+                                    <i class="icon-calendar"></i>
+                                    <h3 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><i class="glyphicon glyphicon-chevron-down pull-left" style="padding-top:5px; padding-right:5px;"></i> Range Property</a>
+                                    </h3>
+                                </div>
+								<div id="collapseOne" class="panel-collapse in">
+                                <div class="panel-body">
+                           
+			<div class='col-sm-4 col-md-4 col-xs-12'>
+                                        <div class='form-group'
+                                             title=" Position Fill %">
+											@Html.LabelFor(model => model.T_PositionFill, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+												<input type="text" id="T_PositionFillFrom" name="T_PositionFillFrom" class="form-control"  placeholder="From"
+												 data-val="true" data-val-number="Must be a number." />
+                                            <span class="field-validation-valid" data-valmsg-for="T_PositionFillFrom" data-valmsg-replace="true"></span>
+											<span class="input-group-addon datefiled">
+												<input type="text" id="T_PositionFillTo" name="T_PositionFillTo" class="form-control"  placeholder="To"	 data-val="true" data-val-number="Must be a number." style="border-radius:0px 4px 4px 0px; border-left:0px"/>
+													<div class="field-validation-valid" style="margin-top: 25px;font-size: 12px;" data-valmsg-for="T_PositionFillTo" data-valmsg-replace="true"></div>
+											</span>
+							</div>
+                        </div>
+                      </div>
+
+			<div class='col-sm-4 col-md-4 col-xs-12'>
+                                        <div class='form-group'
+                                             title="Effective Date">
+											@Html.LabelFor(model => model.T_EffectiveDate, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                                <input type="text" id="T_EffectiveDateFrom" name="T_EffectiveDateFrom"  class="form-control"  placeholder="From Date"
+											 data-val='true' data-val-date='Must be a date.' />
+																						<span class="field-validation-valid" data-valmsg-for="T_EffectiveDateFrom" data-valmsg-replace="true"></span>	
+												                                            
+                                    <script type="text/javascript">
+                                        $(function () {
+                                            $('#T_EffectiveDateFrom').datetimepicker({ pickTime:false });
+                                        });
+                                    </script>
+                                <span class="input-group-addon datefiled">
+									<input type="text" id="T_EffectiveDateTo" name="T_EffectiveDateTo"  class="form-control"  placeholder="To Date"
+												 data-val='true' data-val-date='Must be a date.'  style="border-radius:0px 4px 4px 0px; border-left:0px"/>
+																							<div class="field-validation-valid" style="margin-top: 25px;font-size: 12px;" data-valmsg-for="T_EffectiveDateTo" data-valmsg-replace="true"></div>
+												                                    <script type="text/javascript">
+                                        $(function () {
+                                            $('#T_EffectiveDateTo').datetimepicker({ pickTime:false });
+                                        });
+                                    </script>
+
+
+								</span>
+							</div>
+                        </div>
+                      </div>
+			<div class='col-sm-4 col-md-4 col-xs-12'>
+                                        <div class='form-group'
+                                             title="Shift Start">
+											@Html.LabelFor(model => model.T_ShiftStart, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                                <input type="text" id="T_ShiftStartFrom" name="T_ShiftStartFrom" format = "hh:mm" class="form-control"  placeholder="From Date"
+											 />
+											                                            
+                                    <script type="text/javascript">
+                                        $(function () {
+                                            $('#T_ShiftStartFrom').datetimepicker({ pickDate:false, minuteStepping: 15 });
+                                        });
+                                    </script>
+                                <span class="input-group-addon datefiled">
+									<input type="text" id="T_ShiftStartTo" name="T_ShiftStartTo" format = "hh:mm" class="form-control"  placeholder="To Date"
+												  style="border-radius:0px 4px 4px 0px; border-left:0px"/>
+												                                    <script type="text/javascript">
+                                        $(function () {
+                                            $('#T_ShiftStartTo').datetimepicker({ pickDate:false, minuteStepping: 15 });
+                                        });
+                                    </script>
+
+
+					<input type="hidden" id="T_ShiftStartFromhdn" />
+                    <input type="hidden" id="T_ShiftStartTohdn" />
+								</span>
+							</div>
+                        </div>
+                      </div>
+			<div class='col-sm-4 col-md-4 col-xs-12'>
+                                        <div class='form-group'
+                                             title="Shift End">
+											@Html.LabelFor(model => model.T_ShiftEnd, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                                <input type="text" id="T_ShiftEndFrom" name="T_ShiftEndFrom" format = "hh:mm" class="form-control"  placeholder="From Date"
+											 />
+											                                            
+                                    <script type="text/javascript">
+                                        $(function () {
+                                            $('#T_ShiftEndFrom').datetimepicker({ pickDate:false, minuteStepping: 15 });
+                                        });
+                                    </script>
+                                <span class="input-group-addon datefiled">
+									<input type="text" id="T_ShiftEndTo" name="T_ShiftEndTo" format = "hh:mm" class="form-control"  placeholder="To Date"
+												  style="border-radius:0px 4px 4px 0px; border-left:0px"/>
+												                                    <script type="text/javascript">
+                                        $(function () {
+                                            $('#T_ShiftEndTo').datetimepicker({ pickDate:false, minuteStepping: 15 });
+                                        });
+                                    </script>
+
+
+					<input type="hidden" id="T_ShiftEndFromhdn" />
+                    <input type="hidden" id="T_ShiftEndTohdn" />
+								</span>
+							</div>
+                        </div>
+                      </div>
+			<div class='col-sm-4 col-md-4 col-xs-12'>
+                                        <div class='form-group'
+                                             title="Dual Incumbent Start Date">
+											@Html.LabelFor(model => model.T_DualIncumbentStartDate, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                                <input type="text" id="T_DualIncumbentStartDateFrom" name="T_DualIncumbentStartDateFrom"  class="form-control"  placeholder="From Date"
+											 data-val='true' data-val-date='Must be a date.' />
+																						<span class="field-validation-valid" data-valmsg-for="T_DualIncumbentStartDateFrom" data-valmsg-replace="true"></span>	
+												                                            
+                                    <script type="text/javascript">
+                                        $(function () {
+                                            $('#T_DualIncumbentStartDateFrom').datetimepicker({ pickTime:false });
+                                        });
+                                    </script>
+                                <span class="input-group-addon datefiled">
+									<input type="text" id="T_DualIncumbentStartDateTo" name="T_DualIncumbentStartDateTo"  class="form-control"  placeholder="To Date"
+												 data-val='true' data-val-date='Must be a date.'  style="border-radius:0px 4px 4px 0px; border-left:0px"/>
+																							<div class="field-validation-valid" style="margin-top: 25px;font-size: 12px;" data-valmsg-for="T_DualIncumbentStartDateTo" data-valmsg-replace="true"></div>
+												                                    <script type="text/javascript">
+                                        $(function () {
+                                            $('#T_DualIncumbentStartDateTo').datetimepicker({ pickTime:false });
+                                        });
+                                    </script>
+
+
+								</span>
+							</div>
+                        </div>
+                      </div>
+			<div class='col-sm-4 col-md-4 col-xs-12'>
+                                        <div class='form-group'
+                                             title="Dual Incumbent End Date">
+											@Html.LabelFor(model => model.T_DualIncumbentEndDate, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                                <input type="text" id="T_DualIncumbentEndDateFrom" name="T_DualIncumbentEndDateFrom"  class="form-control"  placeholder="From Date"
+											 data-val='true' data-val-date='Must be a date.' />
+																						<span class="field-validation-valid" data-valmsg-for="T_DualIncumbentEndDateFrom" data-valmsg-replace="true"></span>	
+												                                            
+                                    <script type="text/javascript">
+                                        $(function () {
+                                            $('#T_DualIncumbentEndDateFrom').datetimepicker({ pickTime:false });
+                                        });
+                                    </script>
+                                <span class="input-group-addon datefiled">
+									<input type="text" id="T_DualIncumbentEndDateTo" name="T_DualIncumbentEndDateTo"  class="form-control"  placeholder="To Date"
+												 data-val='true' data-val-date='Must be a date.'  style="border-radius:0px 4px 4px 0px; border-left:0px"/>
+																							<div class="field-validation-valid" style="margin-top: 25px;font-size: 12px;" data-valmsg-for="T_DualIncumbentEndDateTo" data-valmsg-replace="true"></div>
+												                                    <script type="text/javascript">
+                                        $(function () {
+                                            $('#T_DualIncumbentEndDateTo').datetimepicker({ pickTime:false });
+                                        });
+                                    </script>
+
+
+								</span>
+							</div>
+                        </div>
+                      </div>
+			<div class='col-sm-4 col-md-4 col-xs-12'>
+                                        <div class='form-group'
+                                             title="Established Date">
+											@Html.LabelFor(model => model.T_EstablishedDate, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                                <input type="text" id="T_EstablishedDateFrom" name="T_EstablishedDateFrom"  class="form-control"  placeholder="From Date"
+											 data-val='true' data-val-date='Must be a date.' />
+																						<span class="field-validation-valid" data-valmsg-for="T_EstablishedDateFrom" data-valmsg-replace="true"></span>	
+												                                            
+                                    <script type="text/javascript">
+                                        $(function () {
+                                            $('#T_EstablishedDateFrom').datetimepicker({ pickTime:false });
+                                        });
+                                    </script>
+                                <span class="input-group-addon datefiled">
+									<input type="text" id="T_EstablishedDateTo" name="T_EstablishedDateTo"  class="form-control"  placeholder="To Date"
+												 data-val='true' data-val-date='Must be a date.'  style="border-radius:0px 4px 4px 0px; border-left:0px"/>
+																							<div class="field-validation-valid" style="margin-top: 25px;font-size: 12px;" data-valmsg-for="T_EstablishedDateTo" data-valmsg-replace="true"></div>
+												                                    <script type="text/javascript">
+                                        $(function () {
+                                            $('#T_EstablishedDateTo').datetimepicker({ pickTime:false });
+                                        });
+                                    </script>
+
+
+								</span>
+							</div>
+                        </div>
+                      </div>
+			<div class='col-sm-4 col-md-4 col-xs-12'>
+                                        <div class='form-group'
+                                             title="Abolish Date">
+											@Html.LabelFor(model => model.T_AbolishDate, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                                <input type="text" id="T_AbolishDateFrom" name="T_AbolishDateFrom"  class="form-control"  placeholder="From Date"
+											 data-val='true' data-val-date='Must be a date.' />
+																						<span class="field-validation-valid" data-valmsg-for="T_AbolishDateFrom" data-valmsg-replace="true"></span>	
+												                                            
+                                    <script type="text/javascript">
+                                        $(function () {
+                                            $('#T_AbolishDateFrom').datetimepicker({ pickTime:false });
+                                        });
+                                    </script>
+                                <span class="input-group-addon datefiled">
+									<input type="text" id="T_AbolishDateTo" name="T_AbolishDateTo"  class="form-control"  placeholder="To Date"
+												 data-val='true' data-val-date='Must be a date.'  style="border-radius:0px 4px 4px 0px; border-left:0px"/>
+																							<div class="field-validation-valid" style="margin-top: 25px;font-size: 12px;" data-valmsg-for="T_AbolishDateTo" data-valmsg-replace="true"></div>
+												                                    <script type="text/javascript">
+                                        $(function () {
+                                            $('#T_AbolishDateTo').datetimepicker({ pickTime:false });
+                                        });
+                                    </script>
+
+
+								</span>
+							</div>
+                        </div>
+                      </div>
+		  </div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+    <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <i class="icon-calendar"></i>
+                        <h3 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseBoolean"><i class="glyphicon glyphicon-chevron-down pull-left" style="padding-top:5px; padding-right:5px;"></i> Boolean Property</a>
+                        </h3>
+                    </div>
+                    <div id="collapseBoolean" class="panel-collapse in">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class='form-group'>
+								               <div class="col-sm-4 col-md-4 col-xs-4">
+                                        <label>Quasi Fill</label>
+                                        <select class="form-control" id="T_QuasiFill">
+											<option value="">None</option>
+                                            <option value="True">True</option>
+                                            <option value="False">False</option>
+                                        </select>
+                                    </div>  
+                           <div class="col-sm-4 col-md-4 col-xs-4">
+                                        <label>Dual Incumbent</label>
+                                        <select class="form-control" id="T_DualIncumbent">
+											<option value="">None</option>
+                                            <option value="True">True</option>
+                                            <option value="False">False</option>
+                                        </select>
+                                    </div>  
+                           <div class="col-sm-4 col-md-4 col-xs-4">
+                                        <label>Funded</label>
+                                        <select class="form-control" id="T_Funded">
+											<option value="">None</option>
+                                            <option value="True">True</option>
+                                            <option value="False">False</option>
+                                        </select>
+                                    </div>  
+            								</div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+ 	<div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading clearfix">
+                                    <i class="icon-calendar"></i>
+                                    <h3 class="panel-title">
+									             <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><i class="glyphicon glyphicon-chevron-down pull-left" style="padding-top:5px; padding-right:5px;"></i> Association Property</a>  
+  
+                                    </h3>
+                                </div>
+								<div id="collapseTwo" class="panel-collapse in">
+                                <div class="panel-body">
+       @if (User.CanView("T_Facility") && ViewBag.t_facilityassignedto!=null)
+                    {
+ <div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Facility">
+							@Html.LabelFor(model => model.T_FacilityAssignedToID, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12" id="dvt_facilityassignedto">
+                                    		
+	 @Html.DropDownList("t_facilityassignedto", null, new {   @multiple = "multiple", @HostingName = "T_Facility", @dataurl = Url.Action("GetAllMultiSelectValue", "T_Facility",null) })
+                                </div>
+                            </div>
+                        </div>
+		}
+@if (User.CanView("T_PositionType") && ViewBag.t_typeofposition!=null)
+                    {
+ <div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Position Type">
+							@Html.LabelFor(model => model.T_TypeOfPositionID, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12" id="dvt_typeofposition">
+                                    		
+	 @Html.DropDownList("t_typeofposition", null, new {   @multiple = "multiple", @HostingName = "T_PositionType", @dataurl = Url.Action("GetAllMultiSelectValue", "T_PositionType",null) })
+                                </div>
+                            </div>
+                        </div>
+		}
+@if (User.CanView("T_Positionstatus") && ViewBag.t_associatedpositionstatus!=null)
+                    {
+ <div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Position Status">
+							@Html.LabelFor(model => model.T_AssociatedPositionStatusID, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12" id="dvt_associatedpositionstatus">
+                                    		
+	 @Html.DropDownList("t_associatedpositionstatus", null, new {   @multiple = "multiple", @HostingName = "T_Positionstatus", @dataurl = Url.Action("GetAllMultiSelectValue", "T_Positionstatus",null) })
+                                </div>
+                            </div>
+                        </div>
+		}
+@if (User.CanView("T_PositionLevel") && ViewBag.t_positionidentifier!=null)
+                    {
+ <div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Position Level">
+							@Html.LabelFor(model => model.T_PositionIdentifierID, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12" id="dvt_positionidentifier">
+                                    		
+	 @Html.DropDownList("t_positionidentifier", null, new {   @multiple = "multiple", @HostingName = "T_PositionLevel", @dataurl = Url.Action("GetAllMultiSelectValue", "T_PositionLevel",null) })
+                                </div>
+                            </div>
+                        </div>
+		}
+@if (User.CanView("T_WorkingTitle") && ViewBag.t_positionworkingtitleassociation!=null)
+                    {
+ <div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Working Title ">
+							@Html.LabelFor(model => model.T_PositionWorkingTitleAssociationID, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12" id="dvt_positionworkingtitleassociation">
+                                    		
+	 @Html.DropDownList("t_positionworkingtitleassociation", null, new {   @multiple = "multiple", @HostingName = "T_WorkingTitle", @dataurl = Url.Action("GetAllMultiSelectValue", "T_WorkingTitle",null) })
+                                </div>
+                            </div>
+                        </div>
+		}
+@if (User.CanView("T_RoleCode") && ViewBag.t_positionrolecode!=null)
+                    {
+ <div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Role Code">
+							@Html.LabelFor(model => model.T_PositionRoleCodeID, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12" id="dvt_positionrolecode">
+                                    		
+	 @Html.DropDownList("t_positionrolecode", null, new {   @multiple = "multiple", @HostingName = "T_RoleCode", @dataurl = Url.Action("GetAllMultiSelectValue", "T_RoleCode",null) })
+                                </div>
+                            </div>
+                        </div>
+		}
+@if (User.CanView("T_SocCode") && ViewBag.t_positionsoccode!=null)
+                    {
+ <div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="SOC Code">
+							@Html.LabelFor(model => model.T_PositionSOCCodeID, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12" id="dvt_positionsoccode">
+                                    		
+	 @Html.DropDownList("t_positionsoccode", null, new {   @multiple = "multiple", @HostingName = "T_SocCode", @dataurl = Url.Action("GetAllMultiSelectValue", "T_SocCode",null) })
+                                </div>
+                            </div>
+                        </div>
+		}
+@if (User.CanView("T_ClassCode") && ViewBag.t_positionclasscode!=null)
+                    {
+ <div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Class Code">
+							@Html.LabelFor(model => model.T_PositionClassCodeID, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12" id="dvt_positionclasscode">
+                                    		
+	 @Html.DropDownList("t_positionclasscode", null, new {   @multiple = "multiple", @HostingName = "T_ClassCode", @dataurl = Url.Action("GetAllMultiSelectValue", "T_ClassCode",null) })
+                                </div>
+                            </div>
+                        </div>
+		}
+@if (User.CanView("T_WCCode") && ViewBag.t_workerscompcodeposition!=null)
+                    {
+ <div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="WC Code">
+							@Html.LabelFor(model => model.T_WorkersCompCodePositionID, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12" id="dvt_workerscompcodeposition">
+                                    		
+	 @Html.DropDownList("t_workerscompcodeposition", null, new {   @multiple = "multiple", @HostingName = "T_WCCode", @dataurl = Url.Action("GetAllMultiSelectValue", "T_WCCode",null) })
+                                </div>
+                            </div>
+                        </div>
+		}
+@if (User.CanView("T_CostCenter") && ViewBag.t_positioncostcenterassociation!=null)
+                    {
+ <div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="CardDept">
+							@Html.LabelFor(model => model.T_PositionCostCenterAssociationID, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12" id="dvt_positioncostcenterassociation">
+                                    		
+	 @Html.DropDownList("t_positioncostcenterassociation", null, new {   @multiple = "multiple", @HostingName = "T_CostCenter", @dataurl = Url.Action("GetAllMultiSelectValue", "T_CostCenter",null) })
+                                </div>
+                            </div>
+                        </div>
+		}
+@if (User.CanView("T_ShiftMealTime") && ViewBag.t_positionshiftmealtime!=null)
+                    {
+ <div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Shift Meal Time">
+							@Html.LabelFor(model => model.T_PositionShiftMealTimeID, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12" id="dvt_positionshiftmealtime">
+                                    		
+	 @Html.DropDownList("t_positionshiftmealtime", null, new {   @multiple = "multiple", @HostingName = "T_ShiftMealTime", @dataurl = Url.Action("GetAllMultiSelectValue", "T_ShiftMealTime",null) })
+                                </div>
+                            </div>
+                        </div>
+		}
+@if (User.CanView("T_ShiftTime") && ViewBag.t_positionshifttime!=null)
+                    {
+ <div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Shift Time">
+							@Html.LabelFor(model => model.T_PositionShiftTimeID, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12" id="dvt_positionshifttime">
+                                    		
+	 @Html.DropDownList("t_positionshifttime", null, new {   @multiple = "multiple", @HostingName = "T_ShiftTime", @dataurl = Url.Action("GetAllMultiSelectValue", "T_ShiftTime",null) })
+                                </div>
+                            </div>
+                        </div>
+		}
+@if (User.CanView("T_ShiftDuration") && ViewBag.t_positionshiftduration!=null)
+                    {
+ <div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Shift Duration">
+							@Html.LabelFor(model => model.T_PositionShiftDurationID, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12" id="dvt_positionshiftduration">
+                                    		
+	 @Html.DropDownList("t_positionshiftduration", null, new {   @multiple = "multiple", @HostingName = "T_ShiftDuration", @dataurl = Url.Action("GetAllMultiSelectValue", "T_ShiftDuration",null) })
+                                </div>
+                            </div>
+                        </div>
+		}
+@if (User.CanView("T_OvertimeEligibility") && ViewBag.t_positionovertimeeligibility!=null)
+                    {
+ <div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Overtime Eligibility">
+							@Html.LabelFor(model => model.T_PositionOvertimeEligibilityID, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12" id="dvt_positionovertimeeligibility">
+                                    		
+	 @Html.DropDownList("t_positionovertimeeligibility", null, new {   @multiple = "multiple", @HostingName = "T_OvertimeEligibility", @dataurl = Url.Action("GetAllMultiSelectValue", "T_OvertimeEligibility",null) })
+                                </div>
+                            </div>
+                        </div>
+		}
+@if (User.CanView("T_PositionPostStatus") && ViewBag.t_positionstatusforposting!=null)
+                    {
+ <div class='col-sm-6 col-md-6 col-xs-12'>
+                            <div class='form-group' title="Position Post Status">
+							@Html.LabelFor(model => model.T_PositionStatusforPostingID, new { @class="col-sm-5 col-md-5 col-xs-12" })
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12" id="dvt_positionstatusforposting">
+                                    		
+	 @Html.DropDownList("t_positionstatusforposting", null, new {   @multiple = "multiple", @HostingName = "T_PositionPostStatus", @dataurl = Url.Action("GetAllMultiSelectValue", "T_PositionPostStatus",null) })
+                                </div>
+                            </div>
+                        </div>
+		}
+
+		</div>
+		</div>
+		</div>
+		</div>
+	</div>
+		 <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading clearfix">
+                                    <i class="icon-calendar"></i>
+                                    <h3 class="panel-title">
+                                          <a data-toggle="collapse" data-parent="#accordion" href="#collapsesorting"><i class="glyphicon glyphicon-chevron-down pull-left" style="padding-top:5px; padding-right:5px;"></i> Select Columns for sorting</a>
+                 
+                                    </h3>
+                                </div>
+								<div id="collapsesorting" class="panel-collapse in">
+                                <div class="panel-body">
+                                    <div class='col-sm-6 col-md-6 col-xs-12'>
+                                        <div class='form-group'>
+                                            <label id="lblOrderDepth" class="col-sm-5 col-md-5 col-xs-12">Order By</label>
+                                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                                <div class="input-group" style="width:100%;">
+                                                    @Html.DropDownList("SortOrder1", null, "-- Select --", new { @class = "form-control" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <button class="btn btn-primary btn-sm" onclick="SetSortOrder();" type="button" value="Add">Add</button>
+                                   
+                                    <div class="clearfix"></div>
+                                    <label id="lblsortorder" style=""></label>
+                                    <button class="btn btn-default btn-xs" type="button" id="btnsortorder" style="display:none !important;" onclick="clearsortorder();">Reset</button>
+                                   @Html.Hidden("SortOrder")
+								   </div>
+                                </div>
+                            </div>
+							</div>
+							<div class="col-md-6 col-sm-6 col-xs-6">
+							<div class="panel panel-default">
+                                <div class="panel-heading clearfix">
+                                    <i class="icon-calendar"></i>
+                                    <h3 class="panel-title">
+                                       <a data-toggle="collapse" data-parent="#accordion" href="#collapsegrouping"><i class="glyphicon glyphicon-chevron-down pull-left" style="padding-top:5px; padding-right:5px;"></i> Select Columns for grouping</a>
+                                    </h3>
+                                </div>
+								<div id="collapsegrouping" class="panel-collapse in">
+                                <div class="panel-body">
+                                    <div class='col-sm-6 col-md-6 col-xs-12'>
+                                        <div class='form-group'>
+                                            <label id="lblGroupDepth" class="col-sm-5 col-md-5 col-xs-12">Group By</label>
+                                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                                <div class="input-group" style="width:100%;">
+                                                    @Html.DropDownList("GroupByColumn", null, "-- Select --", new { @class = "form-control" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <button class="btn btn-primary btn-sm" onclick="SetGroupByColumn();" type="button" value="Add">Add</button>
+
+                                    <div class="clearfix"></div>
+                                    <label id="lblgroupbycolumn" style=""></label>
+                                    <button class="btn btn-default btn-xs" type="button" id="btngroupbycolumn" style="display:none !important;" onclick="cleargroupbycolumn();">Reset</button>
+                                    @Html.Hidden("hdnGroupByColumn")
+                                </div>
+								</div>
+                            </div>
+							</div>
+							<div class="col-md-12 col-sm-12 col-xs-12">
+							 <div class="panel panel-default">
+                                <div class="panel-heading clearfix">
+                                    <i class="icon-calendar"></i>
+                                    <h3 class="panel-title">
+                                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseGridLayout"><i class="glyphicon glyphicon-chevron-down pull-left" style="padding-top:5px; padding-right:5px;"></i> Grid Layout & Hide Columns</a>
+                                    </h3>
+                                </div>
+								<div id="collapseGridLayout" class="panel-collapse in">
+                                <div class="panel-body">
+									<div class='col-sm-6 col-md-6 col-xs-12'>
+                                        <div class='form-group'>
+                                            <label class="col-sm-5 col-md-5 col-xs-12">Grid Layout</label>
+                                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                                <div class="input-group" style="width:100%;">
+                                                    <select class="form-control" id="DisplayLayout">
+                                                        <option value="IndexPartial">Table (Default)</option>
+                                                        <option value="IndexPartialGallery">Gallery</option>
+                                                        <option value="IndexPartialList">List</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='col-sm-6 col-md-6 col-xs-12'>
+                                        <div class='form-group'>
+                                            <label class="col-sm-5 col-md-5 col-xs-12">Hide Columns</label>
+                                            <div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                                <div class="input-group" style="width:100%;">
+                                                    @Html.DropDownList("HideColumns", null, new {@multiple = "multiple" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading clearfix">
+                                   <h3 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSearchCriteria"><i class="glyphicon glyphicon-chevron-down pull-left" style="padding-top:5px; padding-right:5px;"></i> Specific Field Search Criteria</a>
+                        </h3>
+                                </div>
+								<div id="collapseSearchCriteria" class="panel-collapse in">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-sm-3 col-md-3 col-xs-12">
+                                            <div class='form-group'>
+                                                <label>Select Property <span class="text-danger-reg">*</span></label>
+                                                @Html.DropDownList("PropertyList", null, "-- Select Property --", new { @onchange = "FillCriteriaValue(this);GetSecondLevelAttributeForCriteria();", @class = "form-control" })
+                                                @Html.DropDownList("AssociationPropertyList", null, "-- Select --", new { @onchange = "GetCriteriaSuggestedValues(this);FillCriteriaForAssociation();", @class = "form-control", @style = "margin-top:8px;display:none;", @HostingName = "", @dataurl = "" })
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-md-3 col-xs-12">
+                                            <div class='form-group'>
+                                                <label>Select Operator <span class="text-danger-reg">*</span></label>
+                                                <select class="form-control" id="OperatorList" onchange="SetCriteriaValueType(this);">
+                                                    <option value="">-- Select --</option>
+                                                </select>
+                                                @Html.TextBox("ConditionOperator", null, new { @class = "form-control hidden" })
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-md-3 col-xs-12">
+                                            <div class='form-group'>
+                                                <label>Select Value Type<span class="text-danger-reg">*</span></label>
+                                                <select class="form-control" id="ValueTypeList" onchange="GetCriteriaSuggestedValues(this);">
+                                                    <option value="Constant">Constant</option>
+                                                    <option value="Pick From List">Pick From List</option>
+                                                    <option value="Dynamic">Dynamic</option>
+                                                </select>
+                                                @Html.TextBox("ConditionValueType", null, new { @class = "form-control hidden" })
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-md-3 col-xs-12">
+                                            <label>Property Value<span class="text-danger-reg">*</span></label>
+                                            <div class='form-group'>
+                                                @Html.TextBox("ConditionValue", null, new { @class = "col-sm-8 col-md-8 col-xs-8", @style = "border-radius:4px;" })
+                                                <div style="display:none; padding-left:0px;" id="dvSuggestedPropertyValue" class="col-sm-8 col-md-8 col-xs-8">
+                                                    @Html.DropDownList("SuggestedPropertyValue", null, new { @multiple = "multiple" })
+                                                    @Html.TextBox("SuggestedPropertyValues", null, new { @class = "form-control hidden" })
+                                                </div>
+                                                <div id="dvRule7DynamicValueInCondition" class="col-sm-8 col-md-8 col-xs-8" style="display:none; padding:0px;">
+                                                    @Html.DropDownList("SuggestedDynamicValueInCondition7", null, "-- Select --", new { @onchange = "GetSecondLevelAttributeInCriteria();", @class = "form-control", @style = "margin:0px;", @HostingName = "", @dataurl = "" })
+                                                    @Html.DropDownList("SuggestedDynamicValueInCondition71", null, "-- Select --", new { @class = "form-control", @style = "margin-top:8px;", @HostingName = "", @dataurl = "" })
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-xs-4" style="padding:0px 0px 0px 5px;">
+                                                    <select class="form-control" id="LogicalConnectorList">
+                                                        <option value="AND">AND</option>
+                                                        <option value="OR">OR</option>
+                                                    </select>
+                                                    @Html.TextBox("LogicalConnector", null, new { @class = "form-control hidden" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-12" style="margin-top:10px; padding:0px">
+                                        <button type="button" id="btnAddAction4" onclick="AddCriteriaInGrid()" class="btn btn-primary pull-right">Add Condition</button>
+                                    </div>
+                                </div>
+                                <div id="Des_Table" style="padding-top:5px;" class="table-responsive" style="overflow-x:auto;">
+                                    <table id="tblConditionList" style="display:none;" class="table table-striped table-bordered table-hover table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th class="col1">Property</th>
+                                                <th class="col1">Operator</th>
+                                                <th class="col1">Value</th>
+                                                <th class="col1">Connector</th>
+                                                <th class="col1">Remove</th>
+                                            </tr>
+                                        </thead>
+                                        <tr></tr>
+                                    </table>
+                                </div>
+                                @Html.TextBox("FilterCondition", null, new { @class = "hidden" })
+                            </div>
+                        </div>
+						</div>
+                    </div>
+			@*End Div*@
+			</div>
+</div>
+					
+<a href="@Url.Action("Index")" class="btn btn-default btn-sm"> Cancel</a>
+<button id="clearfSearchT_Position" type="button" class="btn btn-primary btn-sm" onclick="@Html.Raw("clearFsearch('" + Url.Action("SetFSearch", "T_Position") + "',event)")">Clear</button>
+<button id="fSearchT_Position" class="btn btn-primary btn-sm" type="submit" dataurl="@(Url.Action("FSearch", "T_Position", null) )"
+        onclick="@(Html.Raw("FacetedSearch(event,'T_Position','t_facilityassignedto,t_typeofposition,t_associatedpositionstatus,t_positionidentifier,t_positionworkingtitleassociation,t_positionrolecode,t_positionsoccode,t_positionclasscode,t_workerscompcodeposition,t_positioncostcenterassociation,t_positionshiftmealtime,t_positionshifttime,t_positionshiftduration,t_positionovertimeeligibility,t_positionstatusforposting','T_PositionFillFrom,T_PositionFillTo,T_QuasiFill,T_EffectiveDateFrom,T_EffectiveDateTo,T_ShiftStartFrom,T_ShiftStartTo,T_ShiftEndFrom,T_ShiftEndTo,T_DualIncumbent,T_DualIncumbentStartDateFrom,T_DualIncumbentStartDateTo,T_DualIncumbentEndDateFrom,T_DualIncumbentEndDateTo,T_Funded,T_EstablishedDateFrom,T_EstablishedDateTo,T_AbolishDateFrom,T_AbolishDateTo','T_ShiftStartFromhdn,T_ShiftStartTohdn,T_ShiftEndFromhdn,T_ShiftEndTohdn','"
+   + Convert.ToString(Request.QueryString["viewtype"]) + "','" + Convert.ToString(Request.QueryString["sortBy"]) + "','"
+     + Convert.ToString(Request.QueryString["isAsc"]) + "','" + "'); "))">
+    Search
+</button>
+}
+
+
+<script>
+ function clearFsearch(url, e) {
+        e.preventDefault();
+        var urlstring = url + "?IsClear=true";
+        window.location.replace(urlstring)
+        return false;
+    }	
+	function closealert() {
+        $('#dvalert').attr("class", "modal fade");
+        $('#dvalert').attr("aria-hidden", "true");
+        $('#dvalert').attr("style", "display:none;");
+    }
+	function cleargroupbycolumn() {
+        $("#hdnGroupByColumn").val('');
+        $("#lblgroupbycolumn").html('');
+        $("#lblgroupbycolumn").removeAttr("style");
+        $("#btngroupbycolumn").attr("style", "display:none !important;");
+        $("#lblGroupDepth").html('Group By');
+    }
+    function SetGroupByColumn() {
+        var value = $("#hdnGroupByColumn").val();
+        value += $("#GroupByColumn").val() + ",";
+        $("#hdnGroupByColumn").val(value);
+        var text = $("#GroupByColumn option:selected").map(function () {
+            return $(this).text();
+        }).get().join();
+        if (text == "-- Select --") {
+            $('#dvalert').attr("class", "modal fade in");
+            $('#dvalert').attr("aria-hidden", "false");
+            $('#dvalert').attr("style", "display:block;");
+            $('#alertbody').html("Please select at least one property for grouping.");
+            return;
+        }
+        if ($("#lblgroupbycolumn").html().length > 0) {
+            var arrgrouping = $("#lblgroupbycolumn").html().split(' Then Group By ');
+            //var test1 = arrsortorder.indexOf(text + "-&gt");
+            if ($.inArray(text, arrgrouping) >= 0) {
+                $('#dvalert').attr("class", "modal fade in");
+                $('#dvalert').attr("aria-hidden", "false");
+                $('#dvalert').attr("style", "display:block;");
+                $('#alertbody').html("This property is already selected, please select any other property.");
+                return;
+            }
+            $("#lblgroupbycolumn").append(" Then Group By " + text);
+        }
+        else
+            $("#lblgroupbycolumn").append(text);
+        $("#btngroupbycolumn").show();
+        $("#lblGroupDepth").html('Then Group By');
+        $("#lblgroupbycolumn").attr("style", "border:1px solid #428bca;margin-left: 15px; background: #edf5fa; padding-left: 5px !important; border-radius: 4px;")
+    }
+
+    function clearsortorder()
+    {
+        $("#SortOrder").val('');
+        $("#lblsortorder").html('');
+        $("#lblsortorder").removeAttr("style");
+        $("#btnsortorder").attr("style", "display:none !important;");
+        $("#lblOrderDepth").html('Order By');
+        
+    }
+    function SetSortOrder() {
+        var value = $("#SortOrder").val();
+        value += $("#SortOrder1").val() + ",";
+        $("#SortOrder").val(value);
+        var text = $("#SortOrder1 option:selected").map(function () {
+            return $(this).text();
+        }).get().join();
+        if (text == "-- Select --")
+        {
+            $('#dvalert').attr("class", "modal fade in");
+            $('#dvalert').attr("aria-hidden", "false");
+            $('#dvalert').attr("style", "display:block;");
+            $('#alertbody').html("Please select at least one property for sorting.");
+            return;
+        }
+        if ($("#lblsortorder").html().length > 0) {
+            var arrsortorder = $("#lblsortorder").html().split(';');
+            //var test1 = arrsortorder.indexOf(text + "-&gt");
+            if ($.inArray(text + "-&gt", arrsortorder) >= 0 || $.inArray(text, arrsortorder) >= 0) {
+                 $('#dvalert').attr("class", "modal fade in");
+                $('#dvalert').attr("aria-hidden", "false");
+                $('#dvalert').attr("style", "display:block;");
+                $('#alertbody').html("This property is already selected, please select any other property.");
+                return;
+            }
+            $("#lblsortorder").append("->" + text);
+        }
+        else
+            $("#lblsortorder").append(text);
+        $("#btnsortorder").show();
+        $("#lblOrderDepth").html('Then Order By');
+        $("#lblsortorder").attr("style", "border:1px solid #428bca;margin-left: 15px; background: #edf5fa; padding-left: 5px !important; border-radius: 4px;")
+    }
+    $(document).ready(function () {
+	 $('#HideColumns').multiselect({
+            buttonWidth: '100%'
+        });
+	 $('#t_facilityassignedto').multiselect({
+            buttonWidth: '100%',
+			nonSelectedText: 'ALL',
+        });
+	 $('#t_typeofposition').multiselect({
+            buttonWidth: '100%',
+			nonSelectedText: 'ALL',
+        });
+	 $('#t_associatedpositionstatus').multiselect({
+            buttonWidth: '100%',
+			nonSelectedText: 'ALL',
+        });
+	 $('#t_positionidentifier').multiselect({
+            buttonWidth: '100%',
+			nonSelectedText: 'ALL',
+        });
+	 $('#t_positionworkingtitleassociation').multiselect({
+            buttonWidth: '100%',
+			nonSelectedText: 'ALL',
+        });
+	 $('#t_positionrolecode').multiselect({
+            buttonWidth: '100%',
+			nonSelectedText: 'ALL',
+        });
+	 $('#t_positionsoccode').multiselect({
+            buttonWidth: '100%',
+			nonSelectedText: 'ALL',
+        });
+	 $('#t_positionclasscode').multiselect({
+            buttonWidth: '100%',
+			nonSelectedText: 'ALL',
+        });
+	 $('#t_workerscompcodeposition').multiselect({
+            buttonWidth: '100%',
+			nonSelectedText: 'ALL',
+        });
+	 $('#t_positioncostcenterassociation').multiselect({
+            buttonWidth: '100%',
+			nonSelectedText: 'ALL',
+        });
+	 $('#t_positionshiftmealtime').multiselect({
+            buttonWidth: '100%',
+			nonSelectedText: 'ALL',
+        });
+	 $('#t_positionshifttime').multiselect({
+            buttonWidth: '100%',
+			nonSelectedText: 'ALL',
+        });
+	 $('#t_positionshiftduration').multiselect({
+            buttonWidth: '100%',
+			nonSelectedText: 'ALL',
+        });
+	 $('#t_positionovertimeeligibility').multiselect({
+            buttonWidth: '100%',
+			nonSelectedText: 'ALL',
+        });
+	 $('#t_positionstatusforposting').multiselect({
+            buttonWidth: '100%',
+			nonSelectedText: 'ALL',
+        });
+    });
+</script>
+<script>
+    function keypressHandler(e) {
+        if (e.which == 13) {
+            $(this).blur();
+            $('#fSearchT_Position').focus().click();
+        }
+    }
+ $(document).keypress(keypressHandler);
+ $(document).ready(function () {
+  if ("@parentUrl".length > 0) {
+		  if ("@parentUrl["SortOrder"]" != null && "@parentUrl["SortOrder"]".length > 0) {
+                var value = '@parentUrl["SortOrder"]';
+                var indexlist = value.split(',')
+                $("#SortOrder").val('');
+                for (var i = 0; i < indexlist.length; i++) {
+                    if (indexlist[i].length > 0) {
+                        $("#SortOrder1").val(indexlist[i]);
+                        SetSortOrder();
+                    }
+                }
+                $("#SortOrder").val(value);
+                $("#btnsortorder").show();
+                $("#lblOrderDepth").html('Then Order By');
+                $("#lblsortorder").attr("style", "border:1px solid #428bca;margin-left: 15px; background: #edf5fa; padding-left: 5px !important; border-radius: 4px;")
+            }
+
+			if ("@parentUrl["GroupByColumn"]" != null && "@parentUrl["GroupByColumn"]".length > 0) {
+                var value = '@parentUrl["GroupByColumn"]';
+                var indexlist = value.split(',')
+                $("#hdnGroupByColumn").val('');
+                for (var i = 0; i < indexlist.length; i++) {
+                    if (indexlist[i].length > 0) {
+                        $("#GroupByColumn").val(indexlist[i]);
+                        SetGroupByColumn();
+                    }
+                }
+                $("#hdnGroupByColumn").val(value);
+                $("#btngroupbycolumn").show();
+                $("#lblGroupDepth").html('Then Group By');
+                $("#lblgroupbycolumn").attr("style", "border:1px solid #428bca;margin-left: 15px; background: #edf5fa; padding-left: 5px !important; border-radius: 4px;")
+            }
+
+            if ("@parentUrl["HideColumns"]" != null && "@parentUrl["HideColumns"]".length > 0) {
+                var resHideColumns = "@parentUrl["HideColumns"]".split(",");
+                var eleHideColumns = document.getElementById("HideColumns");
+                for (i = 0; i < resHideColumns.length; i++) {
+                    for (var o = 0; o < eleHideColumns.options.length; o++) {
+                        if (eleHideColumns.options[o].value == resHideColumns[i])
+                            eleHideColumns.options[o].selected = true;
+                    }
+                }
+                $("#HideColumns").multiselect("rebuild");
+            }
+			if ("@parentUrl["viewtype"]" != null && "@parentUrl["viewtype"]".length > 0) {
+                $("#DisplayLayout").val('@parentUrl["viewtype"]');
+            }
+
+			if ("@parentUrl["FilterCondition"]" != null && "@parentUrl["FilterCondition"]".length > 0) {
+                var value = "@parentUrl["FilterCondition"]".split("?");
+                for (i = 0; i < value.length - 1; i++) {
+                    if (value != "" && value != "undefined") {
+                        var str = "<tr>";
+                        var param = value[i].toString().split(",");
+                        var val1Text = "";
+                        if (param[0].indexOf("[") > -1) {
+                            var assocNm = param[0].substring(1, param[0].lastIndexOf("."));
+                            var assocPrp = param[0].substring(param[0].lastIndexOf(".") + 1, param[0].length - 1);
+                            var assocEnt = $("#PropertyList option[value='" + assocNm + "']").text();
+                            var assocEntPrp = "";
+                            if (assocPrp != "") {
+                                $.ajax({
+                                    url: '@Url.Action("GetPropertyDP", "Customer")' + '?entityName=' + assocEnt + '&propertyName=' + assocPrp,
+                                    type: "GET",
+                                    cache: false,
+                                    async: false,
+                                    success: function (result) {
+                                        if (result != "") {
+                                            assocEntPrp = result;
+                                        }
+                                    },
+                                    error: function (jqXHR, textStatus, errorThrown) {
+
+                                    }
+                                });
+                            }
+                            val1Text = param[0].replace(assocNm, assocEnt).replace(assocPrp, assocEntPrp);
+                        }
+                        else { val1Text = $("#PropertyList option[value='" + param[0] + "']").text(); }
+
+                        var val1 = param[0];
+                        var val2 = checkOperator(param[1]);
+                        var val3 = param[2];
+                        var val4 = param[3];
+
+                        var funcval = val1 + "," + val2 + "," + val3 + "," + val4 + "?";
+                        var val = $("#FilterCondition").val();
+                        val += val1 + "," + val2 + "," + val3 + "," + val4 + "?";
+
+                        str += "<td>" + val1Text + "</td>";
+                        str += "<td>" + val2 + "</td>";
+                        str += "<td>" + val3 + "</td>";
+                        str += "<td>" + val4 + "</td>";
+                        str += "<td><i name=\"FilterCondition\" onclick=\"deleteRowCriteria(this,'" + funcval + "');\" class=\"fam-delete\"></i></td>";
+
+                        $("#FilterCondition").val(val);
+                        $('#tblConditionList').show();
+                        $('#tblConditionList').append(str);
+                    }
+                }
+            }
+
+
+			 document.getElementById("FSearch").value = AntiSanitizeURLString("@parentUrl["search"]");
+			 document.getElementById("T_PositionFillTo").value = "@parentUrl["T_PositionFillTo"]";
+			 document.getElementById("T_PositionFillFrom").value = "@parentUrl["T_PositionFillFrom"]";
+			document.getElementById("T_QuasiFill").value = "@parentUrl["T_QuasiFill"]";
+			 document.getElementById("T_EffectiveDateTo").value = "@parentUrl["T_EffectiveDateTo"]";
+			 document.getElementById("T_EffectiveDateFrom").value = "@parentUrl["T_EffectiveDateFrom"]";
+				    
+
+			"@parentUrl["T_ShiftStartTo"]" == "" ? document.getElementById("T_ShiftStartTo").value = "" : LoadDateTimeByFormat("hh:mm", "@String.Format("{0:HH:mm}", Convert.ToDateTime(parentUrl["T_ShiftStartTo"]))", $("#T_ShiftStartTo"))
+            "@parentUrl["T_ShiftStartFrom"]" == "" ? document.getElementById("T_ShiftStartFrom").value = "" : LoadDateTimeByFormat("hh:mm", "@String.Format("{0:HH:mm}", Convert.ToDateTime(parentUrl["T_ShiftStartFrom"]))", $("#T_ShiftStartFrom"))
+				    
+
+			"@parentUrl["T_ShiftEndTo"]" == "" ? document.getElementById("T_ShiftEndTo").value = "" : LoadDateTimeByFormat("hh:mm", "@String.Format("{0:HH:mm}", Convert.ToDateTime(parentUrl["T_ShiftEndTo"]))", $("#T_ShiftEndTo"))
+            "@parentUrl["T_ShiftEndFrom"]" == "" ? document.getElementById("T_ShiftEndFrom").value = "" : LoadDateTimeByFormat("hh:mm", "@String.Format("{0:HH:mm}", Convert.ToDateTime(parentUrl["T_ShiftEndFrom"]))", $("#T_ShiftEndFrom"))
+			document.getElementById("T_DualIncumbent").value = "@parentUrl["T_DualIncumbent"]";
+			 document.getElementById("T_DualIncumbentStartDateTo").value = "@parentUrl["T_DualIncumbentStartDateTo"]";
+			 document.getElementById("T_DualIncumbentStartDateFrom").value = "@parentUrl["T_DualIncumbentStartDateFrom"]";
+						 document.getElementById("T_DualIncumbentEndDateTo").value = "@parentUrl["T_DualIncumbentEndDateTo"]";
+			 document.getElementById("T_DualIncumbentEndDateFrom").value = "@parentUrl["T_DualIncumbentEndDateFrom"]";
+			document.getElementById("T_Funded").value = "@parentUrl["T_Funded"]";
+			 document.getElementById("T_EstablishedDateTo").value = "@parentUrl["T_EstablishedDateTo"]";
+			 document.getElementById("T_EstablishedDateFrom").value = "@parentUrl["T_EstablishedDateFrom"]";
+						 document.getElementById("T_AbolishDateTo").value = "@parentUrl["T_AbolishDateTo"]";
+			 document.getElementById("T_AbolishDateFrom").value = "@parentUrl["T_AbolishDateFrom"]";
+			 if ("@parentUrl["t_facilityassignedto"]" != null && "@parentUrl["t_facilityassignedto"]".length > 0) {
+            var resT_FacilityAssignedTo = "@parentUrl["t_facilityassignedto"]".split(",");
+            var eleT_FacilityAssignedTo = document.getElementById("t_facilityassignedto");
+			FillMultiSelectDropDown(resT_FacilityAssignedTo , eleT_FacilityAssignedTo, "t_facilityassignedto");
+	}
+	else {
+            var resT_FacilityAssignedTo = "@parentUrl["t_facilityassignedto"]".split(",");
+            var eleT_FacilityAssignedTo = document.getElementById("t_facilityassignedto");
+			FillMultiSelectDropDown(resT_FacilityAssignedTo , eleT_FacilityAssignedTo, "t_facilityassignedto");
+         }
+ if ("@parentUrl["t_typeofposition"]" != null && "@parentUrl["t_typeofposition"]".length > 0) {
+            var resT_TypeOfPosition = "@parentUrl["t_typeofposition"]".split(",");
+            var eleT_TypeOfPosition = document.getElementById("t_typeofposition");
+			FillMultiSelectDropDown(resT_TypeOfPosition , eleT_TypeOfPosition, "t_typeofposition");
+	}
+	else {
+            var resT_TypeOfPosition = "@parentUrl["t_typeofposition"]".split(",");
+            var eleT_TypeOfPosition = document.getElementById("t_typeofposition");
+			FillMultiSelectDropDown(resT_TypeOfPosition , eleT_TypeOfPosition, "t_typeofposition");
+         }
+ if ("@parentUrl["t_associatedpositionstatus"]" != null && "@parentUrl["t_associatedpositionstatus"]".length > 0) {
+            var resT_AssociatedPositionStatus = "@parentUrl["t_associatedpositionstatus"]".split(",");
+            var eleT_AssociatedPositionStatus = document.getElementById("t_associatedpositionstatus");
+			FillMultiSelectDropDown(resT_AssociatedPositionStatus , eleT_AssociatedPositionStatus, "t_associatedpositionstatus");
+	}
+	else {
+            var resT_AssociatedPositionStatus = "@parentUrl["t_associatedpositionstatus"]".split(",");
+            var eleT_AssociatedPositionStatus = document.getElementById("t_associatedpositionstatus");
+			FillMultiSelectDropDown(resT_AssociatedPositionStatus , eleT_AssociatedPositionStatus, "t_associatedpositionstatus");
+         }
+ if ("@parentUrl["t_positionidentifier"]" != null && "@parentUrl["t_positionidentifier"]".length > 0) {
+            var resT_PositionIdentifier = "@parentUrl["t_positionidentifier"]".split(",");
+            var eleT_PositionIdentifier = document.getElementById("t_positionidentifier");
+			FillMultiSelectDropDown(resT_PositionIdentifier , eleT_PositionIdentifier, "t_positionidentifier");
+	}
+	else {
+            var resT_PositionIdentifier = "@parentUrl["t_positionidentifier"]".split(",");
+            var eleT_PositionIdentifier = document.getElementById("t_positionidentifier");
+			FillMultiSelectDropDown(resT_PositionIdentifier , eleT_PositionIdentifier, "t_positionidentifier");
+         }
+ if ("@parentUrl["t_positionworkingtitleassociation"]" != null && "@parentUrl["t_positionworkingtitleassociation"]".length > 0) {
+            var resT_PositionWorkingTitleAssociation = "@parentUrl["t_positionworkingtitleassociation"]".split(",");
+            var eleT_PositionWorkingTitleAssociation = document.getElementById("t_positionworkingtitleassociation");
+			FillMultiSelectDropDown(resT_PositionWorkingTitleAssociation , eleT_PositionWorkingTitleAssociation, "t_positionworkingtitleassociation");
+	}
+	else {
+            var resT_PositionWorkingTitleAssociation = "@parentUrl["t_positionworkingtitleassociation"]".split(",");
+            var eleT_PositionWorkingTitleAssociation = document.getElementById("t_positionworkingtitleassociation");
+			FillMultiSelectDropDown(resT_PositionWorkingTitleAssociation , eleT_PositionWorkingTitleAssociation, "t_positionworkingtitleassociation");
+         }
+ if ("@parentUrl["t_positionrolecode"]" != null && "@parentUrl["t_positionrolecode"]".length > 0) {
+            var resT_PositionRoleCode = "@parentUrl["t_positionrolecode"]".split(",");
+            var eleT_PositionRoleCode = document.getElementById("t_positionrolecode");
+			FillMultiSelectDropDown(resT_PositionRoleCode , eleT_PositionRoleCode, "t_positionrolecode");
+	}
+	else {
+            var resT_PositionRoleCode = "@parentUrl["t_positionrolecode"]".split(",");
+            var eleT_PositionRoleCode = document.getElementById("t_positionrolecode");
+			FillMultiSelectDropDown(resT_PositionRoleCode , eleT_PositionRoleCode, "t_positionrolecode");
+         }
+ if ("@parentUrl["t_positionsoccode"]" != null && "@parentUrl["t_positionsoccode"]".length > 0) {
+            var resT_PositionSOCCode = "@parentUrl["t_positionsoccode"]".split(",");
+            var eleT_PositionSOCCode = document.getElementById("t_positionsoccode");
+			FillMultiSelectDropDown(resT_PositionSOCCode , eleT_PositionSOCCode, "t_positionsoccode");
+	}
+	else {
+            var resT_PositionSOCCode = "@parentUrl["t_positionsoccode"]".split(",");
+            var eleT_PositionSOCCode = document.getElementById("t_positionsoccode");
+			FillMultiSelectDropDown(resT_PositionSOCCode , eleT_PositionSOCCode, "t_positionsoccode");
+         }
+ if ("@parentUrl["t_positionclasscode"]" != null && "@parentUrl["t_positionclasscode"]".length > 0) {
+            var resT_PositionClassCode = "@parentUrl["t_positionclasscode"]".split(",");
+            var eleT_PositionClassCode = document.getElementById("t_positionclasscode");
+			FillMultiSelectDropDown(resT_PositionClassCode , eleT_PositionClassCode, "t_positionclasscode");
+	}
+	else {
+            var resT_PositionClassCode = "@parentUrl["t_positionclasscode"]".split(",");
+            var eleT_PositionClassCode = document.getElementById("t_positionclasscode");
+			FillMultiSelectDropDown(resT_PositionClassCode , eleT_PositionClassCode, "t_positionclasscode");
+         }
+ if ("@parentUrl["t_workerscompcodeposition"]" != null && "@parentUrl["t_workerscompcodeposition"]".length > 0) {
+            var resT_WorkersCompCodePosition = "@parentUrl["t_workerscompcodeposition"]".split(",");
+            var eleT_WorkersCompCodePosition = document.getElementById("t_workerscompcodeposition");
+			FillMultiSelectDropDown(resT_WorkersCompCodePosition , eleT_WorkersCompCodePosition, "t_workerscompcodeposition");
+	}
+	else {
+            var resT_WorkersCompCodePosition = "@parentUrl["t_workerscompcodeposition"]".split(",");
+            var eleT_WorkersCompCodePosition = document.getElementById("t_workerscompcodeposition");
+			FillMultiSelectDropDown(resT_WorkersCompCodePosition , eleT_WorkersCompCodePosition, "t_workerscompcodeposition");
+         }
+ if ("@parentUrl["t_positioncostcenterassociation"]" != null && "@parentUrl["t_positioncostcenterassociation"]".length > 0) {
+            var resT_PositionCostCenterAssociation = "@parentUrl["t_positioncostcenterassociation"]".split(",");
+            var eleT_PositionCostCenterAssociation = document.getElementById("t_positioncostcenterassociation");
+			FillMultiSelectDropDown(resT_PositionCostCenterAssociation , eleT_PositionCostCenterAssociation, "t_positioncostcenterassociation");
+	}
+	else {
+            var resT_PositionCostCenterAssociation = "@parentUrl["t_positioncostcenterassociation"]".split(",");
+            var eleT_PositionCostCenterAssociation = document.getElementById("t_positioncostcenterassociation");
+			FillMultiSelectDropDown(resT_PositionCostCenterAssociation , eleT_PositionCostCenterAssociation, "t_positioncostcenterassociation");
+         }
+ if ("@parentUrl["t_positionshiftmealtime"]" != null && "@parentUrl["t_positionshiftmealtime"]".length > 0) {
+            var resT_PositionShiftMealTime = "@parentUrl["t_positionshiftmealtime"]".split(",");
+            var eleT_PositionShiftMealTime = document.getElementById("t_positionshiftmealtime");
+			FillMultiSelectDropDown(resT_PositionShiftMealTime , eleT_PositionShiftMealTime, "t_positionshiftmealtime");
+	}
+	else {
+            var resT_PositionShiftMealTime = "@parentUrl["t_positionshiftmealtime"]".split(",");
+            var eleT_PositionShiftMealTime = document.getElementById("t_positionshiftmealtime");
+			FillMultiSelectDropDown(resT_PositionShiftMealTime , eleT_PositionShiftMealTime, "t_positionshiftmealtime");
+         }
+ if ("@parentUrl["t_positionshifttime"]" != null && "@parentUrl["t_positionshifttime"]".length > 0) {
+            var resT_PositionShiftTime = "@parentUrl["t_positionshifttime"]".split(",");
+            var eleT_PositionShiftTime = document.getElementById("t_positionshifttime");
+			FillMultiSelectDropDown(resT_PositionShiftTime , eleT_PositionShiftTime, "t_positionshifttime");
+	}
+	else {
+            var resT_PositionShiftTime = "@parentUrl["t_positionshifttime"]".split(",");
+            var eleT_PositionShiftTime = document.getElementById("t_positionshifttime");
+			FillMultiSelectDropDown(resT_PositionShiftTime , eleT_PositionShiftTime, "t_positionshifttime");
+         }
+ if ("@parentUrl["t_positionshiftduration"]" != null && "@parentUrl["t_positionshiftduration"]".length > 0) {
+            var resT_PositionShiftDuration = "@parentUrl["t_positionshiftduration"]".split(",");
+            var eleT_PositionShiftDuration = document.getElementById("t_positionshiftduration");
+			FillMultiSelectDropDown(resT_PositionShiftDuration , eleT_PositionShiftDuration, "t_positionshiftduration");
+	}
+	else {
+            var resT_PositionShiftDuration = "@parentUrl["t_positionshiftduration"]".split(",");
+            var eleT_PositionShiftDuration = document.getElementById("t_positionshiftduration");
+			FillMultiSelectDropDown(resT_PositionShiftDuration , eleT_PositionShiftDuration, "t_positionshiftduration");
+         }
+ if ("@parentUrl["t_positionovertimeeligibility"]" != null && "@parentUrl["t_positionovertimeeligibility"]".length > 0) {
+            var resT_PositionOvertimeEligibility = "@parentUrl["t_positionovertimeeligibility"]".split(",");
+            var eleT_PositionOvertimeEligibility = document.getElementById("t_positionovertimeeligibility");
+			FillMultiSelectDropDown(resT_PositionOvertimeEligibility , eleT_PositionOvertimeEligibility, "t_positionovertimeeligibility");
+	}
+	else {
+            var resT_PositionOvertimeEligibility = "@parentUrl["t_positionovertimeeligibility"]".split(",");
+            var eleT_PositionOvertimeEligibility = document.getElementById("t_positionovertimeeligibility");
+			FillMultiSelectDropDown(resT_PositionOvertimeEligibility , eleT_PositionOvertimeEligibility, "t_positionovertimeeligibility");
+         }
+ if ("@parentUrl["t_positionstatusforposting"]" != null && "@parentUrl["t_positionstatusforposting"]".length > 0) {
+            var resT_PositionStatusforPosting = "@parentUrl["t_positionstatusforposting"]".split(",");
+            var eleT_PositionStatusforPosting = document.getElementById("t_positionstatusforposting");
+			FillMultiSelectDropDown(resT_PositionStatusforPosting , eleT_PositionStatusforPosting, "t_positionstatusforposting");
+	}
+	else {
+            var resT_PositionStatusforPosting = "@parentUrl["t_positionstatusforposting"]".split(",");
+            var eleT_PositionStatusforPosting = document.getElementById("t_positionstatusforposting");
+			FillMultiSelectDropDown(resT_PositionStatusforPosting , eleT_PositionStatusforPosting, "t_positionstatusforposting");
+         }
+ }
+    });
+
+	  function FillMultiSelectDropDown(result, element, elementName) {
+        var isHaveNullSelect = false;
+        var countoptions = 0;
+
+        for (var o = 0; o < element.options.length; o++) {
+            if (result.indexOf(element.options[o].value)!=-1)
+                element.options[o].selected = true;
+            else if (result.indexOf("NULL")!=-1)
+                isHaveNullSelect = true;
+            countoptions++;
+        }
+        var opt = document.createElement('option');
+        opt.value = "NULL";
+        opt.innerHTML = "None";
+        if (isHaveNullSelect) {
+            opt.selected = true;
+            element.insertBefore(opt, element.firstChild);
+        }
+        if (!isHaveNullSelect) {
+            element.insertBefore(opt, element.firstChild);
+        }
+        $("#" + elementName).multiselect("rebuild");
+        if (countoptions >= 10) {
+            var hostingentity = elementName;
+            var urlGetAll = $('#' + hostingentity).attr("dataurl").replace("GetAllMultiSelectValue", "Index") + "?BulkOperation=multiple";
+            var dispName = ($("label[for=\"" + hostingentity + "\"]").text());
+            var link = "<a onclick=\"" + "OpenPopUpBulkOperation('PopupBulkOperation','" + hostingentity + "','" + dispName + "','dvPopupBulkOperation','" + urlGetAll + "')\">View All</a>";
+            var getall = "<li class='disabled-result disabled-result' style='font-style:Italic;text-decoration:underline;' >" + link + "</li>";
+            var $ul = $("ul", "#dv" + elementName);
+            $ul.append($(getall));
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    // Criteria Javascript Methods
+    function checkOperator(operator) {
+        var operand = operator;
+        switch (operator) {
+            case "&gt;":
+                {
+                    operand = ">";
+                    break;
+                }
+            case "&lt;":
+                {
+                    operand = "<";
+                    break;
+                }
+            case "&gt;=":
+                {
+                    operand = ">=";
+                    break;
+                }
+            case "&lt;=":
+                {
+                    operand = "<=";
+                    break;
+                }
+        }
+        return operand;
+    }
+    function FillCriteriaValue(obj) {
+        var propertyName = $("#" + obj.id).val();
+        var entityName = '@ViewBag.EntityName';
+        $("#" + "OperatorList").html('');
+        $.ajax({
+            url: '@Url.Action("GetDateType", "BusinessRule")' + '?entityName=' + entityName + '&propertyName=' + propertyName,
+            type: "GET",
+            cache: false,
+            async: false,
+            success: function (result) {
+                var optionDOM = '<option value="0">-- Select --</option>';
+                optionDOM += '<option value="=">Equals to</option>';
+                if (result == "String") {
+                    optionDOM += '<option value="Contains">Contains</option>';
+                }
+                else if (result != "Boolean") {
+                    optionDOM += '<option value=">">Greater than</option>';
+                    optionDOM += '<option value="<">Less than</option>';
+                    optionDOM += '<option value="<=">Less than Or Equals to</option>';
+                    optionDOM += '<option value=">=">Greater than Or Equals to</option>';
+                }
+                optionDOM += '<option value="!=">Not Equals to</option>';
+                $("#" + "OperatorList").html(optionDOM);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+    }
+    function GetSecondLevelAttributeForCriteria() {
+        var SelectedEntity = '@ViewBag.EntityName';
+        var SelectedProperty = $("#" + "PropertyList").val();
+        $("#" + "AssociationPropertyList").hide();
+        $("#" + "AssociationPropertyList").html('');
+        $.ajax({
+            url: '@Url.Action("GetAttributesofTargetEntity", "BusinessRule")' + '?Entity=' + SelectedEntity + '&AttributeName=' + SelectedProperty,
+            type: "GET",
+            cache: false,
+            success: function (result) {
+                var optionDOM = '<option value="SelectProperty">-- Select Association Property --</option>';
+                for (i = 0; i < result.length; i++) {
+                    //optionDOM += '<option value="' + result[i].Name + '">' + result[i].DisplayName + '</option>';
+					optionDOM += '<option class="' + result[i].DataType + '" value="' + result[i].Name + '">' + result[i].DisplayName + '</option>';
+                }
+
+                if (result.length == 0) {
+                    $("#" + "AssociationPropertyList").html('');
+                    $("#" + "AssociationPropertyList").hide();
+                }
+                else {
+                    $("#" + "AssociationPropertyList").show();
+                    $("#" + "AssociationPropertyList").html(optionDOM);
+                }
+                FillSugestedDynamicValuesForCriteria();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("error");
+            }
+        });
+    }
+    function FillSugestedDynamicValuesForCriteria() {
+        var text = $("#" + "PropertyList option:selected").text();
+        if ($("#" + "AssociationPropertyList").val() != null && $("#" + "AssociationPropertyList").val().length > 0) {
+            var value = "[" + $("#" + "PropertyList").val() + "." + $("#" + "AssociationPropertyList").val() + "]";
+        }
+        else {
+            var value = "[" + $("#" + "PropertyList").val() + "]";
+        }
+    }
+    function GetCriteriaSuggestedValues(obj) {
+        $("#dvRule7DynamicValueInCondition").hide();
+        $("#" + "ConditionValue").val('');
+
+        if ($("#ValueTypeList option:selected").text() == "Pick From List") {
+            var SelectedProperty = $("#" + "PropertyList").val();
+            var SelectedEntity = '@ViewBag.EntityName';
+            if (SelectedEntity.length == 0) {
+                alert("Please select an Entity first !");
+                return false;
+            }
+            if (SelectedProperty.length == 0) {
+                alert("Please select a Property !");
+                return false;
+            }
+
+            var assocProp = $("#AssociationPropertyList").val();
+            if (assocProp == "SelectProperty") {
+                alert("Please select Association Property.");
+                return false;
+            }
+            var hostingEntity = "";
+			var propType = "Property";
+            $.ajax({
+                url: '@Url.Action("GetDropdown", "BusinessRule")' + '?Entity=' + SelectedEntity + '&Property=' + SelectedProperty,
+                type: "GET",
+                cache: false,
+                success: function (result) {
+                    if (result != "Failure") {
+                        $("#" + "dvSuggestedPropertyValue").show();
+                        $("#" + "ConditionValue").hide();
+						//
+						var selectedoptionclass = $('option:selected', $('#AssociationPropertyList')).attr('class');
+                        if (selectedoptionclass != undefined && selectedoptionclass == "Int64")
+                        {
+                           
+                            $.ajax({
+                                url: '@Url.Action("GetTargetEntityOfAssociationProperty", "BusinessRule")' + '?Entity=' + result + '&AttributeName=' + assocProp,
+                                type: "GET",
+                                cache: false,
+                                async: false,
+                                success: function (data) {
+                                        result = data.Name;
+                                        assocProp = "DisplayValue";
+										propType = "Association";
+                                }
+                            });
+                        }
+						//
+                        hostingEntity = result;
+                        $("#SuggestedPropertyValue").attr("dataurl", '@Url.Action("GetAllMultiSelectValueForBR", "_Entity", null)'.replace("_Entity", result) + '?propNameBR=' + assocProp);
+                        if (hostingEntity != "") {
+                            var dataurl = '@Url.Action("GetAllMultiSelectValueForBR", "_Entity", null)'.replace("_Entity", result) + '?propNameBR=' + assocProp;
+                            $.ajax({
+                                url: dataurl,
+                                type: "GET",
+                                cache: false,
+                                async: false,
+                                success: function (result) {
+                                    var countItems = 0
+                                    var optionDOM = "";
+                                    for (i = 0; i < result.length; i++) {
+                                        if (result[i] != null)
+											optionDOM += '<option class="'+propType+'" value="' + result[i].Id + '">' + result[i].value + '</option>';
+                                            //optionDOM += '<option value="' + i + '">' + result[i] + '</option>';
+                                        countItems++;
+                                    }
+                                    $("#SuggestedPropertyValue").html(optionDOM);
+                                    $("#SuggestedPropertyValue").multiselect('rebuild');
+                                },
+                                error: function (jqXHR, textStatus, errorThrown) {
+                                    alert("error");
+                                }
+                            });
+                        }
+                    }
+                    else {
+                        alert("Supports only association values.");
+                        $("#ValueTypeList :nth(0)").prop("selected", "selected").change();
+                        hostingEntity = "";
+                        $("#" + "dvSuggestedPropertyValue").hide();
+                        $("#" + "ConditionValue").show();
+                        $("#" + "SuggestedPropertyValue").removeClass = "chosen-select form-control";
+                        $("#" + "SuggestedPropertyValue").removeAttr("HostingName");
+                        $("#" + "SuggestedPropertyValue").removeAttr("dataurl");
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("error");
+                }
+            });
+        }
+        else if ($("#ValueTypeList option:selected").text() == "Dynamic") {
+            $("#dvSuggestedPropertyValue").hide();
+            $("#ConditionValue").val('');
+            $("#ConditionValue").hide();
+            GetSecondLevelAttributeInCriteria();
+            $("#dvRule7DynamicValueInCondition").show();
+        }
+        else { $("#" + "dvSuggestedPropertyValue").hide(); $("#" + "ConditionValue").show(); $("#" + "ConditionValue").prop("disabled", false); }
+    }
+    function FillCriteriaForAssociation() {
+        var entityName = '@ViewBag.EntityName';
+        var assocName = $("#PropertyList").val();
+        var propertyName = $("#AssociationPropertyList").val();
+        $("#" + "OperatorList").html('');
+        $.ajax({
+            url: '@Url.Action("GetDateTypeForAssociationProperties", "BusinessRule")' + '?entityName=' + entityName + '&assocName=' + assocName + '&propertyName=' + propertyName,
+            type: "GET",
+            cache: false,
+            async: false,
+            success: function (result) {
+                var optionDOM = '<option value="0">--- Select ---</option>';
+                optionDOM += '<option value="=">Equals to</option>';
+                if (result == "String") {
+                    optionDOM += '<option value="Contains">Contains</option>';
+                }
+                else if (result != "Boolean") {
+                    optionDOM += '<option value=">">Greater than</option>';
+                    optionDOM += '<option value="<">Less than</option>';
+                    optionDOM += '<option value="<=">Less than Or Equals to</option>';
+                    optionDOM += '<option value=">=">Greater than Or Equals to</option>';
+                }
+                optionDOM += '<option value="!=">Not Equals to</option>';
+                $("#" + "OperatorList").html(optionDOM);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+            }
+        });
+    }
+    function SetCriteriaValueType(obj) {
+        if (obj.id == "OperatorList") {
+            $("#ValueTypeList").val('Constant').change();
+        }
+    }
+    function GetSecondLevelAttributeInCriteria() {
+        var SelectedEntity = '@ViewBag.EntityName';
+        var SelectedProperty = $("#" + "SuggestedDynamicValueInCondition7").val();
+        $("#" + "SuggestedDynamicValueInCondition71").hide();
+        $("#" + "SuggestedDynamicValueInCondition71").html('');
+        $.ajax({
+            url: '@Url.Action("GetAttributesofTargetEntity", "BusinessRule")' + '?Entity=' + SelectedEntity + '&AttributeName=' + SelectedProperty,
+            type: "GET",
+            cache: false,
+            success: function (result) {
+                var optionDOM = '<option value="SelectProperty">--Select Association Property--</option>';
+                for (i = 0; i < result.length; i++) {
+                    //optionDOM += '<option value="' + result[i].Name + '">' + result[i].DisplayName + '</option>';
+					optionDOM += '<option class="' + result[i].DataType + '" value="' + result[i].Name + '">' + result[i].DisplayName + '</option>';
+                }
+
+                if (result.length == 0) {
+                    $("#" + "SuggestedDynamicValueInCondition71").html('');
+                    $("#" + "SuggestedDynamicValue71").hide();
+                }
+                else {
+                    $("#" + "SuggestedDynamicValueInCondition71").show();
+                    $("#" + "SuggestedDynamicValueInCondition71").html(optionDOM);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("error");
+            }
+        })
+    }
+    function AddCriteriaInGrid() {
+
+        if ($("#PropertyList option:selected").val() == "SelectProperty" || $("#PropertyList option:selected").val() == "") {
+            alert("Please select Property for condition.");
+            return false;
+        }
+		if ($("#OperatorList").val() == ""  || $("#OperatorList").val() == "0") {
+            alert("Please select Operator for condition.");
+            return false;
+        }
+		if ($("#ConditionValue").val().trim() == "" && $("#ValueTypeList").val() != "Pick From List") {
+            alert("Please enter Property Value for condition.");
+            return false;
+        }
+        if ($("#AssociationPropertyList").val() != null && $("#AssociationPropertyList").val() != "") {
+            if ($("#AssociationPropertyList option:selected").val() == "SelectProperty") {
+                alert("Please select Association Property.");
+                return false;
+            }
+            var option_all = $("#SuggestedPropertyValue option:selected").map(function () {
+               // return $(this).text();
+			   if ($(this).attr("class") == "Association")
+                    return $(this).val();
+               else
+                  return $(this).text(); 
+            }).get().join();
+            if (option_all != "")
+                $("#ConditionValue").val(option_all);
+            $("#SuggestedPropertyValue option:selected").removeAttr("selected");
+            $("#SuggestedPropertyValue").multiselect('rebuild');
+        }
+        //Dynamic
+        var dynamicPropertyDispValue = "";
+        if ($("#ValueTypeList option:selected").text() == "Dynamic") {
+            if ($("#" + "SuggestedDynamicValueInCondition71").val() != null && $("#" + "SuggestedDynamicValueInCondition71").val().length > 0) {
+                var value = "[" + $("#" + "SuggestedDynamicValueInCondition7").val() + "." + $("#" + "SuggestedDynamicValueInCondition71").val() + "]";
+                dynamicPropertyDispValue = "[" + $("#" + "SuggestedDynamicValueInCondition7 option:selected").text() + "." + $("#" + "SuggestedDynamicValueInCondition71 option:selected").text() + "]";
+                $("#" + "ConditionValue").val(value);
+            }
+            else {
+                var value = "[" + $("#" + "SuggestedDynamicValueInCondition7").val() + "]";
+                dynamicPropertyDispValue = "[" + $("#" + "SuggestedDynamicValueInCondition7 option:selected").text() + "]";
+                $("#" + "ConditionValue").val(value);
+            }
+        }
+        //Dynamic
+        var condValue = $("#ConditionValue").val();
+        var str = "<tr>";
+        var entityName = '@ViewBag.EntityName';
+        var val1Text = $("#PropertyList option:selected").text();
+        var val1 = $("#PropertyList").val();
+        var val2 = $("#OperatorList").val();
+        var val3 = $("#ConditionValue").val();
+        var val4 = $("#LogicalConnectorList option:selected").text();
+        var val5 = $("#ValueTypeList").val();
+
+        if ($("#AssociationPropertyList").val() != null && $("#AssociationPropertyList").val() != "") {
+            val1 = "[" + val1 + "." + $("#AssociationPropertyList").val() + "]";
+            val1Text = "[" + val1Text + "." + $("#AssociationPropertyList option:selected").text() + "]";
+            CreateCriteriaForAssociation(entityName, condValue, val1, val1Text, val5, dynamicPropertyDispValue);
+            return true;
+        }
+
+        var funcval = val1 + "," + val2 + "," + val3 + "," + val4 + "?";
+        var val = $("#FilterCondition").val();
+        val += val1 + "," + val2 + "," + val3 + "," + val4 + "?";
+
+        if ($("#ValueTypeList option:selected").text() == "Dynamic" && dynamicPropertyDispValue != "") {
+            val3 = dynamicPropertyDispValue;
+        }
+
+        str += "<td>" + val1Text + "</td>";
+        str += "<td>" + val2 + "</td>";
+        str += "<td>" + val3 + "</td>";
+        str += "<td>" + val4 + "</td>";
+        str += "<td><i name=\"FilterCondition\" onclick=\"deleteRowCriteria(this,'" + funcval + "');\" class=\"fam-delete\"></i></td>";
+
+        var exMsg = VerifyPropertyAndValueDataType(entityName, val1, $("#ConditionValue").val(), val5, 'condition');
+        if (exMsg != "" && exMsg != null) {
+            $("#ConditionValue").val('');
+            alert('Please enter correct Property Value. ' + exMsg);
+            return false;
+        }
+
+        $("#FilterCondition").val(val);
+        $('#tblConditionList').show();
+        $('#tblConditionList').append(str);
+        $("#DurationCount").val('');
+        $("#ConditionValue").val('');
+    }
+    function CreateCriteriaForAssociation(entityName, param, assocName, assocDispName, valueType, dynamicDispName) {
+        var arrCond = param.split(",");
+        var val = $("#FilterCondition").val();
+        var operator = $("#OperatorList").val();
+
+        var exMsg = VerifyPropertyAndValueDataType(entityName, assocName, param, valueType, 'condition');
+		 if (valueType != "Pick From List") {
+			if (exMsg != "" && exMsg != null) {
+				$("#ConditionValue").val('');
+				alert('Data types of selected properties did not match. Please select compatible properties. ' + exMsg);
+				return false;
+			}
+		}
+        var logicalConnector = $("#LogicalConnectorList").val();
+
+        if (valueType == "Pick From List") {
+            logicalConnector = "OR";
+        }
+
+        for (i = 0; i < arrCond.length; i++) {
+            if (i == arrCond.length - 1) {
+                logicalConnector = $("#LogicalConnectorList").val();
+            }
+            if (valueType != "Dynamic")
+                dynamicDispName = arrCond[i];
+            val += assocName + ',' + operator + ',' + arrCond[i] + ',' + logicalConnector + '?';
+            var str = "<tr><td>" + assocDispName + "</td><td>" + operator + "</td><td>" + dynamicDispName + "</td><td>" + logicalConnector + "</td>";
+            str += "<td><i name=\"FilterCondition\" onclick=\"deleteRowCriteria(this,'" + assocName + ',' + operator + ',' + dynamicDispName + ',' + logicalConnector + '' + "');\" class=\"fam-delete\"></i></td>";
+            $("#FilterCondition").val(val);
+            $('#tblConditionList').show();
+            $('#tblConditionList').append(str);
+            $("#ConditionValue").val('');
+        }
+    }
+    function VerifyPropertyAndValueDataType(entityName, propertyName, conditionValue, valueType, actionType) {
+        var propDataType = "";
+        $.ajax({
+            url: '@Url.Action("VerifyPropertyAndValueDataType", "BusinessRule")' + '?entityName=' + entityName + '&propertyName=' + propertyName + "&conditionValue=" + conditionValue + "&valueType=" + valueType + "&actionType=" + actionType,
+            type: "GET",
+            cache: false,
+            async: false,
+            success: function (result) {
+                propDataType = result;
+            }
+        });
+        return propDataType;
+    }
+    function deleteRowCriteria(obj, val) {
+        var obj_tr = $(obj).closest("tr");
+        var newobj = $("#" + $(obj).attr("name")).val().replace(val, "");
+        $("#" + $(obj).attr("name")).val(newobj);
+        obj_tr.remove();
+    }
+$(document).ready(function () {
+        $(':input').each(function () {
+            var valid = $(this).attr("id");
+            if (valid != 'LogicalConnectorList' && valid != 'ValueTypeList' && valid != 'DisplayLayout' && valid != 'inbuiltSearchCriteria') {
+                if ($(this).val() != null && $(this).val().length > 0)
+                    $(this).css("border-color", "orange")
+            }
+        });
+        $('.fsearch .btn').each(function () {
+            if ($(this).attr("title") != null && $(this).attr("title") != 'ALL' && $(this).attr("title") != 'None selected') {
+                $(this).attr("style", "border-color:orange !important;")
+            }
+        });
+
+    });
+</script>
+<div class="modal fade" aria-hidden="true" id="dvalert">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" onclick="closealert();" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <center><h4 class="modal-title"> Position </h4></center>
+                <div class="alert alert-warning" id="alertbody">
+                </div>
+                <button type="button" class="btn btn-default btn-sm" onclick="closealert();" data-dismiss="modal" aria-hidden="true">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="modal fade" id="ShowGraphT_Position" tabindex="-1" role="dialog" aria-labelledby="ShowGraphT_PositionLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:80%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="ShowGraphT_PositionLabel">Dashboard @EntityDisplayName</h4>
+                </div>
+				 <div  class="modal-body" >
+						<div id="dvShowGraphT_Position" data-url="@Url.Action("ShowGraph", "T_Position" , new { type = "all" })">
+						</div>
+						<div style="clear:both"></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+

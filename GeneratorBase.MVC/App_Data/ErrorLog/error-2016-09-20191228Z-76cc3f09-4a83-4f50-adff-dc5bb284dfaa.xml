@@ -1,0 +1,185 @@
+﻿<error errorId="76cc3f09-4a83-4f50-adff-dc5bb284dfaa" application="/LM/W3SVC/1/ROOT/wsh_hr_v35" host="TURANTOMVC" type="System.Exception" message="Deleted" source="GeneratorBase.MVC" detail="System.Exception: Deleted&#xD;&#xA;   at GeneratorBase.MVC.Controllers.T_PositionLevelController.Delete(Int32 id) in d:\GenApps\wsh_hr_v35\GeneratorBase.MVC\Controllers\T_PositionLevel\T_PositionLevelCRUDController.cs:line 498&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)" user="Admin" time="2016-09-20T19:12:28.9347647Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.5&#xD;&#xA;HTTP_COOKIE:pageSizeAdminT_ClassCode=100; paginationAdminT_ClassCode=3; wsh_hr_v32=ZtlTbj2_1AZG_ghTCAyXnbRECpUb4P82meOxpkrtgXQuuEdrELq4EvnN52f5jEGkULgtX8NmUSb3WMeucY-4MOx7tHCXtdugA95bd6ILEecX32lY8z_X3PfCaPw8tb_Csx_Yfpq2kX79r2b25kK1Qea63MyvAC_iYyyfwYS6yRt8Lu8ReCvneNhwMffuObtXB_D4WXA9UX1DabQYUYvqlDS0Wfu42cElKfFjGWnRCePvCuGyz3NxBb6dLFEmlO1SOgbbOTy0JXWV0NFNYOS3euQjXyO5pUcBMH041asYIzMudSN0pA_bU0Z2RM2KXbiIQXPI7UZbXg-ZLB-hGmjARWjyQH-zZzNJuAu8rKoyR4aVWvFgYCExmpiIRWbUA5801peHmS9ZGlT3dWXJlJitMIFKpXDnuIrUGdbasf6PlnYCXKJ_S9B4HsW4Gllh2hcY48Q3gSWEK1NHFPjcV289TKnSTHEny8pct-gE4X1trKqpP7p1nbF8Ly8YLByySogh; __RequestVerificationToken_L3dzaF9ocl92MzU1=NvsiWNQSxDcZjLM4U11BRqCDk8DY336sjfhsFLAxTG2ILhafPuFUG_rzWvKkuStoccZoGpGqwU7TEYk1Dv-FN-v41b21eEw9jZWYo-rdr3A1&#xD;&#xA;HTTP_HOST:apps.turanto.com&#xD;&#xA;HTTP_REFERER:https://apps.turanto.com/wsh_hr_v35/T_PositionLevel/Delete/12?UrlReferrer=https:%2F%2Fapps.turanto.com%2Fwsh_hr_v35%2FT_PositionLevel&amp;viewtype=IndexPartial&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.5&#xD;&#xA;Cookie: pageSizeAdminT_ClassCode=100; paginationAdminT_ClassCode=3; wsh_hr_v32=ZtlTbj2_1AZG_ghTCAyXnbRECpUb4P82meOxpkrtgXQuuEdrELq4EvnN52f5jEGkULgtX8NmUSb3WMeucY-4MOx7tHCXtdugA95bd6ILEecX32lY8z_X3PfCaPw8tb_Csx_Yfpq2kX79r2b25kK1Qea63MyvAC_iYyyfwYS6yRt8Lu8ReCvneNhwMffuObtXB_D4WXA9UX1DabQYUYvqlDS0Wfu42cElKfFjGWnRCePvCuGyz3NxBb6dLFEmlO1SOgbbOTy0JXWV0NFNYOS3euQjXyO5pUcBMH041asYIzMudSN0pA_bU0Z2RM2KXbiIQXPI7UZbXg-ZLB-hGmjARWjyQH-zZzNJuAu8rKoyR4aVWvFgYCExmpiIRWbUA5801peHmS9ZGlT3dWXJlJitMIFKpXDnuIrUGdbasf6PlnYCXKJ_S9B4HsW4Gllh2hcY48Q3gSWEK1NHFPjcV289TKnSTHEny8pct-gE4X1trKqpP7p1nbF8Ly8YLByySogh; __RequestVerificationToken_L3dzaF9ocl92MzU1=NvsiWNQSxDcZjLM4U11BRqCDk8DY336sjfhsFLAxTG2ILhafPuFUG_rzWvKkuStoccZoGpGqwU7TEYk1Dv-FN-v41b21eEw9jZWYo-rdr3A1&#xD;&#xA;Host: apps.turanto.com&#xD;&#xA;Referer: https://apps.turanto.com/wsh_hr_v35/T_PositionLevel/Delete/12?UrlReferrer=https:%2F%2Fapps.turanto.com%2Fwsh_hr_v35%2FT_PositionLevel&amp;viewtype=IndexPartial&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/wsh_hr_v35" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v35\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="Admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="Admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="Admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/wsh_hr_v35/T_PositionLevel/Delete/12" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v35\GeneratorBase.MVC\T_PositionLevel\Delete\12" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="UrlReferrer=https:%2F%2Fapps.turanto.com%2Fwsh_hr_v35%2FT_PositionLevel&amp;viewtype=IndexPartial" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="96.253.89.230" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="96.253.89.230" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="51847" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/wsh_hr_v35/T_PositionLevel/Delete/12" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/wsh_hr_v35/T_PositionLevel/Delete/12" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.5" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="pageSizeAdminT_ClassCode=100; paginationAdminT_ClassCode=3; wsh_hr_v32=ZtlTbj2_1AZG_ghTCAyXnbRECpUb4P82meOxpkrtgXQuuEdrELq4EvnN52f5jEGkULgtX8NmUSb3WMeucY-4MOx7tHCXtdugA95bd6ILEecX32lY8z_X3PfCaPw8tb_Csx_Yfpq2kX79r2b25kK1Qea63MyvAC_iYyyfwYS6yRt8Lu8ReCvneNhwMffuObtXB_D4WXA9UX1DabQYUYvqlDS0Wfu42cElKfFjGWnRCePvCuGyz3NxBb6dLFEmlO1SOgbbOTy0JXWV0NFNYOS3euQjXyO5pUcBMH041asYIzMudSN0pA_bU0Z2RM2KXbiIQXPI7UZbXg-ZLB-hGmjARWjyQH-zZzNJuAu8rKoyR4aVWvFgYCExmpiIRWbUA5801peHmS9ZGlT3dWXJlJitMIFKpXDnuIrUGdbasf6PlnYCXKJ_S9B4HsW4Gllh2hcY48Q3gSWEK1NHFPjcV289TKnSTHEny8pct-gE4X1trKqpP7p1nbF8Ly8YLByySogh; __RequestVerificationToken_L3dzaF9ocl92MzU1=NvsiWNQSxDcZjLM4U11BRqCDk8DY336sjfhsFLAxTG2ILhafPuFUG_rzWvKkuStoccZoGpGqwU7TEYk1Dv-FN-v41b21eEw9jZWYo-rdr3A1" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://apps.turanto.com/wsh_hr_v35/T_PositionLevel/Delete/12?UrlReferrer=https:%2F%2Fapps.turanto.com%2Fwsh_hr_v35%2FT_PositionLevel&amp;viewtype=IndexPartial" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="UrlReferrer">
+      <value string="https://apps.turanto.com/wsh_hr_v35/T_PositionLevel" />
+    </item>
+    <item name="viewtype">
+      <value string="IndexPartial" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name="pageSizeAdminT_ClassCode">
+      <value string="100" />
+    </item>
+    <item name="paginationAdminT_ClassCode">
+      <value string="3" />
+    </item>
+    <item name="wsh_hr_v32">
+      <value string="ZtlTbj2_1AZG_ghTCAyXnbRECpUb4P82meOxpkrtgXQuuEdrELq4EvnN52f5jEGkULgtX8NmUSb3WMeucY-4MOx7tHCXtdugA95bd6ILEecX32lY8z_X3PfCaPw8tb_Csx_Yfpq2kX79r2b25kK1Qea63MyvAC_iYyyfwYS6yRt8Lu8ReCvneNhwMffuObtXB_D4WXA9UX1DabQYUYvqlDS0Wfu42cElKfFjGWnRCePvCuGyz3NxBb6dLFEmlO1SOgbbOTy0JXWV0NFNYOS3euQjXyO5pUcBMH041asYIzMudSN0pA_bU0Z2RM2KXbiIQXPI7UZbXg-ZLB-hGmjARWjyQH-zZzNJuAu8rKoyR4aVWvFgYCExmpiIRWbUA5801peHmS9ZGlT3dWXJlJitMIFKpXDnuIrUGdbasf6PlnYCXKJ_S9B4HsW4Gllh2hcY48Q3gSWEK1NHFPjcV289TKnSTHEny8pct-gE4X1trKqpP7p1nbF8Ly8YLByySogh" />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MzU1">
+      <value string="NvsiWNQSxDcZjLM4U11BRqCDk8DY336sjfhsFLAxTG2ILhafPuFUG_rzWvKkuStoccZoGpGqwU7TEYk1Dv-FN-v41b21eEw9jZWYo-rdr3A1" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="y2z0fdxfpln1kwfwktc4apku" />
+    </item>
+  </cookies>
+</error>

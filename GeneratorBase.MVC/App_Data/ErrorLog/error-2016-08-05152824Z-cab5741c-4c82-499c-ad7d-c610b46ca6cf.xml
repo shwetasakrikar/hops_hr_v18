@@ -1,0 +1,2553 @@
+﻿<error errorId="cab5741c-4c82-499c-ad7d-c610b46ca6cf" application="/LM/W3SVC/1/ROOT/wsh_hr_v29" host="TURANTOMVC" type="System.Web.Mvc.HttpAntiForgeryException" message="The provided anti-forgery token was meant for a different claims-based user than the current user." source="System.Web.WebPages" detail="System.Web.Mvc.HttpAntiForgeryException (0x80004005): The provided anti-forgery token was meant for a different claims-based user than the current user.&#xD;&#xA;   at System.Web.Helpers.AntiXsrf.TokenValidator.ValidateTokens(HttpContextBase httpContext, IIdentity identity, AntiForgeryToken sessionToken, AntiForgeryToken fieldToken)&#xD;&#xA;   at System.Web.Helpers.AntiXsrf.AntiForgeryWorker.Validate(HttpContextBase httpContext)&#xD;&#xA;   at System.Web.Helpers.AntiForgery.Validate()&#xD;&#xA;   at System.Web.Mvc.ValidateAntiForgeryTokenAttribute.OnAuthorization(AuthorizationContext filterContext)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__19(AsyncCallback asyncCallback, Object asyncState)" time="2016-08-05T15:28:24.5945353Z" statusCode="500">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:108335&#xD;&#xA;HTTP_CONTENT_TYPE:multipart/form-data; boundary=----WebKitFormBoundaryhB9fFBev5AP5QFz5&#xD;&#xA;HTTP_ACCEPT:application/json, text/javascript, */*; q=0.01&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:ASP.NET_SessionId=imitn5srgtbeiyje5krifuvy; __RequestVerificationToken_L3dzaF9ocg2=BsoTzO0K1TvCuM7hLMD30Q2lC08dRYtEMUhAxn7AbNnTY8pRr9Wrxf9994Hg8LWtN4uhpDO8ocSKulSFwHZls8Ynli_H7Dc6O-IpGlYQygc1; __RequestVerificationToken_L3dzaF9ocl92Mjg1=1psJHbbMHCzNH4R0566lzc1VIAmr2wltf4VVyr0J1uXelfuTlWrwZlqGrlkpPP0qTUbw6IF3OSeklWxlYg0favuJRqele-di3hERTyjLiso1; wsh_hr_v27=bT_8H-yx224R9pKq3DrEmFfQyjKu5lIxm-6Z0lsvQ3WOyJvzEV1LUItmAmqm6LHrWMmar3LCCY9_MkUvmYHOhVXHdaWPFMPOrrkXLXgPPK0PMFtRVCRPZzXisbGfnyn9TieaIb2WbUMkNjAzQz0ayyfm6dhHRdrOjp8ygEjt1KMTL09GEpbmf-40ef2FdwhzLbp38FNOWulLoBFfj1dBcqE7HYi5NqZxS4JZWwwtwiX4_bfnBYVsfqOUgJqGspPxmzfSHBdutVf-3UCuxER9NJY_m5h2h7diCSOppopcNFjrslsPStyZkMC2S_vmVOG_Ud__7R0vyCAwUAjJ5KnZB_OxkwPEmpUBkVBl28UGX-JOArrhPT6t2lBeSOs8Fx8h3Phuq35wttu5_FQGDJu2nCuI3HYLps3dKC-5PGPdt8faQIkcBike4Z6gEXzaM1BiXQIPHEN3L2GehNp5l8AhBcrS4srnPVN8spCsNN-wN38PbdBp7jWOfcNA2hh9GUqtu74KaiNT-IhSm6aQsEG92w; __RequestVerificationToken_L3dzaF9ocl92Mjk1=GKT5DclGAnaBS8TXCXUYG_Xdl30zkt9PfaMF5tzmj4YCcBGAjTsFgCgGaZStLGl_WPpfGlKOiMzm2HddKZiMevHz2hQ1vGe9D0690k8wKZk1; wsh_hr_v29=ODnOxp-JEfTTKBJBWma8p8pUIN_viESjIGG6h_aysy_1n9jM8R35uqNDADhL1IkQ0jfhEiNyMImdrB3u0sh-sa4gsgsgzDEjwgm2qp3eBNxic_fgRyCtW0qcuyr0uMxGcrmHCLo47B_j9UVv2YCahQWk-R-KePe22D314Z7s6sDG-xCN_FMXtHY20F6wcncYme7ZwPW_ZxZh6psscsACOayuo_KEDM3nG-ysuvzknT5vDBWM3I-p2y9Lr-_Au2ewg5nqKbVtx0PrZlgncgeeizEJtgY4vlDtGFfZ1NL5FxH4filUqAE7yHa52jL9v3NFBxsyQLnJ6QtC0bvlhxCegUqtBmI8xCFiC7CA4IR4urdeDF1wmWpm-azWPEowxNsjVODK2tcIiVORMcTjZqFXqEe_qfykyhvTfXJbE3Z5ZY0Go5YhoKVwXg2PA7U9ccq6HVmwM9uWOwCMHuf4Fkjr0PwwIpMcEg3Qg5d18F8krrfAMDhWhsYPcM-pvvKCPeXBpjQx2-X5dSEtQyCxBbCP7Q&#xD;&#xA;HTTP_HOST:mvc.turanto.com&#xD;&#xA;HTTP_REFERER:https://mvc.turanto.com/wsh_hr_v29/Permission?RoleName=HR%20User&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:https://mvc.turanto.com&#xD;&#xA;HTTP_X_REQUESTED_WITH:XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Content-Length: 108335&#xD;&#xA;Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryhB9fFBev5AP5QFz5&#xD;&#xA;Accept: application/json, text/javascript, */*; q=0.01&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: ASP.NET_SessionId=imitn5srgtbeiyje5krifuvy; __RequestVerificationToken_L3dzaF9ocg2=BsoTzO0K1TvCuM7hLMD30Q2lC08dRYtEMUhAxn7AbNnTY8pRr9Wrxf9994Hg8LWtN4uhpDO8ocSKulSFwHZls8Ynli_H7Dc6O-IpGlYQygc1; __RequestVerificationToken_L3dzaF9ocl92Mjg1=1psJHbbMHCzNH4R0566lzc1VIAmr2wltf4VVyr0J1uXelfuTlWrwZlqGrlkpPP0qTUbw6IF3OSeklWxlYg0favuJRqele-di3hERTyjLiso1; wsh_hr_v27=bT_8H-yx224R9pKq3DrEmFfQyjKu5lIxm-6Z0lsvQ3WOyJvzEV1LUItmAmqm6LHrWMmar3LCCY9_MkUvmYHOhVXHdaWPFMPOrrkXLXgPPK0PMFtRVCRPZzXisbGfnyn9TieaIb2WbUMkNjAzQz0ayyfm6dhHRdrOjp8ygEjt1KMTL09GEpbmf-40ef2FdwhzLbp38FNOWulLoBFfj1dBcqE7HYi5NqZxS4JZWwwtwiX4_bfnBYVsfqOUgJqGspPxmzfSHBdutVf-3UCuxER9NJY_m5h2h7diCSOppopcNFjrslsPStyZkMC2S_vmVOG_Ud__7R0vyCAwUAjJ5KnZB_OxkwPEmpUBkVBl28UGX-JOArrhPT6t2lBeSOs8Fx8h3Phuq35wttu5_FQGDJu2nCuI3HYLps3dKC-5PGPdt8faQIkcBike4Z6gEXzaM1BiXQIPHEN3L2GehNp5l8AhBcrS4srnPVN8spCsNN-wN38PbdBp7jWOfcNA2hh9GUqtu74KaiNT-IhSm6aQsEG92w; __RequestVerificationToken_L3dzaF9ocl92Mjk1=GKT5DclGAnaBS8TXCXUYG_Xdl30zkt9PfaMF5tzmj4YCcBGAjTsFgCgGaZStLGl_WPpfGlKOiMzm2HddKZiMevHz2hQ1vGe9D0690k8wKZk1; wsh_hr_v29=ODnOxp-JEfTTKBJBWma8p8pUIN_viESjIGG6h_aysy_1n9jM8R35uqNDADhL1IkQ0jfhEiNyMImdrB3u0sh-sa4gsgsgzDEjwgm2qp3eBNxic_fgRyCtW0qcuyr0uMxGcrmHCLo47B_j9UVv2YCahQWk-R-KePe22D314Z7s6sDG-xCN_FMXtHY20F6wcncYme7ZwPW_ZxZh6psscsACOayuo_KEDM3nG-ysuvzknT5vDBWM3I-p2y9Lr-_Au2ewg5nqKbVtx0PrZlgncgeeizEJtgY4vlDtGFfZ1NL5FxH4filUqAE7yHa52jL9v3NFBxsyQLnJ6QtC0bvlhxCegUqtBmI8xCFiC7CA4IR4urdeDF1wmWpm-azWPEowxNsjVODK2tcIiVORMcTjZqFXqEe_qfykyhvTfXJbE3Z5ZY0Go5YhoKVwXg2PA7U9ccq6HVmwM9uWOwCMHuf4Fkjr0PwwIpMcEg3Qg5d18F8krrfAMDhWhsYPcM-pvvKCPeXBpjQx2-X5dSEtQyCxBbCP7Q&#xD;&#xA;Host: mvc.turanto.com&#xD;&#xA;Referer: https://mvc.turanto.com/wsh_hr_v29/Permission?RoleName=HR%20User&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36&#xD;&#xA;Origin: https://mvc.turanto.com&#xD;&#xA;X-Requested-With: XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/wsh_hr_v29" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v29\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="108335" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="multipart/form-data; boundary=----WebKitFormBoundaryhB9fFBev5AP5QFz5" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/wsh_hr_v29/Permission/SavePermission" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v29\GeneratorBase.MVC\Permission\SavePermission" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="96.253.89.230" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="96.253.89.230" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="65098" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/wsh_hr_v29/Permission/SavePermission" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/wsh_hr_v29/Permission/SavePermission" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="108335" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="multipart/form-data; boundary=----WebKitFormBoundaryhB9fFBev5AP5QFz5" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="application/json, text/javascript, */*; q=0.01" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="ASP.NET_SessionId=imitn5srgtbeiyje5krifuvy; __RequestVerificationToken_L3dzaF9ocg2=BsoTzO0K1TvCuM7hLMD30Q2lC08dRYtEMUhAxn7AbNnTY8pRr9Wrxf9994Hg8LWtN4uhpDO8ocSKulSFwHZls8Ynli_H7Dc6O-IpGlYQygc1; __RequestVerificationToken_L3dzaF9ocl92Mjg1=1psJHbbMHCzNH4R0566lzc1VIAmr2wltf4VVyr0J1uXelfuTlWrwZlqGrlkpPP0qTUbw6IF3OSeklWxlYg0favuJRqele-di3hERTyjLiso1; wsh_hr_v27=bT_8H-yx224R9pKq3DrEmFfQyjKu5lIxm-6Z0lsvQ3WOyJvzEV1LUItmAmqm6LHrWMmar3LCCY9_MkUvmYHOhVXHdaWPFMPOrrkXLXgPPK0PMFtRVCRPZzXisbGfnyn9TieaIb2WbUMkNjAzQz0ayyfm6dhHRdrOjp8ygEjt1KMTL09GEpbmf-40ef2FdwhzLbp38FNOWulLoBFfj1dBcqE7HYi5NqZxS4JZWwwtwiX4_bfnBYVsfqOUgJqGspPxmzfSHBdutVf-3UCuxER9NJY_m5h2h7diCSOppopcNFjrslsPStyZkMC2S_vmVOG_Ud__7R0vyCAwUAjJ5KnZB_OxkwPEmpUBkVBl28UGX-JOArrhPT6t2lBeSOs8Fx8h3Phuq35wttu5_FQGDJu2nCuI3HYLps3dKC-5PGPdt8faQIkcBike4Z6gEXzaM1BiXQIPHEN3L2GehNp5l8AhBcrS4srnPVN8spCsNN-wN38PbdBp7jWOfcNA2hh9GUqtu74KaiNT-IhSm6aQsEG92w; __RequestVerificationToken_L3dzaF9ocl92Mjk1=GKT5DclGAnaBS8TXCXUYG_Xdl30zkt9PfaMF5tzmj4YCcBGAjTsFgCgGaZStLGl_WPpfGlKOiMzm2HddKZiMevHz2hQ1vGe9D0690k8wKZk1; wsh_hr_v29=ODnOxp-JEfTTKBJBWma8p8pUIN_viESjIGG6h_aysy_1n9jM8R35uqNDADhL1IkQ0jfhEiNyMImdrB3u0sh-sa4gsgsgzDEjwgm2qp3eBNxic_fgRyCtW0qcuyr0uMxGcrmHCLo47B_j9UVv2YCahQWk-R-KePe22D314Z7s6sDG-xCN_FMXtHY20F6wcncYme7ZwPW_ZxZh6psscsACOayuo_KEDM3nG-ysuvzknT5vDBWM3I-p2y9Lr-_Au2ewg5nqKbVtx0PrZlgncgeeizEJtgY4vlDtGFfZ1NL5FxH4filUqAE7yHa52jL9v3NFBxsyQLnJ6QtC0bvlhxCegUqtBmI8xCFiC7CA4IR4urdeDF1wmWpm-azWPEowxNsjVODK2tcIiVORMcTjZqFXqEe_qfykyhvTfXJbE3Z5ZY0Go5YhoKVwXg2PA7U9ccq6HVmwM9uWOwCMHuf4Fkjr0PwwIpMcEg3Qg5d18F8krrfAMDhWhsYPcM-pvvKCPeXBpjQx2-X5dSEtQyCxBbCP7Q" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://mvc.turanto.com/wsh_hr_v29/Permission?RoleName=HR%20User" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="https://mvc.turanto.com" />
+    </item>
+    <item name="HTTP_X_REQUESTED_WITH">
+      <value string="XMLHttpRequest" />
+    </item>
+  </serverVariables>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="7_PyCaHutbPX8PnfM965etJhPXgpBc-pbVeicd2Fehr-6uLT6Kvt1Cn3EulZRtvEYyP4dgaq7T03fD_fFQEXsZ0eG13IJCkD7KrbdTs6EB1JDRb8ZO16B86qqimrq63cDQty_RGFjF9DbyhAJXi5cw2" />
+    </item>
+    <item name="RoleName">
+      <value string="HR User" />
+    </item>
+    <item name="Entities[0].EntityName">
+      <value string="T_Accommodation" />
+      <value string="T_Accommodation" />
+    </item>
+    <item name="Entities[0].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[0].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[0].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[0].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[0].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[0].IsOwner">
+      <value string="false" />
+    </item>
+    <item name="Entities[0].UserAssociation">
+      <value string="" />
+    </item>
+    <item name="Entities[1].EntityName">
+      <value string="T_Address" />
+      <value string="T_Address" />
+    </item>
+    <item name="Entities[1].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[1].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[1].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[1].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[1].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[2].EntityName">
+      <value string="T_AlcoholReason" />
+      <value string="T_AlcoholReason" />
+    </item>
+    <item name="Entities[2].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[2].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[2].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[2].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[2].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[3].EntityName">
+      <value string="T_AlcoholResult" />
+      <value string="T_AlcoholResult" />
+    </item>
+    <item name="Entities[3].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[3].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[3].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[3].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[3].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[4].EntityName">
+      <value string="T_BodyPartsAffected" />
+      <value string="T_BodyPartsAffected" />
+    </item>
+    <item name="Entities[4].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[4].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[4].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[4].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[4].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[5].EntityName">
+      <value string="T_City" />
+      <value string="T_City" />
+    </item>
+    <item name="Entities[5].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[5].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[5].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[5].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[5].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[6].EntityName">
+      <value string="T_ClaimType" />
+      <value string="T_ClaimType" />
+    </item>
+    <item name="Entities[6].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[6].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[6].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[6].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[6].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[7].EntityName">
+      <value string="T_ClaimTypeMCI" />
+      <value string="T_ClaimTypeMCI" />
+    </item>
+    <item name="Entities[7].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[7].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[7].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[7].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[7].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[8].EntityName">
+      <value string="T_ClassCode" />
+      <value string="T_ClassCode" />
+    </item>
+    <item name="Entities[8].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[8].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[8].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[8].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[8].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[9].EntityName">
+      <value string="T_Comment" />
+      <value string="T_Comment" />
+    </item>
+    <item name="Entities[9].CanAdd">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[9].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[9].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[9].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[9].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[9].IsOwner">
+      <value string="false" />
+    </item>
+    <item name="Entities[9].UserAssociation">
+      <value string="" />
+    </item>
+    <item name="Entities[10].EntityName">
+      <value string="T_Commenttype" />
+      <value string="T_Commenttype" />
+    </item>
+    <item name="Entities[10].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[10].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[10].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[10].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[10].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[11].EntityName">
+      <value string="T_ConversationalEmployeeForeignLanguage" />
+      <value string="T_ConversationalEmployeeForeignLanguage" />
+    </item>
+    <item name="Entities[11].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[11].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[11].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[11].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[11].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[11].IsOwner">
+      <value string="false" />
+    </item>
+    <item name="Entities[11].UserAssociation">
+      <value string="" />
+    </item>
+    <item name="Entities[12].EntityName">
+      <value string="T_CostCenter" />
+      <value string="T_CostCenter" />
+    </item>
+    <item name="Entities[12].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[12].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[12].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[12].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[12].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[13].EntityName">
+      <value string="T_Country" />
+      <value string="T_Country" />
+    </item>
+    <item name="Entities[13].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[13].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[13].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[13].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[13].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[14].EntityName">
+      <value string="T_CPSResults" />
+      <value string="T_CPSResults" />
+    </item>
+    <item name="Entities[14].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[14].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[14].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[14].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[14].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[15].EntityName">
+      <value string="T_Credential" />
+      <value string="T_Credential" />
+    </item>
+    <item name="Entities[15].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[15].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[15].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[15].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[15].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[16].EntityName">
+      <value string="T_Department" />
+      <value string="T_Department" />
+    </item>
+    <item name="Entities[16].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[16].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[16].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[16].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[16].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[17].EntityName">
+      <value string="T_DepartmentArea" />
+      <value string="T_DepartmentArea" />
+    </item>
+    <item name="Entities[17].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[17].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[17].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[17].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[17].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[18].EntityName">
+      <value string="FileDocument" />
+      <value string="FileDocument" />
+    </item>
+    <item name="Entities[18].CanAdd">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[18].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[18].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[18].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[18].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[18].IsOwner">
+      <value string="false" />
+    </item>
+    <item name="Entities[18].UserAssociation">
+      <value string="" />
+    </item>
+    <item name="Entities[19].EntityName">
+      <value string="T_DrugAlcoholTest" />
+      <value string="T_DrugAlcoholTest" />
+    </item>
+    <item name="Entities[19].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[19].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[19].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[19].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[19].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[19].IsOwner">
+      <value string="false" />
+    </item>
+    <item name="Entities[19].UserAssociation">
+      <value string="" />
+    </item>
+    <item name="Entities[20].EntityName">
+      <value string="T_DrugTestResult" />
+      <value string="T_DrugTestResult" />
+    </item>
+    <item name="Entities[20].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[20].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[20].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[20].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[20].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[21].EntityName">
+      <value string="T_Education" />
+      <value string="T_Education" />
+    </item>
+    <item name="Entities[21].CanAdd">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[21].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[21].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[21].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[21].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[21].IsOwner">
+      <value string="false" />
+    </item>
+    <item name="Entities[21].UserAssociation">
+      <value string="" />
+    </item>
+    <item name="Entities[22].EntityName">
+      <value string="T_EducationLevel" />
+      <value string="T_EducationLevel" />
+    </item>
+    <item name="Entities[22].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[22].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[22].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[22].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[22].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[23].EntityName">
+      <value string="T_Vendor" />
+      <value string="T_Vendor" />
+    </item>
+    <item name="Entities[23].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[23].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[23].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[23].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[23].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[23].IsOwner">
+      <value string="false" />
+    </item>
+    <item name="Entities[23].UserAssociation">
+      <value string="" />
+    </item>
+    <item name="Entities[23].SelfRegistration">
+      <value string="false" />
+    </item>
+    <item name="Entities[24].EntityName">
+      <value string="T_EEOCode" />
+      <value string="T_EEOCode" />
+    </item>
+    <item name="Entities[24].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[24].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[24].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[24].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[24].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[25].EntityName">
+      <value string="T_Employee" />
+      <value string="T_Employee" />
+    </item>
+    <item name="Entities[25].CanAdd">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[25].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[25].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[25].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[25].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[25].IsOwner">
+      <value string="false" />
+    </item>
+    <item name="Entities[25].UserAssociation">
+      <value string="" />
+    </item>
+    <item name="Entities[25].SelfRegistration">
+      <value string="false" />
+    </item>
+    <item name="Entities[26].EntityName">
+      <value string="T_EmployeeInjury" />
+      <value string="T_EmployeeInjury" />
+    </item>
+    <item name="Entities[26].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[26].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[26].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[26].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[26].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[26].IsOwner">
+      <value string="false" />
+    </item>
+    <item name="Entities[26].UserAssociation">
+      <value string="" />
+    </item>
+    <item name="Entities[27].EntityName">
+      <value string="T_EmployeeStatusCode" />
+      <value string="T_EmployeeStatusCode" />
+    </item>
+    <item name="Entities[27].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[27].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[27].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[27].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[27].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[28].EntityName">
+      <value string="T_EmployeeTerminationFacility" />
+      <value string="T_EmployeeTerminationFacility" />
+    </item>
+    <item name="Entities[28].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[28].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[28].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[28].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[28].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[29].EntityName">
+      <value string="T_EmployeeType" />
+      <value string="T_EmployeeType" />
+    </item>
+    <item name="Entities[29].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[29].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[29].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[29].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[29].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[30].EntityName">
+      <value string="T_Facility" />
+      <value string="T_Facility" />
+    </item>
+    <item name="Entities[30].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[30].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[30].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[30].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[30].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[31].EntityName">
+      <value string="T_Floor" />
+      <value string="T_Floor" />
+    </item>
+    <item name="Entities[31].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[31].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[31].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[31].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[31].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[32].EntityName">
+      <value string="T_Fund" />
+      <value string="T_Fund" />
+    </item>
+    <item name="Entities[32].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[32].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[32].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[32].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[32].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[33].EntityName">
+      <value string="T_Gender" />
+      <value string="T_Gender" />
+    </item>
+    <item name="Entities[33].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[33].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[33].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[33].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[33].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[34].EntityName">
+      <value string="T_InitialTreatment" />
+      <value string="T_InitialTreatment" />
+    </item>
+    <item name="Entities[34].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[34].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[34].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[34].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[34].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[35].EntityName">
+      <value string="T_InjuryCause" />
+      <value string="T_InjuryCause" />
+    </item>
+    <item name="Entities[35].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[35].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[35].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[35].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[35].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[36].EntityName">
+      <value string="T_InjuryNature" />
+      <value string="T_InjuryNature" />
+    </item>
+    <item name="Entities[36].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[36].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[36].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[36].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[36].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[37].EntityName">
+      <value string="T_JobAssignment" />
+      <value string="T_JobAssignment" />
+    </item>
+    <item name="Entities[37].CanAdd">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[37].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[37].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[37].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[37].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[37].IsOwner">
+      <value string="false" />
+    </item>
+    <item name="Entities[37].UserAssociation">
+      <value string="" />
+    </item>
+    <item name="Entities[38].EntityName">
+      <value string="T_Langauge" />
+      <value string="T_Langauge" />
+    </item>
+    <item name="Entities[38].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[38].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[38].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[38].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[38].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[39].EntityName">
+      <value string="T_LanguageCertifiedIn" />
+      <value string="T_LanguageCertifiedIn" />
+    </item>
+    <item name="Entities[39].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[39].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[39].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[39].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[39].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[39].IsOwner">
+      <value string="false" />
+    </item>
+    <item name="Entities[39].UserAssociation">
+      <value string="" />
+    </item>
+    <item name="Entities[40].EntityName">
+      <value string="T_LeaveProfile" />
+      <value string="T_LeaveProfile" />
+    </item>
+    <item name="Entities[40].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[40].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[40].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[40].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[40].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[40].IsOwner">
+      <value string="false" />
+    </item>
+    <item name="Entities[40].UserAssociation">
+      <value string="" />
+    </item>
+    <item name="Entities[41].EntityName">
+      <value string="T_LeaveReason" />
+      <value string="T_LeaveReason" />
+    </item>
+    <item name="Entities[41].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[41].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[41].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[41].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[41].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[42].EntityName">
+      <value string="T_Licenses" />
+      <value string="T_Licenses" />
+    </item>
+    <item name="Entities[42].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[42].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[42].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[42].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[42].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[42].IsOwner">
+      <value string="false" />
+    </item>
+    <item name="Entities[42].UserAssociation">
+      <value string="" />
+    </item>
+    <item name="Entities[43].EntityName">
+      <value string="T_Licensestype" />
+      <value string="T_Licensestype" />
+    </item>
+    <item name="Entities[43].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[43].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[43].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[43].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[43].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[44].EntityName">
+      <value string="T_MachineTool" />
+      <value string="T_MachineTool" />
+    </item>
+    <item name="Entities[44].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[44].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[44].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[44].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[44].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[45].EntityName">
+      <value string="T_Major" />
+      <value string="T_Major" />
+    </item>
+    <item name="Entities[45].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[45].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[45].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[45].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[45].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[46].EntityName">
+      <value string="T_MedicalFacilityForTreatment" />
+      <value string="T_MedicalFacilityForTreatment" />
+    </item>
+    <item name="Entities[46].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[46].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[46].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[46].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[46].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[47].EntityName">
+      <value string="T_OrgCodes" />
+      <value string="T_OrgCodes" />
+    </item>
+    <item name="Entities[47].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[47].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[47].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[47].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[47].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[48].EntityName">
+      <value string="T_OvertimeEligibility" />
+      <value string="T_OvertimeEligibility" />
+    </item>
+    <item name="Entities[48].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[48].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[48].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[48].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[48].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[49].EntityName">
+      <value string="T_Patient" />
+      <value string="T_Patient" />
+    </item>
+    <item name="Entities[49].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[49].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[49].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[49].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[49].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[50].EntityName">
+      <value string="T_Salary" />
+      <value string="T_Salary" />
+    </item>
+    <item name="Entities[50].CanAdd">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[50].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[50].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[50].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[50].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[50].IsOwner">
+      <value string="false" />
+    </item>
+    <item name="Entities[50].UserAssociation">
+      <value string="" />
+    </item>
+    <item name="Entities[51].EntityName">
+      <value string="T_PayType" />
+      <value string="T_PayType" />
+    </item>
+    <item name="Entities[51].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[51].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[51].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[51].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[51].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[52].EntityName">
+      <value string="T_Position" />
+      <value string="T_Position" />
+    </item>
+    <item name="Entities[52].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[52].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[52].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[52].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[52].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[53].EntityName">
+      <value string="T_PositionFillReason" />
+      <value string="T_PositionFillReason" />
+    </item>
+    <item name="Entities[53].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[53].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[53].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[53].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[53].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[54].EntityName">
+      <value string="T_PositionLevel" />
+      <value string="T_PositionLevel" />
+    </item>
+    <item name="Entities[54].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[54].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[54].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[54].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[54].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[55].EntityName">
+      <value string="T_PositionPostStatus" />
+      <value string="T_PositionPostStatus" />
+    </item>
+    <item name="Entities[55].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[55].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[55].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[55].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[55].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[56].EntityName">
+      <value string="T_Positionstatus" />
+      <value string="T_Positionstatus" />
+    </item>
+    <item name="Entities[56].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[56].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[56].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[56].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[56].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[57].EntityName">
+      <value string="T_PositionType" />
+      <value string="T_PositionType" />
+    </item>
+    <item name="Entities[57].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[57].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[57].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[57].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[57].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[58].EntityName">
+      <value string="T_PreEmploymentChecks" />
+      <value string="T_PreEmploymentChecks" />
+    </item>
+    <item name="Entities[58].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[58].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[58].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[58].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[58].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[58].IsOwner">
+      <value string="false" />
+    </item>
+    <item name="Entities[58].UserAssociation">
+      <value string="" />
+    </item>
+    <item name="Entities[59].EntityName">
+      <value string="T_Program" />
+      <value string="T_Program" />
+    </item>
+    <item name="Entities[59].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[59].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[59].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[59].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[59].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[60].EntityName">
+      <value string="T_Race" />
+      <value string="T_Race" />
+    </item>
+    <item name="Entities[60].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[60].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[60].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[60].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[60].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[61].EntityName">
+      <value string="T_ReasonForDrugTest" />
+      <value string="T_ReasonForDrugTest" />
+    </item>
+    <item name="Entities[61].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[61].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[61].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[61].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[61].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[62].EntityName">
+      <value string="T_ReasonforHire" />
+      <value string="T_ReasonforHire" />
+    </item>
+    <item name="Entities[62].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[62].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[62].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[62].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[62].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[63].EntityName">
+      <value string="T_Refusal" />
+      <value string="T_Refusal" />
+    </item>
+    <item name="Entities[63].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[63].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[63].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[63].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[63].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[64].EntityName">
+      <value string="T_RequiredEducation" />
+      <value string="T_RequiredEducation" />
+    </item>
+    <item name="Entities[64].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[64].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[64].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[64].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[64].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[65].EntityName">
+      <value string="T_Restrictions" />
+      <value string="T_Restrictions" />
+    </item>
+    <item name="Entities[65].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[65].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[65].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[65].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[65].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[66].EntityName">
+      <value string="T_ResultsForDrugTest" />
+      <value string="T_ResultsForDrugTest" />
+    </item>
+    <item name="Entities[66].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[66].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[66].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[66].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[66].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[67].EntityName">
+      <value string="T_ResultsTable" />
+      <value string="T_ResultsTable" />
+    </item>
+    <item name="Entities[67].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[67].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[67].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[67].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[67].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[68].EntityName">
+      <value string="T_RetainTable" />
+      <value string="T_RetainTable" />
+    </item>
+    <item name="Entities[68].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[68].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[68].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[68].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[68].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[69].EntityName">
+      <value string="T_RoleCode" />
+      <value string="T_RoleCode" />
+    </item>
+    <item name="Entities[69].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[69].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[69].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[69].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[69].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[70].EntityName">
+      <value string="T_SalaryBand" />
+      <value string="T_SalaryBand" />
+    </item>
+    <item name="Entities[70].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[70].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[70].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[70].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[70].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[71].EntityName">
+      <value string="T_ServiceRecord" />
+      <value string="T_ServiceRecord" />
+    </item>
+    <item name="Entities[71].CanAdd">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[71].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[71].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[71].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[71].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[71].IsOwner">
+      <value string="false" />
+    </item>
+    <item name="Entities[71].UserAssociation">
+      <value string="" />
+    </item>
+    <item name="Entities[72].EntityName">
+      <value string="T_Shift" />
+      <value string="T_Shift" />
+    </item>
+    <item name="Entities[72].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[72].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[72].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[72].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[72].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[73].EntityName">
+      <value string="T_ShiftTime" />
+      <value string="T_ShiftTime" />
+    </item>
+    <item name="Entities[73].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[73].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[73].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[73].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[73].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[74].EntityName">
+      <value string="T_SocCode" />
+      <value string="T_SocCode" />
+    </item>
+    <item name="Entities[74].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[74].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[74].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[74].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[74].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[75].EntityName">
+      <value string="T_State" />
+      <value string="T_State" />
+    </item>
+    <item name="Entities[75].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[75].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[75].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[75].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[75].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[76].EntityName">
+      <value string="T_TerminationReason" />
+      <value string="T_TerminationReason" />
+    </item>
+    <item name="Entities[76].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[76].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[76].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[76].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[76].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[77].EntityName">
+      <value string="T_TestType" />
+      <value string="T_TestType" />
+    </item>
+    <item name="Entities[77].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[77].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[77].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[77].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[77].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[78].EntityName">
+      <value string="T_TypeofClaim" />
+      <value string="T_TypeofClaim" />
+    </item>
+    <item name="Entities[78].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[78].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[78].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[78].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[78].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[79].EntityName">
+      <value string="T_Unit" />
+      <value string="T_Unit" />
+    </item>
+    <item name="Entities[79].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[79].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[79].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[79].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[79].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[80].EntityName">
+      <value string="T_UnitX" />
+      <value string="T_UnitX" />
+    </item>
+    <item name="Entities[80].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[80].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[80].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[80].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[80].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[80].IsOwner">
+      <value string="false" />
+    </item>
+    <item name="Entities[80].UserAssociation">
+      <value string="" />
+    </item>
+    <item name="Entities[81].EntityName">
+      <value string="T_VeteranStatus" />
+      <value string="T_VeteranStatus" />
+    </item>
+    <item name="Entities[81].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[81].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[81].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[81].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[81].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[82].EntityName">
+      <value string="T_WCAccident" />
+      <value string="T_WCAccident" />
+    </item>
+    <item name="Entities[82].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[82].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[82].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[82].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[82].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[83].EntityName">
+      <value string="T_WCCode" />
+      <value string="T_WCCode" />
+    </item>
+    <item name="Entities[83].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[83].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[83].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[83].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[83].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[84].EntityName">
+      <value string="ApplicationFeedback" />
+      <value string="ApplicationFeedback" />
+    </item>
+    <item name="Entities[84].CanAdd">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[84].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[84].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[84].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[85].EntityName">
+      <value string="ApplicationFeedbackStatus" />
+      <value string="ApplicationFeedbackStatus" />
+    </item>
+    <item name="Entities[85].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[85].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[85].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[85].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[86].EntityName">
+      <value string="ApplicationFeedbackType" />
+      <value string="ApplicationFeedbackType" />
+    </item>
+    <item name="Entities[86].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[86].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[86].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[86].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[87].EntityName">
+      <value string="AppSetting" />
+      <value string="AppSetting" />
+    </item>
+    <item name="Entities[87].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[87].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[87].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[87].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[88].EntityName">
+      <value string="AppSettingGroup" />
+      <value string="AppSettingGroup" />
+    </item>
+    <item name="Entities[88].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[88].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[88].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[88].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[89].EntityName">
+      <value string="DataSourceParameters" />
+      <value string="DataSourceParameters" />
+    </item>
+    <item name="Entities[89].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[89].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[89].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[89].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[89].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[90].EntityName">
+      <value string="DefaultEntityPage" />
+      <value string="DefaultEntityPage" />
+    </item>
+    <item name="Entities[90].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[90].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[90].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[90].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[91].EntityName">
+      <value string="Document" />
+      <value string="Document" />
+    </item>
+    <item name="Entities[91].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[91].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[91].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[91].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[92].EntityName">
+      <value string="DynamicRoleMapping" />
+      <value string="DynamicRoleMapping" />
+    </item>
+    <item name="Entities[92].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[92].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[92].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[92].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[93].EntityName">
+      <value string="EmailTemplate" />
+      <value string="EmailTemplate" />
+    </item>
+    <item name="Entities[93].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[93].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[93].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[93].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[94].EntityName">
+      <value string="EmailTemplateType" />
+      <value string="EmailTemplateType" />
+    </item>
+    <item name="Entities[94].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[94].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[94].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[94].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[95].EntityName">
+      <value string="EntityDataSource" />
+      <value string="EntityDataSource" />
+    </item>
+    <item name="Entities[95].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[95].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[95].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[95].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[95].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[96].EntityName">
+      <value string="FavoriteItem" />
+      <value string="FavoriteItem" />
+    </item>
+    <item name="Entities[96].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[96].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[96].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[96].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[97].EntityName">
+      <value string="FeedbackPriority" />
+      <value string="FeedbackPriority" />
+    </item>
+    <item name="Entities[97].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[97].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[97].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[97].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[98].EntityName">
+      <value string="FeedbackResource" />
+      <value string="FeedbackResource" />
+    </item>
+    <item name="Entities[98].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[98].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[98].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[98].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[99].EntityName">
+      <value string="FeedbackSeverity" />
+      <value string="FeedbackSeverity" />
+    </item>
+    <item name="Entities[99].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[99].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[99].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[99].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[100].EntityName">
+      <value string="ImportConfiguration" />
+      <value string="ImportConfiguration" />
+    </item>
+    <item name="Entities[100].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[100].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[100].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[100].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[101].EntityName">
+      <value string="JournalEntry" />
+      <value string="JournalEntry" />
+    </item>
+    <item name="Entities[101].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[101].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[101].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[101].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[102].EntityName">
+      <value string="LoginAttempts" />
+      <value string="LoginAttempts" />
+    </item>
+    <item name="Entities[102].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[102].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[102].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[102].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[103].EntityName">
+      <value string="T_MonthlyRepeatType" />
+      <value string="T_MonthlyRepeatType" />
+    </item>
+    <item name="Entities[103].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[103].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[103].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[103].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[103].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[104].EntityName">
+      <value string="PasswordHistory" />
+      <value string="PasswordHistory" />
+    </item>
+    <item name="Entities[104].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[104].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[104].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[104].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[105].EntityName">
+      <value string="PropertyMapping" />
+      <value string="PropertyMapping" />
+    </item>
+    <item name="Entities[105].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[105].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[105].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[105].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[105].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[106].EntityName">
+      <value string="T_RecurrenceDays" />
+      <value string="T_RecurrenceDays" />
+    </item>
+    <item name="Entities[106].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[106].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[106].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[106].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[106].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[107].EntityName">
+      <value string="T_RecurringEndType" />
+      <value string="T_RecurringEndType" />
+    </item>
+    <item name="Entities[107].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[107].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[107].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[107].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[107].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[108].EntityName">
+      <value string="T_RecurringFrequency" />
+      <value string="T_RecurringFrequency" />
+    </item>
+    <item name="Entities[108].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[108].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[108].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[108].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[108].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[109].EntityName">
+      <value string="T_RecurringScheduleDetailstype" />
+      <value string="T_RecurringScheduleDetailstype" />
+    </item>
+    <item name="Entities[109].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[109].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[109].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[109].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[109].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[110].EntityName">
+      <value string="T_RepeatOn" />
+      <value string="T_RepeatOn" />
+    </item>
+    <item name="Entities[110].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[110].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[110].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[110].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[110].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[111].EntityName">
+      <value string="Reports" />
+      <value string="Reports" />
+    </item>
+    <item name="Entities[111].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[111].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[111].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[111].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[112].EntityName">
+      <value string="T_Schedule" />
+      <value string="T_Schedule" />
+    </item>
+    <item name="Entities[112].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[112].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[112].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[112].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[112].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[113].EntityName">
+      <value string="T_Scheduletype" />
+      <value string="T_Scheduletype" />
+    </item>
+    <item name="Entities[113].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[113].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[113].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[113].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="Entities[113].Verbs">
+      <value string="" />
+    </item>
+    <item name="Entities[114].EntityName">
+      <value string="ScheduledTaskHistory" />
+      <value string="ScheduledTaskHistory" />
+    </item>
+    <item name="Entities[114].CanAdd">
+      <value string="false" />
+    </item>
+    <item name="Entities[114].CanEdit">
+      <value string="false" />
+    </item>
+    <item name="Entities[114].CanDelete">
+      <value string="false" />
+    </item>
+    <item name="Entities[114].CanView">
+      <value string="true" />
+      <value string="false" />
+    </item>
+  </form>
+  <cookies>
+    <item name="ASP.NET_SessionId">
+      <value string="imitn5srgtbeiyje5krifuvy" />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocg2">
+      <value string="BsoTzO0K1TvCuM7hLMD30Q2lC08dRYtEMUhAxn7AbNnTY8pRr9Wrxf9994Hg8LWtN4uhpDO8ocSKulSFwHZls8Ynli_H7Dc6O-IpGlYQygc1" />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92Mjg1">
+      <value string="1psJHbbMHCzNH4R0566lzc1VIAmr2wltf4VVyr0J1uXelfuTlWrwZlqGrlkpPP0qTUbw6IF3OSeklWxlYg0favuJRqele-di3hERTyjLiso1" />
+    </item>
+    <item name="wsh_hr_v27">
+      <value string="bT_8H-yx224R9pKq3DrEmFfQyjKu5lIxm-6Z0lsvQ3WOyJvzEV1LUItmAmqm6LHrWMmar3LCCY9_MkUvmYHOhVXHdaWPFMPOrrkXLXgPPK0PMFtRVCRPZzXisbGfnyn9TieaIb2WbUMkNjAzQz0ayyfm6dhHRdrOjp8ygEjt1KMTL09GEpbmf-40ef2FdwhzLbp38FNOWulLoBFfj1dBcqE7HYi5NqZxS4JZWwwtwiX4_bfnBYVsfqOUgJqGspPxmzfSHBdutVf-3UCuxER9NJY_m5h2h7diCSOppopcNFjrslsPStyZkMC2S_vmVOG_Ud__7R0vyCAwUAjJ5KnZB_OxkwPEmpUBkVBl28UGX-JOArrhPT6t2lBeSOs8Fx8h3Phuq35wttu5_FQGDJu2nCuI3HYLps3dKC-5PGPdt8faQIkcBike4Z6gEXzaM1BiXQIPHEN3L2GehNp5l8AhBcrS4srnPVN8spCsNN-wN38PbdBp7jWOfcNA2hh9GUqtu74KaiNT-IhSm6aQsEG92w" />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92Mjk1">
+      <value string="GKT5DclGAnaBS8TXCXUYG_Xdl30zkt9PfaMF5tzmj4YCcBGAjTsFgCgGaZStLGl_WPpfGlKOiMzm2HddKZiMevHz2hQ1vGe9D0690k8wKZk1" />
+    </item>
+    <item name="wsh_hr_v29">
+      <value string="ODnOxp-JEfTTKBJBWma8p8pUIN_viESjIGG6h_aysy_1n9jM8R35uqNDADhL1IkQ0jfhEiNyMImdrB3u0sh-sa4gsgsgzDEjwgm2qp3eBNxic_fgRyCtW0qcuyr0uMxGcrmHCLo47B_j9UVv2YCahQWk-R-KePe22D314Z7s6sDG-xCN_FMXtHY20F6wcncYme7ZwPW_ZxZh6psscsACOayuo_KEDM3nG-ysuvzknT5vDBWM3I-p2y9Lr-_Au2ewg5nqKbVtx0PrZlgncgeeizEJtgY4vlDtGFfZ1NL5FxH4filUqAE7yHa52jL9v3NFBxsyQLnJ6QtC0bvlhxCegUqtBmI8xCFiC7CA4IR4urdeDF1wmWpm-azWPEowxNsjVODK2tcIiVORMcTjZqFXqEe_qfykyhvTfXJbE3Z5ZY0Go5YhoKVwXg2PA7U9ccq6HVmwM9uWOwCMHuf4Fkjr0PwwIpMcEg3Qg5d18F8krrfAMDhWhsYPcM-pvvKCPeXBpjQx2-X5dSEtQyCxBbCP7Q" />
+    </item>
+  </cookies>
+</error>

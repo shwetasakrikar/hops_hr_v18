@@ -1,0 +1,595 @@
+﻿@model GeneratorBase.MVC.Models.T_Comment
+@using PagedList;
+@{
+    ViewBag.Title = "Edit Comment";
+	var EditPermission = User.CanEditItem("T_Comment", Model, User);
+	var DeletePermission = User.CanDeleteItem("T_Comment", Model, User);
+	Layout = null;
+	
+}
+@functions {
+    object getHtmlAttributes(string Property)
+    {
+        if (User.CanEdit("T_Comment", Property))
+        {
+            return new { @class = "form-control" };
+        } return new { @class = "form-control", @readonly = "readonly" };
+    }
+}
+<script>
+    $(document).ready(function () {
+        try {
+		 if ($('#EntityT_CommentDisplayValue').has('option').length > 0) {
+			var RecId = $("#Id").val()
+            $("#T_CommentDD").append($("#EntityT_CommentDisplayValue").html());
+            $("#T_CommentDD").val(RecId);
+
+			var text = $("option:selected", $("#T_CommentDD")).text();
+            $("#T_CommentDD").attr('data-toggle', 'tooltip')
+            $("#T_CommentDD").attr('title', text);
+
+            var lastOptionVal = $('#T_CommentDD option:last-child').val();
+            var fristOptionVal = $('#T_CommentDD option:first-child').val();
+            if (lastOptionVal == RecId)
+			{
+                $('#next').hide();
+				$('#SaveAndContinue').hide();
+				}
+
+            if (fristOptionVal == RecId)
+                $('#prev').hide();
+			} else {  $('#dvsavenext').hide(); $('#SaveAndContinue').hide(); }
+            var hostingEntityName = "";
+            if ('@Convert.ToString(ViewData["AssociatedType"])' != null) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+				if( '@Convert.ToBoolean(ViewData["IsFilter"])'!="False")
+				$('#' + hostingEntityName + 'ID').attr("lock","true");
+				$('#' + hostingEntityName + 'ID').trigger("change");
+				 $("input[type='radio'][name='" + hostingEntityName + "ID']").each(function () {
+                    if (!this.checked)
+                        this.closest("li").style.display = "none";
+                });		
+						
+            }
+        }
+        catch (ex) { }
+    });
+</script>
+<script type="text/javascript">
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': { allow_single_deselect: true },
+        '.chosen-select-no-single': { disable_search_threshold: 10 },
+        '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+        '.chosen-select-width': { width: "95%" }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_CommentIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_CommentIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_CommentIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_CommentIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_CommentIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_CommentIsSetValueUIRule);
+    }
+}
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-lg-12">
+        @*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+		<input type="hidden" id="ErrMsg" />
+		<div id="errorContainerEdit" style="display: none">
+            <div id="errorsMsgEdit"></div>
+            <div id="errorsEdit"></div>
+        </div>
+     <div class="col-sm-6 col-md-6 col-xs-12" style="margin-top: -12px;">
+            <h2 class="text-primary">
+                <span id="HostingEntityDisplayValue">@Html.DisplayFor(model => model.DisplayValue)</span>
+            </h2>
+        </div>
+        @if (EditPermission)
+            {
+            <div class="col-sm-6 col-md-6 col-xs-12" id="dvsavenext">
+                <button class="btn btn-default btn-xs pull-right" id="next" onclick="@Html.Raw("nextFun('T_Comment')")">Next >></button>
+                @Html.DropDownList("T_CommentDD", null, null, new { @onchange = "FillDisplayValueQEdit('T_Comment')", @required = "required", @class = "pull-right", @Style = "height: 22px;width: 170px;" })
+                <button class="btn btn-default btn-xs pull-right" id="prev" onclick="@Html.Raw("prevFun('T_Comment')")"><< Prev</button>
+            </div>
+        }
+    </div>
+    <!-- /.col-lg-12 -->
+	<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+</div>
+<div id="divDisplayBRmsgMandatory" style="display:none;">
+</div>
+<div id="divDisplayLockRecord" style="display:none;">
+</div>
+<div id="divDisplayBRReadOnly" style="display:none;">
+</div>
+<br/>
+</div>
+	
+@using (Html.BeginForm("EditQuick","T_Comment",new {UrlReferrer =Convert.ToString(ViewData["T_CommentParentUrl"])}, FormMethod.Post, new { enctype = "multipart/form-data", @id = "frmQEditT_Comment" }))
+{
+     Html.ValidationSummary(true);
+                Html.EnableClientValidation();
+    @Html.HiddenFor(model => model.Id)
+	@Html.HiddenFor(model => model.ConcurrencyKey)
+	 <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px;">
+                    <div class="panel panel-default AppForm">
+						<div class="panel-body">
+						    @Html.Hidden("AssociatedEntity", Convert.ToString(ViewData["AssociatedType"]))
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48901">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+											
+									<h3 class="panel-title" alt="Basic Details" title="Basic Details">Basic Details</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_Comment","T_WhoandWhen"))
+{
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WhoandWhen">
+                            <label  >@Html.LabelFor(model => model.T_WhoandWhenInsertDate, new { @class = "lblFix" }) <span class="text-danger-reg">*</span></label>
+                            <div class="form-group" title="Insert Who and  When">
+                                
+								<div class="col-sm-8 col-md-8 col-xs-12" id="datetimepickerT_WhoandWhen" style="padding-left:0px; padding-right:5px">
+									@Html.TextBoxFor(model => model.T_WhoandWhenInsertDate, "{0:MM/dd/yyyy hh:mm tt}", new { @class = "form-control", @readonly = "readonly",@format = "MM/DD/YYYY hh:mm" })
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-xs-12" style="padding-left:0px; padding-right:0px">
+                                    @Html.TextBoxFor(model => model.T_WhoandWhenInsertBy, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+								
+							</div>
+                        </div>
+						 <script>
+                        $(function () {
+                            $("#T_WhoandWhenInsertDate").datetimepicker({  });
+                        });
+                    </script>
+
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WhoandWhen">
+                            <label  >@Html.LabelFor(model => model.T_WhoandWhen, new { @class = "lblFix" }) <span class="text-danger-reg">*</span></label>
+                            <div class="form-group" title="Update Who and  When">
+                                
+								<div class="col-sm-8 col-md-8 col-xs-12" id="datetimepickerT_WhoandWhen" style="padding-left:0px; padding-right:5px">
+									@Html.TextBoxFor(model => model.T_WhoandWhen, "{0:MM/dd/yyyy hh:mm tt}", new { @class = "form-control", @readonly = "readonly",@format = "MM/DD/YYYY hh:mm" })
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-xs-12" style="padding-left:0px; padding-right:0px">
+                                    @Html.TextBoxFor(model => model.T_WhoandWhenUser, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+								
+							</div>
+                        </div>
+						 <script>
+                        $(function () {
+                            $("#T_WhoandWhen").datetimepicker({  });
+                        });
+                    </script>
+						}
+				@if(User.CanView("T_Comment","T_EmployeeCommentsID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeCommentsID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_EmployeeCommentsID) </label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_EmployeeCommentsID"))
+		{
+			@Html.DropDownList("T_EmployeeCommentsID", null, "-- Select --", new {     @onchange = Html.Raw("ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EmployeeCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_EmployeeCommentsID", null, "-- Select --", new {    @onchange = Html.Raw("ClearChildDD('T_LicensesCommentsID',this,'false');ClearChildDD('T_JobAssignmentCommentsID',this,'false');ClearChildDD('T_LeaveCommentsID',this,'false');ClearChildDD('T_InjuryCommentsID',this,'false');ClearChildDD('T_PreemploymentCommentsID',this,'false');ClearChildDD('T_DrugAlcoholTestCommentsID',this,'false');ClearChildDD('T_EducationCommentsID',this,'false');ClearChildDD('T_AccommodationCommentsID',this,'false');ClearChildDD('T_SalaryCommentsID',this,'false');ClearChildDD('T_ServiceRecordCommentsID',this,'false');") ,  @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_EmployeeCommentsID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_EmployeeCommentsID, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+       </div>
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48902">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+											
+									<h3 class="panel-title" alt="Comments" title="Comments">Comments</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_Comment","T_Summary"))
+{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Summary">
+							<div class='form-group' title="Notes">
+								<label  >@Html.LabelFor(model => model.T_Summary) </label>
+                                
+								@Html.TextAreaFor(model => model.T_Summary, getHtmlAttributes("T_Summary"))
+									@Html.ValidationMessageFor(model => model.T_Summary)
+								
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_Summary, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+       </div>
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48903">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+											
+									<h3 class="panel-title" alt="Associated With" title="Associated With">Associated With</h3>
+								</div>
+                                <div class="panel-body">
+				@if(User.CanView("T_Comment","T_AccommodationCommentsID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_AccommodationCommentsID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_AccommodationCommentsID) </label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_AccommodationCommentsID"))
+		{
+			@Html.DropDownList("T_AccommodationCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeAccomodationID" ,   @class = "chosen-select form-control", @HostingName = "T_Accommodation", @dataurl = Url.Action("GetAllValue", "T_Accommodation",new { caller = "T_AccommodationCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_AccommodationCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_AccommodationCommentsID", null, "-- Select --", new {  @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeAccomodationID" ,   @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Accommodation", @dataurl = Url.Action("GetAllValue", "T_Accommodation",new { caller = "T_AccommodationCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_AccommodationCommentsID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_AccommodationCommentsID, new { @class = "form-control" })}
+				@if(User.CanView("T_Comment","T_DrugAlcoholTestCommentsID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DrugAlcoholTestCommentsID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_DrugAlcoholTestCommentsID) </label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_DrugAlcoholTestCommentsID"))
+		{
+			@Html.DropDownList("T_DrugAlcoholTestCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeDrugAlcoholTestID" ,   @class = "chosen-select form-control", @HostingName = "T_DrugAlcoholTest", @dataurl = Url.Action("GetAllValue", "T_DrugAlcoholTest",new { caller = "T_DrugAlcoholTestCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_DrugAlcoholTestCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_DrugAlcoholTestCommentsID", null, "-- Select --", new {  @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeDrugAlcoholTestID" ,   @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_DrugAlcoholTest", @dataurl = Url.Action("GetAllValue", "T_DrugAlcoholTest",new { caller = "T_DrugAlcoholTestCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_DrugAlcoholTestCommentsID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_DrugAlcoholTestCommentsID, new { @class = "form-control" })}
+				@if(User.CanView("T_Comment","T_EducationCommentsID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EducationCommentsID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_EducationCommentsID) </label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_EducationCommentsID"))
+		{
+			@Html.DropDownList("T_EducationCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeEducationID" ,   @class = "chosen-select form-control", @HostingName = "T_Education", @dataurl = Url.Action("GetAllValue", "T_Education",new { caller = "T_EducationCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EducationCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_EducationCommentsID", null, "-- Select --", new {  @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeEducationID" ,   @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Education", @dataurl = Url.Action("GetAllValue", "T_Education",new { caller = "T_EducationCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_EducationCommentsID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_EducationCommentsID, new { @class = "form-control" })}
+				@if(User.CanView("T_Comment","T_InjuryCommentsID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_InjuryCommentsID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_InjuryCommentsID) </label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_InjuryCommentsID"))
+		{
+			@Html.DropDownList("T_InjuryCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeEmployeeInjuryID" ,   @class = "chosen-select form-control", @HostingName = "T_EmployeeInjury", @dataurl = Url.Action("GetAllValue", "T_EmployeeInjury",new { caller = "T_InjuryCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_InjuryCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_InjuryCommentsID", null, "-- Select --", new {  @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeEmployeeInjuryID" ,   @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_EmployeeInjury", @dataurl = Url.Action("GetAllValue", "T_EmployeeInjury",new { caller = "T_InjuryCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_InjuryCommentsID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_InjuryCommentsID, new { @class = "form-control" })}
+				@if(User.CanView("T_Comment","T_JobAssignmentCommentsID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_JobAssignmentCommentsID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_JobAssignmentCommentsID) </label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_JobAssignmentCommentsID"))
+		{
+			@Html.DropDownList("T_JobAssignmentCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeJobAssignmentID?T_JobAssignmentManagerEmployeeID?T_EmployeeSupervisorID" ,   @class = "chosen-select form-control", @HostingName = "T_JobAssignment", @dataurl = Url.Action("GetAllValue", "T_JobAssignment",new { caller = "T_JobAssignmentCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_JobAssignmentCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_JobAssignmentCommentsID", null, "-- Select --", new {  @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeJobAssignmentID?T_JobAssignmentManagerEmployeeID?T_EmployeeSupervisorID" ,   @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_JobAssignment", @dataurl = Url.Action("GetAllValue", "T_JobAssignment",new { caller = "T_JobAssignmentCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_JobAssignmentCommentsID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_JobAssignmentCommentsID, new { @class = "form-control" })}
+				@if(User.CanView("T_Comment","T_LeaveCommentsID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_LeaveCommentsID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_LeaveCommentsID) </label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_LeaveCommentsID"))
+		{
+			@Html.DropDownList("T_LeaveCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeLeaveProfileID" ,   @class = "chosen-select form-control", @HostingName = "T_LeaveProfile", @dataurl = Url.Action("GetAllValue", "T_LeaveProfile",new { caller = "T_LeaveCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_LeaveCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_LeaveCommentsID", null, "-- Select --", new {  @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeLeaveProfileID" ,   @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_LeaveProfile", @dataurl = Url.Action("GetAllValue", "T_LeaveProfile",new { caller = "T_LeaveCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_LeaveCommentsID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_LeaveCommentsID, new { @class = "form-control" })}
+				@if(User.CanView("T_Comment","T_LicensesCommentsID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_LicensesCommentsID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_LicensesCommentsID) </label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_LicensesCommentsID"))
+		{
+			@Html.DropDownList("T_LicensesCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_LicenseRecordsID" ,   @class = "chosen-select form-control", @HostingName = "T_Licenses", @dataurl = Url.Action("GetAllValue", "T_Licenses",new { caller = "T_LicensesCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_LicensesCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_LicensesCommentsID", null, "-- Select --", new {  @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_LicenseRecordsID" ,   @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Licenses", @dataurl = Url.Action("GetAllValue", "T_Licenses",new { caller = "T_LicensesCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_LicensesCommentsID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_LicensesCommentsID, new { @class = "form-control" })}
+				@if(User.CanView("T_Comment","T_SalaryCommentsID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_SalaryCommentsID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_SalaryCommentsID) </label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_SalaryCommentsID"))
+		{
+			@Html.DropDownList("T_SalaryCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeePayDetailsID" ,   @class = "chosen-select form-control", @HostingName = "T_PayDetails", @dataurl = Url.Action("GetAllValue", "T_PayDetails",new { caller = "T_SalaryCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_SalaryCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_SalaryCommentsID", null, "-- Select --", new {  @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeePayDetailsID" ,   @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_PayDetails", @dataurl = Url.Action("GetAllValue", "T_PayDetails",new { caller = "T_SalaryCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_SalaryCommentsID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_SalaryCommentsID, new { @class = "form-control" })}
+				@if(User.CanView("T_Comment","T_PreemploymentCommentsID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PreemploymentCommentsID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_PreemploymentCommentsID) </label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_PreemploymentCommentsID"))
+		{
+			@Html.DropDownList("T_PreemploymentCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeCriminalBackgroundCheckID?T_ReviewerID" ,   @class = "chosen-select form-control", @HostingName = "T_BackgroundCheck", @dataurl = Url.Action("GetAllValue", "T_BackgroundCheck",new { caller = "T_PreemploymentCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_PreemploymentCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_PreemploymentCommentsID", null, "-- Select --", new {  @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeCriminalBackgroundCheckID?T_ReviewerID" ,   @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_BackgroundCheck", @dataurl = Url.Action("GetAllValue", "T_BackgroundCheck",new { caller = "T_PreemploymentCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_PreemploymentCommentsID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_PreemploymentCommentsID, new { @class = "form-control" })}
+				@if(User.CanView("T_Comment","T_ServiceRecordCommentsID"))
+				{
+
+				   <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ServiceRecordCommentsID">
+                        <div class='form-group'>
+                            <label  >@Html.LabelFor(model => model.T_ServiceRecordCommentsID) </label>
+							
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_Comment", "T_ServiceRecordCommentsID"))
+		{
+			@Html.DropDownList("T_ServiceRecordCommentsID", null, "-- Select --", new {   @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeEmploymentProfileID" ,   @class = "chosen-select form-control", @HostingName = "T_ServiceRecord", @dataurl = Url.Action("GetAllValue", "T_ServiceRecord",new { caller = "T_ServiceRecordCommentsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_ServiceRecordCommentsID, new { @class = "form-control" })
+			@Html.DropDownList("T_ServiceRecordCommentsID", null, "-- Select --", new {  @ParentDD = "T_EmployeeCommentsID" , @AssoNameWithParent = "T_EmployeeEmploymentProfileID" ,   @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_ServiceRecord", @dataurl = Url.Action("GetAllValue", "T_ServiceRecord",new { caller = "T_ServiceRecordCommentsID" }) })
+		}
+                                @Html.ValidationMessageFor(model => model.T_ServiceRecordCommentsID)
+								 
+							</div>
+							
+                        </div>
+                    </div>
+                 
+					} else { @Html.HiddenFor(model => model.T_ServiceRecordCommentsID, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+       </div>
+											<div class="row">
+				       </div>
+
+
+	            </div>
+        </div>
+	</div>
+</div>
+		 @Html.AntiForgeryToken();
+		 var businessrule1 = User.businessrules.Where(p => p.EntityName == "T_Comment").ToList();
+		 var lstinlineentityname = "";
+		 var lstinlineassocdispname ="";
+		 var lstinlineassocname = "";
+		 <button id="CancelQuickAdd" type="button" class="btn btn-default btn-sm" data-dismiss="modal" aria-hidden="true">Cancel</button>
+		 if (EditPermission)
+         {
+			    <input type="submit" id="command" name="command" value="Save & Close" class="btn btn-primary btn-sm" onclick="QuickEditFromGrid(event,true,'T_Comment','@ViewData["AssociatedType"]',false,'@businessrule1',@businessrule1.Count,'OnEdit','ErrMsg',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname');" />
+				<input type="submit" id="sevranBtn" style="display:none;" name="command" value="Save" class="btn btn-primary btn-sm" onclick="QuickEditFromGrid(event,true,'T_Comment','@ViewData["AssociatedType"]',false,'@businessrule1',@businessrule1.Count,'OnEdit','ErrMsg',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname','True');" />
+                <button type="button" id="SaveAndContinue" name="SaveAndContinue" class="btn btn-primary btn-sm" onclick="@Html.Raw("SaveAndContinueEdit('T_Comment',event)")">Save & Next</button>
+				<input type="hidden" name="hdncommand" value="" />
+  		 }	
+}
+<script src="@Url.Content("~/bundles/jqueryval")" type="text/javascript"></script>
+<script src="@Url.Content("~/bundles/common3")" type="text/javascript"></script>
+
+<script>
+    $("input[type='submit']").click(function (event) {
+	if (!$("#frmQEditT_Comment").valid()) return;
+	
+        var $this = $(this);
+        $('input:hidden[name="hdncommand"]').val($this.val());
+    });
+</script>
+@{
+var businessrule = User.businessrules.Where(p => p.EntityName == "T_Comment").ToList();
+
+
+	
+
+
+if ((businessrule != null && businessrule.Count > 0) )
+{
+var ruleids = businessrule.Select(q => q.Id).ToList();
+var typelist  = string.Join(",", (new GeneratorBase.MVC.Models.RuleActionContext()).RuleActions.Where(p => ruleids.Contains(p.RuleActionID.Value) && p.associatedactiontype.TypeNo.HasValue).Select(p => p.associatedactiontype.TypeNo.Value).Distinct().ToList());
+
+    <script>
+    $(document).ready(function () {
+	document.getElementById("ErrMsg").innerHTML = "";
+		 var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+
+				 form = $("#frmQEditT_Comment").serialize();
+					 dataurl = "@Url.Action("businessruletype", "T_Comment", new { ruleType = "OnEdit"})";
+            ApplyBusinessRuleOnPageLoad("@typelist",dataurl, "T_Comment", false, "ErrMsg", form);
+			//business rules on inline associations
+    });
+</script>
+<script>
+    $("form").submit(function (event) {
+	if (!$("#frmQEditT_Comment").valid()) return;
+	document.getElementById("ErrMsg").innerHTML = "";
+            var flag = true;
+		var form = $("#frmQEditT_Comment").serialize();
+					});
+</script>
+}
+ 
+}
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+            document.getElementsByTagName("body")[0].focus();
+            $("#addPopup").removeAttr("tabindex");
+            var cltcoll = $("#dvPopup").find('input[type=text]:not([class=hidden]):not([readonly]),textarea:not([readonly])')
+            var cltid = "";
+            $(cltcoll).each(function () {
+			  if ($(this).attr("id") == undefined)
+                    return
+                var dvhidden = $("#dv" + $(this).attr("id"));
+				var dvDate = $("#datetimepicker" + $(this).attr("id")).attr("id");
+                if (!(dvhidden.css('display') == 'none') && dvDate == undefined) {
+                    cltid = $(this);
+                    return false;
+                }
+            });
+            if (cltid != "" && cltid != undefined)
+                setTimeout(function () { $(cltid).focus(); }, 500)
+        }
+        catch (ex) { }
+    });
+</script>
+

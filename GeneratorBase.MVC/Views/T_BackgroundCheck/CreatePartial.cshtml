@@ -1,0 +1,516 @@
+﻿@model GeneratorBase.MVC.Models.T_BackgroundCheck
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_BackgroundCheckIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_BackgroundCheckIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_BackgroundCheckIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_BackgroundCheckIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_BackgroundCheckIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_BackgroundCheckIsSetValueUIRule);
+    }
+}
+@using (Html.BeginForm("Create", "T_BackgroundCheck",new {UrlReferrer = Convert.ToString(ViewData["T_BackgroundCheckParentUrl"]), IsDDAdd = ViewBag.IsDDAdd }, FormMethod.Post, new { enctype = "multipart/form-data",id="frmT_BackgroundCheck" }))
+{
+   @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+	<input type="hidden" id="ErrMsg" />
+	@*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+    <div id="errorContainer" style="display: none">
+        <div id="errorsMsg"></div>
+        <div id="errors"></div>
+    </div>
+	 
+	 <div id="divDisplayThresholdLimit" style="display:none;">
+	</div>
+	 <div id="divDisplayBRmsgMandatory" style="display:none;">
+	</div>
+	<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+	</div>
+	<div id="divDisplayCodeFragment" style="display:none;">
+	</div>
+
+	<div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="AppForm">
+                <div class="">
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48923">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#employeeinformationbody" alt="Employee Information" title="Employee Information"><span class="glyphicon glyphicon-chevron-down"></span> Employee Information</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="employeeinformationbody">					
+      <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeCriminalBackgroundCheckID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_EmployeeCriminalBackgroundCheckID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_EmployeeCriminalBackgroundCheckID", null, "-- Select --", new {   @required ="required",      @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeCriminalBackgroundCheckID" }) })
+			@Html.ValidationMessageFor(model => model.T_EmployeeCriminalBackgroundCheckID)
+			@if ( User.CanAdd("T_Employee"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_Employee"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+@if(User.CanView("T_BackgroundCheck","T_RetainTablePreEmploymentCheckID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_RetainTablePreEmploymentCheckID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_RetainTablePreEmploymentCheckID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_RetainTablePreEmploymentCheckID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_RetainTable", @dataurl = Url.Action("GetAllValue", "T_RetainTable",new { caller = "T_RetainTablePreEmploymentCheckID" }) })
+			@Html.ValidationMessageFor(model => model.T_RetainTablePreEmploymentCheckID)
+			@if ( User.CanAdd("T_RetainTable"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_RetainTable"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employment Decision','dvPopup','" + Url.Action("CreateQuick", "T_RetainTable", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  							</div>
+                         </div>
+                      </div>
+       </div>
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48922">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+											
+									<h3 class="panel-title" alt="Background Check" title="Background Check">Background Check</h3>
+								</div>
+                                <div class="panel-body">
+   @if(User.CanView("T_BackgroundCheck","T_DateFingerPrintTaken"))
+{
+		  <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DateFingerPrintTaken">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_DateFingerPrintTaken) <span class="text-danger-reg">*</span></label>
+                                <div class="form-group" title="Date  Finger  Print  Taken">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_DateFingerPrintTaken">
+                                        @Html.TextBoxFor(model => model.T_DateFingerPrintTaken, new { @class = "form-control" ,@Value = DateTime.Now.ToString("MM/dd/yyyy")  })
+                                        
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_DateFingerPrintTaken)
+
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_DateFingerPrintTaken').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_DateFingerPrintTaken').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+							}
+		  
+                          
+   @if(User.CanView("T_BackgroundCheck","T_DateInformationReceivedFromCBC"))
+{
+		  <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DateInformationReceivedFromCBC">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_DateInformationReceivedFromCBC) </label>
+                                <div class="form-group" title="VSP Response Rcvd Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_DateInformationReceivedFromCBC">
+                                        @Html.TextBoxFor(model => model.T_DateInformationReceivedFromCBC, new { @class = "form-control"   })
+                                        
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_DateInformationReceivedFromCBC)
+
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_DateInformationReceivedFromCBC').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_DateInformationReceivedFromCBC').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+							}
+		  
+                          
+@if(User.CanView("T_BackgroundCheck","T_PreEmploymentCheckResultsVAStateID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PreEmploymentCheckResultsVAStateID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_PreEmploymentCheckResultsVAStateID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_PreEmploymentCheckResultsVAStateID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_ResultsTable", @dataurl = Url.Action("GetAllValue", "T_ResultsTable",new { caller = "T_PreEmploymentCheckResultsVAStateID" }) })
+			@Html.ValidationMessageFor(model => model.T_PreEmploymentCheckResultsVAStateID)
+			@if ( User.CanAdd("T_ResultsTable"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_ResultsTable"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','VSP Initial Results','dvPopup','" + Url.Action("CreateQuick", "T_ResultsTable", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+     @if(User.CanView("T_BackgroundCheck","T_BackgroundDispositionDate"))
+{
+		  <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_BackgroundDispositionDate">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_BackgroundDispositionDate) </label>
+                                <div class="form-group" title="FBI Record Received Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_BackgroundDispositionDate">
+                                        @Html.TextBoxFor(model => model.T_BackgroundDispositionDate, new { @class = "form-control"   })
+                                        
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_BackgroundDispositionDate)
+
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_BackgroundDispositionDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_BackgroundDispositionDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+							}
+		  
+                          
+   @if(User.CanView("T_BackgroundCheck","T_ReviewDate"))
+{
+		  <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ReviewDate">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_ReviewDate) </label>
+                                <div class="form-group" title="Review  Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_ReviewDate">
+                                        @Html.TextBoxFor(model => model.T_ReviewDate, new { @class = "form-control"   })
+                                        
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_ReviewDate)
+
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_ReviewDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_ReviewDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+							}
+		  
+                          
+@if(User.CanView("T_BackgroundCheck","T_ReviewerID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ReviewerID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_ReviewerID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_ReviewerID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_ReviewerID" }) })
+			@Html.ValidationMessageFor(model => model.T_ReviewerID)
+			@if ( User.CanAdd("T_Employee"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_Employee"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Reviewer ','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  							</div>
+                         </div>
+                      </div>
+       </div>
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48924">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#childprotectiveservicesbody" alt="Child Protective Services" title="Child Protective Services"><span class="glyphicon glyphicon-chevron-down"></span> Child Protective Services</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse collapse" id="childprotectiveservicesbody">					
+   @if(User.CanView("T_BackgroundCheck","T_DateCheckInitiated"))
+{
+		  <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DateCheckInitiated">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_DateCheckInitiated) </label>
+                                <div class="form-group" title="Date  Check  Initiated">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_DateCheckInitiated">
+                                        @Html.TextBoxFor(model => model.T_DateCheckInitiated, new { @class = "form-control"   })
+                                        
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_DateCheckInitiated)
+
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_DateCheckInitiated').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_DateCheckInitiated').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+							}
+		  
+                          
+   @if(User.CanView("T_BackgroundCheck","T_DateCPSResultReceived"))
+{
+		  <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DateCPSResultReceived">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_DateCPSResultReceived) </label>
+                                <div class="form-group" title="Date  C P S  Result  Received">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_DateCPSResultReceived">
+                                        @Html.TextBoxFor(model => model.T_DateCPSResultReceived, new { @class = "form-control"   })
+                                        
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_DateCPSResultReceived)
+
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_DateCPSResultReceived').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_DateCPSResultReceived').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+							}
+		  
+                          
+@if(User.CanView("T_BackgroundCheck","T_CPSResultID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_CPSResultID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_CPSResultID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_CPSResultID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_CPSResults", @dataurl = Url.Action("GetAllValue", "T_CPSResults",new { caller = "T_CPSResultID" }) })
+			@Html.ValidationMessageFor(model => model.T_CPSResultID)
+			@if ( User.CanAdd("T_CPSResults"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_CPSResults"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','CPS Result ','dvPopup','" + Url.Action("CreateQuick", "T_CPSResults", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+     @if(User.CanView("T_BackgroundCheck","T_CPSReviewDate"))
+{
+		  <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_CPSReviewDate">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_CPSReviewDate) </label>
+                                <div class="form-group" title="C P S  Review  Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_CPSReviewDate">
+                                        @Html.TextBoxFor(model => model.T_CPSReviewDate, new { @class = "form-control"   })
+                                        
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_CPSReviewDate)
+
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_CPSReviewDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_CPSReviewDate').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+							}
+		  
+                          
+							</div>
+                         </div>
+                      </div>
+       </div>
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48925">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#notesbody" alt="Notes" title="Notes"><span class="glyphicon glyphicon-chevron-down"></span> Notes</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse collapse" id="notesbody">					
+						@if(User.CanView("T_BackgroundCheck","T_Notes"))
+								{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Notes">
+                                <div class='form-group' title="Notes">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Notes) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    @Html.TextAreaFor(model => model.T_Notes, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_Notes)
+									</div>
+                                </div>
+						</div>
+						}
+							</div>
+                         </div>
+                      </div>
+       </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+		<a class="btn btn-default btn-sm" onclick="goBack('@Url.Action("Index","T_BackgroundCheck")');" alt="Cancel" title="Cancel">Cancel</a>
+          @*@Html.ActionLink("Cancel", "Cancel", new { UrlReferrer = ViewData["T_BackgroundCheckParentUrl"] }, new { @onclick = "", @class = "btn btn-default btn-sm" })*@
+	<input type="submit" name="command" value="Create" class="btn btn-primary btn-sm" alt="Create" title="Create"/>
+    if (ViewBag.IsDDAdd == null && User.CanEdit("T_BackgroundCheck"))
+    {
+	<input type="submit" name="command" value="Create & Continue" class="btn btn-primary btn-sm" alt="Create & Continue" title="Create & Continue"/>
+	}
+	 <input type="hidden" name="hdncommand" value="" />
+	<br/><br/>
+}
+	<script>
+	    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+	
+@{
+		var businessrule = User.businessrules.Where(p => p.EntityName == "T_BackgroundCheck").ToList();
+		
+if ((businessrule != null && businessrule.Count > 0) )
+    {
+        <script>
+            $("form").submit(function (event) {
+			if (!$("#frmT_BackgroundCheck").valid()) return;
+			var flag = true;
+							document.getElementById("ErrMsg").innerHTML = "";
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+                //var form = $(this).serialize();
+ form = $("#frmT_BackgroundCheck").serialize();
+  
+                dataurl = "@Url.Action("businessruletype", "T_BackgroundCheck", new { ruleType = "OnCreate"})";
+                flag = ApplyBusinessRuleOnSubmit(dataurl, "T_BackgroundCheck", false, "ErrMsg", form);
+				//business rules on inline associations
+				if (flag) {
+				                    $('input:hidden[name="hdncommand"]').val($(document.activeElement).val());
+
+					 $("#frmT_BackgroundCheck").find(':input').removeAttr('disabled');
+                }
+				return flag;
+			 });	
+        </script>
+    }
+    else
+    {
+	<script>
+            $("input[type='submit']").click(function (event) {
+			if (!$("#frmT_BackgroundCheck").valid()) return;
+                var $this = $(this);
+                $('input:hidden[name="hdncommand"]').val($this.val());
+            });
+	</script>
+           
+    }
+}
+
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+		 focusOnControl('frmT_BackgroundCheck');
+        }
+        catch (ex) { }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        try {
+            var hostingEntityName = "";
+            if ('@Convert.ToString(ViewData["AssociatedType"])'.length > 0) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+                 $('#' + hostingEntityName + 'ID').attr("lock","true");
+				  $('#' + hostingEntityName + 'ID').trigger("change");
+            }
+			
+        }
+        catch (ex) { }
+		});
+</script>
+

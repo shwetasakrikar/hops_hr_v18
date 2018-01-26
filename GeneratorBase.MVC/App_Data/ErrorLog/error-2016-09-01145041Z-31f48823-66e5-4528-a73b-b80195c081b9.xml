@@ -1,0 +1,197 @@
+﻿<error errorId="31f48823-66e5-4528-a73b-b80195c081b9" application="/LM/W3SVC/1/ROOT/wsh_hr_v35" host="TURANTOMVC" type="System.Web.HttpException" message="Server cannot set status after HTTP headers have been sent." source="System.Web" detail="System.Web.HttpException (0x80004005): Server cannot set status after HTTP headers have been sent.&#xD;&#xA;   at System.Web.HttpResponse.set_StatusCode(Int32 value)&#xD;&#xA;   at System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)&#xD;&#xA;   at System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="michelle.decker@dbhds.virginia.gov" time="2016-09-01T14:50:41.0868556Z" statusCode="500">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_VIA:SWG&#xD;&#xA;HTTP_ACCEPT:text/html, application/xhtml+xml, */*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US&#xD;&#xA;HTTP_COOKIE:pageSizeundefinedT_Position=50; pageSizeundefinedT_UnitX=50; paginationundefinedT_UnitX=2; paginationundefinedT_Position=10; pageSizemichelle.decker%40dbhds.virginia.govT_Employee=50; pageSizemichelle.decker%40dbhds.virginia.govT_Position=50; wsh_hr_v35CurrentRole=Admin,; wsh_hr_v32=oG1tUZjCgG8KvL6bPGbMcNJpMC3crVA5U0fV549_NpSGrbuVUR7H9mI5DitTog2RAwU5Fn9G81NznvYxlYuYtH6Z7wcF8akxetSRUYiziR0NmVapjkJeRZwhOGtkfFeokONh8NUeHiC8C1D49o3LWLv6-efPP8qq5iYh7TabCkA1W57rJQ8xHFEg9VlNvupl2XMYCUDv5TKCUF_d2QFJQskOzv3KRcZIpr9_LFrDnqQt-X892DYISLIgx5olD2FsOHmq4PZk6S4dq-RDErHTjG6ePODsw7PxOn-mvI8RG2Qtx8v90YdGRVhjwthma7-CFZDWhjM20t5H9NOfu6Ie50j890oaRXlEHJHw93ozWwaZ9egGifnFTPZNQL0E9zFc7OJ3vz0UmCpA7S7VspbK0bdy_wCeYLvu0PvyXSfx04pOQlIiDCsogAX_H7XhNyV_jrvQDu61q7k6qX-wInQVZbszNRp78zs0cPKfpAP6USLTY5QjJQ1kEXSAI3GMtzdibMPdnKtbWpew8pNx3abIIzkOBe5GBngN4QWGflFxxX3GXB0flzfAW89AL-PgYOcy; __RequestVerificationToken_L3dzaF9ocl92MzU1=3_sRjIZ3skS7FHrLWYIEwppyYg9UEI3nKxhQUlxRWjgSSMvMPe_gPi9wq7S0PBty06QopxcEDJEEGA7qyQfvvPZcFti520GI15LJacvWpMc1&#xD;&#xA;HTTP_HOST:mvc.turanto.com&#xD;&#xA;HTTP_REFERER:https://mvc.turanto.com/wsh_hr_v35/T_EmployeeInjury/Edit/25&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: Keep-Alive&#xD;&#xA;Via: SWG&#xD;&#xA;Accept: text/html, application/xhtml+xml, */*&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US&#xD;&#xA;Cookie: pageSizeundefinedT_Position=50; pageSizeundefinedT_UnitX=50; paginationundefinedT_UnitX=2; paginationundefinedT_Position=10; pageSizemichelle.decker%40dbhds.virginia.govT_Employee=50; pageSizemichelle.decker%40dbhds.virginia.govT_Position=50; wsh_hr_v35CurrentRole=Admin,; wsh_hr_v32=oG1tUZjCgG8KvL6bPGbMcNJpMC3crVA5U0fV549_NpSGrbuVUR7H9mI5DitTog2RAwU5Fn9G81NznvYxlYuYtH6Z7wcF8akxetSRUYiziR0NmVapjkJeRZwhOGtkfFeokONh8NUeHiC8C1D49o3LWLv6-efPP8qq5iYh7TabCkA1W57rJQ8xHFEg9VlNvupl2XMYCUDv5TKCUF_d2QFJQskOzv3KRcZIpr9_LFrDnqQt-X892DYISLIgx5olD2FsOHmq4PZk6S4dq-RDErHTjG6ePODsw7PxOn-mvI8RG2Qtx8v90YdGRVhjwthma7-CFZDWhjM20t5H9NOfu6Ie50j890oaRXlEHJHw93ozWwaZ9egGifnFTPZNQL0E9zFc7OJ3vz0UmCpA7S7VspbK0bdy_wCeYLvu0PvyXSfx04pOQlIiDCsogAX_H7XhNyV_jrvQDu61q7k6qX-wInQVZbszNRp78zs0cPKfpAP6USLTY5QjJQ1kEXSAI3GMtzdibMPdnKtbWpew8pNx3abIIzkOBe5GBngN4QWGflFxxX3GXB0flzfAW89AL-PgYOcy; __RequestVerificationToken_L3dzaF9ocl92MzU1=3_sRjIZ3skS7FHrLWYIEwppyYg9UEI3nKxhQUlxRWjgSSMvMPe_gPi9wq7S0PBty06QopxcEDJEEGA7qyQfvvPZcFti520GI15LJacvWpMc1&#xD;&#xA;Host: mvc.turanto.com&#xD;&#xA;Referer: https://mvc.turanto.com/wsh_hr_v35/T_EmployeeInjury/Edit/25&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/wsh_hr_v35" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\wsh_hr_v35\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="michelle.decker@dbhds.virginia.gov" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="michelle.decker@dbhds.virginia.gov" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="michelle.decker@dbhds.virginia.gov" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/wsh_hr_v35/T_JobAssignment/FindFSearch/25" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\wsh_hr_v35\GeneratorBase.MVC\T_JobAssignment\FindFSearch\25" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="sourceEntity=T_EmployeeInjury" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="166.67.66.241" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="166.67.66.241" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="48365" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/wsh_hr_v35/T_JobAssignment/FindFSearch/25" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/wsh_hr_v35/T_JobAssignment/FindFSearch/25" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_VIA">
+      <value string="SWG" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html, application/xhtml+xml, */*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="pageSizeundefinedT_Position=50; pageSizeundefinedT_UnitX=50; paginationundefinedT_UnitX=2; paginationundefinedT_Position=10; pageSizemichelle.decker%40dbhds.virginia.govT_Employee=50; pageSizemichelle.decker%40dbhds.virginia.govT_Position=50; wsh_hr_v35CurrentRole=Admin,; wsh_hr_v32=oG1tUZjCgG8KvL6bPGbMcNJpMC3crVA5U0fV549_NpSGrbuVUR7H9mI5DitTog2RAwU5Fn9G81NznvYxlYuYtH6Z7wcF8akxetSRUYiziR0NmVapjkJeRZwhOGtkfFeokONh8NUeHiC8C1D49o3LWLv6-efPP8qq5iYh7TabCkA1W57rJQ8xHFEg9VlNvupl2XMYCUDv5TKCUF_d2QFJQskOzv3KRcZIpr9_LFrDnqQt-X892DYISLIgx5olD2FsOHmq4PZk6S4dq-RDErHTjG6ePODsw7PxOn-mvI8RG2Qtx8v90YdGRVhjwthma7-CFZDWhjM20t5H9NOfu6Ie50j890oaRXlEHJHw93ozWwaZ9egGifnFTPZNQL0E9zFc7OJ3vz0UmCpA7S7VspbK0bdy_wCeYLvu0PvyXSfx04pOQlIiDCsogAX_H7XhNyV_jrvQDu61q7k6qX-wInQVZbszNRp78zs0cPKfpAP6USLTY5QjJQ1kEXSAI3GMtzdibMPdnKtbWpew8pNx3abIIzkOBe5GBngN4QWGflFxxX3GXB0flzfAW89AL-PgYOcy; __RequestVerificationToken_L3dzaF9ocl92MzU1=3_sRjIZ3skS7FHrLWYIEwppyYg9UEI3nKxhQUlxRWjgSSMvMPe_gPi9wq7S0PBty06QopxcEDJEEGA7qyQfvvPZcFti520GI15LJacvWpMc1" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://mvc.turanto.com/wsh_hr_v35/T_EmployeeInjury/Edit/25" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="sourceEntity">
+      <value string="T_EmployeeInjury" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name="pageSizeundefinedT_Position">
+      <value string="50" />
+    </item>
+    <item name="pageSizeundefinedT_UnitX">
+      <value string="50" />
+    </item>
+    <item name="paginationundefinedT_UnitX">
+      <value string="2" />
+    </item>
+    <item name="paginationundefinedT_Position">
+      <value string="10" />
+    </item>
+    <item name="pageSizemichelle.decker%40dbhds.virginia.govT_Employee">
+      <value string="50" />
+    </item>
+    <item name="pageSizemichelle.decker%40dbhds.virginia.govT_Position">
+      <value string="50" />
+    </item>
+    <item name="wsh_hr_v35CurrentRole">
+      <value string="Admin," />
+    </item>
+    <item name="wsh_hr_v32">
+      <value string="oG1tUZjCgG8KvL6bPGbMcNJpMC3crVA5U0fV549_NpSGrbuVUR7H9mI5DitTog2RAwU5Fn9G81NznvYxlYuYtH6Z7wcF8akxetSRUYiziR0NmVapjkJeRZwhOGtkfFeokONh8NUeHiC8C1D49o3LWLv6-efPP8qq5iYh7TabCkA1W57rJQ8xHFEg9VlNvupl2XMYCUDv5TKCUF_d2QFJQskOzv3KRcZIpr9_LFrDnqQt-X892DYISLIgx5olD2FsOHmq4PZk6S4dq-RDErHTjG6ePODsw7PxOn-mvI8RG2Qtx8v90YdGRVhjwthma7-CFZDWhjM20t5H9NOfu6Ie50j890oaRXlEHJHw93ozWwaZ9egGifnFTPZNQL0E9zFc7OJ3vz0UmCpA7S7VspbK0bdy_wCeYLvu0PvyXSfx04pOQlIiDCsogAX_H7XhNyV_jrvQDu61q7k6qX-wInQVZbszNRp78zs0cPKfpAP6USLTY5QjJQ1kEXSAI3GMtzdibMPdnKtbWpew8pNx3abIIzkOBe5GBngN4QWGflFxxX3GXB0flzfAW89AL-PgYOcy" />
+    </item>
+    <item name="__RequestVerificationToken_L3dzaF9ocl92MzU1">
+      <value string="3_sRjIZ3skS7FHrLWYIEwppyYg9UEI3nKxhQUlxRWjgSSMvMPe_gPi9wq7S0PBty06QopxcEDJEEGA7qyQfvvPZcFti520GI15LJacvWpMc1" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="qu5zbyxc2o3mcoqv1beflsqq" />
+    </item>
+  </cookies>
+</error>

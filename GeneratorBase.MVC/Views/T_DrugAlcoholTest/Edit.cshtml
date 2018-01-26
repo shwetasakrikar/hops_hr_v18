@@ -1,0 +1,735 @@
+﻿@model GeneratorBase.MVC.Models.T_DrugAlcoholTest
+@using PagedList;
+@{
+    ViewBag.Title = "Edit Drug & Alcohol Test";
+	var EditPermission = User.CanEditItem("T_DrugAlcoholTest", Model, User);
+	var DeletePermission = User.CanDeleteItem("T_DrugAlcoholTest", Model, User);
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_DrugAlcoholTest");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Drug & Alcohol Test";
+}
+@functions {
+    object getHtmlAttributes(string Property)
+    {
+        if (User.CanEdit("T_DrugAlcoholTest", Property))
+        {
+            return new { @class = "form-control" };
+        } return new { @class = "form-control", @readonly = "readonly" };
+    }
+}
+<script>
+    $(document).ready(function () {
+        try {
+            var hostingEntityName = "";
+             if ('@Convert.ToString(ViewData["AssociatedType"])'.length > 0) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+				$('#' + hostingEntityName + 'ID').attr("lock","true");
+				// $('#' + hostingEntityName + 'ID').trigger("change");
+				  $("input[type='radio'][name='" + hostingEntityName + "ID']").each(function () {
+                    if (!this.checked)
+                        this.closest("li").style.display = "none";
+                });
+            }
+			if ($.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') != null) {
+				$('a[href="#' + $.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') + '"]').click();
+			}
+			 
+        }
+        catch (ex) { }
+    });
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_DrugAlcoholTestIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_DrugAlcoholTestIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_DrugAlcoholTestIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_DrugAlcoholTestIsGroupsHiddenRule);
+    }
+}
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_DrugAlcoholTestIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_DrugAlcoholTestIsSetValueUIRule);
+    }
+}
+	<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title" >
+            <i class="glyphicon glyphicon-edit text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span>Edit</span>
+
+			   <div class="btn-group pull-right" style="margin-top:3px;">
+			  
+
+
+            <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle" alt="Action" title="Action">
+                Action
+                <span class="caret" style="margin-bottom:2px">    </span>
+            </a>
+			<ul class="dropdown-menu pull-left">
+			
+				<li>
+                    @if (EditPermission)
+                    {
+                        <a href="@Url.Action("Edit","T_DrugAlcoholTest", new { id = Model.Id,  UrlReferrer = Request.UrlReferrer, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    }
+                </li>             
+				<li>
+                    @if (EditPermission && User.CanDelete("T_DrugAlcoholTest"))
+                    {
+                        <a href="@Url.Action("Delete", "T_DrugAlcoholTest", new {UrlReferrer = Request.UrlReferrer, id = Model.Id, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Delete</a>
+                    }
+                </li>
+	<li class="divider" style="clear:both"></li>
+	<li class="dropdown-submenu pull-left" id="AddAssociationdropmenuT_DrugAlcoholTest">
+	 @{ var dropmenu = false; }
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu pull-left">
+				@if (User.CanAdd("T_Comment"))
+				{ dropmenu = true;
+					<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Comment", 
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_DrugAlcoholTestComments", 
+							HostingEntityName = "T_DrugAlcoholTest",
+							HostingEntityID = @Convert.ToString(Model.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Comment
+						</a>
+					</li>
+				}
+			</ul>
+</li>
+@if(!dropmenu)
+{
+    <script>
+        $("#AddAssociationdropmenuT_DrugAlcoholTest").hide();
+    </script>
+}
+ <li class="divider" style="clear:both"></li>
+ <li class="dropdown-submenu pull-left">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;">Find Matching</a>
+    <ul class="dropdown-menu pull-left">
+<li>
+		<a href="@Url.Action("FindFSearch", "FileDocument", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Document</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Licenses", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Licenses</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_ServiceRecord", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Service Record</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Comment", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Comment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_UnitX", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">UnitX</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_JobAssignment", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Job Assignment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_LeaveProfile", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Leave</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_EmployeeInjury", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Employee Injury</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_BackgroundCheck", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Background Check</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Education", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Education</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Accommodation", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Accommodation</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_PayDetails", new {sourceEntity="T_DrugAlcoholTest",id=Model.Id}, null)">Pay Details </a>
+</li>
+</ul>
+</li>
+			</ul>
+		</div>
+	  
+  <div class="btn-group pull-right" style="margin-top:3px; margin-right:3px">
+	  <a href="#" class="btn btn-xs closeall"><i class="glyphicon glyphicon-chevron-up"></i> Collapse All</a> <a href="#" class="btn btn-xs openall"><i class="glyphicon glyphicon-chevron-down"></i> Expand All</a>
+</div>
+
+        </h1>
+
+     <h2 class="text-primary" style="padding:0px 5px 15px 0px">
+	  <span id="HostingEntityDisplayValue" class="EntityDisplayName" title="@Html.DisplayFor(model => model.DisplayValue)">@Html.DisplayFor(model => model.DisplayValue)</span>
+			@if (EditPermission)
+			{	
+				<div class="pull-right" style="margin-top:-3px">
+					<button class="btn btn-default btn-xs pull-right" id="nextEdit" onclick="@Html.Raw("nextFunEdit('T_DrugAlcoholTest',event,'hdnNextPrevId')")" alt="Next" title="Next">Next >></button>
+					@Html.DropDownList("EntityT_DrugAlcoholTestDisplayValueEdit", null, null, new { @onchange = "FillDisplayValueEditPage('T_DrugAlcoholTest','frmT_DrugAlcoholTest','" + Model.Id + "',event)", @class = "pull-right", @Style = "height: 22px;width: 170px; font-size:12px; color:#333;" })
+					<button class="btn btn-default btn-xs pull-right" id="prevEdit" onclick="@Html.Raw("prevFunEdit('T_DrugAlcoholTest',event,'hdnNextPrevId')")" alt="Prev" title="Prev"><< Prev</button>
+				</div>
+			}
+	 </h2>
+		
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<input type="hidden" id="ErrMsg" />
+<div id="errorContainerEdit" style="display: none">
+            <div id="errorsMsgEdit"></div>
+            <div id="errorsEdit"></div>
+        </div>
+
+<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+</div>
+<div id="divDisplayBRmsgMandatory" style="display:none;">
+</div>
+<div id="divDisplayLockRecord" style="display:none;">
+</div>
+<div id="divDisplayBRReadOnly" style="display:none;">
+</div>
+<div id="divDisplayCodeFragment" style="display:none;">
+</div>
+ <div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+	 <li class="active"><a href="#Details" onclick="ClearTabCookie('@User.JavaScriptEncodedName@Model.Id');" data-toggle="tab" alt="Details" title="Details">Details</a></li>
+		 <li @(!User.CanView("T_Comment") ?"style=display:none;":"")>
+			<a onclick="LoadTab('T_DrugAlcoholTestComments','@User.JavaScriptEncodedName@Model.Id','@Html.Raw(Url.Action("Index", "T_Comment", new {RenderPartial=true, HostingEntity ="T_DrugAlcoholTest", HostingEntityID = @Model.Id, AssociatedType = "T_DrugAlcoholTestComments",TabToken = DateTime.Now.Ticks,}))')" href="#T_DrugAlcoholTestComments" data-toggle="tab" alt="Comment" title="Comment">Comment
+		 <span class="badge bg-blue"><div id="dvcnt_T_DrugAlcoholTestComments">@ViewBag.T_DrugAlcoholTestCommentsCount</div></span>
+		 </a></li>
+		 <li @(!User.CanView("JournalEntry")?"style=display:none;":"")><a onclick="LoadTab('JournalEntryToT_DrugAlcoholTestRelation','@User.JavaScriptEncodedName@Model.Id','@Url.Action("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_DrugAlcoholTest", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry", TabToken = DateTime.Now.Ticks })')" href="#JournalEntryToT_DrugAlcoholTestRelation" data-toggle="tab" alt="Drug & Alcohol Test Journal" title="Drug & Alcohol Test Journal">
+		 Drug & Alcohol Test Journal
+		 </a></li>
+
+    </ul>
+		<div class="tab-content">
+        <div class="tab-pane fade in active" id="Details">
+@using (Html.BeginForm("Edit","T_DrugAlcoholTest",new {UrlReferrer =Convert.ToString(ViewData["T_DrugAlcoholTestParentUrl"])}, FormMethod.Post, new { enctype = "multipart/form-data",@id="frmT_DrugAlcoholTest" }))
+{
+     Html.ValidationSummary(true);
+                Html.EnableClientValidation();
+    @Html.HiddenFor(model => model.Id)
+	@Html.HiddenFor(model => model.ConcurrencyKey)
+                <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px;">
+                    <div class="panel panel-default AppForm">
+						<div class="panel-body">
+						
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48904">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+											
+									<h3 class="panel-title" alt="Employee Information" title="Employee Information">Employee Information</h3>
+								</div>
+                                <div class="panel-body">
+				@if(User.CanView("T_DrugAlcoholTest","T_EmployeeDrugAlcoholTestID"))
+				{
+									 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeDrugAlcoholTestID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EmployeeDrugAlcoholTestID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_DrugAlcoholTest", "T_EmployeeDrugAlcoholTestID"))
+		{
+			@Html.DropDownList("T_EmployeeDrugAlcoholTestID", null, "-- Select --", new {  @required ="required",      @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeDrugAlcoholTestID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_EmployeeDrugAlcoholTestID, new { @class = "form-control" })
+			@Html.DropDownList("T_EmployeeDrugAlcoholTestID", null, "-- Select --", new {  @required ="required",     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeDrugAlcoholTestID" }) })
+		}
+									@Html.ValidationMessageFor(model => model.T_EmployeeDrugAlcoholTestID)
+									@if (User.CanAdd("T_Employee"))
+                                    {
+									<div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" id="addT_Employee"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+									</div>
+									}
+								
+
+								                                            
+											 @if (User.CanView("T_Employee"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_Employee" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_Employee" target="_blank" href="@Url.Action(User.CanEdit("T_Employee") ? "Edit" : "Details", "T_Employee", new { Id = Html.DisplayFor(model => model.t_employeedrugalcoholtest.Id).ToString(), UrlReferrer=Request.UrlReferrer}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_employeedrugalcoholtest == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Employee").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_Employee").attr("title", '@Model.t_employeedrugalcoholtest.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        							</div>
+							</div>
+                        </div>
+                    </div>
+
+
+                   
+					} else { @Html.HiddenFor(model => model.T_EmployeeDrugAlcoholTestID, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+       </div>
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48905">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+								<h3 class="panel-title" alt="Drug & Alcohol Test Information" title="Drug & Alcohol Test Information"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#drugalcoholtestinformationbody"><span class="glyphicon glyphicon-chevron-down"></span> Drug & Alcohol Test Information</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="drugalcoholtestinformationbody">					
+				@if(User.CanView("T_DrugAlcoholTest","T_TypeOfTestID"))
+				{
+									 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TypeOfTestID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_TypeOfTestID) <span class="text-danger-reg">*</span></label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_DrugAlcoholTest", "T_TypeOfTestID"))
+		{
+			@Html.DropDownList("T_TypeOfTestID", null, "-- Select --", new {  @required ="required",      @class = "chosen-select form-control", @HostingName = "T_TestType", @dataurl = Url.Action("GetAllValue", "T_TestType",new { caller = "T_TypeOfTestID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_TypeOfTestID, new { @class = "form-control" })
+			@Html.DropDownList("T_TypeOfTestID", null, "-- Select --", new {  @required ="required",     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_TestType", @dataurl = Url.Action("GetAllValue", "T_TestType",new { caller = "T_TypeOfTestID" }) })
+		}
+									@Html.ValidationMessageFor(model => model.T_TypeOfTestID)
+									@if (User.CanAdd("T_TestType"))
+                                    {
+									<div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" id="addT_TestType"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Type Of Test','dvPopup','" + Url.Action("CreateQuick", "T_TestType", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+									</div>
+									}
+								
+
+								                                            
+											 @if (User.CanView("T_TestType"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_TestType" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_TestType" target="_blank" href="@Url.Action(User.CanEdit("T_TestType") ? "Edit" : "Details", "T_TestType", new { Id = Html.DisplayFor(model => model.t_typeoftest.Id).ToString(), UrlReferrer=Request.UrlReferrer}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_typeoftest == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_TestType").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_TestType").attr("title", '@Model.t_typeoftest.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        							</div>
+							</div>
+                        </div>
+                    </div>
+
+
+                   
+					} else { @Html.HiddenFor(model => model.T_TypeOfTestID, new { @class = "form-control" })}
+				@if(User.CanView("T_DrugAlcoholTest","T_TestReasonID"))
+				{
+									 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_TestReasonID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_TestReasonID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_DrugAlcoholTest", "T_TestReasonID"))
+		{
+			@Html.DropDownList("T_TestReasonID", null, "-- Select --", new {      @class = "chosen-select form-control", @HostingName = "T_ReasonForDrugTest", @dataurl = Url.Action("GetAllValue", "T_ReasonForDrugTest",new { caller = "T_TestReasonID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_TestReasonID, new { @class = "form-control" })
+			@Html.DropDownList("T_TestReasonID", null, "-- Select --", new {     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_ReasonForDrugTest", @dataurl = Url.Action("GetAllValue", "T_ReasonForDrugTest",new { caller = "T_TestReasonID" }) })
+		}
+									@Html.ValidationMessageFor(model => model.T_TestReasonID)
+									@if (User.CanAdd("T_ReasonForDrugTest"))
+                                    {
+									<div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" id="addT_ReasonForDrugTest"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Test Reason','dvPopup','" + Url.Action("CreateQuick", "T_ReasonForDrugTest", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+									</div>
+									}
+								
+
+								                                            
+											 @if (User.CanView("T_ReasonForDrugTest"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_ReasonForDrugTest" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_ReasonForDrugTest" target="_blank" href="@Url.Action(User.CanEdit("T_ReasonForDrugTest") ? "Edit" : "Details", "T_ReasonForDrugTest", new { Id = Html.DisplayFor(model => model.t_testreason.Id).ToString(), UrlReferrer=Request.UrlReferrer}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_testreason == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_ReasonForDrugTest").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_ReasonForDrugTest").attr("title", '@Model.t_testreason.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        							</div>
+							</div>
+                        </div>
+                    </div>
+
+
+                   
+					} else { @Html.HiddenFor(model => model.T_TestReasonID, new { @class = "form-control" })}
+@if(User.CanView("T_DrugAlcoholTest","T_DateOrdered"))
+{
+
+						 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DateOrdered">
+							  <div class="form-group" title="Date  Of  Test">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_DateOrdered) <span class="text-danger-reg">*</span></label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_DateOrdered">
+ @Html.TextBoxFor(model => model.T_DateOrdered, "{0:MM/dd/yyyy}", User.CanEdit("T_DrugAlcoholTest", "T_DateOrdered") ? (object)new { @class = "form-control" } : (object)new { @class = "form-control", @readonly="readonly"})
+
+									<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_DateOrdered)
+
+								</div>
+                                </div>
+								@if(User.CanEdit("T_DrugAlcoholTest", "T_DateOrdered"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_DateOrdered').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_DateOrdered').datetimepicker({ pickTime:false });
+  
+                                    });
+                                </script>
+								}
+                            </div>
+						
+
+                           
+} else { @Html.HiddenFor(model => model.T_DateOrdered, new { @class = "form-control" })}
+@if(User.CanView("T_DrugAlcoholTest","T_ReviewersInitials"))
+{
+				<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ReviewersInitials">
+							<div class='form-group' title="Administered  By">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_ReviewersInitials)   </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+											
+									@Html.TextBoxFor(model => model.T_ReviewersInitials,  getHtmlAttributes("T_ReviewersInitials"))
+									@Html.ValidationMessageFor(model => model.T_ReviewersInitials)
+								</div>
+                             </div>
+						</div>
+										
+} else { @Html.HiddenFor(model => model.T_ReviewersInitials, new { @class = "form-control" })}
+				@if(User.CanView("T_DrugAlcoholTest","T_DrugTestResultsID"))
+				{
+									 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DrugTestResultsID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_DrugTestResultsID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+							<div class="input-group" style="width:100%;">									
+									@if (User.CanEdit("T_DrugAlcoholTest", "T_DrugTestResultsID"))
+		{
+			@Html.DropDownList("T_DrugTestResultsID", null, "-- Select --", new {      @class = "chosen-select form-control", @HostingName = "T_DrugTestResult", @dataurl = Url.Action("GetAllValue", "T_DrugTestResult",new { caller = "T_DrugTestResultsID" }) })
+		}
+		else
+		{
+			@Html.HiddenFor(model => model.T_DrugTestResultsID, new { @class = "form-control" })
+			@Html.DropDownList("T_DrugTestResultsID", null, "-- Select --", new {     @class = "chosen-select form-control", @disabled="disabled", @HostingName = "T_DrugTestResult", @dataurl = Url.Action("GetAllValue", "T_DrugTestResult",new { caller = "T_DrugTestResultsID" }) })
+		}
+									@Html.ValidationMessageFor(model => model.T_DrugTestResultsID)
+									@if (User.CanAdd("T_DrugTestResult"))
+                                    {
+									<div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" id="addT_DrugTestResult"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Test Results','dvPopup','" + Url.Action("CreateQuick", "T_DrugTestResult", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+											<span class="glyphicon glyphicon-plus-sign"></span>
+										</a>
+									</div>
+									}
+								
+
+								                                            
+											 @if (User.CanView("T_DrugTestResult"))
+                                                    {
+                                                        <div class="input-group-btn" id="dvLinkToT_DrugTestResult" title="">
+                                                            <a class="btn btn-default btn ie8fix" id="aLinkToT_DrugTestResult" target="_blank" href="@Url.Action(User.CanEdit("T_DrugTestResult") ? "Edit" : "Details", "T_DrugTestResult", new { Id = Html.DisplayFor(model => model.t_drugtestresults.Id).ToString(), UrlReferrer=Request.UrlReferrer}, null)"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        </div>
+                                                        if (Model.t_drugtestresults == null)
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_DrugTestResult").hide();
+                                                                });
+                                                            </script>
+                                                        }
+                                                        else
+                                                        {
+                                                            <script>
+                                                                $(function () {
+                                                                    $("#dvLinkToT_DrugTestResult").attr("title", '@Model.t_drugtestresults.DisplayValue');
+                                                                });
+                                                            </script>
+                                                        }
+                                                    }
+                                        							</div>
+							</div>
+                        </div>
+                    </div>
+
+
+                   
+					} else { @Html.HiddenFor(model => model.T_DrugTestResultsID, new { @class = "form-control" })}
+@if(User.CanView("T_DrugAlcoholTest","T_ResultsReceivedDate"))
+{
+
+						 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ResultsReceivedDate">
+							  <div class="form-group" title="Results  Received  Date">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_ResultsReceivedDate) </label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_ResultsReceivedDate">
+ @Html.TextBoxFor(model => model.T_ResultsReceivedDate, "{0:MM/dd/yyyy}", User.CanEdit("T_DrugAlcoholTest", "T_ResultsReceivedDate") ? (object)new { @class = "form-control" } : (object)new { @class = "form-control", @readonly="readonly"})
+
+									<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_ResultsReceivedDate)
+
+								</div>
+                                </div>
+								@if(User.CanEdit("T_DrugAlcoholTest", "T_ResultsReceivedDate"))
+								{
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_ResultsReceivedDate').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_ResultsReceivedDate').datetimepicker({ pickTime:false });
+  
+                                    });
+                                </script>
+								}
+                            </div>
+						
+
+                           
+} else { @Html.HiddenFor(model => model.T_ResultsReceivedDate, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+       </div>
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48906">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+								<h3 class="panel-title" alt="Notes" title="Notes"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#notesbody"><span class="glyphicon glyphicon-chevron-down"></span> Notes</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse collapse" id="notesbody">					
+@if(User.CanView("T_DrugAlcoholTest","T_Notes"))
+{
+					<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Notes">
+							<div class='form-group' title="Notes">
+								<label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Notes) </label>
+                                <div class="input-group col-sm-7 col-md-7 col-xs-12">
+								@Html.TextAreaFor(model => model.T_Notes, getHtmlAttributes("T_Notes"))
+									@Html.ValidationMessageFor(model => model.T_Notes)
+								</div>
+                             </div>
+						</div>
+} else { @Html.HiddenFor(model => model.T_Notes, new { @class = "form-control" })}
+							</div>
+                         </div>
+                      </div>
+       </div>
+            </div>
+        </div>
+		</div>
+		 @Html.AntiForgeryToken();
+		 <a class="btn btn-default btn-sm pull-left formbuttonfix" Onclick="goBack('@Url.Action("Index","T_DrugAlcoholTest")');" alt="Cancel" title="Cancel">Cancel</a>
+		 @*@Html.ActionLink("Cancel", "Cancel", new { UrlReferrer = ViewData["T_DrugAlcoholTestParentUrl"] }, new { @onclick = "", @class = "btn btn-default btn-sm pull-left formbuttonfix", @alt="Cancel", @title="Cancel" })*@
+		 if (EditPermission)
+         {
+ 				<input type="submit" name="command" value="Save" class="btn btn-primary btn-sm pull-left formbuttonfix"  alt="Save" title="Save"/>
+				<input type="submit" id="sevranBtnEdit" style="display:none;" name="command" value="SaveNextPrev" alt="SaveNextPrev" title="SaveNextPrev"/>
+				<input type="submit" name="command" value="Save & Stay" class="btn btn-primary btn-sm pull-left formbuttonfix" alt="Save & Stay" title="Save & Stay"/>
+		}	
+				<input type="hidden" name="hdncommand" value="" />
+				<input type="hidden" name="hdnNextPrevId" value="" />
+}
+ @{ var dropmenubottom = false; }
+<div class="dropdown pull-left formbuttonfix"  id="AddAssociationdropmenubottomT_DrugAlcoholTest">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" alt="Add Association" title="Add Association">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
+			@if (User.CanAdd("T_Comment"))
+            {  dropmenubottom = true;
+                <li><a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Comment",
+						new { UrlReferrer = Request.Url,
+								AssociatedType ="T_DrugAlcoholTestComments", 
+						HostingEntityName = "T_DrugAlcoholTest",
+                              HostingEntityID = @Convert.ToString(Model.Id)
+                        }, null) + "');")>
+                   Add  Comment
+                </a>
+				</li>
+            }
+
+			
+</ul>
+</div>
+@if(!dropmenubottom || !EditPermission)
+{
+    <script>
+        $("#AddAssociationdropmenubottomT_DrugAlcoholTest").hide();
+    </script>
+}
+<div class="clearfix" style="clear:both; margin-bottom:8px"></div>
+</div>
+ <div class="tab-pane fade in" id="T_DrugAlcoholTestComments">
+	@if (User.CanView("T_Comment"))
+	{
+	  // Html.RenderAction("Index", "T_Comment", new {RenderPartial=true, HostingEntity = "T_DrugAlcoholTest", HostingEntityID = @Model.Id, AssociatedType = "T_DrugAlcoholTestComments" }); 
+	}
+  </div>
+ <div class="tab-pane fade in" id="JournalEntryToT_DrugAlcoholTestRelation">
+			 @if (User.CanView("JournalEntry"))
+			 {
+			  // Html.RenderAction("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_DrugAlcoholTest", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry" });
+			 }
+  </div>
+
+</div> <!-- /tab-content --><br />
+
+<br/>
+</div>
+	<script>
+	</script>
+	
+
+@{
+var businessrule = User.businessrules.Where(p => p.EntityName == "T_DrugAlcoholTest").ToList();
+
+if ((businessrule != null && businessrule.Count > 0) )
+{
+var ruleids = businessrule.Select(q => q.Id).ToList();
+var typelist  = string.Join(",", (new GeneratorBase.MVC.Models.RuleActionContext()).RuleActions.Where(p => ruleids.Contains(p.RuleActionID.Value) && p.associatedactiontype.TypeNo.HasValue).Select(p => p.associatedactiontype.TypeNo.Value).Distinct().ToList());
+
+    <script>
+		$(document).ready(function () {
+				document.getElementById("ErrMsg").innerHTML = "";
+				var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+
+ form = $("#frmT_DrugAlcoholTest").serialize();
+				dataurl = "@Url.Action("businessruletype", "T_DrugAlcoholTest", new { ruleType = "OnEdit"})";
+                ApplyBusinessRuleOnPageLoad("@typelist",dataurl, "T_DrugAlcoholTest", false, "ErrMsg", form);
+				//business rules on inline associations
+
+    });
+</script>
+<script>
+    $("form").submit(function (event) {
+	if (!$("#frmT_DrugAlcoholTest").valid()) return;
+			document.getElementById("ErrMsg").innerHTML = "";
+            var flag = true;
+            var dataurl = "";
+            var form = "";
+            var inlinecount = "0";
+ form = $("#frmT_DrugAlcoholTest").serialize();
+    
+				 dataurl = "@Url.Action("businessruletype", "T_DrugAlcoholTest", new { ruleType = "OnEdit"})";
+                 flag = ApplyBusinessRuleOnSubmit(dataurl, "T_DrugAlcoholTest", false, "ErrMsg", form);
+
+  				 //business rules on inline associations
+               
+			 if (flag)
+				{
+				                    $('input:hidden[name="hdncommand"]').val($(this.id).context.activeElement.value);
+					if ($(document.activeElement).attr('id') == "nextEdit" || $(document.activeElement).attr('id') == "prevEdit")
+			         $('input:hidden[name="hdncommand"]').val("SaveNextPrev");
+					 $("#frmT_DrugAlcoholTest").find(':input').removeAttr('disabled');
+					}
+            return flag;
+		});
+</script>
+}
+ else
+    {
+       <script>
+    $("input[type='submit']").click(function (event) {
+	if (!$("#frmT_DrugAlcoholTest").valid()) return;
+        var $this = $(this);
+                var actionName = $this.attr("actionName")
+                if (actionName == undefined)
+                    actionName = $this.val();
+                $('input:hidden[name="hdncommand"]').val(actionName);
+    });
+	</script>
+    }
+ 
+}
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+		focusOnControl('frmT_DrugAlcoholTest');
+        }
+        catch (ex) { }
+    });
+	 $(document).ready(function () {
+		var RecIdEdit = $("#frmT_DrugAlcoholTest").find("input:hidden[name='Id']").val();
+        $("#EntityT_DrugAlcoholTestDisplayValueEdit").val(RecIdEdit);
+
+		var textedit = $("option:selected", $("#EntityT_DrugAlcoholTestDisplayValueEdit")).text();
+		$("#EntityT_DrugAlcoholTestDisplayValueEdit").attr('data-toggle', 'tooltip')
+		$("#EntityT_DrugAlcoholTestDisplayValueEdit").attr('title', textedit);
+
+        var lastOptionValEdit = $('#EntityT_DrugAlcoholTestDisplayValueEdit option:last-child').val();
+        var fristOptionValEdit = $('#EntityT_DrugAlcoholTestDisplayValueEdit option:first-child').val();
+        if (lastOptionValEdit == RecIdEdit) {
+            $('#nextEdit').attr({ "disabled": "true", "style": "background-color:#eeeeee !important; color:#969696 !important; border-color:#ccc !important" });
+        }
+        if (fristOptionValEdit == RecIdEdit)
+            $('#prevEdit').attr({ "disabled": "true", "style": "background-color:#eeeeee !important; color:#969696 !important; border-color:#ccc !important" });
+    });
+</script>
+
+

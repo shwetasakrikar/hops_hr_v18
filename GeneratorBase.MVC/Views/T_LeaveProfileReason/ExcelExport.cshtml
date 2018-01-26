@@ -1,0 +1,37 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_LeaveProfileReason>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Leave Profile Reason.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_LeaveProfileReason","T_LeaveReasonID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_LeaveReason"?"hidden":"")>Leave Reason</th>
+}
+@if(User.CanView("T_LeaveProfileReason","T_LeaveProfileID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_LeaveProfile"?"hidden":"")>Leave</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_LeaveProfileReason","T_LeaveReasonID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_LeaveReason"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_leavereason.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_LeaveProfileReason","T_LeaveProfileID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_LeaveProfile"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_leaveprofile.DisplayValue)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

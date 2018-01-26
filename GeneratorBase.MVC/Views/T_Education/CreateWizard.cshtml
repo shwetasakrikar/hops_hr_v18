@@ -1,0 +1,282 @@
+﻿@model GeneratorBase.MVC.Models.T_Education
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_EducationIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_EducationIsHiddenRule);
+    }
+}
+@using (Html.BeginForm("CreateWizard", "T_Education",new {UrlReferrer = Convert.ToString(ViewData["T_EducationParentUrl"])}, FormMethod.Post, new { enctype = "multipart/form-data" ,id="frmT_Education" }))
+{
+    @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+	 <input type="hidden" id="ErrMsg" />
+                            @*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+                            <div id="divDisplayThresholdLimit" style="display:none;">
+                            </div>
+							<div id="divDisplayBRmsgMandatory" style="display:none;">
+                            </div>
+                            <div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+                            </div>
+							<div id="divDisplayCodeFragment" style="display:none;">
+							</div>
+    <div class="row">
+	<br/>
+	<div id = "wizard">
+	<ol>
+		<li>Employee Information</li>
+		<li>Education Information</li>
+		<li>Notes</li>
+	
+	</ol>
+			<div>
+               <div class="row">         
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default AppForm">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+<!-- T_EmployeeEducation ---- Employee Education-->
+                                            <h3 class="panel-title">Employee Information</h3>
+                                        </div>
+                                        <div class="panel-body">
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeEducation">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_EmployeeEducationID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_EmployeeEducationID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeEducationID" }) })
+                                @Html.ValidationMessageFor(model => model.T_EmployeeEducationID)
+								@if ( User.CanAdd("T_Employee"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+							</div>
+                         </div>
+                      </div>
+				  </div>
+       </div>
+			<div>
+               <div class="row">         
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default AppForm">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+<!-- T_LevelOfEducation ---- Level Of Education-->
+<!-- T_MajorInMultiCheckBox ---- Major In (Multi Check Box)-->
+<!-- T_EducationVerificationVendor ---- Education Verification Vendor-->
+<!-- T_DetailsofEducation ---- Details of Education-->
+<!-- T_DateVerified ---- Date Verified-->
+                                            <h3 class="panel-title">Education Information</h3>
+                                        </div>
+                                        <div class="panel-body">
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_LevelOfEducation">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_LevelOfEducationID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_LevelOfEducationID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_EducationLevel", @dataurl = Url.Action("GetAllValue", "T_EducationLevel",new { caller = "T_LevelOfEducationID" }) })
+                                @Html.ValidationMessageFor(model => model.T_LevelOfEducationID)
+								@if ( User.CanAdd("T_EducationLevel"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Level Of Education','dvPopup','" + Url.Action("CreateQuick", "T_EducationLevel", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_MajorInMultiCheckBox">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_MajorInMultiCheckBoxID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_MajorInMultiCheckBoxID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_Major", @dataurl = Url.Action("GetAllValue", "T_Major",new { caller = "T_MajorInMultiCheckBoxID" }) })
+                                @Html.ValidationMessageFor(model => model.T_MajorInMultiCheckBoxID)
+								@if ( User.CanAdd("T_Major"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Major In','dvPopup','" + Url.Action("CreateQuick", "T_Major", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+				 <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EducationVerificationVendor">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_EducationVerificationVendorID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_EducationVerificationVendorID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_Vendor", @dataurl = Url.Action("GetAllValue", "T_Vendor",new { caller = "T_EducationVerificationVendorID" }) })
+                                @Html.ValidationMessageFor(model => model.T_EducationVerificationVendorID)
+								@if ( User.CanAdd("T_Vendor"))
+                                    {
+                                <div class="input-group-btn">
+									<a class="btn btn-default btn ie8fix"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Education Verification Vendor','dvPopup','" + Url.Action("CreateQuick", "T_Vendor", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </div>
+								}
+                            </div>
+							</div>
+                        </div>
+                    </div>
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DetailsofEducation">
+                                <div class='form-group' title="Details of  Education">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_DetailsofEducation) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    @Html.TextAreaFor(model => model.T_DetailsofEducation, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_DetailsofEducation)
+									</div>
+                                </div>
+						</div>
+                            <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DateVerified">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_DateVerified) </label>
+                                <div class="form-group" title="Date  Verified">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_DateVerified">
+                                        @Html.TextBoxFor(model => model.T_DateVerified, new {@class = "form-control" })
+									 <span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                        
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_DateVerified)
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_DateVerified').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_DateVerified').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+							</div>
+                         </div>
+                      </div>
+				  </div>
+       </div>
+			<div>
+               <div class="row">         
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default AppForm">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+<!-- T_EducationNotes ---- Education Notes-->
+                                            <h3 class="panel-title">Notes</h3>
+                                        </div>
+                                        <div class="panel-body">
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EducationNotes">
+                                <div class='form-group' title="Education  Notes">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_EducationNotes) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    @Html.TextAreaFor(model => model.T_EducationNotes, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_EducationNotes)
+									</div>
+                                </div>
+						</div>
+							</div>
+                         </div>
+                      </div>
+				  </div>
+       </div>
+	</div>
+
+							 @if (ViewBag.IsDDAdd == null && User.CanEdit("T_Education"))
+                                {
+                                    <input type="submit" name="command" id="WizardSubmit" style="display:none;" />
+                                }
+                                @Html.ActionLink("C", "Cancel", new { UrlReferrer = ViewData["T_EducationParentUrl"] }, new { @id = "cancel", @style = "display:none;" })
+                                <input type="hidden" name="hdncommand" value="" />
+          
+				</div>
+			<br/>
+}
+<script>
+    $(document).ready(function () {
+        try {
+             focusOnControl('frmT_Education');
+        }
+        catch (ex) { }
+    });
+</script>
+<script>
+	    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+	<script>
+            $("input[type='submit']").click(function (event) {
+	if (!$("#frmT_Education").valid()) return;
+
+                var $this = $(this);
+                $('input:hidden[name="hdncommand"]').val($this.val());
+            });
+			$(document).ready(function () {
+				DisableTabOnReadonlyProperty("frmT_Donation");
+			});
+	</script>
+@{
+    var businessrule = User.businessrules.Where(p => p.EntityName == "T_Education").ToList();
+if ((businessrule != null && businessrule.Count > 0) )
+    {
+        <script>
+            $("form").submit(function (event) {
+			if (!$("#frmT_Education").valid()) return;
+				document.getElementById("ErrMsg").innerHTML = "";
+                var flag = true;
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+                
+                
+                //var form = $(this).serialize();
+ form = $("#frmT_Education").serialize();
+                dataurl = "@Url.Action("businessruletype", "T_Education", new { ruleType = "OnCreate"})";
+                flag = ApplyBusinessRuleOnSubmit(dataurl, "T_Education", false, "ErrMsg", form);
+				//business rules on inline associations
+				return flag;
+			 });	
+            $(document).ready(function () {
+                $("input[type='submit']").on('blur', function () {
+                    $("input[type='submit']").removeAttr('disabled');
+                });
+            });
+        </script>
+    }
+    else
+    {
+           
+    }
+}
+    
+
+

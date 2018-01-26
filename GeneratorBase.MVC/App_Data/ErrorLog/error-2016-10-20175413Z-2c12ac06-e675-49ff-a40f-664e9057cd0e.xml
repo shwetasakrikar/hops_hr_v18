@@ -1,0 +1,212 @@
+﻿<error errorId="2c12ac06-e675-49ff-a40f-664e9057cd0e" application="/LM/W3SVC/1/ROOT/HOPS_HR_v2" host="TURANTOMVC" type="System.Web.HttpException" message="Server cannot set status after HTTP headers have been sent." source="System.Web" detail="System.Web.HttpException (0x80004005): Server cannot set status after HTTP headers have been sent.&#xD;&#xA;   at System.Web.HttpResponse.set_StatusCode(Int32 value)&#xD;&#xA;   at System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)&#xD;&#xA;   at System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="Admin" time="2016-10-20T17:54:13.9088680Z" statusCode="500">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, sdch, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:_ga=GA1.2.179935880.1470368317; __RequestVerificationToken_L0hSTVM1=wQRgKomP8CXMxnN4Lcr_jU3VBObFXNqv0zUzp9ImE4vd2NYWkZ4n6WVO4AwbA2ccGcUl4J7M--4pXyWKR06n2THiiVF6--VabHmfzDzlzrQ1; HRMS=4aPy5v7IxRJz5uHfR0NaDw5_z2p7hW_XV8LhCU7CgLCQb_YDFkmVfRn3dMmTbtJ7qttpEgluqD7FOe_4C9XeW6MPD-Z-fOexMzm9-B-Vj7Wfe4Zp-9pgzONCrNPBVUOA-njtAn1ygnGFQTSioqeX0xCOMWy1iOcO_EY4hRqfDOuSejmqsZ19mKrNAEvdVHt_1I-GMpu7M0M7LLVKhb1KPmATND8SixFqN8dtVBZ-89_AE87KiVvsNTup8sTqsKnn2a0GeFsx3h8ri4TO_DqcVu_JQjmEEXvL_Nru_WN-IImv_z3r4XcePH13ohSfx310F--3fZtq6w6kEDXC_phZNYrVhqsqI6_PbE6g2xy_mDfUFQAa83hZO8_PAZYJeZ6lUQLO1xbcQI4hodLIhUDdB4T-ranS_oFZmw8zWEM-wkNOATYOw2-UvdfEf0VS5dZgGWeGfdlbYzIJTRtgbKhqSqHTOEDtOwviDtZT0fmzGiWXZLUmLaH0AvGE9mg28YYU; __RequestVerificationToken_L0lDTVM1=yPP4hrqsrtLoZHxLSHot3HufomAKvvbsXJJBVgBPx6C5UW4-AlgBpFikmR5OKGRdbRt0aI-wGypEDYB9_t4Ipxy2wN_2PW5_iYXUvfKKuhE1; __RequestVerificationToken_L0RCUlM1=OeU4BYvKFmcoL49OAoWuIMXwtfi9JRMqEoO47VtqxU2L__eeNuZz6UUci48RDpgvohX1WTk2UDhmoFFidCCmNQjdASW_pEsOPhfE8CX6nNk1; ASP.NET_SessionId=zmgihjjzcavs501mrjcvcule; DBRS=NSe-Nyczto_CfmAg1bX6g6sr4DvVwUjNY7AsYwg3EGsogOmpV1ZCFgRiBywziNOyBBa1DZPTXgFbQvsgvF_ABpLQpxBPh31nxUDi3B5uqcHdogV9JHGmqoYJPzqpXUIZBxhzOoA7nLWQafp-oIGsYvx7bNuUfcU2Mx0fhIJ0K7PNvqpy_TkbvO9SaJfB9UI7bvOzg3XaxOppVYFR07rTZYCc3jIlvpFQ8pRl6ONIt_YuTcPd7FIkRRuwNfXYLq38U5nP-sZWIfYY2iVasWs9mluPRdNp_H6Qjrgj2-WIkujPJ3yU_-DEcO-zzy2WIjvE6QAyL878XIKrtNoSYA7PD1GW6_4BOsjoUibzutRKCc2tSPVGerBqeJHi_gmiCBJl7k-TfStXUkvA8dr4Uo57QmvoUgY_kR2mdUcBasI10hQouI9b0bGGFYpIBOLCf9S0Bd6-dJpkizXapKpcCX-9MWE3laOZsr16RHaZnkvaNv5vOAo8HzbfZcvZxD3vmFvf; __RequestVerificationToken_L1BBQ0VSQ3VzdG9taXphdGlvbg2=zoZdTU_0GEd24uRO4V8rGW56YVld2zUdGdrFa2Z_mbxwop5jRvl5cfEhuBMYu6g26znhYzUUEBW3RVKN1MRF5sWZxrWoXsxi-dvcl5UYc9c1; __RequestVerificationToken_L0hQTQ2=uNn9bfkD45s-nN6MPkfnMjrbOdIri5TlZX51zGADCLC0inOdq1f5oQ1u-gUCFF8-eJzXQtN9olQT3DWtNB6qS4KnsYbA89QDrc3ShqRMFQI1; .ASPXBrowserOverride=Mozilla%2f4.0+(compatible%3b+MSIE+6.0%3b+Windows+CE%3b+IEMobile+8.12%3b+MSIEMobile+6.0); .AspNet.ApplicationCookie=5kdFXhVw4oUB9E6gyjl4ap7x7Q3v23BsaAi51X-gsDxBXXqDoQ4RgNPEDrJafTqPe7uBV3Ia8Agvh5z4Z-x2c6Tt0O4d-HTH1ORTDsnGs4_RfPz6MhoJK8l5oGsUEBsxheSAZmJyIfWRd3qoETTK29j4YT8TWazDIw3DIaz0EPYFYw2RwHG3ZJbh44Y-K29oHW4jjbtpoCXDrVgMVH3GKtEA8T2mAJLsNbzFNmtz9qXhof5xp1kH7lamKYqybexi50KWV1KCv6PHmmMmn2S8JIfc-K87xp4dduqp0kZWj5_X7ZqYLAT-yvfuBz-OqQi9HRHafUUKkyiulT58toZopTLv2LaugdetOcVpKP8iC3_S84QKgd-yZSv8P8bpWdzRy72yoz-nNCYe5AZej0Fm-JZFRhsBHzVy0UPYJJucad8MbvhM4FrtntgN1URMVXLxsrP7Urs2gS7E8quYGzpLsRxfu1wfg30PE6w9CAe1QWvvZX75KBAUCksSLpN7bcW_; __RequestVerificationToken_L0hybXNEZW1v0=St-uMtmyCcRbAv77qGYfdGcYloHx40fyFqMUfnj2_jnpNI28rXGhoGEWxK5i8ArqgLPUs4hp2Z5vKBr3k0JYprkU7OZ4i3XP3awtH_9PMgk1; KKHrmsBug=tzN09PNr3DV6whdK4CIiZEkXFSLhBRozka1JYr2yi43hkp55E7byydiWWsSkGPaxS7_mV2w8TfMFOSFlOJcdbWaaymvilgl6JVCR1lYHfuNA34kz4Ga60ZSb1Vny7l3eNAtZ7g6mxSvRUA4Cg9zirI6T4MyfT1Bl3wxwncyUK4i0qu7qe9wE-ihSTOnCaG5NI3insXtJ48c9tOSIZNylAGqcaQAxn2s9V3-psWJu9HKpEc-ezXweEBhim20o0q-BwiS0PUBXdvD3UoTmKvTauZet7YwuM1zfUwxCQA3LVaFg9WVmd-uzSfhxKucEr36wC7SrHs-rtgcN88IqpT16_Ai2nHBGb92uj24_e262Xq1L6Sy1MCLLmLRnkC_NGVjKZt1ctJ1k79CQL6wjhn_GCXXXUanwncRzPLHpKc9vmIOwSA-E9e_VYIb7vGPlp_2lLG7-1dAmO_0utbMiHGnMSGgEdHlPeG0dfie6GRsSmsDxgy2uHp70-wiLKaWSeean; __RequestVerificationToken_L0hPUFNfSFJfdjI1=tdXWpEVftQ9s8fNcILZLIsv-Dr6b8BeToHw5PNGPMWlMq5laBhsJg6ma0fX_0QxhHHETP7wx-1FOjOVtYCdiQYLGkStoJE-gIvURjtUCyV41; HOPS_HR_v2=ajDCiXs0dl6LVppoKYGAw41O7o3KgRpvfnZlaBf_3hHGJKWIBp1xiT4y4n4dEq9yiLiNju65Em-HaKhkRGWLF-qUpn2rDZWJnznaWv2_WYLwc5qSdjCaSt0M7Te0JqDz5bdvn4NiuATnOZ5ofkH8owHGNU3LIN_ySrr1I3EUwIzeJx5RJoz9p8acsfyN2CYZ2ohGfVBbjPZTwZTDuZxFR1_W1eEWFqLVgtrhhC2KIL4MmiQc0mJeMGnyWyWs3OVwRsalOpzlACeFfhC-kDv2wNACCXrcQabjPDlgiQtx2YmigQ7BjsZSk5j8A8zvi1A22J8wrWPPeV9F-5THyxd--vPvgbDcKuDGw1DFMWSDKHoQQ1MABgHzg8YswETZtlCHQZe1OLp52rI94NP5C76a0cUc-eRjz0v21voKKRsvdrqcSwN3YkEYepb_2xNl4RFXJiT8H7t_ol2NDfkOMgAlMYxJhZjQaYPQ9CSsf6FyPreUmNcqtHaEL-eD4kNhG65s&#xD;&#xA;HTTP_HOST:apps.turanto.com&#xD;&#xA;HTTP_REFERER:https://apps.turanto.com/HOPS_HR_v2/T_Position&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, sdch, br&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: _ga=GA1.2.179935880.1470368317; __RequestVerificationToken_L0hSTVM1=wQRgKomP8CXMxnN4Lcr_jU3VBObFXNqv0zUzp9ImE4vd2NYWkZ4n6WVO4AwbA2ccGcUl4J7M--4pXyWKR06n2THiiVF6--VabHmfzDzlzrQ1; HRMS=4aPy5v7IxRJz5uHfR0NaDw5_z2p7hW_XV8LhCU7CgLCQb_YDFkmVfRn3dMmTbtJ7qttpEgluqD7FOe_4C9XeW6MPD-Z-fOexMzm9-B-Vj7Wfe4Zp-9pgzONCrNPBVUOA-njtAn1ygnGFQTSioqeX0xCOMWy1iOcO_EY4hRqfDOuSejmqsZ19mKrNAEvdVHt_1I-GMpu7M0M7LLVKhb1KPmATND8SixFqN8dtVBZ-89_AE87KiVvsNTup8sTqsKnn2a0GeFsx3h8ri4TO_DqcVu_JQjmEEXvL_Nru_WN-IImv_z3r4XcePH13ohSfx310F--3fZtq6w6kEDXC_phZNYrVhqsqI6_PbE6g2xy_mDfUFQAa83hZO8_PAZYJeZ6lUQLO1xbcQI4hodLIhUDdB4T-ranS_oFZmw8zWEM-wkNOATYOw2-UvdfEf0VS5dZgGWeGfdlbYzIJTRtgbKhqSqHTOEDtOwviDtZT0fmzGiWXZLUmLaH0AvGE9mg28YYU; __RequestVerificationToken_L0lDTVM1=yPP4hrqsrtLoZHxLSHot3HufomAKvvbsXJJBVgBPx6C5UW4-AlgBpFikmR5OKGRdbRt0aI-wGypEDYB9_t4Ipxy2wN_2PW5_iYXUvfKKuhE1; __RequestVerificationToken_L0RCUlM1=OeU4BYvKFmcoL49OAoWuIMXwtfi9JRMqEoO47VtqxU2L__eeNuZz6UUci48RDpgvohX1WTk2UDhmoFFidCCmNQjdASW_pEsOPhfE8CX6nNk1; ASP.NET_SessionId=zmgihjjzcavs501mrjcvcule; DBRS=NSe-Nyczto_CfmAg1bX6g6sr4DvVwUjNY7AsYwg3EGsogOmpV1ZCFgRiBywziNOyBBa1DZPTXgFbQvsgvF_ABpLQpxBPh31nxUDi3B5uqcHdogV9JHGmqoYJPzqpXUIZBxhzOoA7nLWQafp-oIGsYvx7bNuUfcU2Mx0fhIJ0K7PNvqpy_TkbvO9SaJfB9UI7bvOzg3XaxOppVYFR07rTZYCc3jIlvpFQ8pRl6ONIt_YuTcPd7FIkRRuwNfXYLq38U5nP-sZWIfYY2iVasWs9mluPRdNp_H6Qjrgj2-WIkujPJ3yU_-DEcO-zzy2WIjvE6QAyL878XIKrtNoSYA7PD1GW6_4BOsjoUibzutRKCc2tSPVGerBqeJHi_gmiCBJl7k-TfStXUkvA8dr4Uo57QmvoUgY_kR2mdUcBasI10hQouI9b0bGGFYpIBOLCf9S0Bd6-dJpkizXapKpcCX-9MWE3laOZsr16RHaZnkvaNv5vOAo8HzbfZcvZxD3vmFvf; __RequestVerificationToken_L1BBQ0VSQ3VzdG9taXphdGlvbg2=zoZdTU_0GEd24uRO4V8rGW56YVld2zUdGdrFa2Z_mbxwop5jRvl5cfEhuBMYu6g26znhYzUUEBW3RVKN1MRF5sWZxrWoXsxi-dvcl5UYc9c1; __RequestVerificationToken_L0hQTQ2=uNn9bfkD45s-nN6MPkfnMjrbOdIri5TlZX51zGADCLC0inOdq1f5oQ1u-gUCFF8-eJzXQtN9olQT3DWtNB6qS4KnsYbA89QDrc3ShqRMFQI1; .ASPXBrowserOverride=Mozilla%2f4.0+(compatible%3b+MSIE+6.0%3b+Windows+CE%3b+IEMobile+8.12%3b+MSIEMobile+6.0); .AspNet.ApplicationCookie=5kdFXhVw4oUB9E6gyjl4ap7x7Q3v23BsaAi51X-gsDxBXXqDoQ4RgNPEDrJafTqPe7uBV3Ia8Agvh5z4Z-x2c6Tt0O4d-HTH1ORTDsnGs4_RfPz6MhoJK8l5oGsUEBsxheSAZmJyIfWRd3qoETTK29j4YT8TWazDIw3DIaz0EPYFYw2RwHG3ZJbh44Y-K29oHW4jjbtpoCXDrVgMVH3GKtEA8T2mAJLsNbzFNmtz9qXhof5xp1kH7lamKYqybexi50KWV1KCv6PHmmMmn2S8JIfc-K87xp4dduqp0kZWj5_X7ZqYLAT-yvfuBz-OqQi9HRHafUUKkyiulT58toZopTLv2LaugdetOcVpKP8iC3_S84QKgd-yZSv8P8bpWdzRy72yoz-nNCYe5AZej0Fm-JZFRhsBHzVy0UPYJJucad8MbvhM4FrtntgN1URMVXLxsrP7Urs2gS7E8quYGzpLsRxfu1wfg30PE6w9CAe1QWvvZX75KBAUCksSLpN7bcW_; __RequestVerificationToken_L0hybXNEZW1v0=St-uMtmyCcRbAv77qGYfdGcYloHx40fyFqMUfnj2_jnpNI28rXGhoGEWxK5i8ArqgLPUs4hp2Z5vKBr3k0JYprkU7OZ4i3XP3awtH_9PMgk1; KKHrmsBug=tzN09PNr3DV6whdK4CIiZEkXFSLhBRozka1JYr2yi43hkp55E7byydiWWsSkGPaxS7_mV2w8TfMFOSFlOJcdbWaaymvilgl6JVCR1lYHfuNA34kz4Ga60ZSb1Vny7l3eNAtZ7g6mxSvRUA4Cg9zirI6T4MyfT1Bl3wxwncyUK4i0qu7qe9wE-ihSTOnCaG5NI3insXtJ48c9tOSIZNylAGqcaQAxn2s9V3-psWJu9HKpEc-ezXweEBhim20o0q-BwiS0PUBXdvD3UoTmKvTauZet7YwuM1zfUwxCQA3LVaFg9WVmd-uzSfhxKucEr36wC7SrHs-rtgcN88IqpT16_Ai2nHBGb92uj24_e262Xq1L6Sy1MCLLmLRnkC_NGVjKZt1ctJ1k79CQL6wjhn_GCXXXUanwncRzPLHpKc9vmIOwSA-E9e_VYIb7vGPlp_2lLG7-1dAmO_0utbMiHGnMSGgEdHlPeG0dfie6GRsSmsDxgy2uHp70-wiLKaWSeean; __RequestVerificationToken_L0hPUFNfSFJfdjI1=tdXWpEVftQ9s8fNcILZLIsv-Dr6b8BeToHw5PNGPMWlMq5laBhsJg6ma0fX_0QxhHHETP7wx-1FOjOVtYCdiQYLGkStoJE-gIvURjtUCyV41; HOPS_HR_v2=ajDCiXs0dl6LVppoKYGAw41O7o3KgRpvfnZlaBf_3hHGJKWIBp1xiT4y4n4dEq9yiLiNju65Em-HaKhkRGWLF-qUpn2rDZWJnznaWv2_WYLwc5qSdjCaSt0M7Te0JqDz5bdvn4NiuATnOZ5ofkH8owHGNU3LIN_ySrr1I3EUwIzeJx5RJoz9p8acsfyN2CYZ2ohGfVBbjPZTwZTDuZxFR1_W1eEWFqLVgtrhhC2KIL4MmiQc0mJeMGnyWyWs3OVwRsalOpzlACeFfhC-kDv2wNACCXrcQabjPDlgiQtx2YmigQ7BjsZSk5j8A8zvi1A22J8wrWPPeV9F-5THyxd--vPvgbDcKuDGw1DFMWSDKHoQQ1MABgHzg8YswETZtlCHQZe1OLp52rI94NP5C76a0cUc-eRjz0v21voKKRsvdrqcSwN3YkEYepb_2xNl4RFXJiT8H7t_ol2NDfkOMgAlMYxJhZjQaYPQ9CSsf6FyPreUmNcqtHaEL-eD4kNhG65s&#xD;&#xA;Host: apps.turanto.com&#xD;&#xA;Referer: https://apps.turanto.com/HOPS_HR_v2/T_Position&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/HOPS_HR_v2" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\HOPS_HR_v2\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="Admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="Admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="Admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/HOPS_HR_v2/T_EmployeeInjury/FindFSearch/310" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\HOPS_HR_v2\GeneratorBase.MVC\T_EmployeeInjury\FindFSearch\310" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="sourceEntity=T_Position" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="96.253.89.230" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="96.253.89.230" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="51941" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/HOPS_HR_v2/T_EmployeeInjury/FindFSearch/310" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/HOPS_HR_v2/T_EmployeeInjury/FindFSearch/310" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, sdch, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="_ga=GA1.2.179935880.1470368317; __RequestVerificationToken_L0hSTVM1=wQRgKomP8CXMxnN4Lcr_jU3VBObFXNqv0zUzp9ImE4vd2NYWkZ4n6WVO4AwbA2ccGcUl4J7M--4pXyWKR06n2THiiVF6--VabHmfzDzlzrQ1; HRMS=4aPy5v7IxRJz5uHfR0NaDw5_z2p7hW_XV8LhCU7CgLCQb_YDFkmVfRn3dMmTbtJ7qttpEgluqD7FOe_4C9XeW6MPD-Z-fOexMzm9-B-Vj7Wfe4Zp-9pgzONCrNPBVUOA-njtAn1ygnGFQTSioqeX0xCOMWy1iOcO_EY4hRqfDOuSejmqsZ19mKrNAEvdVHt_1I-GMpu7M0M7LLVKhb1KPmATND8SixFqN8dtVBZ-89_AE87KiVvsNTup8sTqsKnn2a0GeFsx3h8ri4TO_DqcVu_JQjmEEXvL_Nru_WN-IImv_z3r4XcePH13ohSfx310F--3fZtq6w6kEDXC_phZNYrVhqsqI6_PbE6g2xy_mDfUFQAa83hZO8_PAZYJeZ6lUQLO1xbcQI4hodLIhUDdB4T-ranS_oFZmw8zWEM-wkNOATYOw2-UvdfEf0VS5dZgGWeGfdlbYzIJTRtgbKhqSqHTOEDtOwviDtZT0fmzGiWXZLUmLaH0AvGE9mg28YYU; __RequestVerificationToken_L0lDTVM1=yPP4hrqsrtLoZHxLSHot3HufomAKvvbsXJJBVgBPx6C5UW4-AlgBpFikmR5OKGRdbRt0aI-wGypEDYB9_t4Ipxy2wN_2PW5_iYXUvfKKuhE1; __RequestVerificationToken_L0RCUlM1=OeU4BYvKFmcoL49OAoWuIMXwtfi9JRMqEoO47VtqxU2L__eeNuZz6UUci48RDpgvohX1WTk2UDhmoFFidCCmNQjdASW_pEsOPhfE8CX6nNk1; ASP.NET_SessionId=zmgihjjzcavs501mrjcvcule; DBRS=NSe-Nyczto_CfmAg1bX6g6sr4DvVwUjNY7AsYwg3EGsogOmpV1ZCFgRiBywziNOyBBa1DZPTXgFbQvsgvF_ABpLQpxBPh31nxUDi3B5uqcHdogV9JHGmqoYJPzqpXUIZBxhzOoA7nLWQafp-oIGsYvx7bNuUfcU2Mx0fhIJ0K7PNvqpy_TkbvO9SaJfB9UI7bvOzg3XaxOppVYFR07rTZYCc3jIlvpFQ8pRl6ONIt_YuTcPd7FIkRRuwNfXYLq38U5nP-sZWIfYY2iVasWs9mluPRdNp_H6Qjrgj2-WIkujPJ3yU_-DEcO-zzy2WIjvE6QAyL878XIKrtNoSYA7PD1GW6_4BOsjoUibzutRKCc2tSPVGerBqeJHi_gmiCBJl7k-TfStXUkvA8dr4Uo57QmvoUgY_kR2mdUcBasI10hQouI9b0bGGFYpIBOLCf9S0Bd6-dJpkizXapKpcCX-9MWE3laOZsr16RHaZnkvaNv5vOAo8HzbfZcvZxD3vmFvf; __RequestVerificationToken_L1BBQ0VSQ3VzdG9taXphdGlvbg2=zoZdTU_0GEd24uRO4V8rGW56YVld2zUdGdrFa2Z_mbxwop5jRvl5cfEhuBMYu6g26znhYzUUEBW3RVKN1MRF5sWZxrWoXsxi-dvcl5UYc9c1; __RequestVerificationToken_L0hQTQ2=uNn9bfkD45s-nN6MPkfnMjrbOdIri5TlZX51zGADCLC0inOdq1f5oQ1u-gUCFF8-eJzXQtN9olQT3DWtNB6qS4KnsYbA89QDrc3ShqRMFQI1; .ASPXBrowserOverride=Mozilla%2f4.0+(compatible%3b+MSIE+6.0%3b+Windows+CE%3b+IEMobile+8.12%3b+MSIEMobile+6.0); .AspNet.ApplicationCookie=5kdFXhVw4oUB9E6gyjl4ap7x7Q3v23BsaAi51X-gsDxBXXqDoQ4RgNPEDrJafTqPe7uBV3Ia8Agvh5z4Z-x2c6Tt0O4d-HTH1ORTDsnGs4_RfPz6MhoJK8l5oGsUEBsxheSAZmJyIfWRd3qoETTK29j4YT8TWazDIw3DIaz0EPYFYw2RwHG3ZJbh44Y-K29oHW4jjbtpoCXDrVgMVH3GKtEA8T2mAJLsNbzFNmtz9qXhof5xp1kH7lamKYqybexi50KWV1KCv6PHmmMmn2S8JIfc-K87xp4dduqp0kZWj5_X7ZqYLAT-yvfuBz-OqQi9HRHafUUKkyiulT58toZopTLv2LaugdetOcVpKP8iC3_S84QKgd-yZSv8P8bpWdzRy72yoz-nNCYe5AZej0Fm-JZFRhsBHzVy0UPYJJucad8MbvhM4FrtntgN1URMVXLxsrP7Urs2gS7E8quYGzpLsRxfu1wfg30PE6w9CAe1QWvvZX75KBAUCksSLpN7bcW_; __RequestVerificationToken_L0hybXNEZW1v0=St-uMtmyCcRbAv77qGYfdGcYloHx40fyFqMUfnj2_jnpNI28rXGhoGEWxK5i8ArqgLPUs4hp2Z5vKBr3k0JYprkU7OZ4i3XP3awtH_9PMgk1; KKHrmsBug=tzN09PNr3DV6whdK4CIiZEkXFSLhBRozka1JYr2yi43hkp55E7byydiWWsSkGPaxS7_mV2w8TfMFOSFlOJcdbWaaymvilgl6JVCR1lYHfuNA34kz4Ga60ZSb1Vny7l3eNAtZ7g6mxSvRUA4Cg9zirI6T4MyfT1Bl3wxwncyUK4i0qu7qe9wE-ihSTOnCaG5NI3insXtJ48c9tOSIZNylAGqcaQAxn2s9V3-psWJu9HKpEc-ezXweEBhim20o0q-BwiS0PUBXdvD3UoTmKvTauZet7YwuM1zfUwxCQA3LVaFg9WVmd-uzSfhxKucEr36wC7SrHs-rtgcN88IqpT16_Ai2nHBGb92uj24_e262Xq1L6Sy1MCLLmLRnkC_NGVjKZt1ctJ1k79CQL6wjhn_GCXXXUanwncRzPLHpKc9vmIOwSA-E9e_VYIb7vGPlp_2lLG7-1dAmO_0utbMiHGnMSGgEdHlPeG0dfie6GRsSmsDxgy2uHp70-wiLKaWSeean; __RequestVerificationToken_L0hPUFNfSFJfdjI1=tdXWpEVftQ9s8fNcILZLIsv-Dr6b8BeToHw5PNGPMWlMq5laBhsJg6ma0fX_0QxhHHETP7wx-1FOjOVtYCdiQYLGkStoJE-gIvURjtUCyV41; HOPS_HR_v2=ajDCiXs0dl6LVppoKYGAw41O7o3KgRpvfnZlaBf_3hHGJKWIBp1xiT4y4n4dEq9yiLiNju65Em-HaKhkRGWLF-qUpn2rDZWJnznaWv2_WYLwc5qSdjCaSt0M7Te0JqDz5bdvn4NiuATnOZ5ofkH8owHGNU3LIN_ySrr1I3EUwIzeJx5RJoz9p8acsfyN2CYZ2ohGfVBbjPZTwZTDuZxFR1_W1eEWFqLVgtrhhC2KIL4MmiQc0mJeMGnyWyWs3OVwRsalOpzlACeFfhC-kDv2wNACCXrcQabjPDlgiQtx2YmigQ7BjsZSk5j8A8zvi1A22J8wrWPPeV9F-5THyxd--vPvgbDcKuDGw1DFMWSDKHoQQ1MABgHzg8YswETZtlCHQZe1OLp52rI94NP5C76a0cUc-eRjz0v21voKKRsvdrqcSwN3YkEYepb_2xNl4RFXJiT8H7t_ol2NDfkOMgAlMYxJhZjQaYPQ9CSsf6FyPreUmNcqtHaEL-eD4kNhG65s" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://apps.turanto.com/HOPS_HR_v2/T_Position" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="sourceEntity">
+      <value string="T_Position" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name="_ga">
+      <value string="GA1.2.179935880.1470368317" />
+    </item>
+    <item name="__RequestVerificationToken_L0hSTVM1">
+      <value string="wQRgKomP8CXMxnN4Lcr_jU3VBObFXNqv0zUzp9ImE4vd2NYWkZ4n6WVO4AwbA2ccGcUl4J7M--4pXyWKR06n2THiiVF6--VabHmfzDzlzrQ1" />
+    </item>
+    <item name="HRMS">
+      <value string="4aPy5v7IxRJz5uHfR0NaDw5_z2p7hW_XV8LhCU7CgLCQb_YDFkmVfRn3dMmTbtJ7qttpEgluqD7FOe_4C9XeW6MPD-Z-fOexMzm9-B-Vj7Wfe4Zp-9pgzONCrNPBVUOA-njtAn1ygnGFQTSioqeX0xCOMWy1iOcO_EY4hRqfDOuSejmqsZ19mKrNAEvdVHt_1I-GMpu7M0M7LLVKhb1KPmATND8SixFqN8dtVBZ-89_AE87KiVvsNTup8sTqsKnn2a0GeFsx3h8ri4TO_DqcVu_JQjmEEXvL_Nru_WN-IImv_z3r4XcePH13ohSfx310F--3fZtq6w6kEDXC_phZNYrVhqsqI6_PbE6g2xy_mDfUFQAa83hZO8_PAZYJeZ6lUQLO1xbcQI4hodLIhUDdB4T-ranS_oFZmw8zWEM-wkNOATYOw2-UvdfEf0VS5dZgGWeGfdlbYzIJTRtgbKhqSqHTOEDtOwviDtZT0fmzGiWXZLUmLaH0AvGE9mg28YYU" />
+    </item>
+    <item name="__RequestVerificationToken_L0lDTVM1">
+      <value string="yPP4hrqsrtLoZHxLSHot3HufomAKvvbsXJJBVgBPx6C5UW4-AlgBpFikmR5OKGRdbRt0aI-wGypEDYB9_t4Ipxy2wN_2PW5_iYXUvfKKuhE1" />
+    </item>
+    <item name="__RequestVerificationToken_L0RCUlM1">
+      <value string="OeU4BYvKFmcoL49OAoWuIMXwtfi9JRMqEoO47VtqxU2L__eeNuZz6UUci48RDpgvohX1WTk2UDhmoFFidCCmNQjdASW_pEsOPhfE8CX6nNk1" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="zmgihjjzcavs501mrjcvcule" />
+    </item>
+    <item name="DBRS">
+      <value string="NSe-Nyczto_CfmAg1bX6g6sr4DvVwUjNY7AsYwg3EGsogOmpV1ZCFgRiBywziNOyBBa1DZPTXgFbQvsgvF_ABpLQpxBPh31nxUDi3B5uqcHdogV9JHGmqoYJPzqpXUIZBxhzOoA7nLWQafp-oIGsYvx7bNuUfcU2Mx0fhIJ0K7PNvqpy_TkbvO9SaJfB9UI7bvOzg3XaxOppVYFR07rTZYCc3jIlvpFQ8pRl6ONIt_YuTcPd7FIkRRuwNfXYLq38U5nP-sZWIfYY2iVasWs9mluPRdNp_H6Qjrgj2-WIkujPJ3yU_-DEcO-zzy2WIjvE6QAyL878XIKrtNoSYA7PD1GW6_4BOsjoUibzutRKCc2tSPVGerBqeJHi_gmiCBJl7k-TfStXUkvA8dr4Uo57QmvoUgY_kR2mdUcBasI10hQouI9b0bGGFYpIBOLCf9S0Bd6-dJpkizXapKpcCX-9MWE3laOZsr16RHaZnkvaNv5vOAo8HzbfZcvZxD3vmFvf" />
+    </item>
+    <item name="__RequestVerificationToken_L1BBQ0VSQ3VzdG9taXphdGlvbg2">
+      <value string="zoZdTU_0GEd24uRO4V8rGW56YVld2zUdGdrFa2Z_mbxwop5jRvl5cfEhuBMYu6g26znhYzUUEBW3RVKN1MRF5sWZxrWoXsxi-dvcl5UYc9c1" />
+    </item>
+    <item name="__RequestVerificationToken_L0hQTQ2">
+      <value string="uNn9bfkD45s-nN6MPkfnMjrbOdIri5TlZX51zGADCLC0inOdq1f5oQ1u-gUCFF8-eJzXQtN9olQT3DWtNB6qS4KnsYbA89QDrc3ShqRMFQI1" />
+    </item>
+    <item name=".ASPXBrowserOverride">
+      <value string="Mozilla%2f4.0+(compatible%3b+MSIE+6.0%3b+Windows+CE%3b+IEMobile+8.12%3b+MSIEMobile+6.0)" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="5kdFXhVw4oUB9E6gyjl4ap7x7Q3v23BsaAi51X-gsDxBXXqDoQ4RgNPEDrJafTqPe7uBV3Ia8Agvh5z4Z-x2c6Tt0O4d-HTH1ORTDsnGs4_RfPz6MhoJK8l5oGsUEBsxheSAZmJyIfWRd3qoETTK29j4YT8TWazDIw3DIaz0EPYFYw2RwHG3ZJbh44Y-K29oHW4jjbtpoCXDrVgMVH3GKtEA8T2mAJLsNbzFNmtz9qXhof5xp1kH7lamKYqybexi50KWV1KCv6PHmmMmn2S8JIfc-K87xp4dduqp0kZWj5_X7ZqYLAT-yvfuBz-OqQi9HRHafUUKkyiulT58toZopTLv2LaugdetOcVpKP8iC3_S84QKgd-yZSv8P8bpWdzRy72yoz-nNCYe5AZej0Fm-JZFRhsBHzVy0UPYJJucad8MbvhM4FrtntgN1URMVXLxsrP7Urs2gS7E8quYGzpLsRxfu1wfg30PE6w9CAe1QWvvZX75KBAUCksSLpN7bcW_" />
+    </item>
+    <item name="__RequestVerificationToken_L0hybXNEZW1v0">
+      <value string="St-uMtmyCcRbAv77qGYfdGcYloHx40fyFqMUfnj2_jnpNI28rXGhoGEWxK5i8ArqgLPUs4hp2Z5vKBr3k0JYprkU7OZ4i3XP3awtH_9PMgk1" />
+    </item>
+    <item name="KKHrmsBug">
+      <value string="tzN09PNr3DV6whdK4CIiZEkXFSLhBRozka1JYr2yi43hkp55E7byydiWWsSkGPaxS7_mV2w8TfMFOSFlOJcdbWaaymvilgl6JVCR1lYHfuNA34kz4Ga60ZSb1Vny7l3eNAtZ7g6mxSvRUA4Cg9zirI6T4MyfT1Bl3wxwncyUK4i0qu7qe9wE-ihSTOnCaG5NI3insXtJ48c9tOSIZNylAGqcaQAxn2s9V3-psWJu9HKpEc-ezXweEBhim20o0q-BwiS0PUBXdvD3UoTmKvTauZet7YwuM1zfUwxCQA3LVaFg9WVmd-uzSfhxKucEr36wC7SrHs-rtgcN88IqpT16_Ai2nHBGb92uj24_e262Xq1L6Sy1MCLLmLRnkC_NGVjKZt1ctJ1k79CQL6wjhn_GCXXXUanwncRzPLHpKc9vmIOwSA-E9e_VYIb7vGPlp_2lLG7-1dAmO_0utbMiHGnMSGgEdHlPeG0dfie6GRsSmsDxgy2uHp70-wiLKaWSeean" />
+    </item>
+    <item name="__RequestVerificationToken_L0hPUFNfSFJfdjI1">
+      <value string="tdXWpEVftQ9s8fNcILZLIsv-Dr6b8BeToHw5PNGPMWlMq5laBhsJg6ma0fX_0QxhHHETP7wx-1FOjOVtYCdiQYLGkStoJE-gIvURjtUCyV41" />
+    </item>
+    <item name="HOPS_HR_v2">
+      <value string="ajDCiXs0dl6LVppoKYGAw41O7o3KgRpvfnZlaBf_3hHGJKWIBp1xiT4y4n4dEq9yiLiNju65Em-HaKhkRGWLF-qUpn2rDZWJnznaWv2_WYLwc5qSdjCaSt0M7Te0JqDz5bdvn4NiuATnOZ5ofkH8owHGNU3LIN_ySrr1I3EUwIzeJx5RJoz9p8acsfyN2CYZ2ohGfVBbjPZTwZTDuZxFR1_W1eEWFqLVgtrhhC2KIL4MmiQc0mJeMGnyWyWs3OVwRsalOpzlACeFfhC-kDv2wNACCXrcQabjPDlgiQtx2YmigQ7BjsZSk5j8A8zvi1A22J8wrWPPeV9F-5THyxd--vPvgbDcKuDGw1DFMWSDKHoQQ1MABgHzg8YswETZtlCHQZe1OLp52rI94NP5C76a0cUc-eRjz0v21voKKRsvdrqcSwN3YkEYepb_2xNl4RFXJiT8H7t_ol2NDfkOMgAlMYxJhZjQaYPQ9CSsf6FyPreUmNcqtHaEL-eD4kNhG65s" />
+    </item>
+  </cookies>
+</error>

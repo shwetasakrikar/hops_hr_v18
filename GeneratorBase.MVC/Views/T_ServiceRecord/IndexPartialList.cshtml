@@ -1,0 +1,949 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_ServiceRecord>
+@using PagedList.Mvc;
+@{
+    var ActionNameUrl = "Index";
+    if (HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().ToUpper() == "FSEARCH")
+    {
+        ActionNameUrl = "FSearch";
+    }
+	var BackUrl =  Request.Url;
+	 if (ViewData["HostingEntity"] != null && (Request.QueryString["TabToken"] != null || Request.IsAjaxRequest()))
+	{
+		BackUrl =  Request.UrlReferrer;
+	}
+	var EntityReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_ServiceRecord");
+	
+	 var OneToOnedb = new ApplicationContext(new GeneratorBase.MVC.Models.SystemUser());
+}
+<div id="T_ServiceRecord">
+
+<style>
+    .table-responsive > .fixed-column {
+        position: absolute;
+        display: block;
+        width: auto;
+        border: 0px solid transparent;
+        border-top: 1px solid #c3ddec;
+    }
+    .fixed-column th {
+        background: #fff;
+    }
+    .fixed-column td {
+        background: #fff;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+	 $(".pagination a").click(function (e) {
+            //PaginationClick(e,'T_ServiceRecord')
+			PaginationClick(e, 'T_ServiceRecord','@User.JavaScriptEncodedName')
+        })
+	    if("@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().ToUpper()" == "FSEARCH")
+        {
+            $("#fsearchT_ServiceRecord").addClass('in');
+			if('@ViewData["HostingEntity"]'.length>0)
+	        {
+                $("#" + "@ViewData["HostingEntity"]" + "_T_ServiceRecord").hide();
+	        }
+			FSearchColumnsShowHideGalaryList('@ViewData["HideColumns"]', 'T_ServiceRecord');
+        }
+	    $("#SearchStringT_ServiceRecord").keypress(function (e) {
+			if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+				 $("#T_ServiceRecordSearch").bind("click", (function () {
+                        }));
+                $('#T_ServiceRecordSearch').trigger("click");
+                return false;
+			}
+        })
+        $("#btnShowHideT_ServiceRecord").mouseup(function () {
+            if (document.getElementById('ColumnShowHideT_ServiceRecord').className == 'collapse') {
+				 $('#lblT_ServiceRecord').css('display', 'none');
+            }
+        })
+		if ($("#ErrmsgLockRecord").length > 0 && $("#ErrmsgLockRecord").text().length > 0) {
+                    $(".pull-left.actionbar").hide();
+		}
+    });
+</script>
+@functions {
+    object getSortHtmlAttributes(string sortby, bool IsPaging, int? page, bool? IsExport)
+    {
+        if (IsPaging)
+        {
+            return new
+            {
+                page,
+                sortBy = ViewBag.CurrentSort,
+                isAsc = ViewBag.IsAsc,
+                currentFilter = ViewBag.CurrentFilter,
+                HostingEntity = @Convert.ToString(ViewData["HostingEntity"]),
+                AssociatedType = @Convert.ToString(ViewData["AssociatedType"]),
+                HostingEntityID = ViewData["HostingEntityID"],
+				IsExport = IsExport,
+				FSFilter = ViewBag.FSFilter == null ? "Fsearch" : ViewBag.FSFilter,
+				IsFilter = @Convert.ToBoolean(ViewData["IsFilter"]),
+                
+ t_employeeemploymentprofile = Request.QueryString["t_employeeemploymentprofile"],
+ t_employmentrecordemployeetype = Request.QueryString["t_employmentrecordemployeetype"],
+ t_employmentrecordhiredatfacility = Request.QueryString["t_employmentrecordhiredatfacility"],
+ t_employeeterminationreason = Request.QueryString["t_employeeterminationreason"],
+ t_employeerecordterminationfacility = Request.QueryString["t_employeerecordterminationfacility"],
+ T_IsCurrent = Request.QueryString["T_IsCurrent"],
+ T_HireDateFrom = Request.QueryString["T_HireDateFrom"],
+  T_HireDateFromhdn = Request.QueryString["T_HireDateFromhdn"],
+  T_HireDateTo = Request.QueryString["T_HireDateTo"],
+  T_HireDateTohdn = Request.QueryString["T_HireDateTohdn"],
+ T_TerminationDateFrom = Request.QueryString["T_TerminationDateFrom"],
+  T_TerminationDateFromhdn = Request.QueryString["T_TerminationDateFromhdn"],
+  T_TerminationDateTo = Request.QueryString["T_TerminationDateTo"],
+  T_TerminationDateTohdn = Request.QueryString["T_TerminationDateTohdn"],
+ T_ThreeMonthDueFrom = Request.QueryString["T_ThreeMonthDueFrom"],
+  T_ThreeMonthDueFromhdn = Request.QueryString["T_ThreeMonthDueFromhdn"],
+  T_ThreeMonthDueTo = Request.QueryString["T_ThreeMonthDueTo"],
+  T_ThreeMonthDueTohdn = Request.QueryString["T_ThreeMonthDueTohdn"],
+ T_ThreeMonthReviewCompleted = Request.QueryString["T_ThreeMonthReviewCompleted"],
+ T_SixMonthDueFrom = Request.QueryString["T_SixMonthDueFrom"],
+  T_SixMonthDueFromhdn = Request.QueryString["T_SixMonthDueFromhdn"],
+  T_SixMonthDueTo = Request.QueryString["T_SixMonthDueTo"],
+  T_SixMonthDueTohdn = Request.QueryString["T_SixMonthDueTohdn"],
+ T_SixMonthReviewCompleted = Request.QueryString["T_SixMonthReviewCompleted"],
+ T_TwelveMonthDueFrom = Request.QueryString["T_TwelveMonthDueFrom"],
+  T_TwelveMonthDueFromhdn = Request.QueryString["T_TwelveMonthDueFromhdn"],
+  T_TwelveMonthDueTo = Request.QueryString["T_TwelveMonthDueTo"],
+  T_TwelveMonthDueTohdn = Request.QueryString["T_TwelveMonthDueTohdn"],
+ T_TwelveMonthReviewCompleted = Request.QueryString["T_TwelveMonthReviewCompleted"],
+ T_ProbationaryExtensionDateFrom = Request.QueryString["T_ProbationaryExtensionDateFrom"],
+  T_ProbationaryExtensionDateFromhdn = Request.QueryString["T_ProbationaryExtensionDateFromhdn"],
+  T_ProbationaryExtensionDateTo = Request.QueryString["T_ProbationaryExtensionDateTo"],
+  T_ProbationaryExtensionDateTohdn = Request.QueryString["T_ProbationaryExtensionDateTohdn"],
+ T_ExtensionReviewCompleted = Request.QueryString["T_ExtensionReviewCompleted"],
+ T_TwoWeekNoticeGiven = Request.QueryString["T_TwoWeekNoticeGiven"],
+ T_NoticeGivenDateFrom = Request.QueryString["T_NoticeGivenDateFrom"],
+  T_NoticeGivenDateFromhdn = Request.QueryString["T_NoticeGivenDateFromhdn"],
+  T_NoticeGivenDateTo = Request.QueryString["T_NoticeGivenDateTo"],
+  T_NoticeGivenDateTohdn = Request.QueryString["T_NoticeGivenDateTohdn"],
+ T_ThirtyDaysSinceTerminationFrom = Request.QueryString["T_ThirtyDaysSinceTerminationFrom"],
+  T_ThirtyDaysSinceTerminationFromhdn = Request.QueryString["T_ThirtyDaysSinceTerminationFromhdn"],
+  T_ThirtyDaysSinceTerminationTo = Request.QueryString["T_ThirtyDaysSinceTerminationTo"],
+  T_ThirtyDaysSinceTerminationTohdn = Request.QueryString["T_ThirtyDaysSinceTerminationTohdn"],
+ T_ThirteenWeeksSinceTerminationFrom = Request.QueryString["T_ThirteenWeeksSinceTerminationFrom"],
+  T_ThirteenWeeksSinceTerminationFromhdn = Request.QueryString["T_ThirteenWeeksSinceTerminationFromhdn"],
+  T_ThirteenWeeksSinceTerminationTo = Request.QueryString["T_ThirteenWeeksSinceTerminationTo"],
+  T_ThirteenWeeksSinceTerminationTohdn = Request.QueryString["T_ThirteenWeeksSinceTerminationTohdn"],
+ T_EligibleForRehire = Request.QueryString["T_EligibleForRehire"],
+				search=Request.QueryString["search"],
+		SortOrder = Request.QueryString["SortOrder"],
+		viewtype = ViewBag.TemplatesName,
+		HideColumns = ViewData["HideColumns"],
+		 GroupByColumn = ViewBag.GroupByColumn,
+		 FilterCondition = ViewBag.FilterCondition,
+		 inbuiltSearchCriteria = ViewBag.inbuiltSearchCriteria
+            };
+        }
+        else
+        {
+            return new
+            {
+                sortBy = sortby,
+                currentFilter = Request.QueryString["currentFilter"],
+                searchString = Request.QueryString["searchString"],
+                isAsc = (ViewBag.IsAsc == "ASC" ? "DESC" : ""),
+                page = ViewBag.Pages,
+                HostingEntity = @Convert.ToString(ViewData["HostingEntity"]),
+                HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),
+                AssociatedType = @Convert.ToString(ViewData["AssociatedType"]),
+				IsExport = IsExport,
+				FSFilter = ViewBag.FSFilter == null ? "Fsearch" : ViewBag.FSFilter,
+				IsFilter = @Convert.ToBoolean(ViewData["IsFilter"]),
+ t_employeeemploymentprofile = Request.QueryString["t_employeeemploymentprofile"],
+ t_employmentrecordemployeetype = Request.QueryString["t_employmentrecordemployeetype"],
+ t_employmentrecordhiredatfacility = Request.QueryString["t_employmentrecordhiredatfacility"],
+ t_employeeterminationreason = Request.QueryString["t_employeeterminationreason"],
+ t_employeerecordterminationfacility = Request.QueryString["t_employeerecordterminationfacility"],
+ T_IsCurrent = Request.QueryString["T_IsCurrent"],
+  T_HireDateFrom = Request.QueryString["T_HireDateFrom"],
+  T_HireDateFromhdn = Request.QueryString["T_HireDateFromhdn"],
+  T_HireDateTo = Request.QueryString["T_HireDateTo"],
+  T_HireDateTohdn = Request.QueryString["T_HireDateTohdn"],
+  T_TerminationDateFrom = Request.QueryString["T_TerminationDateFrom"],
+  T_TerminationDateFromhdn = Request.QueryString["T_TerminationDateFromhdn"],
+  T_TerminationDateTo = Request.QueryString["T_TerminationDateTo"],
+  T_TerminationDateTohdn = Request.QueryString["T_TerminationDateTohdn"],
+  T_ThreeMonthDueFrom = Request.QueryString["T_ThreeMonthDueFrom"],
+  T_ThreeMonthDueFromhdn = Request.QueryString["T_ThreeMonthDueFromhdn"],
+  T_ThreeMonthDueTo = Request.QueryString["T_ThreeMonthDueTo"],
+  T_ThreeMonthDueTohdn = Request.QueryString["T_ThreeMonthDueTohdn"],
+ T_ThreeMonthReviewCompleted = Request.QueryString["T_ThreeMonthReviewCompleted"],
+  T_SixMonthDueFrom = Request.QueryString["T_SixMonthDueFrom"],
+  T_SixMonthDueFromhdn = Request.QueryString["T_SixMonthDueFromhdn"],
+  T_SixMonthDueTo = Request.QueryString["T_SixMonthDueTo"],
+  T_SixMonthDueTohdn = Request.QueryString["T_SixMonthDueTohdn"],
+ T_SixMonthReviewCompleted = Request.QueryString["T_SixMonthReviewCompleted"],
+  T_TwelveMonthDueFrom = Request.QueryString["T_TwelveMonthDueFrom"],
+  T_TwelveMonthDueFromhdn = Request.QueryString["T_TwelveMonthDueFromhdn"],
+  T_TwelveMonthDueTo = Request.QueryString["T_TwelveMonthDueTo"],
+  T_TwelveMonthDueTohdn = Request.QueryString["T_TwelveMonthDueTohdn"],
+ T_TwelveMonthReviewCompleted = Request.QueryString["T_TwelveMonthReviewCompleted"],
+  T_ProbationaryExtensionDateFrom = Request.QueryString["T_ProbationaryExtensionDateFrom"],
+  T_ProbationaryExtensionDateFromhdn = Request.QueryString["T_ProbationaryExtensionDateFromhdn"],
+  T_ProbationaryExtensionDateTo = Request.QueryString["T_ProbationaryExtensionDateTo"],
+  T_ProbationaryExtensionDateTohdn = Request.QueryString["T_ProbationaryExtensionDateTohdn"],
+ T_ExtensionReviewCompleted = Request.QueryString["T_ExtensionReviewCompleted"],
+ T_TwoWeekNoticeGiven = Request.QueryString["T_TwoWeekNoticeGiven"],
+  T_NoticeGivenDateFrom = Request.QueryString["T_NoticeGivenDateFrom"],
+  T_NoticeGivenDateFromhdn = Request.QueryString["T_NoticeGivenDateFromhdn"],
+  T_NoticeGivenDateTo = Request.QueryString["T_NoticeGivenDateTo"],
+  T_NoticeGivenDateTohdn = Request.QueryString["T_NoticeGivenDateTohdn"],
+  T_ThirtyDaysSinceTerminationFrom = Request.QueryString["T_ThirtyDaysSinceTerminationFrom"],
+  T_ThirtyDaysSinceTerminationFromhdn = Request.QueryString["T_ThirtyDaysSinceTerminationFromhdn"],
+  T_ThirtyDaysSinceTerminationTo = Request.QueryString["T_ThirtyDaysSinceTerminationTo"],
+  T_ThirtyDaysSinceTerminationTohdn = Request.QueryString["T_ThirtyDaysSinceTerminationTohdn"],
+  T_ThirteenWeeksSinceTerminationFrom = Request.QueryString["T_ThirteenWeeksSinceTerminationFrom"],
+  T_ThirteenWeeksSinceTerminationFromhdn = Request.QueryString["T_ThirteenWeeksSinceTerminationFromhdn"],
+  T_ThirteenWeeksSinceTerminationTo = Request.QueryString["T_ThirteenWeeksSinceTerminationTo"],
+  T_ThirteenWeeksSinceTerminationTohdn = Request.QueryString["T_ThirteenWeeksSinceTerminationTohdn"],
+ T_EligibleForRehire = Request.QueryString["T_EligibleForRehire"],
+		search=Request.QueryString["search"],
+		SortOrder = Request.QueryString["SortOrder"],
+		viewtype = ViewBag.TemplatesName,
+		HideColumns = ViewData["HideColumns"],
+		 GroupByColumn = ViewBag.GroupByColumn,
+		 FilterCondition = ViewBag.FilterCondition,
+		 inbuiltSearchCriteria = ViewBag.inbuiltSearchCriteria
+            };
+        }
+    }
+}
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-sx-12">
+      
+	   <div style="display:block; padding:0px 0px 5px 0px;">
+	    
+	   
+
+            <div class="pull-left actionbar">
+                 <div class="btn-group" id='@ViewData["HostingEntity"]_T_ServiceRecord'>
+				  @if (User.CanAdd("T_ServiceRecord"))
+				  {
+						
+					<a class="btn btn-sm" type="button" data-original-title="Full Add" data-placement="top" onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_ServiceRecord", new { UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) }, null) + "');")>
+						<i class="fa fa-plus-circle" style="margin-right:3px"></i> Add
+					</a>
+			}
+			
+                </div>
+				
+		<div class="btn-group">
+
+   	@if (ViewData["HostingEntity"] == null || Convert.ToBoolean(ViewData["IsFilter"]) == true)
+	{
+			if (User.CanView("T_Employee") || User.CanView("T_EmployeeType") || User.CanView("T_AllFacilities") || User.CanView("T_TerminationReason") || User.CanView("T_AllFacilities"))
+	{ 
+			<div class="btn-group">
+		<a class="btn btn-sm dropdown-toggle" data-original-title="Filter-Groupby" data-toggle="dropdown" href="#" >
+		<i class="fa fa-filter" style="margin-right:3px"></i> Filter
+		</a>
+		<ul class="dropdown-menu" role="menu">
+			@if (User.CanView("T_Employee"))
+			{
+				<li>
+					<a id="fltT_Employee" data-placement="top" onclick=@Html.Raw("SetCookieFlt('fltT_Employee');EntityFilter('T_ServiceRecord','" + Url.Action("GetAllValueForFilter", "T_Employee") + "','" + Html.Raw(Url.Action("Index", "T_ServiceRecord", new {FirstCall=true,FilterHostingEntityID = ViewData["HostingEntityID"], IsFilter = true, HostingEntity = "T_Employee", AssociatedType = "T_EmployeeEmploymentProfile", ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)})) + "','" + User.JavaScriptEncodedName + "');")>
+						<span>Employee</span>
+					</a>
+				</li>
+			}
+			@if (User.CanView("T_EmployeeType"))
+			{
+				<li>
+					<a id="fltT_EmployeeType" data-placement="top" onclick=@Html.Raw("SetCookieFlt('fltT_EmployeeType');EntityFilter('T_ServiceRecord','" + Url.Action("GetAllValueForFilter", "T_EmployeeType") + "','" + Html.Raw(Url.Action("Index", "T_ServiceRecord", new {FirstCall=true,FilterHostingEntityID = ViewData["HostingEntityID"], IsFilter = true, HostingEntity = "T_EmployeeType", AssociatedType = "T_EmploymentRecordEmployeeType", ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)})) + "','" + User.JavaScriptEncodedName + "');")>
+						<span>Employee Type</span>
+					</a>
+				</li>
+			}
+			@if (User.CanView("T_AllFacilities"))
+			{
+				<li>
+					<a id="fltT_AllFacilities" data-placement="top" onclick=@Html.Raw("SetCookieFlt('fltT_AllFacilities');EntityFilter('T_ServiceRecord','" + Url.Action("GetAllValueForFilter", "T_AllFacilities") + "','" + Html.Raw(Url.Action("Index", "T_ServiceRecord", new {FirstCall=true,FilterHostingEntityID = ViewData["HostingEntityID"], IsFilter = true, HostingEntity = "T_AllFacilities", AssociatedType = "T_EmploymentRecordHiredAtFacility", ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)})) + "','" + User.JavaScriptEncodedName + "');")>
+						<span>Hired At Facility</span>
+					</a>
+				</li>
+			}
+			@if (User.CanView("T_TerminationReason"))
+			{
+				<li>
+					<a id="fltT_TerminationReason" data-placement="top" onclick=@Html.Raw("SetCookieFlt('fltT_TerminationReason');EntityFilter('T_ServiceRecord','" + Url.Action("GetAllValueForFilter", "T_TerminationReason") + "','" + Html.Raw(Url.Action("Index", "T_ServiceRecord", new {FirstCall=true,FilterHostingEntityID = ViewData["HostingEntityID"], IsFilter = true, HostingEntity = "T_TerminationReason", AssociatedType = "T_EmployeeTerminationReason", ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)})) + "','" + User.JavaScriptEncodedName + "');")>
+						<span>Separation Reason</span>
+					</a>
+				</li>
+			}
+			@if (User.CanView("T_AllFacilities"))
+			{
+				<li>
+					<a id="fltT_AllFacilities" data-placement="top" onclick=@Html.Raw("SetCookieFlt('fltT_AllFacilities');EntityFilter('T_ServiceRecord','" + Url.Action("GetAllValueForFilter", "T_AllFacilities") + "','" + Html.Raw(Url.Action("Index", "T_ServiceRecord", new {FirstCall=true,FilterHostingEntityID = ViewData["HostingEntityID"], IsFilter = true, HostingEntity = "T_AllFacilities", AssociatedType = "T_EmployeeRecordTerminationFacility", ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)})) + "','" + User.JavaScriptEncodedName + "');")>
+						<span>After Termination Joined Facility</span>
+					</a>
+				</li>
+			}
+     <li>
+@Html.ActionLink("Clear", "Index", new { viewtype = Convert.ToString(ViewBag.TemplatesName) }, new { onclick = "ClearFilterCookies();", @class = "label label-primary pull-left filterLabel", @Style = "margin-left:20px;color: white" })</li>
+		</ul>
+		</div>
+		}
+		} 
+                </div>
+@if ((User.CanEdit("T_ServiceRecord") && User.CanUseVerb("BulkUpdate", "T_ServiceRecord", User)) || (User.CanDelete("T_ServiceRecord") && User.CanUseVerb("BulkDelete", "T_ServiceRecord", User)))
+{
+ <div class="btn-group">
+    <a class="btn btn-sm dropdown-toggle" data-original-title="Bulk Actions" data-toggle="dropdown" href="#">
+           <span class="fa fa-wrench"></span> Bulk
+        </a>
+        <ul class="dropdown-menu" role="menu">
+	
+	@if ( User.CanEdit("T_ServiceRecord")&&  User.CanUseVerb("BulkUpdate","T_ServiceRecord",User))
+	{
+	<li>
+		<a data-placement="top" style="cursor:pointer;" data-toggle="modal" data-target="#dvPopup"
+			onclick="@Html.Raw("OpenPopUpBulKUpdate('addPopup','Bulk Update Service Record','dvPopup','" + Url.Action("BulkUpdate", "T_ServiceRecord", new { UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS = DateTime.Now }) + "','T_ServiceRecord')")">Update</a>
+	</li>
+	
+	}
+	
+ 
+	 @if ( User.CanDelete("T_ServiceRecord") && User.CanUseVerb("BulkDelete","T_ServiceRecord",User))
+     {
+	 <li>
+		<a style="cursor:pointer;" onclick="PerformBulkOperation(this,'T_ServiceRecord','Bulk Delete','@Url.Action("DeleteBulk", "T_ServiceRecord")');">Delete</a>
+	 </li>
+	
+	 }
+                        </ul>
+                    </div>
+					}
+					 <div class="btn-group">
+                        <a class="btn btn-sm dropdown-toggle tip-top" data-original-title="View As" style="padding:3px 5px;" data-toggle="dropdown">
+                            <span class="fa fa fa-table"></span> View As
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" style="min-width:110px">
+                            <li>
+                                <a data-placement="top" style="cursor:pointer;"
+                                   onclick="@Html.Raw("LoadTabTemplate('T_ServiceRecord','" + Url.Action("Index", "T_ServiceRecord", new { UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntity = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS = DateTime.Now, viewtype = "IndexPartialGallery" }) + "')")">
+                                    <span class="fa fa-th"></span> Gallery
+                                </a>
+                            </li>
+                            <li>
+                                <a style="display:block; margin:0px;"
+                                   onclick="@Html.Raw("LoadTabTemplate('T_ServiceRecord','" + Url.Action("Index", "T_ServiceRecord", new { UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntity = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS = DateTime.Now, viewtype = "IndexPartialList" }) + "')")">
+                                    <span class="fa fa-list"></span> List
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+<div class="btn-group">
+                            <a class="btn btn-sm dropdown-toggle tip-top" data-toggle="dropdown">
+                                Tools
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" style="min-width:110px">
+							 <li>
+							               @if (ViewData["HostingEntity"] == null)
+			   {
+                        <a data-placement="top" data-original-title="Show Graph" data-toggle="modal" data-target="#ShowGraphT_ServiceRecord" onclick=@Html.Raw("OpenDashBoard('dvShowGraphT_ServiceRecord');")>
+                            <span class="fa fa-area-chart" style="margin-right:3px"></span> Show Graph
+                        </a>
+				}
+			@if (ViewData["HostingEntity"] != null && User.CanEdit(ViewData["HostingEntity"].ToString()))
+			{
+				<a id="showAssociateBtn"  data-placement="top" data-original-title="Associate Service Record with @GeneratorBase.MVC.Models.ModelConversion.GetDisplayNameOfEntity(ViewData["HostingEntity"].ToString())" data-toggle="modal" data-target="#dvPopupBulkOperation" onclick="@Html.Raw("OpenPopUpEntity1M(this,'PopupBulkOperation','Service Record','dvPopupBulkOperation','" + Url.Action("Index", "T_ServiceRecord", new { BulkOperation = "multiple", BulkAssociate = true, UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntity = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS = DateTime.Now,viewtype = Convert.ToString(ViewBag.TemplatesName) }) + "')")">
+					<i class="fa fa-plus-circle" ></i> Add Association
+				</a>
+				<script>
+                                if($("#HostingEntityDisplayValue").attr('id')==undefined)
+                                    $("#showAssociateBtn").hide();
+                            </script>
+
+			}
+                               
+                                 
+                                    
+                                </li>
+                                <li>
+								
+				@if ( User.CanAdd("T_ServiceRecord") && User.CanUseVerb("ImportExcel", "T_ServiceRecord", User))
+			{
+				if (ViewData["HostingEntity"]==null)
+				{ 
+				 <a  onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Upload", "T_ServiceRecord") + "');")>
+                        <i class="fa fa-upload" style="margin-right:3px"></i>    Import Excel
+                                         
+                 </a>
+				}
+			}
+
+                                  
+                                </li>
+
+                                <li>
+				@if (User.CanView("T_ServiceRecord") && User.CanUseVerb("ExportExcel", "T_ServiceRecord", User))
+                {
+					<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action(ActionNameUrl,"T_ServiceRecord",getSortHtmlAttributes(null, false, null, true), null) + "');")>
+						<i class="fa fa-download" style="margin-right:3px"></i>  Export Excel
+                    
+					</a>
+				}
+                                   
+                                </li>
+                    			<li>
+                <a class="collapse-data-btn" id="btnShowHideT_ServiceRecord" data-original-title="Show/Hide Column" data-placement="top" onclick=@Html.Raw("showhideColumns(event,'T_ServiceRecord');")>
+                    <span class="fa fa-table"></span>  Show/Hide Column
+                </a>
+            </li>
+                 
+                            </ul>
+                        </div>
+
+</div>					
+
+					<div class="pull-right" style="width:300px; padding-top:4px; ">
+                        <div class="input-group">
+                            @Html.TextBox("SearchStringT_ServiceRecord", ViewBag.CurrentFilter as string, null, new { @class = "form-control fixsearchbox", @value = ViewBag.Homeval, @placeholder = "Search" })
+                            <div class="input-group-btn">
+                              <a id="T_ServiceRecordSearch" onclick="SearchClick(event, 'T_ServiceRecord', '@Html.Raw(Url.Action("Index", "T_ServiceRecord", new { IsFilter = ViewData["IsFilter"], IsDeepSearch = false, searchString = "_SearchString", HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]),HideColumns = ViewData["HideColumns"], SearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName) }))','@User.JavaScriptEncodedName');" data-original-title="Grid Search" class="btn btn-default btn-default tip-top" style="padding:3px 5px; border:1px solid #ccc" ><span class="fa fa-search"></span></a>
+								<a id="T_ServiceRecordDeepSearch" onclick="SearchClick(event, 'T_ServiceRecord', '@Html.Raw(Url.Action("Index", "T_ServiceRecord", new { IsFilter = ViewData["IsFilter"], IsDeepSearch = true, searchString = "_SearchString", HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]),HideColumns = ViewData["HideColumns"], SearchTimeStamp = DateTime.Now.Ticks.ToString() ,viewtype = Convert.ToString(ViewBag.TemplatesName)}))','@User.JavaScriptEncodedName');" data-original-title="Detail Search" class="btn btn-default btn-default tip-top" style="padding:3px 5px; border:1px solid #ccc; display:none;"><span class="fam-zoom-in"></span></a>
+ @if (ViewData["HostingEntity"]==null)
+	{ 
+			 <a href="@(Url.Action("SetFSearch", "T_ServiceRecord")+Request.Url.Query)" data-original-title="Faceted Search" class="btn btn-default btn-default tip-top" style="padding:3px 5px; border:1px solid #ccc"><span class="fa fa-binoculars"></span></a>
+	}
+								<button id="T_ServiceRecordCancel" type="button" class="btn btn-default btn-default collapse-data-btn tip-top" onclick="CancelSearch('T_ServiceRecord','@Html.Raw(Url.Action("Index", "T_ServiceRecord", new {IsFilter=ViewData["IsFilter"], HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]), HideColumns = ViewData["HideColumns"], ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName) }))','@User.JavaScriptEncodedName')" data-original-title="Clear Search" data-placement="top" style="padding:3px 5px; border:1px solid #ccc">
+                                    <span class="fa fa-minus-circle"></span>
+                                </button>
+                                <button id="T_ServiceRecordSearchCancel" type="button" class="btn btn-default btn-default collapse-data-btn tip-top" onclick="CancelSearch('T_ServiceRecord','@Html.Raw(Url.Action("Index", "T_ServiceRecord", new {IsFilter=ViewData["IsFilter"], itemsPerPage=Convert.ToInt32(ViewBag.PageSize),HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]),HideColumns = ViewData["HideColumns"], ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)}))','@User.JavaScriptEncodedName')" data-original-title="Refresh Grid" data-placement="top" style="padding:3px 5px; border:1px solid #ccc">
+                                    <span class="fa fa-refresh"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+            
+            
+
+			 <div style="clear:both"></div>
+
+
+ @if (ViewData["HostingEntity"]==null)
+	{ 
+	if (ViewBag.SearchResult != "" )
+                            {
+			<div id="fsearchT_ServiceRecord" class="collapse MessageFSearch">
+                        @Html.Raw(Html.Encode(ViewBag.SearchResult).Replace(Environment.NewLine, "<br/>"))
+						 <a href="@Url.Action("Index", "T_ServiceRecord",new{ viewtype = Convert.ToString(ViewBag.TemplatesName)})" style="margin-left:5px;float:right"><span class="glyphicon glyphicon-remove-sign"></span> Clear</a>
+						  <a href="@(Url.Action("SetFSearch", "T_ServiceRecord")+Request.Url.Query)" style="float:right" ><span class="glyphicon glyphicon-edit"></span> Modify</a>
+            </div>
+	}
+}
+					@Html.Partial("~/Views/T_ServiceRecord/ShowHideColumns.cshtml") 
+                    @if (Model.Count > 0)
+                    {
+                        <div class="ViewMessage" style="margin-top: 0px;">
+                            <label><input type="checkbox" value="" class="tip-top" data-placement="top" data-original-title="Select All" onclick="CommonSelectAllRows(this, 'divTurantoList');"> Select All</label>
+                           
+                        </div>
+                    }
+			 <div id="divTurantoList">
+ @if (Model.Count > 0)
+        {
+		@Html.Hidden("SelectedItems")
+foreach (var item in Model) 
+{
+<div  class="col-sm-12 GenappList">
+<table>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="@item.Id" onclick="CommonSelectForBulkOperation(this,'@item.Id', 'divTurantoList');" style="position:absolute; top:0px; left:4px; z-index:100; height:15px; width:15px;" />
+                    </td>
+                </tr>
+            </table>
+@{	
+var t_currentemployeeemploymentprofile = OneToOnedb.T_Employees.FirstOrDefault(p => p.T_CurrentEmployeeEmploymentProfileID == item.Id);
+}
+  
+   <div class='col-sm-12' style='margin:0px; margin-left:-10px; padding:0px; text-align:left'>
+	 <h4 style="margin-top:-8px; padding:10px 10px 10px 0px"><span title="@item.DisplayValue" style="width:90%; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display:inline-block; font-size:12px; margin-left:3px">@item.DisplayValue</span>
+	 		<div class="dropdown pull-right" style="margin-top:-3px" >
+			<button class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown">
+                                                    Action
+                                                    <span class="caret"></span>
+                                                </button>
+                        <ul class="dropdown-menu">
+                           
+							                           
+				@if (User.CanEdit("T_ServiceRecord"))
+                {
+				<li>
+                        <a href="@Url.Action("Edit","T_ServiceRecord", new { id = item.Id,  UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    
+                </li> 
+				}
+			@if (User.CanDeleteItem("T_ServiceRecord", item, User))
+                 {
+				<li>
+                    <a href="@Url.Action("Delete", "T_ServiceRecord", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) }, null)"><i class="glyphicon glyphicon-remove-sign" style="color: #E7574B;"></i> Delete</a>
+                </li>
+				 }
+
+	<li class="dropdown-submenu pull-left" id="AddAssociationdropmenuT_ServiceRecord_@item.Id">
+	 @{ var dropmenu = false; }
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-anchor small"></i> Add</a>
+    <ul class="dropdown-menu">
+				@if ( User.CanView("T_Comment"))
+				{ dropmenu = true;
+				<li>
+						<a onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_Comment", 
+						new { UrlReferrer = BackUrl,
+								AssociatedType ="T_ServiceRecordComments", 
+							HostingEntityName = "T_ServiceRecord",
+							HostingEntityID = @Convert.ToString(item.Id) }, null) + "');")>
+							<i class="glyphicon glyphicon-plus"></i>  Comment
+						</a>
+					</li>
+	
+				}
+			</ul>
+</li>
+@if(!dropmenu)
+{
+    <script>
+        $("#AddAssociationdropmenuT_ServiceRecord_@item.Id").hide();
+    </script>
+}
+ <li class="dropdown-submenu pull-left" >
+	<a tabindex="-1" href="#" style="margin-bottom:10px;"><i class="fam-zoom small"></i> Find Matching</a>
+    <ul class="dropdown-menu">
+<li>
+		<a href="@Url.Action("FindFSearch", "FileDocument", new {sourceEntity="T_ServiceRecord",id=item.Id}, null)">Document</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Licenses", new {sourceEntity="T_ServiceRecord",id=item.Id}, null)">Licenses</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Comment", new {sourceEntity="T_ServiceRecord",id=item.Id}, null)">Comment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_DrugAlcoholTest", new {sourceEntity="T_ServiceRecord",id=item.Id}, null)">Drug & Alcohol Test</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_UnitX", new {sourceEntity="T_ServiceRecord",id=item.Id}, null)">UnitX</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_JobAssignment", new {sourceEntity="T_ServiceRecord",id=item.Id}, null)">Job Assignment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_LeaveProfile", new {sourceEntity="T_ServiceRecord",id=item.Id}, null)">Leave</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_EmployeeInjury", new {sourceEntity="T_ServiceRecord",id=item.Id}, null)">Employee Injury</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_BackgroundCheck", new {sourceEntity="T_ServiceRecord",id=item.Id}, null)">Background Check</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Education", new {sourceEntity="T_ServiceRecord",id=item.Id}, null)">Education</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Accommodation", new {sourceEntity="T_ServiceRecord",id=item.Id}, null)">Accommodation</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_PayDetails", new {sourceEntity="T_ServiceRecord",id=item.Id}, null)">Pay Details </a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_AllFacilitiesUnit", new {sourceEntity="T_ServiceRecord",id=item.Id}, null)">All Facilities Unit</a>
+</li>
+</ul>
+</li>
+
+                        </ul>
+                    </div>
+	
+	 
+	 
+	 
+	 </h4>
+  				@if(User.CanView("T_ServiceRecord","T_EmployeeEmploymentProfileID"))
+				{
+				var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_EmployeeEmploymentProfileID");
+				<div class="col2">
+				 <div class="col-sm-2 overflow GenappListFix" title='Employee Employment Profile'  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee" && Convert.ToString(ViewData["AssociatedType"]) == "T_EmployeeEmploymentProfile"?"hidden":"")>
+                                            <strong>
+                                               @Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_ServiceRecord", getSortHtmlAttributes("T_EmployeeEmploymentProfileID", false, null, false), new { @onclick = "SortLinkClick(event,'T_ServiceRecord');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_EmployeeEmploymentProfileID")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_EmployeeEmploymentProfileID")
+				{<i class="fa fa-sort-asc"></i>}
+                                            </strong>
+                                        </div>
+									
+                                       
+
+										@if (item.t_employeeemploymentprofile != null  && !string.IsNullOrEmpty(item.t_employeeemploymentprofile.DisplayValue))
+				{
+				 <div class="col-sm-2 overflow GenappListFix" title='@Html.DisplayFor(modelItem => item.t_employeeemploymentprofile.DisplayValue).ToString()'>
+                  @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.t_employeeemploymentprofile.DisplayValue).ToString()), User.CanEdit("T_Employee") ? "Edit" : "Details", "T_Employee", new { Id = Html.DisplayFor(modelItem => item.t_employeeemploymentprofile.Id).ToString() },null)
+                </div>
+				}
+		 	</div>
+}
+				@if(User.CanView("T_ServiceRecord","T_EmploymentRecordEmployeeTypeID"))
+				{
+				var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_EmploymentRecordEmployeeTypeID");
+				<div class="col3">
+				 <div class="col-sm-2 overflow GenappListFix" title='Employment Record Employee Type'  @(Convert.ToString(ViewData["HostingEntity"]) == "T_EmployeeType" && Convert.ToString(ViewData["AssociatedType"]) == "T_EmploymentRecordEmployeeType"?"hidden":"")>
+                                            <strong>
+                                               @Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_ServiceRecord", getSortHtmlAttributes("T_EmploymentRecordEmployeeTypeID", false, null, false), new { @onclick = "SortLinkClick(event,'T_ServiceRecord');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_EmploymentRecordEmployeeTypeID")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_EmploymentRecordEmployeeTypeID")
+				{<i class="fa fa-sort-asc"></i>}
+                                            </strong>
+                                        </div>
+									
+                                       
+
+										@if (item.t_employmentrecordemployeetype != null  && !string.IsNullOrEmpty(item.t_employmentrecordemployeetype.DisplayValue))
+				{
+				 <div class="col-sm-2 overflow GenappListFix" title='@Html.DisplayFor(modelItem => item.t_employmentrecordemployeetype.DisplayValue).ToString()'>
+                  @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.t_employmentrecordemployeetype.DisplayValue).ToString()), User.CanEdit("T_EmployeeType") ? "Edit" : "Details", "T_EmployeeType", new { Id = Html.DisplayFor(modelItem => item.t_employmentrecordemployeetype.Id).ToString() },null)
+                </div>
+				}
+		 	</div>
+}
+			@if(User.CanView("T_ServiceRecord","T_IsCurrent"))
+			{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_IsCurrent");
+			<div class="col4">
+			 <div class="col-sm-2 overflow GenappListFix" title='Current Active Service Record'>
+            <strong>@Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_ServiceRecord", getSortHtmlAttributes("T_IsCurrent", false, null, false), new { @onclick = "SortLinkClick(event,'T_ServiceRecord');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_IsCurrent")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_IsCurrent")
+				{<i class="fa fa-sort-asc"></i>}</strong>
+                                        </div>
+                                        <div class="col-sm-2 overflow GenappListFix" title='@Html.ValueFor(modelItem => item.T_IsCurrent)'>
+                                        @Html.ValueFor(modelItem => item.T_IsCurrent)
+                                        </div>
+			</div>
+			}
+							@if(User.CanView("T_ServiceRecord","T_EmploymentRecordHiredAtFacilityID"))
+				{
+				var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_EmploymentRecordHiredAtFacilityID");
+				<div class="col5">
+				 <div class="col-sm-2 overflow GenappListFix" title='Employment Record Hired At Facility'  @(Convert.ToString(ViewData["HostingEntity"]) == "T_AllFacilities" && Convert.ToString(ViewData["AssociatedType"]) == "T_EmploymentRecordHiredAtFacility"?"hidden":"")>
+                                            <strong>
+                                               @Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_ServiceRecord", getSortHtmlAttributes("T_EmploymentRecordHiredAtFacilityID", false, null, false), new { @onclick = "SortLinkClick(event,'T_ServiceRecord');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_EmploymentRecordHiredAtFacilityID")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_EmploymentRecordHiredAtFacilityID")
+				{<i class="fa fa-sort-asc"></i>}
+                                            </strong>
+                                        </div>
+									
+                                       
+
+										@if (item.t_employmentrecordhiredatfacility != null  && !string.IsNullOrEmpty(item.t_employmentrecordhiredatfacility.DisplayValue))
+				{
+				 <div class="col-sm-2 overflow GenappListFix" title='@Html.DisplayFor(modelItem => item.t_employmentrecordhiredatfacility.DisplayValue).ToString()'>
+                  @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.t_employmentrecordhiredatfacility.DisplayValue).ToString()), User.CanEdit("T_AllFacilities") ? "Edit" : "Details", "T_AllFacilities", new { Id = Html.DisplayFor(modelItem => item.t_employmentrecordhiredatfacility.Id).ToString() },null)
+                </div>
+				}
+		 	</div>
+}
+			@if(User.CanView("T_ServiceRecord","T_HireDate"))
+			{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_HireDate");
+			<div class="col6">
+			 <div class="col-sm-2 overflow GenappListFix" title='Hire Date'>
+            <strong>@Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_ServiceRecord", getSortHtmlAttributes("T_HireDate", false, null, false), new { @onclick = "SortLinkClick(event,'T_ServiceRecord');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_HireDate")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_HireDate")
+				{<i class="fa fa-sort-asc"></i>}</strong>
+                                        </div>
+                                        <div class="col-sm-2 overflow GenappListFix" title='@Html.DisplayFor(modelItem => item.T_HireDate)'>
+                                        @Html.DisplayFor(modelItem => item.T_HireDate)
+                                        </div>
+			</div>
+			}
+						@if(User.CanView("T_ServiceRecord","T_TerminationDate"))
+			{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_TerminationDate");
+			<div class="col7">
+			 <div class="col-sm-2 overflow GenappListFix" title='Separation Date'>
+            <strong>@Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_ServiceRecord", getSortHtmlAttributes("T_TerminationDate", false, null, false), new { @onclick = "SortLinkClick(event,'T_ServiceRecord');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_TerminationDate")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_TerminationDate")
+				{<i class="fa fa-sort-asc"></i>}</strong>
+                                        </div>
+                                        <div class="col-sm-2 overflow GenappListFix" title='@Html.DisplayFor(modelItem => item.T_TerminationDate)'>
+                                        @Html.DisplayFor(modelItem => item.T_TerminationDate)
+                                        </div>
+			</div>
+			}
+						@if(User.CanView("T_ServiceRecord","T_ThreeMonthDue"))
+			{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_ThreeMonthDue");
+			<div class="col8">
+			 <div class="col-sm-2 overflow GenappListFix" title='Three Month Due'>
+            <strong>@Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_ServiceRecord", getSortHtmlAttributes("T_ThreeMonthDue", false, null, false), new { @onclick = "SortLinkClick(event,'T_ServiceRecord');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_ThreeMonthDue")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_ThreeMonthDue")
+				{<i class="fa fa-sort-asc"></i>}</strong>
+                                        </div>
+                                        <div class="col-sm-2 overflow GenappListFix" title='@Html.DisplayFor(modelItem => item.T_ThreeMonthDue)'>
+                                        @Html.DisplayFor(modelItem => item.T_ThreeMonthDue)
+                                        </div>
+			</div>
+			}
+						@if(User.CanView("T_ServiceRecord","T_ThreeMonthReviewCompleted"))
+			{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_ThreeMonthReviewCompleted");
+			<div class="col9">
+			 <div class="col-sm-2 overflow GenappListFix" title='Three Month Review Completed'>
+            <strong>@Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_ServiceRecord", getSortHtmlAttributes("T_ThreeMonthReviewCompleted", false, null, false), new { @onclick = "SortLinkClick(event,'T_ServiceRecord');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_ThreeMonthReviewCompleted")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_ThreeMonthReviewCompleted")
+				{<i class="fa fa-sort-asc"></i>}</strong>
+                                        </div>
+                                        <div class="col-sm-2 overflow GenappListFix" title='@Html.ValueFor(modelItem => item.T_ThreeMonthReviewCompleted)'>
+                                        @Html.ValueFor(modelItem => item.T_ThreeMonthReviewCompleted)
+                                        </div>
+			</div>
+			}
+							@if(User.CanView("T_ServiceRecord","T_EmployeeTerminationReasonID"))
+				{
+				var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_EmployeeTerminationReasonID");
+				<div class="col10">
+				 <div class="col-sm-2 overflow GenappListFix" title=' Employee Termination Reason'  @(Convert.ToString(ViewData["HostingEntity"]) == "T_TerminationReason" && Convert.ToString(ViewData["AssociatedType"]) == "T_EmployeeTerminationReason"?"hidden":"")>
+                                            <strong>
+                                               @Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_ServiceRecord", getSortHtmlAttributes("T_EmployeeTerminationReasonID", false, null, false), new { @onclick = "SortLinkClick(event,'T_ServiceRecord');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_EmployeeTerminationReasonID")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_EmployeeTerminationReasonID")
+				{<i class="fa fa-sort-asc"></i>}
+                                            </strong>
+                                        </div>
+									
+                                       
+
+										@if (item.t_employeeterminationreason != null  && !string.IsNullOrEmpty(item.t_employeeterminationreason.DisplayValue))
+				{
+				 <div class="col-sm-2 overflow GenappListFix" title='@Html.DisplayFor(modelItem => item.t_employeeterminationreason.DisplayValue).ToString()'>
+                  @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.t_employeeterminationreason.DisplayValue).ToString()), User.CanEdit("T_TerminationReason") ? "Edit" : "Details", "T_TerminationReason", new { Id = Html.DisplayFor(modelItem => item.t_employeeterminationreason.Id).ToString() },null)
+                </div>
+				}
+		 	</div>
+}
+				@if(User.CanView("T_ServiceRecord","T_EmployeeRecordTerminationFacilityID"))
+				{
+				var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_EmployeeRecordTerminationFacilityID");
+				<div class="col11">
+				 <div class="col-sm-2 overflow GenappListFix" title='Employee Record Termination Facility'  @(Convert.ToString(ViewData["HostingEntity"]) == "T_AllFacilities" && Convert.ToString(ViewData["AssociatedType"]) == "T_EmployeeRecordTerminationFacility"?"hidden":"")>
+                                            <strong>
+                                               @Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_ServiceRecord", getSortHtmlAttributes("T_EmployeeRecordTerminationFacilityID", false, null, false), new { @onclick = "SortLinkClick(event,'T_ServiceRecord');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_EmployeeRecordTerminationFacilityID")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_EmployeeRecordTerminationFacilityID")
+				{<i class="fa fa-sort-asc"></i>}
+                                            </strong>
+                                        </div>
+									
+                                       
+
+										@if (item.t_employeerecordterminationfacility != null  && !string.IsNullOrEmpty(item.t_employeerecordterminationfacility.DisplayValue))
+				{
+				 <div class="col-sm-2 overflow GenappListFix" title='@Html.DisplayFor(modelItem => item.t_employeerecordterminationfacility.DisplayValue).ToString()'>
+                  @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.t_employeerecordterminationfacility.DisplayValue).ToString()), User.CanEdit("T_AllFacilities") ? "Edit" : "Details", "T_AllFacilities", new { Id = Html.DisplayFor(modelItem => item.t_employeerecordterminationfacility.Id).ToString() },null)
+                </div>
+				}
+		 	</div>
+}
+			@if(User.CanView("T_ServiceRecord","T_EligibleForRehire"))
+			{
+			var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "T_EligibleForRehire");
+			<div class="col12">
+			 <div class="col-sm-2 overflow GenappListFix" title='Not Eligible For Rehire'>
+            <strong>@Html.ActionLink(SortPropertyName.DisplayName+" :", ActionNameUrl, "T_ServiceRecord", getSortHtmlAttributes("T_EligibleForRehire", false, null, false), new { @onclick = "SortLinkClick(event,'T_ServiceRecord');", @Style = "text-decoration: none;color: inherit;" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_EligibleForRehire")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_EligibleForRehire")
+				{<i class="fa fa-sort-asc"></i>}</strong>
+                                        </div>
+                                        <div class="col-sm-2 overflow GenappListFix" title='@Html.ValueFor(modelItem => item.T_EligibleForRehire)'>
+                                        @Html.ValueFor(modelItem => item.T_EligibleForRehire)
+                                        </div>
+			</div>
+			}
+					@if (t_currentemployeeemploymentprofile != null)
+			{
+			<div class="col13">
+					 <div class="col-sm-2 overflow GenappListFix" title='Service Record '>
+							 <strong>Service Record :</strong>
+                      </div>
+					 <div class="col-sm-2 overflow GenappListFix" title='@t_currentemployeeemploymentprofile.DisplayValue'>
+						@Html.ActionLink(t_currentemployeeemploymentprofile.DisplayValue, User.CanEdit("T_Employee") ? "Edit" : "Details", "T_Employee", new { id = t_currentemployeeemploymentprofile.Id }, null)
+					 </div>
+			</div>
+			}
+ </div>
+
+    <div class="col-sm-1 GenappListFix" style="display:none">
+      <div class="btn-group-vertical" style="left:-15px" >
+
+			
+                        <a title="View" href="@Url.Action(User.CanEdit("T_ServiceRecord") ? "Edit" : "Details", "T_ServiceRecord",
+                        new { id = item.Id, AssociatedType = ViewData["AssociatedType"],
+                            HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]),
+                            HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName)  },
+                            null)"  class="btn btn-default" style="text-align: left">
+                            <span class="glyphicon glyphicon-eye-open icon-listbut"></span> View
+                           
+                        </a>
+@if (User.CanEdit("T_ServiceRecord"))
+                                                        {
+                        <a title="Quick Edit"  class="btn btn-default" style="text-align: left" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Edit Service Record','dvPopup','" + Url.Action("EditQuick", "T_ServiceRecord", new
+																			{
+																				id = item.Id,
+																				UrlReferrer = Request.Url,
+																				AssociatedType = ViewData["AssociatedType"],
+																				HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]),
+																				HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),
+																				TS = DateTime.Now,viewtype = Convert.ToString(ViewBag.TemplatesName)
+																			}) + "')")" >
+                            <span class="fa fa-pencil icon-listbut"></span> Quick Edit
+                        </a>
+}
+@if (User.CanEdit("T_ServiceRecord"))
+                                                        {
+                        <a title="Full Edit" href="@Url.Action("Edit","T_ServiceRecord",
+                        new { id = item.Id,  UrlReferrer = BackUrl,
+                            AssociatedType=ViewData["AssociatedType"],
+                            HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]),
+                            HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) },
+                            null)"  class="btn btn-default" style="text-align: left">
+                            <span class="glyphicon glyphicon-edit icon-listbut"></span> Edit
+                            
+                        </a>
+}
+ <a href="" class="btn btn-default" style="text-align:left;" ><span class="fa fa-chevron-circle-down"></span> more</a>
+					</div>
+</div>
+
+
+  </div>
+							  <div style="clear:both"></div>
+						   //model loop end    
+                            }
+					}
+					else
+								{
+								  <div class="ViewMessage"> <i class="fa fa-info-circle"></i> No Record Available!</div>
+					}
+               </div>       
+               
+  			   @if (Model.Count > 0)
+                {
+                    <div id="pagination" class="MyPagination1">
+                        @Html.PagedListPager(Model, page => Url.Action(ActionNameUrl, "T_ServiceRecord", getSortHtmlAttributes(null, true, page, false)))
+                        <div class="fixPageSize">
+                            Page Size :
+                            @Html.DropDownList("PageSize", new SelectList(new Dictionary<string, int> { { "10", 10 }, { "20", 20 }, { "50", 50 }, { "100", 100 } }, "Key", "Value")
+							, new { @id = "pagesizelistT_ServiceRecord",
+							 @onchange = @Html.Raw("pagesizelistChange(event,'T_ServiceRecord','"
+							  + @User.JavaScriptEncodedName + "')"),
+							 @Url = Html.Raw(@Url.Action(ActionNameUrl, "T_ServiceRecord",
+							 getSortHtmlAttributes(ViewBag.CurrentSort, ViewBag.Pages == 1 ? false : true,
+							 null, false), null)) })
+							<span style="text-align:right;"> Total Count: @(Model.TotalItemCount)</span>
+                        </div>
+                    </div>
+                }
+				@Html.DropDownList("EntityT_ServiceRecordDisplayValue", null,null, new { @Style = "display:none;" })
+				</div>
+            </div>
+        </div>
+    
+    <div class="modal fade" id="ShowGraphT_ServiceRecord" tabindex="-1" role="dialog" aria-labelledby="ShowGraphT_ServiceRecordLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:80%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="ShowGraphT_ServiceRecordLabel">Dashboard Service Record</h4>
+                </div>
+				 <div  class="modal-body" >
+						<div id="dvShowGraphT_ServiceRecord" data-url="@Url.Action("ShowGraph", "T_ServiceRecord" , new { type = "all" })">
+						</div>
+						<div style="clear:both"></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    $(document).ready(function () {
+
+        loadGallery(true, 'a.thumbnail');
+
+        //This function disables buttons when needed
+        function disableButtons(counter_max, counter_current) {
+            $('#show-previous-image, #show-next-image').show();
+            if (counter_max == counter_current) {
+                $('#show-next-image').hide();
+            } else if (counter_current == 1) {
+                $('#show-previous-image').hide();
+            }
+        }
+
+
+
+        function loadGallery(setIDs, setClickAttr) {
+            var current_image,
+                selector,
+                counter = 0;
+
+            $('#show-next-image, #show-previous-image').click(function () {
+                if ($(this).attr('id') == 'show-previous-image') {
+                    current_image--;
+                } else {
+                    current_image++;
+                }
+
+                selector = $('[data-image-id="' + current_image + '"]');
+                updateGallery(selector);
+            });
+
+            function updateGallery(selector) {
+                var $sel = selector;
+                current_image = $sel.data('image-id');
+                $('#image-gallery-caption').text($sel.data('caption'));
+                $('#image-gallery-title').text($sel.data('title'));
+                $('#image-gallery-image').attr('src', $sel.data('image'));
+                disableButtons(counter, $sel.data('image-id'));
+            }
+
+            if (setIDs == true) {
+                $('[data-image-id]').each(function () {
+                    counter++;
+                    $(this).attr('data-image-id', counter);
+                });
+            }
+            $(setClickAttr).on('click', function () {
+                updateGallery($(this));
+            });
+        }
+    });
+
+</script>
+

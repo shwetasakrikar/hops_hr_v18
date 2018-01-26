@@ -1,0 +1,325 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.Document>
+@using PagedList.Mvc;
+@{
+
+    var ActionNameUrl = "Index";
+    if (HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().ToUpper() == "FSEARCH")
+    {
+        ActionNameUrl = "FSearch";
+    }
+    var BackUrl = Request.Url;
+    if (ViewData["HostingEntity"] != null && (Request.QueryString["TabToken"] != null || Request.IsAjaxRequest()))
+    {
+        BackUrl = Request.UrlReferrer;
+    }
+    var EntityReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "Document");
+}
+<div id="Document">
+
+    <style>
+        .table-responsive > .fixed-column {
+            position: absolute;
+            display: block;
+            width: auto;
+            border: 0px solid transparent;
+            border-top: 1px solid #c3ddec;
+        }
+
+        .fixed-column th {
+            background: #fff;
+        }
+
+        .fixed-column td {
+            background: #fff;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".pagination a").click(function (e) {
+                //PaginationClick(e,'Document')
+                PaginationClick(e, 'Document', '@User.JavaScriptEncodedName')
+            })
+            if ("@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().ToUpper()" == "FSEARCH") {
+                $("#fsearchDocument").addClass('in');
+                if ('@ViewData["HostingEntity"]'.length > 0) {
+                    $("#" + "@ViewData["HostingEntity"]" + "_Document").hide();
+                }
+                FSearchColumnsShowHide('@ViewData["HideColumns"]', 'Document');
+            }
+            $("#SearchStringDocument").keypress(function (e) {
+                if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+                    $("#DocumentSearch").bind("click", (function () {
+                    }));
+                    $('#DocumentSearch').trigger("click");
+                    return false;
+                }
+            })
+            $("#btnShowHideDocument").mouseup(function () {
+                if (document.getElementById('ColumnShowHideDocument').className == 'collapse') {
+                    $('#lblDocument').css('display', 'none');
+                }
+            })
+        });
+    </script>
+    @functions {
+        object getSortHtmlAttributes(string sortby, bool IsPaging, int? page, bool? IsExport)
+        {
+            if (IsPaging)
+            {
+                return new
+                {
+                    page,
+                    sortBy = ViewBag.CurrentSort,
+                    isAsc = ViewBag.IsAsc,
+                    currentFilter = ViewBag.CurrentFilter,
+                    HostingEntity = @Convert.ToString(ViewData["HostingEntity"]),
+                    AssociatedType = @Convert.ToString(ViewData["AssociatedType"]),
+                    HostingEntityID = ViewData["HostingEntityID"],
+                    IsExport = IsExport,
+                    FSFilter = ViewBag.FSFilter == null ? "Fsearch" : ViewBag.FSFilter,
+                    IsFilter = @Convert.ToBoolean(ViewData["IsFilter"]),
+
+                    t_facilitydocumentassociation = Request.QueryString["t_facilitydocumentassociation"],
+                    DateCreatedFrom = Request.QueryString["DateCreatedFrom"],
+                    DateCreatedFromhdn = Request.QueryString["DateCreatedFromhdn"],
+                    DateCreatedTo = Request.QueryString["DateCreatedTo"],
+                    DateCreatedTohdn = Request.QueryString["DateCreatedTohdn"],
+                    DateLastUpdatedFrom = Request.QueryString["DateLastUpdatedFrom"],
+                    DateLastUpdatedFromhdn = Request.QueryString["DateLastUpdatedFromhdn"],
+                    DateLastUpdatedTo = Request.QueryString["DateLastUpdatedTo"],
+                    DateLastUpdatedTohdn = Request.QueryString["DateLastUpdatedTohdn"],
+                    search = Request.QueryString["search"],
+                    SortOrder = Request.QueryString["SortOrder"],
+                    viewtype = ViewBag.TemplatesName,
+                    HideColumns = ViewData["HideColumns"],
+                    GroupByColumn = ViewBag.GroupByColumn,
+                    FilterCondition = ViewBag.FilterCondition,
+                    inbuiltSearchCriteria = ViewBag.inbuiltSearchCriteria
+                };
+            }
+            else
+            {
+                return new
+                {
+                    sortBy = sortby,
+                    currentFilter = Request.QueryString["currentFilter"],
+                    searchString = Request.QueryString["searchString"],
+                    isAsc = (ViewBag.IsAsc == "ASC" ? "DESC" : ""),
+                    page = ViewBag.Pages,
+                    HostingEntity = @Convert.ToString(ViewData["HostingEntity"]),
+                    HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),
+                    AssociatedType = @Convert.ToString(ViewData["AssociatedType"]),
+                    IsExport = IsExport,
+                    FSFilter = ViewBag.FSFilter == null ? "Fsearch" : ViewBag.FSFilter,
+                    IsFilter = @Convert.ToBoolean(ViewData["IsFilter"]),
+                    t_facilitydocumentassociation = Request.QueryString["t_facilitydocumentassociation"],
+                    DateCreatedFrom = Request.QueryString["DateCreatedFrom"],
+                    DateCreatedFromhdn = Request.QueryString["DateCreatedFromhdn"],
+                    DateCreatedTo = Request.QueryString["DateCreatedTo"],
+                    DateCreatedTohdn = Request.QueryString["DateCreatedTohdn"],
+                    DateLastUpdatedFrom = Request.QueryString["DateLastUpdatedFrom"],
+                    DateLastUpdatedFromhdn = Request.QueryString["DateLastUpdatedFromhdn"],
+                    DateLastUpdatedTo = Request.QueryString["DateLastUpdatedTo"],
+                    DateLastUpdatedTohdn = Request.QueryString["DateLastUpdatedTohdn"],
+                    search = Request.QueryString["search"],
+                    SortOrder = Request.QueryString["SortOrder"],
+                    viewtype = ViewBag.TemplatesName,
+                    HideColumns = ViewData["HideColumns"],
+                    GroupByColumn = ViewBag.GroupByColumn,
+                    FilterCondition = ViewBag.FilterCondition,
+                    inbuiltSearchCriteria = ViewBag.inbuiltSearchCriteria
+                };
+            }
+        }
+    }
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-sx-12">
+            <div style="display:block; padding:0px 0px 5px 0px;">
+
+
+                @if (ViewData["IsdrivedTab"] == null)
+                {
+
+
+                    <div class="pull-right" style="width:300px; padding-top:4px; ">
+                        <div class="input-group">
+                            @Html.TextBox("SearchStringDocument", ViewBag.CurrentFilter as string, null, new { @class = "form-control fixsearchbox", @value = ViewBag.Homeval, @placeholder = "Search" })
+                            <div class="input-group-btn">
+                                <a id="DocumentSearch" onclick="SearchClick(event, 'Document', '@Html.Raw(Url.Action("Index", "Document", new { IsFilter = ViewData["IsFilter"], IsDeepSearch = false, searchString = "_SearchString", HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]),HideColumns = ViewData["HideColumns"], SearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName) }))','@User.JavaScriptEncodedName');" data-original-title="Grid Search" class="btn tip-top" style="padding:3px 5px; border:1px solid #ccc" alt="Grid Search" title="Search"><span class="fa fa-search"></span></a>
+                                <a id="DocumentCancel" type="button" class="btn collapse-data-btn tip-top" onclick="CancelSearch('Document','@Html.Raw(Url.Action("Index", "Document", new {IsFilter=ViewData["IsFilter"], HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]), HideColumns = ViewData["HideColumns"], ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName) }))','@User.JavaScriptEncodedName')" data-original-title="Clear Search" data-placement="top" style="padding:3px 5px; border:1px solid #ccc" alt="Clear Search" title="Clear Search">
+                                    <span class="fa fa-minus-circle"></span>
+                                </a>
+                                <a id="DocumentSearchCancel" type="button" class="btn collapse-data-btn tip-top" onclick="CancelSearch('Document','@Html.Raw(Url.Action("Index", "Document", new {IsFilter=ViewData["IsFilter"], itemsPerPage=Convert.ToInt32(ViewBag.PageSize),HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]),HideColumns = ViewData["HideColumns"], ClearSearchTimeStamp = DateTime.Now.Ticks.ToString(),viewtype = Convert.ToString(ViewBag.TemplatesName)}))','@User.JavaScriptEncodedName')" data-original-title="Refresh Grid" data-placement="top" style="padding:3px 5px; border:1px solid #ccc" alt="Refresh Grid" title="Refresh Grid">
+                                    <span class="fa fa-refresh"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                <div style="clear:both"></div>
+                <div id="Des_Table" class="table-responsive" style="overflow-x:auto; margin-top:3px">
+                    <table class="table table-striped table-bordered table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="col1" style="width:42px;" alt="Actions" title="Actions">Actions</th>
+                                @if (User.CanView("Document", "DocumentName"))
+                                {
+                                    var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "DocumentName");
+                                    <th scope="col" class="col2">
+                                        @Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "Document", getSortHtmlAttributes("DocumentName", false, null, false), new { @onclick = "SortLinkClick(event,'Document');" })
+                                        @if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "DocumentName")
+                                        {<i class="fa fa-sort-desc"></i>}
+                                        @if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "DocumentName")
+                                        {<i class="fa fa-sort-asc"></i>}
+                                    </th>
+                                }
+                                @if (User.CanView("Document", "Description"))
+                                {
+                                    var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "Description");
+                                    <th scope="col" class="col3">
+                                        @Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "Document", getSortHtmlAttributes("Description", false, null, false), new { @onclick = "SortLinkClick(event,'Document');" })
+                                        @if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "Description")
+                                        {<i class="fa fa-sort-desc"></i>}
+                                        @if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "Description")
+                                        {<i class="fa fa-sort-asc"></i>}
+                                    </th>
+                                }
+                                @if (User.CanView("Document", "FileName") && User.CanView("Document"))
+                                {
+                                    var SortPropertyName = EntityReflector.Properties.FirstOrDefault(q => q.Name == "FileName");
+                                    <th scope="col" class="col4">
+                                        @Html.ActionLink(SortPropertyName.DisplayName, ActionNameUrl, "Document", getSortHtmlAttributes("FileName", false, null, false), new { @onclick = "SortLinkClick(event,'Document');" })
+                                        @if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "FileName")
+                                        {<i class="fa fa-sort-desc"></i>}
+                                        @if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "FileName")
+                                        {<i class="fa fa-sort-asc"></i>}
+                                    </th>
+                                }
+                                <th>
+                                    Entity
+                                </th>
+                            </tr>
+                        </thead>
+
+                        @{ bool isFirst = true; var oldKey = string.Empty; }
+                        @foreach (var item in Model)
+                        {
+                            if (ViewBag.IsGroupBy != null && Convert.ToBoolean(ViewBag.IsGroupBy))
+                            {
+
+                            }
+                            <tr scope="row" ondblclick="DoubleClickRow(@item.Id,'@Url.Action(User.CanEdit("Document") ? "Edit" : "Edit", "Document", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)');">
+
+
+
+                                <td>
+                                    <div style="width:42px; margin-top:-2px;">
+                                        <div class="btn-group" style="position:absolute;">
+
+                                            @if (User.CanEdit("Document"))
+                                            {
+
+                                                <a href="@Url.Action("Edit","Document", new { id = item.Id,  UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) },null)" class="btn btn-xs dropdown-toggle btn-primary2" alt="Edit" title="Edit">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+
+                                            }
+                                            @if (!User.CanEdit("Document"))
+                                            {
+                                                <a href="@Url.Action("Details", "Document", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), viewtype = Convert.ToString(ViewBag.TemplatesName) }, null)" class="btn btn-xs dropdown-toggle btn-primary2">
+                                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                                </a>
+                                            }
+
+                                            <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-default" style="padding-left:6px; padding-right:6px" alt="More Options" title="More Options">
+                                                <i class="fa fa-caret-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu pull-left">
+                                                @if (User.CanEdit("Document"))
+                                                {
+                                                    <li>
+                                                        <a href="@Url.Action("Edit","Document", new { id = item.Id,  UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+
+                                                    </li>
+                                                }
+                                                @if (User.CanDelete("Document"))
+                                                {
+                                                    <li class="divider" style="clear:both"></li>
+                                                    <li>
+                                                        <a href="@Url.Action("Delete", "Document", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),viewtype = Convert.ToString(ViewBag.TemplatesName) }, null)"><i class="glyphicon glyphicon-remove-sign" style="color: #E7574B;"></i> Delete</a>
+                                                    </li>
+                                                }
+                                                <li class="divider" style="clear:both"></li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                                @if (User.CanView("Document", "DocumentName"))
+                                {
+                                    <td onclick="OpenQuickEdit('Document','@item.Id',event);">
+                                        @Html.DisplayFor(modelItem => item.DocumentName)
+                                    </td>
+                                }
+                                @if (User.CanView("Document", "Description"))
+                                {
+                                    <td onclick="OpenQuickEdit('Document','@item.Id',event);">
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                }
+                                @if (User.CanView("Document", "FileName") && User.CanView("Document"))
+                                {
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(Html.DisplayFor(modelItem => item.FileName).ToString()))
+                                        {
+                                            @Html.ActionLink(item.FileName, "Download", new { id = item.Id })
+
+                                        }
+                                        else
+                                        { <label>NA</label>}
+                                    </td>
+                                }
+                                <td>
+                                    @Html.Raw(GeneratorBase.MVC.Models.DoAuditEntry.GetEntityNameForDocument(item.Id, User))
+                                </td>
+
+                            </tr>
+                        }
+                    </table>
+                </div>
+
+                @if (Model.Count > 0)
+                {
+                    <div id="pagination" class="MyPagination1">
+                        @Html.PagedListPager(Model, page => Url.Action(ActionNameUrl, "Document", getSortHtmlAttributes(null, true, page, false)))
+                        <div class="fixPageSize">
+                            Page Size :
+                            @Html.DropDownList("PageSize", new SelectList(new Dictionary<string, int> { { "10", 10 }, { "20", 20 }, { "50", 50 }, { "100", 100 } }, "Key", "Value")
+                            , new
+                            {
+                                @id = "pagesizelistDocument",
+                                @onchange = @Html.Raw("pagesizelistChange(event,'Document','"
+                                + @User.JavaScriptEncodedName + "')"),
+                                @Url = Html.Raw(@Url.Action(ActionNameUrl, "Document",
+                                getSortHtmlAttributes(ViewBag.CurrentSort, ViewBag.Pages == 1 ? false : true,
+                                null, false), null))
+                            })
+                            <span style="text-align:right;"> Total Count: @(Model.TotalItemCount)</span>
+                            <script>
+                                $(document).ready(function () {
+                                    $.validator.setDefaults({
+                                        ignore: "#pagesizelistDocument"
+                                    })
+                                });
+                            </script>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,247 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_JobAssignment>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Job Assignment.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_JobAssignment","T_EmployeeJobAssignmentID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>Employee</th>
+}
+@if(User.CanView("T_JobAssignment","T_EmployeePercent"))
+{
+		<th>Employee Percent (%)</th>
+}
+@if(User.CanView("T_JobAssignment","T_StartDate"))
+{
+		<th>Start Date</th>
+}
+@if(User.CanView("T_JobAssignment","T_EndDate"))
+{
+		<th>End Date</th>
+}
+@if(User.CanView("T_JobAssignment","T_Primary"))
+{
+		<th>Primary</th>
+}
+@if(User.CanView("T_JobAssignment","T_Active"))
+{
+		<th>Active</th>
+}
+@if(User.CanView("T_JobAssignment","T_PositionJobAssignmentID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Position"?"hidden":"")>Position Number</th>
+}
+@if(User.CanView("T_JobAssignment","T_PositionLevel"))
+{
+		<th>Position Level</th>
+}
+@if(User.CanView("T_JobAssignment","T_RoleCode"))
+{
+		<th>Role Code </th>
+}
+@if(User.CanView("T_JobAssignment","T_ClassCode"))
+{
+		<th>Class Code </th>
+}
+@if(User.CanView("T_JobAssignment","T_WorkersCompCode"))
+{
+		<th>Workers Comp Code</th>
+}
+@if(User.CanView("T_JobAssignment","T_SOCCode"))
+{
+		<th>SOC Code</th>
+}
+@if(User.CanView("T_JobAssignment","T_OvertimeEligibility"))
+{
+		<th>Overtime Eligibility</th>
+}
+@if(User.CanView("T_JobAssignment","T_JobAssignmentReasonID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_ReasonforHire"?"hidden":"")>Job Assignment Reason</th>
+}
+@if(User.CanView("T_JobAssignment","T_JobAssignmentUnitXID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_UnitX"?"hidden":"")>UnitX</th>
+}
+@if(User.CanView("T_JobAssignment","T_CostCenter"))
+{
+		<th>Cost Center</th>
+}
+@if(User.CanView("T_JobAssignment","T_Program"))
+{
+		<th>Program</th>
+}
+@if(User.CanView("T_JobAssignment","T_DepartmentArea"))
+{
+		<th>Department Area</th>
+}
+@if(User.CanView("T_JobAssignment","T_Department"))
+{
+		<th>Department</th>
+}
+@if(User.CanView("T_JobAssignment","T_JobAssignmentManagerEmployeeID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>Manager</th>
+}
+@if(User.CanView("T_JobAssignment","T_EmployeeSupervisorID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>Supervisor</th>
+}
+@if(User.CanView("T_JobAssignment","T_SupervisorEmail"))
+{
+		<th>Supervisor Email</th>
+}
+@if(User.CanView("T_JobAssignment","T_Notes"))
+{
+		<th>Notes</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_JobAssignment","T_EmployeeJobAssignmentID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeejobassignment.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_EmployeePercent"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_EmployeePercent)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_StartDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_StartDate)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_EndDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_EndDate)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_Primary"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Primary)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_Active"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Active)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_PositionJobAssignmentID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Position"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_positionjobassignment.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_PositionLevel"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_PositionLevel)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_RoleCode"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_RoleCode)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_ClassCode"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_ClassCode)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_WorkersCompCode"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_WorkersCompCode)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_SOCCode"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_SOCCode)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_OvertimeEligibility"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_OvertimeEligibility)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_JobAssignmentReasonID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_ReasonforHire"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_jobassignmentreason.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_JobAssignmentUnitXID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_UnitX"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_jobassignmentunitx.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_CostCenter"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_CostCenter)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_Program"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Program)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_DepartmentArea"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_DepartmentArea)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_Department"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Department)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_JobAssignmentManagerEmployeeID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_jobassignmentmanageremployee.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_EmployeeSupervisorID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeesupervisor.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_SupervisorEmail"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_SupervisorEmail)
+        </td>
+}
+@if(User.CanView("T_JobAssignment","T_Notes"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Notes)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

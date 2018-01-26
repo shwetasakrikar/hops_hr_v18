@@ -1,0 +1,385 @@
+﻿@model GeneratorBase.MVC.Models.T_LeaveProfile
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_LeaveProfileIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_LeaveProfileIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_LeaveProfileIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_LeaveProfileIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_LeaveProfileIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_LeaveProfileIsSetValueUIRule);
+    }
+}
+@using (Html.BeginForm("Create", "T_LeaveProfile",new {UrlReferrer = Convert.ToString(ViewData["T_LeaveProfileParentUrl"]), IsDDAdd = ViewBag.IsDDAdd }, FormMethod.Post, new { enctype = "multipart/form-data",id="frmT_LeaveProfile" }))
+{
+   @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+	<input type="hidden" id="ErrMsg" />
+	@*<label id="ErrMsg" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+    <div id="errorContainer" style="display: none">
+        <div id="errorsMsg"></div>
+        <div id="errors"></div>
+    </div>
+	 
+	 <div id="divDisplayThresholdLimit" style="display:none;">
+	</div>
+	 <div id="divDisplayBRmsgMandatory" style="display:none;">
+	</div>
+	<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+	</div>
+	<div id="divDisplayCodeFragment" style="display:none;">
+	</div>
+
+	<div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="AppForm">
+                <div class="">
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48916">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+											
+									<h3 class="panel-title" alt="Employee Information" title="Employee Information">Employee Information</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_LeaveProfile","T_EmployeeLeaveProfileID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeLeaveProfileID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_EmployeeLeaveProfileID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_EmployeeLeaveProfileID", null, "-- Select --", new {      @onchange = Html.Raw("ClearChildDD('T_InjuryRelatedLeaveID',this,'false');") ,  @class = "chosen-select form-control", @HostingName = "T_Employee", @dataurl = Url.Action("GetAllValue", "T_Employee",new { caller = "T_EmployeeLeaveProfileID" }) })
+			@Html.ValidationMessageFor(model => model.T_EmployeeLeaveProfileID)
+			@if ( User.CanAdd("T_Employee"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_Employee"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Employee','dvPopup','" + Url.Action("CreateQuick", "T_Employee", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  							</div>
+                         </div>
+                      </div>
+       </div>
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48914">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#basicinfoaboutleavebody" alt="Basic Info About Leave" title="Basic Info About Leave"><span class="glyphicon glyphicon-chevron-down"></span> Basic Info About Leave</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="basicinfoaboutleavebody">					
+   @if(User.CanView("T_LeaveProfile","T_From"))
+{
+		  <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_From">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_From) </label>
+                                <div class="form-group" title="From Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_From">
+                                        @Html.TextBoxFor(model => model.T_From, new { @class = "form-control"   })
+                                        
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_From)
+
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_From').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_From').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+							}
+		  
+                          
+   @if(User.CanView("T_LeaveProfile","T_To"))
+{
+		  <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_To">
+                                <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_To) </label>
+                                <div class="form-group" title="To Date">
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    <div class="input-group date" id="datetimepickerT_To">
+                                        @Html.TextBoxFor(model => model.T_To, new { @class = "form-control"   })
+                                        
+										<span class="input-group-addon btn-default calendar">
+                                           <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.T_To)
+
+								</div>
+                                </div>
+	
+                                <script type="text/javascript">
+                                    $(function () {
+										$('#T_To').datetimepicker({ pickTime:false });
+                                        $('#datetimepickerT_To').datetimepicker({ pickTime:false });
+                                    });
+                                </script>
+                            </div>
+							}
+		  
+                          
+			 @if(User.CanView("T_LeaveProfile","T_DaysOff"))
+								{
+     <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DaysOff">
+                                <div class='form-group' title="Days Off">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_DaysOff) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+									
+                                    @Html.TextBoxFor(model => model.T_DaysOff, new { @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.T_DaysOff)
+									
+									<div class="input-group-btn">
+										<a class="btn btn-default btn ie8fix" onclick="GetCalculationValue(event,'@Url.Action("GetCalculationValues")');">
+											<span class="fam-arrow-refresh"></span>
+                                        </a>
+                                    </div>
+									</div>
+                                </div>
+					</div>
+				}
+
+					
+								  @if(User.CanView("T_LeaveProfile","T_Intermittent"))
+								{
+								<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Intermittent">
+									<div class="form-group" title="Intermittent">
+										<label class="col-sm-5 col-md-5 col-xs-12" >
+											@Html.LabelFor(model => model.T_Intermittent) 
+										</label>
+										<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    
+											@Html.CheckBox("T_Intermittent", false)
+											@Html.ValidationMessageFor(model => model.T_Intermittent)		
+										</div>
+										</div>
+									</div>   
+								}                         
+								  @if(User.CanView("T_LeaveProfile","T_FullDays"))
+								{
+								<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_FullDays">
+									<div class="form-group" title="Full Days">
+										<label class="col-sm-5 col-md-5 col-xs-12" >
+											@Html.LabelFor(model => model.T_FullDays) 
+										</label>
+										<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    
+											@Html.CheckBox("T_FullDays", false)
+											@Html.ValidationMessageFor(model => model.T_FullDays)		
+										</div>
+										</div>
+									</div>   
+								}                         
+							</div>
+                         </div>
+                      </div>
+       </div>
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48915">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+								<h3 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#relatedinjuryinformationbody" alt="Related Injury Information" title="Related Injury Information"><span class="glyphicon glyphicon-chevron-down"></span> Related Injury Information</a></h3>
+                               </div>
+							  <div class="panel-body panel-collapse in" id="relatedinjuryinformationbody">					
+@if(User.CanView("T_LeaveProfile","T_InjuryRelatedLeaveID"))
+	{
+        <div class='col-sm-6 col-md-6 col-xs-12' id="dvT_InjuryRelatedLeaveID">
+                        <div class='form-group'>
+                            <label class="col-sm-5 col-md-5 col-xs-12">@Html.LabelFor(model => model.T_InjuryRelatedLeaveID) </label>
+							<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                            <div class="input-group" style="width:100%;">
+									@Html.DropDownList("T_InjuryRelatedLeaveID", null, "-- Select --", new {    @ParentDD = "T_EmployeeLeaveProfileID" , @AssoNameWithParent = "T_EmployeeEmployeeInjuryID" ,   @class = "chosen-select form-control", @HostingName = "T_EmployeeInjury", @dataurl = Url.Action("GetAllValue", "T_EmployeeInjury",new { caller = "T_InjuryRelatedLeaveID" }) })
+			@Html.ValidationMessageFor(model => model.T_InjuryRelatedLeaveID)
+			@if ( User.CanAdd("T_EmployeeInjury"))
+				{
+			<div class="input-group-btn">
+				<a class="btn btn-default btn ie8fix" id="addT_EmployeeInjury"  data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','Related Injury If Any','dvPopup','" + Url.Action("CreateQuick", "T_EmployeeInjury", new { UrlReferrer = Request.Url, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), IsAddPop=true }) + "')")">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</div>
+			}
+		                                
+                            </div>
+							</div>
+                        </div>
+                    </div>
+}
+  							</div>
+                         </div>
+                      </div>
+       </div>
+               					<div class="row">
+				       
+								<div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-default" id="dvGroup48917">
+                                        <div class="panel-heading clearfix">
+                                            <i class="icon-calendar"></i>
+											
+									<h3 class="panel-title" alt="Notes" title="Notes">Notes</h3>
+								</div>
+                                <div class="panel-body">
+						@if(User.CanView("T_LeaveProfile","T_Notes"))
+								{
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Notes">
+                                <div class='form-group' title="Notes">
+                                   <label class="col-sm-5 col-md-5 col-xs-12" >@Html.LabelFor(model => model.T_Notes) </label>
+									<div class="input-group col-sm-7 col-md-7 col-xs-12">
+                                    @Html.TextAreaFor(model => model.T_Notes, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_Notes)
+									</div>
+                                </div>
+						</div>
+						}
+							</div>
+                         </div>
+                      </div>
+       </div>
+			@if ( User.CanView("T_LeaveReason") && User.CanAdd("T_LeaveProfileReason"))
+                {
+		<div class="row">
+                        <div class="col-sm-12 col-md-12 col-sx-12" id="dvT_LeaveProfile">
+                            <div class="panel panel-default">
+                                <div class="panel-heading clearfix" style="margin:0px; padding:4px 10px;">
+                                    Leave Reason
+                                </div>
+                                <div class="panel-body" style="margin:0px; padding:8px;">
+                                    @if(ViewBag.T_LeaveReason_T_LeaveProfileReason!=null)
+									{
+										foreach (var chkitem in ViewBag.T_LeaveReason_T_LeaveProfileReason)
+										{
+											<input type="checkbox" name="SelectedT_LeaveReason_T_LeaveProfileReason" value="@chkitem.Id" /> @chkitem.DisplayValue
+										}
+									}
+                                </div>
+                            </div>
+                        </div>
+                    </div>	
+				}	
+                        </div>
+                    </div>
+                </div>
+        </div>
+		<a class="btn btn-default btn-sm" onclick="goBack('@Url.Action("Index","T_LeaveProfile")');" alt="Cancel" title="Cancel">Cancel</a>
+          @*@Html.ActionLink("Cancel", "Cancel", new { UrlReferrer = ViewData["T_LeaveProfileParentUrl"] }, new { @onclick = "", @class = "btn btn-default btn-sm" })*@
+	<input type="submit" name="command" value="Create" class="btn btn-primary btn-sm" alt="Create" title="Create"/>
+    if (ViewBag.IsDDAdd == null && User.CanEdit("T_LeaveProfile"))
+    {
+	<input type="submit" name="command" value="Create & Continue" class="btn btn-primary btn-sm" alt="Create & Continue" title="Create & Continue"/>
+	}
+	 <input type="hidden" name="hdncommand" value="" />
+	<br/><br/>
+}
+	<script>
+	    $(function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        // Figure out what browser is being used
+        var browser = {
+            version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+            safari: /webkit/.test(userAgent),
+            opera: /opera/.test(userAgent),
+            msie: /msie/.test(userAgent) && !/opera/.test(userAgent),
+            mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
+        };
+        if (!browser.msie) {
+            $('form').areYouSure();
+        }
+        else if (browser.version > 8.0) {
+            $('form').areYouSure();
+        }
+    });
+</script>
+	
+@{
+		var businessrule = User.businessrules.Where(p => p.EntityName == "T_LeaveProfile").ToList();
+		
+if ((businessrule != null && businessrule.Count > 0) )
+    {
+        <script>
+            $("form").submit(function (event) {
+			if (!$("#frmT_LeaveProfile").valid()) return;
+			var flag = true;
+							document.getElementById("ErrMsg").innerHTML = "";
+                var dataurl = "";
+                var form = "";
+                var inlinecount = "0";
+                //var form = $(this).serialize();
+ form = $("#frmT_LeaveProfile").serialize();
+  
+                dataurl = "@Url.Action("businessruletype", "T_LeaveProfile", new { ruleType = "OnCreate"})";
+                flag = ApplyBusinessRuleOnSubmit(dataurl, "T_LeaveProfile", false, "ErrMsg", form);
+				//business rules on inline associations
+				if (flag) {
+								GetCalculationValue(event,'@Url.Action("GetCalculationValues")');
+                    $('input:hidden[name="hdncommand"]').val($(document.activeElement).val());
+
+					 $("#frmT_LeaveProfile").find(':input').removeAttr('disabled');
+                }
+				return flag;
+			 });	
+        </script>
+    }
+    else
+    {
+	<script>
+            $("input[type='submit']").click(function (event) {
+			if (!$("#frmT_LeaveProfile").valid()) return;
+                var $this = $(this);
+				GetCalculationValue(event,'@Url.Action("GetCalculationValues")');
+                $('input:hidden[name="hdncommand"]').val($this.val());
+            });
+	</script>
+           
+    }
+}
+
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+		 focusOnControl('frmT_LeaveProfile');
+        }
+        catch (ex) { }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        try {
+            var hostingEntityName = "";
+            if ('@Convert.ToString(ViewData["AssociatedType"])'.length > 0) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+                 $('#' + hostingEntityName + 'ID').attr("lock","true");
+				  $('#' + hostingEntityName + 'ID').trigger("change");
+            }
+			
+        }
+        catch (ex) { }
+		});
+</script>
+

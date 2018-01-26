@@ -1,0 +1,204 @@
+﻿@model GeneratorBase.MVC.Models.T_SalaryRange
+@{
+    ViewBag.Title = "Create Salary Range";
+    Layout = null;
+}
+<script>
+    $(document).ready(function () {
+        try {
+            var hostingEntityName = "";
+            if ('@Convert.ToString(ViewData["AssociatedType"])' != null) {
+                hostingEntityName = '@Convert.ToString(ViewData["AssociatedType"])';
+                 $('#' + hostingEntityName + 'ID').attr("lock","true");
+				  $('#' + hostingEntityName + 'ID').trigger("change");
+            }
+			
+        }
+        catch (ex) { }
+		
+		 
+    });
+</script>
+<script type="text/javascript">
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': { allow_single_deselect: true },
+        '.chosen-select-no-single': { disable_search_threshold: 10 },
+        '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+        '.chosen-select-width': { width: "95%" }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_SalaryRangeIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_SalaryRangeIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_SalaryRangeIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_SalaryRangeIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_SalaryRangeIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_SalaryRangeIsSetValueUIRule);
+    }
+}
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<link href="@Url.Content("~/Content/chosen.css")" rel="stylesheet" type="text/css" />
+@using (Html.BeginForm("CreateQuick", "T_SalaryRange",FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken();
+    Html.ValidationSummary(true);
+    Html.EnableClientValidation();
+	<input type="hidden" id="ErrMsgQuickAdd" />
+	@*<label id="ErrMsgQuickAdd" class="text-primary small pull-right" style="color:red; vertical-align:middle; font-weight:100;"></label>*@
+    <div id="errorContainerQuickAdd" style="display: none">
+        <div id="errorsMsgQuickAdd"></div>
+        <div id="errorsQuickAdd"></div>
+    </div>
+	<div id="divDisplayThresholdLimit" style="display:none;">
+	</div>
+	 <div id="divDisplayBRmsgMandatory" style="display:none;">
+	</div>
+	<div id="divDisplayBRmsgBeforeSaveProp" style="display:none;">
+	</div>
+		    <div class="row">
+	@Html.Hidden("AssociatedEntity", Convert.ToString(ViewData["AssociatedType"]))
+	@Html.Hidden("HostingEntityName", Convert.ToString(ViewData["HostingEntityName"]))
+    @Html.Hidden("HostingEntityID", Convert.ToString(ViewData["HostingEntityID"]))
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="panel panel-default AppForm">
+                <div class="panel-body">
+               					<div class="row">
+				        
+                                    
+
+			@if(User.CanView("T_SalaryRange","T_SalaryBandSalaryRangeAssociationID"))
+				{
+					
+							<div class='col-sm-6'  id="dvT_SalaryBandSalaryRangeAssociationID">
+                        <div class='form-group'>
+                            <label>@Html.LabelFor(model => model.T_SalaryBandSalaryRangeAssociationID) </label>
+                            <div class="input-group" style="width: 100%;">
+									@Html.DropDownList("T_SalaryBandSalaryRangeAssociationID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_SalaryBand", @dataurl = Url.Action("GetAllValue", "T_SalaryBand",new { caller = "T_SalaryBandSalaryRangeAssociationID" }) })
+ @*<script>
+    $(function () {
+        LoadUserDropdown('ID');
+    });
+</script>*@
+                                @Html.ValidationMessageFor(model => model.T_SalaryBandSalaryRangeAssociationID)
+                            </div>
+                        </div>
+                    </div>
+     
+		}
+                                    
+
+			@if(User.CanView("T_SalaryRange","T_FacilitySalaryRangeAssociationID"))
+				{
+					
+							<div class='col-sm-6'  id="dvT_FacilitySalaryRangeAssociationID">
+                        <div class='form-group'>
+                            <label>@Html.LabelFor(model => model.T_FacilitySalaryRangeAssociationID) </label>
+                            <div class="input-group" style="width: 100%;">
+									@Html.DropDownList("T_FacilitySalaryRangeAssociationID", null, "-- Select --", new {       @class = "chosen-select form-control", @HostingName = "T_Facility", @dataurl = Url.Action("GetAllValue", "T_Facility",new { caller = "T_FacilitySalaryRangeAssociationID" }) })
+ @*<script>
+    $(function () {
+        LoadUserDropdown('ID');
+    });
+</script>*@
+                                @Html.ValidationMessageFor(model => model.T_FacilitySalaryRangeAssociationID)
+                            </div>
+                        </div>
+                    </div>
+     
+		}
+								@if(User.CanView("T_SalaryRange","T_Minimum"))
+						{
+				<div class='col-sm-6' id="dvT_Minimum">
+                                <div class='form-group' title="Minimum">
+                                    <label>@Html.LabelFor(model => model.T_Minimum) </label>
+									<div class='input-group'> <span class="input-group-addon btn-default calendar"><i class="fa fa-dollar"></i></span>
+                                    @Html.TextBoxFor(model => model.T_Minimum, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_Minimum)
+									</div>
+                                </div>
+					</div>
+						}
+     
+				
+								@if(User.CanView("T_SalaryRange","T_Maximum"))
+						{
+				<div class='col-sm-6' id="dvT_Maximum">
+                                <div class='form-group' title="Maximum">
+                                    <label>@Html.LabelFor(model => model.T_Maximum) </label>
+									<div class='input-group'> <span class="input-group-addon btn-default calendar"><i class="fa fa-dollar"></i></span>
+                                    @Html.TextBoxFor(model => model.T_Maximum, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.T_Maximum)
+									</div>
+                                </div>
+					</div>
+						}
+     
+				
+       </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+		<button id="CancelQuickAdd" type="button" class="btn btn-default btn-sm" data-dismiss="modal" aria-hidden="true">Cancel</button>
+
+		var busineesrule = User.businessrules.Where(p => p.EntityName == "T_SalaryRange").ToList();
+		 var lstinlineentityname = "";
+		 var lstinlineassocdispname ="";
+		 var lstinlineassocname = "";
+        if (ViewBag.IsAddPop != null)
+		{
+			<input type="submit" value="Create" class="btn btn-primary btn-sm" onclick="QuickAdd(event,'T_SalaryRange','@busineesrule',@busineesrule.Count,'OnCreate','ErrMsgQuickAdd',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname');" />
+ <input type="submit"  value="Create & Continue" btnval="createcontinue" class="btn btn-primary btn-sm" onclick="QuickAdd(event,'T_SalaryRange','@busineesrule',@busineesrule.Count,'OnCreate','ErrMsgQuickAdd',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname');" />
+		}
+		else
+		{
+			<input type="submit" value="Create" class="btn btn-primary btn-sm" onclick="QuickAddFromIndex(event,true,'T_SalaryRange','@ViewData["AssociatedType"]','@busineesrule',@busineesrule.Count,'OnCreate','ErrMsgQuickAdd',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname');" />
+ <input type="submit" value="Create & Continue" btnval="createcontinue" class="btn btn-primary btn-sm" onclick="QuickAddFromIndex(event,true,'T_SalaryRange','@ViewData["AssociatedType"]','@busineesrule',@busineesrule.Count,'OnCreate','ErrMsgQuickAdd',false,'@lstinlineassocname','@lstinlineassocdispname','@lstinlineentityname');" />
+		}
+}
+<script src="@Url.Content("~/bundles/jqueryval")" type="text/javascript"></script>
+<script src="@Url.Content("~/bundles/common3")" type="text/javascript"></script>
+
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        try {
+            document.getElementsByTagName("body")[0].focus();
+            $("#addPopup").removeAttr("tabindex");
+            var cltcoll = $("#dvPopup").find('input[type=text]:not([class=hidden]):not([readonly]),textarea:not([readonly])');
+            var cltid = "";
+            $(cltcoll).each(function () {
+			  if ($(this).attr("id") == undefined)
+                    return
+                var dvhidden = $("#dv" + $(this).attr("id"));
+				var dvDate = $("#datetimepicker" + $(this).attr("id")).attr("id");
+
+                if (!(dvhidden.css('display') == 'none') && dvDate == undefined) {
+                    cltid = $(this);
+                    return false;
+                }
+            });
+            if (cltid != "" && cltid != undefined)
+                setTimeout(function () { $(cltid).focus(); }, 500);
+			var ctrlReadonly = $("#dvPopup").find('input[type=text][readonly],textarea[readonly]');
+            $(ctrlReadonly).each(function () {
+                $(ctrlReadonly).attr("tabindex", "-1");
+            });
+        }
+        catch (ex) { }
+    });
+</script>
+

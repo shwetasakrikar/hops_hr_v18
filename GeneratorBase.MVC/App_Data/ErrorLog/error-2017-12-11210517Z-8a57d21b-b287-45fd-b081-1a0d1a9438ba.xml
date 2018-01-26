@@ -1,0 +1,180 @@
+﻿<error errorId="8a57d21b-b287-45fd-b081-1a0d1a9438ba" application="/LM/W3SVC/1/ROOT/HOPS_HR_v18" host="TURANTOMVC" type="System.Web.HttpException" message="The controller for path '/HOPS_HR_v18/T_journalEntry' was not found or does not implement IController." source="System.Web.Mvc" detail="System.Web.HttpException (0x80004005): The controller for path '/HOPS_HR_v18/T_journalEntry' was not found or does not implement IController.&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   at Castle.Proxies.Invocations.IControllerFactory_CreateController.InvokeMethodOnTarget()&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Glimpse.Core.Extensibility.CastleInvocationToAlternateMethodContextAdapter.Proceed()&#xD;&#xA;   at Glimpse.Core.Extensions.AlternateMethodContextExtensions.TryProceedWithTimer(IAlternateMethodContext context, TimerResult&amp; timerResult)&#xD;&#xA;   at Glimpse.Core.Extensibility.AlternateMethod.NewImplementation(IAlternateMethodContext context)&#xD;&#xA;   at Glimpse.Core.Extensibility.AlternateTypeToCastleInterceptorAdapter.Intercept(IInvocation invocation)&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Castle.Proxies.IControllerFactoryProxy.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="Shweta" time="2017-12-11T21:05:17.3172983Z" statusCode="404">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.9&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken_L0hPUFNfSFJfdjE40=suhA1-BK0c2NxCaAoUUXSWx0m2HElzpx4j0eFh4zI8xA6yp5l5es2ctWEq6jK9GfKEN4O4mwKCxZeDywt9kvJEP_DbPWAADQJpQoKxy2A5I1; ASP.NET_SessionId=1xujcixzhqcuohtjfywcw3py; _timezone=Eastern Standard Time; pageSizeundefinedT_EmployeeInjury=50; HOPS_HR_v18=1MNwj8QocIY9PK5XbV8rFlSyzlaPJexleX8G4Nadg3xgYeTv9zoUjLAWWlfNc-20KeYlDI4d1m4mSNMA49bZ7mxzBzQM6KAmmjLGi-Ljgzh_8_eBtYD4OJBfN3QmSS3sNfOjgAdjMNuhRy16pKotcRvnDhZI4z13TY_uS2nDFRHzCNxco-Pf6In_JkGvCHJnSvlkAX86U671j-ejFJ0WiHVHBDJeIOTXR6IZNghfSmlpdATs9tB5-OAZyMOrV1kqy_MCQfdIE-zI0apl9iJzMEvxkOSohuPl0DdlfEvfoXZk9p1QnbzklfINwRYIF4QFUVkzcRoHVzSAIiAtsRFtQQtaGi4p6daswHhTBTn0kixSbGFouNBLWFFD1iLtfGk9i1YHowW9jpMitnO6RymEJNVXWYg66JJIMUUxJjB7YohfUdV02MJsgLpsMcExK4IC6AVJ7vfRwXgcHG3MgZ3-nj6I5r1O6HCxeU9uviRrN5l9gRvelBmKBRnJUrmUh8gM_s-KGGywVN4BbX8lJx3V9ydVKCAyelYGwaH12DjUlAU; HOPS_HR_v18CurrentRole=HR Manager,; paginationundefinedJournalEntry=1&#xD;&#xA;HTTP_HOST:apps.turanto.com&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.9&#xD;&#xA;Cookie: __RequestVerificationToken_L0hPUFNfSFJfdjE40=suhA1-BK0c2NxCaAoUUXSWx0m2HElzpx4j0eFh4zI8xA6yp5l5es2ctWEq6jK9GfKEN4O4mwKCxZeDywt9kvJEP_DbPWAADQJpQoKxy2A5I1; ASP.NET_SessionId=1xujcixzhqcuohtjfywcw3py; _timezone=Eastern Standard Time; pageSizeundefinedT_EmployeeInjury=50; HOPS_HR_v18=1MNwj8QocIY9PK5XbV8rFlSyzlaPJexleX8G4Nadg3xgYeTv9zoUjLAWWlfNc-20KeYlDI4d1m4mSNMA49bZ7mxzBzQM6KAmmjLGi-Ljgzh_8_eBtYD4OJBfN3QmSS3sNfOjgAdjMNuhRy16pKotcRvnDhZI4z13TY_uS2nDFRHzCNxco-Pf6In_JkGvCHJnSvlkAX86U671j-ejFJ0WiHVHBDJeIOTXR6IZNghfSmlpdATs9tB5-OAZyMOrV1kqy_MCQfdIE-zI0apl9iJzMEvxkOSohuPl0DdlfEvfoXZk9p1QnbzklfINwRYIF4QFUVkzcRoHVzSAIiAtsRFtQQtaGi4p6daswHhTBTn0kixSbGFouNBLWFFD1iLtfGk9i1YHowW9jpMitnO6RymEJNVXWYg66JJIMUUxJjB7YohfUdV02MJsgLpsMcExK4IC6AVJ7vfRwXgcHG3MgZ3-nj6I5r1O6HCxeU9uviRrN5l9gRvelBmKBRnJUrmUh8gM_s-KGGywVN4BbX8lJx3V9ydVKCAyelYGwaH12DjUlAU; HOPS_HR_v18CurrentRole=HR Manager,; paginationundefinedJournalEntry=1&#xD;&#xA;Host: apps.turanto.com&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/HOPS_HR_v18" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\HOPS_HR_v18\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="Shweta" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="Shweta" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/HOPS_HR_v18/T_journalEntry" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\HOPS_HR_v18\GeneratorBase.MVC\T_journalEntry" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="166.67.66.241" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="166.67.66.241" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="44394" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/HOPS_HR_v18/T_journalEntry" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/HOPS_HR_v18/T_journalEntry" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.9" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken_L0hPUFNfSFJfdjE40=suhA1-BK0c2NxCaAoUUXSWx0m2HElzpx4j0eFh4zI8xA6yp5l5es2ctWEq6jK9GfKEN4O4mwKCxZeDywt9kvJEP_DbPWAADQJpQoKxy2A5I1; ASP.NET_SessionId=1xujcixzhqcuohtjfywcw3py; _timezone=Eastern Standard Time; pageSizeundefinedT_EmployeeInjury=50; HOPS_HR_v18=1MNwj8QocIY9PK5XbV8rFlSyzlaPJexleX8G4Nadg3xgYeTv9zoUjLAWWlfNc-20KeYlDI4d1m4mSNMA49bZ7mxzBzQM6KAmmjLGi-Ljgzh_8_eBtYD4OJBfN3QmSS3sNfOjgAdjMNuhRy16pKotcRvnDhZI4z13TY_uS2nDFRHzCNxco-Pf6In_JkGvCHJnSvlkAX86U671j-ejFJ0WiHVHBDJeIOTXR6IZNghfSmlpdATs9tB5-OAZyMOrV1kqy_MCQfdIE-zI0apl9iJzMEvxkOSohuPl0DdlfEvfoXZk9p1QnbzklfINwRYIF4QFUVkzcRoHVzSAIiAtsRFtQQtaGi4p6daswHhTBTn0kixSbGFouNBLWFFD1iLtfGk9i1YHowW9jpMitnO6RymEJNVXWYg66JJIMUUxJjB7YohfUdV02MJsgLpsMcExK4IC6AVJ7vfRwXgcHG3MgZ3-nj6I5r1O6HCxeU9uviRrN5l9gRvelBmKBRnJUrmUh8gM_s-KGGywVN4BbX8lJx3V9ydVKCAyelYGwaH12DjUlAU; HOPS_HR_v18CurrentRole=HR Manager,; paginationundefinedJournalEntry=1" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="apps.turanto.com" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken_L0hPUFNfSFJfdjE40">
+      <value string="suhA1-BK0c2NxCaAoUUXSWx0m2HElzpx4j0eFh4zI8xA6yp5l5es2ctWEq6jK9GfKEN4O4mwKCxZeDywt9kvJEP_DbPWAADQJpQoKxy2A5I1" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="1xujcixzhqcuohtjfywcw3py" />
+    </item>
+    <item name="_timezone">
+      <value string="Eastern Standard Time" />
+    </item>
+    <item name="pageSizeundefinedT_EmployeeInjury">
+      <value string="50" />
+    </item>
+    <item name="HOPS_HR_v18">
+      <value string="1MNwj8QocIY9PK5XbV8rFlSyzlaPJexleX8G4Nadg3xgYeTv9zoUjLAWWlfNc-20KeYlDI4d1m4mSNMA49bZ7mxzBzQM6KAmmjLGi-Ljgzh_8_eBtYD4OJBfN3QmSS3sNfOjgAdjMNuhRy16pKotcRvnDhZI4z13TY_uS2nDFRHzCNxco-Pf6In_JkGvCHJnSvlkAX86U671j-ejFJ0WiHVHBDJeIOTXR6IZNghfSmlpdATs9tB5-OAZyMOrV1kqy_MCQfdIE-zI0apl9iJzMEvxkOSohuPl0DdlfEvfoXZk9p1QnbzklfINwRYIF4QFUVkzcRoHVzSAIiAtsRFtQQtaGi4p6daswHhTBTn0kixSbGFouNBLWFFD1iLtfGk9i1YHowW9jpMitnO6RymEJNVXWYg66JJIMUUxJjB7YohfUdV02MJsgLpsMcExK4IC6AVJ7vfRwXgcHG3MgZ3-nj6I5r1O6HCxeU9uviRrN5l9gRvelBmKBRnJUrmUh8gM_s-KGGywVN4BbX8lJx3V9ydVKCAyelYGwaH12DjUlAU" />
+    </item>
+    <item name="HOPS_HR_v18CurrentRole">
+      <value string="HR Manager," />
+    </item>
+    <item name="paginationundefinedJournalEntry">
+      <value string="1" />
+    </item>
+  </cookies>
+</error>

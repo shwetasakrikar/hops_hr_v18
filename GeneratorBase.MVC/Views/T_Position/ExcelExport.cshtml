@@ -1,0 +1,307 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_Position>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Position.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_Position","T_FacilityAssignedToID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Facility"?"hidden":"")>Facility</th>
+}
+@if(User.CanView("T_Position","T_PositionNumber"))
+{
+		<th>Position Number</th>
+}
+@if(User.CanView("T_Position","T_TypeOfPositionID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_PositionType"?"hidden":"")>Position Type</th>
+}
+@if(User.CanView("T_Position","T_AssociatedPositionStatusID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Positionstatus"?"hidden":"")>Position Status</th>
+}
+@if(User.CanView("T_Position","T_PositionIdentifierID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_PositionLevel"?"hidden":"")>Position Level</th>
+}
+@if(User.CanView("T_Position","T_PositionFill"))
+{
+		<th>Position Fill %</th>
+}
+@if(User.CanView("T_Position","T_QuasiFill"))
+{
+		<th>Quasi Fill</th>
+}
+@if(User.CanView("T_Position","T_PositionWorkingTitleAssociationID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_WorkingTitle"?"hidden":"")>Working Title </th>
+}
+@if(User.CanView("T_Position","T_EffectiveDate"))
+{
+		<th>Effective Date</th>
+}
+@if(User.CanView("T_Position","T_PositionRoleCodeID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_RoleCode"?"hidden":"")>Role Code</th>
+}
+@if(User.CanView("T_Position","T_SalaryBand"))
+{
+		<th>Salary Band</th>
+}
+@if(User.CanView("T_Position","T_PositionSOCCodeID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_SocCode"?"hidden":"")>SOC Code</th>
+}
+@if(User.CanView("T_Position","T_PositionClassCodeID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_ClassCode"?"hidden":"")>Class Code</th>
+}
+@if(User.CanView("T_Position","T_WorkersCompCodePositionID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_WCCode"?"hidden":"")>WC Code</th>
+}
+@if(User.CanView("T_Position","T_CardApprvr"))
+{
+		<th>CardApprvr</th>
+}
+@if(User.CanView("T_Position","T_PositionCostCenterAssociationID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_CostCenter"?"hidden":"")>CardDept</th>
+}
+@if(User.CanView("T_Position","T_ShiftStart"))
+{
+		<th>Shift Start</th>
+}
+@if(User.CanView("T_Position","T_ShiftEnd"))
+{
+		<th>Shift End</th>
+}
+@if(User.CanView("T_Position","T_PositionShiftMealTimeID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_ShiftMealTime"?"hidden":"")>Shift Meal Time</th>
+}
+@if(User.CanView("T_Position","T_PositionShiftTimeID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_ShiftTime"?"hidden":"")>Shift Time</th>
+}
+@if(User.CanView("T_Position","T_PositionShiftDurationID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_ShiftDuration"?"hidden":"")>Shift Duration</th>
+}
+@if(User.CanView("T_Position","T_PositionOvertimeEligibilityID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_OvertimeEligibility"?"hidden":"")>Overtime Eligibility</th>
+}
+@if(User.CanView("T_Position","T_DualIncumbent"))
+{
+		<th>Dual Incumbent</th>
+}
+@if(User.CanView("T_Position","T_DualIncumbentStartDate"))
+{
+		<th>Dual Incumbent Start Date</th>
+}
+@if(User.CanView("T_Position","T_DualIncumbentEndDate"))
+{
+		<th>Dual Incumbent End Date</th>
+}
+@if(User.CanView("T_Position","T_PositionStatusforPostingID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_PositionPostStatus"?"hidden":"")>Position Post Status</th>
+}
+@if(User.CanView("T_Position","T_Funded"))
+{
+		<th>Funded</th>
+}
+@if(User.CanView("T_Position","T_EstablishedDate"))
+{
+		<th>Established Date</th>
+}
+@if(User.CanView("T_Position","T_AbolishDate"))
+{
+		<th>Abolish Date</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_Position","T_FacilityAssignedToID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Facility"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_facilityassignedto.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Position","T_PositionNumber"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_PositionNumber)
+        </td>
+}
+@if(User.CanView("T_Position","T_TypeOfPositionID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_PositionType"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_typeofposition.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Position","T_AssociatedPositionStatusID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Positionstatus"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_associatedpositionstatus.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Position","T_PositionIdentifierID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_PositionLevel"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_positionidentifier.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Position","T_PositionFill"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_PositionFill)
+        </td>
+}
+@if(User.CanView("T_Position","T_QuasiFill"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_QuasiFill)
+        </td>
+}
+@if(User.CanView("T_Position","T_PositionWorkingTitleAssociationID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_WorkingTitle"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_positionworkingtitleassociation.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Position","T_EffectiveDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_EffectiveDate)
+        </td>
+}
+@if(User.CanView("T_Position","T_PositionRoleCodeID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_RoleCode"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_positionrolecode.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Position","T_SalaryBand"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_SalaryBand)
+        </td>
+}
+@if(User.CanView("T_Position","T_PositionSOCCodeID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_SocCode"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_positionsoccode.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Position","T_PositionClassCodeID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_ClassCode"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_positionclasscode.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Position","T_WorkersCompCodePositionID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_WCCode"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_workerscompcodeposition.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Position","T_CardApprvr"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_CardApprvr)
+        </td>
+}
+@if(User.CanView("T_Position","T_PositionCostCenterAssociationID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_CostCenter"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_positioncostcenterassociation.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Position","T_ShiftStart"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_ShiftStart)
+        </td>
+}
+@if(User.CanView("T_Position","T_ShiftEnd"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_ShiftEnd)
+        </td>
+}
+@if(User.CanView("T_Position","T_PositionShiftMealTimeID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_ShiftMealTime"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_positionshiftmealtime.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Position","T_PositionShiftTimeID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_ShiftTime"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_positionshifttime.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Position","T_PositionShiftDurationID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_ShiftDuration"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_positionshiftduration.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Position","T_PositionOvertimeEligibilityID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_OvertimeEligibility"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_positionovertimeeligibility.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Position","T_DualIncumbent"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_DualIncumbent)
+        </td>
+}
+@if(User.CanView("T_Position","T_DualIncumbentStartDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_DualIncumbentStartDate)
+        </td>
+}
+@if(User.CanView("T_Position","T_DualIncumbentEndDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_DualIncumbentEndDate)
+        </td>
+}
+@if(User.CanView("T_Position","T_PositionStatusforPostingID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_PositionPostStatus"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_positionstatusforposting.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Position","T_Funded"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Funded)
+        </td>
+}
+@if(User.CanView("T_Position","T_EstablishedDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_EstablishedDate)
+        </td>
+}
+@if(User.CanView("T_Position","T_AbolishDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_AbolishDate)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

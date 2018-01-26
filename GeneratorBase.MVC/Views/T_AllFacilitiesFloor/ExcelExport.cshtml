@@ -1,0 +1,47 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_AllFacilitiesFloor>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=All Facilities Floor.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_AllFacilitiesFloor","T_Name"))
+{
+		<th>Name</th>
+}
+@if(User.CanView("T_AllFacilitiesFloor","T_Description"))
+{
+		<th>Description</th>
+}
+@if(User.CanView("T_AllFacilitiesFloor","T_AllUnitsFloorID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_AllFacilitiesUnit"?"hidden":"")>Unit</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_AllFacilitiesFloor","T_Name"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Name)
+        </td>
+}
+@if(User.CanView("T_AllFacilitiesFloor","T_Description"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Description)
+        </td>
+}
+@if(User.CanView("T_AllFacilitiesFloor","T_AllUnitsFloorID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_AllFacilitiesUnit"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_allunitsfloor.DisplayValue)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

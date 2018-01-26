@@ -1,0 +1,84 @@
+﻿@model Int32
+<div class="">
+    <!-- /.col-lg-12 -->
+</div>
+<script>
+
+    function SearchCalendar(obj)
+    {
+        var dataurl = $(obj).attr("dataurl");
+        
+        location.href = dataurl;
+    }
+	
+     $(document).ready(function () {
+        $('.fc-agendaWeek-button').click();
+        $('select[multiple="multiple"]').each(function () {
+            $(this).multiselect({ buttonWidth: '100%', nonSelectedText: 'ALL' });
+            var assocId = $(this).attr('id');
+            fillMultiSelectAssociation(assocId);
+        });
+		      });
+	  function urlParam(name) {
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        var value = "";
+        if (results != null && results!=undefined)
+            value = results[1]
+        return value;
+    }
+	 function fillMultiSelectAssociation(assocId) {
+        if ($("#" + assocId).length > 0) {
+            var resObj = AntiSanitizeURLString(urlParam(assocId)).split(",");
+            var eleObj = document.getElementById(assocId);
+            FillMultiSelectDropDown(resObj, eleObj, assocId);
+        }
+	}
+	var openfalg = false;
+    function FillMultiSelectDropDown(result, element, elementName) {
+	 if (element == null || element == undefined)
+            return false;
+
+        var isHaveNullSelect = false;
+        var countoptions = 0;
+		 var itmseleted = 0;
+        for (var o = 0; o < element.options.length; o++) {
+            if (result.indexOf(element.options[o].value)!=-1)
+                element.options[o].selected = true;
+            else if (result.indexOf("NULL")!=-1)
+                isHaveNullSelect = true;
+            countoptions++;
+        }
+
+		if (itmseleted > 0) {
+            if (!openfalg) {
+                $("#A" + $("#" + elementName).closest('.panel-collapse').attr('id')).click();
+                openfalg = true;
+            }
+        }
+
+         var opt = document.createElement('option');
+        opt.value = "NULL";
+        opt.innerHTML = "None";
+        if (isHaveNullSelect) {
+            opt.selected = true;
+            element.insertBefore(opt, element.firstChild);
+        }
+		//if (!isHaveNullSelect) {
+        if ($("#" + elementName + " option[value=NULL]").length == 0) {
+            element.insertBefore(opt, element.firstChild);
+        }
+        $("#" + elementName).multiselect("rebuild");
+        if (countoptions >= 10) {
+            var hostingentity = elementName;
+            var urlGetAll = $('#' + hostingentity).attr("dataurl").replace("GetAllMultiSelectValue", "Index") + "?BulkOperation=multiple";
+            var dispName = ($("label[for=\"" + hostingentity + "\"]").text());
+            var link = "<a onclick=\"" + "OpenPopUpBulkOperation('PopupBulkOperation','" + hostingentity + "','" + dispName + "','dvPopupBulkOperation','" + urlGetAll + "')\">View All</a>";
+            var getall = "<li class='disabled-result disabled-result' style='font-style:Italic;text-decoration:underline;' >" + link + "</li>";
+            var $ul = $("ul", "#dv" + elementName);
+            $("#dv" + elementName).find("ul").append($(getall))
+
+        }
+    }
+
+</script>
+

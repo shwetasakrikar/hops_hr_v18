@@ -1,0 +1,247 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_ServiceRecord>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Service Record.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_ServiceRecord","T_EmployeeEmploymentProfileID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>Employee</th>
+}
+@if(User.CanView("T_ServiceRecord","T_EmploymentRecordEmployeeTypeID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_EmployeeType"?"hidden":"")>Employee Type</th>
+}
+@if(User.CanView("T_ServiceRecord","T_IsCurrent"))
+{
+		<th>Current Active Service Record</th>
+}
+@if(User.CanView("T_ServiceRecord","T_EmploymentRecordHiredAtFacilityID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_AllFacilities"?"hidden":"")>Hired At Facility</th>
+}
+@if(User.CanView("T_ServiceRecord","T_HireDate"))
+{
+		<th>Hire Date</th>
+}
+@if(User.CanView("T_ServiceRecord","T_TerminationDate"))
+{
+		<th>Separation Date</th>
+}
+@if(User.CanView("T_ServiceRecord","T_ThreeMonthDue"))
+{
+		<th>Three Month Due</th>
+}
+@if(User.CanView("T_ServiceRecord","T_ThreeMonthReviewCompleted"))
+{
+		<th>Three Month Review Completed</th>
+}
+@if(User.CanView("T_ServiceRecord","T_SixMonthDue"))
+{
+		<th>Six Month Due </th>
+}
+@if(User.CanView("T_ServiceRecord","T_SixMonthReviewCompleted"))
+{
+		<th>Six Month Review Completed</th>
+}
+@if(User.CanView("T_ServiceRecord","T_TwelveMonthDue"))
+{
+		<th>Twelve Month Due</th>
+}
+@if(User.CanView("T_ServiceRecord","T_TwelveMonthReviewCompleted"))
+{
+		<th>Twelve Month Review Completed</th>
+}
+@if(User.CanView("T_ServiceRecord","T_ProbationaryExtensionDate"))
+{
+		<th>Probationary Extension Date</th>
+}
+@if(User.CanView("T_ServiceRecord","T_ExtensionReviewCompleted"))
+{
+		<th>Extension Review Completed</th>
+}
+@if(User.CanView("T_ServiceRecord","T_EmployeeTerminationReasonID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_TerminationReason"?"hidden":"")>Separation Reason</th>
+}
+@if(User.CanView("T_ServiceRecord","T_EmployeeRecordTerminationFacilityID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_AllFacilities"?"hidden":"")>After Termination Joined Facility</th>
+}
+@if(User.CanView("T_ServiceRecord","T_TwoWeekNoticeGiven"))
+{
+		<th>Two Week Notice Given</th>
+}
+@if(User.CanView("T_ServiceRecord","T_NoticeGivenDate"))
+{
+		<th>Notice Given Date</th>
+}
+@if(User.CanView("T_ServiceRecord","T_ThirtyDaysSinceTermination"))
+{
+		<th>Thirty Days Since Separation</th>
+}
+@if(User.CanView("T_ServiceRecord","T_ThirteenWeeksSinceTermination"))
+{
+		<th>Thirteen Weeks Since Separation</th>
+}
+@if(User.CanView("T_ServiceRecord","T_EligibleForRehire"))
+{
+		<th>Not Eligible For Rehire</th>
+}
+@if(User.CanView("T_ServiceRecord","T_ProbationNotes"))
+{
+		<th>Probation Notes</th>
+}
+@if(User.CanView("T_ServiceRecord","T_TerminationNotes"))
+{
+		<th>Separation Notes</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_ServiceRecord","T_EmployeeEmploymentProfileID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeeemploymentprofile.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_EmploymentRecordEmployeeTypeID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_EmployeeType"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employmentrecordemployeetype.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_IsCurrent"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_IsCurrent)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_EmploymentRecordHiredAtFacilityID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_AllFacilities"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employmentrecordhiredatfacility.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_HireDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_HireDate)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_TerminationDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_TerminationDate)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_ThreeMonthDue"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_ThreeMonthDue)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_ThreeMonthReviewCompleted"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_ThreeMonthReviewCompleted)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_SixMonthDue"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_SixMonthDue)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_SixMonthReviewCompleted"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_SixMonthReviewCompleted)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_TwelveMonthDue"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_TwelveMonthDue)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_TwelveMonthReviewCompleted"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_TwelveMonthReviewCompleted)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_ProbationaryExtensionDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_ProbationaryExtensionDate)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_ExtensionReviewCompleted"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_ExtensionReviewCompleted)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_EmployeeTerminationReasonID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_TerminationReason"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeeterminationreason.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_EmployeeRecordTerminationFacilityID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_AllFacilities"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_employeerecordterminationfacility.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_TwoWeekNoticeGiven"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_TwoWeekNoticeGiven)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_NoticeGivenDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_NoticeGivenDate)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_ThirtyDaysSinceTermination"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_ThirtyDaysSinceTermination)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_ThirteenWeeksSinceTermination"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_ThirteenWeeksSinceTermination)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_EligibleForRehire"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_EligibleForRehire)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_ProbationNotes"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_ProbationNotes)
+        </td>
+}
+@if(User.CanView("T_ServiceRecord","T_TerminationNotes"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_TerminationNotes)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               

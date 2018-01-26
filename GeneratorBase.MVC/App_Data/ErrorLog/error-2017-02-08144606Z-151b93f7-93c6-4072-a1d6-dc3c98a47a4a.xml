@@ -1,0 +1,380 @@
+﻿<error errorId="151b93f7-93c6-4072-a1d6-dc3c98a47a4a" application="/LM/W3SVC/1/ROOT/HOPS_HR_V9" host="TURANTOMVC" type="System.NullReferenceException" message="Object reference not set to an instance of an object." source="GeneratorBase.MVC" detail="System.NullReferenceException: Object reference not set to an instance of an object.&#xD;&#xA;   at GeneratorBase.MVC.Controllers.T_EmployeeController.CheckBeforeSave(T_Employee t_employee) in d:\GenApps\HOPS_HR_V9\GeneratorBase.MVC\Controllers\T_Employee\T_EmployeeController.cs:line 5262&#xD;&#xA;   at GeneratorBase.MVC.Controllers.T_EmployeeController.Edit(T_Employee t_employee, String UrlReferrer) in d:\GenApps\HOPS_HR_V9\GeneratorBase.MVC\Controllers\T_Employee\T_EmployeeCRUDController.cs:line 735&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)" user="rupali.pendse@etelic.com" time="2017-02-08T14:46:06.3558768Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:8261&#xD;&#xA;HTTP_CONTENT_TYPE:multipart/form-data; boundary=---------------------------11415127235183&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.5&#xD;&#xA;HTTP_COOKIE:_ga=GA1.2.1899809934.1470163907; __RequestVerificationToken_L0hPUFNfSFJfVjk1=ppWoUX2SH7vyYS9S6tvgG8DfubFrjfxTbluuQmYpxM2J1mSEPmLX9BaLSyvhDvGqNcPtU-OoeHQcKj09vyudyqLioQLmNxGXi4mI93nNR841; HOPS_HR_V9=0YnP5Uthdq6F-YgVE_Xp-uZ_Ggg3uGsGvZSXYyd1A7u_YwhTe8yI3XFWT4eTbG-qCdmUpAQRSMESsKYVL-7b9TGKdZSAfd5apbRQXLdB2zWIdGz3Ph4mtC7jarONv7wlqpvmf_MqO_CMhWGdbhMIdiTgFmftD_cn9xBKiS1ThVVivvqCooeZ7fcjmgyl_u7s_dO19xDAbOwluJio2LD4B3C8uIP5qmSoo3rofKExq7U2OkN5GLb2_r4I4m0DobQVVd0IoLLAx0LSaQLQwz-8_z1IhZF6zYa8i44optB0g0BCLhbQUlo2BK_Kc0C-vD5xFPQYG-63hSdGNOk6_BUoX2tEElEbhDKUO8e9mD8gSbjAwKJ-MrjLXYeOCdLNonYmUA6KcsFf7ywYf2hN3GFQWYHeRhqZmIaA_1ePufz99n-YBr5Q6GLA4THgkyUMduQZpE43wM20Swp6vGVUMF_nxvNtod0vkTq9m8alKC_p3NiMPx2MFZdglEUMH8EDFjUnGY-x4ALWcq5aI21E0Alyz8eIE6b4hyBBs5QZ5khYMxTIzWIpMnPlYm_isEq3g5VrlGm4jgqDKkGX7maWcvx45g; HOPS_HR_V9CurrentRole=IT User,&#xD;&#xA;HTTP_HOST:mvc.turanto.com&#xD;&#xA;HTTP_REFERER:https://mvc.turanto.com/HOPS_HR_V9/T_Employee/Edit/201?UrlReferrer=https%3A%2F%2Fmvc.turanto.com%2FHOPS_HR_V9%2FT_Employee&amp;viewtype=IndexPartial&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Content-Length: 8261&#xD;&#xA;Content-Type: multipart/form-data; boundary=---------------------------11415127235183&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.5&#xD;&#xA;Cookie: _ga=GA1.2.1899809934.1470163907; __RequestVerificationToken_L0hPUFNfSFJfVjk1=ppWoUX2SH7vyYS9S6tvgG8DfubFrjfxTbluuQmYpxM2J1mSEPmLX9BaLSyvhDvGqNcPtU-OoeHQcKj09vyudyqLioQLmNxGXi4mI93nNR841; HOPS_HR_V9=0YnP5Uthdq6F-YgVE_Xp-uZ_Ggg3uGsGvZSXYyd1A7u_YwhTe8yI3XFWT4eTbG-qCdmUpAQRSMESsKYVL-7b9TGKdZSAfd5apbRQXLdB2zWIdGz3Ph4mtC7jarONv7wlqpvmf_MqO_CMhWGdbhMIdiTgFmftD_cn9xBKiS1ThVVivvqCooeZ7fcjmgyl_u7s_dO19xDAbOwluJio2LD4B3C8uIP5qmSoo3rofKExq7U2OkN5GLb2_r4I4m0DobQVVd0IoLLAx0LSaQLQwz-8_z1IhZF6zYa8i44optB0g0BCLhbQUlo2BK_Kc0C-vD5xFPQYG-63hSdGNOk6_BUoX2tEElEbhDKUO8e9mD8gSbjAwKJ-MrjLXYeOCdLNonYmUA6KcsFf7ywYf2hN3GFQWYHeRhqZmIaA_1ePufz99n-YBr5Q6GLA4THgkyUMduQZpE43wM20Swp6vGVUMF_nxvNtod0vkTq9m8alKC_p3NiMPx2MFZdglEUMH8EDFjUnGY-x4ALWcq5aI21E0Alyz8eIE6b4hyBBs5QZ5khYMxTIzWIpMnPlYm_isEq3g5VrlGm4jgqDKkGX7maWcvx45g; HOPS_HR_V9CurrentRole=IT User,&#xD;&#xA;Host: mvc.turanto.com&#xD;&#xA;Referer: https://mvc.turanto.com/HOPS_HR_V9/T_Employee/Edit/201?UrlReferrer=https%3A%2F%2Fmvc.turanto.com%2FHOPS_HR_V9%2FT_Employee&amp;viewtype=IndexPartial&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/1/ROOT/HOPS_HR_V9" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\GenApps\HOPS_HR_V9\GeneratorBase.MVC\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="rupali.pendse@etelic.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="rupali.pendse@etelic.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="8261" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="multipart/form-data; boundary=---------------------------11415127235183" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="128" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="C=GB, S=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Domain Validation Secure Server CA" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="OU=Domain Control Validated, OU=PositiveSSL Wildcard, CN=*.turanto.com" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="1" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/1" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.0.1.252" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/HOPS_HR_V9/T_Employee/Edit/201" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\GenApps\HOPS_HR_V9\GeneratorBase.MVC\T_Employee\Edit\201" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="UrlReferrer=https%3A%2F%2Fmvc.turanto.com%2FHOPS_HR_V9%2FT_Employee" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="166.67.66.247" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="166.67.66.247" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="45140" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/HOPS_HR_V9/T_Employee/Edit/201" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="443" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/HOPS_HR_V9/T_Employee/Edit/201" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="8261" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="multipart/form-data; boundary=---------------------------11415127235183" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.5" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="_ga=GA1.2.1899809934.1470163907; __RequestVerificationToken_L0hPUFNfSFJfVjk1=ppWoUX2SH7vyYS9S6tvgG8DfubFrjfxTbluuQmYpxM2J1mSEPmLX9BaLSyvhDvGqNcPtU-OoeHQcKj09vyudyqLioQLmNxGXi4mI93nNR841; HOPS_HR_V9=0YnP5Uthdq6F-YgVE_Xp-uZ_Ggg3uGsGvZSXYyd1A7u_YwhTe8yI3XFWT4eTbG-qCdmUpAQRSMESsKYVL-7b9TGKdZSAfd5apbRQXLdB2zWIdGz3Ph4mtC7jarONv7wlqpvmf_MqO_CMhWGdbhMIdiTgFmftD_cn9xBKiS1ThVVivvqCooeZ7fcjmgyl_u7s_dO19xDAbOwluJio2LD4B3C8uIP5qmSoo3rofKExq7U2OkN5GLb2_r4I4m0DobQVVd0IoLLAx0LSaQLQwz-8_z1IhZF6zYa8i44optB0g0BCLhbQUlo2BK_Kc0C-vD5xFPQYG-63hSdGNOk6_BUoX2tEElEbhDKUO8e9mD8gSbjAwKJ-MrjLXYeOCdLNonYmUA6KcsFf7ywYf2hN3GFQWYHeRhqZmIaA_1ePufz99n-YBr5Q6GLA4THgkyUMduQZpE43wM20Swp6vGVUMF_nxvNtod0vkTq9m8alKC_p3NiMPx2MFZdglEUMH8EDFjUnGY-x4ALWcq5aI21E0Alyz8eIE6b4hyBBs5QZ5khYMxTIzWIpMnPlYm_isEq3g5VrlGm4jgqDKkGX7maWcvx45g; HOPS_HR_V9CurrentRole=IT User," />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="mvc.turanto.com" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://mvc.turanto.com/HOPS_HR_V9/T_Employee/Edit/201?UrlReferrer=https%3A%2F%2Fmvc.turanto.com%2FHOPS_HR_V9%2FT_Employee&amp;viewtype=IndexPartial" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="UrlReferrer">
+      <value string="https://mvc.turanto.com/HOPS_HR_V9/T_Employee" />
+    </item>
+  </queryString>
+  <form>
+    <item name="Id">
+      <value string="201" />
+    </item>
+    <item name="ConcurrencyKey">
+      <value string="AAAAAAAalLE=" />
+    </item>
+    <item name="T_EmployeeAtFacilityID">
+      <value string="1" />
+    </item>
+    <item name="T_PID">
+      <value string="3578" />
+    </item>
+    <item name="T_SSN">
+      <value string="" />
+    </item>
+    <item name="T_DateOfBirth">
+      <value string="" />
+    </item>
+    <item name="T_EmployeeStatusID">
+      <value string="1" />
+    </item>
+    <item name="T_SAMAccount">
+      <value string="111" />
+    </item>
+    <item name="T_LastName">
+      <value string="last33" />
+    </item>
+    <item name="T_FirstName">
+      <value string="first33" />
+    </item>
+    <item name="T_MiddleName">
+      <value string="" />
+    </item>
+    <item name="T_Suffix">
+      <value string="" />
+    </item>
+    <item name="T_WorkEmail">
+      <value string="" />
+    </item>
+    <item name="T_CurrentEmployeeEmploymentProfileID">
+      <value string="247" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.ConcurrencyKey">
+      <value string="AAAAAAAalLM=" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.Id">
+      <value string="247" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_EmployeeEmploymentProfileID">
+      <value string="201" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_EmploymentRecordEmployeeTypeID">
+      <value string="3" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_IsCurrent">
+      <value string="True" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_EmploymentRecordHiredAtFacilityID">
+      <value string="1" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_HireDate">
+      <value string="09/12/2016" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_TerminationDate">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_EmployeeTerminationReasonID">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_EmployeeRecordTerminationFacilityID">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeeemploymentprofile.T_EligibleForRehire">
+      <value string="false" />
+    </item>
+    <item name="T_CurrentEmployeeJobAssignmentID">
+      <value string="389" />
+    </item>
+    <item name="t_currentemployeejobassignment.ConcurrencyKey">
+      <value string="AAAAAAAalLI=" />
+    </item>
+    <item name="t_currentemployeejobassignment.Id">
+      <value string="389" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_EmployeeJobAssignmentID">
+      <value string="201" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_EmployeePercent">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_StartDate">
+      <value string="02/08/2017" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_Primary">
+      <value string="True" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_Active">
+      <value string="true" />
+      <value string="false" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_PositionLevel">
+      <value string="E EMPLOYEE " />
+    </item>
+    <item name="t_currentemployeejobassignment.T_RoleCode">
+      <value string="19011 ADMINISTRATIVE &amp; OFFICE SPECIALIST I" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_ClassCode">
+      <value string="11023 OFFICE SERVICES AIDE" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_JobAssignmentReasonID">
+      <value string="1" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_JobAssignmentUnitXID">
+      <value string="246" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_CostCenter">
+      <value string="209 EDUC &amp; TRNG PAT/RESIDENT" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_JobAssignmentManagerEmployeeID">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeejobassignment.T_EmployeeSupervisorID">
+      <value string="" />
+    </item>
+    <item name="T_StateHireDate">
+      <value string="" />
+    </item>
+    <item name="T_PriorServiceinmonths">
+      <value string="0" />
+    </item>
+    <item name="T_CurrentServiceinmonths">
+      <value string="5" />
+    </item>
+    <item name="T_AdjustedHireDate">
+      <value string="" />
+    </item>
+    <item name="T_EmployeeGenderID">
+      <value string="" />
+    </item>
+    <item name="T_EmployeeRaceID">
+      <value string="" />
+    </item>
+    <item name="T_EmployeeVeteranStatusID">
+      <value string="" />
+    </item>
+    <item name="T_EmployeeAddressID">
+      <value string="212" />
+    </item>
+    <item name="T_PersonalEmail">
+      <value string="" />
+    </item>
+    <item name="T_MobilePhone">
+      <value string="" />
+    </item>
+    <item name="T_HomePhone">
+      <value string="" />
+    </item>
+    <item name="T_EmergencyContactName">
+      <value string="" />
+    </item>
+    <item name="T_EmergencyContactRelationship">
+      <value string="" />
+    </item>
+    <item name="T_EmergencyMobilePhone">
+      <value string="" />
+    </item>
+    <item name="T_EmergencyWorkPhone">
+      <value string="" />
+    </item>
+    <item name="T_BadgeNumber">
+      <value string="" />
+    </item>
+    <item name="T_EffectiveDateTime">
+      <value string="" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="iimUhS8RvZqAPJOR41EovUq3zl8Th_1tXJ_Vap8VHniisVMuWDaiTvLVocXDe7lIlKkBDDm_ZLvVpbUsdk599xlLJmgnCrftINIDzAeSTJoxy4XAPIVt1fnWt0l8LhUSSNa8WKR9c7P12B4kPyQVjA2" />
+    </item>
+    <item name="command">
+      <value string="Save &amp; Continue" />
+    </item>
+    <item name="hdncommand">
+      <value string="" />
+    </item>
+    <item name="t_currentemployeejobassignment_T_PositionJobAssignmentID">
+      <value string="613" />
+    </item>
+    <item name="t_currentemployeejobassignment_FailureMessage-72">
+      <value string="undefined" />
+    </item>
+  </form>
+  <cookies>
+    <item name="_ga">
+      <value string="GA1.2.1899809934.1470163907" />
+    </item>
+    <item name="__RequestVerificationToken_L0hPUFNfSFJfVjk1">
+      <value string="ppWoUX2SH7vyYS9S6tvgG8DfubFrjfxTbluuQmYpxM2J1mSEPmLX9BaLSyvhDvGqNcPtU-OoeHQcKj09vyudyqLioQLmNxGXi4mI93nNR841" />
+    </item>
+    <item name="HOPS_HR_V9">
+      <value string="0YnP5Uthdq6F-YgVE_Xp-uZ_Ggg3uGsGvZSXYyd1A7u_YwhTe8yI3XFWT4eTbG-qCdmUpAQRSMESsKYVL-7b9TGKdZSAfd5apbRQXLdB2zWIdGz3Ph4mtC7jarONv7wlqpvmf_MqO_CMhWGdbhMIdiTgFmftD_cn9xBKiS1ThVVivvqCooeZ7fcjmgyl_u7s_dO19xDAbOwluJio2LD4B3C8uIP5qmSoo3rofKExq7U2OkN5GLb2_r4I4m0DobQVVd0IoLLAx0LSaQLQwz-8_z1IhZF6zYa8i44optB0g0BCLhbQUlo2BK_Kc0C-vD5xFPQYG-63hSdGNOk6_BUoX2tEElEbhDKUO8e9mD8gSbjAwKJ-MrjLXYeOCdLNonYmUA6KcsFf7ywYf2hN3GFQWYHeRhqZmIaA_1ePufz99n-YBr5Q6GLA4THgkyUMduQZpE43wM20Swp6vGVUMF_nxvNtod0vkTq9m8alKC_p3NiMPx2MFZdglEUMH8EDFjUnGY-x4ALWcq5aI21E0Alyz8eIE6b4hyBBs5QZ5khYMxTIzWIpMnPlYm_isEq3g5VrlGm4jgqDKkGX7maWcvx45g" />
+    </item>
+    <item name="HOPS_HR_V9CurrentRole">
+      <value string="IT User," />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="ilpnxgghzjlgo0fvevtcstui" />
+    </item>
+  </cookies>
+</error>

@@ -1,0 +1,461 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_TypeofClaim>
+@using PagedList.Mvc;
+@{
+    var ActionNameUrl = "Index";
+    if (HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().ToUpper() == "FSEARCH")
+    {
+        ActionNameUrl = "FSearch";
+    }
+	var BackUrl =  Request.Url;
+	if (ViewData["HostingEntity"]!=null && Request.QueryString["TabToken"]!=null)
+	{
+		BackUrl =  Request.UrlReferrer;
+	}
+	var EditPermission = User.CanEdit("T_TypeofClaim");
+   // var firstitem = Model.FirstOrDefault();
+  //  if (firstitem != null)
+  //  {
+  //      EditPermission = User.CanEditItem("T_TypeofClaim", firstitem, User);
+  //  }
+	var popupDisplayLabel = "Type of Claim";
+    if (Convert.ToString(ViewData["AssociatedType"]).Trim() == "T_TypeofClaim_T_ClaimType")
+    {
+        popupDisplayLabel = "Employee Injury";
+    }
+    if (Convert.ToString(ViewData["AssociatedType"]).Trim() == "T_TypeofClaim_T_EmployeeInjury")
+    {
+        popupDisplayLabel = "Type of Claim Facility";
+    }
+}
+<div id="T_TypeofClaim">
+@if (ViewBag.ImportError != null)
+{
+         @Html.Partial("~/Views/Shared/ImportError.cshtml", "T_TypeofClaim")
+}
+@if (ViewBag.ColumnMapping != null)
+{
+           @Html.Partial("~/Views/Shared/ImportColumnMapping.cshtml","T_TypeofClaim")
+}
+@if (ViewBag.ConfirmImportData != null)
+{
+         @Html.Partial("~/Views/Shared/ImportData.cshtml", "T_TypeofClaim")
+}
+@if (ViewBag.ColumnMapping == null && ViewBag.ImportError == null && ViewBag.ConfirmImportData == null)
+{
+<style>
+    .table-responsive > .fixed-column {
+        position: absolute;
+        display: block;
+        width: auto;
+        border: 0px solid transparent;
+        border-top: 1px solid #c3ddec;
+    }
+    .fixed-column th {
+        background: #fff;
+    }
+    .fixed-column td {
+        background: #fff;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+	 $(".pagination a").click(function (e) {
+            //PaginationClick(e,'T_TypeofClaim')
+			PaginationClick(e, 'T_TypeofClaim','@User.JavaScriptEncodedName')
+        })
+	    if("@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().ToUpper()" == "FSEARCH")
+        {
+            $("#fsearchT_TypeofClaim").addClass('in');
+        }
+	    $("#SearchStringT_TypeofClaim").keypress(function (e) {
+			if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+				 $("#T_TypeofClaimSearch").bind("click", (function () {
+                        }));
+                $('#T_TypeofClaimSearch').trigger("click");
+                return false;
+			}
+        })
+        $("#btnShowHideT_TypeofClaim").mouseup(function () {
+            if (document.getElementById('ColumnShowHideT_TypeofClaim').className == 'collapse') {
+				 $('#lblT_TypeofClaim').css('display', 'none');
+            }
+        })
+		if ($("#ErrmsgLockRecord").length > 0 && $("#ErrmsgLockRecord").text().length > 0) {
+                    $(".pull-left.actionbar").hide();
+		}
+    });
+</script>
+@functions {
+    object getSortHtmlAttributes(string sortby, bool IsPaging, int? page, bool? IsExport)
+    {
+        if (IsPaging)
+        {
+            return new
+            {
+                page,
+                sortBy = ViewBag.CurrentSort,
+                isAsc = ViewBag.IsAsc,
+                currentFilter = ViewBag.CurrentFilter,
+                HostingEntity = @Convert.ToString(ViewData["HostingEntity"]),
+                AssociatedType = @Convert.ToString(ViewData["AssociatedType"]),
+                HostingEntityID = ViewData["HostingEntityID"],
+				IsExport = IsExport,
+				FSFilter = ViewBag.FSFilter == null ? "Fsearch" : ViewBag.FSFilter,
+				IsFilter = @Convert.ToBoolean(ViewData["IsFilter"]),
+ t_claimtype = Request.QueryString["t_claimtype"],
+ t_employeeinjury = Request.QueryString["t_employeeinjury"],
+				search=Request.QueryString["search"],
+            };
+        }
+        else
+        {
+            return new
+            {
+                sortBy = sortby,
+                currentFilter = Request.QueryString["currentFilter"],
+                searchString = Request.QueryString["searchString"],
+                isAsc = (ViewBag.IsAsc == "ASC" ? "DESC" : ""),
+                page = ViewBag.Pages,
+                HostingEntity = @Convert.ToString(ViewData["HostingEntity"]),
+                HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]),
+                AssociatedType = @Convert.ToString(ViewData["AssociatedType"]),
+				IsExport = IsExport,
+				FSFilter = ViewBag.FSFilter == null ? "Fsearch" : ViewBag.FSFilter,
+				IsFilter = @Convert.ToBoolean(ViewData["IsFilter"]),
+ t_claimtype = Request.QueryString["t_claimtype"],
+ t_employeeinjury = Request.QueryString["t_employeeinjury"],
+		search=Request.QueryString["search"],
+            };
+        }
+    }
+}
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-sx-12">
+       <div style="display:block; padding:0px 0px 5px 0px;">
+
+
+
+                <div class="pull-left actionbar" style="margin-top:-3px">
+                 <div class="btn-group">
+				  @if (User.CanAdd("T_TypeofClaim"))
+				  {
+
+						
+
+
+
+				if (ViewData["HostingEntity"]!=null && EditPermission)
+				{ 
+					<a class="btn" data-placement="top" data-original-title="Quick Associate" style="padding:3px 5px;" data-toggle="modal" data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','"+popupDisplayLabel+"','dvPopup','" + Url.Action("CreateQuick", "T_TypeofClaim", new { UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS=DateTime.Now }) + "')")">
+						<span class="fa fa-plus-circle"></span> Quick Associate
+                    </a>
+				}
+				if (ViewData["HostingEntity"]!=null && EditPermission)
+				{ 
+					<a class="btn" type="button" data-original-title="Full Associate" data-placement="top" style="padding:4px 5px;" onclick=@Html.Raw("NavigateToUrl('" + Url.Action("Create", "T_TypeofClaim", new { UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null) + "');")>
+						 <span class="fa fa-plus-circle"></span> Associate
+					</a>
+				}
+	if (ViewData["HostingEntity"] != null && Convert.ToString(ViewData["HostingEntity"]) == "T_ClaimType" && User.CanAdd("T_EmployeeInjury"))
+    {
+        <a class="btn" data-placement="top" data-original-title="Quick Add" id="addT_TypeofClaim" style="padding:3px 5px;" data-toggle="modal" data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','"+popupDisplayLabel+"','dvPopup','" + Url.Action("CreateQuick", "T_EmployeeInjury", new { UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS=DateTime.Now }) + "')")">
+            <span class="fa fa-plus-circle"></span> Quick Add 
+        </a>
+    }
+	if (ViewData["HostingEntity"] != null && Convert.ToString(ViewData["HostingEntity"]) == "T_EmployeeInjury" && User.CanAdd("T_ClaimType"))
+    {
+        <a class="btn" data-placement="top" data-original-title="Quick Add" id="addT_TypeofClaim" style="padding:3px 5px;" data-toggle="modal" data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntity('addPopup','"+popupDisplayLabel+"','dvPopup','" + Url.Action("CreateQuick", "T_ClaimType", new { UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]), TS=DateTime.Now }) + "')")">
+            <span class="fa fa-plus-circle"></span> Quick Add 
+        </a>
+    }
+				}
+ 
+
+ @if (ViewData["HostingEntity"]==null)
+	{ 
+			 <a href="@(Url.Action("SetFSearch", "T_TypeofClaim")+Request.Url.Query)" data-original-title="Faceted Search" class="btn btn-default btn-default tip-top" style="padding:3px 5px;"><span class="fam-zoom-in"></span></a>
+	}
+	@if (ViewData["HostingEntity"] == null || Convert.ToBoolean(ViewData["IsFilter"]) == true)
+	{
+		<div class="btn-group">
+		<a class="btn dropdown-toggle" data-original-title="Filter-Groupby" style="padding:3px 5px;" data-toggle="dropdown" href="#">
+		<span class="fa fa-filter"></span> Filter
+		</a>
+		<ul class="dropdown-menu" role="menu">
+            <li>
+                <a id="fltT_ClaimType" data-placement="top" onclick=@Html.Raw("EntityFilter('T_TypeofClaim','" + Url.Action("GetAllValueForFilter", "T_ClaimType") + "','" + Html.Raw(Url.Action("Index", "T_TypeofClaim", new {FirstCall=true,FilterHostingEntityID = ViewData["HostingEntityID"], IsFilter = true, HostingEntity = "T_ClaimType", AssociatedType = "T_ClaimType", ClearSearchTimeStamp = DateTime.Now })) + "','" + User.Name + "');")>
+                    <span>Type of Claim Facility</span>
+                </a>
+            </li>
+            <li>
+                <a id="fltT_EmployeeInjury" data-placement="top" onclick=@Html.Raw("EntityFilter('T_TypeofClaim','" + Url.Action("GetAllValueForFilter", "T_EmployeeInjury") + "','" + Html.Raw(Url.Action("Index", "T_TypeofClaim", new {FirstCall=true,FilterHostingEntityID = ViewData["HostingEntityID"], IsFilter = true, HostingEntity = "T_EmployeeInjury", AssociatedType = "T_EmployeeInjury", ClearSearchTimeStamp = DateTime.Now })) + "','" + User.Name + "');")>
+                    <span>Employee Injury</span>
+                </a>
+            </li>
+       <li><span class="label label-primary pull-left filterLabel" style="margin-left:20px;">@Html.ActionLink("Clear", "Index")</span></li>
+		</ul>
+		</div>
+	}
+                </div>
+
+<div class="btn-group">
+                            <a class="btn dropdown-toggle tip-top" data-toggle="dropdown">
+                                Tools
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" style="min-width:110px">
+							
+<li>
+			@if (ViewData["HostingEntity"]==null)
+				{ 
+				  <a type="button" class="btn collapse-data-btn tip-top" id="btnImportExcelT_TypeofClaim" data-original-title="Import Excel" data-placement="top" style="padding:3px 5px; text-align:left" data-toggle="collapse" href="#ImportExcelT_TypeofClaim">
+                                <span class="fa fa-upload"></span> Import Excel
+                            </a>
+				}
+				</li>
+
+							   
+							  
+  							 <li>
+							
+                            <a class="btn" data-placement="top" data-original-title="Show Graph" style="padding:3px 5px; text-align:left" data-toggle="modal" data-target="#ShowGraphT_TypeofClaim" onclick=@Html.Raw("OpenDashBoard('dvShowGraphT_TypeofClaim');")>
+                                <span class="fa fa-area-chart"></span> Show Graph
+                            </a>
+							  </li>
+							  
+ 							   <li>
+							    
+				 <a class="btn tip-top" data-original-title="Export Excel" data-placement="top" style="padding:3px 5px; text-align:left" onclick=@Html.Raw("NavigateToUrl('" + Url.Action(ActionNameUrl,"T_TypeofClaim",getSortHtmlAttributes(null, false, null, true), null) + "');")>
+                    <span class="fa fa-download"></span> Export Excel
+                </a>
+							  </li>
+							  
+							   
+  							   <li>
+							 
+             <a type="button" class="btn collapse-data-btn tip-top" id="btnShowHideT_TypeofClaim" data-original-title="Show/Hide Column" data-placement="top" style="padding:3px 5px; text-align:left" onclick=@Html.Raw("showhideColumns(event,'T_TypeofClaim');")>
+                        <span class="fa fa-table"></span> Show/Hide Column
+                    </a>
+
+							  </li>
+							  							
+
+
+                            </ul>
+                        </div>
+</div>
+				<div class="pull-right" style="width:200px;">
+                        <div class="input-group">
+                            @Html.TextBox("SearchStringT_TypeofClaim", ViewBag.CurrentFilter as string, null, new { @class = "form-control fixsearchbox", @value = ViewBag.Homeval, @placeholder = "Search" })
+                            <div class="input-group-btn">
+                              <a id="T_TypeofClaimSearch" onclick="SearchClick(event, 'T_TypeofClaim', '@Html.Raw(Url.Action("Index", "T_TypeofClaim", new { IsFilter = ViewData["IsFilter"], IsDeepSearch = false, searchString = "_SearchString", HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]), SearchTimeStamp = DateTime.Now }))','@User.Name');" data-original-title="Grid Search" class="btn tip-top" style="padding:3px 5px; border:1px solid #ccc"><span class="fa fa-search"></span></a>
+								<a id="T_TypeofClaimCancel" type="button" class="btn collapse-data-btn tip-top" onclick="CancelSearch('T_TypeofClaim','@Html.Raw(Url.Action("Index", "T_TypeofClaim", new {IsFilter=ViewData["IsFilter"], HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]), ClearSearchTimeStamp = DateTime.Now }))','@User.Name')" data-original-title="Clear Search" data-placement="top" style="padding:3px 5px; border:1px solid #ccc">
+                                    <span class="fa fa-minus-circle"></span>
+                                </a>
+                                <a id="T_TypeofClaimSearchCancel" type="button" class="btn collapse-data-btn tip-top" onclick="CancelSearch('T_TypeofClaim','@Html.Raw(Url.Action("Index", "T_TypeofClaim", new {IsFilter=ViewData["IsFilter"], HostingEntity = Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = Convert.ToString(ViewData["HostingEntityID"]), AssociatedType = Convert.ToString(ViewData["AssociatedType"]), ClearSearchTimeStamp = DateTime.Now }))','@User.Name')" data-original-title="Refresh Grid" data-placement="top" style="padding:3px 5px; border:1px solid #ccc">
+                                    <span class="fa fa-refresh"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+					 <div style="clear:both"></div>
+            
+            
+ @if (ViewData["HostingEntity"]==null)
+	{ 
+	if (ViewBag.SearchResult != "" )
+                            {
+			<div id="fsearchT_TypeofClaim" class="collapse MessageFSearch">
+                        @Html.Raw(Html.Encode(ViewBag.SearchResult).Replace(Environment.NewLine, "<br/>"))
+						 <a href="@Url.Action("Index", "T_TypeofClaim")" style="float:right" ><span class="glyphicon glyphicon-remove-sign"></span> Clear</a>
+            </div>
+	}
+}
+	@Html.Partial("~/Views/T_TypeofClaim/ShowHideColumns.cshtml") 
+	@if (ViewData["HostingEntity"]==null)
+	{ 	   
+		<div id="ImportExcelT_TypeofClaim" class="collapse">
+            @using (Html.BeginForm("Upload", "T_TypeofClaim", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                    @Html.Partial("~/Views/Shared/FileUpload.cshtml")
+            }
+        </div>   
+	 }           
+    <div id="Des_Table" class="table-responsive" style="overflow-x:auto;">
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <thead>
+                <tr>
+									<th class="col1" style="width:70px;">Actions</th>
+@if(User.CanView("T_TypeofClaim","T_ClaimTypeID"))
+{
+			<th class="col2" @(Convert.ToString(ViewData["HostingEntity"]) == "T_ClaimType" && Convert.ToString(ViewData["AssociatedType"]) == "T_TypeofClaim_T_ClaimType"?"hidden":"")>
+				@Html.ActionLink("Type of Claim Facility", ActionNameUrl, "T_TypeofClaim",getSortHtmlAttributes("T_ClaimTypeID", false, null, false),new {  @onclick = "SortLinkClick(event,'T_TypeofClaim');" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_ClaimTypeID")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_ClaimTypeID")
+				{<i class="fa fa-sort-asc"></i>}
+			 </th>
+}
+@if(User.CanView("T_TypeofClaim","T_EmployeeInjuryID"))
+{
+			<th class="col3" @(Convert.ToString(ViewData["HostingEntity"]) == "T_EmployeeInjury" && Convert.ToString(ViewData["AssociatedType"]) == "T_TypeofClaim_T_EmployeeInjury"?"hidden":"")>
+				@Html.ActionLink("Employee Injury", ActionNameUrl, "T_TypeofClaim",getSortHtmlAttributes("T_EmployeeInjuryID", false, null, false),new {  @onclick = "SortLinkClick(event,'T_TypeofClaim');" })
+				@if (ViewBag.IsAsc == "DESC" && ViewBag.CurrentSort == "T_EmployeeInjuryID")
+				{<i class="fa fa-sort-desc"></i>}
+				@if (ViewBag.IsAsc == "ASC" && ViewBag.CurrentSort == "T_EmployeeInjuryID")
+				{<i class="fa fa-sort-asc"></i>}
+			 </th>
+}
+    </tr>
+@foreach (var item in Model) {
+ <tr ondblclick="DoubleClickRow(@item.Id,'@Url.Action("Details", "T_TypeofClaim", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)');">
+	 
+	     <td>
+	   <div style="width:60px; margin-top:-2px;">
+		<div class="btn-group" style="position:absolute;">
+                                                <button data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-default">
+                                                    Action
+                                                    <span class="caret">    </span>
+                                                </button>
+			<ul class="dropdown-menu pull-left">
+
+	@if (Convert.ToString(ViewData["AssociatedType"]).Trim() == "T_TypeofClaim_T_ClaimType" && User.CanEdit("T_EmployeeInjury"))
+	{
+		<li>
+			<a id='aBtnQuickEditT_EmployeeInjury_@item.Id' style="cursor:pointer;" data-toggle="modal" data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntityQuickEdit('addPopup','Edit Employee Injury','dvPopup','" + Url.Action("EditQuick", "T_EmployeeInjury", new
+						{
+							id = item.T_EmployeeInjuryID,
+							UrlReferrer = Request.Url,
+							TS = DateTime.Now,viewtype = Convert.ToString(ViewBag.TemplatesName)
+						}) + "')")"><i class="fa fa-pencil"></i>Quick Edit Employee Injury</a>
+		</li>
+	}
+	@if (Convert.ToString(ViewData["AssociatedType"]).Trim() == "T_TypeofClaim_T_EmployeeInjury" && User.CanEdit("T_ClaimType"))
+	{
+		<li>
+			<a id='aBtnQuickEditT_ClaimType_@item.Id' style="cursor:pointer;" data-toggle="modal" data-target="#dvPopup" onclick="@Html.Raw("OpenPopUpEntityQuickEdit('addPopup','Edit Type of Claim Facility','dvPopup','" + Url.Action("EditQuick", "T_ClaimType", new
+						{
+							id = item.T_ClaimTypeID,
+							UrlReferrer = Request.Url,
+							TS = DateTime.Now,viewtype = Convert.ToString(ViewBag.TemplatesName)
+						}) + "')")"><i class="fa fa-pencil"></i>Quick Edit Type of Claim Facility</a>
+		</li>
+	}
+                <li>
+                   @if (User.CanEdit("T_TypeofClaim"))
+                    {
+                        <a href="@Url.Action("Edit","T_TypeofClaim", new { id = item.Id,  UrlReferrer = BackUrl, HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Associate/Disassociate</a>
+                    }
+                </li>
+				<li>
+                     @if (User.CanDelete("T_TypeofClaim"))
+                    {
+                        <a href="@Url.Action("Delete", "T_TypeofClaim", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Remove</a>
+                    }
+                </li>
+			</ul>
+		</div>
+		</div>
+	</td>
+	@if(User.CanView("T_TypeofClaim","T_ClaimTypeID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_ClaimType" && Convert.ToString(ViewData["AssociatedType"]) == "T_TypeofClaim_T_ClaimType"?"hidden":"")>
+@if (item.t_claimtype != null  && !string.IsNullOrEmpty(item.t_claimtype.DisplayValue))
+{
+		 @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.t_claimtype.DisplayValue).ToString()), User.CanEdit("T_ClaimType") ? "Edit" : "Details", "T_ClaimType", new { Id = Html.DisplayFor(modelItem => item.t_claimtype.Id).ToString() },null)
+}
+		         </td>
+}
+@if(User.CanView("T_TypeofClaim","T_EmployeeInjuryID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_EmployeeInjury" && Convert.ToString(ViewData["AssociatedType"]) == "T_TypeofClaim_T_EmployeeInjury"?"hidden":"")>
+@if (item.t_employeeinjury != null  && !string.IsNullOrEmpty(item.t_employeeinjury.DisplayValue))
+{
+		 @Html.ActionLink(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.t_employeeinjury.DisplayValue).ToString()), User.CanEdit("T_EmployeeInjury") ? "Edit" : "Details", "T_EmployeeInjury", new { Id = Html.DisplayFor(modelItem => item.t_employeeinjury.Id).ToString() },null)
+}
+		         </td>
+}
+                                </tr>
+                            }
+                    </table>
+                </div>
+				 <ul id="Mob_List" class="list-group">
+                    @foreach (var item in Model)
+                    {
+                        <li class="list-group-item">
+@if(User.CanView("T_TypeofClaim","T_ClaimTypeID"))
+{
+		<p @(Convert.ToString(ViewData["HostingEntity"]) == "T_ClaimType" && Convert.ToString(ViewData["AssociatedType"]) == "T_ClaimType"?"hidden":"")>
+		<span class="text-primary"> Claim Type </span> : <span>
+		@if (item.t_claimtype != null  && !string.IsNullOrEmpty(item.t_claimtype.DisplayValue))
+{
+		 @Html.ActionLink(Html.DisplayFor(modelItem => item.t_claimtype.DisplayValue).ToString(), "Details", "T_ClaimType", new { Id = Html.DisplayFor(modelItem => item.t_claimtype.Id).ToString() },null)
+}
+         </span> </p>
+		 }
+@if(User.CanView("T_TypeofClaim","T_EmployeeInjuryID"))
+{
+		<p @(Convert.ToString(ViewData["HostingEntity"]) == "T_EmployeeInjury" && Convert.ToString(ViewData["AssociatedType"]) == "T_EmployeeInjury"?"hidden":"")>
+		<span class="text-primary"> Employee Injury </span> : <span>
+		@if (item.t_employeeinjury != null  && !string.IsNullOrEmpty(item.t_employeeinjury.DisplayValue))
+{
+		 @Html.ActionLink(Html.DisplayFor(modelItem => item.t_employeeinjury.DisplayValue).ToString(), "Details", "T_EmployeeInjury", new { Id = Html.DisplayFor(modelItem => item.t_employeeinjury.Id).ToString() },null)
+}
+         </span> </p>
+		 }
+<span class="label label-primary text-linkwhite"> 
+@Html.ActionLink("View", "Details","T_TypeofClaim", new { id = item.Id },null)
+</span>
+<span class="label label-warning text-linkwhite"> 
+@if (User.CanEdit("T_TypeofClaim"))
+				 {
+					@Html.ActionLink("Edit", "Edit","T_TypeofClaim", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)  
+				 }
+				 </span>
+				<span class="label label-danger text-linkwhite"> 
+				@if (User.CanDelete("T_TypeofClaim"))
+				 {
+					@Html.ActionLink("Delete", "Delete", "T_TypeofClaim", new { id = item.Id, UrlReferrer = BackUrl, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)    
+				 }
+				 </span>
+				   </li>
+                    }
+                </ul>
+  			   @if (Model.Count > 0)
+                {
+                    <div id="pagination" class="MyPagination1">
+                        @Html.PagedListPager(Model, page => Url.Action(ActionNameUrl, "T_TypeofClaim", getSortHtmlAttributes(null, true, page, false)))
+                        <div class="fixPageSize">
+                            Page Size :
+                            @Html.DropDownList("PageSize", new SelectList(new Dictionary<string, int> { { "10", 10 }, { "20", 20 }, { "50", 50 }, { "100", 100 } }, "Key", "Value")
+							, new { @id = "pagesizelistT_TypeofClaim",
+							 @onchange = @Html.Raw("pagesizelistChange(event,'T_TypeofClaim','"
+							  + @User.JavaScriptEncodedName + "')"),
+							 @Url = Html.Raw(@Url.Action(ActionNameUrl, "T_TypeofClaim",
+							 getSortHtmlAttributes(ViewBag.CurrentSort, ViewBag.Pages == 1 ? false : true,
+							 null, false), null)) })
+							<span style="text-align:right;"> Total Count: @(Model.TotalItemCount)</span>
+                        </div>
+                    </div>
+                }
+            
+        </div>
+    </div> 
+ </div>
+    <div class="modal fade" id="ShowGraphT_TypeofClaim" tabindex="-1" role="dialog" aria-labelledby="ShowGraphT_TypeofClaimLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="ShowGraphT_TypeofClaimLabel">Dashboard Type of Claim</h4>
+                </div>
+                <div id="dvShowGraphT_TypeofClaim" class="modal-body" data-url="@Url.Action("ShowGraph", "T_TypeofClaim" , new { type = "all" })">
+                </div>
+            </div>
+        </div>
+    </div>
+@Html.DropDownList("EntityT_TypeofClaimDisplayValue", null,null, new { @Style = "display:none;" })
+}
+</div>

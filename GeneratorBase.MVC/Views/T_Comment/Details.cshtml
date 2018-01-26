@@ -1,0 +1,414 @@
+﻿@model GeneratorBase.MVC.Models.T_Comment
+@using PagedList;
+@{
+    ViewBag.Title = "View Comment";
+	var EntityDisplayNameReflector = ModelReflector.Entities.FirstOrDefault(p => p.Name == "T_Comment");
+    var EntityDisplayName = EntityDisplayNameReflector != null ? EntityDisplayNameReflector.DisplayName : "Comment";
+}
+<script>
+    $(document).ready(function () {
+			 if ($.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') != null) {
+				$('a[href="#' + $.cookie('@User.JavaScriptEncodedName@Model.Id' + 'TabCookie') + '"]').click();
+			 }
+    });
+</script>
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_CommentIsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_CommentIsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_CommentIsGroupsHiddenRule))
+    {
+        @Html.Raw(ViewBag.T_CommentIsGroupsHiddenRule);
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.T_CommentIsSetValueUIRule))
+    {
+        @Html.Raw(ViewBag.T_CommentIsSetValueUIRule);
+    }
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-title">
+            <i class="glyphicon glyphicon-hand-down text-primary"></i> @EntityDisplayName  <i class="glyphicon glyphicon-chevron-right small"></i> <span>View</span>
+        </h1>
+        <h2 class="text-primary"><span id="HostingEntityDisplayValue">@Html.DisplayFor(model => model.DisplayValue)</span>
+			<div class="btn-group pull-right fixactionbut">
+            <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle pull-right">
+                Action
+                <span class="caret">    </span>
+            </button>
+			<ul class="dropdown-menu pull-left">               
+				<li>
+                    @if ( User.CanEdit("T_Comment"))
+                    {
+                        <a href="@Url.Action("Edit","T_Comment", new {UrlReferrer = Request.UrlReferrer,id = Model.Id,AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) },null)"><i class="glyphicon glyphicon-edit"></i>  Edit</a>
+                    }
+                </li>             
+				<li>
+                    @if ( User.CanDelete("T_Comment"))
+                    {
+                        <a href="@Url.Action("Delete", "T_Comment", new { UrlReferrer = Request.UrlReferrer,id = Model.Id, AssociatedType=ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, null)"><i class="glyphicon glyphicon-remove-sign"></i>  Delete</a>
+                    }
+                </li>
+ <li class="divider" style="clear:both"></li>
+ <li class="dropdown-submenu pull-left">
+	<a tabindex="-1" href="#" style="margin-bottom:10px;">Find Matching</a>
+    <ul class="dropdown-menu pull-left">
+<li>
+		<a href="@Url.Action("FindFSearch", "FileDocument", new {sourceEntity="T_Comment",id=Model.Id}, null)">Document</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Licenses", new {sourceEntity="T_Comment",id=Model.Id}, null)">Licenses</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_ServiceRecord", new {sourceEntity="T_Comment",id=Model.Id}, null)">Service Record</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_DrugAlcoholTest", new {sourceEntity="T_Comment",id=Model.Id}, null)">Drug & Alcohol Test</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_UnitX", new {sourceEntity="T_Comment",id=Model.Id}, null)">UnitX</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_JobAssignment", new {sourceEntity="T_Comment",id=Model.Id}, null)">Job Assignment</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_LeaveProfile", new {sourceEntity="T_Comment",id=Model.Id}, null)">Leave</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_EmployeeInjury", new {sourceEntity="T_Comment",id=Model.Id}, null)">Employee Injury</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_BackgroundCheck", new {sourceEntity="T_Comment",id=Model.Id}, null)">Background Check</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Education", new {sourceEntity="T_Comment",id=Model.Id}, null)">Education</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_Accommodation", new {sourceEntity="T_Comment",id=Model.Id}, null)">Accommodation</a>
+</li>
+<li>
+		<a href="@Url.Action("FindFSearch", "T_PayDetails", new {sourceEntity="T_Comment",id=Model.Id}, null)">Pay Details </a>
+</li>
+</ul>
+</li>
+			</ul>
+
+
+		</h2>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="tabbable responsive">
+    <ul class="nav nav-tabs">
+	 <li class="active"><a href="#Details" onclick="ClearTabCookie('@User.JavaScriptEncodedName@Model.Id');" data-toggle="tab">Details</a></li>
+		 <li @(!User.CanView("JournalEntry")?"style=display:none;":"")><a onclick="LoadTab('JournalEntryToT_CommentRelation','@User.JavaScriptEncodedName@Model.Id','@Url.Action("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_Comment", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry", TabToken = DateTime.Now.Ticks })')" href="#JournalEntryToT_CommentRelation" data-toggle="tab">Comment Journal</a></li>
+    </ul>
+	  @Html.HiddenFor(model => model.Id)
+	    <div class="tab-content">
+		   <div class="tab-pane fade in active" id="Details">
+				 <div class="panel panel-default AppForm">
+					<div class="panel-body">
+                                  
+			
+<div class="row">
+				<div class="col-sm-12 col-md-12 col-xs-12">
+			<div class="panel panel-default" id="dvGroup48901">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+											
+									<h3 class="panel-title">Basic Details</h3>
+								</div>
+                                <div class="panel-body">
+						@if(User.CanView("T_Comment","T_WhoandWhen"))
+						{
+
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WhoandWhen">
+							<div class='form-group' title="@(Model.T_WhoandWhenInsertDate.HasValue ? Model.T_WhoandWhenInsertDate.Value.ToString("MM/dd/yyyy hh:mm tt"):"") @Model.T_WhoandWhenInsertBy">
+								<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_WhoandWhenInsertDate)</label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+								<p class="viewlabel" id="tsT_WhoandWhenInsertDate">@(Model.T_WhoandWhenInsertDate.HasValue ? Model.T_WhoandWhenInsertDate.Value.ToString("MM/dd/yyyy hh:mm tt"):"") @Model.T_WhoandWhenInsertBy</p>
+								</div>
+							</div>
+						</div>
+						@Html.Raw("<script> $(function () {$('tsT_WhoandWhenInsertDate').localTimeFromUTCIndex('tsT_WhoandWhenInsertDate','MM/DD/YYYY hh:mm ','" + (Model.T_WhoandWhenInsertDate.HasValue ? Model.T_WhoandWhenInsertDate : null) + "','" + Model.T_WhoandWhenInsertBy + "')});</script>")
+						<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_WhoandWhen">
+							<div class='form-group' title="@(Model.T_WhoandWhen.HasValue ? Model.T_WhoandWhen.Value.ToString("MM/dd/yyyy hh:mm tt"):"") @Model.T_WhoandWhenUser">
+								<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_WhoandWhen)</label>
+								<div class="input-group col-sm-7 col-md-7 col-xs-12">
+								<p class="viewlabel" id="tsT_WhoandWhen">@(Model.T_WhoandWhen.HasValue ? Model.T_WhoandWhen.Value.ToString("MM/dd/yyyy hh:mm tt"):"") @Model.T_WhoandWhenUser</p>
+								</div>
+							</div>
+						</div>
+						@Html.Raw("<script> $(function () {$('tsT_WhoandWhen').localTimeFromUTCIndex('tsT_WhoandWhen','MM/DD/YYYY hh:mm ','" + (Model.T_WhoandWhen.HasValue ? Model.T_WhoandWhen : null) + "','" + Model.T_WhoandWhenUser + "')});</script>")
+						}
+						@if(User.CanView("T_Comment","T_EmployeeCommentsID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EmployeeComments">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EmployeeCommentsID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		@if (@Model.T_EmployeeCommentsID == 0 || @Model.T_EmployeeCommentsID == null || @Model.t_employeecomments == null)
+		{
+	         <p id="lblT_EmployeeCommentsID" class="viewlabel"></p>
+        }
+        else
+        {
+		     <p id="lblT_EmployeeCommentsID" class="viewlabel" title="@Model.t_employeecomments.DisplayValue">@Model.t_employeecomments.DisplayValue</p>
+        }
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+	</div>
+	</div>
+<div class="row">
+				<div class="col-sm-12 col-md-12 col-xs-12">
+			<div class="panel panel-default" id="dvGroup48902">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+											
+									<h3 class="panel-title">Comments</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_Comment","T_Summary"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_Summary">
+	<div class='form-group' title="@Model.T_Summary">
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_Summary)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+		<p class="viewlabelmultiline">@Model.T_Summary</p>
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+	</div>
+	</div>
+<div class="row">
+				<div class="col-sm-12 col-md-12 col-xs-12">
+			<div class="panel panel-default" id="dvGroup48903">
+                <div class="panel-heading clearfix">
+					<i class="icon-calendar"></i>
+											
+									<h3 class="panel-title">Associated With</h3>
+								</div>
+                                <div class="panel-body">
+@if(User.CanView("T_Comment","T_AccommodationCommentsID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_AccommodationComments">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_AccommodationCommentsID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_accommodationcomments!=null && !string.IsNullOrEmpty(Model.t_accommodationcomments.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_AccommodationComments">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_accommodationcomments.DisplayValue).ToString(), "Details", "T_Accommodation", new { Id = Html.DisplayFor(model => model.t_accommodationcomments.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Comment","T_DrugAlcoholTestCommentsID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_DrugAlcoholTestComments">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_DrugAlcoholTestCommentsID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_drugalcoholtestcomments!=null && !string.IsNullOrEmpty(Model.t_drugalcoholtestcomments.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_DrugAlcoholTestComments">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_drugalcoholtestcomments.DisplayValue).ToString(), "Details", "T_DrugAlcoholTest", new { Id = Html.DisplayFor(model => model.t_drugalcoholtestcomments.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Comment","T_EducationCommentsID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_EducationComments">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_EducationCommentsID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_educationcomments!=null && !string.IsNullOrEmpty(Model.t_educationcomments.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_EducationComments">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_educationcomments.DisplayValue).ToString(), "Details", "T_Education", new { Id = Html.DisplayFor(model => model.t_educationcomments.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Comment","T_InjuryCommentsID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_InjuryComments">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_InjuryCommentsID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_injurycomments!=null && !string.IsNullOrEmpty(Model.t_injurycomments.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_InjuryComments">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_injurycomments.DisplayValue).ToString(), "Details", "T_EmployeeInjury", new { Id = Html.DisplayFor(model => model.t_injurycomments.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Comment","T_JobAssignmentCommentsID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_JobAssignmentComments">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_JobAssignmentCommentsID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_jobassignmentcomments!=null && !string.IsNullOrEmpty(Model.t_jobassignmentcomments.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_JobAssignmentComments">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_jobassignmentcomments.DisplayValue).ToString(), "Details", "T_JobAssignment", new { Id = Html.DisplayFor(model => model.t_jobassignmentcomments.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Comment","T_LeaveCommentsID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_LeaveComments">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_LeaveCommentsID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_leavecomments!=null && !string.IsNullOrEmpty(Model.t_leavecomments.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_LeaveComments">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_leavecomments.DisplayValue).ToString(), "Details", "T_LeaveProfile", new { Id = Html.DisplayFor(model => model.t_leavecomments.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Comment","T_LicensesCommentsID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_LicensesComments">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_LicensesCommentsID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_licensescomments!=null && !string.IsNullOrEmpty(Model.t_licensescomments.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_LicensesComments">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_licensescomments.DisplayValue).ToString(), "Details", "T_Licenses", new { Id = Html.DisplayFor(model => model.t_licensescomments.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Comment","T_SalaryCommentsID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_SalaryComments">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_SalaryCommentsID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_salarycomments!=null && !string.IsNullOrEmpty(Model.t_salarycomments.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_SalaryComments">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_salarycomments.DisplayValue).ToString(), "Details", "T_PayDetails", new { Id = Html.DisplayFor(model => model.t_salarycomments.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Comment","T_PreemploymentCommentsID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_PreemploymentComments">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_PreemploymentCommentsID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_preemploymentcomments!=null && !string.IsNullOrEmpty(Model.t_preemploymentcomments.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_PreemploymentComments">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_preemploymentcomments.DisplayValue).ToString(), "Details", "T_BackgroundCheck", new { Id = Html.DisplayFor(model => model.t_preemploymentcomments.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+@if(User.CanView("T_Comment","T_ServiceRecordCommentsID"))
+{
+<div class='col-sm-6 col-md-6 col-xs-12' id="dvT_ServiceRecordComments">
+	<div class='form-group' >
+		<label class="col-sm-5 col-md-5 col-xs-12">@Html.DisplayNameFor(model => model.T_ServiceRecordCommentsID)</label>
+		<div class="input-group col-sm-7 col-md-7 col-xs-12">
+ @if (Model.t_servicerecordcomments!=null && !string.IsNullOrEmpty(Model.t_servicerecordcomments.DisplayValue))
+        {
+		 <p class="viewlabel" id="lblT_ServiceRecordComments">
+		@Html.ActionLink(Html.DisplayFor(model => model.t_servicerecordcomments.DisplayValue).ToString(), "Details", "T_ServiceRecord", new { Id = Html.DisplayFor(model => model.t_servicerecordcomments.Id).ToString() }, null)
+		</p>
+		}
+		</div>
+	</div>
+</div>
+}
+ 
+			</div>
+        </div>
+	</div>
+	</div>
+			<div class="row">
+		</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+				<a class="btn btn-default btn-sm pull-left formbuttonfix" Onclick="goBack('@Url.Action("Index","T_Comment")');">Back</a>
+				@*@Html.ActionLink("Back", "Cancel", new { UrlReferrer = Request.UrlReferrer }, new { @class = "btn btn-default btn-sm pull-left formbuttonfix" })*@
+					
+					 @if ( User.CanEdit("T_Comment"))
+                     {
+                          @Html.ActionLink("Edit", "Edit", new { UrlReferrer = Request.UrlReferrer, id = Model.Id, AssociatedType = ViewData["AssociatedType"], HostingEntityName = @Convert.ToString(ViewData["HostingEntity"]), HostingEntityID = @Convert.ToString(ViewData["HostingEntityID"]) }, new { @class = "btn btn-primary btn-sm pull-left formbuttonfix" })
+                     }
+				   
+ @{ var dropmenubottom = false; }
+<div class="dropdown pull-left formbuttonfix" style="display:none;" id="AddAssociationdropmenubottomT_Comment">
+<button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            Add Association
+            <span class="caret"></span>
+        </button>
+		 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+</ul>
+</div>
+@if(!dropmenubottom)
+{
+    <script>
+        $("#AddAssociationdropmenubottomT_Comment").hide();
+    </script>
+}
+			</div> 
+			</div><div class="clearfix" style="clear:both"></div>
+	</div>    
+<div class="tab-pane fade in" id="JournalEntryToT_CommentRelation">
+            @if ( User.CanView("JournalEntry"))
+		   {
+			//	Html.RenderAction("Index", "JournalEntry", new { RenderPartial = true, HostingEntity = "T_Comment", HostingEntityID = @Model.Id, AssociatedType = "JournalEntry" });
+		   }
+  </div>
+	</div> <!-- /tab-content --><br />
+
+<br/>
+</div>
+ 

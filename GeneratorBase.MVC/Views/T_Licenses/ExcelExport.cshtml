@@ -1,0 +1,97 @@
+﻿@model PagedList.IPagedList<GeneratorBase.MVC.Models.T_Licenses>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Licenses.xls");
+}
+                    <table>
+                            <tr>
+@if(User.CanView("T_Licenses","T_LicenseRecordsID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>Employee</th>
+}
+@if(User.CanView("T_Licenses","T_NameontheLicense"))
+{
+		<th>Name on the License</th>
+}
+@if(User.CanView("T_Licenses","T_AssociatedLicensesTypeID"))
+{
+		<th  @(Convert.ToString(ViewData["HostingEntity"]) == "T_Licensestype"?"hidden":"")>Licenses Type</th>
+}
+@if(User.CanView("T_Licenses","T_LicenseNumber"))
+{
+		<th>License Number</th>
+}
+@if(User.CanView("T_Licenses","T_InitialLicenseDate"))
+{
+		<th>Initial License Date</th>
+}
+@if(User.CanView("T_Licenses","T_ExpiryDate"))
+{
+		<th>Expiry Date</th>
+}
+@if(User.CanView("T_Licenses","T_PrintDate"))
+{
+		<th>License Print Date</th>
+}
+@if(User.CanView("T_Licenses","T_Notes"))
+{
+		<th>Notes</th>
+}
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+	@if(User.CanView("T_Licenses","T_LicenseRecordsID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Employee"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_licenserecords.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Licenses","T_NameontheLicense"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_NameontheLicense)
+        </td>
+}
+@if(User.CanView("T_Licenses","T_AssociatedLicensesTypeID"))
+{
+		<td @(Convert.ToString(ViewData["HostingEntity"]) == "T_Licensestype"?"hidden":"")>
+            @Html.DisplayFor(modelItem => item.t_associatedlicensestype.DisplayValue)
+        </td>
+}
+@if(User.CanView("T_Licenses","T_LicenseNumber"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_LicenseNumber)
+        </td>
+}
+@if(User.CanView("T_Licenses","T_InitialLicenseDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_InitialLicenseDate)
+        </td>
+}
+@if(User.CanView("T_Licenses","T_ExpiryDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_ExpiryDate)
+        </td>
+}
+@if(User.CanView("T_Licenses","T_PrintDate"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_PrintDate)
+        </td>
+}
+@if(User.CanView("T_Licenses","T_Notes"))
+{
+		<td>
+            @Html.DisplayFor(modelItem => item.T_Notes)
+        </td>
+}
+                                </tr>
+                            }
+</table>
+               
